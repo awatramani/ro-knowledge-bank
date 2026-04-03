@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAGE TITLE HERE | RO Knowledge Bank</title>
+<!--
+  ════════════════════════════════════════════════════
+  HOW TO USE THIS TEMPLATE
+  ════════════════════════════════════════════════════
+  1. Save a copy of this file with a new name
+     e.g.  core/02-research-ethics.html
+           sectors/education.html
+
+  2. Update the <title> tag above
+
+  3. Update the HERO section:
+     - banner-eyebrow  → topic group & number
+     - banner-title    → topic name
+     - banner-subtitle → one-line description
+
+  4. Update the sticky NAV links to match your sections
+     (change href="#section-id" and link text)
+
+  5. Duplicate SECTION BLOCKS as needed.
+     Available section types — copy from examples below:
+       · split-layout (text left, image right)
+       · split-layout reverse (image left, text right)
+       · full-width (section-intro + any components)
+
+  6. Available components to paste inside any section:
+       .dialogue-box          PA/RA conversation
+       .scenario-box          Yellow sticky note
+       .key-principle-box     Green principle callout
+       .red-flag-box          Red warning box
+       .good-box              Green good practice box
+       .vs-board              Good vs Bad comparison
+       .dos-donts-grid        Do/Don't columns
+       .bento-row             Two side-by-side cards
+       .timeline-grid         Phase cards
+       .table-wrapper         Data table
+       .quotes-grid           Avatar quote cards
+       .prep-console          Interactive checklist
+
+  7. All text elements need class="edit-text"
+     All images need class="edit-img"
+     All links need class="edit-link"
+
+  8. Admin editor: Press Alt+Shift+E to enter edit mode
+  ════════════════════════════════════════════════════
+-->
+<link rel="stylesheet" href="https://awatramani.github.io/ro-knowledge-bank/kb-theme.css">
+</head>
+<body>
+
+<!-- ── STICKY NAV ── -->
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a href="#" class="nav-back edit-link">← [Group Name]</a>
+    <a href="#section1" class="nav-link active edit-link">Section 1</a>
+    <a href="#section2" class="nav-link edit-link">Section 2</a>
+    <a href="#section3" class="nav-link edit-link">Section 3</a>
+    <!-- Add more nav-link items as needed -->
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="banner-container">
+  <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=2000&q=80" class="hero-img-bg edit-img" alt="">
+  <div class="bg-shape-1"></div>
+  <div class="bg-shape-2"></div>
+  <div class="glass-card">
+    <span class="banner-eyebrow edit-text">GROUP NAME · Topic X of Y</span>
+    <h1 class="banner-title edit-text">Page Title Goes Here</h1>
+    <span class="banner-subtitle edit-text">A one-line description of what this page covers</span>
+    <div class="banner-meta">
+      <span class="banner-meta-pill edit-text">📘 Module Name</span>
+      <span class="banner-meta-pill edit-text">Version 1.0 · 2026</span>
+      <span class="banner-meta-pill edit-text">⏱ X min read</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SECTION 1 — Split: Text Left, Image Right
+     Use for: intro topics, opening concepts
+════════════════════════════════════════ -->
+<div class="section-wrapper bg-white" id="section1">
+  <div class="section-container split-layout">
+
+    <div class="text-block">
+      <span class="eyebrow edit-text">Eyebrow Label</span>
+      <h2 class="edit-text">Section Heading</h2>
+
+      <!-- DIALOGUE BOX — PA/RA conversation opener -->
+      <div class="dialogue-box">
+        <span class="speaker edit-text">Speaker Label:</span>
+        <p class="edit-text" style="font-style:italic;margin-bottom:0;">"First speaker quote goes here."</p>
+        <span class="speaker ra edit-text">Responding Speaker:</span>
+        <p class="edit-text" style="font-style:italic;margin-bottom:0;color:var(--brand-dark);font-weight:600;">"Response quote goes here."</p>
+      </div>
+
+      <h3 class="edit-text">Sub-heading</h3>
+      <p class="edit-text">Body paragraph text goes here. Use <strong>bold</strong> for key terms. Keep paragraphs short — 3 to 4 sentences maximum.</p>
+      <p class="edit-text">Second paragraph. Continue the concept or introduce a new angle.</p>
+
+      <!-- KEY PRINCIPLE — Green callout box -->
+      <div class="key-principle-box">
+        <span class="kp-label">🔑 Key Principle</span>
+        <p class="edit-text" style="margin:0;">The core principle or rule for this section goes here. Keep it to 1–2 sentences. Make it memorable.</p>
+      </div>
+    </div>
+
+    <div class="image-block tilt-right">
+      <div class="image-card">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" class="photo-img edit-img" alt="Description of image">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SECTION 2 — Split: Image Left, Text Right
+     Green background. Use for: scenarios, field realities
+════════════════════════════════════════ -->
+<div class="section-wrapper bg-light-green" id="section2">
+  <div class="section-container split-layout reverse top">
+
+    <div class="image-block tilt-left">
+      <div class="image-card">
+        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=800&q=80" class="photo-img edit-img" alt="Description of image">
+      </div>
+    </div>
+
+    <div class="text-block">
+      <span class="eyebrow edit-text">Eyebrow Label</span>
+      <h2 class="edit-text">Section Heading</h2>
+
+      <p class="edit-text">Opening paragraph for this section. Set the context before introducing scenarios or components.</p>
+
+      <!-- SCENARIO BOX — Yellow sticky note -->
+      <div class="scenario-box edit-text">
+        <span class="scenario-label">Field Scenario: Scenario Title</span>
+        Describe the field situation here in italic. What does the surveyor encounter? What is the dilemma?<br><br>
+        <span style="font-style:normal;font-weight:700;color:var(--brand-dark);">Say: </span>"The scripted response goes here. Keep it natural and in plain language."
+      </div>
+
+      <p class="edit-text">Follow-up explanation or additional guidance after the scenario. What does this scenario teach us?</p>
+
+      <!-- RED FLAG BOX — for warnings -->
+      <div class="red-flag-box">
+        <span class="rf-label">⚠️ Watch Out</span>
+        <ul>
+          <li class="edit-text">First warning or thing to avoid.</li>
+          <li class="edit-text">Second warning or common mistake.</li>
+          <li class="edit-text">Third point if needed.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SECTION 3 — Full Width
+     White background. Use for: tables, dos/donts, checklists
+════════════════════════════════════════ -->
+<div class="section-wrapper bg-white" id="section3">
+  <div class="section-container">
+
+    <!-- Full-width centred intro -->
+    <div class="section-intro">
+      <span class="eyebrow edit-text">Eyebrow Label</span>
+      <h2 class="edit-text">Section Heading</h2>
+      <p class="edit-text">Introductory paragraph for this full-width section. Use this pattern when the content is too wide for a split layout — tables, comparison boards, checklists.</p>
+    </div>
+
+    <!-- DOS & DON'TS GRID -->
+    <div class="dos-donts-grid">
+      <div class="do-column">
+        <h4 class="edit-text" style="color:var(--success-green);margin-top:0;font-size:16px;">✅ Do</h4>
+        <ul class="list-check" style="padding-left:0;">
+          <li class="edit-text">First good practice item.</li>
+          <li class="edit-text">Second good practice item.</li>
+          <li class="edit-text">Third good practice item.</li>
+        </ul>
+      </div>
+      <div class="dont-column">
+        <h4 class="edit-text" style="color:var(--danger-red);margin-top:0;font-size:16px;">❌ Don't</h4>
+        <ul class="list-cross" style="padding-left:0;">
+          <li class="edit-text">First thing to avoid.</li>
+          <li class="edit-text">Second thing to avoid.</li>
+          <li class="edit-text">Third thing to avoid.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GOOD BOX — Green positive callout -->
+    <div class="good-box" style="margin-top:28px;">
+      <span class="good-label">✅ What Good Looks Like</span>
+      <ul>
+        <li class="edit-text">First example of correct behaviour in the field.</li>
+        <li class="edit-text">Second example.</li>
+        <li class="edit-text">Third example.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="page-footer">
+  <strong class="edit-text">J-PAL South Asia · Research Operations Knowledge Bank</strong>
+  <div class="footer-nav">
+    <a href="#" class="edit-link">Core &amp; Foundational Skills</a>
+    <a href="#" class="edit-link">Sector Skills</a>
+    <a href="#" class="edit-link">Back to Hub</a>
+  </div>
+</footer>
+
+<!-- ── ADMIN EDITOR ── -->
+<div id="admin-master-container">
+  <div id="admin-toolkit">
+    <span style="color:#cbd5e1;font-size:12.5px;font-weight:600;margin-right:8px;">✅ Edit Mode</span>
+    <button class="admin-btn copy" onclick="copyCode()">📋 Copy Code</button>
+    <button class="admin-btn close" onclick="lockPage()">✕ Lock</button>
+  </div>
+  <div id="inline-img-box" class="inline-bubble">
+    <p>PASTE IMAGE URL</p>
+    <input type="text" id="img-input-val" placeholder="Google Drive or web URL...">
+    <button onclick="applyImg()">Update Image</button>
+    <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:6px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
+  </div>
+</div>
+<script src="https://awatramani.github.io/ro-knowledge-bank/kb-admin.js"></script>
+
+</body>
+</html>
