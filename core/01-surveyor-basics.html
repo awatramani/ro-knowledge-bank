@@ -40,6 +40,7 @@
     transition: var(--transition);
 }
 .jump-link:hover { color: var(--heading-green); }
+.jump-link { cursor: pointer; }
 .jump-link.active { color: var(--heading-green); border-bottom-color: var(--heading-green); }
 
 /* Reading column — comfortable width for embed */
@@ -94,15 +95,39 @@
 </head>
 <body>
 
-<!-- ── IN-PAGE JUMP NAV (Tier 3 only) ── -->
-<nav class="jump-nav">
-    <a href="#why"       class="jump-link active edit-link">Why Research</a>
-    <a href="#rct"       class="jump-link edit-link">RCT &amp; J-PAL</a>
-    <a href="#conduct"   class="jump-link edit-link">Conduct &amp; Standards</a>
-    <a href="#timeline"  class="jump-link edit-link">Study Timeline</a>
-    <a href="#partner"   class="jump-link edit-link">Implementing Partner</a>
-    <a href="#checklist" class="jump-link edit-link">Readiness Checklist</a>
+<!-- ── IN-PAGE JUMP NAV (JS scroll — works inside iframe) ── -->
+<nav class="jump-nav" id="jump-nav">
+    <span class="jump-link active" data-target="why"       onclick="jumpTo('why')">Why Research</span>
+    <span class="jump-link"       data-target="rct"        onclick="jumpTo('rct')">RCT &amp; J-PAL</span>
+    <span class="jump-link"       data-target="conduct"    onclick="jumpTo('conduct')">Conduct &amp; Standards</span>
+    <span class="jump-link"       data-target="timeline"   onclick="jumpTo('timeline')">Study Timeline</span>
+    <span class="jump-link"       data-target="partner"    onclick="jumpTo('partner')">Implementing Partner</span>
+    <span class="jump-link"       data-target="checklist"  onclick="jumpTo('checklist')">Readiness Checklist</span>
 </nav>
+<script>
+function jumpTo(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var navH = document.getElementById('jump-nav').offsetHeight;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - navH - 8;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
+    document.querySelector('[data-target="' + id + '"]').classList.add('active');
+}
+// Highlight active section on scroll
+window.addEventListener('scroll', function() {
+    var sections = ['why','rct','conduct','timeline','partner','checklist'];
+    var navH = document.getElementById('jump-nav').offsetHeight;
+    var current = sections[0];
+    sections.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= navH + 40) current = id;
+    });
+    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
+    var active = document.querySelector('[data-target="' + current + '"]');
+    if (active) active.classList.add('active');
+});
+</script>
 
 <!-- ── HERO ── -->
 <div class="banner-container">
