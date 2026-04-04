@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Managing Data Collection in the Field | RO Knowledge Bank — Design Reference</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://awatramani.github.io/ro-knowledge-bank/kb-theme.css">
+<style>
+/*
+ * ══════════════════════════════════════════════════════
+ *  PAGE-LEVEL LAYOUT OVERRIDES
+ *  Enterprise knowledge base pattern:
+ *  - Full-width reading column, max 860px, centred
+ *  - Images used only in hero and as inline context
+ *  - No competing equal-height columns
+ *  - Content components carry visual weight, not photos
+ * ══════════════════════════════════════════════════════
+ */
+
+/* Narrow the reading column for comfortable line length */
+.kb-body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* Section wrappers stay full-width for bg colour,
+   but content inside is constrained to reading width */
+.section-wrapper { padding: 48px 0; }
+.section-container { max-width: 100%; padding: 0; }
+
+/* Topic intro — eyebrow + heading + standfirst at top of each section */
+.topic-header { margin-bottom: 32px; }
+.topic-header h2 { margin-bottom: 10px; }
+.topic-header .standfirst {
+    font-size: 16px; color: var(--text-light);
+    line-height: 1.7; max-width: 680px;
+    border-left: 3px solid var(--heading-green);
+    padding-left: 16px; margin: 0;
+}
+
+/* Inline image — sits at the top of a topic, right-floated,
+   fixed size, text wraps around it naturally */
+.inline-img-right {
+    float: right;
+    width: 340px;
+    margin: 0 0 24px 36px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(26,122,109,0.12);
+    border: 6px solid white;
+    flex-shrink: 0;
+}
+.inline-img-right img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+.clearfix::after { content: ''; display: table; clear: both; }
+
+/* Divider between topics within a section */
+.topic-divider {
+    border: none;
+    border-top: 1px solid var(--border-soft);
+    margin: 44px 0;
+}
+
+/* Stat row — 3 or 4 numbers side by side */
+.stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+}
+.stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px 20px;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-float);
+    border-top: 4px solid var(--heading-green);
+    text-align: center;
+}
+.stat-card.blue   { border-top-color: var(--accent-blue); }
+.stat-card.orange { border-top-color: var(--accent-orange); }
+.stat-number {
+    font-size: 32px; font-weight: 800;
+    color: var(--heading-green); line-height: 1;
+    margin-bottom: 6px; display: block;
+}
+.stat-card.blue   .stat-number { color: var(--accent-blue); }
+.stat-card.orange .stat-number { color: var(--accent-orange); }
+.stat-label {
+    font-size: 12px; font-weight: 700;
+    color: var(--text-light); text-transform: uppercase;
+    letter-spacing: 0.8px; line-height: 1.4;
+}
+
+/* Two-column component row — for vs-board or dos-donts
+   at full reading-column width, no image competing */
+.component-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 28px 0;
+}
+
+/* Source attribution pill */
+.source-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(26,122,109,0.07);
+    border: 1px solid rgba(26,122,109,0.15);
+    color: var(--heading-green); font-size: 11px;
+    font-weight: 700; padding: 4px 12px;
+    border-radius: 20px; margin-bottom: 20px;
+    text-decoration: none;
+}
+.source-pill:hover { background: rgba(26,122,109,0.12); }
+
+/* Attribution footer box */
+.attribution-box {
+    background: white; border-radius: 14px;
+    padding: 24px 28px; border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-float); text-align: center;
+    margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+    .inline-img-right { float: none; width: 100%; margin: 0 0 24px 0; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .component-row { grid-template-columns: 1fr; }
+}
+</style>
+<!--
+ ════════════════════════════════════════════════════════════
+  DESIGN REFERENCE PAGE — J-PAL SA RO Knowledge Bank
+
+  PURPOSE:
+  Canonical design, formatting, and style reference for the
+  J-PAL South Asia Research Operations Knowledge Bank —
+  an internal training library hosted on Google Sites.
+
+  CONTENT SOURCE — publicly available J-PAL resources:
+  · Survey Logistics          povertyactionlab.org/resource/survey-logistics
+  · Surveyor Hiring & Training povertyactionlab.org/resource/surveyor-hiring-and-training
+  · Field Team Management     povertyactionlab.org/resource/field-team-management
+  · Questionnaire Piloting    povertyactionlab.org/resource/questionnaire-piloting
+  · Working with a Survey Firm povertyactionlab.org/resource/working-third-party-survey-firm
+
+  © Abdul Latif Jameel Poverty Action Lab · povertyactionlab.org
+  Not indexed (robots.txt + meta noindex). Password protected.
+  Contains no proprietary J-PAL SA operational data.
+ ════════════════════════════════════════════════════════════
+-->
+</head>
+<body>
+
+<!-- ── STICKY NAV ── -->
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a href="#" class="nav-back edit-link">← Field Operations</a>
+    <a href="#logistics"  class="nav-link active edit-link">Survey Logistics</a>
+    <a href="#hiring"     class="nav-link edit-link">Hiring &amp; Training</a>
+    <a href="#teams"      class="nav-link edit-link">Team Management</a>
+    <a href="#piloting"   class="nav-link edit-link">Piloting</a>
+    <a href="#firms"      class="nav-link edit-link">Survey Firms</a>
+    <a href="#checklist"  class="nav-link edit-link">Checklist</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="banner-container">
+  <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=2000&q=80"
+       class="hero-img-bg edit-img" alt="">
+  <div class="bg-shape-1"></div>
+  <div class="bg-shape-2"></div>
+  <div class="glass-card">
+    <span class="banner-eyebrow edit-text">Design Reference · Public Resource · J-PAL Knowledge Base</span>
+    <h1 class="banner-title edit-text">Managing Data Collection in the Field</h1>
+    <span class="banner-subtitle edit-text">
+      Drawn from J-PAL's publicly available guidance on survey logistics, hiring,
+      team management, piloting, and working with survey firms
+    </span>
+    <div class="banner-meta">
+      <span class="banner-meta-pill edit-text">📖 Source: povertyactionlab.org</span>
+      <span class="banner-meta-pill edit-text">🎨 Design System Reference</span>
+      <span class="banner-meta-pill edit-text">Version 1.0 · 2026</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 1 — SURVEY LOGISTICS
+     White bg
+════════════════════════════════════════ -->
+<div class="section-wrapper bg-white" id="logistics">
+  <div class="kb-body">
+
+    <a href="https://www.povertyactionlab.org/resource/survey-logistics"
+       class="source-pill edit-link" target="_blank">
+      📖 Source: Survey Logistics · povertyactionlab.org
+    </a>
+
+    <div class="topic-header">
+      <span class="eyebrow edit-text">Survey Logistics</span>
+      <h2 class="edit-text">Planning the Operation Before You Go</h2>
+      <p class="standfirst edit-text">
+        Managing a survey is a massive logistical undertaking. The decisions made
+        in the weeks before fieldwork begins — about permissions, transport,
+        equipment, and safety — determine whether the research runs smoothly
+        or grinds to a halt on Day 1.
+      </p>
+    </div>
+
+    <!-- Inline image floats right, text wraps naturally -->
+    <div class="clearfix">
+      <div class="inline-img-right tilt-right">
+        <img src="https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?auto=format&fit=crop&w=700&q=80"
+             class="edit-img" alt="Field logistics planning">
+      </div>
+
+      <div class="dialogue-box">
+        <span class="speaker edit-text">Research Associate asks:</span>
+        <p class="edit-text" style="font-style:italic;margin-bottom:0;">
+          "We have IRB clearance and a finalized instrument. Can we start fieldwork next week?"
+        </p>
+        <span class="speaker ra edit-text">Research Manager replies:</span>
+        <p class="edit-text" style="font-style:italic;margin-bottom:0;color:var(--brand-dark);font-weight:600;">
+          "IRB clearance is the starting gun, not the finish line. Vendor contracts,
+          local authority permissions, transport logistics, and device procurement
+          all take weeks. These must run in parallel with instrument development —
+          not after it."
+        </p>
+      </div>
+
+      <h3 class="edit-text">Permissions and Local Authorities</h3>
+      <p class="edit-text">
+        You may need permission to survey from district officials. In some countries,
+        research permits are required from multiple levels of government. Plan for this
+        as early as possible — in some areas you cannot begin survey activities before
+        obtaining permission. Printed letters describing the survey activities, with
+        contact information for local contacts and the PIs, are helpful. Failure to
+        communicate survey plans with local authorities can delay your entire team.
+      </p>
+    </div>
+
+    <h3 class="edit-text">Transport Contracting</h3>
+    <p class="edit-text">
+      Hiring vehicles involves searching for available hire companies, understanding
+      costs and policies, and verifying that vendors meet all local legal requirements
+      including licenses and tax certificates. Your signed contract should clearly define
+      roles and responsibilities, what happens in case of breakdown, and who covers
+      costs for fuel, parking, and driver meals — ambiguity on these points creates
+      conflict in the field.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <span class="stat-number edit-text">20%</span>
+        <span class="stat-label edit-text">Buffer staff to hire above target team size</span>
+      </div>
+      <div class="stat-card blue">
+        <span class="stat-number edit-text">4–8</span>
+        <span class="stat-label edit-text">Surveys per surveyor per day — conservative estimate</span>
+      </div>
+      <div class="stat-card orange">
+        <span class="stat-number edit-text">10%</span>
+        <span class="stat-label edit-text">Minimum back-check sample of completed interviews</span>
+      </div>
+    </div>
+
+    <div class="key-principle-box">
+      <span class="kp-label">🔑 Key Principle</span>
+      <p class="edit-text" style="margin:0;">
+        Data collection is a logistics operation disguised as research. Without
+        transport, permissions, power, and devices confirmed in advance, the research
+        stops — regardless of how good the questionnaire is. Start logistics planning
+        the day IRB approval is submitted, not the day it is received.
+      </p>
+    </div>
+
+    <hr class="topic-divider">
+
+    <h3 class="edit-text">Safety Protocols</h3>
+    <p class="edit-text">
+      Safety considerations must be built into the logistics plan as standing protocols —
+      not judgment calls made in the moment. Field teams should not survey during periods
+      of political instability, after dark, or in weather that creates dangerous road
+      conditions. Field staff must be explicitly told they are authorized to stop work
+      and abandon a target if they feel unsafe. Data is never worth a safety risk.
+    </p>
+
+    <div class="component-row">
+      <div class="vs-col vs-bad" style="border-radius:14px;border:1px solid #fecaca;">
+        <div class="vs-header edit-text">Logistics Red Flags</div>
+        <ul class="vs-list">
+          <li class="edit-text">Starting vendor search after instrument is locked.</li>
+          <li class="edit-text">No written contract with transport providers.</li>
+          <li class="edit-text">Assuming driver costs are self-covered.</li>
+          <li class="edit-text">No contingency cash for field emergencies.</li>
+        </ul>
+      </div>
+      <div class="vs-col vs-good" style="border-radius:14px;border:1px solid #bbf7d0;">
+        <div class="vs-header edit-text">What Good Looks Like</div>
+        <ul class="vs-list">
+          <li class="edit-text">Logistics planning begins when IRB is submitted.</li>
+          <li class="edit-text">Contracts signed before training begins.</li>
+          <li class="edit-text">Per diem terms communicated clearly before Day 1.</li>
+          <li class="edit-text">Contingency petty cash allocated per team.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 2 — HIRING & TRAINING
+     Green bg
+════════════════════════════════════════ -->
+<div class="section-wrapper bg-light-green" id="hiring">
+  <div class="kb-body">
+
+    <a href="https://www.povertyactionlab.org/resource/surveyor-hiring-and-training"
+       class="source-pill edit-link" target="_blank">
+      📖 Source: Surveyor Hiring &amp; Training · povertyactionlab.org
+    </a>
+
+    <div class="topic-header">
+      <span class="eyebrow edit-text">Surveyor Hiring &amp; Training</span>
+      <h2 class="edit-text">Building a Field Team That Delivers</h2>
+      <p class="standfirst edit-text">
+        Finding resilient staff is more important than finding experienced staff.
+        Fieldwork requires grit, patience, and the ability to listen — qualities
+        that a resume cannot reveal and a mock interview will.
+      </p>
+    </div>
+
+    <div class="clearfix">
+      <div class="inline-img-right tilt-left">
+        <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=700&q=80"
+             class="edit-img" alt="Surveyor training session">
+      </div>
+
+      <h3 class="edit-text">Working Out How Many to Hire</h3>
+      <p class="edit-text">
+        Work backwards from the target field team size. Define the end target using
+        the sample size together with conservative assumptions of how many surveys
+        can be completed per day — accounting for transport, unanticipated challenges,
+        and respondent unavailability. If you anticipate a high dropout rate, invite
+        an additional 20% of prospective surveyors to training so that training itself
+        becomes the final selection process.
+      </p>
+
+      <h3 class="edit-text">What to Look For</h3>
+      <p class="edit-text">
+        For candidates with no prior experience, in-depth screening is essential.
+        Key things to assess: language fluency in the survey language, ability to
+        hold a conversation while entering data on a device, basic software skills,
+        and composure under pressure. Do not just ask survey questions during
+        screening — roleplay a hostile or distressed respondent scenario and see
+        who stays calm, who listens, and who tries to argue or rush.
+      </p>
+    </div>
+
+    <div class="scenario-box edit-text">
+      <span class="scenario-label">The Hiring Scenario That Tells You Everything</span>
+      Candidate A has five years of experience but interrupts you during the mock
+      interview and argues about question wording. Candidate B is a fresher who listens
+      carefully, asks clarifying questions, and handles a simulated hostile respondent
+      with patience. Candidate A's experience is a liability. Candidate B is your hire.
+    </div>
+
+    <h3 class="edit-text">What Training Must Cover</h3>
+    <p class="edit-text">
+      A good training agenda covers: project objectives and why the study exists,
+      the code of conduct and termination offenses, informed consent protocols,
+      research ethics, a full CAPI walkthrough on the actual tablet models, and
+      at least one full day of field practice with real respondents in conditions
+      similar to the actual study area. Identify top performers during practice —
+      not just on paper — and consider gender composition and language diversity
+      when building the final team.
+    </p>
+
+    <div class="component-row">
+      <div class="red-flag-box" style="margin:0;">
+        <span class="rf-label">⚠️ Screening Red Flags</span>
+        <ul>
+          <li class="edit-text">Cannot explain the study purpose in plain language after training.</li>
+          <li class="edit-text">Shows impatience or interrupts during mock respondent exercises.</li>
+          <li class="edit-text">Insufficient language fluency in the survey language.</li>
+          <li class="edit-text">Rigid or defensive when a protocol is questioned.</li>
+        </ul>
+      </div>
+      <div class="good-box" style="margin:0;">
+        <span class="good-label">✅ Signs of a Strong Candidate</span>
+        <ul>
+          <li class="edit-text">Listens fully before responding — even when flustered.</li>
+          <li class="edit-text">Asks clarifying questions rather than guessing.</li>
+          <li class="edit-text">Calm and respectful under a hostile mock respondent.</li>
+          <li class="edit-text">Reports a problem rather than quietly working around it.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 3 — FIELD TEAM MANAGEMENT
+     White bg
+════════════════════════════════════════ -->
+<div class="section-wrapper bg-white" id="teams">
+  <div class="kb-body">
+
+    <a href="https://www.povertyactionlab.org/resource/field-team-management"
+       class="source-pill edit-link" target="_blank">
+      📖 Source: Field Team Management · povertyactionlab.org
+    </a>
+
+    <div class="topic-header">
+      <span class="eyebrow edit-text">Field Team Management</span>
+      <h2 class="edit-text">Structure, Communication, and Daily Operations</h2>
+      <p class="standfirst edit-text">
+        Depending on team size, you may need to manage upwards of 50 field staff.
+        Thinking ahead about reporting structures, payment processes, and safety
+        protocols ensures the survey runs without delays.
+      </p>
+    </div>
+
+    <h3 class="edit-text">Reporting Structure</h3>
+    <p class="edit-text">
+      Surveyors should be divided into smaller teams and report directly to a supervisor.
+      Supervisors report to a field manager, project associate, or research associate
+      depending on team structure. A ratio of one supervisor to four or six surveyors
+      is recommended for active oversight. Clear lines of escalation must be established
+      before fieldwork begins — every surveyor must know who to call and when.
+    </p>
+
+    <h3 class="edit-text">Daily Debriefs</h3>
+    <p class="edit-text">
+      Daily debrief sessions with the entire team are recommended during the initial
+      weeks of field launch. These sessions surface problems early, resolve confusion
+      about protocols, track daily progress against targets, and maintain team morale
+      during difficult stretches. They are not optional — they are the primary quality
+      control mechanism for the first two weeks.
+    </p>
+
+    <div class="key-principle-box">
+      <span class="kp-label">🔑 Management Principle</span>
+      <p class="edit-text" style="margin:0;">
+        The field manager who is in daily contact with their team catches problems
+        in hours. The one who checks in weekly catches them after the damage is done —
+        after surveys have been conducted incorrectly, data has been compromised,
+        and correction is no longer possible.
+      </p>
+    </div>
+
+    <hr class="topic-divider">
+
+    <h3 class="edit-text">Payments and Field Allowances</h3>
+    <p class="edit-text">
+      Per diem rates, travel allowances, and reimbursement processes must be
+      communicated clearly before Day 1. Ambiguity on financial terms is one of
+      the most common sources of field team conflict. If surveyors use personal
+      motorcycles, reimburse by distance traveled rather than allowing self-managed
+      invoices — this reduces both fraud risk and disputes.
+    </p>
+
+    <div class="component-row">
+      <div class="vs-col vs-bad" style="border-radius:14px;border:1px solid #fecaca;">
+        <div class="vs-header edit-text">Poor Management Signs</div>
+        <ul class="vs-list">
+          <li class="edit-text">No daily debrief — problems accumulate silently.</li>
+          <li class="edit-text">Supervisor-to-surveyor ratio too high to monitor.</li>
+          <li class="edit-text">Payment terms unclear — creates conflict on Day 2.</li>
+          <li class="edit-text">Safety protocols never explicitly communicated.</li>
+        </ul>
+      </div>
+      <div class="vs-col vs-good" style="border-radius:14px;border:1px solid #bbf7d0;">
+        <div class="vs-header edit-text">Good Management Signs</div>
+        <ul class="vs-list">
+          <li class="edit-text">Issues resolved within 24 hours via daily debrief.</li>
+          <li class="edit-text">One supervisor per 4–6 surveyors for active oversight.</li>
+          <li class="edit-text">Per diem and allowance terms set before fieldwork begins.</li>
+          <li class="edit-text">Staff explicitly authorized to stop work if unsafe.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 4 — QUESTIONNAIRE PILOTING
+     Green bg
+════════════════════════════════════════ -->
+<div class="section-wrapper bg-light-green" id="piloting">
+  <div class="kb-body">
+
+    <a href="https://www.povertyactionlab.org/resource/questionnaire-piloting"
+       class="source-pill edit-link" target="_blank">
+      📖 Source: Questionnaire Piloting · povertyactionlab.org
+    </a>
+
+    <div class="topic-header">
+      <span class="eyebrow edit-text">Questionnaire Piloting</span>
+      <h2 class="edit-text">Testing, Refining, and Testing Again</h2>
+      <p class="standfirst edit-text">
+        Piloting is the testing, refining, and re-testing of survey instruments in
+        the field to make them ready for full deployment. A successful pilot is one
+        that finds errors — if you come back saying it worked perfectly, you did not
+        test it hard enough.
+      </p>
+    </div>
+
+    <div class="clearfix">
+      <div class="inline-img-right tilt-right">
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=700&q=80"
+             class="edit-img" alt="Questionnaire piloting">
+      </div>
+
+      <h3 class="edit-text">The Three Phases of Piloting</h3>
+      <p class="edit-text">
+        Brand new survey instruments go through three phases. First, cognitive testing
+        of individual questions to check comprehension and phrasing. Second, a
+        small-scale field pilot to test the full instrument flow and skip patterns in
+        realistic conditions. Third, a final pre-launch pilot on the actual tablet
+        models, in the actual study area, with respondents representative of the
+        actual sample. Each phase catches different classes of errors.
+      </p>
+
+      <h3 class="edit-text">Tracking What the Pilot Reveals</h3>
+      <p class="edit-text">
+        Each enumerator should carry a form for recording piloting metadata — survey
+        timing, respondent type, and high-level observations about question clarity
+        and flow. This is not optional record-keeping. It is the mechanism by which
+        the research team systematically identifies what to fix between pilot rounds.
+        Without it, the same errors surface in the full launch.
+      </p>
+    </div>
+
+    <div class="scenario-box edit-text">
+      <span class="scenario-label">The False Positive Pilot</span>
+      You piloted in a quiet classroom with cooperative colleagues. It went perfectly.
+      Day 1 in the field: the village is noisy, onlookers crowd the surveyor, and
+      the respondent gets distracted every two minutes. Your pilot validated nothing
+      because it tested nothing real. Pilot in the hardest conditions you can find —
+      not the easiest.
+    </div>
+
+    <div class="component-row">
+      <div class="do-column">
+        <h4 class="edit-text" style="color:var(--success-green);margin-top:0;font-size:15px;">✅ Pilot Well</h4>
+        <ul class="list-check" style="padding-left:0;">
+          <li class="edit-text">Pilot in conditions matching the real study area.</li>
+          <li class="edit-text">Record metadata for every pilot interview.</li>
+          <li class="edit-text">Iterate: test, fix, test again before locking.</li>
+          <li class="edit-text">Pilot field protocols, not just the questionnaire.</li>
+        </ul>
+      </div>
+      <div class="dont-column">
+        <h4 class="edit-text" style="color:var(--danger-red);margin-top:0;font-size:15px;">❌ Common Mistakes</h4>
+        <ul class="list-cross" style="padding-left:0;">
+          <li class="edit-text">One pilot round only — treating a clean run as sign-off.</li>
+          <li class="edit-text">Using familiar, cooperative respondents.</li>
+          <li class="edit-text">Testing on different tablet models than the field ones.</li>
+          <li class="edit-text">Skipping logistics during the pilot — only testing the form.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 5 — SURVEY FIRMS
+     White bg
+════════════════════════════════════════ -->
+<div class="section-wrapper bg-white" id="firms">
+  <div class="kb-body">
+
+    <a href="https://www.povertyactionlab.org/resource/working-third-party-survey-firm"
+       class="source-pill edit-link" target="_blank">
+      📖 Source: Working with a Third-Party Survey Firm · povertyactionlab.org
+    </a>
+
+    <div class="topic-header">
+      <span class="eyebrow edit-text">Third-Party Survey Firms</span>
+      <h2 class="edit-text">When to Outsource and How to Stay in Control</h2>
+      <p class="standfirst edit-text">
+        Conducting a survey is a significant logistical undertaking. One of the first
+        decisions research teams face is whether to outsource data collection or run
+        the survey in-house — and the answer depends on capacity, context, and
+        what you are willing to trade off.
+      </p>
+    </div>
+
+    <h3 class="edit-text">When Outsourcing Makes Sense</h3>
+    <p class="edit-text">
+      Research teams may decide to contract a survey firm if the organization has
+      limited capacity or experience working with a given population, and there are
+      established firms in the study area with relevant experience. However, survey
+      firms may not have experience working on RCTs, may be more expensive, and
+      contract negotiations can be complex and time-consuming.
+    </p>
+
+    <h3 class="edit-text">Budget Scrutiny</h3>
+    <p class="edit-text">
+      When reviewing a firm's budget, assess whether it reasonably reflects all
+      research activities — including surveyor salaries and pay for training days.
+      Compare against similar projects where possible. Key items that can sometimes
+      be negotiated include questionnaire design, programming, and translation —
+      especially if your team has internal capacity for these. Push back on
+      productivity assumptions: a firm estimating 12 surveys per surveyor per day
+      in a rural context is not being realistic.
+    </p>
+
+    <div class="key-principle-box">
+      <span class="kp-label">🔑 The Non-Negotiable</span>
+      <p class="edit-text" style="margin:0;">
+        Some firms may object to requiring their surveyors to sign confidentiality
+        agreements. On any J-PAL project, this is non-negotiable. If a firm resists,
+        understand their data protection processes in detail and push back if
+        necessary. PII must be encrypted. Data transfer protocols must meet your
+        IRB requirements. These are not preferences — they are conditions.
+      </p>
+    </div>
+
+    <hr class="topic-divider">
+
+    <h3 class="edit-text">Maintaining Research Authority</h3>
+    <p class="edit-text">
+      Even when outsourcing, the research team retains full responsibility for
+      designing, reviewing, and approving the study and the survey. The firm
+      executes; the research team owns. Establish clear protocols for what the
+      firm can and cannot change without approval, how data is transferred and
+      stored, and what quality check procedures the firm is required to follow.
+    </p>
+
+    <div class="component-row">
+      <div class="red-flag-box" style="margin:0;">
+        <span class="rf-label">⚠️ Watch For These</span>
+        <ul>
+          <li class="edit-text">Firm lacks RCT experience — may not understand why control groups matter.</li>
+          <li class="edit-text">Unrealistic daily productivity assumptions in the budget.</li>
+          <li class="edit-text">Resistance to confidentiality agreement requirements.</li>
+          <li class="edit-text">Vague data transfer and encryption protocols.</li>
+        </ul>
+      </div>
+      <div class="good-box" style="margin:0;">
+        <span class="good-label">✅ Signs of a Good Firm</span>
+        <ul>
+          <li class="edit-text">Prior experience with RCTs or J-PAL/IPA projects.</li>
+          <li class="edit-text">Realistic productivity estimates backed by prior project data.</li>
+          <li class="edit-text">Clear confidentiality and PII encryption protocols.</li>
+          <li class="edit-text">Open to back-check and spot-check requirements.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 6 — READINESS CHECKLIST
+     Green bg
+════════════════════════════════════════ -->
+<div class="section-wrapper bg-light-green" id="checklist">
+  <div class="kb-body">
+
+    <div class="section-intro" style="text-align:left;max-width:100%;margin-bottom:36px;">
+      <span class="eyebrow edit-text">Pre-Launch Readiness</span>
+      <h2 class="edit-text">Are All Systems Go?</h2>
+      <p class="edit-text" style="max-width:680px;">
+        Use this checklist before the first day of fieldwork. Every item must be
+        confirmed — not just read. If you cannot check an item, resolve it with
+        your Research Manager before deployment.
+      </p>
+    </div>
+
+    <div class="prep-console">
+      <div class="prep-progress-header">
+        <div>
+          <h3 class="edit-text">Launch Readiness Score</h3>
+          <p class="edit-text" style="margin:0;font-size:13px;color:#94a3b8;">
+            Complete all items across all tabs to reach 100%.
+          </p>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="master-progress-fill"></div>
+          </div>
+          <span class="progress-text" id="master-progress-text">0%</span>
+        </div>
+      </div>
+      <div class="prep-body">
+        <div class="prep-tabs">
+          <div class="prep-tab active edit-text" onclick="openPrepTab(event,'tab-logistics')">🗺 Logistics</div>
+          <div class="prep-tab edit-text" onclick="openPrepTab(event,'tab-team')">👥 Team</div>
+          <div class="prep-tab edit-text" onclick="openPrepTab(event,'tab-instrument')">📱 Instrument</div>
+          <div class="prep-tab edit-text" onclick="openPrepTab(event,'tab-quality')">✅ Quality</div>
+        </div>
+        <div class="prep-content-area">
+
+          <div id="tab-logistics" class="prep-pane active">
+            <h3 class="pane-title edit-text">Logistics Readiness</h3>
+            <p class="pane-desc edit-text">Every dependency must be confirmed before the first team departs.</p>
+            <div class="check-list">
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Local authority permissions obtained. Letters prepared with PI contact information.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Vehicle contracts finalized. Vendor meets legal requirements. Roles and responsibilities clearly defined.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Base camp confirmed with reliable power for overnight tablet charging.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Contingency petty cash allocated. Per diem terms communicated to all field staff.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Safety protocols established: no surveying during instability, after dark, or in dangerous weather.</div></div>
+            </div>
+            <div class="pane-trap">
+              <h4 class="edit-text">⚠️ The Trap</h4>
+              <p class="edit-text">Starting logistics planning after IRB clearance. Permissions, contracts, and equipment procurement each take weeks. They must run in parallel with instrument development — not after it.</p>
+            </div>
+          </div>
+
+          <div id="tab-team" class="prep-pane">
+            <h3 class="pane-title edit-text">Team Readiness</h3>
+            <p class="pane-desc edit-text">Every member of the field team must meet these standards before deployment.</p>
+            <div class="check-list">
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">All surveyors completed training including at least one day of field practice with real respondents.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">20% buffer staff recruited and trained to absorb field attrition.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Reporting structure confirmed — every surveyor knows their supervisor and escalation path.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Daily debrief schedule established for the first two weeks of fieldwork.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">If using a survey firm: confidentiality agreements signed, data transfer protocols confirmed.</div></div>
+            </div>
+          </div>
+
+          <div id="tab-instrument" class="prep-pane">
+            <h3 class="pane-title edit-text">Instrument Readiness</h3>
+            <p class="pane-desc edit-text">The questionnaire must be locked, translated, and fully piloted before the first interview.</p>
+            <div class="check-list">
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">All translations reviewed. Back-translation completed with acceptable discrepancy rate.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Questionnaire piloted in realistic field conditions — not a classroom. Errors found and corrected.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Logical flows and skip patterns tested on the actual tablet models going to the field.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Instrument version locked. All surveyors have the correct final version on their device.</div></div>
+            </div>
+            <div class="pane-trap">
+              <h4 class="edit-text">⚠️ The Trap</h4>
+              <p class="edit-text">Piloting once and treating a clean run as sign-off. Piloting is iterative — test, refine, test again. A pilot that finds no problems almost certainly did not test hard enough.</p>
+            </div>
+          </div>
+
+          <div id="tab-quality" class="prep-pane">
+            <h3 class="pane-title edit-text">Quality Systems</h3>
+            <p class="pane-desc edit-text">Data quality systems must be active from Day 1 — not set up after problems appear.</p>
+            <div class="check-list">
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">HFC protocol established — who runs checks, when, and what thresholds trigger escalation.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Back-check sample defined — minimum 10% of completed interviews re-contacted independently.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Spot-check schedule in place — supervisor observation plan for the first two weeks.</div></div>
+              <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">All surveyors briefed that quality checks are standard procedure — not a signal of distrust.</div></div>
+            </div>
+            <div class="key-principle-box" style="margin-top:0;">
+              <span class="kp-label">🔑 Closing Principle</span>
+              <p class="edit-text" style="margin:0;">
+                High-frequency checks, back-checks, and spot-checks can detect
+                programming errors, surveyor errors, data fabrication, and poorly
+                understood questions. Start them on Day 1 — not when something looks wrong.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Attribution -->
+    <div class="attribution-box">
+      <p class="edit-text" style="font-size:13px;color:var(--text-light);margin:0;line-height:1.9;">
+        All content is drawn from publicly available J-PAL resources on managing
+        data collection in the field.<br>
+        <strong>Source: Abdul Latif Jameel Poverty Action Lab</strong> ·
+        <a href="https://www.povertyactionlab.org/research-resources"
+           style="color:var(--heading-green);font-weight:700;" target="_blank">
+          povertyactionlab.org/research-resources
+        </a><br><br>
+        This page is the canonical <strong>design and style reference</strong> for the
+        J-PAL South Asia RO Knowledge Bank — an internal training library for field
+        staff hosted on Google Sites and accessible to authorized team members only.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ── FOOTER ── -->
+<footer class="page-footer">
+  <strong class="edit-text">J-PAL South Asia · Research Operations Knowledge Bank · Design Reference</strong>
+  <div class="footer-nav">
+    <a href="https://www.povertyactionlab.org/resource/survey-logistics" class="edit-link">Survey Logistics</a>
+    <a href="https://www.povertyactionlab.org/resource/surveyor-hiring-and-training" class="edit-link">Hiring &amp; Training</a>
+    <a href="https://www.povertyactionlab.org/resource/field-team-management" class="edit-link">Team Management</a>
+    <a href="https://www.povertyactionlab.org/resource/questionnaire-piloting" class="edit-link">Piloting</a>
+    <a href="https://www.povertyactionlab.org" class="edit-link">povertyactionlab.org</a>
+  </div>
+</footer>
+
+<!-- ── ADMIN EDITOR ── -->
+<div id="admin-master-container">
+  <div id="admin-toolkit">
+    <span style="color:#cbd5e1;font-size:12.5px;font-weight:600;margin-right:8px;">✅ Edit Mode</span>
+    <button class="admin-btn copy" onclick="copyCode()">📋 Copy Code</button>
+    <button class="admin-btn close" onclick="lockPage()">✕ Lock</button>
+  </div>
+  <div id="inline-img-box" class="inline-bubble">
+    <p>PASTE IMAGE URL</p>
+    <input type="text" id="img-input-val" placeholder="Google Drive or web URL...">
+    <button onclick="applyImg()">Update Image</button>
+    <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:6px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
+  </div>
+</div>
+<script src="https://awatramani.github.io/ro-knowledge-bank/kb-admin.js"></script>
+<script src="https://awatramani.github.io/ro-knowledge-bank/kb-gate.js"></script>
+
+</body>
+</html>
