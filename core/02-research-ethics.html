@@ -284,7 +284,7 @@ h3 { font-size: 20px; }
 <body>
 
 <!-- ── SERIES PROGRESS BAR ── -->
-<div class="series-bar">
+<div class="series-bar" id="series-bar">
     <div class="series-bar-inner">
         <span class="series-label">Series:</span>
         <div class="series-pills">
@@ -311,32 +311,31 @@ h3 { font-size: 20px; }
     <span class="jump-link"        data-target="quiz"         onclick="jumpTo('quiz')">Knowledge Check</span>
 </nav>
 <script>
-function jumpTo(id){
-    var el=document.getElementById(id);if(!el)return;
-    var nav=document.getElementById('jump-nav');
-    var sb=document.getElementById('series-bar');
-    var off=(nav?nav.offsetHeight:0)+(sb?sb.offsetHeight:0)+8;
-    var top=el.offsetTop-off;
-    document.documentElement.scrollTop=top;
-    document.body.scrollTop=top;
-    document.querySelectorAll('.jump-link').forEach(function(l){l.classList.remove('active');});
-    var t=document.querySelector('[data-target="'+id+'"]');
-    if(t)t.classList.add('active');
+function jumpTo(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var navEl = document.getElementById('jump-nav');
+    var serEl = document.getElementById('series-bar');
+    var navH = (navEl ? navEl.offsetHeight : 0) + (serEl ? serEl.offsetHeight : 0);
+    var top = el.getBoundingClientRect().top + window.pageYOffset - navH - 8;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
+    document.querySelector('[data-target="' + id + '"]').classList.add('active');
 }
-window.addEventListener('scroll',function(){
-    var ss=["foundations","belmont","consent","privacy","vulnerable","integrity","field","casestudies","irb","quiz"];
-    var nav=document.getElementById('jump-nav');
-    var sb=document.getElementById('series-bar');
-    var off=(nav?nav.offsetHeight:0)+(sb?sb.offsetHeight:0)+40;
-    var cur=ss[0];
-    ss.forEach(function(id){
-        var el=document.getElementById(id);
-        if(el&&el.getBoundingClientRect().top<=off)cur=id;
+window.addEventListener('scroll', function() {
+    var sections = ["foundations", "belmont", "consent", "privacy", "vulnerable", "integrity", "field", "casestudies", "irb", "quiz"];
+    var navEl = document.getElementById('jump-nav');
+    var serEl = document.getElementById('series-bar');
+    var navH = (navEl ? navEl.offsetHeight : 0) + (serEl ? serEl.offsetHeight : 0);
+    var current = sections[0];
+    sections.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= navH + 40) current = id;
     });
-    document.querySelectorAll('.jump-link').forEach(function(l){l.classList.remove('active');});
-    var a=document.querySelector('[data-target="'+cur+'"]');
-    if(a)a.classList.add('active');
-},{passive:true});
+    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
+    var active = document.querySelector('[data-target="' + current + '"]');
+    if (active) active.classList.add('active');
+});
 </script>
 
 <!-- ── HERO ── -->
@@ -1193,10 +1192,9 @@ window.addEventListener('scroll',function(){
 
 <!-- ── PREV/NEXT FOOTER ── -->
 <div class="topic-nav-footer">
-    <div class="tnf-left"><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" target="_top">← Surveyor Basics</a></div>
-    <div class="tnf-center">Foundational Guidelines · Topic 2 of 5</div>
-    <div class="tnf-right"><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" target="_top">Next: Respondent Tracking →</a></div>
-</div>
+    <div class="tnf-left">
+        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" target="_top">← Surveyor Basics</a>
+    </div>
     <div class="tnf-center">Foundational Guidelines · Topic 2 of 5</div>
     <div class="tnf-right">
         <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" target="_top">Next: Respondent Tracking →</a>
