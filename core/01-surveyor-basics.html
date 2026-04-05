@@ -3,6 +3,7 @@
         scroll-behavior: smooth;
     }
     .section-wrapper {
+        /* Prevents the section from landing under the 40px jump-nav */
         scroll-margin-top: 60px; 
     }
     .jump-link {
@@ -12,8 +13,8 @@
 
 <div class="series-bar" id="series-bar">
     <span class="series-label">Series:</span>
-    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" class="series-pill" target="_top">① Surveyor Basics</a>
-    <span class="series-pill active">② Research Ethics</span>
+    <span class="series-pill active">① Surveyor Basics</span>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/research-ethics" class="series-pill" target="_top">② Research Ethics</a>
     <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" class="series-pill" target="_top">③ Respondent Tracking</a>
     <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" class="series-pill" target="_top">④ Survey Instrument</a>
     <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/field-protocols" class="series-pill" target="_top">⑤ Field Protocols</a>
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const observerOptions = {
         root: null,
-        rootMargin: '-60px 0px -75% 0px',
+        rootMargin: '-60px 0px -75% 0px', // Detects items near the top of the viewport
         threshold: 0
     };
 
@@ -60,11 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <div class="topic-nav-footer">
-    <div class="tnf-left">
-        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" target="_top">← Surveyor Basics</a>
-    </div>
-    <div class="tnf-center">Foundational Guidelines · Topic 2 of 5</div>
+    <div class="tnf-left"></div>
+    <div class="tnf-center">Foundational Guidelines · Topic 1 of 5</div>
     <div class="tnf-right">
-        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" target="_top">Next: Respondent Tracking →</a>
+        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/research-ethics" target="_top">
+            Next: Research Ethics →
+        </a>
     </div>
 </div>
