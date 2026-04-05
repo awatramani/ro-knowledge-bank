@@ -290,7 +290,7 @@ h3 { font-size: 20px; }
         <div class="series-pills">
             <a class="series-pill done" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" target="_top">✓ Surveyor Basics</a>
             <span class="series-pill active">② Research Ethics</span>
-            <a class="series-pill" href="https://sites.google.com/view/ro-knowledge-bank/foundational-guidelines/respondent-tracking" target="_top">③ Respondent Tracking</a>
+            <a class="series-pill" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" target="_top">③ Respondent Tracking</a>
             <a class="series-pill" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" target="_top">④ Survey Instrument</a>
             <a class="series-pill" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/field-protocols" target="_top">⑤ Field Protocols</a>
         </div>
@@ -323,10 +323,8 @@ function jumpTo(id) {
     document.querySelector('[data-target="' + id + '"]').classList.add('active');
 }
 window.addEventListener('scroll', function() {
-    var sections = ["foundations", "belmont", "consent", "privacy", "vulnerable", "integrity", "field", "casestudies", "irb", "quiz"];
-    var navEl = document.getElementById('jump-nav');
-    var serEl = document.getElementById('series-bar');
-    var navH = (navEl ? navEl.offsetHeight : 0) + (serEl ? serEl.offsetHeight : 0);
+    var sections = ['foundations','belmont','consent','privacy','vulnerable','integrity','field','casestudies','irb','quiz'];
+    var navH = document.getElementById('jump-nav').offsetHeight + 42;
     var current = sections[0];
     sections.forEach(function(id) {
         var el = document.getElementById(id);
