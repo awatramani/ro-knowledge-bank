@@ -1,11 +1,11 @@
 /*
  * ============================================================
- *  J-PAL SA — Research Operations Knowledge Bank
- *  SHARED DESIGN SYSTEM — kb-theme.css
- *  Version 1.0 | 2026
+ * J-PAL SA — Research Operations Knowledge Bank
+ * SHARED DESIGN SYSTEM — kb-theme.css
+ * Version 1.0 | 2026
  *
- *  ⚠️  THIS FILE CONTROLS THE LOOK OF ALL PAGES.
- *  Edit here once → every page updates automatically.
+ * ⚠️  THIS FILE CONTROLS THE LOOK OF ALL PAGES.
+ * Edit here once → every page updates automatically.
  * ============================================================
  */
 
@@ -15,7 +15,7 @@
     --heading-green:  #1A7A6D;
     --brand-dark:     #1e293b;
     --bg-light-green: #edf5f3;
-    --bg-white:       #ffffff;
+    --bg-white:        #ffffff;
     --bg-off-white:   #f8fafc;
     --text-main:      #334155;
     --text-light:     #64748b;
@@ -26,7 +26,12 @@
     --border-soft:    rgba(0,0,0,0.06);
     --shadow-float:   0 10px 30px rgba(0,0,0,0.04);
     --shadow-hover:   0 20px 40px rgba(26,122,109,0.12);
-    --transition:     all 0.4s cubic-bezier(0.22,1,0.36,1);
+    --transition:      all 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* Added to handle smooth jumping to sections inside iframes */
+html {
+    scroll-behavior: smooth;
 }
 
 *,*::before,*::after{box-sizing:border-box;}
@@ -51,6 +56,11 @@ li{margin-bottom:8px;font-size:16px;}
 .nav-link:hover{color:var(--heading-green);}
 .nav-link.active{color:var(--heading-green);border-bottom-color:var(--heading-green);}
 
+/* Added to prevent the native links from turning into underlined standard blue links */
+.jump-link {
+    text-decoration: none !important;
+}
+
 /* HERO */
 .banner-container{position:relative;width:100%;background:linear-gradient(135deg,#fff 0%,#edf5f3 100%);padding:56px 5%;overflow:hidden;border-bottom:1px solid var(--border-soft);}
 .bg-shape-1{position:absolute;top:-50px;right:-5%;width:320px;height:320px;background:rgba(26,122,109,0.08);border-radius:50%;filter:blur(40px);z-index:0;pointer-events:none;}
@@ -64,7 +74,7 @@ li{margin-bottom:8px;font-size:16px;}
 .banner-meta-pill{background:rgba(26,122,109,0.08);border:1px solid rgba(26,122,109,0.15);color:var(--heading-green);font-size:11.5px;font-weight:700;padding:4px 13px;border-radius:20px;}
 
 /* SECTIONS */
-.section-wrapper{width:100%;position:relative;padding:52px 0;border-bottom:1px solid var(--border-soft);}
+.section-wrapper{width:100%;position:relative;padding:52px 0;border-bottom:1px solid var(--border-soft);scroll-margin-top: 80px;}
 .section-wrapper:last-of-type{border-bottom:none;}
 .section-container{padding:0 5%;max-width:1200px;margin:0 auto;position:relative;z-index:2;}
 .section-intro{text-align:center;max-width:780px;margin:0 auto 44px;}
