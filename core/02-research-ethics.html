@@ -284,13 +284,13 @@ h3 { font-size: 20px; }
 <body>
 
 <!-- ── SERIES PROGRESS BAR ── -->
-<div class="series-bar">
+<div class="series-bar" id="series-bar">
     <div class="series-bar-inner">
         <span class="series-label">Series:</span>
         <div class="series-pills">
             <a class="series-pill done" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" target="_top">✓ Surveyor Basics</a>
             <span class="series-pill active">② Research Ethics</span>
-            <a class="series-pill" href="https://sites.google.com/view/ro-knowledge-bank/foundational-guidelines/respondent-tracking" target="_top">③ Respondent Tracking</a>
+            <a class="series-pill" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" target="_top">③ Respondent Tracking</a>
             <a class="series-pill" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" target="_top">④ Survey Instrument</a>
             <a class="series-pill" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/field-protocols" target="_top">⑤ Field Protocols</a>
         </div>
@@ -314,24 +314,29 @@ h3 { font-size: 20px; }
 function jumpTo(id) {
     var el = document.getElementById(id);
     if (!el) return;
-    var navH = document.getElementById('jump-nav').offsetHeight + 42; // series bar
-    var top = el.getBoundingClientRect().top + window.pageYOffset - navH - 8;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
-    document.querySelector('[data-target="' + id + '"]').classList.add('active');
+    var nav = document.getElementById('jump-nav');
+    var series = document.querySelector('.series-bar');
+    var offset = (nav ? nav.offsetHeight : 0) + (series ? series.offsetHeight : 0) + 8;
+    var elTop = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
+    window.scrollTo({ top: elTop - offset, behavior: 'smooth' });
+    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
+    var t = document.querySelector('[data-target="' + id + '"]');
+    if (t) t.classList.add('active');
 }
 window.addEventListener('scroll', function() {
     var sections = ['foundations','belmont','consent','privacy','vulnerable','integrity','field','casestudies','irb','quiz'];
-    var navH = document.getElementById('jump-nav').offsetHeight + 42;
+    var nav = document.getElementById('jump-nav');
+    var series = document.querySelector('.series-bar');
+    var offset = (nav ? nav.offsetHeight : 0) + (series ? series.offsetHeight : 0) + 40;
     var current = sections[0];
     sections.forEach(function(id) {
         var el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= navH + 40) current = id;
+        if (el && el.getBoundingClientRect().top <= offset) current = id;
     });
-    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
-    var active = document.querySelector('[data-target="' + current + '"]');
-    if (active) active.classList.add('active');
-});
+    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
+    var a = document.querySelector('[data-target="' + current + '"]');
+    if (a) a.classList.add('active');
+}, { passive: true });
 </script>
 
 <!-- ── HERO ── -->
@@ -1188,9 +1193,11 @@ window.addEventListener('scroll', function() {
 
 <!-- ── PREV/NEXT FOOTER ── -->
 <div class="topic-nav-footer">
-    <div class="tnf-left">
-        <a href="https://awatramani.github.io/ro-knowledge-bank/core/01-surveyor-basics.html" target="_top">← Surveyor Basics</a>
-    </div>
+    <div class="tnf-left"><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" target="_top">← Surveyor Basics</a></div>
+    <div class="tnf-center">Foundational Guidelines · Topic 2 of 5</div>
+    <div class="tnf-right"><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" target="_top">Next: Respondent Tracking →</a></div>
+</div>
+
     <div class="tnf-center">Foundational Guidelines · Topic 2 of 5</div>
     <div class="tnf-right">
         <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" target="_top">Next: Respondent Tracking →</a>
@@ -1381,5 +1388,20 @@ function retryQuiz() {
 }
 </script>
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.series-pill[href], .tnf-left a, .tnf-right a').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
+            if (href && href.indexOf('sites.google.com') > -1) {
+                e.preventDefault();
+                try { window.top.location.href = href; }
+                catch(err) { window.location.href = href; }
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
