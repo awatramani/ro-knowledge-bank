@@ -6,6 +6,21 @@
 <title>Respondent Tracking | RO Knowledge Bank</title>
 <link rel="stylesheet" href="https://awatramani.github.io/ro-knowledge-bank/kb-theme.css">
 <style>
+/* --- Google Sites Iframe Navigation Fixes --- */
+.section-wrapper { scroll-margin-top: 120px; }
+.series-bar { display: flex; gap: 10px; padding: 15px 5%; background: #f8fafc; border-bottom: 1px solid var(--border-soft); align-items: center; overflow-x: auto; scrollbar-width: none; }
+.series-bar::-webkit-scrollbar { display: none; }
+.series-label { font-size: 12px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+.series-pill { font-size: 13px; font-weight: 700; color: var(--text-light); padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid #cbd5e1; text-decoration: none; white-space: nowrap; transition: 0.2s; }
+.series-pill:hover { border-color: var(--heading-green); color: var(--heading-green); }
+.series-pill.active { background: var(--heading-green); color: white; border-color: var(--heading-green); }
+.topic-nav-footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 30px 5%; border-top: 1px solid var(--border-soft); background: white; margin-top: 40px;}
+.tnf-center { font-size: 12px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.8px; text-align: center; }
+.tnf-left { text-align: left; } .tnf-right { text-align: right; }
+.tnf-left a, .tnf-right a { font-size: 14px; font-weight: 700; color: var(--heading-green); text-decoration: none; transition: 0.2s;}
+.tnf-left a:hover, .tnf-right a:hover { opacity: 0.8; }
+
+/* --- Base Styles --- */
 .banner-container{padding:32px 3%;}
 .glass-card{padding:28px 32px;}
 .banner-eyebrow{font-size:12px;}
@@ -27,7 +42,7 @@ h3{font-size:20px;}
 .section-wrapper{padding:44px 0;}
 .jump-nav{background:white;border-bottom:1px solid var(--border-soft);padding:0 5%;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:sticky;top:0;z-index:100;}
 .jump-nav::-webkit-scrollbar{display:none;}
-.jump-link{font-size:12px;font-weight:700;color:var(--text-light);text-decoration:none;padding:11px 14px;border-bottom:2.5px solid transparent;white-space:nowrap;transition:var(--transition);cursor:pointer;}
+.jump-link{font-size:12px;font-weight:700;color:var(--text-light);text-decoration:none;padding:11px 14px;border-bottom:2.5px solid transparent;white-space:nowrap;transition:0.2s;cursor:pointer;}
 .jump-link:hover{color:var(--heading-green);}
 .jump-link.active{color:var(--heading-green);border-bottom-color:var(--heading-green);}
 .topic-divider{border:none;border-top:1px solid var(--border-soft);margin:36px 0;}
@@ -50,18 +65,31 @@ h3{font-size:20px;}
 </head>
 <body>
 
-<nav class="jump-nav" id="jump-nav"><span class="jump-link active" data-target="why" onclick="jumpTo('why')">Why Tracking</span><span class="jump-link" data-target="protocol" onclick="jumpTo('protocol')">Three-Attempt Protocol</span><span class="jump-link" data-target="tools" onclick="jumpTo('tools')">Tools & SurveyCTO</span><span class="jump-link" data-target="checklist" onclick="jumpTo('checklist')">End of Day</span></nav>
+<div class="series-bar" id="series-bar">
+    <span class="series-label">Series:</span>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" class="series-pill" target="_top">① Surveyor Basics</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/research-ethics" class="series-pill" target="_top">② Research Ethics</a>
+    <span class="series-pill active">③ Respondent Tracking</span>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" class="series-pill" target="_top">④ Survey Instrument</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/field-protocols" class="series-pill" target="_top">⑤ Field Protocols</a>
+</div>
+
+<nav class="jump-nav" id="jump-nav">
+    <span class="jump-link active" data-target="why" onclick="jumpTo('why')">Why Tracking</span>
+    <span class="jump-link" data-target="protocol" onclick="jumpTo('protocol')">Three-Attempt Protocol</span>
+    <span class="jump-link" data-target="tools" onclick="jumpTo('tools')">Tools & SurveyCTO</span>
+    <span class="jump-link" data-target="checklist" onclick="jumpTo('checklist')">End of Day</span>
+</nav>
 
 <div class="banner-container">
     <div class="bg-shape-1"></div><div class="bg-shape-2"></div>
     <div class="glass-card">
-        <span class="banner-eyebrow edit-text">Fieldwork Fundamentals · Topic 2 of 5</span>
+        <span class="banner-eyebrow edit-text">Fieldwork Fundamentals · Topic 3 of 5</span>
         <h1 class="banner-title edit-text">Respondent Tracking &amp; Attrition Management</h1>
         <span class="banner-subtitle edit-text">Protecting study validity by ensuring every listed household is found and followed up</span>
         <div class="banner-meta"><span class="banner-meta-pill edit-text">📍 Tracking Module</span><span class="banner-meta-pill edit-text">Version 1.0 · 2026</span><span class="banner-meta-pill edit-text">⏱ 18 min read</span></div>
     </div>
 </div>
-
 
 <div class="section-wrapper bg-white" id="why">
 <div class="kb-body">
@@ -108,6 +136,20 @@ h3{font-size:20px;}
 </div>
 </div>
 
+<div class="topic-nav-footer">
+    <div class="tnf-left">
+        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/research-ethics" target="_top">
+            ← Research Ethics
+        </a>
+    </div>
+    <div class="tnf-center">Foundational Guidelines · Topic 3 of 5</div>
+    <div class="tnf-right">
+        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" target="_top">
+            Next: Survey Instrument →
+        </a>
+    </div>
+</div>
+
 <div id="admin-master-container">
     <div id="admin-toolkit">
         <span style="color:#cbd5e1;font-size:12.5px;font-weight:600;margin-right:8px;">✅ Edit Mode</span>
@@ -122,28 +164,35 @@ h3{font-size:20px;}
     </div>
 </div>
 <script src="https://awatramani.github.io/ro-knowledge-bank/kb-admin.js"></script>
+
 <script>
 function jumpTo(id) {
     var el = document.getElementById(id);
     if (!el) return;
-    var nav = document.getElementById('jump-nav');
-    var offset = nav ? nav.offsetHeight + 8 : 60;
-    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
-    document.querySelector('[data-target="' + id + '"]').classList.add('active');
+    
+    // Iframe-safe scrolling using scrollIntoView
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
 window.addEventListener('scroll', function() {
-    var sections = ['why', 'protocol', 'tools', 'checklist'];
-    var nav = document.getElementById('jump-nav');
-    var offset = nav ? nav.offsetHeight + 40 : 80;
+    var links = document.querySelectorAll('.jump-link');
+    if (links.length === 0) return;
+    var sections = Array.from(links).map(function(l) { return l.getAttribute('data-target'); });
+    
+    var navH = document.getElementById('jump-nav') ? document.getElementById('jump-nav').offsetHeight : 0;
+    var seriesH = document.getElementById('series-bar') ? document.getElementById('series-bar').offsetHeight : 0;
+    var offset = navH + seriesH + 30;
+    
     var current = sections[0];
     sections.forEach(function(id) {
         var el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= offset) current = id;
+        if (el && el.getBoundingClientRect().top <= offset) {
+            current = id;
+        }
     });
-    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
-    var active = document.querySelector('[data-target="' + current + '"]');
+    
+    links.forEach(function(l) { l.classList.remove('active'); });
+    var active = document.querySelector('.jump-link[data-target="' + current + '"]');
     if (active) active.classList.add('active');
 });
 </script>
