@@ -213,7 +213,6 @@ h3 { font-size: 20px; }
 .tnf-center{font-size:12px;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:.8px;text-align:center;white-space:nowrap;}
 .tnf-left{text-align:left;}.tnf-right{text-align:right;}
 .tnf-left a,.tnf-right a{font-size:13px;font-weight:700;color:var(--heading-green);text-decoration:none;}
-@media(max-width:700px){.topic-nav-footer{grid-template-columns:1fr;text-align:center;}.tnf-left,.tnf-right{text-align:center;}}
 </style>
 </head>
 <body>
@@ -239,8 +238,9 @@ function jumpTo(id) {
     document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
     document.querySelector('[data-target="' + id + '"]').classList.add('active');
 }
+// Highlight active section on scroll
 window.addEventListener('scroll', function() {
-    var sections = ["why", "rct", "conduct", "timeline", "partner", "checklist"];
+    var sections = ['why','rct','conduct','timeline','partner','checklist'];
     var navEl = document.getElementById('jump-nav');
     var serEl = document.getElementById('series-bar');
     var navH = (navEl ? navEl.offsetHeight : 0) + (serEl ? serEl.offsetHeight : 0);
