@@ -4,131 +4,155 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surveyor Basics & Research Foundations | RO Knowledge Bank</title>
-<link rel="stylesheet" href="https://awatramani.github.io/ro-knowledge-bank/kb-theme.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <style>
-/* ── PAGE-SPECIFIC OVERRIDES ────────────────────────── */
-
-/* Tighter hero — less vertical space wasted in iframe */
-.banner-container { padding: 32px 3%; }
-.glass-card { padding: 28px 32px; }
-.banner-eyebrow { font-size: 12px; }
-.banner-title { font-size: 34px; letter-spacing: -0.5px; }
-.banner-subtitle { font-size: 15px; }
-.banner-meta { margin-top: 14px; }
-.banner-meta-pill { font-size: 12px; }
-
-/* Larger body text */
-p, li { font-size: 16px; }
-.data-table td, .data-table th { font-size: 14px; }
-.pane-desc { font-size: 15px; }
-.check-text { font-size: 14px; }
-.standfirst { font-size: 16px; }
-.dialogue-box p { font-size: 15px; }
-.scenario-box { font-size: 16px; }
-blockquote { font-size: 15px; }
-
-/* Section headings */
-h2 { font-size: 34px; }
-h3 { font-size: 20px; }
-
-/* Section wrapper uses full width */
-.section-wrapper { padding: 44px 0; }
-
-/* In-page jump nav — compact, no sticky conflicts in iframe */
-.jump-nav {
-    background: white;
-    border-bottom: 1px solid var(--border-soft);
-    padding: 0 5%;
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+/* --- THEME VARIABLES --- */
+:root {
+    --heading-green: #1A7A6D;    
+    --brand-dark: #1e293b;       
+    --bg-light-green: #f2fafa;   
+    --bg-white: #ffffff;
+    --bg-off-white: #f8fafc;
+    --text-main: #334155;        
+    --text-light: #64748b;
+    --border-soft: rgba(0, 0, 0, 0.08);
+    --shadow-float: 0 10px 30px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 20px 50px rgba(26, 122, 109, 0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    --danger-red: #dc2626; 
+    --accent-orange: #f59e0b;
+    --accent-blue: #0ea5e9;
 }
+
+* { box-sizing: border-box; }
+body { font-family: 'Open Sans', sans-serif; color: var(--text-main); line-height: 1.7; margin: 0; background-color: var(--bg-off-white); }
+
+/* --- GOOGLE SITES IFRAME FIX --- */
+/* Ensures sections don't hide behind the sticky nav when scrolling */
+.section-wrapper { scroll-margin-top: 120px; padding: 44px 0;}
+
+/* --- NAVIGATION BARS --- */
+.series-bar { display: flex; gap: 10px; padding: 15px 5%; background: #f8fafc; border-bottom: 1px solid var(--border-soft); align-items: center; overflow-x: auto; scrollbar-width: none; }
+.series-bar::-webkit-scrollbar { display: none; }
+.series-label { font-size: 12px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+.series-pill { font-size: 13px; font-weight: 700; color: var(--text-light); padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid #cbd5e1; text-decoration: none; white-space: nowrap; transition: 0.2s; }
+.series-pill:hover { border-color: var(--heading-green); color: var(--heading-green); }
+.series-pill.active { background: var(--heading-green); color: white; border-color: var(--heading-green); }
+
+.jump-nav { background: white; border-bottom: 1px solid var(--border-soft); padding: 0 5%; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: sticky; top: 0; z-index: 100; }
 .jump-nav::-webkit-scrollbar { display: none; }
-.jump-link {
-    font-size: 12px; font-weight: 700;
-    color: var(--text-light);
-    text-decoration: none;
-    padding: 11px 14px;
-    border-bottom: 2.5px solid transparent;
-    white-space: nowrap;
-    transition: var(--transition);
-}
+.jump-link { font-size: 12px; font-weight: 700; color: var(--text-light); text-decoration: none; padding: 11px 14px; border-bottom: 2.5px solid transparent; white-space: nowrap; transition: 0.2s; cursor: pointer; }
 .jump-link:hover { color: var(--heading-green); }
-.jump-link { cursor: pointer; }
 .jump-link.active { color: var(--heading-green); border-bottom-color: var(--heading-green); }
 
-/* Reading column — comfortable width for embed */
-.kb-body {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 5%;
-}
+/* --- HERO & LAYOUT --- */
+.banner-container { padding: 32px 3%; background: linear-gradient(135deg, #ffffff 0%, #edf5f3 100%); position: relative; }
+.glass-card { padding: 28px 32px; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 20px; text-align: center; max-width: 900px; margin: 0 auto; box-shadow: var(--shadow-float);}
+.banner-eyebrow { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--heading-green); letter-spacing: 2px; }
+.banner-title { font-size: 34px; letter-spacing: -0.5px; font-weight: 800; color: var(--brand-dark); margin: 10px 0; }
+.banner-subtitle { font-size: 15px; color: var(--heading-green); font-weight: 600;}
+.banner-meta { margin-top: 14px; display: flex; gap: 10px; justify-content: center;}
+.banner-meta-pill { font-size: 12px; background: white; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border-soft); font-weight: 600;}
 
-/* Tighter section padding for iframe context */
-.section-wrapper { padding: 44px 0; }
+.bg-white { background: white; }
+.bg-light-green { background: var(--bg-light-green); }
+.kb-body { max-width: 900px; margin: 0 auto; padding: 0 5%; }
 
-/* Inline image — floats right, text wraps naturally */
-.inline-img-right {
-    float: right;
-    width: 320px;
-    margin: 0 0 20px 32px;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 16px 36px rgba(26,122,109,0.12);
-    border: 6px solid white;
-    flex-shrink: 0;
-}
+/* --- TYPOGRAPHY & COMPONENTS --- */
+h2 { font-size: 34px; font-weight: 800; color: var(--brand-dark); margin: 0 0 15px 0;}
+h3 { font-size: 20px; font-weight: 800; color: var(--brand-dark); margin: 30px 0 10px 0;}
+p, li { font-size: 16px; color: var(--text-main); }
+.eyebrow { font-size: 13px; font-weight: 800; text-transform: uppercase; color: var(--heading-green); letter-spacing: 2px; margin-bottom: 10px; display: block;}
+.topic-header { margin-bottom: 26px; }
+.standfirst { font-size: 15px; color: var(--text-light); line-height: 1.7; border-left: 3px solid var(--heading-green); padding-left: 14px; margin: 0; }
+.topic-divider { border: none; border-top: 1px solid var(--border-soft); margin: 36px 0; }
+
+.inline-img-right { float: right; width: 320px; margin: 0 0 20px 32px; border-radius: 14px; overflow: hidden; box-shadow: 0 16px 36px rgba(26,122,109,0.12); border: 6px solid white; flex-shrink: 0; }
 .inline-img-right img { width: 100%; height: 200px; object-fit: cover; display: block; }
 .clearfix::after { content: ''; display: table; clear: both; }
 
-/* Two-column component row */
+.dialogue-box { background: var(--bg-off-white); padding: 20px; border-radius: 12px; border-left: 4px solid var(--heading-green); margin-bottom: 20px;}
+.dialogue-box .speaker { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--text-light); display: block; margin-bottom: 5px;}
+.dialogue-box .ra { margin-top: 15px; color: var(--heading-green); }
+
+.key-principle-box { background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid var(--accent-orange); padding: 20px; border-radius: 12px; margin: 30px 0;}
+.kp-label { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #d97706; margin-bottom: 8px; display: block; letter-spacing: 1px;}
+
+.scenario-box { background: var(--brand-dark); color: white; padding: 25px; border-radius: 16px; margin: 30px 0;}
+.scenario-label { display: inline-block; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+
+.red-flag-box { background: #fef2f2; border: 1px solid #fecaca; border-left: 4px solid var(--danger-red); padding: 20px; border-radius: 12px; margin: 30px 0;}
+.rf-label { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #991b1b; margin-bottom: 10px; display: block; letter-spacing: 1px;}
+
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border-soft); box-shadow: var(--shadow-float); background: white;}
+.data-table { width: 100%; border-collapse: collapse; text-align: left; }
+.data-table th { background: var(--brand-dark); color: white; padding: 12px 15px; font-size: 14px; }
+.data-table td { padding: 12px 15px; border-bottom: 1px solid var(--border-soft); font-size: 14px; }
+.data-table tr:last-child td { border-bottom: none; }
+.td-green { background: #f0fdf4; color: #166534; font-weight: 600;}
+.td-red { background: #fef2f2; color: #991b1b; font-weight: 600;}
+
 .component-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0; }
+.vs-col { border-radius: 14px; padding: 24px; border: 1px solid; }
+.vs-bad { border-color: #fecaca; background: #fff1f2; }
+.vs-good { border-color: #bbf7d0; background: #f0fdf4; }
+.vs-header { font-size: 16px; font-weight: 800; margin-bottom: 15px; }
+.vs-bad .vs-header { color: #991b1b; } .vs-good .vs-header { color: #166534; }
+.vs-list { padding-left: 20px; margin: 0; font-size: 14px;}
 
-/* Stat row */
-.stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 24px 0; }
-.stat-card { background: white; border-radius: 13px; padding: 18px 16px; border: 1px solid var(--border-soft); box-shadow: var(--shadow-float); border-top: 4px solid var(--heading-green); text-align: center; }
-.stat-card.blue { border-top-color: var(--accent-blue); }
-.stat-card.orange { border-top-color: var(--accent-orange); }
-.stat-number { font-size: 28px; font-weight: 800; color: var(--heading-green); line-height: 1; margin-bottom: 5px; display: block; }
-.stat-card.blue .stat-number { color: var(--accent-blue); }
-.stat-card.orange .stat-number { color: var(--accent-orange); }
-.stat-label { font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.8px; line-height: 1.4; }
+.timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
+.timeline-card { background: white; padding: 20px; border-radius: 12px; border: 1px solid var(--border-soft); border-top: 4px solid var(--heading-green); box-shadow: var(--shadow-float);}
+.timeline-card.dim { opacity: 0.6; border-top-color: var(--text-light); }
+.tc-phase { font-size: 11px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+.tc-title { font-size: 16px; font-weight: 800; color: var(--brand-dark); margin: 5px 0; }
+.tc-desc { font-size: 13px; color: var(--text-main); margin-bottom: 10px; line-height: 1.5; }
+.tc-role { font-size: 13px; font-weight: 600; color: var(--heading-green); background: var(--bg-light-green); padding: 8px; border-radius: 6px; }
 
-/* Topic divider */
-.topic-divider { border: none; border-top: 1px solid var(--border-soft); margin: 36px 0; }
-
-/* Topic header */
-.topic-header { margin-bottom: 26px; }
-.standfirst { font-size: 15px; color: var(--text-light); line-height: 1.7; border-left: 3px solid var(--heading-green); padding-left: 14px; margin: 0; }
+/* --- FOOTER --- */
+.topic-nav-footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 30px 5%; border-top: 1px solid var(--border-soft); background: white; margin-top: 40px;}
+.tnf-center { font-size: 12px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.8px; text-align: center; }
+.tnf-left { text-align: left; } .tnf-right { text-align: right; }
+.tnf-left a, .tnf-right a { font-size: 14px; font-weight: 700; color: var(--heading-green); text-decoration: none; transition: 0.2s;}
+.tnf-left a:hover, .tnf-right a:hover { opacity: 0.8; }
 
 @media (max-width: 700px) {
     .inline-img-right { float: none; width: 100%; margin: 0 0 20px 0; }
-    .component-row, .stat-row { grid-template-columns: 1fr; }
+    .component-row, .timeline-grid { grid-template-columns: 1fr; }
+    .topic-nav-footer { grid-template-columns: 1fr; text-align: center; gap: 10px; }
+    .tnf-left, .tnf-right { text-align: center; }
 }
+
+/* --- ADMIN STYLES --- */
+body.edit-mode-active .edit-text { outline: 2px dashed #0ea5e9; outline-offset: 4px; border-radius: 4px; transition: 0.2s; }
+body.edit-mode-active .edit-text:hover { background: rgba(14, 165, 233, 0.05); cursor: text; }
+body.edit-mode-active .edit-img { outline: 4px dashed #0ea5e9; outline-offset: 4px; cursor: pointer; transition: 0.2s; }
+body.edit-mode-active .edit-link { outline: 2px dashed #f59e0b; outline-offset: 4px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+#admin-toolkit { display: none; position: fixed; bottom: 30px; right: 30px; background: #1e293b; padding: 15px 25px; border-radius: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); gap: 15px; align-items: center; z-index: 999999; }
+.admin-btn { border: none; padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 13px; cursor: pointer; color: white; transition: 0.2s;}
+.inline-bubble { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 1000000; width: 320px; display: none; }
+.inline-bubble input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 10px; font-size: 12px; }
+.inline-bubble button { width: 100%; padding: 10px; border: none; border-radius: 8px; background: #1A7A6D; color: white; font-weight: 700; cursor: pointer; }
 </style>
 </head>
 <body>
 
-<!-- ── IN-PAGE JUMP NAV (JS scroll — works inside iframe) ── -->
+<div class="series-bar" id="series-bar">
+    <span class="series-label">Series:</span>
+    <span class="series-pill active">① Surveyor Basics</span>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/research-ethics" class="series-pill edit-link" target="_top">② Research Ethics</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" class="series-pill edit-link" target="_top">③ Respondent Tracking</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" class="series-pill edit-link" target="_top">④ Survey Instrument</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/field-protocols" class="series-pill edit-link" target="_top">⑤ Field Protocols</a>
+</div>
+
 <nav class="jump-nav" id="jump-nav">
-    <a href="#why" class="jump-link active" data-target="why">Why Research</a>
-    <a href="#rct" class="jump-link" data-target="rct">RCT Basics &amp; J-PAL</a>
-    <a href="#conduct" class="jump-link" data-target="conduct">Professional Conduct</a>
-    <a href="#timeline" class="jump-link" data-target="timeline">Study Timeline</a>
-    <a href="#partner" class="jump-link" data-target="partner">Implementing Partner</a>
-    <a href="#checklist" class="jump-link" data-target="checklist">Readiness Checklist</a>
+    <span class="jump-link active" data-target="why" onclick="jumpTo('why')">Why Research</span>
+    <span class="jump-link" data-target="rct" onclick="jumpTo('rct')">RCT Basics &amp; J-PAL</span>
+    <span class="jump-link" data-target="conduct" onclick="jumpTo('conduct')">Professional Conduct</span>
+    <span class="jump-link" data-target="timeline" onclick="jumpTo('timeline')">Study Timeline</span>
 </nav>
 
-
-<!-- ── HERO ── -->
 <div class="banner-container">
-    <div class="bg-shape-1"></div>
-    <div class="bg-shape-2"></div>
     <div class="glass-card">
         <span class="banner-eyebrow edit-text">Foundational Guidelines · Topic 1 of 5</span>
         <h1 class="banner-title edit-text">Surveyor Basics &amp; Research Foundations</h1>
@@ -141,13 +165,8 @@ h3 { font-size: 20px; }
     </div>
 </div>
 
-
-<!-- ═══════════════════════════════
-     SECTION 1 — WHY THIS STUDY EXISTS
-════════════════════════════════ -->
 <div class="section-wrapper bg-white" id="why">
     <div class="kb-body">
-
         <div class="topic-header">
             <span class="eyebrow edit-text">The Foundation</span>
             <h2 class="edit-text">Why This Study Exists</h2>
@@ -155,7 +174,7 @@ h3 { font-size: 20px; }
         </div>
 
         <div class="clearfix">
-            <div class="inline-img-right tilt-right">
+            <div class="inline-img-right">
                 <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=700&q=80" class="edit-img" alt="Field Research">
             </div>
 
@@ -163,24 +182,18 @@ h3 { font-size: 20px; }
                 <span class="speaker edit-text">New Surveyor asks:</span>
                 <p class="edit-text" style="font-style:italic;margin-bottom:0;">"I have my tablet and I know the questions. Why do I need to understand why the study exists at all?"</p>
                 <span class="speaker ra edit-text">Senior RA replies:</span>
-                <p class="edit-text" style="font-style:italic;margin-bottom:0;color:var(--brand-dark);font-weight:600;">"Because when you understand why the evidence matters, you understand why every single data point matters. You are not filling in a form. You are generating scientific proof that governments use to decide where to spend money on the people who need it most."</p>
+                <p class="edit-text" style="font-style:italic;margin-bottom:0;color:var(--brand-dark);font-weight:600;">"Because when you understand why the evidence matters, you understand why every single data point matters. You are not filling in a form. You are generating scientific proof."</p>
             </div>
 
             <h3 class="edit-text">What Is a Research Study?</h3>
             <p class="edit-text">A research study is a structured, systematic effort to answer a specific question about the real world. In the kind of work you will be doing, the question is almost always: <strong>Does this program actually work?</strong></p>
-            <p class="edit-text">Governments and NGOs spend thousands of crores every year on programs designed to reduce poverty, improve education, and expand financial access. Without rigorous evidence, there is no way to know whether these programs are actually effective. Some that seem like they should work turn out to have no effect. Others cause unintended harm at scale.</p>
-            <p class="edit-text">Your role as a surveyor is to collect the evidence that separates what works from what does not. The standards are scientific — not administrative. Every question has a reason. Every protocol exists to protect the integrity of that evidence.</p>
-        </div>
-
-        <div class="key-principle-box">
-            <span class="kp-label">🔑 Key Principle</span>
-            <p class="edit-text" style="margin:0;">You are not just asking questions. You are generating evidence that governments will use to make decisions about where to invest scarce resources. Every survey you complete with integrity brings us one step closer to knowing what actually works.</p>
+            <p class="edit-text">Governments spend thousands of crores every year on programs designed to reduce poverty. Without rigorous evidence, there is no way to know whether these programs are effective. Your role is to collect the evidence that separates what works from what does not. Every protocol exists to protect the integrity of that evidence.</p>
         </div>
 
         <hr class="topic-divider">
 
-        <h3 class="edit-text">What You Must Know About Your Study Before Day One</h3>
-        <p class="edit-text">Before your first interview, you must be able to answer every question in the table below. If you cannot, ask your supervisor during training — not in the field.</p>
+        <h3 class="edit-text">What You Must Know Before Day One</h3>
+        <p class="edit-text">Before your first interview, you must be able to answer every question below. If you cannot, ask your supervisor.</p>
 
         <div class="table-wrapper">
             <table class="data-table">
@@ -191,104 +204,60 @@ h3 { font-size: 20px; }
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td class="edit-text"><strong>What is the research question?</strong></td><td class="edit-text">You need to explain the study's purpose during consent. If you don't understand it yourself, you can't explain it to anyone else.</td></tr>
-                    <tr><td class="edit-text"><strong>What is the intervention being evaluated?</strong></td><td class="edit-text">Respondents will ask about the program. You need to know what it is without promising or promoting it.</td></tr>
-                    <tr><td class="edit-text"><strong>Who is the implementing partner?</strong></td><td class="edit-text">Respondents will ask who is behind the survey. Name the organization accurately and know their role.</td></tr>
-                    <tr><td class="edit-text"><strong>What is the target population?</strong></td><td class="edit-text">This defines who you survey. Getting this wrong means surveying the wrong people and corrupting the sample.</td></tr>
-                    <tr><td class="edit-text"><strong>Is this baseline, midline, or endline?</strong></td><td class="edit-text">Determines whether respondents have been surveyed before and what the data will be compared against.</td></tr>
-                    <tr><td class="edit-text"><strong>What are the daily and weekly targets?</strong></td><td class="edit-text">Targets help you manage time — but they must never compromise quality. A fabricated survey is worse than an incomplete one.</td></tr>
+                    <tr><td class="edit-text"><strong>What is the research question?</strong></td><td class="edit-text">You need to explain the study's purpose during consent.</td></tr>
+                    <tr><td class="edit-text"><strong>What is the intervention?</strong></td><td class="edit-text">Respondents will ask about the program. You need to know what it is without promoting it.</td></tr>
+                    <tr><td class="edit-text"><strong>What is the target population?</strong></td><td class="edit-text">Getting this wrong means surveying the wrong people and corrupting the sample.</td></tr>
+                    <tr><td class="edit-text"><strong>Is this baseline, midline, or endline?</strong></td><td class="edit-text">Determines what the data will be compared against.</td></tr>
+                    <tr><td class="edit-text"><strong>What are the daily targets?</strong></td><td class="edit-text">Targets help manage time — but they must never compromise quality.</td></tr>
                 </tbody>
             </table>
         </div>
-
-        <div class="red-flag-box">
-            <span class="rf-label">⚠️ Never Do This</span>
-            <ul>
-                <li class="edit-text">Go into the field without understanding why the study exists or what it is trying to measure.</li>
-                <li class="edit-text">Tell respondents they "will definitely receive the benefit" or were "specially selected."</li>
-                <li class="edit-text">Treat the control group as less important. Both groups are equally critical.</li>
-                <li class="edit-text">Speculate about study findings or share preliminary impressions with community members.</li>
-            </ul>
-        </div>
-
     </div>
 </div>
 
-
-<!-- ═══════════════════════════════
-     SECTION 2 — RCT BASICS & J-PAL
-════════════════════════════════ -->
 <div class="section-wrapper bg-light-green" id="rct">
     <div class="kb-body">
-
         <div class="topic-header">
-            <span class="eyebrow edit-text">RCT Basics &amp; J-PAL</span>
+            <span class="eyebrow edit-text">Methodology</span>
             <h2 class="edit-text">How a Randomized Evaluation Works</h2>
-            <p class="standfirst edit-text">The studies you work on use a Randomized Controlled Trial — the gold standard for establishing whether a program actually caused a change in people's lives.</p>
+            <p class="standfirst edit-text">The studies you work on use an RCT — the gold standard for establishing whether a program actually caused a change.</p>
         </div>
 
-        <p class="edit-text">Think of it as a fair lottery. Before a program begins, eligible participants — villages, households, schools — are randomly split into two groups:</p>
+        <p class="edit-text">Think of it as a fair lottery. Before a program begins, eligible participants are randomly split into two groups:</p>
 
-        <div class="bento-row">
-            <div class="bento-card">
-                <span class="bc-label">🟢 Treatment Group</span>
+        <div class="component-row">
+            <div class="vs-col" style="background:white; border-color:var(--heading-green);">
+                <h4 class="edit-text" style="color:var(--heading-green); margin-top:0;">🟢 Treatment Group</h4>
                 <p class="edit-text" style="font-size:14px;margin:0;">These participants <strong>receive the program</strong> being tested. Their outcomes are measured after a set period.</p>
             </div>
-            <div class="bento-card blue">
-                <span class="bc-label">🔵 Control Group</span>
+            <div class="vs-col" style="background:white; border-color:var(--accent-blue);">
+                <h4 class="edit-text" style="color:var(--accent-blue); margin-top:0;">🔵 Control Group</h4>
                 <p class="edit-text" style="font-size:14px;margin:0;">These participants <strong>do not receive the program</strong> during the study. They continue with their normal lives.</p>
             </div>
         </div>
 
-        <p class="edit-text">Because assignment is random — like a coin flip or a computer lottery — both groups are, on average, identical in every way before the program starts. The only difference is that one group received the program and the other did not. This makes it possible to measure the program's true effect.</p>
+        <p class="edit-text">Because assignment is random, both groups are identical in every way before the program starts. The only difference is that one group received the program and the other did not. This makes it possible to measure the program's true effect.</p>
 
         <div class="key-principle-box">
-            <span class="kp-label">🔑 Why Both Groups Matter Equally</span>
-            <p class="edit-text" style="margin:0;"><strong>Your surveys are the measurement.</strong> Without your data from both groups — collected with equal care and completeness — the entire design falls apart. Every single respondent, in both the treatment and control group, matters equally. If you survey the treatment group more thoroughly, the comparison becomes invalid.</p>
+            <span class="kp-label edit-text">🔑 Why Both Groups Matter Equally</span>
+            <p class="edit-text" style="margin:0;"><strong>Your surveys are the measurement.</strong> Without your data from both groups — collected with equal care — the entire design falls apart. If you survey the treatment group more thoroughly, the comparison becomes invalid.</p>
         </div>
 
-        <hr class="topic-divider">
-
-        <h3 class="edit-text">What Is J-PAL?</h3>
-        <p class="edit-text"><strong>J-PAL (Abdul Latif Jameel Poverty Action Lab)</strong> is a global research network based at MIT. It supports researchers who run randomized evaluations to test whether social programs actually work — in education, health, agriculture, financial access, and more. J-PAL does not implement programs itself. It supports independent research teams to rigorously evaluate programs run by governments and NGOs.</p>
-
-        <div class="scenario-box edit-text">
-            <span class="scenario-label">Field Scenario: The Farmer Who Asks Why He Wasn't Chosen</span>
-            "My neighbor Ramesh told me his village is getting the new seed variety. Why wasn't our village chosen? Is it because we are smaller?"<br><br>
-            <span style="font-style:normal;font-weight:700;color:var(--brand-dark);">Correct response: </span>"The villages were chosen by a method similar to a lottery — a random selection. It has nothing to do with the size of your village. Your participation is extremely valuable regardless of which group your village is in."
+        <div class="scenario-box">
+            <span class="scenario-label edit-text">Field Scenario</span>
+            <span class="scenario-title edit-text">"Why Wasn't I Chosen?"</span>
+            <p class="edit-text" style="margin-bottom:10px;">"My neighbor Ramesh told me his village is getting the new seed variety. Why wasn't our village chosen?"</p>
+            <p class="edit-text" style="color:#64ffda; margin:0;"><strong>Say:</strong> "The villages were chosen by a method similar to a lottery — a random selection. Your participation is extremely valuable regardless of which group your village is in."</p>
         </div>
-
     </div>
 </div>
 
-
-<!-- ═══════════════════════════════
-     SECTION 3 — PROFESSIONAL CONDUCT
-════════════════════════════════ -->
 <div class="section-wrapper bg-white" id="conduct">
     <div class="kb-body">
-
         <div class="topic-header">
             <span class="eyebrow edit-text">Your Standards</span>
             <h2 class="edit-text">Professional Conduct &amp; Data Integrity</h2>
-            <p class="standfirst edit-text">You represent the study in the field. For the respondent, you are the study. Your appearance, language, punctuality, and behavior form their entire impression of the research.</p>
-        </div>
-
-        <div class="clearfix">
-            <div class="inline-img-right tilt-left">
-                <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?auto=format&fit=crop&w=700&q=80" class="edit-img" alt="Field Conduct">
-            </div>
-
-            <h3 class="edit-text">Appearance &amp; Communication</h3>
-            <ul>
-                <li class="edit-text">Dress modestly and cleanly. Avoid branded clothing or accessories that signal wealth or authority.</li>
-                <li class="edit-text">Wear your identification badge visibly at all times.</li>
-                <li class="edit-text">Remove footwear before entering homes where this is the cultural norm. Do not wait to be asked.</li>
-                <li class="edit-text"><strong>Always greet first.</strong> Use local greetings — Namaste, As-salamu Alaikum, Vanakkam. Never begin with a request.</li>
-                <li class="edit-text">Never use technical jargon: "randomized evaluation," "control group," "sample frame" — these create confusion and suspicion.</li>
-                <li class="edit-text">Never argue with a respondent. Record what they said. Your job is to document, not correct.</li>
-                <li class="edit-text">Never express opinions about politics, religion, caste, or government schemes. You are professionally neutral at all times.</li>
-            </ul>
+            <p class="standfirst edit-text">You represent the study in the field. For the respondent, you are the study. Your behavior forms their entire impression of the research.</p>
         </div>
 
         <h3 class="edit-text">Decide vs. Escalate</h3>
@@ -304,61 +273,32 @@ h3 { font-size: 20px; }
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td class="edit-text">Respondent asks to reschedule</td><td class="td-green edit-text">Schedule callback, record it</td><td class="edit-text">—</td></tr>
-                    <tr><td class="edit-text">Respondent is hostile, tells you to leave</td><td class="td-green edit-text">Leave immediately, do not argue</td><td class="td-red edit-text">Report within the hour</td></tr>
-                    <tr><td class="edit-text">Questionnaire has an incorrect skip pattern</td><td class="edit-text">—</td><td class="td-red edit-text">Do not fix yourself. Complete and flag.</td></tr>
-                    <tr><td class="edit-text">Village leader asks to see the questionnaire</td><td class="td-green edit-text">Show consent form, explain verbally</td><td class="td-red edit-text">Never hand over device. Escalate if insisted.</td></tr>
-                    <tr><td class="edit-text">Listed respondent has died</td><td class="edit-text">—</td><td class="td-red edit-text">Record status, express condolences. No replacement.</td></tr>
-                    <tr><td class="edit-text">Roads become dangerous</td><td class="td-green edit-text">Stop fieldwork, return to safety</td><td class="td-red edit-text">Inform supervisor immediately</td></tr>
-                    <tr><td class="edit-text">Wrong person interviewed by mistake</td><td class="edit-text">—</td><td class="td-red edit-text">Do not delete data. Report immediately.</td></tr>
-                    <tr><td class="edit-text">Respondent breaks down crying</td><td class="td-green edit-text">Pause, offer water, ask to continue or stop</td><td class="td-red edit-text">If violence/self-harm disclosed, follow safeguarding protocol</td></tr>
+                    <tr><td class="edit-text">Respondent asks to reschedule</td><td class="td-green edit-text">Schedule callback</td><td class="edit-text">—</td></tr>
+                    <tr><td class="edit-text">Respondent is hostile</td><td class="td-green edit-text">Leave immediately</td><td class="td-red edit-text">Report within the hour</td></tr>
+                    <tr><td class="edit-text">App has incorrect skip pattern</td><td class="edit-text">—</td><td class="td-red edit-text">Do not fix yourself. Flag.</td></tr>
+                    <tr><td class="edit-text">Leader asks to see tablet</td><td class="td-green edit-text">Show consent form verbally</td><td class="td-red edit-text">Never hand over device.</td></tr>
+                    <tr><td class="edit-text">Wrong person interviewed</td><td class="edit-text">—</td><td class="td-red edit-text">Do not delete data. Report.</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="key-principle-box">
-            <span class="kp-label">🔑 The Golden Rule</span>
-            <p class="edit-text" style="margin:0;"><strong>When in doubt, do not guess. Call your supervisor.</strong> A wrong decision that is reported immediately can almost always be corrected. A wrong decision that is hidden will eventually be discovered — and it will be much harder to fix.</p>
+        <div class="red-flag-box">
+            <span class="rf-label edit-text">⚠️ Termination Offenses</span>
+            <ul class="edit-text">
+                <li><strong>Data fabrication:</strong> Filling in responses without conducting the interview.</li>
+                <li><strong>Data falsification:</strong> Changing an answer to pass a validation check.</li>
+                <li>Recording a wrong respondent under the listed respondent's ID.</li>
+                <li>Sharing respondent data with anyone outside the research team.</li>
+            </ul>
         </div>
-
-        <hr class="topic-divider">
-
-        <h3 class="edit-text" style="text-align:center;margin-bottom:16px;">Data Integrity: What It Looks Like</h3>
-        <div class="dos-donts-grid">
-            <div class="do-column">
-                <h4 class="edit-text" style="color:var(--success-green);margin-top:0;font-size:15px;">✅ What Good Looks Like</h4>
-                <ul class="list-check" style="padding-left:0;">
-                    <li class="edit-text">Mark household "absent" when truly absent — even if it means returning tomorrow.</li>
-                    <li class="edit-text">Record "Don't Know" when the respondent genuinely doesn't know. Never guess.</li>
-                    <li class="edit-text">Report questionnaire problems to your supervisor even if it slows daily progress.</li>
-                    <li class="edit-text">Tell a respondent honestly you don't know an answer rather than making something up.</li>
-                </ul>
-            </div>
-            <div class="dont-column">
-                <h4 class="edit-text" style="color:var(--danger-red);margin-top:0;font-size:15px;">❌ Termination Offenses</h4>
-                <ul class="list-cross" style="padding-left:0;">
-                    <li class="edit-text"><strong>Data fabrication:</strong> Filling in responses without conducting the interview. This is fraud.</li>
-                    <li class="edit-text"><strong>Data falsification:</strong> Changing an answer to pass a validation check.</li>
-                    <li class="edit-text">Recording a wrong respondent under the listed respondent's ID.</li>
-                    <li class="edit-text">Sharing respondent data with anyone outside the research team.</li>
-                    <li class="edit-text">Using the survey device for personal purposes: calls, social media, photos.</li>
-                </ul>
-            </div>
-        </div>
-
     </div>
 </div>
 
-
-<!-- ═══════════════════════════════
-     SECTION 4 — STUDY TIMELINE
-════════════════════════════════ -->
 <div class="section-wrapper bg-light-green" id="timeline">
     <div class="kb-body">
-
         <div class="topic-header">
             <span class="eyebrow edit-text">The Research Calendar</span>
-            <h2 class="edit-text">Where You Fit in the Study Timeline</h2>
+            <h2 class="edit-text">Where You Fit in the Timeline</h2>
             <p class="standfirst edit-text">Timing is not just an administrative convenience — it is a scientific requirement. If a survey window is missed, the evidence cannot be generated.</p>
         </div>
 
@@ -366,273 +306,111 @@ h3 { font-size: 20px; }
             <div class="timeline-card dim">
                 <div class="tc-phase edit-text">Phase 1</div>
                 <div class="tc-title edit-text">Study Design</div>
-                <div class="tc-desc edit-text">Research question, instruments, sampling, and ethical approvals finalized.</div>
-                <div class="tc-role edit-text">Not yet involved — but everything you'll use is being designed here.</div>
+                <div class="tc-desc edit-text">Research question, sampling, and approvals finalized.</div>
             </div>
             <div class="timeline-card">
                 <div class="tc-phase edit-text">Phase 2</div>
-                <div class="tc-title edit-text">Training</div>
-                <div class="tc-desc edit-text">Surveyors trained on protocol, CAPI tools, and ethical guidelines.</div>
-                <div class="tc-role edit-text">Your entry point. Pay maximum attention. Ask every question.</div>
+                <div class="tc-title edit-text">Training & Pilot</div>
+                <div class="tc-desc edit-text">You are trained and conduct test interviews. Your feedback improves the final instrument.</div>
             </div>
             <div class="timeline-card">
                 <div class="tc-phase edit-text">Phase 3</div>
-                <div class="tc-title edit-text">Pilot / Pre-Test</div>
-                <div class="tc-desc edit-text">Small-scale test of questionnaire and field protocols before full launch.</div>
-                <div class="tc-role edit-text">Your feedback directly improves the final instrument.</div>
-            </div>
-            <div class="timeline-card">
-                <div class="tc-phase edit-text">Phase 4</div>
                 <div class="tc-title edit-text">Baseline Survey</div>
-                <div class="tc-desc edit-text">Data collection before the intervention begins. Measures the starting point.</div>
-                <div class="tc-role edit-text">First major data collection. Accuracy here is non-negotiable.</div>
+                <div class="tc-desc edit-text">Data collected before the program begins. Accuracy here is non-negotiable.</div>
             </div>
             <div class="timeline-card dim">
-                <div class="tc-phase edit-text">Phase 5</div>
-                <div class="tc-title edit-text">Intervention Period</div>
-                <div class="tc-desc edit-text">Program implemented in treatment areas. Control group continues normally.</div>
-                <div class="tc-role edit-text">May conduct monitoring surveys or process documentation.</div>
-            </div>
-            <div class="timeline-card">
-                <div class="tc-phase edit-text">Phase 6</div>
-                <div class="tc-title edit-text">Midline Survey</div>
-                <div class="tc-desc edit-text">Interim data collection to measure early effects.</div>
-                <div class="tc-role edit-text">Track same respondents from baseline. Tracking protocols critical.</div>
+                <div class="tc-phase edit-text">Phase 4</div>
+                <div class="tc-title edit-text">Intervention</div>
+                <div class="tc-desc edit-text">Program implemented in treatment areas.</div>
             </div>
             <div class="timeline-card" style="border-top-color:var(--accent-orange);">
-                <div class="tc-phase edit-text">Phase 7</div>
+                <div class="tc-phase edit-text">Phase 5</div>
                 <div class="tc-title edit-text">Endline Survey</div>
-                <div class="tc-desc edit-text">Final data collection after the intervention has had time to work.</div>
-                <div class="tc-role edit-text">Most consequential round. Every baseline respondent must be found.</div>
-            </div>
-            <div class="timeline-card dim">
-                <div class="tc-phase edit-text">Phase 8</div>
-                <div class="tc-title edit-text">Analysis &amp; Dissemination</div>
-                <div class="tc-desc edit-text">Team analyzes data and shares findings with policymakers.</div>
-                <div class="tc-role edit-text">Your data may inform policy at state or national level.</div>
+                <div class="tc-desc edit-text">Final data collection. Every baseline respondent must be found. Tracking is critical.</div>
             </div>
         </div>
-
-        <div class="scenario-box edit-text" style="margin-top:28px;">
-            <span class="scenario-label">The Deadline That Cannot Move</span>
-            It is the last week of the baseline survey. Your team has completed 85% of the target. The monsoon starts in three days, after which roads will be impassable. The intervention begins immediately after.<br><br>
-            <span style="font-style:normal;font-weight:700;color:var(--brand-dark);">What happens: </span>Teams reorganize, hours extend, assignments are redistributed. <span style="font-style:normal;font-weight:700;color:var(--danger-red);">What does NOT happen: </span>Nobody fabricates data. Deadlines create pressure — managed through planning, never by compromising data quality.
-        </div>
-
     </div>
 </div>
 
-
-<!-- ═══════════════════════════════
-     SECTION 5 — IMPLEMENTING PARTNER
-════════════════════════════════ -->
-<div class="section-wrapper bg-white" id="partner">
-    <div class="kb-body">
-
-        <div class="topic-header">
-            <span class="eyebrow edit-text">Navigating the Field</span>
-            <h2 class="edit-text">Understanding the Implementing Partner</h2>
-            <p class="standfirst edit-text">In most studies, the intervention is run by an implementing partner — an NGO or government department. You evaluate their program; you do not deliver it. Respondents will often confuse you with them.</p>
-        </div>
-
-        <div class="key-principle-box">
-            <span class="kp-label">🔑 What to Always Say</span>
-            <p class="edit-text" style="margin:0;font-style:italic;">"I am from [research organization]. We are a research team conducting a survey to understand how communities like yours are doing. We are not from the government and we are not distributing any program benefits."</p>
-        </div>
-
-        <h3 class="edit-text" style="margin-top:28px;">Handling Trick Questions: Government Partner</h3>
-
-        <div class="scenario-box edit-text">
-            <span class="scenario-label">Trick Question — Government Context</span>
-            "Are you from the department office? Can you check why I haven't received my scheme payment?"<br><br>
-            <span style="font-style:normal;font-weight:700;color:var(--brand-dark);">Say: </span>"I am from [research organization], a separate research team. I am not from the government office and I cannot access any scheme records. Please contact the department office directly."
-        </div>
-
-        <div class="scenario-box edit-text" style="transform:rotate(0.4deg);">
-            <span class="scenario-label">Trick Question — NGO Context</span>
-            "The NGO worker accompanied you to my house. Does that mean I have to answer your questions?"<br><br>
-            <span style="font-style:normal;font-weight:700;color:var(--brand-dark);">Say: </span>"Not at all. This interview is completely separate from the NGO's work. Participation is entirely your choice and has no impact on anything the NGO does for you."
-        </div>
-
-        <h3 class="edit-text">Partner Boundaries — What Good Looks Like</h3>
-        <div class="component-row">
-            <div class="vs-col vs-bad" style="border-radius:14px;border:1px solid #fecaca;padding:24px;">
-                <div class="vs-header edit-text">Common Mistakes</div>
-                <ul class="vs-list">
-                    <li class="edit-text">Assuming NGO presence means respondents must cooperate.</li>
-                    <li class="edit-text">Sharing respondent lists with partner field staff.</li>
-                    <li class="edit-text">Implying participation leads to program benefits.</li>
-                    <li class="edit-text">Letting partner staff sit in during interviews.</li>
-                </ul>
-            </div>
-            <div class="vs-col vs-good" style="border-radius:14px;border:1px solid #bbf7d0;padding:24px;">
-                <div class="vs-header edit-text">What Good Looks Like</div>
-                <ul class="vs-list">
-                    <li class="edit-text">Clearly state you are from the research team, not the partner.</li>
-                    <li class="edit-text">Politely decline data sharing requests and escalate.</li>
-                    <li class="edit-text">Make the voluntary nature of consent unmistakably clear.</li>
-                    <li class="edit-text">Always interview one-on-one with the respondent.</li>
-                </ul>
-            </div>
-        </div>
-
+<div class="topic-nav-footer">
+    <div class="tnf-left"></div>
+    <div class="tnf-center">Foundational Guidelines · Topic 1 of 5</div>
+    <div class="tnf-right">
+        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/research-ethics" class="edit-link" target="_top">
+            Next: Research Ethics →
+        </a>
     </div>
 </div>
 
-
-<!-- ═══════════════════════════════
-     SECTION 6 — READINESS CHECKLIST
-════════════════════════════════ -->
-<div class="section-wrapper bg-light-green" id="checklist">
-    <div class="kb-body">
-
-        <div class="topic-header" style="text-align:center;">
-            <span class="eyebrow edit-text">Before You Go</span>
-            <h2 class="edit-text">Pre-Fieldwork Self-Assessment</h2>
-            <p class="edit-text" style="max-width:620px;margin:0 auto;">Before moving to the next topic, ensure you can check off every item below. These are non-negotiable foundations for every surveyor.</p>
-        </div>
-
-        <div class="prep-console">
-            <div class="prep-progress-header">
-                <div>
-                    <h3 class="edit-text">Topic 1 Readiness Score</h3>
-                    <p class="edit-text" style="margin:0;font-size:13px;color:#94a3b8;">Complete all items to reach 100%.</p>
-                </div>
-                <div class="progress-wrap">
-                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="master-progress-fill"></div></div>
-                    <span class="progress-text" id="master-progress-text">0%</span>
-                </div>
-            </div>
-            <div class="prep-body">
-                <div class="prep-tabs">
-                    <div class="prep-tab active edit-text" onclick="openPrepTab(event,'tab-study')">📚 Study Basics</div>
-                    <div class="prep-tab edit-text" onclick="openPrepTab(event,'tab-conduct')">🤝 Conduct</div>
-                    <div class="prep-tab edit-text" onclick="openPrepTab(event,'tab-partner')">🏛 Partner</div>
-                    <div class="prep-tab edit-text" onclick="openPrepTab(event,'tab-integrity')">🔒 Integrity</div>
-                </div>
-                <div class="prep-content-area">
-
-                    <div id="tab-study" class="prep-pane active">
-                        <h3 class="pane-title edit-text">Study Basics</h3>
-                        <p class="pane-desc edit-text">You must be able to answer these before your first interview.</p>
-                        <div class="check-list">
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I can explain what this study is trying to find out in one or two plain sentences.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I understand what a randomized evaluation is and can explain treatment vs. control groups simply.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know whether this is a baseline, midline, or endline survey.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know the fieldwork timeline: start date, end date, and daily targets.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know the target population and eligibility criteria for this study.</div></div>
-                        </div>
-                        <div class="pane-trap"><h4 class="edit-text">⚠️ The Trap</h4><p class="edit-text">Going into the field without understanding why the study exists. If you don't understand the purpose, you can't explain it during consent — and that's where trust is built or lost.</p></div>
-                    </div>
-
-                    <div id="tab-conduct" class="prep-pane">
-                        <h3 class="pane-title edit-text">Professional Conduct</h3>
-                        <p class="pane-desc edit-text">Your conduct in the field defines the quality of the data.</p>
-                        <div class="check-list">
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know who my supervisor is, how to contact them, and that I must report to them daily.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I can list situations where I make independent decisions vs. where I must escalate.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I understand that both treatment and control group respondents are equally important.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I will never speculate about study findings with respondents or community members.</div></div>
-                        </div>
-                    </div>
-
-                    <div id="tab-partner" class="prep-pane">
-                        <h3 class="pane-title edit-text">Implementing Partner</h3>
-                        <p class="pane-desc edit-text">You must be clear about who you are and who you are not at all times.</p>
-                        <div class="check-list">
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I can name the implementing partner, describe what they do, and clearly explain my independent role.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know how to respond when a respondent asks if I am from the government or if the survey is linked to benefits.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know I must never share respondent data with partner field staff and will escalate if asked.</div></div>
-                        </div>
-                        <div class="pane-trap"><h4 class="edit-text">⚠️ The Trap</h4><p class="edit-text">Letting NGO or government staff sit in during interviews. Their presence — even silently — changes what the respondent says. Always interview one-on-one.</p></div>
-                    </div>
-
-                    <div id="tab-integrity" class="prep-pane">
-                        <h3 class="pane-title edit-text">Data Integrity</h3>
-                        <p class="pane-desc edit-text">These are non-negotiables. Any violation is grounds for immediate termination.</p>
-                        <div class="check-list">
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I understand that data fabrication — filling in responses without conducting the interview — is fraud.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I understand that changing a respondent's answer for any reason is data falsification — a termination offense.</div></div>
-                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know that the quality of my data has a direct impact on real policy decisions that affect real people.</div></div>
-                        </div>
-                        <div class="key-principle-box" style="margin-top:0;">
-                            <span class="kp-label">🔑 Closing Principle</span>
-                            <p class="edit-text" style="margin:0;">You are not just asking questions. You are generating evidence that governments will use to make decisions about where to invest scarce resources. Every survey you complete with integrity brings us one step closer to knowing what actually works.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="quotes-grid">
-            <div class="quote-card">
-                <img class="avatar edit-img" src="https://i.pravatar.cc/80?img=11" alt="Field Coordinator">
-                <div class="quote-mark">"</div>
-                <blockquote class="edit-text">"The surveyors who thrive in the field are not the ones who know every answer. They are the ones who <span class="em">ask when they don't know</span> and <span class="em">report when something goes wrong.</span>"</blockquote>
-                <div class="quote-meta">
-                    <div class="quote-name edit-text">Field Coordinator, Bihar</div>
-                    <div class="quote-role edit-text">J-PAL South Asia Field Operations</div>
-                </div>
-            </div>
-            <div class="quote-card">
-                <img class="avatar edit-img" src="https://i.pravatar.cc/80?img=32" alt="Senior RA">
-                <div class="quote-mark">"</div>
-                <blockquote class="edit-text">"I have seen studies with the best questionnaires fail because surveyors didn't understand <span class="em">why the question existed.</span> When you understand the purpose, you ask it with the patience and care it deserves."</blockquote>
-                <div class="quote-meta">
-                    <div class="quote-name edit-text">Senior Research Associate</div>
-                    <div class="quote-role edit-text">J-PAL South Asia</div>
-                </div>
-            </div>
-        </div>
-
-        <p style="text-align:center;margin-top:40px;font-size:13px;color:var(--text-light);font-weight:700;letter-spacing:0.5px;" class="edit-text">— Topic 1 of 5 · Next: Research Ethics &amp; Informed Consent →</p>
-
-    </div>
-</div>
-
-<!-- ── ADMIN EDITOR ── -->
 <div id="admin-master-container">
     <div id="admin-toolkit">
         <span style="color:#cbd5e1;font-size:12.5px;font-weight:600;margin-right:8px;">✅ Edit Mode</span>
-        <button class="admin-btn copy" onclick="copyCode()">📋 Copy Code</button>
-        <button class="admin-btn close" onclick="lockPage()">✕ Lock</button>
+        <button class="admin-btn copy" onclick="copyCode()" style="background:#1A7A6D;">📋 Copy Code</button>
+        <button class="admin-btn close" onclick="lockPage()" style="background:transparent; border:1px solid #ef4444; color:#ef4444;">✕ Lock</button>
     </div>
     <div id="inline-img-box" class="inline-bubble">
         <p>PASTE IMAGE URL</p>
         <input type="text" id="img-input-val" placeholder="Google Drive or web URL...">
-        <button onclick="applyImg()">Update Image</button>
+        <button onclick="applyImg()" style="background:#1A7A6D;">Update Image</button>
         <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:6px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
     </div>
+    <div id="inline-link-box" class="inline-bubble">
+        <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 800; color: #1e293b;">UPDATE LINK URL</p>
+        <input type="text" id="link-input-val" placeholder="https://...">
+        <button onclick="applyLink()" style="background:#1A7A6D;">Save Link</button>
+        <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:5px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
+    </div>
 </div>
-<script src="https://awatramani.github.io/ro-knowledge-bank/kb-admin.js"></script>
 
-<!-- ── IN-PAGE JUMP NAV JS ── -->
 <script>
+/* IFRAME-SAFE JUMP NAV */
 function jumpTo(id) {
     var el = document.getElementById(id);
     if (!el) return;
-    var nav = document.getElementById('jump-nav');
-    var offset = nav ? nav.offsetHeight + 8 : 60;
-    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
-    document.querySelector('[data-target="' + id + '"]').classList.add('active');
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
 window.addEventListener('scroll', function() {
-    var sections = ['why','rct','conduct','timeline','partner','checklist'];
-    var nav = document.getElementById('jump-nav');
-    var offset = nav ? nav.offsetHeight + 40 : 80;
+    var links = document.querySelectorAll('.jump-link');
+    if (links.length === 0) return;
+    var sections = Array.from(links).map(function(l) { return l.getAttribute('data-target'); });
+    
+    var navH = document.getElementById('jump-nav') ? document.getElementById('jump-nav').offsetHeight : 0;
+    var seriesH = document.getElementById('series-bar') ? document.getElementById('series-bar').offsetHeight : 0;
+    var offset = navH + seriesH + 30; 
+    
     var current = sections[0];
     sections.forEach(function(id) {
         var el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= offset) current = id;
+        if (el && el.getBoundingClientRect().top <= offset) {
+            current = id;
+        }
     });
-    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
-    var active = document.querySelector('[data-target="' + current + '"]');
+    
+    links.forEach(function(l) { l.classList.remove('active'); });
+    var active = document.querySelector('.jump-link[data-target="' + current + '"]');
     if (active) active.classList.add('active');
 });
-</script>
 
+/* ADMIN EDITOR SCRIPT */
+let isAdmin = false; let targetImg = null; let targetLink = null;
+document.addEventListener('keydown', e => { if (e.altKey && e.shiftKey && (e.key === 'e' || e.key === 'E')) { e.preventDefault(); if (!isAdmin) unlockPage(); }});
+function unlockPage() {
+    isAdmin = true; document.getElementById('admin-toolkit').style.display = 'flex'; document.body.classList.add('edit-mode-active');
+    document.querySelectorAll('.edit-text, .edit-link').forEach(el => { el.setAttribute('contenteditable', 'true'); if (el.tagName.toLowerCase() === 'a') { el.classList.add('edit-link'); el.addEventListener('click', openLinkEditor); }});
+    document.querySelectorAll('.edit-img').forEach(img => { img.addEventListener('click', openImgEditor); });
+}
+function lockPage() {
+    isAdmin = false; document.getElementById('admin-toolkit').style.display = 'none'; document.querySelectorAll('.inline-bubble').forEach(b => b.style.display = 'none'); document.body.classList.remove('edit-mode-active');
+    document.querySelectorAll('.edit-text, .edit-link').forEach(el => { el.removeAttribute('contenteditable'); if (el.tagName.toLowerCase() === 'a') { el.removeEventListener('click', openLinkEditor); }});
+    document.querySelectorAll('.edit-img').forEach(img => { img.removeEventListener('click', openImgEditor); });
+}
+function openImgEditor(e) { if (!isAdmin) return; e.preventDefault(); targetImg = e.target; const b = document.getElementById('inline-img-box'); b.style.display = 'block'; document.getElementById('img-input-val').value = targetImg.src; }
+function applyImg() { const val = document.getElementById('img-input-val').value.trim(); if (targetImg && val) { const match = val.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/); targetImg.src = match ? `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1600` : val; } document.getElementById('inline-img-box').style.display = 'none'; }
+function openLinkEditor(e) { if (!isAdmin) return; e.preventDefault(); targetLink = e.currentTarget; const b = document.getElementById('inline-link-box'); b.style.display = 'block'; document.getElementById('link-input-val').value = targetLink.href || ''; }
+function applyLink() { const val = document.getElementById('link-input-val').value.trim(); if (targetLink && val) targetLink.href = val; document.getElementById('inline-link-box').style.display = 'none'; }
+function hideBubble() { document.querySelectorAll('.inline-bubble').forEach(b => b.style.display = 'none'); }
+function copyCode() { const wasOn = isAdmin; lockPage(); const clone = document.documentElement.cloneNode(true); clone.querySelector('#admin-master-container').remove(); const temp = document.createElement("textarea"); document.body.appendChild(temp); temp.value = "<!DOCTYPE html>\n" + clone.outerHTML; temp.select(); document.execCommand('copy'); document.body.removeChild(temp); if(wasOn) unlockPage(); alert("Code Copied!"); }
+</script>
 </body>
 </html>
