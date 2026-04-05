@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survey Instrument | RO Knowledge Bank</title>
+<link rel="stylesheet" href="https://awatramani.github.io/ro-knowledge-bank/kb-theme.css">
+<style>
+.banner-container{padding:32px 3%;}
+.glass-card{padding:28px 32px;}
+.banner-eyebrow{font-size:12px;}
+.banner-title{font-size:34px;letter-spacing:-0.5px;}
+.banner-subtitle{font-size:15px;}
+.banner-meta{margin-top:14px;}
+.banner-meta-pill{font-size:12px;}
+.kb-body{max-width:900px;margin:0 auto;padding:0 5%;}
+p,li{font-size:16px;}
+.data-table td,.data-table th{font-size:14px;}
+.pane-desc{font-size:15px;}
+.check-text{font-size:14px;}
+.standfirst{font-size:16px;}
+.dialogue-box p{font-size:15px;}
+.scenario-box{font-size:16px;}
+blockquote{font-size:15px;}
+h2{font-size:34px;}
+h3{font-size:20px;}
+.section-wrapper{padding:44px 0;}
+.jump-nav{background:white;border-bottom:1px solid var(--border-soft);padding:0 5%;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:sticky;top:0;z-index:100;}
+.jump-nav::-webkit-scrollbar{display:none;}
+.jump-link{font-size:12px;font-weight:700;color:var(--text-light);text-decoration:none;padding:11px 14px;border-bottom:2.5px solid transparent;white-space:nowrap;transition:var(--transition);cursor:pointer;}
+.jump-link:hover{color:var(--heading-green);}
+.jump-link.active{color:var(--heading-green);border-bottom-color:var(--heading-green);}
+.topic-divider{border:none;border-top:1px solid var(--border-soft);margin:36px 0;}
+.topic-header{margin-bottom:26px;}
+.standfirst{font-size:15px;color:var(--text-light);line-height:1.7;border-left:3px solid var(--heading-green);padding-left:14px;margin:0;}
+.inline-img-right{float:right;width:320px;margin:0 0 20px 32px;border-radius:14px;overflow:hidden;box-shadow:0 16px 36px rgba(26,122,109,0.12);border:6px solid white;flex-shrink:0;}
+.inline-img-right img{width:100%;height:200px;object-fit:cover;display:block;}
+.clearfix::after{content:'';display:table;clear:both;}
+.component-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0;}
+.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0;}
+.step-card{background:white;border-radius:13px;padding:18px 16px;border:1px solid var(--border-soft);box-shadow:var(--shadow-float);border-top:4px solid var(--heading-green);text-align:center;}
+.step-card.blue{border-top-color:var(--accent-blue);}
+.step-card.orange{border-top-color:var(--accent-orange);}
+.step-num{font-size:28px;font-weight:800;color:var(--heading-green);line-height:1;margin-bottom:5px;display:block;}
+.step-card.blue .step-num{color:var(--accent-blue);}
+.step-card.orange .step-num{color:var(--accent-orange);}
+.step-label{font-size:11px;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.8px;line-height:1.4;}
+@media(max-width:700px){.inline-img-right{float:none;width:100%;margin:0 0 20px 0;}.component-row,.step-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="jump-nav" id="jump-nav"><span class="jump-link active" data-target="overview" onclick="jumpTo('overview')">The Instrument</span><span class="jump-link" data-target="capi" onclick="jumpTo('capi')">CAPI & SurveyCTO</span><span class="jump-link" data-target="sensitive" onclick="jumpTo('sensitive')">Sensitive Questions</span><span class="jump-link" data-target="quality" onclick="jumpTo('quality')">Interview Quality</span></nav>
+
+<div class="banner-container">
+    <div class="bg-shape-1"></div><div class="bg-shape-2"></div>
+    <div class="glass-card">
+        <span class="banner-eyebrow edit-text">Fieldwork Fundamentals · Topic 3 of 5</span>
+        <h1 class="banner-title edit-text">Survey Instrument &amp; Interview Technique</h1>
+        <span class="banner-subtitle edit-text">Mastering the questionnaire, CAPI tools, and real-time interview quality</span>
+        <div class="banner-meta"><span class="banner-meta-pill edit-text">📋 Instrument Module</span><span class="banner-meta-pill edit-text">Version 1.0 · 2026</span><span class="banner-meta-pill edit-text">⏱ 22 min read</span></div>
+    </div>
+</div>
+
+
+<div class="section-wrapper bg-white" id="overview">
+<div class="kb-body">
+<div class="topic-header">
+<span class="eyebrow edit-text">The Instrument</span>
+<h2 class="edit-text">Understanding the Questionnaire You Carry</h2>
+<p class="standfirst edit-text">The questionnaire is not a form — it is the measurement tool for the study. Every word is deliberate. Every skip pattern has a reason. Before you go to the field, you must know it the way a carpenter knows their tools.</p>
+</div>
+<div class="dialogue-box"><span class="speaker edit-text">Surveyor asks:</span><p class="edit-text" style="font-style:italic;margin-bottom:0;">"The question seems obvious. Can I just paraphrase it to save time?"</p><span class="speaker ra edit-text">Senior RA replies:</span><p class="edit-text" style="font-style:italic;margin-bottom:0;color:var(--brand-dark);font-weight:600;">"No. The exact wording is the measurement. If you change the words, you change what is being measured. Two surveyors asking the same question differently create noise that researchers cannot correct for. Read every question exactly as written."</p></div><div class="bento-row"><div class="bento-card "><span class="bc-label">📋 Modules</span><p class="edit-text" style="font-size:14px;margin:0;">The questionnaire is divided into modules, each covering a topic area. Read all modules before Day 1. Know which households get which modules.</p></div><div class="bento-card blue"><span class="bc-label">⏱ Timing</span><p class="edit-text" style="font-size:14px;margin:0;">Know the expected interview duration. If you are consistently taking 40 minutes more than expected, a question or skip is being applied incorrectly.</p></div><div class="bento-card orange"><span class="bc-label">🔀 Skip Logic</span><p class="edit-text" style="font-size:14px;margin:0;">Skip patterns route respondents through relevant questions. An incorrect skip creates missing data or contradictory responses — the most common data quality failure.</p></div></div><div class="key-principle-box"><span class="kp-label">🔑 The Three Things You Must Know Cold</span><p class="edit-text" style="margin:0;">(1) The respondent eligibility criteria — who exactly qualifies for this interview. (2) The skip conditions — what triggers a skip and where it leads. (3) The sensitive question protocol — which questions require extra care, preambles, or privacy measures.</p></div>
+</div>
+</div>
+<div class="section-wrapper bg-light-green" id="capi">
+<div class="kb-body">
+<div class="topic-header">
+<span class="eyebrow edit-text">SurveyCTO Instrument</span>
+<h2 class="edit-text">Working with CAPI on Tablet</h2>
+<p class="standfirst edit-text">Computer-Assisted Personal Interviewing (CAPI) via SurveyCTO enforces most skip logic automatically — but it does not replace your understanding of the instrument.</p>
+</div>
+<div class="table-wrapper"><table class="data-table"><thead><tr><th class="edit-text">SurveyCTO Feature</th><th class="edit-text">What It Does</th><th class="edit-text">What It Does Not Do</th></tr></thead><tbody><tr><td class="edit-text">Automatic skips</td><td class="edit-text">Jumps to the correct next question based on prior answers</td><td class="edit-text">Prevent you from reading a wrong introductory module</td></tr><tr><td class="edit-text">Constraint checks</td><td class="edit-text">Flags values outside expected ranges (e.g., age < 0)</td><td class="edit-text">Catch plausible but wrong values (e.g., wrong year of birth)</td></tr><tr><td class="edit-text">Required fields</td><td class="edit-text">Prevents submission without an answer</td><td class="edit-text">Tell you if a "Don't Know" response is genuinely missing data</td></tr><tr><td class="edit-text">GPS capture</td><td class="edit-text">Records interview location automatically</td><td class="edit-text">Verify you are at the correct household</td></tr><tr><td class="edit-text">Time stamps</td><td class="edit-text">Logs start and end time of interview</td><td class="edit-text">Detect coaching or rushed answers at interview level — that is your job</td></tr><tr><td class="edit-text">Audio audit</td><td class="edit-text">Random recording of interview portions</td><td class="edit-text">Replace the quality of your questioning</td></tr></tbody></table></div><div class="scenario-box edit-text"><span class="scenario-label">Instrument Scenario: The Household Size Mismatch</span>You are recording a household roster. The respondent says 7 members live in the household. When you complete the roster, you have only 5 names. SurveyCTO flags a mismatch.
+
+<strong>Wrong response:</strong> Change the household count to 5 to clear the flag.
+<strong>Right response:</strong> Probe gently. Ask who else lives here. Re-confirm with the respondent. If the count stays at 5 after probing, record 5 and write a note explaining the discrepancy. Never change data to satisfy a validation — investigate first.</div><div class="red-flag-box"><span class="rf-label">⚠️ Instrument Red Lines</span><ul><li class="edit-text">Reading question text from memory instead of the screen</li><li class="edit-text">Skipping consent module because "they already agreed last time"</li><li class="edit-text">Entering "Don't Know" to rush past a question you haven't asked</li><li class="edit-text">Accepting the first answer to a sensitive question without allowing reflection time</li><li class="edit-text">Submitting a form with a note that says "will fix later"</li></ul></div>
+</div>
+</div>
+<div class="section-wrapper bg-white" id="sensitive">
+<div class="kb-body">
+<div class="topic-header">
+<span class="eyebrow edit-text">Sensitive Questions</span>
+<h2 class="edit-text">Handling Difficult and Sensitive Modules</h2>
+<p class="standfirst edit-text">Some modules cover income, debt, domestic violence, mental health, and personal losses. The preambles are designed by ethicists. Read them exactly. Do not improvise.</p>
+</div>
+<div class="bento-row"><div class="bento-card "><span class="bc-label">💰 Income & Assets</span><p class="edit-text" style="font-size:14px;margin:0;">Never signal surprise or judgment at reported amounts. The farmer who says he earns ₹3,000/month and the one who says ₹3 lakh/month both deserve a neutral face and the same follow-up.</p></div><div class="bento-card blue"><span class="bc-label">🏥 Health & Mortality</span><p class="edit-text" style="font-size:14px;margin:0;">When asking about child deaths or illness, pause after sensitive answers. Offer water. Ask if they want to continue. Never rush a respondent through grief.</p></div><div class="bento-card orange"><span class="bc-label">⚡ Domestic Violence</span><p class="edit-text" style="font-size:14px;margin:0;">Gender violence modules require private, one-on-one settings. Never with another household member present. Know the safeguarding referral protocol before asking these questions.</p></div></div><div class="key-principle-box"><span class="kp-label">🔑 The Preamble Is Not Optional</span><p class="edit-text" style="margin:0;">Every sensitive module opens with a preamble that frames the questions, establishes confidentiality, and signals that there are no right or wrong answers. Skipping the preamble is not saving time — it is removing the ethical protection the study team designed for the respondent.</p></div>
+</div>
+</div>
+<div class="section-wrapper bg-light-green" id="quality">
+<div class="kb-body">
+<div class="topic-header">
+<span class="eyebrow edit-text">Quality in Questioning</span>
+<h2 class="edit-text">Real-Time Interview Quality</h2>
+<p class="standfirst edit-text">The best instrument in the world produces bad data if the interview is conducted poorly. Your technique is the last line of defence.</p>
+</div>
+<div class="vs-board"><div class="vs-col vs-bad"><div class="vs-header edit-text">Weak Interview Technique</div><ul class="vs-list"><li class="edit-text">Reading the next question before the respondent has finished answering</li><li class="edit-text">Suggesting an answer when the respondent pauses ("Is it maybe around 5?")</li><li class="edit-text">Skipping probes because you think you understand what they meant</li><li class="edit-text">Rushing through the closing because your next appointment is near</li></ul></div><div class="vs-col vs-good"><div class="vs-header edit-text">Strong Interview Technique</div><ul class="vs-list"><li class="edit-text">Waiting a full 3 seconds after a response before moving on</li><li class="edit-text">Probing with neutral phrases: "Can you tell me more?" "Can you be more specific?"</li><li class="edit-text">Recording exact responses, even if they seem inconsistent with earlier answers</li><li class="edit-text">Closing every interview with a genuine thank-you and a clear explanation of next steps</li></ul></div></div><div class="prep-console">
+<div class="prep-progress-header"><div><h3 class="edit-text">Instrument Readiness</h3><p class="edit-text" style="margin:0;font-size:13px;color:#94a3b8;">Complete before your first interview day.</p></div><div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" id="master-progress-fill"></div></div><span class="progress-text" id="master-progress-text">0%</span></div></div>
+<div class="prep-body"><div class="prep-tabs"><div class="prep-tab active edit-text" onclick="openPrepTab(event,'tab-know')">Know the Instrument</div><div class="prep-tab edit-text" onclick="openPrepTab(event,'tab-capi')">SurveyCTO Readiness</div></div><div class="prep-content-area"><div id="tab-know" class="prep-pane active"><h3 class="pane-title edit-text">Know the Instrument</h3><p class="pane-desc edit-text">You must be able to answer these before Day 1.</p><div class="check-list"><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I have read the full questionnaire from start to finish at least twice.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I can explain every module\ purpose in one plain sentence.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I have practiced the full interview at least once with a colleague.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know the consent preamble well enough to deliver it naturally.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I can perform all skip patterns correctly without looking at the guide.</div></div></div></div><div id="tab-capi" class="prep-pane"><h3 class="pane-title edit-text">SurveyCTO Readiness</h3><p class="pane-desc edit-text">Device and form must be fully configured.</p><div class="check-list"><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">SurveyCTO is installed, logged in, and the correct form is downloaded.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I have tested a full practice submission with a dummy respondent.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">GPS is enabled and the device shows my location accurately.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">The form version on my device matches the version in today\ briefing.</div></div></div></div></div></div></div>
+</div>
+</div>
+
+<div id="admin-master-container">
+    <div id="admin-toolkit">
+        <span style="color:#cbd5e1;font-size:12.5px;font-weight:600;margin-right:8px;">✅ Edit Mode</span>
+        <button class="admin-btn copy" onclick="copyCode()">📋 Copy Code</button>
+        <button class="admin-btn close" onclick="lockPage()">✕ Lock</button>
+    </div>
+    <div id="inline-img-box" class="inline-bubble">
+        <p>PASTE IMAGE URL</p>
+        <input type="text" id="img-input-val" placeholder="Google Drive or web URL...">
+        <button onclick="applyImg()">Update Image</button>
+        <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:6px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
+    </div>
+</div>
+<script src="https://awatramani.github.io/ro-knowledge-bank/kb-admin.js"></script>
+<script>
+function jumpTo(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var nav = document.getElementById('jump-nav');
+    var offset = nav ? nav.offsetHeight + 8 : 60;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
+    document.querySelector('[data-target="' + id + '"]').classList.add('active');
+}
+window.addEventListener('scroll', function() {
+    var sections = ['overview', 'capi', 'sensitive', 'quality'];
+    var nav = document.getElementById('jump-nav');
+    var offset = nav ? nav.offsetHeight + 40 : 80;
+    var current = sections[0];
+    sections.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= offset) current = id;
+    });
+    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
+    var active = document.querySelector('[data-target="' + current + '"]');
+    if (active) active.classList.add('active');
+});
+</script>
+</body>
+</html>

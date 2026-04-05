@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Respondent Tracking | RO Knowledge Bank</title>
+<link rel="stylesheet" href="https://awatramani.github.io/ro-knowledge-bank/kb-theme.css">
+<style>
+.banner-container{padding:32px 3%;}
+.glass-card{padding:28px 32px;}
+.banner-eyebrow{font-size:12px;}
+.banner-title{font-size:34px;letter-spacing:-0.5px;}
+.banner-subtitle{font-size:15px;}
+.banner-meta{margin-top:14px;}
+.banner-meta-pill{font-size:12px;}
+.kb-body{max-width:900px;margin:0 auto;padding:0 5%;}
+p,li{font-size:16px;}
+.data-table td,.data-table th{font-size:14px;}
+.pane-desc{font-size:15px;}
+.check-text{font-size:14px;}
+.standfirst{font-size:16px;}
+.dialogue-box p{font-size:15px;}
+.scenario-box{font-size:16px;}
+blockquote{font-size:15px;}
+h2{font-size:34px;}
+h3{font-size:20px;}
+.section-wrapper{padding:44px 0;}
+.jump-nav{background:white;border-bottom:1px solid var(--border-soft);padding:0 5%;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:sticky;top:0;z-index:100;}
+.jump-nav::-webkit-scrollbar{display:none;}
+.jump-link{font-size:12px;font-weight:700;color:var(--text-light);text-decoration:none;padding:11px 14px;border-bottom:2.5px solid transparent;white-space:nowrap;transition:var(--transition);cursor:pointer;}
+.jump-link:hover{color:var(--heading-green);}
+.jump-link.active{color:var(--heading-green);border-bottom-color:var(--heading-green);}
+.topic-divider{border:none;border-top:1px solid var(--border-soft);margin:36px 0;}
+.topic-header{margin-bottom:26px;}
+.standfirst{font-size:15px;color:var(--text-light);line-height:1.7;border-left:3px solid var(--heading-green);padding-left:14px;margin:0;}
+.inline-img-right{float:right;width:320px;margin:0 0 20px 32px;border-radius:14px;overflow:hidden;box-shadow:0 16px 36px rgba(26,122,109,0.12);border:6px solid white;flex-shrink:0;}
+.inline-img-right img{width:100%;height:200px;object-fit:cover;display:block;}
+.clearfix::after{content:'';display:table;clear:both;}
+.component-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0;}
+.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0;}
+.step-card{background:white;border-radius:13px;padding:18px 16px;border:1px solid var(--border-soft);box-shadow:var(--shadow-float);border-top:4px solid var(--heading-green);text-align:center;}
+.step-card.blue{border-top-color:var(--accent-blue);}
+.step-card.orange{border-top-color:var(--accent-orange);}
+.step-num{font-size:28px;font-weight:800;color:var(--heading-green);line-height:1;margin-bottom:5px;display:block;}
+.step-card.blue .step-num{color:var(--accent-blue);}
+.step-card.orange .step-num{color:var(--accent-orange);}
+.step-label{font-size:11px;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.8px;line-height:1.4;}
+@media(max-width:700px){.inline-img-right{float:none;width:100%;margin:0 0 20px 0;}.component-row,.step-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="jump-nav" id="jump-nav"><span class="jump-link active" data-target="why" onclick="jumpTo('why')">Why Tracking</span><span class="jump-link" data-target="protocol" onclick="jumpTo('protocol')">Three-Attempt Protocol</span><span class="jump-link" data-target="tools" onclick="jumpTo('tools')">Tools & SurveyCTO</span><span class="jump-link" data-target="checklist" onclick="jumpTo('checklist')">End of Day</span></nav>
+
+<div class="banner-container">
+    <div class="bg-shape-1"></div><div class="bg-shape-2"></div>
+    <div class="glass-card">
+        <span class="banner-eyebrow edit-text">Fieldwork Fundamentals · Topic 2 of 5</span>
+        <h1 class="banner-title edit-text">Respondent Tracking &amp; Attrition Management</h1>
+        <span class="banner-subtitle edit-text">Protecting study validity by ensuring every listed household is found and followed up</span>
+        <div class="banner-meta"><span class="banner-meta-pill edit-text">📍 Tracking Module</span><span class="banner-meta-pill edit-text">Version 1.0 · 2026</span><span class="banner-meta-pill edit-text">⏱ 18 min read</span></div>
+    </div>
+</div>
+
+
+<div class="section-wrapper bg-white" id="why">
+<div class="kb-body">
+<div class="topic-header">
+<span class="eyebrow edit-text">The Foundation</span>
+<h2 class="edit-text">Why Respondent Tracking Exists</h2>
+<p class="standfirst edit-text">Panel attrition is one of the most serious threats to the validity of a study. A 10% loss in the treatment group but a 20% loss in the control group makes any comparison meaningless. Your job is to make sure no one disappears.</p>
+</div>
+<div class="dialogue-box"><span class="speaker edit-text">New Surveyor asks:</span><p class="edit-text" style="font-style:italic;margin-bottom:0;">"The listing says this household is here. They are not. Can I just mark them absent?"</p><span class="speaker ra edit-text">Senior RA replies:</span><p class="edit-text" style="font-style:italic;margin-bottom:0;color:var(--brand-dark);font-weight:600;">"No. Absent today is not absent forever. Your job is to find them — not to accept the first obstacle. A listed respondent who cannot be found is a tracking problem, not a closure. Work the protocol."</p></div><div class="key-principle-box"><span class="kp-label">🔑 Why Attrition Kills Studies</span><p class="edit-text" style="margin:0;">If attrition is systematically different between treatment and control groups, you can no longer compare outcomes. Even a 5% differential attrition rate can invalidate years of work. Every respondent you track and interview protects the science.</p></div><div class="table-wrapper"><table class="data-table"><thead><tr><th class="edit-text">Tracking Status</th><th class="edit-text">What It Means</th><th class="edit-text">Required Action</th></tr></thead><tbody><tr><td class="edit-text">Completed</td><td class="edit-text">Interview done, data submitted</td><td class="edit-text">Sync to server within 24 hours</td></tr><tr><td class="edit-text">Absent — Scheduled Callback</td><td class="edit-text">Respondent away, return arranged</td><td class="edit-text">Log callback date/time; attempt within 48 hours</td></tr><tr><td class="edit-text">Soft Refusal</td><td class="edit-text">Hesitant but not firm no</td><td class="edit-text">Revisit once with supervisor guidance; document reason</td></tr><tr><td class="edit-text">Hard Refusal</td><td class="edit-text">Clear, final refusal</td><td class="edit-text">Document verbatim reason; do NOT re-approach without supervisor instruction</td></tr><tr><td class="edit-text">Migrated — Traceable</td><td class="edit-text">Left the village, location known</td><td class="edit-text">Escalate to supervisor for decision on field visit or phone tracking</td></tr><tr><td class="edit-text">Migrated — Untraceable</td><td class="edit-text">Left, no forwarding information</td><td class="edit-text">Record all known information; escalate. No substitution.</td></tr><tr><td class="edit-text">Deceased</td><td class="edit-text">Respondent has died</td><td class="edit-text">Record with sensitivity; no substitution permitted</td></tr><tr><td class="edit-text">Wrong HH Listed</td><td class="edit-text">Person at this address not in sample</td><td class="edit-text">Do not interview. Record and escalate immediately</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="section-wrapper bg-light-green" id="protocol">
+<div class="kb-body">
+<div class="topic-header">
+<span class="eyebrow edit-text">The Visit System</span>
+<h2 class="edit-text">The Three-Attempt Protocol</h2>
+<p class="standfirst edit-text">A single absence does not close a case. Every listed respondent receives a minimum of three contact attempts across different times of day before a status is escalated.</p>
+</div>
+<div class="bento-row"><div class="bento-card "><span class="bc-label">🏠 Attempt 1</span><p class="edit-text" style="font-size:14px;margin:0;">First visit, any time of day. If absent, ask neighbors or household members when the respondent is typically home. Log expected return time.</p></div><div class="bento-card "><span class="bc-label">🌅 Attempt 2 — Different Time</span><p class="edit-text" style="font-size:14px;margin:0;">Return at the time neighbors suggested. Morning vs. afternoon matters: farmers are in fields by 7am; women may be home midday; men may return at dusk.</p></div><div class="bento-card orange"><span class="bc-label">📞 Attempt 3 — Phone First</span><p class="edit-text" style="font-size:14px;margin:0;">Call ahead if phone contact exists. Time the visit. If unavailable again, initiate supervisor escalation and log a scheduled callback.</p></div></div><div class="scenario-box edit-text"><span class="scenario-label">Field Scenario: The Migrant Worker</span>Ramesh Kumar, HH-034, is listed as household head. You arrive three times and his wife tells you he moved to Surat for construction work eight months ago. She does not know his address but has a phone number.
+
+<strong>Protocol:</strong> Do not close the case. Record the phone number. Attempt phone tracking with supervisor approval. If interview is possible by phone under the study protocol, proceed. If not, escalate for a decision — never substitute.</div><div class="red-flag-box"><span class="rf-label">⚠️ Tracking Violations</span><ul><li class="edit-text">Substituting a different household member without supervisor approval</li><li class="edit-text">Marking "Hard Refusal" after a single attempt</li><li class="edit-text">Guessing a status rather than recording what you observed</li><li class="edit-text">Using incorrect GPS coordinates to fabricate a visit location</li><li class="edit-text">Closing a migrated respondent as untraceable without phone attempts</li></ul></div>
+</div>
+</div>
+<div class="section-wrapper bg-white" id="tools">
+<div class="kb-body">
+<div class="topic-header">
+<span class="eyebrow edit-text">Tracking Tools</span>
+<h2 class="edit-text">Using Your Tracking Sheet & SurveyCTO</h2>
+<p class="standfirst edit-text">Your tracking sheet and SurveyCTO form work together. The paper sheet is your live field log. The digital form is the official record. They must match at end of day.</p>
+</div>
+<div class="table-wrapper"><table class="data-table"><thead><tr><th class="edit-text">Field</th><th class="edit-text">Where to Enter</th><th class="edit-text">What to Write</th></tr></thead><tbody><tr><td class="edit-text">Visit Date & Time</td><td class="edit-text">Both paper + SurveyCTO</td><td class="edit-text">Exact date and clock time — not "morning" or "evening"</td></tr><tr><td class="edit-text">Visit Outcome</td><td class="edit-text">SurveyCTO status field</td><td class="edit-text">Use standardized codes only — never free-text a status</td></tr><tr><td class="edit-text">Reason for Non-Contact</td><td class="edit-text">SurveyCTO notes field</td><td class="edit-text">Verbatim reason if refusal; neighbor account if absent</td></tr><tr><td class="edit-text">Next Visit Plan</td><td class="edit-text">Paper tracking sheet</td><td class="edit-text">Date, time, and who gave you the information</td></tr><tr><td class="edit-text">GPS Coordinates</td><td class="edit-text">SurveyCTO auto-capture</td><td class="edit-text">Captured automatically — do not disable location permissions</td></tr><tr><td class="edit-text">Callback Phone</td><td class="edit-text">SurveyCTO contact field</td><td class="edit-text">Full 10-digit number; confirm by reading back to informant</td></tr></tbody></table></div><div class="key-principle-box"><span class="kp-label">🔑 The Paper Sheet Is Your Insurance</span><p class="edit-text" style="margin:0;">If your tablet dies, is stolen, or loses connectivity, your paper tracking sheet allows work to continue without data loss. Keep it complete, legible, and protected from rain. Never transcribe "later" — write at the moment.</p></div><div class="prep-console">
+<div class="prep-progress-header"><div><h3 class="edit-text">Respondent Tracking Readiness</h3><p class="edit-text" style="margin:0;font-size:13px;color:#94a3b8;">Check every item before your first tracking visit.</p></div><div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" id="master-progress-fill"></div></div><span class="progress-text" id="master-progress-text">0%</span></div></div>
+<div class="prep-body"><div class="prep-tabs"><div class="prep-tab active edit-text" onclick="openPrepTab(event,'tab-daily')">Daily Before You Leave</div><div class="prep-tab edit-text" onclick="openPrepTab(event,'tab-fieldwork')">In the Field</div><div class="prep-tab edit-text" onclick="openPrepTab(event,'tab-escalate')">When to Escalate</div></div><div class="prep-content-area"><div id="tab-daily" class="prep-pane active"><h3 class="pane-title edit-text">Daily Before You Leave</h3><p class="pane-desc edit-text">Complete these before leaving your accommodation each morning.</p><div class="check-list"><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I have reviewed my tracking list and prioritized hard-to-find respondents for early visits.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I have phone numbers for all schedulable callbacks and confirmed they are charged.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">My paper tracking sheet is current and matches last night\ SurveyCTO sync.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know the status of every household on my list: completed, pending, or scheduled.</div></div></div></div><div id="tab-fieldwork" class="prep-pane"><h3 class="pane-title edit-text">In the Field</h3><p class="pane-desc edit-text">These rules apply during every tracking visit.</p><div class="check-list"><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I note exact time of visit and outcome before moving to the next household.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">If absent, I speak to a neighbor or household member and record their name.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I never mark a case closed without at least three distinct attempts at different times.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I never substitute an unlisted respondent without written supervisor approval.</div></div></div></div><div id="tab-escalate" class="prep-pane"><h3 class="pane-title edit-text">When to Escalate</h3><p class="pane-desc edit-text">These situations require supervisor contact within the hour.</p><div class="check-list"><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">The listed respondent has migrated and no forwarding information is available.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">A respondent refuses to participate after two visits and a soft approach.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I have reason to believe the listed address is incorrect.</div></div><div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">A respondent has passed away since listing.</div></div></div></div></div></div></div>
+</div>
+</div>
+<div class="section-wrapper bg-light-green" id="checklist">
+<div class="kb-body">
+<div class="topic-header">
+<span class="eyebrow edit-text">End of Day</span>
+<h2 class="edit-text">Closing Out Your Tracking Day</h2>
+<p class="standfirst edit-text">Every tracking day must be formally closed. Data not synced is data at risk.</p>
+</div>
+<div class="vs-board"><div class="vs-col vs-bad"><div class="vs-header edit-text">Common Mistakes</div><ul class="vs-list"><li class="edit-text">Syncing data only "when I remember" — not nightly</li><li class="edit-text">Writing "will do tomorrow" on callbacks without a specific time</li><li class="edit-text">Leaving GPS location OFF because it drains battery</li><li class="edit-text">Marking a migrated case closed without phone attempts</li></ul></div><div class="vs-col vs-good"><div class="vs-header edit-text">What Good Looks Like</div><ul class="vs-list"><li class="edit-text">Nightly sync before sleeping — non-negotiable</li><li class="edit-text">Every callback has a specific date and time in the system</li><li class="edit-text">GPS enabled for all SurveyCTO sessions, always</li><li class="edit-text">Every migrated case has at least one phone attempt logged</li></ul></div></div><div class="key-principle-box"><span class="kp-label">🔑 Closing Rule</span><p class="edit-text" style="margin:0;">If your supervisor cannot see your tracking sheet and immediately know the status of every household on your list, your recordkeeping is not good enough. Clarity is not optional — it is the job.</p></div>
+</div>
+</div>
+
+<div id="admin-master-container">
+    <div id="admin-toolkit">
+        <span style="color:#cbd5e1;font-size:12.5px;font-weight:600;margin-right:8px;">✅ Edit Mode</span>
+        <button class="admin-btn copy" onclick="copyCode()">📋 Copy Code</button>
+        <button class="admin-btn close" onclick="lockPage()">✕ Lock</button>
+    </div>
+    <div id="inline-img-box" class="inline-bubble">
+        <p>PASTE IMAGE URL</p>
+        <input type="text" id="img-input-val" placeholder="Google Drive or web URL...">
+        <button onclick="applyImg()">Update Image</button>
+        <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:6px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
+    </div>
+</div>
+<script src="https://awatramani.github.io/ro-knowledge-bank/kb-admin.js"></script>
+<script>
+function jumpTo(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var nav = document.getElementById('jump-nav');
+    var offset = nav ? nav.offsetHeight + 8 : 60;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
+    document.querySelector('[data-target="' + id + '"]').classList.add('active');
+}
+window.addEventListener('scroll', function() {
+    var sections = ['why', 'protocol', 'tools', 'checklist'];
+    var nav = document.getElementById('jump-nav');
+    var offset = nav ? nav.offsetHeight + 40 : 80;
+    var current = sections[0];
+    sections.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= offset) current = id;
+    });
+    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
+    var active = document.querySelector('[data-target="' + current + '"]');
+    if (active) active.classList.add('active');
+});
+</script>
+</body>
+</html>
