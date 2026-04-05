@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://awatramani.github.io/ro-knowledge-bank/kb-theme.css">
 <style>
 /* ── GOOGLE SITES IFRAME FIXES ──────────────────────── */
-.section-wrapper { scroll-margin-top: 120px; padding: 44px 0; }
+.section-wrapper { scroll-margin-top: 120px; }
 
 .series-bar { display: flex; gap: 10px; padding: 15px 5%; background: #f8fafc; border-bottom: 1px solid var(--border-soft); align-items: center; overflow-x: auto; scrollbar-width: none; }
 .series-bar::-webkit-scrollbar { display: none; }
@@ -33,6 +33,7 @@ p, li { font-size: 16px; }
 blockquote { font-size: 15px; }
 h2 { font-size: 34px; }
 h3 { font-size: 20px; }
+.section-wrapper { padding: 44px 0; }
 
 /* In-page jump nav */
 .jump-nav {
@@ -153,27 +154,43 @@ h3 { font-size: 20px; }
     .topic-nav-link { flex: 1 1 100%; }
     .topic-nav-link.next { align-items: flex-start; text-align: left; }
 }
+
+/* --- ADMIN STYLES --- */
+body.edit-mode-active .edit-text { outline: 2px dashed #0ea5e9; outline-offset: 4px; border-radius: 4px; transition: 0.2s; }
+body.edit-mode-active .edit-text:hover { background: rgba(14, 165, 233, 0.05); cursor: text; }
+body.edit-mode-active .edit-text:focus { background: white; outline: 3px solid #0ea5e9; }
+body.edit-mode-active .edit-img { outline: 4px dashed #0ea5e9; outline-offset: 4px; cursor: pointer; transition: 0.2s; }
+body.edit-mode-active .edit-img:hover { filter: brightness(0.6); }
+body.edit-mode-active .edit-link { outline: 2px dashed #f59e0b; outline-offset: 4px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+body.edit-mode-active .edit-link:hover { background: rgba(245, 158, 11, 0.05); }
+#admin-toolkit { display: none; position: fixed; bottom: 30px; right: 30px; background: #1e293b; padding: 15px 25px; border-radius: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); gap: 15px; align-items: center; z-index: 999999; }
+.admin-btn { border: none; padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 13px; cursor: pointer; color: white; transition: 0.2s;}
+.admin-btn.copy { background: #1A7A6D; } .admin-btn.copy:hover { background: #135c52; }
+.admin-btn.close { background: transparent; color: #ef4444; border: 1px solid #ef4444; padding: 8px 15px; } .admin-btn.close:hover { background: rgba(239, 68, 68, 0.1); }
+.inline-bubble { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 1000000; width: 320px; display: none; line-height: 1.5; font-family: system-ui, sans-serif; }
+.inline-bubble input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 10px; font-size: 12px; }
+.inline-bubble button { width: 100%; padding: 10px; border: none; border-radius: 8px; background: #1A7A6D; color: white; font-weight: 700; cursor: pointer; }
 </style>
 </head>
 <body>
 
 <div class="series-bar" id="series-bar">
     <span class="series-label">Series:</span>
-    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" class="series-pill" target="_top">① Surveyor Basics</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" class="series-pill edit-link" target="_top">① Surveyor Basics</a>
     <span class="series-pill active">② Research Ethics</span>
-    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" class="series-pill" target="_top">③ Respondent Tracking</a>
-    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" class="series-pill" target="_top">④ Survey Instrument</a>
-    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/field-protocols" class="series-pill" target="_top">⑤ Field Protocols</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" class="series-pill edit-link" target="_top">③ Respondent Tracking</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" class="series-pill edit-link" target="_top">④ Survey Instrument</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/field-protocols" class="series-pill edit-link" target="_top">⑤ Field Protocols</a>
 </div>
 
 <nav class="jump-nav" id="jump-nav">
     <a class="jump-back" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines" target="_top">← Foundational Guidelines</a>
-    <span class="jump-link active" data-target="pillars"   onclick="jumpTo('pillars')">Four Pillars</span>
-    <span class="jump-link"        data-target="irb"       onclick="jumpTo('irb')">IRB &amp; Ethics Committee</span>
-    <span class="jump-link"        data-target="consent"   onclick="jumpTo('consent')">Consent Process</span>
-    <span class="jump-link"        data-target="special"   onclick="jumpTo('special')">Special Scenarios</span>
-    <span class="jump-link"        data-target="handling"  onclick="jumpTo('handling')">Handling Refusals</span>
-    <span class="jump-link"        data-target="checklist" onclick="jumpTo('checklist')">Readiness Checklist</span>
+    <span class="jump-link active" data-target="pillars">Four Pillars</span>
+    <span class="jump-link"        data-target="irb">IRB &amp; Ethics Committee</span>
+    <span class="jump-link"        data-target="consent">Consent Process</span>
+    <span class="jump-link"        data-target="special">Special Scenarios</span>
+    <span class="jump-link"        data-target="handling">Handling Refusals</span>
+    <span class="jump-link"        data-target="checklist">Readiness Checklist</span>
 </nav>
 
 <div class="banner-container">
@@ -504,38 +521,70 @@ h3 { font-size: 20px; }
         <button onclick="applyImg()">Update Image</button>
         <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:6px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
     </div>
+    <div id="inline-link-box" class="inline-bubble">
+        <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 800; color: #1e293b;">UPDATE LINK URL</p>
+        <input type="text" id="link-input-val" placeholder="https://...">
+        <button onclick="applyLink()">Save Link</button>
+        <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:5px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
+    </div>
 </div>
 <script src="https://awatramani.github.io/ro-knowledge-bank/kb-admin.js"></script>
 
 <script>
-function jumpTo(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    
-    // Iframe-safe scrolling using scrollIntoView
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. CLICK TO SCROLL LOGIC
+    const jumpLinks = document.querySelectorAll('.jump-link');
+    const headerOffset = 120; 
 
-window.addEventListener('scroll', function() {
-    var links = document.querySelectorAll('.jump-link');
-    if (links.length === 0) return;
-    var sections = Array.from(links).map(function(l) { return l.getAttribute('data-target'); });
-    
-    var navH = document.getElementById('jump-nav') ? document.getElementById('jump-nav').offsetHeight : 0;
-    var seriesH = document.getElementById('series-bar') ? document.getElementById('series-bar').offsetHeight : 0;
-    var offset = navH + seriesH + 30; // 30px buffer to trigger active state smoothly
-    
-    var current = sections[0];
-    sections.forEach(function(id) {
-        var el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= offset) {
-            current = id;
-        }
+    jumpLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); 
+            const targetId = this.getAttribute('data-target');
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                const elementPosition = targetSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+
+                jumpLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
     });
-    
-    links.forEach(function(l) { l.classList.remove('active'); });
-    var active = document.querySelector('.jump-link[data-target="' + current + '"]');
-    if (active) active.classList.add('active');
+
+    // 2. SCROLL SPY LOGIC (Intersection Observer)
+    const sections = Array.from(jumpLinks).map(link => document.getElementById(link.getAttribute('data-target'))).filter(Boolean);
+
+    const observerOptions = {
+        root: null, 
+        rootMargin: "-130px 0px -50% 0px", 
+        threshold: 0 
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const targetId = entry.target.id;
+                
+                jumpLinks.forEach(l => l.classList.remove('active'));
+                
+                const activeLink = document.querySelector(`.jump-link[data-target="${targetId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    
+                    // Optional: Scroll the nav bar itself if on small screen
+                    activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
 });
 </script>
 
