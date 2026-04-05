@@ -17,9 +17,6 @@
 .banner-meta { margin-top: 14px; }
 .banner-meta-pill { font-size: 12px; }
 
-/* Reading column — use full available width */
-.kb-body { max-width: 100%; padding: 0 3%; }
-
 /* Larger body text */
 p, li { font-size: 16px; }
 .data-table td, .data-table th { font-size: 14px; }
@@ -109,75 +106,9 @@ h3 { font-size: 20px; }
 .topic-header { margin-bottom: 26px; }
 .standfirst { font-size: 15px; color: var(--text-light); line-height: 1.7; border-left: 3px solid var(--heading-green); padding-left: 14px; margin: 0; }
 
-/* ── Topic Navigation Bar (prev / next) ── */
-.topic-nav-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 16px;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border-soft);
-}
-.topic-nav-link {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 18px 22px;
-    background: white;
-    border: 1px solid var(--border-soft);
-    border-radius: 14px;
-    text-decoration: none;
-    transition: var(--transition);
-    min-width: 0;
-    flex: 0 1 48%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-.topic-nav-link:hover {
-    border-color: var(--heading-green);
-    box-shadow: 0 8px 24px rgba(26,122,109,0.12);
-    transform: translateY(-2px);
-}
-.topic-nav-link.next { align-items: flex-end; text-align: right; margin-left: auto; }
-.topic-nav-link.prev { align-items: flex-start; text-align: left; }
-.topic-nav-label {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-light);
-}
-.topic-nav-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--heading-green);
-    line-height: 1.3;
-}
-
-/* ── Back link in jump nav ── */
-.jump-back {
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--text-light);
-    text-decoration: none;
-    padding: 11px 14px 11px 0;
-    border-right: 1px solid var(--border-soft);
-    margin-right: 4px;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    transition: color 0.2s;
-    flex-shrink: 0;
-}
-.jump-back:hover { color: var(--heading-green); }
-
 @media (max-width: 700px) {
     .inline-img-right { float: none; width: 100%; margin: 0 0 20px 0; }
     .component-row, .stat-row { grid-template-columns: 1fr; }
-    .topic-nav-bar { flex-direction: column; }
-    .topic-nav-link { flex: 1 1 100%; }
-    .topic-nav-link.next { align-items: flex-start; text-align: left; }
 }
 </style>
 </head>
@@ -185,7 +116,6 @@ h3 { font-size: 20px; }
 
 <!-- ── IN-PAGE JUMP NAV (JS scroll — works inside iframe) ── -->
 <nav class="jump-nav" id="jump-nav">
-    <a class="jump-back" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines" target="_top">← Foundational Guidelines</a>
     <span class="jump-link active" data-target="why"       onclick="jumpTo('why')">Why Research</span>
     <span class="jump-link"       data-target="rct"        onclick="jumpTo('rct')">RCT &amp; J-PAL</span>
     <span class="jump-link"       data-target="conduct"    onclick="jumpTo('conduct')">Conduct &amp; Standards</span>
@@ -193,30 +123,7 @@ h3 { font-size: 20px; }
     <span class="jump-link"       data-target="partner"    onclick="jumpTo('partner')">Implementing Partner</span>
     <span class="jump-link"       data-target="checklist"  onclick="jumpTo('checklist')">Readiness Checklist</span>
 </nav>
-<script>
-function jumpTo(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    var navH = document.getElementById('jump-nav').offsetHeight;
-    var top = el.getBoundingClientRect().top + window.pageYOffset - navH - 8;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
-    document.querySelector('[data-target="' + id + '"]').classList.add('active');
-}
-// Highlight active section on scroll
-window.addEventListener('scroll', function() {
-    var sections = ['why','rct','conduct','timeline','partner','checklist'];
-    var navH = document.getElementById('jump-nav').offsetHeight;
-    var current = sections[0];
-    sections.forEach(function(id) {
-        var el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= navH + 40) current = id;
-    });
-    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
-    var active = document.querySelector('[data-target="' + current + '"]');
-    if (active) active.classList.add('active');
-});
-</script>
+
 
 <!-- ── HERO ── -->
 <div class="banner-container">
@@ -679,25 +586,10 @@ window.addEventListener('scroll', function() {
             </div>
         </div>
 
-        <!-- ── TOPIC NAVIGATION ── -->
-        <div class="topic-nav-bar">
-            <a class="topic-nav-link next" href="02-research-ethics.html">
-                <span class="topic-nav-label">Next: Topic 2 →</span>
-                <span class="topic-nav-title">Research Ethics &amp; Informed Consent</span>
-            </a>
-        </div>
+        <p style="text-align:center;margin-top:40px;font-size:13px;color:var(--text-light);font-weight:700;letter-spacing:0.5px;" class="edit-text">— Topic 1 of 5 · Next: Research Ethics &amp; Informed Consent →</p>
 
     </div>
 </div>
-
-<!-- ── FOOTER ── -->
-<footer style="background:#1e293b;color:rgba(255,255,255,0.5);text-align:center;padding:28px 5%;font-size:12px;font-weight:600;">
-    <strong style="color:rgba(255,255,255,0.7);" class="edit-text">J-PAL South Asia · Research Operations Knowledge Bank</strong>
-    <div style="display:flex;justify-content:center;gap:22px;margin-top:10px;flex-wrap:wrap;">
-        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:12px;font-weight:600;" target="_top" class="edit-text">Foundational Guidelines</a>
-        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:12px;font-weight:600;" target="_top" class="edit-text">Back to Hub</a>
-    </div>
-</footer>
 
 <!-- ── ADMIN EDITOR ── -->
 <div id="admin-master-container">
@@ -714,6 +606,33 @@ window.addEventListener('scroll', function() {
     </div>
 </div>
 <script src="https://awatramani.github.io/ro-knowledge-bank/kb-admin.js"></script>
+
+<!-- ── IN-PAGE JUMP NAV JS ── -->
+<script>
+function jumpTo(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var nav = document.getElementById('jump-nav');
+    var offset = nav ? nav.offsetHeight + 8 : 60;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
+    document.querySelector('[data-target="' + id + '"]').classList.add('active');
+}
+window.addEventListener('scroll', function() {
+    var sections = ['why','rct','conduct','timeline','partner','checklist'];
+    var nav = document.getElementById('jump-nav');
+    var offset = nav ? nav.offsetHeight + 40 : 80;
+    var current = sections[0];
+    sections.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= offset) current = id;
+    });
+    document.querySelectorAll('.jump-link').forEach(function(l) { l.classList.remove('active'); });
+    var active = document.querySelector('[data-target="' + current + '"]');
+    if (active) active.classList.add('active');
+});
+</script>
 
 </body>
 </html>
