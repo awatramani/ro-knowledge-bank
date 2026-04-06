@@ -3,395 +3,372 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Surveyor Basics & Research Foundations | RO Knowledge Bank</title>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<title>Research Ethics & Informed Consent | RO Knowledge Bank</title>
+<link rel="stylesheet" href="https://awatramani.github.io/ro-knowledge-bank/kb-theme.css">
 <style>
-/* --- THEME VARIABLES --- */
-:root {
-    --heading-green: #1A7A6D;    
-    --brand-dark: #1e293b;       
-    --bg-light-green: #f2fafa;   
-    --bg-white: #ffffff;
-    --bg-off-white: #f8fafc;
-    --text-main: #334155;        
-    --text-light: #64748b;
-    --border-soft: rgba(0, 0, 0, 0.08);
-    --shadow-float: 0 10px 30px rgba(0, 0, 0, 0.04);
-    --danger-red: #dc2626; 
-    --accent-orange: #f59e0b;
-    --accent-blue: #0ea5e9;
-}
-
-* { box-sizing: border-box; }
-body { font-family: 'Open Sans', sans-serif; color: var(--text-main); line-height: 1.7; margin: 0; background-color: var(--bg-off-white); }
-
-/* --- GOOGLE SITES IFRAME FIX --- */
-/* scroll-margin-top ensures the section stops BELOW the sticky navs when scrollIntoView is called */
-.section-wrapper { scroll-margin-top: 140px; padding: 44px 0;}
-
-/* --- NAVIGATION BARS --- */
+/* --- Google Sites Iframe Navigation Fixes --- */
+.section-wrapper { scroll-margin-top: 120px; }
 .series-bar { display: flex; gap: 10px; padding: 15px 5%; background: #f8fafc; border-bottom: 1px solid var(--border-soft); align-items: center; overflow-x: auto; scrollbar-width: none; }
 .series-bar::-webkit-scrollbar { display: none; }
 .series-label { font-size: 12px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
 .series-pill { font-size: 13px; font-weight: 700; color: var(--text-light); padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid #cbd5e1; text-decoration: none; white-space: nowrap; transition: 0.2s; }
 .series-pill:hover { border-color: var(--heading-green); color: var(--heading-green); }
 .series-pill.active { background: var(--heading-green); color: white; border-color: var(--heading-green); }
-
-.jump-nav { background: white; border-bottom: 1px solid var(--border-soft); padding: 0 5%; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: sticky; top: 0; z-index: 100; }
-.jump-nav::-webkit-scrollbar { display: none; }
-.jump-link { font-size: 12px; font-weight: 700; color: var(--text-light); text-decoration: none; padding: 11px 14px; border-bottom: 2.5px solid transparent; white-space: nowrap; transition: 0.2s; cursor: pointer; }
-.jump-link:hover { color: var(--heading-green); }
-.jump-link.active { color: var(--heading-green); border-bottom-color: var(--heading-green); }
-
-/* --- HERO & LAYOUT --- */
-.banner-container { padding: 32px 3%; background: linear-gradient(135deg, #ffffff 0%, #edf5f3 100%); position: relative; }
-.glass-card { padding: 28px 32px; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; text-align: center; max-width: 900px; margin: 0 auto; box-shadow: var(--shadow-float);}
-.banner-eyebrow { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--heading-green); letter-spacing: 2px; }
-.banner-title { font-size: 34px; letter-spacing: -0.5px; font-weight: 800; color: var(--brand-dark); margin: 10px 0; }
-.banner-subtitle { font-size: 15px; color: var(--heading-green); font-weight: 600;}
-.banner-meta { margin-top: 14px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;}
-.banner-meta-pill { font-size: 12px; background: white; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border-soft); font-weight: 600;}
-
-.bg-white { background: white; }
-.bg-light-green { background: var(--bg-light-green); }
-.kb-body { max-width: 900px; margin: 0 auto; padding: 0 5%; }
-
-/* --- TYPOGRAPHY & COMPONENTS --- */
-h2 { font-size: 34px; font-weight: 800; color: var(--brand-dark); margin: 0 0 15px 0;}
-h3 { font-size: 20px; font-weight: 800; color: var(--brand-dark); margin: 30px 0 10px 0;}
-p, li { font-size: 16px; color: var(--text-main); }
-.eyebrow { font-size: 13px; font-weight: 800; text-transform: uppercase; color: var(--heading-green); letter-spacing: 2px; margin-bottom: 10px; display: block;}
-.topic-header { margin-bottom: 26px; }
-.standfirst { font-size: 15px; color: var(--text-light); line-height: 1.7; border-left: 3px solid var(--heading-green); padding-left: 14px; margin: 0; }
-.topic-divider { border: none; border-top: 1px solid var(--border-soft); margin: 36px 0; }
-
-.inline-img-right { float: right; width: 320px; margin: 0 0 20px 32px; border-radius: 14px; overflow: hidden; box-shadow: 0 16px 36px rgba(26,122,109,0.12); border: 6px solid white; flex-shrink: 0; }
-.inline-img-right img { width: 100%; height: 200px; object-fit: cover; display: block; }
-.clearfix::after { content: ''; display: table; clear: both; }
-
-.dialogue-box { background: var(--bg-off-white); padding: 20px; border-radius: 12px; border-left: 4px solid var(--heading-green); margin-bottom: 20px;}
-.dialogue-box .speaker { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--text-light); display: block; margin-bottom: 5px;}
-.dialogue-box .ra { margin-top: 15px; color: var(--heading-green); }
-
-.key-principle-box { background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid var(--accent-orange); padding: 20px; border-radius: 12px; margin: 30px 0;}
-.kp-label { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #d97706; margin-bottom: 8px; display: block; letter-spacing: 1px;}
-
-.scenario-box { background: var(--brand-dark); color: white; padding: 25px; border-radius: 16px; margin: 30px 0;}
-.scenario-label { display: inline-block; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-
-.red-flag-box { background: #fef2f2; border: 1px solid #fecaca; border-left: 4px solid var(--danger-red); padding: 20px; border-radius: 12px; margin: 30px 0;}
-.rf-label { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #991b1b; margin-bottom: 10px; display: block; letter-spacing: 1px;}
-
-.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border-soft); box-shadow: var(--shadow-float); background: white;}
-.data-table { width: 100%; border-collapse: collapse; text-align: left; }
-.data-table th { background: var(--brand-dark); color: white; padding: 12px 15px; font-size: 14px; }
-.data-table td { padding: 12px 15px; border-bottom: 1px solid var(--border-soft); font-size: 14px; }
-.data-table tr:last-child td { border-bottom: none; }
-.td-green { background: #f0fdf4; color: #166534; font-weight: 600;}
-.td-red { background: #fef2f2; color: #991b1b; font-weight: 600;}
-
-.component-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0; }
-.vs-col { border-radius: 14px; padding: 24px; border: 1px solid; }
-.vs-bad { border-color: #fecaca; background: #fff1f2; }
-.vs-good { border-color: #bbf7d0; background: #f0fdf4; }
-.vs-header { font-size: 16px; font-weight: 800; margin-bottom: 15px; }
-.vs-bad .vs-header { color: #991b1b; } .vs-good .vs-header { color: #166534; }
-.vs-list { padding-left: 20px; margin: 0; font-size: 14px;}
-
-.timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
-.timeline-card { background: white; padding: 20px; border-radius: 12px; border: 1px solid var(--border-soft); border-top: 4px solid var(--heading-green); box-shadow: var(--shadow-float);}
-.timeline-card.dim { opacity: 0.6; border-top-color: var(--text-light); }
-.tc-phase { font-size: 11px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
-.tc-title { font-size: 16px; font-weight: 800; color: var(--brand-dark); margin: 5px 0; }
-.tc-desc { font-size: 13px; color: var(--text-main); margin-bottom: 10px; line-height: 1.5; }
-.tc-role { font-size: 13px; font-weight: 600; color: var(--heading-green); background: var(--bg-light-green); padding: 8px; border-radius: 6px; }
-
-/* --- FOOTER --- */
 .topic-nav-footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 30px 5%; border-top: 1px solid var(--border-soft); background: white; margin-top: 40px;}
 .tnf-center { font-size: 12px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.8px; text-align: center; }
 .tnf-left { text-align: left; } .tnf-right { text-align: right; }
 .tnf-left a, .tnf-right a { font-size: 14px; font-weight: 700; color: var(--heading-green); text-decoration: none; transition: 0.2s;}
 .tnf-left a:hover, .tnf-right a:hover { opacity: 0.8; }
 
-@media (max-width: 700px) {
-    .inline-img-right { float: none; width: 100%; margin: 0 0 20px 0; }
-    .component-row, .timeline-grid { grid-template-columns: 1fr; }
-    .topic-nav-footer { grid-template-columns: 1fr; text-align: center; gap: 10px; }
-    .tnf-left, .tnf-right { text-align: center; }
-}
+/* --- Base Styles --- */
+.banner-container{padding:32px 3%;}
+.glass-card{padding:28px 32px;}
+.banner-eyebrow{font-size:12px;}
+.banner-title{font-size:34px;letter-spacing:-0.5px;}
+.banner-subtitle{font-size:15px;}
+.banner-meta{margin-top:14px;}
+.banner-meta-pill{font-size:12px;}
+.kb-body{max-width:900px;margin:0 auto;padding:0 5%;}
+p,li{font-size:16px;}
+.data-table td,.data-table th{font-size:14px;}
+.pane-desc{font-size:15px;}
+.check-text{font-size:14px;}
+.standfirst{font-size:16px;}
+.dialogue-box p{font-size:15px;}
+.scenario-box{font-size:16px;}
+blockquote{font-size:15px;}
+h2{font-size:34px;}
+h3{font-size:20px;}
+.section-wrapper{padding:44px 0;}
+.jump-nav{background:white;border-bottom:1px solid var(--border-soft);padding:0 5%;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:sticky;top:0;z-index:100;}
+.jump-nav::-webkit-scrollbar{display:none;}
+.jump-link{font-size:12px;font-weight:700;color:var(--text-light);text-decoration:none;padding:11px 14px;border-bottom:2.5px solid transparent;white-space:nowrap;transition:0.2s;cursor:pointer;}
+.jump-link:hover{color:var(--heading-green);}
+.jump-link.active{color:var(--heading-green);border-bottom-color:var(--heading-green);}
+.topic-divider{border:none;border-top:1px solid var(--border-soft);margin:36px 0;}
+.topic-header{margin-bottom:26px;}
+.standfirst{font-size:15px;color:var(--text-light);line-height:1.7;border-left:3px solid var(--heading-green);padding-left:14px;margin:0;}
+.clearfix::after{content:'';display:table;clear:both;}
+.component-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0;}
 
-/* --- ADMIN STYLES --- */
-body.edit-mode-active .edit-text { outline: 2px dashed #0ea5e9; outline-offset: 4px; border-radius: 4px; transition: 0.2s; }
-body.edit-mode-active .edit-text:hover { background: rgba(14, 165, 233, 0.05); cursor: text; }
-body.edit-mode-active .edit-text:focus { background: white; outline: 3px solid #0ea5e9; }
-body.edit-mode-active .edit-img { outline: 4px dashed #0ea5e9; outline-offset: 4px; cursor: pointer; transition: 0.2s; }
-body.edit-mode-active .edit-link { outline: 2px dashed #f59e0b; outline-offset: 4px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
-#admin-toolkit { display: none; position: fixed; bottom: 30px; right: 30px; background: #1e293b; padding: 15px 25px; border-radius: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); gap: 15px; align-items: center; z-index: 999999; }
-.admin-btn { border: none; padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 13px; cursor: pointer; color: white; transition: 0.2s;}
-.admin-btn.copy { background: #1A7A6D; } .admin-btn.copy:hover { background: #135c52; }
-.admin-btn.close { background: transparent; color: #ef4444; border: 1px solid #ef4444; padding: 8px 15px; } .admin-btn.close:hover { background: rgba(239, 68, 68, 0.1); }
-.inline-bubble { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 1000000; width: 320px; display: none; }
-.inline-bubble input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 10px; font-size: 12px; }
-.inline-bubble button { width: 100%; padding: 10px; border: none; border-radius: 8px; background: #1A7A6D; color: white; font-weight: 700; cursor: pointer; }
+/* --- Ethics Specific Components --- */
+.key-box { background: #fffdf2; border: 1px solid #fde68a; padding: 20px; border-radius: 12px; margin: 30px 0; }
+.key-label { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #f59e0b; margin-bottom: 10px; display: block; letter-spacing: 1px; }
+.good-box { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 20px; border-radius: 12px; margin: 30px 0; }
+.good-label { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #16a34a; margin-bottom: 10px; display: block; letter-spacing: 1px; }
+.warn-box { background: #fef2f2; border: 1px solid #fecaca; padding: 20px; border-radius: 12px; margin: 30px 0; }
+.warn-label { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #dc2626; margin-bottom: 10px; display: block; letter-spacing: 1px; }
+
+.pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0; }
+.pillar-card { background: white; border-radius: 14px; padding: 24px 20px; border: 1px solid var(--border-soft); box-shadow: 0 4px 12px rgba(0,0,0,0.04); border-top: 4px solid var(--heading-green); }
+.pillar-card h4 { margin-top: 0; }
+.pillar-card p { font-size: 14px; margin-bottom: 0; }
+.pillar-card:nth-child(2) { border-top-color: #3b82f6; }
+.pillar-card:nth-child(3) { border-top-color: #f59e0b; }
+.pillar-card:nth-child(4) { border-top-color: #ef4444; }
+
+.consent-step { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border-soft); }
+.consent-step:last-child { border-bottom: none; }
+.consent-num { flex-shrink: 0; width: 36px; height: 36px; background: var(--heading-green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; }
+.consent-step-content h4 { margin-top: 0; margin-bottom: 4px; }
+.consent-step-content p { font-size: 14px; margin-bottom: 0; color: var(--text-light); }
+
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0; }
+.scenario-card { border-radius: 14px; padding: 22px; font-size: 14px; line-height: 1.7; }
+.scenario-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.scenario-card.bad  { background: #fef2f2; border: 1px solid #fecaca; }
+.scenario-card .scenario-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+.scenario-card.good .scenario-label { color: #16a34a; }
+.scenario-card.bad .scenario-label  { color: #dc2626; }
+
+@media(max-width:700px){
+    .component-row, .pillar-grid, .scenario-grid {grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
 <div class="series-bar" id="series-bar">
     <span class="series-label">Series:</span>
-    <span class="series-pill active">① Surveyor Basics</span>
-    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/research-ethics" class="series-pill edit-link" target="_top">② Research Ethics</a>
-    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" class="series-pill edit-link" target="_top">③ Respondent Tracking</a>
-    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" class="series-pill edit-link" target="_top">④ Survey Instrument</a>
-    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/field-protocols" class="series-pill edit-link" target="_top">⑤ Field Protocols</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" class="series-pill" target="_top">① Surveyor Basics</a>
+    <span class="series-pill active">② Research Ethics</span>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" class="series-pill" target="_top">③ Respondent Tracking</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/survey-instrument" class="series-pill" target="_top">④ Survey Instrument</a>
+    <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/field-protocols" class="series-pill" target="_top">⑤ Field Protocols</a>
 </div>
 
 <nav class="jump-nav" id="jump-nav">
-    <span class="jump-link active" data-target="why" onclick="jumpTo('why')">Why Research</span>
-    <span class="jump-link" data-target="rct" onclick="jumpTo('rct')">RCT Basics &amp; J-PAL</span>
-    <span class="jump-link" data-target="conduct" onclick="jumpTo('conduct')">Professional Conduct</span>
-    <span class="jump-link" data-target="timeline" onclick="jumpTo('timeline')">Study Timeline</span>
-    <span class="jump-link" data-target="partner" onclick="jumpTo('partner')">Implementing Partner</span>
+    <span class="jump-link active" data-target="pillars" onclick="jumpTo('pillars')">Four Pillars</span>
+    <span class="jump-link" data-target="irb" onclick="jumpTo('irb')">IRB &amp; Ethics</span>
+    <span class="jump-link" data-target="consent" onclick="jumpTo('consent')">Consent Process</span>
+    <span class="jump-link" data-target="special" onclick="jumpTo('special')">Special Scenarios</span>
+    <span class="jump-link" data-target="handling" onclick="jumpTo('handling')">Refusals</span>
+    <span class="jump-link" data-target="checklist" onclick="jumpTo('checklist')">Checklist</span>
 </nav>
 
 <div class="banner-container">
+    <div class="bg-shape-1"></div><div class="bg-shape-2"></div>
     <div class="glass-card">
-        <span class="banner-eyebrow edit-text">Foundational Guidelines · Topic 1 of 5</span>
-        <h1 class="banner-title edit-text">Surveyor Basics &amp; Research Foundations</h1>
-        <span class="banner-subtitle edit-text">Understanding why the study exists, how it works, and what your role demands</span>
-        <div class="banner-meta">
-            <span class="banner-meta-pill edit-text">📘 Foundation Module</span>
-            <span class="banner-meta-pill edit-text">Version 1.0 · 2026</span>
-            <span class="banner-meta-pill edit-text">⏱ 20 min read</span>
-        </div>
+        <span class="banner-eyebrow edit-text">Fieldwork Fundamentals · Topic 2 of 5</span>
+        <h1 class="banner-title edit-text">Research Ethics &amp; Informed Consent</h1>
+        <span class="banner-subtitle edit-text">The moral backbone of fieldwork — why consent exists, how to deliver it, and what happens when it fails</span>
+        <div class="banner-meta"><span class="banner-meta-pill edit-text">📍 Ethics Module</span><span class="banner-meta-pill edit-text">Version 1.0 · 2026</span><span class="banner-meta-pill edit-text">⏱ 25 min read</span></div>
     </div>
 </div>
 
-<div class="section-wrapper bg-white" id="why">
-    <div class="kb-body">
-        <div class="topic-header">
-            <span class="eyebrow edit-text">The Foundation</span>
-            <h2 class="edit-text">Why This Study Exists</h2>
-            <p class="standfirst edit-text">Every number you record, every response you capture, every GPS point you take is a brick in the wall of evidence that governments use to decide how to spend limited resources on the people who need help the most.</p>
+<div class="section-wrapper bg-white" id="pillars">
+<div class="kb-body">
+    <div class="topic-header">
+        <span class="eyebrow edit-text">The Foundation</span>
+        <h2 class="edit-text">The Four Pillars of Ethical Research</h2>
+        <p class="standfirst edit-text">Research ethics is not an abstract academic concept. It is a set of concrete, non-negotiable rules that govern your behavior every minute you are in the field.</p>
+    </div>
+
+    <div class="key-box">
+        <span class="key-label">🔑 Key Principle</span>
+        <p class="edit-text" style="margin-bottom:0;">Everything you do in the field — every question you ask, every household you enter, every piece of data you record — is permitted only because a human being has given you their voluntary, informed agreement. Without consent, there is no survey. Without ethics, there is no research.</p>
+    </div>
+
+    <div class="pillar-grid">
+        <div class="pillar-card">
+            <h4 class="edit-text">🛡️ Pillar 1: Do No Harm</h4>
+            <p class="edit-text">Your presence must never make a respondent's situation worse — emotionally, socially, physically, or economically. Before every sensitive question, evaluate: is this person safe to answer honestly?</p>
         </div>
-
-        <div class="clearfix">
-            <div class="inline-img-right">
-                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=700&q=80" class="edit-img" alt="Field Research">
-            </div>
-
-            <div class="dialogue-box">
-                <span class="speaker edit-text">New Surveyor asks:</span>
-                <p class="edit-text" style="font-style:italic;margin-bottom:0;">"I have my tablet and I know the questions. Why do I need to understand why the study exists at all?"</p>
-                <span class="speaker ra edit-text">Senior RA replies:</span>
-                <p class="edit-text" style="font-style:italic;margin-bottom:0;color:var(--brand-dark);font-weight:600;">"Because when you understand why the evidence matters, you understand why every single data point matters. You are not filling in a form. You are generating scientific proof."</p>
-            </div>
-
-            <h3 class="edit-text">What Is a Research Study?</h3>
-            <p class="edit-text">A research study is a structured, systematic effort to answer a specific question about the real world. In the kind of work you will be doing, the question is almost always: <strong>Does this program actually work?</strong></p>
-            <p class="edit-text">Governments spend thousands of crores every year on programs designed to reduce poverty. Without rigorous evidence, there is no way to know whether these programs are effective. Your role is to collect the evidence that separates what works from what does not. Every protocol exists to protect the integrity of that evidence.</p>
+        <div class="pillar-card">
+            <h4 class="edit-text">🤝 Pillar 2: Respect for Persons</h4>
+            <p class="edit-text">Every respondent is an autonomous human being who has the right to decide whether to participate. You never make that decision for them. Respect also extends to those with diminished autonomy.</p>
         </div>
+        <div class="pillar-card">
+            <h4 class="edit-text">⚖️ Pillar 3: Beneficence</h4>
+            <p class="edit-text">Maximize possible benefits and minimize possible harms. If you observe a situation that puts a respondent at risk, you have an obligation to act within your role and refer through proper channels.</p>
+        </div>
+        <div class="pillar-card">
+            <h4 class="edit-text">🏛️ Pillar 4: Justice (Fairness)</h4>
+            <p class="edit-text">The burdens and benefits of research must be distributed fairly. You do not over-survey easy households while skipping hard-to-reach ones. You treat every respondent identically.</p>
+        </div>
+    </div>
 
-        <hr class="topic-divider">
+    <div class="warn-box">
+        <span class="warn-label">⚠️ What Harm Looks Like in Practice</span>
+        <ul>
+            <li class="edit-text">A woman answers questions about her husband's drinking in front of in-laws — the family punishes her later. <strong>Cause:</strong> surveyor's failure to ensure privacy.</li>
+            <li class="edit-text">A respondent discloses domestic violence; the surveyor says "Go to the police." The husband finds out; violence escalates. <strong>Cause:</strong> unsolicited advice the surveyor was not qualified to give.</li>
+        </ul>
+    </div>
+</div>
+</div>
 
-        <h3 class="edit-text">What You Must Know Before Day One</h3>
-        <p class="edit-text">Before your first interview, you must be able to answer every question below. If you cannot, ask your supervisor.</p>
+<div class="section-wrapper bg-light-green" id="irb">
+<div class="kb-body">
+    <div class="topic-header">
+        <span class="eyebrow edit-text">Compliance</span>
+        <h2 class="edit-text">The Ethics Committee (IRB)</h2>
+        <p class="standfirst edit-text">Every legitimate study must be reviewed and approved by an Institutional Review Board (IRB) before any fieldwork begins.</p>
+    </div>
 
-        <div class="table-wrapper">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th class="edit-text">Question You Must Answer</th>
-                        <th class="edit-text">Why It Matters</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="edit-text"><strong>What is the research question?</strong></td><td class="edit-text">You need to explain the study's purpose during consent.</td></tr>
-                    <tr><td class="edit-text"><strong>What is the intervention?</strong></td><td class="edit-text">Respondents will ask about the program. You need to know what it is without promoting it.</td></tr>
-                    <tr><td class="edit-text"><strong>What is the target population?</strong></td><td class="edit-text">Getting this wrong means surveying the wrong people and corrupting the sample.</td></tr>
-                    <tr><td class="edit-text"><strong>Is this baseline, midline, or endline?</strong></td><td class="edit-text">Determines what the data will be compared against.</td></tr>
-                    <tr><td class="edit-text"><strong>What are the daily targets?</strong></td><td class="edit-text">Targets help manage time — but they must never compromise quality.</td></tr>
-                </tbody>
-            </table>
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th class="edit-text">Rule</th>
+                    <th class="edit-text">Why</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="edit-text">You cannot modify the consent process</td><td class="edit-text">The consent script was approved exactly as written. You may not add, subtract, or paraphrase it in ways that change its meaning.</td></tr>
+                <tr><td class="edit-text">You cannot add questions</td><td class="edit-text">Unapproved questions have not been reviewed for ethical risk.</td></tr>
+                <tr><td class="edit-text">You cannot skip consent</td><td class="edit-text">Even if the respondent says "Just get on with it." It is a legal and ethical requirement.</td></tr>
+                <tr><td class="edit-text">Violations shut down studies</td><td class="edit-text">Months or years of work are lost. Responsible individuals face immediate termination.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<div class="section-wrapper bg-white" id="consent">
+<div class="kb-body">
+    <div class="topic-header">
+        <span class="eyebrow edit-text">Execution</span>
+        <h2 class="edit-text">The Informed Consent Process</h2>
+        <p class="standfirst edit-text">Informed consent is not a form you get signed. It is a process through which a respondent reaches a genuine, uncoerced decision.</p>
+    </div>
+
+    <div class="good-box">
+        <span class="good-label">✅ Model Introduction</span>
+        <p class="edit-text" style="margin-bottom:0;font-style:italic;">"Namaste. My name is [your name]. I am a surveyor working with [research organization]. We are conducting a research study in this area to understand [one-sentence topic]. I would like to explain the study to you and, if you are willing, ask if you would be interested in participating. May I take a few minutes of your time to explain?"</p>
+    </div>
+
+    <h3 class="edit-text">The Seven Essential Elements</h3>
+    <div style="margin:24px 0;">
+        <div class="consent-step">
+            <div class="consent-num">1</div>
+            <div class="consent-step-content"><h4 class="edit-text">Purpose of the Study</h4><p class="edit-text">What the study is about and why it is being conducted. Use a one-sentence summary.</p></div>
+        </div>
+        <div class="consent-step">
+            <div class="consent-num">2</div>
+            <div class="consent-step-content"><h4 class="edit-text">What Participation Involves</h4><p class="edit-text">What the respondent will do, for how long. Be honest about duration.</p></div>
+        </div>
+        <div class="consent-step">
+            <div class="consent-num">3</div>
+            <div class="consent-step-content"><h4 class="edit-text">Voluntary Participation</h4><p class="edit-text">Participation is entirely their choice. No penalty. Access to government services is not affected.</p></div>
+        </div>
+        <div class="consent-step">
+            <div class="consent-num">4</div>
+            <div class="consent-step-content"><h4 class="edit-text">Risks &amp; Discomfort</h4><p class="edit-text">Some questions may be personal. They may skip any question without consequence.</p></div>
+        </div>
+        <div class="consent-step">
+            <div class="consent-num">5</div>
+            <div class="consent-step-content"><h4 class="edit-text">Confidentiality</h4><p class="edit-text">Everything they say is strictly confidential. Names will not appear in reports.</p></div>
+        </div>
+        <div class="consent-step">
+            <div class="consent-num">6</div>
+            <div class="consent-step-content"><h4 class="edit-text">No Direct Benefit</h4><p class="edit-text">Participation does not guarantee money, services, or program enrolment.</p></div>
+        </div>
+        <div class="consent-step">
+            <div class="consent-num">7</div>
+            <div class="consent-step-content"><h4 class="edit-text">Contact Information</h4><p class="edit-text">Provide the supervisor's number and the research organization helpline.</p></div>
+        </div>
+    </div>
+
+    <div class="scenario-grid">
+        <div class="scenario-card good">
+            <span class="scenario-label edit-text">✅ What Good Consent Looks Like</span>
+            <p class="edit-text">The surveyor explains the topic in plain language. She reads the full consent form at a natural pace, pausing after each section. When the respondent asks about pensions, she clarifies the survey has nothing to do with government services. <strong>Time: 6 minutes.</strong></p>
+        </div>
+        <div class="scenario-card bad">
+            <span class="scenario-label edit-text">❌ What a Red-Flag Consent Looks Like</span>
+            <p class="edit-text">The surveyor arrives and says: "The sarpanch sent me. I need to ask you some questions for a government survey." He hands the form and says "Just sign here." The respondent signs without explanation. <strong>Time: 30 seconds.</strong> This interview is ethically invalid.</p>
         </div>
     </div>
 </div>
-
-<div class="section-wrapper bg-light-green" id="rct">
-    <div class="kb-body">
-        <div class="topic-header">
-            <span class="eyebrow edit-text">Methodology</span>
-            <h2 class="edit-text">How a Randomized Evaluation Works</h2>
-            <p class="standfirst edit-text">The studies you work on use an RCT — the gold standard for establishing whether a program actually caused a change.</p>
-        </div>
-
-        <p class="edit-text">Think of it as a fair lottery. Before a program begins, eligible participants are randomly split into two groups:</p>
-
-        <div class="component-row">
-            <div class="vs-col" style="background:white; border-color:var(--heading-green);">
-                <h4 class="edit-text" style="color:var(--heading-green); margin-top:0;">🟢 Treatment Group</h4>
-                <p class="edit-text" style="font-size:14px;margin:0;">These participants <strong>receive the program</strong> being tested. Their outcomes are measured after a set period.</p>
-            </div>
-            <div class="vs-col" style="background:white; border-color:var(--accent-blue);">
-                <h4 class="edit-text" style="color:var(--accent-blue); margin-top:0;">🔵 Control Group</h4>
-                <p class="edit-text" style="font-size:14px;margin:0;">These participants <strong>do not receive the program</strong> during the study. They continue with their normal lives.</p>
-            </div>
-        </div>
-
-        <p class="edit-text">Because assignment is random, both groups are identical in every way before the program starts. The only difference is that one group received the program and the other did not. This makes it possible to measure the program's true effect.</p>
-
-        <div class="key-principle-box">
-            <span class="kp-label edit-text">🔑 Why Both Groups Matter Equally</span>
-            <p class="edit-text" style="margin:0;"><strong>Your surveys are the measurement.</strong> Without your data from both groups — collected with equal care — the entire design falls apart. If you survey the treatment group more thoroughly, the comparison becomes invalid.</p>
-        </div>
-
-        <div class="scenario-box">
-            <span class="scenario-label edit-text">Field Scenario</span>
-            <span class="scenario-title edit-text">"Why Wasn't I Chosen?"</span>
-            <p class="edit-text" style="margin-bottom:10px;">"My neighbor Ramesh told me his village is getting the new seed variety. Why wasn't our village chosen?"</p>
-            <p class="edit-text" style="color:#64ffda; margin:0;"><strong>Say:</strong> "The villages were chosen by a method similar to a lottery — a random selection. Your participation is extremely valuable regardless of which group your village is in."</p>
-        </div>
-    </div>
 </div>
 
-<div class="section-wrapper bg-white" id="conduct">
-    <div class="kb-body">
-        <div class="topic-header">
-            <span class="eyebrow edit-text">Your Standards</span>
-            <h2 class="edit-text">Professional Conduct &amp; Data Integrity</h2>
-            <p class="standfirst edit-text">You represent the study in the field. For the respondent, you are the study. Your behavior forms their entire impression of the research.</p>
-        </div>
+<div class="section-wrapper bg-light-green" id="special">
+<div class="kb-body">
+    <div class="topic-header">
+        <span class="eyebrow edit-text">Complex Situations</span>
+        <h2 class="edit-text">Special Consent Scenarios</h2>
+        <p class="standfirst edit-text">Standard consent assumes a literate adult in a private setting making a free choice. In fieldwork, this ideal is often the exception.</p>
+    </div>
 
-        <h3 class="edit-text">Decide vs. Escalate</h3>
-        <p class="edit-text">One of the most important skills a surveyor must develop is knowing the boundary between independent judgment and mandatory escalation.</p>
+    <h3 class="edit-text">Consent for Minors (Under 18)</h3>
+    <p class="edit-text">Two separate consents are required: <strong>Parental/Guardian Consent</strong> (all elements communicated to the parent) and <strong>Child Assent</strong> (the minor agrees using age-appropriate language). If either refuses, you do not proceed.</p>
 
-        <div class="table-wrapper">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th class="edit-text">Situation</th>
-                        <th class="edit-text">You Decide</th>
-                        <th class="edit-text">Escalate to Supervisor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="edit-text">Respondent asks to reschedule</td><td class="td-green edit-text">Schedule callback</td><td class="edit-text">—</td></tr>
-                    <tr><td class="edit-text">Respondent is hostile</td><td class="td-green edit-text">Leave immediately</td><td class="td-red edit-text">Report within the hour</td></tr>
-                    <tr><td class="edit-text">App has incorrect skip pattern</td><td class="edit-text">—</td><td class="td-red edit-text">Do not fix yourself. Flag.</td></tr>
-                    <tr><td class="edit-text">Leader asks to see tablet</td><td class="td-green edit-text">Show consent form verbally</td><td class="td-red edit-text">Never hand over device.</td></tr>
-                    <tr><td class="edit-text">Wrong person interviewed</td><td class="edit-text">—</td><td class="td-red edit-text">Do not delete data. Report.</td></tr>
-                </tbody>
-            </table>
-        </div>
+    <h3 class="edit-text">Consent When Literacy Is Limited</h3>
+    <ul>
+        <li class="edit-text">Read the entire consent form aloud, in the respondent's language, at a pace they can follow.</li>
+        <li class="edit-text">After each major section, pause and ask: "Does this make sense?"</li>
+        <li class="edit-text">Use thumbprint with a witness — do not ask them to sign what they cannot read.</li>
+    </ul>
 
-        <div class="red-flag-box">
-            <span class="rf-label edit-text">⚠️ Termination Offenses</span>
-            <ul class="edit-text">
-                <li><strong>Data fabrication:</strong> Filling in responses without conducting the interview.</li>
-                <li><strong>Data falsification:</strong> Changing an answer to pass a validation check.</li>
-                <li>Recording a wrong respondent under the listed respondent's ID.</li>
-                <li>Sharing respondent data with anyone outside the research team.</li>
-            </ul>
-        </div>
+    <h3 class="edit-text">Third-Party Interference</h3>
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr><th class="edit-text">Situation</th><th class="edit-text">Your Response</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="edit-text">Village leader says "I give you permission to survey everyone"</td><td class="edit-text">Thank the leader. Explain that you still need individual consent from each respondent.</td></tr>
+                <tr><td class="edit-text">Husband answers "Yes" on wife's behalf</td><td class="edit-text">Thank him. Then directly ask the wife whether she is comfortable participating.</td></tr>
+                <tr><td class="edit-text">Someone demands to see your data</td><td class="edit-text">Decline politely. Offer supervisor contact details. Never hand over your device.</td></tr>
+            </tbody>
+        </table>
     </div>
 </div>
-
-<div class="section-wrapper bg-light-green" id="timeline">
-    <div class="kb-body">
-        <div class="topic-header">
-            <span class="eyebrow edit-text">The Research Calendar</span>
-            <h2 class="edit-text">Where You Fit in the Timeline</h2>
-            <p class="standfirst edit-text">Timing is not just an administrative convenience — it is a scientific requirement. If a survey window is missed, the evidence cannot be generated.</p>
-        </div>
-
-        <div class="timeline-grid">
-            <div class="timeline-card dim">
-                <div class="tc-phase edit-text">Phase 1</div>
-                <div class="tc-title edit-text">Study Design</div>
-                <div class="tc-desc edit-text">Research question, sampling, and approvals finalized.</div>
-            </div>
-            <div class="timeline-card">
-                <div class="tc-phase edit-text">Phase 2</div>
-                <div class="tc-title edit-text">Training & Pilot</div>
-                <div class="tc-desc edit-text">You are trained and conduct test interviews. Your feedback improves the final instrument.</div>
-            </div>
-            <div class="timeline-card">
-                <div class="tc-phase edit-text">Phase 3</div>
-                <div class="tc-title edit-text">Baseline Survey</div>
-                <div class="tc-desc edit-text">Data collected before the program begins. Accuracy here is non-negotiable.</div>
-            </div>
-            <div class="timeline-card dim">
-                <div class="tc-phase edit-text">Phase 4</div>
-                <div class="tc-title edit-text">Intervention</div>
-                <div class="tc-desc edit-text">Program implemented in treatment areas.</div>
-            </div>
-            <div class="timeline-card" style="border-top-color:var(--accent-orange);">
-                <div class="tc-phase edit-text">Phase 5</div>
-                <div class="tc-title edit-text">Endline Survey</div>
-                <div class="tc-desc edit-text">Final data collection. Every baseline respondent must be found. Tracking is critical.</div>
-            </div>
-        </div>
-    </div>
 </div>
 
-<div class="section-wrapper bg-white" id="partner">
-    <div class="kb-body">
-        <div class="topic-header">
-            <span class="eyebrow edit-text">Navigating the Field</span>
-            <h2 class="edit-text">Understanding the Implementing Partner</h2>
-            <p class="standfirst edit-text">In most studies, the intervention is run by an implementing partner — an NGO or government department. You evaluate their program; you do not deliver it. Respondents will often confuse you with them.</p>
-        </div>
-
-        <div class="key-principle-box">
-            <span class="kp-label">🔑 What to Always Say</span>
-            <p class="edit-text" style="margin:0;font-style:italic;">"I am from [research organization]. We are a research team conducting a survey to understand how communities like yours are doing. We are not from the government and we are not distributing any program benefits."</p>
-        </div>
-
-        <h3 class="edit-text" style="margin-top:28px;">Handling Trick Questions: Government Partner</h3>
-
-        <div class="scenario-box edit-text">
-            <span class="scenario-label">Trick Question — Government Context</span>
-            "Are you from the department office? Can you check why I haven't received my scheme payment?"<br><br>
-            <span style="font-style:normal;font-weight:700;color:var(--brand-dark);">Say: </span>"I am from [research organization], a separate research team. I am not from the government office and I cannot access any scheme records. Please contact the department office directly."
-        </div>
-
-        <div class="scenario-box edit-text" style="transform:rotate(0.4deg);">
-            <span class="scenario-label">Trick Question — NGO Context</span>
-            "The NGO worker accompanied you to my house. Does that mean I have to answer your questions?"<br><br>
-            <span style="font-style:normal;font-weight:700;color:var(--brand-dark);">Say: </span>"Not at all. This interview is completely separate from the NGO's work. Participation is entirely your choice and has no impact on anything the NGO does for you."
-        </div>
-
-        <h3 class="edit-text">Partner Boundaries — What Good Looks Like</h3>
-        <div class="component-row">
-            <div class="vs-col vs-bad" style="border-radius:14px;border:1px solid #fecaca;padding:24px;">
-                <div class="vs-header edit-text">Common Mistakes</div>
-                <ul class="vs-list">
-                    <li class="edit-text">Assuming NGO presence means respondents must cooperate.</li>
-                    <li class="edit-text">Sharing respondent lists with partner field staff.</li>
-                    <li class="edit-text">Implying participation leads to program benefits.</li>
-                    <li class="edit-text">Letting partner staff sit in during interviews.</li>
-                </ul>
-            </div>
-            <div class="vs-col vs-good" style="border-radius:14px;border:1px solid #bbf7d0;padding:24px;">
-                <div class="vs-header edit-text">What Good Looks Like</div>
-                <ul class="vs-list">
-                    <li class="edit-text">Clearly state you are from the research team, not the partner.</li>
-                    <li class="edit-text">Politely decline data sharing requests and escalate.</li>
-                    <li class="edit-text">Make the voluntary nature of consent unmistakably clear.</li>
-                    <li class="edit-text">Always interview one-on-one with the respondent.</li>
-                </ul>
-            </div>
-        </div>
-
+<div class="section-wrapper bg-white" id="handling">
+<div class="kb-body">
+    <div class="topic-header">
+        <span class="eyebrow edit-text">Protocols</span>
+        <h2 class="edit-text">Handling Refusals &amp; Withdrawals</h2>
     </div>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr><th class="edit-text">Situation</th><th class="edit-text">What You Do</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="edit-text">Respondent refuses before survey begins</td><td class="edit-text">Thank them for their time. Do not argue. Record the refusal. Move on.</td></tr>
+                <tr><td class="edit-text">Respondent consents to some modules but refuses others</td><td class="edit-text">Proceed with consented modules. Skip refused ones. Document clearly.</td></tr>
+                <tr><td class="edit-text">Respondent wants to stop mid-interview</td><td class="edit-text">Stop immediately. Save partial data. Offer option to continue another time.</td></tr>
+                <tr><td class="edit-text">Respondent verbally consents but refuses to sign/thumbprint</td><td class="edit-text">Check protocol. If protocol requires signature and respondent refuses, you cannot proceed.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="warn-box">
+        <span class="warn-label">⚠️ Never Do This</span>
+        <ul>
+            <li class="edit-text">Never say "The sarpanch has approved this" to pressure someone.</li>
+            <li class="edit-text">Never imply that refusal will affect access to government schemes.</li>
+            <li class="edit-text">Never circle back to a household that has refused, hoping for a different answer.</li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<div class="section-wrapper bg-light-green" id="checklist">
+<div class="kb-body">
+    <div class="topic-header" style="text-align:center;">
+        <span class="eyebrow edit-text">Self-Assessment</span>
+        <h2 class="edit-text">Ethics Readiness Checklist</h2>
+        <p class="edit-text" style="max-width:620px;margin:0 auto;">Before moving to the next topic, ensure you can check off every item below.</p>
+    </div>
+
+    <div class="prep-console" style="background: white; border-radius: 24px; box-shadow: var(--shadow-float); border: 1px solid var(--border-soft); overflow: hidden; margin-top: 30px;">
+        <div class="prep-progress-header" style="background: var(--brand-dark); color: white; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3 class="edit-text" style="margin: 0; color: white; font-size: 16px;">Topic 2 Readiness Score</h3>
+                <p class="edit-text" style="margin:0;font-size:13px;color:#94a3b8;">Complete all items to reach 100%.</p>
+            </div>
+            <div class="progress-wrap" style="display: flex; align-items: center; gap: 15px;">
+                <div class="progress-bar-bg" style="width: 150px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 10px; overflow: hidden;"><div class="progress-bar-fill" id="master-progress-fill" style="height: 100%; background: #16a34a; width: 0%; transition: width 0.4s ease;"></div></div>
+                <span class="progress-text" id="master-progress-text" style="font-size: 14px; font-weight: 800;">0%</span>
+            </div>
+        </div>
+        <div class="prep-body" style="padding: 30px;">
+            <div class="check-list" style="list-style: none; padding: 0; margin: 0;">
+                <div class="check-item" onclick="toggleTask(this)" style="display: flex; align-items: flex-start; gap: 15px; padding: 12px 15px; background: var(--bg-off-white); border: 1px solid var(--border-soft); border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: 0.2s;"><div class="custom-checkbox" style="width: 20px; height: 20px; border: 2px solid #cbd5e1; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: transparent; font-size: 12px; font-weight: 900; flex-shrink: 0; margin-top: 2px;">✓</div><div class="check-text edit-text" style="font-size: 14px; color: var(--brand-dark); font-weight: 600; line-height: 1.5;">I understand the four pillars of research ethics and can give a field example of each.</div></div>
+                <div class="check-item" onclick="toggleTask(this)" style="display: flex; align-items: flex-start; gap: 15px; padding: 12px 15px; background: var(--bg-off-white); border: 1px solid var(--border-soft); border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: 0.2s;"><div class="custom-checkbox" style="width: 20px; height: 20px; border: 2px solid #cbd5e1; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: transparent; font-size: 12px; font-weight: 900; flex-shrink: 0; margin-top: 2px;">✓</div><div class="check-text edit-text" style="font-size: 14px; color: var(--brand-dark); font-weight: 600; line-height: 1.5;">I can conduct a complete consent process without skipping any essential elements.</div></div>
+                <div class="check-item" onclick="toggleTask(this)" style="display: flex; align-items: flex-start; gap: 15px; padding: 12px 15px; background: var(--bg-off-white); border: 1px solid var(--border-soft); border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: 0.2s;"><div class="custom-checkbox" style="width: 20px; height: 20px; border: 2px solid #cbd5e1; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: transparent; font-size: 12px; font-weight: 900; flex-shrink: 0; margin-top: 2px;">✓</div><div class="check-text edit-text" style="font-size: 14px; color: var(--brand-dark); font-weight: 600; line-height: 1.5;">I know how to handle partial consent: proceed with consented modules, skip refused ones.</div></div>
+                <div class="check-item" onclick="toggleTask(this)" style="display: flex; align-items: flex-start; gap: 15px; padding: 12px 15px; background: var(--bg-off-white); border: 1px solid var(--border-soft); border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: 0.2s;"><div class="custom-checkbox" style="width: 20px; height: 20px; border: 2px solid #cbd5e1; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: transparent; font-size: 12px; font-weight: 900; flex-shrink: 0; margin-top: 2px;">✓</div><div class="check-text edit-text" style="font-size: 14px; color: var(--brand-dark); font-weight: 600; line-height: 1.5;">I know the special consent procedures for minors and non-literate respondents.</div></div>
+                <div class="check-item" onclick="toggleTask(this)" style="display: flex; align-items: flex-start; gap: 15px; padding: 12px 15px; background: var(--bg-off-white); border: 1px solid var(--border-soft); border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: 0.2s;"><div class="custom-checkbox" style="width: 20px; height: 20px; border: 2px solid #cbd5e1; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: transparent; font-size: 12px; font-weight: 900; flex-shrink: 0; margin-top: 2px;">✓</div><div class="check-text edit-text" style="font-size: 14px; color: var(--brand-dark); font-weight: 600; line-height: 1.5;">I know that consent is a process, not a signature. The form documents the process.</div></div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        .check-item:hover { border-color: var(--heading-green); background: white;}
+        .check-item.done { background: #f0fdf4 !important; border-color: #bbf7d0 !important; }
+        .check-item.done .custom-checkbox { background: #16a34a !important; border-color: #16a34a !important; color: white !important; }
+        .check-item.done .check-text { color: var(--text-light) !important; text-decoration: line-through !important; }
+    </style>
+    
+    <script>
+    function toggleTask(el){el.classList.toggle('done');updateProgress();}
+    function updateProgress(){
+        var items=document.querySelectorAll('.check-item');
+        var done=document.querySelectorAll('.check-item.done').length;
+        var pct=Math.round(done/items.length*100);
+        document.getElementById('master-progress-fill').style.width=pct+'%';
+        document.getElementById('master-progress-text').textContent=pct+'%';
+    }
+    </script>
+</div>
 </div>
 
 <div class="topic-nav-footer">
-    <div class="tnf-left"></div>
-    <div class="tnf-center">Foundational Guidelines · Topic 1 of 5</div>
+    <div class="tnf-left">
+        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/surveyor-basics" target="_top">
+            ← Surveyor Basics
+        </a>
+    </div>
+    <div class="tnf-center">Foundational Guidelines · Topic 2 of 5</div>
     <div class="tnf-right">
-        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/research-ethics" class="edit-link" target="_top">
-            Next: Research Ethics →
+        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines/respondent-tracking" target="_top">
+            Next: Respondent Tracking →
         </a>
     </div>
 </div>
@@ -408,75 +385,38 @@ body.edit-mode-active .edit-link { outline: 2px dashed #f59e0b; outline-offset: 
         <button onclick="applyImg()">Update Image</button>
         <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:6px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
     </div>
-    <div id="inline-link-box" class="inline-bubble">
-        <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 800; color: #1e293b;">UPDATE LINK URL</p>
-        <input type="text" id="link-input-val" placeholder="https://...">
-        <button onclick="applyLink()">Save Link</button>
-        <button onclick="hideBubble()" style="background:none;color:#64748b;font-size:11px;margin-top:5px;text-decoration:underline;cursor:pointer;width:100%;border:none;padding:0;">Cancel</button>
-    </div>
 </div>
+<script src="https://awatramani.github.io/ro-knowledge-bank/kb-admin.js"></script>
 
 <script>
-// 1. CLICK TO SCROLL LOGIC
 function jumpTo(id) {
     var el = document.getElementById(id);
-    if (el) {
-        // Native browser API that forces the parent Google Sites iframe to scroll
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (!el) return;
+    
+    var nav = document.getElementById('jump-nav');
+    var offset = nav ? nav.offsetHeight + 8 : 60;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    
+    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
+    document.querySelector('[data-target="' + id + '"]').classList.add('active');
 }
 
-// 2. SCROLL SPY LOGIC (Intersection Observer)
-document.addEventListener("DOMContentLoaded", function() {
-    const jumpLinks = document.querySelectorAll('.jump-link');
-    const sections = Array.from(jumpLinks).map(link => document.getElementById(link.getAttribute('data-target'))).filter(Boolean);
-
-    const observerOptions = {
-        root: null, 
-        rootMargin: "-140px 0px -50% 0px", // Triggers when section hits the top area below the nav
-        threshold: 0 
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const targetId = entry.target.id;
-                
-                // Remove active from all
-                jumpLinks.forEach(l => l.classList.remove('active'));
-                
-                // Add active to current
-                const activeLink = document.querySelector(`.jump-link[data-target="${targetId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            }
-        });
-    }, observerOptions);
-
-    // Observe all sections
-    sections.forEach(section => observer.observe(section));
+window.addEventListener('scroll', function() {
+    var sections = ['pillars', 'irb', 'consent', 'special', 'handling', 'checklist'];
+    var nav = document.getElementById('jump-nav');
+    var offset = nav ? nav.offsetHeight + 40 : 80;
+    var current = sections[0];
+    
+    sections.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= offset) current = id;
+    });
+    
+    document.querySelectorAll('.jump-link').forEach(function(l){ l.classList.remove('active'); });
+    var active = document.querySelector('[data-target="' + current + '"]');
+    if (active) active.classList.add('active');
 });
-
-/* ADMIN EDITOR SCRIPT */
-let isAdmin = false; let targetImg = null; let targetLink = null;
-document.addEventListener('keydown', e => { if (e.altKey && e.shiftKey && (e.key === 'e' || e.key === 'E')) { e.preventDefault(); if (!isAdmin) unlockPage(); }});
-function unlockPage() {
-    isAdmin = true; document.getElementById('admin-toolkit').style.display = 'flex'; document.body.classList.add('edit-mode-active');
-    document.querySelectorAll('.edit-text, .edit-link').forEach(el => { el.setAttribute('contenteditable', 'true'); if (el.tagName.toLowerCase() === 'a') { el.classList.add('edit-link'); el.addEventListener('click', openLinkEditor); }});
-    document.querySelectorAll('.edit-img').forEach(img => { img.addEventListener('click', openImgEditor); });
-}
-function lockPage() {
-    isAdmin = false; document.getElementById('admin-toolkit').style.display = 'none'; document.querySelectorAll('.inline-bubble').forEach(b => b.style.display = 'none'); document.body.classList.remove('edit-mode-active');
-    document.querySelectorAll('.edit-text, .edit-link').forEach(el => { el.removeAttribute('contenteditable'); if (el.tagName.toLowerCase() === 'a') { el.removeEventListener('click', openLinkEditor); }});
-    document.querySelectorAll('.edit-img').forEach(img => { img.removeEventListener('click', openImgEditor); });
-}
-function openImgEditor(e) { if (!isAdmin) return; e.preventDefault(); targetImg = e.target; const b = document.getElementById('inline-img-box'); b.style.display = 'block'; document.getElementById('img-input-val').value = targetImg.src; }
-function applyImg() { const val = document.getElementById('img-input-val').value.trim(); if (targetImg && val) { const match = val.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/); targetImg.src = match ? `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1600` : val; } document.getElementById('inline-img-box').style.display = 'none'; }
-function openLinkEditor(e) { if (!isAdmin) return; e.preventDefault(); targetLink = e.currentTarget; const b = document.getElementById('inline-link-box'); b.style.display = 'block'; document.getElementById('link-input-val').value = targetLink.href || ''; }
-function applyLink() { const val = document.getElementById('link-input-val').value.trim(); if (targetLink && val) targetLink.href = val; document.getElementById('inline-link-box').style.display = 'none'; }
-function hideBubble() { document.querySelectorAll('.inline-bubble').forEach(b => b.style.display = 'none'); }
-function copyCode() { const wasOn = isAdmin; lockPage(); const clone = document.documentElement.cloneNode(true); clone.querySelector('#admin-master-container').remove(); const temp = document.createElement("textarea"); document.body.appendChild(temp); temp.value = "<!DOCTYPE html>\n" + clone.outerHTML; temp.select(); document.execCommand('copy'); document.body.removeChild(temp); if(wasOn) unlockPage(); alert("Code Copied!"); }
 </script>
 </body>
 </html>
