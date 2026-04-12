@@ -25,7 +25,8 @@
   --teal-accent:#64ffda;
   --mono: 'DM Mono', 'Courier New', monospace;
   --sans: 'DM Sans', system-ui, sans-serif;
-    --ease: cubic-bezier(.4,0,.2,1);
+  --sidebar-w: 56px;
+  --ease: cubic-bezier(.4,0,.2,1);
 }
 
 /* ── Reset ──────────────────────────────────────────────────────────────── */
@@ -42,12 +43,12 @@ a { text-decoration: none; color: inherit; }
 h1,h2,h3,h4 { color: var(--ink); }
 
 /* ── Page shell ─────────────────────────────────────────────────────────── */
-.page-layout { display: flex; min-height: 100vh; }
+.shell { display: flex; min-height: 100vh; }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    NOTION-STYLE SIDEBAR
    ═══════════════════════════════════════════════════════════════════════════ */
-.left-nav {
+.sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
   height: 100vh;
@@ -62,16 +63,19 @@ h1,h2,h3,h4 { color: var(--ink); }
   flex-shrink: 0;
   border-right: 1px solid rgba(255,255,255,0.05);
 }
+.sidebar:hover, .sidebar:focus-within {
+  width: 224px;
+  box-shadow: 4px 0 32px rgba(0,0,0,0.18);
+}
 
-
-.left-nav-brand {
+.sb-brand {
   height: 56px; min-height: 56px;
   display: flex; align-items: center;
   padding: 0 16px; gap: 11px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
   flex-shrink: 0; overflow: hidden;
 }
-.left-nav-icon {
+.sb-icon {
   width: 26px; height: 26px; border-radius: 7px;
   background: var(--green);
   display: flex; align-items: center; justify-content: center;
@@ -79,16 +83,18 @@ h1,h2,h3,h4 { color: var(--ink); }
   letter-spacing: -0.5px; flex-shrink: 0;
   font-family: var(--mono);
 }
-.left-nav-brand-text { overflow: hidden; opacity: 0; transition: opacity .16s var(--ease) .05s; pointer-events: none; white-space: nowrap; }
-.left-nav-brand-text strong { display: block; font-size: 12.5px; font-weight: 600; color: #e2e8f0; letter-spacing: -0.2px; line-height: 1.25; }
-.left-nav-brand-text span { font-size: 10px; color: #64748b; font-family: var(--mono); letter-spacing: 0.5px; text-transform: uppercase; }
+.sb-brand-text { overflow: hidden; opacity: 0; transition: opacity .16s var(--ease) .05s; pointer-events: none; white-space: nowrap; }
+.sidebar:hover .sb-brand-text, .sidebar:focus-within .sb-brand-text { opacity: 1; pointer-events: auto; }
+.sb-brand-text strong { display: block; font-size: 12.5px; font-weight: 600; color: #e2e8f0; letter-spacing: -0.2px; line-height: 1.25; }
+.sb-brand-text span { font-size: 10px; color: #64748b; font-family: var(--mono); letter-spacing: 0.5px; text-transform: uppercase; }
 
-.left-nav-section { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.6px; color: #475569; padding: 18px 16px 6px; white-space: nowrap; overflow: hidden; opacity: 0; height: 0; transition: opacity .15s var(--ease), height .18s var(--ease), padding .18s var(--ease); font-family: var(--mono); }
+.sb-section { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.6px; color: #475569; padding: 18px 16px 6px; white-space: nowrap; overflow: hidden; opacity: 0; height: 0; transition: opacity .15s var(--ease), height .18s var(--ease), padding .18s var(--ease); font-family: var(--mono); }
+.sidebar:hover .sb-section, .sidebar:focus-within .sb-section { opacity: 1; height: 36px; padding: 18px 16px 6px; }
 
-.left-nav-nav { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 4px 0; scrollbar-width: none; }
-.left-nav-nav::-webkit-scrollbar { display: none; }
+.sb-nav { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 4px 0; scrollbar-width: none; }
+.sb-nav::-webkit-scrollbar { display: none; }
 
-.left-nav-item {
+.sb-item {
   display: flex; align-items: center;
   height: 34px; padding: 0 0 0 15px; gap: 10px;
   color: #94a3b8; font-size: 13px; font-weight: 400;
@@ -97,27 +103,31 @@ h1,h2,h3,h4 { color: var(--ink); }
   transition: background .12s, color .12s;
   cursor: pointer;
 }
-.left-nav-item:hover { background: rgba(255,255,255,0.05); color: #e2e8f0; }
-.left-nav-item.active { background: rgba(26,122,109,0.18); color: #34d399; font-weight: 500; }
+.sb-item:hover { background: rgba(255,255,255,0.05); color: #e2e8f0; }
+.sb-item.active { background: rgba(26,122,109,0.18); color: #34d399; font-weight: 500; }
 
-.left-nav-ico {
+.sb-ico {
   width: 22px; height: 22px; border-radius: 5px;
   display: flex; align-items: center; justify-content: center;
   font-size: 12px; flex-shrink: 0;
   background: rgba(255,255,255,0.04);
   transition: background .12s;
 }
-.left-nav-item:hover .left-nav-ico { background: rgba(255,255,255,0.08); }
-.left-nav-item.active .left-nav-ico { background: rgba(52,211,153,0.15); }
+.sb-item:hover .sb-ico { background: rgba(255,255,255,0.08); }
+.sb-item.active .sb-ico { background: rgba(52,211,153,0.15); }
 
-.left-nav-label { opacity: 0; transition: opacity .13s var(--ease) .05s; pointer-events: none; overflow: hidden; text-overflow: ellipsis; }
+.sb-label { opacity: 0; transition: opacity .13s var(--ease) .05s; pointer-events: none; overflow: hidden; text-overflow: ellipsis; }
+.sidebar:hover .sb-label, .sidebar:focus-within .sb-label { opacity: 1; pointer-events: auto; }
 
-.left-nav-dot { position: absolute; right: 7px; top: 50%; transform: translateY(-50%); width: 4px; height: 4px; border-radius: 50%; background: var(--green); opacity: 0; transition: opacity .12s; }
-.left-nav-item.active .left-nav-dot { opacity: 1; }
+.sb-dot { position: absolute; right: 7px; top: 50%; transform: translateY(-50%); width: 4px; height: 4px; border-radius: 50%; background: var(--green); opacity: 0; transition: opacity .12s; }
+.sb-item.active .sb-dot { opacity: 1; }
+.sidebar:hover .sb-dot, .sidebar:focus-within .sb-dot { opacity: 0; }
 
-.left-nav-footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 10px 0; flex-shrink: 0; overflow: hidden; }
-.left-nav-footer-pill { width: 26px; height: 20px; border-radius: 4px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 9px; color: #475569; font-family: var(--mono); letter-spacing: 0.5px; }
-.left-nav-footer-text { opacity: 0; padding: 3px 16px; font-size: 10px; color: #475569; white-space: nowrap; font-family: var(--mono); transition: opacity .16s var(--ease); line-height: 1.6; }
+.sb-footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 10px 0; flex-shrink: 0; overflow: hidden; }
+.sb-footer-pill { width: 26px; height: 20px; border-radius: 4px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 9px; color: #475569; font-family: var(--mono); letter-spacing: 0.5px; }
+.sb-footer-text { opacity: 0; padding: 3px 16px; font-size: 10px; color: #475569; white-space: nowrap; font-family: var(--mono); transition: opacity .16s var(--ease); line-height: 1.6; }
+.sidebar:hover .sb-footer-pill, .sidebar:focus-within .sb-footer-pill { display: none; }
+.sidebar:hover .sb-footer-text, .sidebar:focus-within .sb-footer-text { opacity: 1; }
 
 /* ── Main column ─────────────────────────────────────────────────────────── */
 .main { flex: 1; min-width: 0; overflow-x: hidden; }
@@ -590,136 +600,82 @@ body.edit-mode-active .edit-img { outline: 3px dashed #0ea5e9; cursor: pointer; 
   .spot-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 780px) {
-  .page-layout { flex-direction: column; }
-  .left-nav { width: 100% !important; height: 48px; min-height: 48px; flex-direction: row; position: relative; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  
-  .left-nav-brand { border-bottom: none; border-right: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
-  .left-nav-brand-text { opacity: 1 !important; }
-  .left-nav-section { display: none; }
-  .left-nav-nav { display: flex; flex-direction: row; padding: 0 6px; align-items: center; overflow-x: auto; overflow-y: hidden; flex: 1; }
-  .left-nav-item { height: 48px; border-radius: 0; margin: 0; border-bottom: 2px solid transparent; flex-shrink: 0; }
-  .left-nav-item.active { background: transparent; border-bottom-color: #34d399; }
-  .left-nav-label { opacity: 1 !important; pointer-events: auto !important; }
-  .left-nav-dot { display: none; }
-  .left-nav-footer { display: none; }
+  .shell { flex-direction: column; }
+  .sidebar { width: 100% !important; height: 48px; min-height: 48px; flex-direction: row; position: relative; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .sidebar:hover, .sidebar:focus-within { width: 100% !important; }
+  .sb-brand { border-bottom: none; border-right: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
+  .sb-brand-text { opacity: 1 !important; }
+  .sb-section { display: none; }
+  .sb-nav { display: flex; flex-direction: row; padding: 0 6px; align-items: center; overflow-x: auto; overflow-y: hidden; flex: 1; }
+  .sb-item { height: 48px; border-radius: 0; margin: 0; border-bottom: 2px solid transparent; flex-shrink: 0; }
+  .sb-item.active { background: transparent; border-bottom-color: #34d399; }
+  .sb-label { opacity: 1 !important; pointer-events: auto !important; }
+  .sb-dot { display: none; }
+  .sb-footer { display: none; }
   .hero-inner { flex-direction: column; }
   .bc-pfo, .bc-fr, .bc-ta, .bc-ob { grid-column: span 12; }
   .spot-grid { grid-template-columns: 1fr; }
   .life-inner { flex-direction: column; }
   .life-links { grid-template-columns: 1fr; }
 }
-
-/* ── Always-open sidebar ─────────────────────────────────────── */
-.page-layout { display: flex; align-items: flex-start; min-height: 100vh; }
-.left-nav {
-    width: 200px; min-width: 200px;
-    height: 100vh; position: sticky; top: 0;
-    background: #0d1117;
-    display: flex; flex-direction: column;
-    overflow: hidden; z-index: 900; flex-shrink: 0;
-    border-right: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 2px 0 16px rgba(0,0,0,0.1);
-}
-.left-nav-brand {
-    height: 56px; min-height: 56px;
-    display: flex; align-items: center;
-    padding: 0 18px; gap: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    flex-shrink: 0;
-}
-.left-nav-icon {
-    width: 26px; height: 26px; border-radius: 7px;
-    background: #1A7A6D;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700; color: #fff;
-    flex-shrink: 0; letter-spacing: -0.5px;
-}
-.left-nav-brand-text strong {
-    display: block; font-size: 12px; font-weight: 700;
-    color: #e2e8f0; line-height: 1.25; letter-spacing: -0.2px;
-}
-.left-nav-brand-text span {
-    font-size: 10px; color: #475569;
-    text-transform: uppercase; letter-spacing: 0.8px;
-}
-.left-nav-section {
-    font-size: 10px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 1.6px; color: #334155;
-    padding: 18px 18px 7px; white-space: nowrap; flex-shrink: 0;
-}
-.left-nav-items {
-    flex: 1; overflow-y: auto; overflow-x: hidden;
-    padding: 4px 0; scrollbar-width: none;
-}
-.left-nav-items::-webkit-scrollbar { display: none; }
-.left-nav-item {
-    display: flex; align-items: center;
-    padding: 9px 18px; gap: 0;
-    color: #64748b; font-size: 13px; font-weight: 400;
-    white-space: nowrap; overflow: hidden;
-    text-overflow: ellipsis;
-    border-radius: 6px; margin: 1px 8px;
-    transition: background .15s, color .15s;
-    text-decoration: none; position: relative;
-    border-left: 2px solid transparent;
-}
-.left-nav-item:hover {
-    background: rgba(255,255,255,0.05);
-    color: #e2e8f0;
-}
-.left-nav-item.active {
-    background: rgba(26,122,109,0.15);
-    color: #34d399; font-weight: 600;
-    border-left-color: #1A7A6D;
-}
-.left-nav-footer {
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding: 14px 18px; flex-shrink: 0;
-    font-size: 10px; color: #334155; line-height: 1.6;
-}
-.main-content-area { flex: 1; min-width: 0; overflow-x: hidden; }
-
-@media (max-width: 768px) {
-    .page-layout { flex-direction: column; }
-    .left-nav {
-        width: 100% !important; height: auto; min-height: 48px;
-        position: relative; flex-direction: column;
-        border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .left-nav-brand { height: 48px; min-height: 48px; }
-    .left-nav-section { padding: 12px 18px 6px; }
-    .left-nav-items { max-height: 200px; }
-}
-
 </style>
 </head>
 <body>
-<div class="page-layout">
-<aside class="left-nav" id="left-nav">
-    <div class="left-nav-brand">
-        <div class="left-nav-icon">RO</div>
-        <div class="left-nav-brand-text">
-            <strong>RO Knowledge Bank</strong>
-            <span>J-PAL South Asia</span>
-        </div>
-    </div>
-    <span class="left-nav-section">Navigation</span>
-    <nav class="left-nav-items">
-        <a class="left-nav-item active" href="hub.html" target="_self">The Hub</a>
-        <a class="left-nav-item" href="pre-field-ops-V4.html" target="_self">Pre-Field Ops</a>
-        <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness?authuser=0" target="_top">Field Readiness</a>
-        <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy?authuser=0" target="_top">Training Academy</a>
-        <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0" target="_top">On-boarding RA/PA</a>
-        <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_top">Field Execution</a>
-        <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" target="_top">Resources &amp; Field Staff</a>
-    </nav>
-    <div class="left-nav-footer">
-        Version 1.0 · April 2025<br>J-PAL South Asia
-    </div>
-</aside>
-<div class="main-content-area">
 
-<div class="page-layout">
+<div class="shell">
+
+<!-- ─────────────────────── SIDEBAR ─────────────────────────────────────── -->
+<aside class="sidebar" id="sidebar">
+  <div class="sb-brand">
+    <div class="sb-icon">RO</div>
+    <div class="sb-brand-text">
+      <strong>RO Knowledge Bank</strong>
+      <span>J-PAL South Asia</span>
+    </div>
+  </div>
+  <span class="sb-section">Navigation</span>
+  <nav class="sb-nav">
+    <a class="sb-item active" href="hub.html" target="_self" style="position:relative;">
+      <span class="sb-ico">⌂</span>
+      <span class="sb-label">The Hub</span>
+      <span class="sb-dot"></span>
+    </a>
+    <a class="sb-item" href="Pre-Field-Ops.html" target="_self" style="position:relative;">
+      <span class="sb-ico">📋</span>
+      <span class="sb-label">Pre-Field Ops</span>
+      <span class="sb-dot"></span>
+    </a>
+    <a class="sb-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness?authuser=0" target="_top" style="position:relative;">
+      <span class="sb-ico">🏕</span>
+      <span class="sb-label">Field Readiness</span>
+      <span class="sb-dot"></span>
+    </a>
+    <a class="sb-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy?authuser=0" target="_top" style="position:relative;">
+      <span class="sb-ico">🎓</span>
+      <span class="sb-label">Training Academy</span>
+      <span class="sb-dot"></span>
+    </a>
+    <a class="sb-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0" target="_top" style="position:relative;">
+      <span class="sb-ico">🧭</span>
+      <span class="sb-label">On-boarding RA/PA</span>
+      <span class="sb-dot"></span>
+    </a>
+    <a class="sb-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_top" style="position:relative;">
+      <span class="sb-ico">⚡</span>
+      <span class="sb-label">Field Execution</span>
+      <span class="sb-dot"></span>
+    </a>
+    <a class="sb-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" target="_top" style="position:relative;">
+      <span class="sb-ico">📚</span>
+      <span class="sb-label">Resources &amp; Field Staff</span>
+      <span class="sb-dot"></span>
+    </a>
+  </nav>
+  <div class="sb-footer">
+    <div class="sb-footer-pill">v1</div>
+    <div class="sb-footer-text">Version 1.0 · April 2025<br>J-PAL South Asia</div>
+  </div>
+</aside>
 
 <!-- ─────────────────────── MAIN CONTENT ─────────────────────────────────── -->
 <main class="main">
@@ -790,7 +746,7 @@ body.edit-mode-active .edit-img { outline: 3px dashed #0ea5e9; cursor: pointer; 
     <div class="bento">
 
       <!-- Pre-Field Ops -->
-      <div class="bc bc-pfo" onclick="location.href='pre-field-ops-V4.html'">
+      <div class="bc bc-pfo" onclick="location.href='Pre-Field-Ops.html'">
         <div class="card-num">01</div>
         <h3 class="edit-text">Pre-Field Ops</h3>
         <p class="bc-desc edit-text">Architectural groundwork — 12–16 weeks before deployment. Translate research methodology into field-ready systems.</p>
@@ -1017,12 +973,33 @@ body.edit-mode-active .edit-img { outline: 3px dashed #0ea5e9; cursor: pointer; 
 
 <script>
 let isAdmin = false, targetImg = null;
+
+// Alt+Shift+E — uses e.code so it works on Mac keyboards too
 document.addEventListener('keydown', e => {
-  if (e.altKey && e.shiftKey && (e.key === 'e' || e.key === 'E')) {
+  if (e.altKey && e.shiftKey && (e.code === 'KeyE' || e.key === 'e' || e.key === 'E')) {
     e.preventDefault(); if (!isAdmin) unlockPage();
   }
 });
-document.querySelector('.hero h1').addEventListener('dblclick', e => { e.preventDefault(); if (!isAdmin) unlockPage(); });
+
+// Triple-click the kicker — works inside Google Sites iframes
+let _cc = 0, _ct = null;
+const _kicker = document.querySelector('.hero-kicker');
+if (_kicker) {
+  _kicker.addEventListener('click', function() {
+    _cc++; clearTimeout(_ct);
+    _ct = setTimeout(function(){ _cc = 0; }, 600);
+    if (_cc >= 3) { _cc = 0; if (!isAdmin) unlockPage(); }
+  });
+}
+
+// URL hash trigger — navigate to URL#edit to unlock
+if (window.location.hash === '#edit') {
+  window.addEventListener('load', function() { unlockPage(); });
+}
+
+// dblclick h1 as extra fallback
+const _h1 = document.querySelector('.hero h1');
+if (_h1) _h1.addEventListener('dblclick', e => { e.preventDefault(); if (!isAdmin) unlockPage(); });
 function unlockPage() {
   isAdmin = true;
   document.getElementById('admin-kit').style.display = 'flex';
@@ -1069,7 +1046,5 @@ function copyCode() {
   if (was) unlockPage();
 }
 </script>
-</div><!-- /main-content-area -->
-</div><!-- /page-layout -->
 </body>
 </html>
