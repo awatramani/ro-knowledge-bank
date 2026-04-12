@@ -728,6 +728,8 @@ body.edit-mode-active .edit-img  { outline: 3px dashed #0ea5e9; cursor: pointer;
   display: flex; gap: 32px; flex-wrap: wrap;
   padding-top: 28px; border-top: 1px solid var(--border);
 }
+.stat-num { transition: opacity .25s, transform .25s; }
+.stat-num.fade { opacity: 0; transform: translateY(-6px); }
 .stat-num {
   font-family: var(--mono); font-size: 28px; font-weight: 700;
   color: var(--ink); letter-spacing: -1px; line-height: 1;
@@ -860,16 +862,16 @@ body.edit-mode-active .edit-img  { outline: 3px dashed #0ea5e9; cursor: pointer;
             <p class="hero-sub edit-text">The critical planning phase that separates chaotic deployments from flawless ones — everything that needs to happen before Day 1 in the field.</p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-num edit-text">4</div>
-                    <div class="stat-label">Sub-sections</div>
+                    <div class="stat-num edit-text" id="hero-stat-1-num">4</div>
+                    <div class="stat-label" id="hero-stat-1-lbl">Sub-sections</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text">12+</div>
-                    <div class="stat-label">Field guides</div>
+                    <div class="stat-num edit-text" id="hero-stat-2-num">12+</div>
+                    <div class="stat-label" id="hero-stat-2-lbl">Field guides</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text">5</div>
-                    <div class="stat-label">Checklists</div>
+                    <div class="stat-num edit-text" id="hero-stat-3-num">5</div>
+                    <div class="stat-label" id="hero-stat-3-lbl">Checklists</div>
                 </div>
             </div>
         </div>
@@ -879,12 +881,12 @@ body.edit-mode-active .edit-img  { outline: 3px dashed #0ea5e9; cursor: pointer;
                     <div class="podcast-play">▶</div>
                     <div class="podcast-top-text">
                         <div class="podcast-tag">Field Ops Podcast</div>
-                        <div class="podcast-title edit-text">Deep Dive: Pre-Field Planning</div>
-                        <div class="podcast-desc edit-text">Survey planning, IRB timelines &amp; field realities</div>
+                        <div class="podcast-title edit-text" id="podcast-title">Deep Dive: Pre-Field Planning</div>
+                        <div class="podcast-desc edit-text" id="podcast-desc">Survey planning, IRB timelines &amp; field realities</div>
                     </div>
                 </div>
                 <div class="podcast-player">
-                    <iframe src="https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview" allow="autoplay"></iframe>
+                    <iframe id="podcast-iframe" src="https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview" allow="autoplay"></iframe>
                 </div>
                 <div class="podcast-footer">
                     <span class="podcast-footer-label edit-text">J-PAL SA Research Operations</span>
@@ -1896,6 +1898,52 @@ body.edit-mode-active .edit-img  { outline: 3px dashed #0ea5e9; cursor: pointer;
      ALL SCRIPTS
      ===================================================== -->
 <script>
+// ---- TAB CONFIG: stats + podcast per panel ----
+const TAB_CFG = {
+    'panel-home': {
+        s: [['4','Sub-sections'],['12+','Field guides'],['5','Checklists']],
+        pod: { title:'Deep Dive: Pre-Field Planning', desc:'Survey planning, IRB timelines & field realities', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+    },
+    'panel-planning': {
+        s: [['3','Phases'],['1','C1 Manual'],['1','Checklist']],
+        pod: { title:'Planning & Preparing for Survey Operations', desc:'IRB timelines, RACI matrices & 3-phase roadmap', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+    },
+    'panel-ro': {
+        s: [['4','RO Services'],['3','SLA tiers'],['1','Checklist']],
+        pod: { title:'Availing RO Support', desc:'Service intake, SLAs & raising support requests', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+    },
+    'panel-mapping': {
+        s: [['2','Methods'],['4','Field guides'],['1','Checklist']],
+        pod: { title:'Mapping Households in the Field', desc:'GPS vs physical mapping, protocols & right-hand rule', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+    },
+    'panel-logistics': {
+        s: [['3','Modules'],['6','Templates'],['1','Checklist']],
+        pod: { title:'Survey Logistics & Budgeting', desc:'DA matrices, vendor contracts & travel norms', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+    }
+};
+
+function updateHero(panelId) {
+    const cfg = TAB_CFG[panelId];
+    if (!cfg) return;
+    // Animate stats
+    const nums = [document.getElementById('hero-stat-1-num'), document.getElementById('hero-stat-2-num'), document.getElementById('hero-stat-3-num')];
+    const lbls = [document.getElementById('hero-stat-1-lbl'), document.getElementById('hero-stat-2-lbl'), document.getElementById('hero-stat-3-lbl')];
+    nums.forEach(n => n && n.classList.add('fade'));
+    setTimeout(function() {
+        cfg.s.forEach(function(s, i) {
+            if (nums[i]) { nums[i].textContent = s[0]; nums[i].classList.remove('fade'); }
+            if (lbls[i]) lbls[i].textContent = s[1];
+        });
+    }, 250);
+    // Update podcast
+    const titleEl = document.getElementById('podcast-title');
+    const descEl  = document.getElementById('podcast-desc');
+    const iframeEl = document.getElementById('podcast-iframe');
+    if (titleEl)  titleEl.textContent  = cfg.pod.title;
+    if (descEl)   descEl.textContent   = cfg.pod.desc;
+    if (iframeEl) iframeEl.src         = cfg.pod.src;
+}
+
 // ---- MAIN TAB SWITCHER ----
 function switchTab(evt, panelId) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -1903,6 +1951,7 @@ function switchTab(evt, panelId) {
     document.getElementById(panelId).classList.add('active');
     evt.currentTarget.classList.add('active');
     evt.currentTarget.setAttribute('aria-selected','true');
+    updateHero(panelId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
