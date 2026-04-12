@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<base target="_blank">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Field Knowledge Hub | Research Operations Knowledge Bank</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   UNIFIED THEME VARIABLES (matches Pre-Field Ops exactly)
+   ========================================================= */
+:root {
+    --heading-green: #1A7A6D;
+    --brand-dark: #1e293b;
+    --bg-light-green: #edf5f3;
+    --bg-light-green-alt: #f2fafa;
+    --bg-white: #ffffff;
+    --bg-off-white: #f8fafc;
+    --text-main: #334155;
+    --text-light: #64748b;
+    --success-green: #10b981;
+    --danger-red: #dc2626;
+    --accent-orange: #f59e0b;
+    --accent-blue: #0ea5e9;
+    --border-soft: rgba(0,0,0,0.06);
+    --shadow-float: 0 10px 30px rgba(0,0,0,0.04);
+    --shadow-hover: 0 20px 50px rgba(26,122,109,0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-main);
+    line-height: 1.7;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--bg-off-white);
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 40px 40px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+h1, h2, h3, h4 { color: var(--brand-dark); margin-top: 0; }
+h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; line-height: 1.1; letter-spacing: -1.5px; }
+h2 { font-size: 36px; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; }
+h3 { font-size: 22px; font-weight: 800; color: var(--heading-green); margin-bottom: 10px; letter-spacing: -0.5px; }
+h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+p  { font-size: 15px; margin-bottom: 15px; color: var(--text-main); line-height: 1.7; }
+strong { color: var(--brand-dark); font-weight: 700; }
+
+.eyebrow {
+    font-size: 13px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--heading-green);
+    margin-bottom: 10px; display: inline-block;
+    background: rgba(26,122,109,0.1); padding: 4px 12px; border-radius: 20px;
+}
+
+/* =========================================================
+   SHARED BANNER (identical to Pre-Field Ops)
+   ========================================================= */
+.banner-container {
+    position: relative; width: 100%;
+    background: linear-gradient(135deg, #ffffff 0%, #edf5f3 100%);
+    padding: 60px 5%; overflow: hidden;
+    border-bottom: 1px solid var(--border-soft);
+}
+.bg-shape-1 { position: absolute; top: -50px; right: -5%; width: 350px; height: 350px; background: rgba(26,122,109,0.08); border-radius: 50%; filter: blur(40px); z-index: 0; }
+.bg-shape-2 { position: absolute; bottom: -80px; left: 5%; width: 250px; height: 250px; background: rgba(51,65,85,0.04); border-radius: 50%; filter: blur(40px); z-index: 0; }
+.hero-img-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.1; mix-blend-mode: multiply; z-index: 0; }
+.glass-card {
+    position: relative; z-index: 1; background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,1); border-left: 6px solid var(--heading-green);
+    border-radius: 20px; padding: 40px 60px; box-shadow: var(--shadow-float);
+    max-width: 1200px; margin: 0 auto; text-align: center;
+}
+.banner-title { font-size: 38px; font-weight: 800; color: var(--brand-dark); margin: 0; line-height: 1.2; letter-spacing: -1px; }
+.banner-subtitle { color: var(--heading-green); font-weight: 600; font-size: 24px; display: block; margin-top: 8px; letter-spacing: -0.5px; }
+
+/* =========================================================
+   GLOBAL STICKY TAB NAV (identical style to Pre-Field Ops)
+   ========================================================= */
+.tab-nav-wrapper {
+    position: sticky; top: 0; z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--border-soft);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.tab-nav {
+    display: flex; align-items: stretch;
+    max-width: 1400px; margin: 0 auto;
+    padding: 0 5%; overflow-x: auto;
+    scrollbar-width: none;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+    padding: 0 22px; height: 56px;
+    border: none; background: transparent;
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--text-light); cursor: pointer;
+    transition: var(--transition-smooth);
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    flex-shrink: 0; letter-spacing: 0.2px;
+    text-decoration: none; display: flex; align-items: center;
+}
+.tab-btn:hover:not(.active) { color: var(--brand-dark); background: rgba(26,122,109,0.04); }
+.tab-btn.active { color: var(--heading-green); border-bottom-color: var(--heading-green); }
+.tab-btn.home-tab { font-size: 14px; font-weight: 800; color: var(--brand-dark); }
+.tab-btn.home-tab.active { color: var(--heading-green); }
+.tab-btn.coming-soon { opacity: 0.45; cursor: default; pointer-events: none; }
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* =========================================================
+   HUB INTRO SECTION (repurposed hero, now a content section)
+   ========================================================= */
+.hub-intro {
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(237,245,243,0.95) 100%);
+    padding: 80px 5%; border-bottom: 1px solid var(--border-soft);
+    position: relative; overflow: hidden;
+}
+.hub-intro .orb { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(26,122,109,0.1) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
+.hub-intro-inner {
+    max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 60px;
+}
+.hub-text-side { flex: 1.2; }
+.hub-video-side { flex: 0.9; }
+
+/* =========================================================
+   VIDEO CARD
+   ========================================================= */
+.video-card {
+    background: white; border-radius: 24px; overflow: hidden;
+    box-shadow: 0 20px 40px rgba(26,122,109,0.15); border: 1px solid rgba(255,255,255,0.8);
+    transition: var(--transition-smooth);
+}
+.video-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 30px 60px rgba(26,122,109,0.2); }
+.video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
+.card-content { padding: 25px 30px; background: #fff; }
+.caption-title { display: block; font-size: 17px; font-weight: 800; color: var(--brand-dark); margin-bottom: 4px; }
+.caption-desc  { font-size: 13px; color: var(--heading-green); font-weight: 700; display: block; }
+
+/* =========================================================
+   QUOTE SPOTLIGHT
+   ========================================================= */
+.quote-spotlight {
+    background: linear-gradient(135deg, var(--bg-light-green) 0%, #e8f7f5 100%);
+    padding: 80px 5%; border-bottom: 1px solid var(--border-soft);
+}
+.quote-wrapper {
+    background: white; border-left: 4px solid var(--heading-green);
+    border-radius: 16px; padding: 35px; box-shadow: var(--shadow-float);
+    border: 1px solid var(--border-soft);
+}
+.quote-text { font-size: 16px; font-style: italic; color: var(--brand-dark); margin-bottom: 20px; line-height: 1.7; }
+.quote-author { display: flex; align-items: center; gap: 12px; justify-content: center; border-top: 1px solid var(--border-soft); padding-top: 20px; margin-top: 5px; }
+.author-avatar { width: 40px; height: 40px; background: var(--brand-dark); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold; flex-shrink: 0; }
+.author-name { font-size: 14px; font-weight: 800; color: var(--brand-dark); display: block; line-height: 1.3; }
+.author-role { font-size: 11px; color: var(--heading-green); text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; }
+
+/* =========================================================
+   BENTO GRID DIRECTORY
+   ========================================================= */
+.section-padding { padding: 80px 5%; max-width: 1400px; margin: 0 auto; position: relative; }
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 50px;
+}
+.bento-card {
+    background: var(--bg-white); border-radius: 24px; padding: 36px;
+    border: 1px solid var(--border-soft); box-shadow: var(--shadow-float);
+    transition: var(--transition-smooth); display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+}
+.bento-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); border-color: var(--heading-green); }
+.card-bg-img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0; transition: var(--transition-smooth); z-index: 0;
+}
+.bento-card:hover .card-bg-img { opacity: 0.05; transform: scale(1.05); }
+.bento-wide { grid-column: span 2; }
+.bento-tall { grid-row: span 2; }
+
+.bento-card h3 { color: var(--brand-dark); font-size: 20px; margin-bottom: 12px; position: relative; z-index: 2; }
+.bento-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.6; border-bottom: 1px solid var(--border-soft); padding-bottom: 18px; position: relative; z-index: 2; }
+
+/* Link lists inside cards */
+.link-list { list-style: none; padding: 0; margin: 0; flex-grow: 1; position: relative; z-index: 2; }
+.link-list li { margin-bottom: 10px; }
+.link-list a {
+    text-decoration: none; color: var(--brand-dark); font-weight: 600; font-size: 14px;
+    display: flex; align-items: center; padding: 8px 12px; border-radius: 8px;
+    background: rgba(255,255,255,0.5); transition: var(--transition-smooth);
+}
+.link-list a::before { content: "→"; margin-right: 10px; color: var(--heading-green); font-weight: 800; transition: var(--transition-smooth); }
+.link-list a:hover { color: var(--heading-green); background: var(--bg-light-green); }
+.link-list a:hover::before { transform: translateX(5px); }
+
+/* Sector pills */
+.sector-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; position: relative; z-index: 2; }
+.pill {
+    background: var(--bg-white); border: 1px solid var(--border-soft); color: var(--text-main);
+    padding: 7px 14px; border-radius: 50px; font-size: 13px; font-weight: 700;
+    text-decoration: none; transition: var(--transition-smooth);
+}
+.pill:hover { background: var(--heading-green); color: white; border-color: var(--heading-green); transform: translateY(-2px); }
+
+/* =========================================================
+   LIFE IN RO CARD (cinematic dark card)
+   ========================================================= */
+.life-ro-card {
+    background: #000; color: white; padding: 0; overflow: hidden;
+}
+.life-ro-img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0.4; transition: transform 1.5s ease; z-index: 0;
+}
+.life-ro-card:hover .life-ro-img { transform: scale(1.05); opacity: 0.3; }
+.life-ro-content {
+    position: relative; z-index: 2; width: 100%;
+    background: linear-gradient(90deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.7) 60%, transparent 100%);
+    padding: 45px 50px; display: flex; align-items: center; gap: 50px; flex-wrap: wrap;
+}
+.life-text-side { flex: 1.2; min-width: 280px; }
+.life-text-side h3 { color: white; font-size: 24px; margin-bottom: 12px; }
+.life-text-side .bento-desc { color: rgba(255,255,255,0.8); border-bottom: none; padding-bottom: 0; margin-bottom: 25px; }
+.life-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.life-links a {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    padding: 12px 18px; border-radius: 10px; color: white; font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: var(--transition-smooth);
+    display: flex; align-items: center; justify-content: space-between;
+}
+.life-links a:hover { background: var(--heading-green); border-color: var(--heading-green); transform: translateY(-3px); }
+.life-links a::after { content: "→"; font-weight: bold; color: #64ffda; }
+.life-links a:hover::after { color: white; }
+
+.life-video-side {
+    flex: 1; min-width: 260px; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);
+}
+.life-video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+.life-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.life-video-caption {
+    padding: 14px 18px; background: rgba(15,23,42,0.9);
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+.life-video-caption span { color: white; font-size: 13px; font-weight: 600; }
+.life-video-caption .badge { color: #64ffda; font-size: 11px; font-weight: 800; background: rgba(100,255,218,0.15); padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
+
+/* =========================================================
+   SPOTLIGHT SECTION (teal dark band)
+   ========================================================= */
+.spotlight-section {
+    background: linear-gradient(135deg, var(--heading-green) 0%, #0f3d37 100%);
+    padding: 100px 5%; color: white; position: relative; overflow: hidden;
+}
+.spotlight-section::after {
+    content: ""; position: absolute; top: 0; right: 0; width: 100%; height: 100%;
+    background-image: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80");
+    background-size: cover; opacity: 0.05; pointer-events: none;
+}
+.spot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 50px; position: relative; z-index: 1; }
+.spot-col {
+    background: rgba(255,255,255,0.06); border-radius: 20px; padding: 36px;
+    border: 1px solid rgba(255,255,255,0.12); transition: var(--transition-smooth);
+}
+.spot-col:hover { transform: translateY(-8px); background: rgba(255,255,255,0.1); }
+.spot-col h4 { color: white; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 14px; margin-bottom: 18px; }
+.spot-col p { color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+.spot-col ul { list-style: none; padding: 0; margin: 0; }
+.spot-col li { font-size: 14px; color: rgba(255,255,255,0.9); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; }
+.spot-col li::before { content: "✓"; color: #64ffda; font-weight: bold; background: rgba(100,255,218,0.1); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; }
+
+/* =========================================================
+   CINEMATIC SECTION (dark slate)
+   ========================================================= */
+.cinematic-section {
+    background: linear-gradient(140deg, var(--brand-dark) 0%, #0f172a 100%);
+    padding: 100px 5%; text-align: center; color: white; position: relative; overflow: hidden;
+}
+.cine-glow {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 80vw; height: 80vw;
+    background: radial-gradient(circle, rgba(26,122,109,0.15) 0%, transparent 60%);
+    z-index: 0; pointer-events: none;
+}
+.cine-content {
+    position: relative; z-index: 1; max-width: 1000px; margin: 0 auto;
+    background: rgba(255,255,255,0.03); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.05); border-radius: 28px; padding: 70px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+}
+.cine-content h2 { color: white; margin-bottom: 25px; font-size: 40px; }
+.cine-content p { color: #cbd5e1; font-size: 17px; line-height: 1.8; margin-bottom: 20px; }
+
+/* =========================================================
+   UPDATES SECTION
+   ========================================================= */
+.updates-wrapper { padding: 70px 5%; background: var(--bg-white); border-bottom: 1px solid var(--border-soft); }
+.updates-inner { max-width: 1400px; margin: 0 auto; }
+.updates-grid { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 25px; }
+.update-item {
+    flex: 1; min-width: 280px; background: var(--bg-off-white);
+    padding: 22px 25px; border-radius: 14px; border-left: 4px solid var(--heading-green);
+    transition: var(--transition-smooth);
+}
+.update-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-float); background: white; }
+.date-badge { background: var(--heading-green); color: white; font-size: 12px; font-weight: 800; padding: 5px 10px; border-radius: 6px; display: inline-block; margin-bottom: 10px; }
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+.action-section { padding: 80px 5% 100px; background: var(--bg-off-white); text-align: center; }
+.action-inner { max-width: 1400px; margin: 0 auto; }
+.action-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 35px; }
+.action-btn {
+    background: white; border: 2px solid transparent; border-radius: 50px;
+    padding: 15px 28px; text-decoration: none; color: var(--brand-dark);
+    font-size: 14px; font-weight: 700; transition: var(--transition-smooth);
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+.action-btn:hover { background: var(--heading-green); color: white; border-color: var(--heading-green); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(26,122,109,0.2); }
+
+/* =========================================================
+   ADMIN EDIT MODE
+   ========================================================= */
+body.edit-mode-active .edit-text { outline: 2px dashed #0ea5e9; outline-offset: 4px; border-radius: 4px; }
+body.edit-mode-active .edit-text:hover { background: rgba(14,165,233,0.05); cursor: text; }
+body.edit-mode-active .edit-text:focus { background: white; outline: 3px solid #0ea5e9; }
+body.edit-mode-active .edit-img { outline: 4px dashed #0ea5e9; outline-offset: 4px; cursor: pointer; }
+body.edit-mode-active .edit-img:hover { filter: brightness(0.6); }
+#admin-toolkit { display: none; position: fixed; bottom: 30px; right: 30px; background: #1e293b; padding: 15px 25px; border-radius: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); gap: 15px; align-items: center; z-index: 999999; border: 1px solid rgba(255,255,255,0.1); font-family: system-ui, sans-serif; flex-direction: row; }
+.admin-btn { border: none; padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 13px; cursor: pointer; color: white; }
+.admin-btn.copy  { background: #1A7A6D; } .admin-btn.copy:hover  { background: #135c52; }
+.admin-btn.close { background: transparent; color: #ef4444; border: 1px solid #ef4444; }
+.admin-btn.close:hover { background: rgba(239,68,68,0.1); }
+#inline-img-box { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 1000000; width: 320px; border: 1px solid #e2e8f0; font-family: system-ui, sans-serif; }
+#inline-img-box p { margin: 0 0 10px; font-size: 12px; font-weight: 800; color: #1e293b; }
+#inline-img-box input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 10px; font-size: 12px; }
+#inline-img-box button { width: 100%; padding: 10px; border: none; border-radius: 8px; background: #1A7A6D; color: white; font-weight: 700; cursor: pointer; margin-bottom: 8px; }
+#inline-img-box .cancel-btn { background: none; border: 1px solid #e2e8f0; color: #64748b; font-size: 12px; margin-bottom: 0; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 1100px) {
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+    .bento-wide, .bento-tall { grid-column: span 1; grid-row: span 1; }
+    .life-ro-card { grid-column: span 2; }
+    .hub-intro-inner { flex-direction: column; gap: 40px; }
+}
+@media (max-width: 768px) {
+    .bento-grid { grid-template-columns: 1fr; }
+    .life-ro-card { grid-column: span 1; }
+    .life-ro-content { flex-direction: column; padding: 30px; background: rgba(15,23,42,0.92); }
+    .life-links { grid-template-columns: 1fr; }
+    .cine-content { padding: 40px 24px; }
+    .banner-title { font-size: 28px; }
+    .glass-card { padding: 30px; }
+    .tab-btn { padding: 0 14px; font-size: 12px; height: 48px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- =====================================================
+     SHARED BANNER (identical header to Pre-Field Ops)
+     ===================================================== -->
+<div class="banner-container">
+    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=2000&q=80" class="hero-img-bg edit-img" alt="Background">
+    <div class="bg-shape-1"></div>
+    <div class="bg-shape-2"></div>
+    <div class="glass-card">
+        <h1 class="banner-title edit-text">
+            Research Operations Knowledge Bank<br>
+            <span class="banner-subtitle edit-text">The Field Knowledge Hub</span>
+        </h1>
+    </div>
+</div>
+
+<!-- =====================================================
+     GLOBAL STICKY TAB NAV
+     All tabs link to separate pages — active = The Hub
+     ===================================================== -->
+<div class="tab-nav-wrapper">
+    <nav class="tab-nav" role="navigation" aria-label="Knowledge Bank sections">
+        <a class="tab-btn home-tab active" href="hub.html" target="_self">The Hub</a>
+        <a class="tab-btn" href="Pre-Field-Ops.html" target="_self">Pre-Field Ops</a>
+        <a class="tab-btn" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness?authuser=0" target="_top">Field Readiness</a>
+        <a class="tab-btn" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy?authuser=0" target="_top">Training Academy</a>
+        <a class="tab-btn" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0" target="_top">On-boarding RA/PA on Field Operations</a>
+        <a class="tab-btn" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_top">Field Execution</a>
+        <a class="tab-btn" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" target="_top">Resources for/by Field Staff</a>
+    </nav>
+</div>
+
+<!-- =====================================================
+     HUB INTRO (text + video — the original hero, repurposed)
+     ===================================================== -->
+<div class="hub-intro fade-up">
+    <div class="orb"></div>
+    <div class="hub-intro-inner">
+        <div class="hub-text-side">
+            <span class="eyebrow edit-text">JPAL SA | Research Operations</span>
+            <h2 class="edit-text" style="font-size:40px;letter-spacing:-1px;">Transforming scattered institutional memory into a unified, actionable operational framework.</h2>
+            <p class="edit-text" style="font-size:16px;margin-bottom:15px;">
+                Fieldwork is inherently dynamic, but it should never be chaotic. This central repository bridges the critical gap between meticulous study design and unpredictable ground realities. We provide standardised, highly robust guidance on everything from ethical compliance and precise HR protocols to complex SurveyCTO server logistics.
+            </p>
+            <p class="edit-text" style="margin-bottom:0;">
+                Built not just from theoretical methodology, but by the very surveyors, coordinators, and research managers executing large-scale data collection. Here, you will access proven routing strategies, download field-ready templates, and leverage collective operational wisdom to decisively de-risk your deployment before Day 1.
+            </p>
+        </div>
+        <div class="hub-video-side">
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <!-- NOTE: Background placeholder image removed — iframe loads directly -->
+                    <iframe src="https://drive.google.com/file/d/15WwoLxLj27Bu9LajfCuwE-NUSY-OWZQI/preview" allow="autoplay"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="caption-title edit-text">The People of J-PAL SA</span>
+                    <span class="caption-desc edit-text">Kumarakom Field Training Spotlight</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =====================================================
+     QUOTE SPOTLIGHT
+     ===================================================== -->
+<div class="quote-spotlight fade-up delay-1">
+    <div style="max-width:900px;margin:0 auto;text-align:center;">
+        <span class="eyebrow edit-text">Invisible Infrastructure</span>
+        <div class="quote-wrapper">
+            <p class="quote-text edit-text">
+                "We spent 4 days just role-playing the consent script. By the time we hit the first village, the surveyors weren&#39;t just reading — they were communicating. That invisible infrastructure makes all the difference."
+            </p>
+            <div class="quote-author">
+                <div class="author-avatar edit-text">VA</div>
+                <div style="text-align:left;">
+                    <span class="author-name edit-text">Vaseem Ahmed</span>
+                    <span class="author-role edit-text">Senior PA | Bihar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =====================================================
+     BENTO GRID DIRECTORY
+     ===================================================== -->
+<div class="section-padding">
+    <div style="text-align:center;max-width:800px;margin:0 auto 60px auto;" class="fade-up delay-1">
+        <span class="eyebrow edit-text">The Master Directory</span>
+        <h2 class="edit-text">Navigate the Knowledge Bank</h2>
+        <p class="edit-text" style="font-size:16px;">This platform precisely mirrors the chronological lifecycle of a research project. Access our standardised matrices, comprehensive checklists, and sector-specific operational wisdom designed to fortify every single phase of your survey.</p>
+    </div>
+
+    <div class="bento-grid">
+
+        <!-- Pre-Field Ops -->
+        <div class="bento-card fade-up delay-2">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" class="card-bg-img edit-img" alt="">
+            <h3 class="edit-text">Pre-Field Ops</h3>
+            <p class="bento-desc edit-text">Laying the architectural groundwork. Navigate the structural essentials required 12–16 weeks before deployment. Translate abstract research methodologies into pragmatic, field-ready mapping systems.</p>
+            <ul class="link-list">
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/Pre-Field-Ops/planning-and-preparing-for-survey-operations?authuser=0" class="edit-text">Planning and Preparation (C1 Manual)</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/Pre-Field-Ops/availing-ro-support?authuser=0" class="edit-text">Availing RO Support &amp; SLAs</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/Pre-Field-Ops/mapping-households-in-the-field?authuser=0" class="edit-text">Mapping Households via GPS/KML</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/Pre-Field-Ops/survey-logistics-jpal-sa-plug-in?authuser=0" class="edit-text">Survey Logistics &amp; Budgeting</a></li>
+            </ul>
+        </div>
+
+        <!-- Field Readiness -->
+        <div class="bento-card fade-up delay-3">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" class="card-bg-img edit-img" alt="">
+            <h3 class="edit-text">Field Readiness</h3>
+            <p class="bento-desc edit-text">The ultimate stress test. Bridge theoretical design with reality through rigorous localised hiring protocols, strategic hardware piloting, and robust digital tracking infrastructure.</p>
+            <ul class="link-list">
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/hiring-field-staff-and-core-team?authuser=0" class="edit-text">Hiring Field Staff &amp; Core Teams</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/piloting-and-pre-launch-activities?authuser=0" class="edit-text">Piloting and Pre-Launch Protocols</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/survey-launch-and-initial-days?authuser=0" class="edit-text">Survey Launch and Initial Days</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/google-maps-to-track-survey-productivity?authuser=0" class="edit-text">Google Maps to Track Surveys</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/digital-attendance-tracking?authuser=0" class="edit-text">Digital Attendance Tracking</a></li>
+            </ul>
+        </div>
+
+        <!-- Training Academy (tall card) -->
+        <div class="bento-card bento-tall fade-up delay-4">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" class="card-bg-img edit-img" alt="">
+            <h3 class="edit-text">Training Academy</h3>
+            <p class="bento-desc edit-text">Cultivating capability. Training is about strict team calibration, not just reading slides. Access exhaustive manuals, hostile mock-interview protocols, and mandatory ethics sessions required to build a culturally sensitive workforce that captures truth without bias.</p>
+            <ul class="link-list">
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/people-and-culture?authuser=0" class="edit-text">People and Culture Guidelines</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-minimum-must-dos?authuser=0" class="edit-text">Training Minimum Must-Dos</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-manual?authuser=0" class="edit-text">The Master Training Manual</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-resources-core-sessions?authuser=0" class="edit-text">Training Resources: Core Sessions</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-resources-human-subjects-certification?authuser=0" class="edit-text">Human Subjects Certification</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-feedback?authuser=0" class="edit-text">Training Feedback Loops</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-manual-remote-training?authuser=0" class="edit-text">Remote Training Manual</a></li>
+                <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/tablet-management-checklist-for-project-associate?authuser=0" class="edit-text">Tablet Management Checklist</a></li>
+            </ul>
+        </div>
+
+        <!-- Field Execution (wide card) -->
+        <div class="bento-card bento-wide fade-up delay-2">
+            <h3 class="edit-text">Field Execution</h3>
+            <p class="bento-desc edit-text">The daily engine room of your survey. This is your operating manual for active data collection, housing critical safety escalation protocols, deviation frameworks, and highly-specific sector wisdom.</p>
+            <div style="display:flex;gap:35px;flex-wrap:wrap;position:relative;z-index:2;">
+                <div style="flex:1;min-width:220px;">
+                    <ul class="link-list">
+                        <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/contracting-and-screening?authuser=0" class="edit-text">Contracting &amp; Screening Workflows</a></li>
+                        <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines?authuser=0" class="edit-text">Surveyor Manual (Operations)</a></li>
+                        <li><a href="#" class="edit-text">Tablet Rental Guidelines</a></li>
+                        <li><a href="#" class="edit-text">Field Safety &amp; Adverse Events</a></li>
+                        <li><a href="#" class="edit-text">Quality Management (HFCs)</a></li>
+                        <li><a href="#" class="edit-text">Roles &amp; Responsibilities (RACI)</a></li>
+                    </ul>
+                </div>
+                <div style="flex:1.1;min-width:260px;background:var(--bg-off-white);padding:25px;border-radius:16px;border:1px solid var(--border-soft);">
+                    <span class="edit-text" style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--heading-green);letter-spacing:1px;display:block;margin-bottom:8px;">Sector-Specific Guidelines</span>
+                    <p class="edit-text" style="font-size:13px;color:var(--text-main);margin-bottom:16px;line-height:1.6;">Specialised probing techniques, privacy constraints, and biomarker handling instructions tailored for distinct survey environments.</p>
+                    <div class="sector-grid">
+                        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/education?authuser=0" class="pill edit-text">Education</a>
+                        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/health?authuser=0" class="pill edit-text">Health</a>
+                        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/gender?authuser=0" class="pill edit-text">Gender</a>
+                        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/social-protection?authuser=0" class="pill edit-text">Social Protection</a>
+                        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/agriculture?authuser=0" class="pill edit-text">Agriculture</a>
+                        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/governance?authuser=0" class="pill edit-text">Governance</a>
+                        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/labor-market?authuser=0" class="pill edit-text">Labour Market</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Life in RO (wide cinematic card) -->
+        <div class="bento-card bento-wide life-ro-card fade-up delay-3">
+            <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1200&q=80" class="life-ro-img edit-img" alt="">
+            <div class="life-ro-content">
+                <div class="life-text-side">
+                    <h3 class="edit-text">Resources for/by Field Staff</h3>
+                    <p class="bento-desc edit-text">Fieldwork is profoundly human. Beyond the rigorous protocols lies the immense grit, empathy, and ingenuity of our field teams. Explore the culture of our operations, read firsthand stories of overcoming extreme challenges, and understand our frameworks for staff mental health and career progression.</p>
+                    <div class="life-links">
+                        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff/stories-from-the-field?authuser=0" class="edit-text">Stories from the Field</a>
+                        <a href="#" class="edit-text">Mental Health Support</a>
+                        <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines?authuser=0" class="edit-text">Field Staff R&amp;R</a>
+                        <a href="#" class="edit-text">Team Milestones</a>
+                    </div>
+                </div>
+                <div class="life-video-side">
+                    <div class="life-video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/13pSFVRq49QxdqDqyniTmgUYlujBxZBND/preview" allow="autoplay"></iframe>
+                    </div>
+                    <div class="life-video-caption">
+                        <span class="edit-text">Reality Check: Field Cam</span>
+                        <span class="badge edit-text">Watch</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="bento-card fade-up delay-4">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" class="card-bg-img edit-img" alt="">
+            <h3 class="edit-text">On-boarding RA/PA on Field Operations</h3>
+            <p class="bento-desc edit-text">A curated library of advanced methodologies. Dive into technical specifications for complex data collection, remote tracking systems, and crucial post-mortems.</p>
+            <ul class="link-list">
+                <li><a href="#" class="edit-text">Ops</a></li>
+                <li><a href="#" class="edit-text">Metadata Analysis</a></li>
+                <li><a href="#" class="edit-text">Panel Survey Attrition</a></li>
+                <li><a href="#" class="edit-text">Technical Surveying (ETS)</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<!-- =====================================================
+     SPOTLIGHT SECTION
+     ===================================================== -->
+<div class="spotlight-section">
+    <div style="max-width:1400px;margin:0 auto;position:relative;z-index:1;">
+        <span class="eyebrow edit-text" style="color:#64ffda;background:rgba(100,255,218,0.1);">Operations Infrastructure</span>
+        <h2 class="edit-text" style="color:white;font-size:42px;margin-bottom:18px;letter-spacing:-1px;">Spotlight: Field Management</h2>
+        <p class="edit-text" style="color:rgba(255,255,255,0.9);font-size:17px;max-width:900px;line-height:1.6;">
+            Handling the absolute essential "invisible" infrastructure that keeps the engine running — from processing transparent vendor reimbursements and precise hardware tracking to securing vulnerable participant privacy in remote regions.
+        </p>
+        <div class="spot-grid">
+            <div class="spot-col">
+                <h4 class="edit-text">Logistics &amp; Safeguarding</h4>
+                <p class="edit-text">Guiding strict travel norms, medical kit readiness, and physical transit protocols across rugged rural terrains.</p>
+                <ul>
+                    <li class="edit-text">Two-wheeler fuel log verification</li>
+                    <li class="edit-text">Shared dwelling privacy protocols</li>
+                    <li class="edit-text">Vulnerable participant checks</li>
+                </ul>
+            </div>
+            <div class="spot-col">
+                <h4 class="edit-text">Financial Integrity</h4>
+                <p class="edit-text">Establishing transparent guidelines for logistical buffers to ensure clean, timely, and auditable financial closure.</p>
+                <ul>
+                    <li class="edit-text">Daily Allowance (DA) matrices</li>
+                    <li class="edit-text">Rapid travel reimbursements</li>
+                    <li class="edit-text">Vendor contract finalisation</li>
+                </ul>
+            </div>
+            <div class="spot-col">
+                <h4 class="edit-text">Helpdesk &amp; Escalation</h4>
+                <p class="edit-text">A rigidly documented intake route for adverse situations, guaranteeing rapid, structured on-ground support.</p>
+                <ul>
+                    <li class="edit-text">Hardware replacement SLAs</li>
+                    <li class="edit-text">Role-based emergency contacts</li>
+                    <li class="edit-text">Medical evacuation routes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =====================================================
+     CINEMATIC SECTION
+     ===================================================== -->
+<div class="cinematic-section">
+    <div class="cine-glow"></div>
+    <div class="cine-content">
+        <span class="eyebrow edit-text" style="color:#64ffda;background:transparent;border:1px solid #64ffda;margin-bottom:25px;">A Collaborative Achievement</span>
+        <h2 class="edit-text">Built by the Field</h2>
+        <p class="edit-text">
+            This Knowledge Bank is the culmination of years of hard-won field experience. We extend our deepest gratitude to every team member across the <strong>Research</strong> and <strong>Research Operations (RO)</strong> verticals — from the front-line Surveyors mapping the households, to the Project Associates managing the day-to-day operations, to the Research Associates and Managers designing the frameworks, and Survey Coordinators supporting the field operations. Your generous contributions of standardised templates and deeply personal field stories form the absolute bedrock of this platform.
+        </p>
+        <div style="width:80px;height:2px;background:rgba(100,255,218,0.5);margin:35px auto;"></div>
+        <p class="edit-text" style="font-size:16px;color:#94a3b8;margin-bottom:0;">
+            This is a living resource with version 1.0 going live on 20th April. The resource will get updates twice a year with new stories and experience.
+        </p>
+    </div>
+</div>
+
+<!-- =====================================================
+     UPDATES
+     ===================================================== -->
+<div class="updates-wrapper">
+    <div class="updates-inner">
+        <span class="eyebrow edit-text" style="color:var(--brand-dark);background:transparent;padding:0;">Live Announcements</span>
+        <div class="updates-grid">
+            <div class="update-item">
+                <div class="date-badge edit-text">FEB 12</div>
+                <p class="edit-text" style="font-size:14px;margin:0;"><strong>Attendance App:</strong> New digital tracking app for Field Staff goes live. Check "Field Readiness".</p>
+            </div>
+            <div class="update-item">
+                <div class="date-badge edit-text" style="background:var(--accent-orange);">FEB 14</div>
+                <p class="edit-text" style="font-size:14px;margin:0;"><strong>Safety Update:</strong> Severe fog travel restrictions initiated for Punjab, Delhi &amp; Rajasthan routes.</p>
+            </div>
+            <div class="update-item">
+                <div class="date-badge edit-text" style="background:var(--brand-dark);">FEB 28</div>
+                <p class="edit-text" style="font-size:14px;margin:0;"><strong>Training:</strong> Mandatory 90-minute virtual session for PAs on handling Adverse Events in the field.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =====================================================
+     QUICK ACTION BUTTONS
+     ===================================================== -->
+<div class="action-section">
+    <div class="action-inner">
+        <span class="eyebrow edit-text">Quick Access</span>
+        <h2 class="edit-text" style="font-size:30px;margin-bottom:10px;">Initiate RO Support</h2>
+        <div class="action-grid">
+            <a href="https://jpalsouth.asia/Raise_HiringRequest_v2" class="action-btn edit-text" target="_blank">Hiring Request</a>
+            <a href="https://jpalsouth.asia/ROS_RARM_MainInterface" class="action-btn edit-text" target="_blank">Training Request</a>
+            <a href="https://jpalsouth.asia/ROS_RARM_MainInterface" class="action-btn edit-text" target="_blank">Monitoring</a>
+            <a href="https://jpalsouth.asia/ROS_FCP_Request" class="action-btn edit-text" target="_blank">Field Connect</a>
+            <a href="https://jpalsouth.asia/ROS_Tablet_Declaration?Newlink=CB" class="action-btn edit-text" target="_blank">Tablets</a>
+            <a href="https://jpalsouth.asia/OpenNewTicket" class="action-btn edit-text" target="_blank">Digitisation</a>
+            <a href="https://jpalsouth.asia/ROS_Storage_Declaration?Newlink=CB" class="action-btn edit-text" target="_top">Storage</a>
+        </div>
+    </div>
+</div>
+
+<!-- =====================================================
+     ADMIN EDIT MODE (Alt + Shift + E)
+     ===================================================== -->
+<div id="admin-toolkit">
+    <span style="color:#94a3b8;font-size:13px;font-weight:700;">Edit Mode</span>
+    <button class="admin-btn copy" onclick="copyCode()">Copy HTML</button>
+    <button class="admin-btn close" onclick="lockPage()">Exit</button>
+</div>
+
+<div id="inline-img-box">
+    <p>PASTE IMAGE URL</p>
+    <input type="text" id="img-input-val" placeholder="Google Drive or Web link...">
+    <button onclick="applyImg()">Update Image</button>
+    <button class="cancel-btn" onclick="hideBubble()">Cancel</button>
+</div>
+
+<script>
+let isAdmin = false;
+let targetImg = null;
+
+document.addEventListener("keydown", function(e) {
+    if (e.altKey && e.shiftKey && (e.key === "e" || e.key === "E")) {
+        e.preventDefault();
+        if (!isAdmin) unlockPage();
+    }
+});
+
+const doorbell = document.querySelector(".banner-title");
+if (doorbell) doorbell.addEventListener("dblclick", function(e) {
+    e.preventDefault();
+    if (!isAdmin) unlockPage();
+});
+
+function unlockPage() {
+    isAdmin = true;
+    document.getElementById("admin-toolkit").style.display = "flex";
+    document.body.classList.add("edit-mode-active");
+    document.querySelectorAll(".edit-text").forEach(el => el.setAttribute("contenteditable","true"));
+    document.querySelectorAll(".edit-img").forEach(img => img.addEventListener("click", openImgEditor));
+}
+
+function lockPage() {
+    isAdmin = false;
+    document.getElementById("admin-toolkit").style.display = "none";
+    hideBubble();
+    document.body.classList.remove("edit-mode-active");
+    document.querySelectorAll(".edit-text").forEach(el => el.removeAttribute("contenteditable"));
+    document.querySelectorAll(".edit-img").forEach(img => img.removeEventListener("click", openImgEditor));
+}
+
+function openImgEditor(e) {
+    if (!isAdmin) return;
+    e.preventDefault();
+    targetImg = e.target;
+    const bubble = document.getElementById("inline-img-box");
+    let container = targetImg.closest(".image-card") || targetImg.parentElement;
+    if (getComputedStyle(container).position === "static") container.style.position = "relative";
+    container.appendChild(bubble);
+    bubble.style.display = "block";
+    document.getElementById("img-input-val").value = targetImg.src;
+    document.getElementById("img-input-val").focus();
+}
+
+function hideBubble() { document.getElementById("inline-img-box").style.display = "none"; }
+
+function applyImg() {
+    const val = document.getElementById("img-input-val").value.trim();
+    if (targetImg && val) {
+        const driveMatch = val.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/);
+        targetImg.src = driveMatch ? "https://drive.google.com/thumbnail?id=" + driveMatch[1] + "&sz=w1600" : val;
+    }
+    hideBubble();
+}
+
+function copyCode() {
+    const wasOn = isAdmin;
+    lockPage();
+    const clone = document.documentElement.cloneNode(true);
+    const tools = clone.querySelector("#admin-toolkit");
+    if (tools) tools.remove();
+    const finalHTML = "<!DOCTYPE html>\n" + clone.outerHTML;
+    navigator.clipboard.writeText(finalHTML).then(() => {
+        alert("HTML copied to clipboard!");
+    }).catch(() => {
+        const temp = document.createElement("textarea");
+        document.body.appendChild(temp);
+        temp.value = finalHTML;
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+        alert("HTML copied to clipboard!");
+    });
+    if (wasOn) unlockPage();
+}
+</script>
+
+</body>
+</html>
