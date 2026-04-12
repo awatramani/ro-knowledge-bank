@@ -1,11 +1,16 @@
 /*
  * ============================================================
  *  J-PAL SA Knowledge Bank — Shared Admin & Interaction JS
- *  kb-admin.js  |  Version 1.0
+ *  kb-admin.js  |  Version 2.0
+ *
+ *  Include this file on any KB page to get:
+ *  - Prep console tab switching + progress tracking
+ *  - Alt+Shift+E admin edit mode (text + image editing)
+ *  - Copy HTML to clipboard
  * ============================================================
  */
 
-/* ── PREP CONSOLE TAB SWITCHER ── */
+/* ── Prep console tab switcher ─────────────────────────────── */
 function openPrepTab(evt, tabName) {
     document.querySelectorAll('.prep-pane').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.prep-tab').forEach(t => t.classList.remove('active'));
@@ -21,10 +26,10 @@ function toggleTask(element) {
     const fill = document.getElementById('master-progress-fill');
     const text = document.getElementById('master-progress-text');
     if (fill) fill.style.width = pct + '%';
-    if (text) text.innerText  = pct + '%';
+    if (text) text.innerText   = pct + '%';
 }
 
-/* ── ADMIN EDITOR ── */
+/* ── Admin editor ───────────────────────────────────────────── */
 let isAdmin = false, targetImg = null;
 
 document.addEventListener('keydown', function(e) {
@@ -34,17 +39,26 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+// Fallback: double-click the banner title
+const doorbell = document.querySelector('.banner-title');
+if (doorbell) doorbell.addEventListener('dblclick', function(e) {
+    e.preventDefault();
+    if (!isAdmin) unlockPage();
+});
+
 function unlockPage() {
     isAdmin = true;
-    document.getElementById('admin-toolkit').style.display = 'flex';
+    const kit = document.getElementById('admin-toolkit');
+    if (kit) kit.style.display = 'flex';
     document.body.classList.add('edit-mode-active');
-    document.querySelectorAll('.edit-text').forEach(el => el.setAttribute('contenteditable','true'));
+    document.querySelectorAll('.edit-text').forEach(el => el.setAttribute('contenteditable', 'true'));
     document.querySelectorAll('.edit-img').forEach(img => img.addEventListener('click', openImgEditor));
 }
 
 function lockPage() {
     isAdmin = false;
-    document.getElementById('admin-toolkit').style.display = 'none';
+    const kit = document.getElementById('admin-toolkit');
+    if (kit) kit.style.display = 'none';
     hideBubble();
     document.body.classList.remove('edit-mode-active');
     document.querySelectorAll('.edit-text').forEach(el => el.removeAttribute('contenteditable'));
@@ -56,7 +70,8 @@ function openImgEditor(e) {
     e.preventDefault();
     targetImg = e.target;
     const bubble = document.getElementById('inline-img-box');
-    let container = targetImg.parentElement;
+    if (!bubble) return;
+    let container = targetImg.closest('.image-card') || targetImg.parentElement;
     if (getComputedStyle(container).position === 'static') container.style.position = 'relative';
     container.appendChild(bubble);
     bubble.style.display = 'block';
@@ -82,18 +97,36 @@ function copyCode() {
     const wasOn = isAdmin;
     lockPage();
     const clone = document.documentElement.cloneNode(true);
-    const tools = clone.querySelector('#admin-master-container');
+    // Remove the admin toolkit from the copy
+    const tools = clone.querySelector('#admin-toolkit');
     if (tools) tools.remove();
+    const finalHTML = '<!DOCTYPE html>\n' + clone.outerHTML;
+
+    // Use modern clipboard API with execCommand fallback
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(finalHTML)
+            .then(() => alert('HTML copied to clipboard!'))
+            .catch(() => execCommandFallback(finalHTML));
+    } else {
+        execCommandFallback(finalHTML);
+    }
+    if (wasOn) unlockPage();
+}
+
+function execCommandFallback(text) {
     const temp = document.createElement('textarea');
+    temp.value = text;
+    temp.style.position = 'fixed';
+    temp.style.opacity = '0';
     document.body.appendChild(temp);
-    temp.value = '<!DOCTYPE html>\n' + clone.outerHTML;
+    temp.focus();
     temp.select();
     try {
         document.execCommand('copy');
-        alert('✨ Code copied! Paste into your editor or Google Sites.');
-    } catch(err) {
-        alert('Could not copy — please check browser permissions.');
+        alert('HTML copied to clipboard!');
+    } catch (err) {
+        alert('Could not copy automatically — please copy manually from the console.');
+        console.log(text);
     }
     document.body.removeChild(temp);
-    if (wasOn) unlockPage();
 }
