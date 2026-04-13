@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<base target="_blank">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Academy | J-PAL SA Research Operations</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══ GLOBAL DESIGN TOKENS — identical to Hub, Pre-Field Ops, Field Readiness ══════════════ */
+:root{
+  --green:#1A7A6D;--green-dim:rgba(26,122,109,0.10);
+  --ink:#0d1117;--ink-mid:#1e293b;--ink-soft:#334155;--muted:#64748b;
+  --border:rgba(0,0,0,0.07);--surface:#fff;--off:#f8fafc;--off2:#f1f5f9;
+  --orange:#f59e0b;--red:#dc2626;--blue:#0ea5e9;--success:#10b981;
+  --mono:'DM Mono','Courier New',monospace;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --radius:12px;--radius-lg:16px;
+  --shadow:0 1px 3px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+  --shadow-md:0 4px 20px rgba(0,0,0,.07);
+  --shadow-hover:0 8px 32px rgba(26,122,109,.10),0 1px 4px rgba(0,0,0,.04);
+  /* Legacy aliases — all source inline styles use these */
+  --heading-green:#1A7A6D;--brand-dark:#1e293b;
+  --bg-off-white:#f8fafc;--bg-light-green:#f2fafa;--bg-white:#fff;
+  --text-main:#334155;--text-light:#64748b;
+  --success-green:#10b981;--danger-red:#dc2626;
+  --accent-orange:#f59e0b;--accent-blue:#0ea5e9;
+  --border-soft:rgba(0,0,0,0.08);
+  --shadow-float:0 1px 3px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+  --shadow-hover-src:0 20px 50px rgba(26,122,109,.15);
+  --transition-smooth:all 0.4s cubic-bezier(0.22,1,0.36,1);
+  --glass-bg:rgba(255,255,255,0.9);--glass-border:rgba(255,255,255,0.6);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);color:var(--ink-soft);background:var(--off);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4,h5,h6{color:var(--ink);}
+h2{font-size:28px;font-weight:700;letter-spacing:-.5px;margin-bottom:14px;}
+h3{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:12px;letter-spacing:-.2px;}
+h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+p{font-size:15px;margin-bottom:14px;color:var(--ink-soft);line-height:1.65;}
+strong{color:var(--ink);font-weight:600;}a{text-decoration:none;color:inherit;}
+ul,ol{padding-left:20px;margin-bottom:12px;}
+li{margin-bottom:6px;font-size:15px;color:var(--ink-soft);}
+
+/* ── Page Layout ──────────────────────────────────────── */
+.page-layout{display:flex;align-items:flex-start;min-height:100vh;}
+.main-content-area{flex:1;min-width:0;overflow-x:hidden;}
+
+/* ── Sidebar ──────────────────────────────────────────── */
+.left-nav{width:200px;min-width:200px;height:100vh;position:sticky;top:0;
+  background:#0d1117;display:flex;flex-direction:column;overflow:hidden;
+  z-index:900;flex-shrink:0;border-right:1px solid rgba(255,255,255,.06);
+  box-shadow:2px 0 16px rgba(0,0,0,.10);font-family:var(--sans);}
+.left-nav-brand{height:56px;min-height:56px;display:flex;align-items:center;
+  padding:0 18px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;}
+.left-nav-icon{width:26px;height:26px;border-radius:7px;background:var(--green);
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+.left-nav-brand-text strong{display:block;font-size:12px;font-weight:700;color:#e2e8f0;line-height:1.25;}
+.left-nav-brand-text span{font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:.8px;font-family:var(--mono);}
+.left-nav-section{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1.6px;color:#334155;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
+.left-nav-items{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none;}
+.left-nav-items::-webkit-scrollbar{display:none;}
+.left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#64748b;font-size:13px;
+  font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  border-radius:6px;margin:1px 8px;transition:background .15s,color .15s;
+  text-decoration:none;border-left:2px solid transparent;}
+.left-nav-item:hover{background:rgba(255,255,255,.05);color:#e2e8f0;}
+.left-nav-item.active{background:rgba(26,122,109,.15);color:#34d399;font-weight:600;border-left-color:var(--green);}
+.left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;
+  font-size:10px;color:#334155;line-height:1.6;font-family:var(--mono);}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.hero{position:relative;padding:72px 5% 64px;background:#fff;border-bottom:1px solid var(--border);overflow:hidden;}
+.aurora{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(26,122,109,.07) 0%,transparent 70%),
+             radial-gradient(ellipse 50% 40% at 10% 80%,rgba(26,122,109,.04) 0%,transparent 60%);}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(rgba(26,122,109,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(26,122,109,.03) 1px,transparent 1px);
+  background-size:48px 48px;}
+.hero-inner{position:relative;z-index:1;display:flex;align-items:flex-start;gap:56px;max-width:1280px;margin:0 auto;}
+.hero-text{flex:1.2;min-width:0;}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.8px;color:var(--green);
+  background:var(--green-dim);padding:5px 12px;border-radius:4px;margin-bottom:22px;
+  border:1px solid rgba(26,122,109,.15);}
+.hero-kicker::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 2.4s ease infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+.hero h1{font-size:clamp(38px,5vw,64px);font-weight:700;color:var(--ink);line-height:1.06;letter-spacing:-2.5px;margin-bottom:18px;}
+.hero h1 em{font-style:normal;color:var(--green);}
+.hero-sub{font-size:16px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:32px;}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--border);}
+.stat-num{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-1px;line-height:1;transition:opacity .25s,transform .25s;}
+.stat-num.fade{opacity:0;transform:translateY(-6px);}
+.stat-label{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin-top:4px;}
+
+/* ── Podcast card ─────────────────────────────────────── */
+.hero-podcast-side{flex:.85;}
+.podcast-card{background:var(--ink);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.07);box-shadow:0 24px 48px rgba(0,0,0,.14);transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
+.podcast-card:hover{transform:translateY(-4px);box-shadow:0 32px 56px rgba(0,0,0,.2);}
+.podcast-top{position:relative;height:132px;overflow:hidden;background:linear-gradient(135deg,#0f1f1c,#0d1117);display:flex;align-items:center;padding:0 22px;gap:16px;}
+.podcast-top::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 80% 50%,rgba(26,122,109,.18) 0%,transparent 70%);}
+.podcast-play{width:48px;height:48px;border-radius:50%;background:var(--green);border:2px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:16px;color:white;flex-shrink:0;position:relative;z-index:1;box-shadow:0 0 0 8px rgba(26,122,109,.15);}
+.podcast-top-text{position:relative;z-index:1;}
+.podcast-tag{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:#34d399;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:7px;}
+.podcast-title{font-size:15px;font-weight:700;color:#e2e8f0;letter-spacing:-.2px;line-height:1.25;}
+.podcast-desc{font-size:11px;color:#64748b;margin-top:3px;}
+.podcast-player{background:#060910;border-top:1px solid rgba(255,255,255,.06);}
+.podcast-player iframe{width:100%;height:76px;border:0;display:block;}
+.podcast-footer{padding:12px 18px;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.05);}
+.podcast-footer-label{font-size:11px;color:#64748b;font-family:var(--mono);}
+.podcast-footer-badge{font-size:10px;font-weight:700;color:#34d399;background:rgba(52,211,153,.1);padding:3px 8px;border-radius:3px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.8px;}
+
+/* ── Tab Navigation ───────────────────────────────────── */
+.tab-nav-wrapper{position:sticky;top:0;z-index:800;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(0,0,0,.04);}
+.tab-nav{display:flex;align-items:stretch;max-width:1400px;margin:0 auto;padding:0 5%;overflow-x:auto;scrollbar-width:none;}
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-btn{padding:0 20px;height:50px;border:none;background:transparent;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:color .15s,border-color .15s;white-space:nowrap;border-bottom:2px solid transparent;flex-shrink:0;}
+.tab-btn:hover:not(.active){color:var(--ink);}
+.tab-btn.active{color:var(--green);border-bottom-color:var(--green);font-weight:600;}
+.tab-btn.home-tab{font-weight:600;color:var(--ink-soft);}
+.tab-btn.home-tab.active{color:var(--green);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;animation:panelIn .3s var(--ease);}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.panel-label-strip{background:var(--ink);padding:10px 5%;}
+.panel-label-strip span{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.35);}
+.panel-label-strip strong{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.7);}
+.panel-body{padding:0 5% 80px;max-width:1280px;margin:0 auto;}
+
+/* ── Suppress source hero/orb (hidden but DOM kept for layout compat) ─ */
+.hero-container,.hero-glass,.orb-1,.hero-bg-img{display:none!important;}
+.fade-up,.delay-1,.delay-2,.delay-3,.delay-4{opacity:1!important;transform:none!important;animation:none!important;}
+
+/* ══ SOURCE ELEMENT STYLES — scoped to .panel-body to prevent bleed ════
+   These carry the original look/feel of each source file verbatim.
+   All colour values resolve via our :root aliases above.           ══ */
+
+/* Layout */
+.panel-body .section-padding{padding:60px 0;}
+.panel-body .section-wrapper{padding:60px 0;border-bottom:1px solid var(--border-soft);}
+.panel-body .section-wrapper:last-child{border-bottom:none;}
+.panel-body .split-layout{display:flex;gap:40px;align-items:flex-start;}
+.panel-body .split-layout.reverse,.panel-body .split-layout[style*="row-reverse"]{flex-direction:row-reverse;}
+.panel-body .col-1{flex:1;}.panel-body .col-2{flex:1.5;}
+.panel-body .text-column{max-width:900px;margin:0 auto;}
+
+/* Eyebrow */
+.panel-body .eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--heading-green);margin-bottom:14px;display:inline-block;background:rgba(26,122,109,0.1);padding:5px 14px;border-radius:20px;}
+
+/* Bento grid + cards */
+.panel-body .bento-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:32px;}
+.panel-body .bento-card{background:var(--bg-white);border-radius:20px;padding:26px;border:1px solid var(--border-soft);box-shadow:var(--shadow-float);transition:var(--transition-smooth);position:relative;overflow:hidden;}
+.panel-body .bento-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover-src);border-color:var(--heading-green);}
+.panel-body .bento-wide{grid-column:span 2;}
+.panel-body .bento-full{grid-column:span 3;}
+
+/* Scenario / warning boxes */
+.panel-body .scenario-box{background:#fffdf2;border:1px solid #fde68a;padding:22px 26px;border-radius:14px;margin-bottom:20px;border-left:4px solid var(--accent-orange);box-shadow:4px 4px 0px rgba(245,158,11,.1);transition:.3s;}
+.panel-body .scenario-box:hover{transform:translateX(4px);}
+.panel-body .scenario-label{display:inline-block;font-weight:800;text-transform:uppercase;font-size:11px;color:white;background:var(--accent-orange);padding:4px 10px;border-radius:12px;margin-bottom:10px;letter-spacing:1px;}
+.panel-body .warning-card{background:#fef2f2;border:1px solid #fecaca;padding:22px;border-radius:14px;border-left:5px solid var(--danger-red);margin-bottom:24px;}
+
+/* Tables */
+.panel-body .table-wrapper{width:100%;overflow-x:auto;margin-bottom:26px;border-radius:14px;border:1px solid var(--border-soft);box-shadow:var(--shadow-float);background:white;}
+.panel-body .data-table{width:100%;border-collapse:collapse;font-size:14px;text-align:left;}
+.panel-body .data-table th{background:var(--brand-dark);color:white;padding:14px 18px;font-weight:700;border-bottom:3px solid var(--heading-green);font-size:13px;}
+.panel-body .data-table td{padding:14px 18px;border-bottom:1px solid var(--border-soft);vertical-align:top;font-size:14px;color:var(--text-main);}
+.panel-body .data-table tr:last-child td{border-bottom:none;}
+.panel-body .data-table tr:nth-child(even){background:var(--bg-off-white);}
+.panel-body .data-table tr:hover td{background:#f0fdf4;}
+
+/* Interactive console (Five Values + Components + Certification) */
+.panel-body .prep-console{background:white;border-radius:20px;box-shadow:var(--shadow-float);border:1px solid var(--border-soft);overflow:hidden;margin-top:28px;margin-bottom:36px;}
+.panel-body .prep-body{display:flex;min-height:420px;}
+.panel-body .prep-tabs{width:24%;background:var(--bg-off-white);border-right:1px solid var(--border-soft);display:flex;flex-direction:column;}
+/* Minimum's console has dark tabs */
+.panel-body .prep-tabs[style*="background: var(--brand-dark)"],.panel-body .prep-tabs[style*="background:var(--brand-dark)"]{background:var(--brand-dark)!important;}
+.panel-body .prep-tab{padding:18px 22px;cursor:pointer;transition:.2s;font-weight:700;font-size:14px;color:var(--text-light);border-left:4px solid transparent;border-bottom:1px solid var(--border-soft);}
+.panel-body .prep-tab:hover{background:white;color:var(--brand-dark);}
+.panel-body .prep-tab.active{background:white;border-left-color:var(--heading-green);color:var(--heading-green);}
+/* Dark sidebar tabs */
+.panel-body .prep-tabs[style*="brand-dark"] .prep-tab{color:rgba(255,255,255,.5);border-bottom-color:rgba(255,255,255,.08);}
+.panel-body .prep-tabs[style*="brand-dark"] .prep-tab:hover{color:white;background:rgba(255,255,255,.05);}
+.panel-body .prep-tabs[style*="brand-dark"] .prep-tab.active{background:white;border-left-color:var(--heading-green);color:var(--heading-green);}
+.panel-body .prep-content-area{width:76%;padding:36px;position:relative;background:white;}
+.panel-body .prep-pane{display:none;animation:panelIn .3s ease forwards;}
+.panel-body .prep-pane.active{display:block;}
+
+/* Checklist tracker */
+.panel-body .checklist-container{background:white;border-radius:20px;border:1px solid var(--border-soft);padding:26px;box-shadow:var(--shadow-float);margin-top:36px;}
+.panel-body .prep-progress-header{background:var(--brand-dark);color:white;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;border-radius:12px;margin-bottom:18px;}
+.panel-body .prep-progress-header h3{margin:0;color:white;font-size:16px;font-weight:600;}
+.panel-body .progress-bar-bg{width:180px;height:9px;background:rgba(255,255,255,.2);border-radius:10px;overflow:hidden;}
+.panel-body .progress-bar-fill{height:100%;background:var(--success-green);width:0%;transition:width .4s ease;}
+.panel-body .check-list,.panel-body .checklist-container>.check-item{/*direct children ok*/}
+.panel-body .check-item{display:flex;align-items:flex-start;gap:14px;padding:13px;background:var(--bg-off-white);border:1px solid var(--border-soft);border-radius:10px;margin-bottom:9px;cursor:pointer;transition:.2s;font-size:14px;font-weight:600;}
+.panel-body .check-item:hover{border-color:var(--heading-green);background:white;}
+.panel-body .check-item.completed{background:#f0fdf4;border-color:#bbf7d0;color:var(--text-light);text-decoration:line-through;}
+.panel-body .custom-checkbox{width:20px;height:20px;border:2px solid #cbd5e1;border-radius:5px;display:flex;align-items:center;justify-content:center;color:transparent;font-weight:900;flex-shrink:0;}
+.panel-body .check-item.completed .custom-checkbox{background:var(--success-green);border-color:var(--success-green);color:white;}
+.panel-body .check-text{font-size:14px;font-weight:600;color:var(--brand-dark);}
+
+/* Cinematic / dark sections */
+.panel-body .edge-to-edge{width:100%;position:relative;overflow:hidden;}
+.panel-body .cinematic-section{background:linear-gradient(140deg,var(--brand-dark) 0%,#0f172a 100%);padding:80px 5%;color:white;margin-left:-5%;margin-right:-5%;padding-left:10%;padding-right:10%;}
+.panel-body .dark-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px;backdrop-filter:blur(10px);}
+
+/* Zigzag rows (Training Manual) */
+.panel-body .zigzag-row{display:flex;align-items:stretch;gap:44px;margin-bottom:48px;background:white;border-radius:18px;padding:36px;box-shadow:var(--shadow-float);border:1px solid var(--border-soft);border-top:4px solid var(--heading-green);transition:var(--transition-smooth);}
+.panel-body .zigzag-row:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover-src);}
+.panel-body .zigzag-row.reverse{flex-direction:row-reverse;}
+.panel-body .content-col{flex:1.2;}
+.panel-body .visual-col{flex:.8;display:flex;flex-direction:column;justify-content:center;}
+.panel-body .callout{background:rgba(26,122,109,.06);border-left:4px solid var(--heading-green);padding:18px 20px;border-radius:0 12px 12px 0;margin:18px 0;font-size:14px;}
+.panel-body .callout strong{color:var(--heading-green);display:block;margin-bottom:5px;font-size:14px;}
+.panel-body .glass-widget{background:linear-gradient(135deg,#fff,#f2fafa);border:1px solid var(--border-soft);border-radius:14px;padding:26px;box-shadow:var(--shadow-float);}
+.panel-body .widget-header{font-size:12px;font-weight:800;color:var(--heading-green);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;border-bottom:1px solid var(--border-soft);padding-bottom:8px;}
+.panel-body table{width:100%;border-collapse:collapse;margin:12px 0 18px;background:white;border-radius:8px;overflow:hidden;border:1px solid var(--border-soft);}
+.panel-body th,.panel-body td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--border-soft);font-size:14px;vertical-align:top;}
+.panel-body th{background:var(--bg-light-green);color:var(--brand-dark);font-weight:700;}
+.panel-body tr:last-child td{border-bottom:none;}
+
+/* Action section (links footer) */
+.panel-body .action-section{padding:48px 0;text-align:center;background:var(--bg-off-white);margin-left:-5%;margin-right:-5%;padding-left:5%;padding-right:5%;}
+
+/* ── Admin edit mode ──────────────────────────────────── */
+body.edit-mode-active .edit-text{outline:2px dashed #0ea5e9;outline-offset:2px;border-radius:3px;}
+body.edit-mode-active .edit-text:hover{background:rgba(14,165,233,.05);cursor:text;}
+body.edit-mode-active .edit-img{outline:3px dashed #0ea5e9;cursor:pointer;}
+body.edit-mode-active .edit-link{outline:2px dashed var(--accent-orange);outline-offset:2px;border-radius:3px;cursor:pointer;}
+#admin-kit{display:none;position:fixed;bottom:24px;right:24px;background:var(--ink);padding:12px 20px;border-radius:40px;box-shadow:0 16px 40px rgba(0,0,0,.4);gap:12px;align-items:center;z-index:9999;border:1px solid rgba(255,255,255,.08);font-family:var(--sans);}
+.abt{border:none;padding:8px 16px;border-radius:24px;font-weight:600;font-size:12px;cursor:pointer;color:white;font-family:var(--sans);}
+.abt.copy{background:var(--green);}.abt.exit{background:transparent;color:#ef4444;border:1px solid #ef4444;}
+#img-bubble{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:18px;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.25);z-index:10000;width:300px;border:1px solid #e2e8f0;font-family:var(--sans);}
+#img-bubble p{font-size:11px;font-weight:700;color:var(--ink);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;}
+#img-bubble input{width:100%;padding:9px 12px;border:1px solid #e2e8f0;border-radius:7px;margin-bottom:8px;font-size:12px;font-family:var(--sans);}
+#img-bubble button{width:100%;padding:9px;border:none;border-radius:7px;background:var(--green);color:white;font-weight:700;cursor:pointer;font-size:12px;font-family:var(--sans);margin-bottom:6px;}
+#img-bubble .cancel{background:transparent;border:1px solid #e2e8f0;color:#64748b;}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media(max-width:1100px){
+  .panel-body .bento-grid{grid-template-columns:1fr 1fr;}
+  .panel-body .bento-wide{grid-column:span 2;}
+  .panel-body .bento-full{grid-column:span 2;}
+}
+@media(max-width:1024px){
+  .hero-inner{flex-direction:column;}.hero-podcast-side{width:100%;}
+  .panel-body .split-layout,.panel-body .split-layout.reverse{flex-direction:column!important;}
+  .panel-body .zigzag-row,.panel-body .zigzag-row.reverse{flex-direction:column!important;}
+  .panel-body .prep-body{flex-direction:column;}
+  .panel-body .prep-tabs,.panel-body .prep-content-area{width:100%!important;}
+  .panel-body .prep-tabs{flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid var(--border-soft);padding:0!important;}
+  .panel-body .prep-tab{flex:1;min-width:100px;text-align:center;border-left:none;border-bottom:4px solid transparent;}
+  .panel-body .prep-tab.active{border-bottom-color:var(--heading-green);border-left-color:transparent;}
+}
+@media(max-width:768px){
+  .page-layout{flex-direction:column;}
+  .left-nav{width:100%!important;height:auto;min-height:48px;position:relative;flex-direction:column;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}
+  .left-nav-brand{height:48px;min-height:48px;}
+  .left-nav-section{padding:10px 18px 5px;}
+  .left-nav-items{max-height:200px;}
+  .panel-body .bento-grid{grid-template-columns:1fr!important;}
+  .panel-body .bento-wide,.panel-body .bento-full{grid-column:span 1!important;}
+}
+</style>
+</head>
+<body>
+<div class="page-layout">
+
+<!-- ═══ SIDEBAR ═══════════════════════════════════════════════════════ -->
+<aside class="left-nav">
+  <div class="left-nav-brand">
+    <div class="left-nav-icon">RO</div>
+    <div class="left-nav-brand-text">
+      <strong>RO Knowledge Bank</strong><span>J-PAL South Asia</span>
+    </div>
+  </div>
+  <span class="left-nav-section">Navigation</span>
+  <nav class="left-nav-items">
+    <a class="left-nav-item" href="hub-v2-notion.html" target="_self">The Hub</a>
+    <a class="left-nav-item" href="pre-field-ops-V4.html" target="_self">Pre-Field Ops</a>
+    <a class="left-nav-item" href="field-readiness.html" target="_self">Field Readiness</a>
+    <a class="left-nav-item active" href="training-academy.html" target="_self">Training Academy</a>
+    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0" target="_top">On-boarding RA/PA</a>
+    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_top">Field Execution</a>
+    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" target="_top">Resources &amp; Field Staff</a>
+  </nav>
+  <div class="left-nav-footer">Version 1.0 &middot; April 2025<br>J-PAL South Asia</div>
+</aside>
+
+<div class="main-content-area">
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="aurora"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-kicker edit-text">J-PAL SA &middot; Research Operations</div>
+      <h1 class="edit-text">Training <em>Academy</em></h1>
+      <p class="hero-sub edit-text">Cultivating capability through rigorous values, exhaustive manuals, mock-interview protocols, and mandatory certification gates before every single household visit.</p>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">4</div><div class="stat-label" id="hero-stat-1-lbl">Sub-sections</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">14+</div><div class="stat-label" id="hero-stat-2-lbl">Guides</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">4</div><div class="stat-label" id="hero-stat-3-lbl">Checklists</div></div>
+      </div>
+    </div>
+    <div class="hero-podcast-side">
+      <div class="podcast-card">
+        <div class="podcast-top">
+          <div class="podcast-play">&#9654;</div>
+          <div class="podcast-top-text">
+            <div class="podcast-tag">Training Academy Podcast</div>
+            <div class="podcast-title edit-text" id="podcast-title">Training Academy: The Full Picture</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">Building field teams — from values to certification gates</div>
+          </div>
+        </div>
+        <div class="podcast-player">
+          <iframe id="podcast-iframe" src="https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview" allow="autoplay"></iframe>
+        </div>
+        <div class="podcast-footer">
+          <span class="podcast-footer-label edit-text">J-PAL SA Research Operations</span>
+          <span class="podcast-footer-badge">Listen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TAB NAVIGATION ════════════════════════════════════════════════ -->
+<div class="tab-nav-wrapper">
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')">Training Academy</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-pc')">People &amp; Culture</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-tm')">Training Manual</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-min')">Minimum Must-Dos</button>
+  </nav>
+</div>
+
+
+<!-- ═══ PANEL: HOME ══════════════════════════════════════════════════════ -->
+<div id="panel-home" class="tab-panel active">
+<div class="panel-label-strip"><span>Training Academy &rsaquo; </span><strong class="edit-text">Overview</strong></div>
+<div class="panel-body">
+
+<div style="max-width:880px;margin:48px auto 40px;text-align:center;">
+  <span class="eyebrow edit-text">The Academy</span>
+  <h2 class="edit-text" style="font-size:32px;letter-spacing:-.6px;margin-bottom:12px;">Training is Not an Event. It is a System.</h2>
+  <p class="edit-text" style="font-size:16px;color:var(--muted);line-height:1.75;">A poorly trained team produces data that looks clean but is systematically wrong. The Training Academy exists to make that outcome impossible — through rigorous preparation, certification gates, and continuous calibration at every stage of the deployment lifecycle.</p>
+</div>
+
+<div class="bento-grid" style="margin-top:0;margin-bottom:48px;">
+  <div class="bento-card" style="border-top:3px solid var(--green);cursor:pointer;" onclick="switchTab({currentTarget:document.querySelectorAll('.tab-btn')[1]},'panel-pc')">
+    <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin-bottom:12px;">Tab 2</div>
+    <h3 class="edit-text" style="font-size:18px;color:var(--green);margin-bottom:10px;">People &amp; Culture</h3>
+    <p class="edit-text" style="font-size:14px;color:var(--muted);margin:0;">Organisational values, Field Code of Conduct, POSH &amp; Child Protection policies, and the interactive Five Values console.</p>
+  </div>
+  <div class="bento-card" style="border-top:3px solid var(--green);cursor:pointer;" onclick="switchTab({currentTarget:document.querySelectorAll('.tab-btn')[2]},'panel-tm')">
+    <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin-bottom:12px;">Tab 3</div>
+    <h3 class="edit-text" style="font-size:18px;color:var(--green);margin-bottom:10px;">Training Manual</h3>
+    <p class="edit-text" style="font-size:14px;color:var(--muted);margin:0;">Ownership, approval gates, agenda structure, core surveying attributes, probing techniques, and the questionnaire deep dive.</p>
+  </div>
+  <div class="bento-card" style="border-top:3px solid var(--red);cursor:pointer;" onclick="switchTab({currentTarget:document.querySelectorAll('.tab-btn')[3]},'panel-min')">
+    <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin-bottom:12px;">Tab 4</div>
+    <h3 class="edit-text" style="font-size:18px;color:var(--red);margin-bottom:10px;">Minimum Must-Dos</h3>
+    <p class="edit-text" style="font-size:14px;color:var(--muted);margin:0;">Mandatory components, time budgets, 8 non-negotiable role-plays, pass/fail certification gates, and the master compliance checklist.</p>
+  </div>
+</div>
+
+<div style="background:var(--ink);border-radius:18px;padding:48px;box-shadow:var(--shadow-md);">
+  <div style="text-align:center;margin-bottom:36px;">
+    <div style="font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:#34d399;margin-bottom:12px;">Training Lifecycle</div>
+    <h2 class="edit-text" style="font-size:26px;font-weight:700;color:#e2e8f0;letter-spacing:-.4px;margin-bottom:10px;">Three Phases. No Shortcuts.</h2>
+    <p class="edit-text" style="font-size:15px;color:#64748b;max-width:640px;margin:0 auto;">Every project training must move through all three phases. Compressing or skipping any phase transfers cost from the preparation stage — where it is cheap to fix — to data collection, where it is catastrophically expensive.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:22px;">
+      <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#475569;margin-bottom:10px;">Phase 1</div>
+      <h4 class="edit-text" style="font-size:15px;font-weight:600;color:#e2e8f0;margin-bottom:8px;">Manual Drafting</h4>
+      <p class="edit-text" style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">Begin T-6 weeks. Joint RA + SC ownership. Mandatory Director (RO) &amp; Director (Research) sign-off before distribution.</p>
+    </div>
+    <div style="background:rgba(26,122,109,.15);border:1px solid rgba(26,122,109,.3);border-radius:12px;padding:22px;">
+      <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#34d399;margin-bottom:10px;">Phase 2</div>
+      <h4 class="edit-text" style="font-size:15px;font-weight:600;color:#e2e8f0;margin-bottom:8px;">Training Delivery</h4>
+      <p class="edit-text" style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">6-7 days minimum. Questionnaire walkthrough, role-plays, daily quizzes, device practice. Field pilot day mandatory.</p>
+    </div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:22px;">
+      <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#475569;margin-bottom:10px;">Phase 3</div>
+      <h4 class="edit-text" style="font-size:15px;font-weight:600;color:#e2e8f0;margin-bottom:8px;">Certification &amp; Go/No-Go</h4>
+      <p class="edit-text" style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">PDRA pass required. All 8 role-plays signed off. SC has authority to block launch if gates are not met.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══ PANEL: PEOPLE & CULTURE ══════════════════════════════════════════ -->
+<div id="panel-pc" class="tab-panel">
+<div class="panel-label-strip"><span>Training Academy &rsaquo; </span><strong class="edit-text">People &amp; Culture</strong></div>
+<div class="panel-body">
+<div class="hero-container">
+    <div class="hero-bg-img"></div>
+    <div class="orb-1"></div>
+    <div class="hero-glass fade-up">
+        <span class="eyebrow edit-text">Training Academy</span>
+        <h1 class="edit-text" id="admin-doorbell">People and Culture</h1>
+        <p class="edit-text" style="font-size: 20px; color: var(--brand-dark); font-weight: 700; margin-bottom: 20px;">
+            Values, Code of Conduct, and Organisational Culture in the Field
+        </p>
+        <p class="edit-text" style="margin-bottom: 15px; max-width: 800px;">
+            Who We Are • How We Work • How We Care for Each Other and the Communities We Serve<br>
+            <strong style="color: var(--heading-green); font-size: 18px;">Respect | Care | Rigour | Responsibility & Accountability | Integrity</strong>
+        </p>
+        <p class="edit-text" style="font-size: 12px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin: 0;">
+            For All Field Staff (Surveyors, Field Supervisors, SCs, RAs) • Version 1.0
+        </p>
+    </div>
+</div>
+
+<div class="section-padding fade-up delay-1">
+    <div class="split-layout">
+        <div class="col-1">
+            <span class="eyebrow edit-text">Context</span>
+            <h2 class="edit-text">Stated Assumptions</h2>
+            <p class="edit-text">This document applies to all field staff working on J-PAL South Asia research projects, regardless of role, contract type, or duration.</p>
+            
+            <div class="bento-card" style="padding: 25px; margin-bottom: 20px;">
+                <h4 class="edit-text">Universality</h4>
+                <p class="edit-text" style="font-size: 14px; margin: 0;">The five organisational values and Field Code of Conduct apply to ALL staff. There are no exemptions based on seniority.</p>
+            </div>
+            <div class="bento-card" style="padding: 25px; margin-bottom: 20px;">
+                <h4 class="edit-text">Three Arenas of Conduct</h4>
+                <p class="edit-text" style="font-size: 14px; margin: 0;">Behaviour is assessed in three arenas: (a) within communities, (b) within the team, and (c) in relation to policies.</p>
+            </div>
+            <div class="bento-card" style="padding: 25px;">
+                <h4 class="edit-text">Field Specificity</h4>
+                <p class="edit-text" style="font-size: 14px; margin: 0;">Values are not abstract principles. 'Rigour' is what you do with a vague respondent answer at 4:30 PM when you are tired.</p>
+            </div>
+        </div>
+        
+        <div class="col-2">
+            <span class="eyebrow edit-text">The Big Picture</span>
+            <h2 class="edit-text">The Research Value Chain</h2>
+            <p class="edit-text">J-PAL South Asia works to reduce poverty through rigorous policy evaluation. The integrity of this methodology depends entirely on measurement quality. If measurement is flawed, the policy recommendation can do harm.</p>
+            
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th class="edit-text">Stage</th>
+                            <th class="edit-text">Who Does It</th>
+                            <th class="edit-text">What Field Staff Must Know</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="edit-text">1. Study Design</td>
+                            <td class="edit-text">PI / Research Team</td>
+                            <td class="edit-text">The instrument reflects deliberate decisions. Do not improvise.</td>
+                        </tr>
+                        <tr>
+                            <td class="edit-text">2. IRB Approval</td>
+                            <td class="edit-text">Ethics Board</td>
+                            <td class="edit-text">Consent and data protection are legal/ethical obligations.</td>
+                        </tr>
+                        <tr style="background: rgba(26,122,109,0.1);">
+                            <td class="edit-text"><strong>3. Data Collection</strong></td>
+                            <td class="edit-text"><strong>Field Teams (YOU)</strong></td>
+                            <td class="edit-text"><strong>The only step that cannot be corrected later. A wrong measurement is simply wrong.</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="edit-text">4. QA & Analysis</td>
+                            <td class="edit-text">SC + RA + Analysts</td>
+                            <td class="edit-text">QA process is not a punishment — it is a safety net.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="scenario-box">
+                <span class="scenario-label edit-text" style="background: var(--brand-dark);">Why Culture Matters</span>
+                <strong class="edit-text" style="display:block; margin-bottom: 5px; font-size: 16px;">The Team That Had Two Cultures (MP, 2022)</strong>
+                <p class="edit-text" style="margin: 0; font-size: 14px;">A team had two wings. Wing A's supervisor created psychological safety (<3% discrepancy). Wing B's supervisor ruled by fear, punishing slow progress. The Result: Wing B fabricated 22 forms for a flooded village because honest non-contact reports were punished.<br><br><strong>Learning:</strong> A Supervisor who creates a safe space for honest reporting produces better data than any monitoring system.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-wrapper bg-white" style="border-top: 1px solid var(--border-soft);">
+    <div class="section-padding">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+            <span class="eyebrow edit-text">The Core Framework</span>
+            <h2 class="edit-text">The Five Values in Action</h2>
+            <p class="edit-text">Values are specific operational choices made daily under difficult field conditions. Explore how they apply in practice.</p>
+        </div>
+
+        <div class="prep-console">
+            <div class="prep-body">
+                <div class="prep-tabs">
+                    <div class="prep-tab active edit-text" onclick="openTab(event, 'v-respect')">1. Respect</div>
+                    <div class="prep-tab edit-text" onclick="openTab(event, 'v-care')">2. Care</div>
+                    <div class="prep-tab edit-text" onclick="openTab(event, 'v-rigour')">3. Rigour</div>
+                    <div class="prep-tab edit-text" onclick="openTab(event, 'v-account')">4. Accountability</div>
+                    <div class="prep-tab edit-text" onclick="openTab(event, 'v-integrity')">5. Integrity</div>
+                </div>
+                
+                <div class="prep-content-area">
+                    
+                    <div id="v-respect" class="prep-pane active">
+                        <h3 class="edit-text">Respect: The First & Most Visible Value</h3>
+                        <p class="edit-text">Visible within 30 seconds. It requires recognition of dignity, time, and autonomy across the community, the team, and respondents.</p>
+                        
+                        <div class="scenario-box" style="background: #fef2f2; border-color: #fecaca; border-left-color: var(--danger-red);">
+                            <span class="scenario-label edit-text" style="background: var(--danger-red);">🚩 The Permission Myth</span>
+                            <p class="edit-text" style="margin:0; font-style: normal; font-size: 14px;">Saying "This is a government survey" or "Participation is mandatory" is a disrespectful lie that exploits authority. J-PAL surveys are VOLUNTARY. Deception destroys future trust.</p>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="edit-text">Arena</th>
+                                        <th class="edit-text">What Good Looks Like</th>
+                                        <th class="edit-text">What Disrespect Looks Like</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="edit-text"><strong>Community</strong></td>
+                                        <td class="edit-text">Seek leader acknowledgment first. Use local dialect greetings. Accept water politely.</td>
+                                        <td class="edit-text">Photographing without consent. Arriving in overly casual attire.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text"><strong>Team</strong></td>
+                                        <td class="edit-text">Supervisors address errors privately. SCs consult before reassigning.</td>
+                                        <td class="edit-text">Public shaming (e.g., morning briefings). Complaining to peers.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text"><strong>Respondents</strong></td>
+                                        <td class="edit-text">Silent patience when recalling. Genuine thanks. Validating their choice to stop.</td>
+                                        <td class="edit-text">Sighing/checking time. Typing while they speak without looking at them.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="v-care" class="prep-pane">
+                        <h3 class="edit-text">Care: Operational Intelligence</h3>
+                        <p class="edit-text">Care means noticing when a colleague or respondent is not okay. Exhausted or frightened staff cannot produce high-quality work.</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <div style="background: var(--bg-off-white); padding: 20px; border-radius: 12px; border: 1px solid var(--border-soft);">
+                                <h4 class="edit-text" style="color: var(--heading-green);">Team Care Must-Dos</h4>
+                                <ul class="edit-text" style="font-size: 13px; margin: 0; padding-left: 15px;">
+                                    <li><strong>Daily Pulse:</strong> 'Sab theek hai?' every morning.</li>
+                                    <li><strong>Buddy Culture:</strong> No one works a remote location alone.</li>
+                                    <li><strong>Illness Protocol:</strong> Sick staff do not work. Targets do not override health.</li>
+                                </ul>
+                            </div>
+                            <div style="background: #fffbeb; padding: 20px; border-radius: 12px; border: 1px solid #fde68a;">
+                                <h4 class="edit-text" style="color: #9a3412;">🚩 Boundaries of Care</h4>
+                                <p class="edit-text" style="font-size: 13px; margin-bottom: 5px;">Never promise a respondent:</p>
+                                <ul class="edit-text" style="font-size: 13px; margin: 0; padding-left: 15px; color: #9a3412;">
+                                    <li>"I'll take this to the government."</li>
+                                    <li>"I will help you." (Unless referral exists).</li>
+                                    <li>"You will get benefits after this survey."</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="edit-text">Wellbeing Concern</th>
+                                        <th class="edit-text">Field Response Protocol</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="edit-text">Distress / Crying</td>
+                                        <td class="edit-text">Stop. Set tablet down. Ask to pause. Inform Supervisor.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text">Domestic Violence</td>
+                                        <td class="edit-text">Acknowledge bravery. Offer connection to help. Escalate to SC. Do NOT give personal number.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="v-rigour" class="prep-pane">
+                        <h3 class="edit-text">Rigour: Precision as a Practice</h3>
+                        <p class="edit-text">Rigour is the choice to probe when it's 4:30 PM, you are tired, and an answer is vague.</p>
+                        
+                        <div class="scenario-box" style="background: var(--bg-off-white); border-color: var(--border-soft); border-left-color: var(--brand-dark);">
+                            <span class="scenario-label edit-text" style="background: var(--brand-dark);">The Comments Field</span>
+                            <p class="edit-text" style="margin:0; font-style: normal; font-size: 14px;">The 'Field Notes' box is your professional voice. An empty comments field for a complex interview (proxy, interrupted) is a red flag. Note ambiguities to preserve context.</p>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="edit-text">The Rigour Test</th>
+                                        <th class="edit-text">Low Rigour</th>
+                                        <th class="edit-text">High Rigour</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="edit-text">Option doesn't fit exactly</td>
+                                        <td class="edit-text">Select closest option. Move on.</td>
+                                        <td class="edit-text">Select 'Other', type description, flag to Supervisor.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text">"I don't remember"</td>
+                                        <td class="edit-text">Record 'DK' and move on.</td>
+                                        <td class="edit-text">Probe with event anchoring. Record rough range in 'Other'.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text">Household locked (3rd visit)</td>
+                                        <td class="edit-text">Record 'refused' (easier).</td>
+                                        <td class="edit-text">Record 'Non-contact - 3 attempts' with dates/times.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="v-account" class="prep-pane">
+                        <h3 class="edit-text">Responsibility & Accountability</h3>
+                        <p class="edit-text">An accountable person says: "This was my mistake, here is what happened and how we fix it."</p>
+                        
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="edit-text">Situation</th>
+                                        <th class="edit-text">Unaccountable Response</th>
+                                        <th class="edit-text">Accountable Response</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="edit-text">Skipped 2 questions</td>
+                                        <td class="edit-text">Submit form. Hope QA misses it.</td>
+                                        <td class="edit-text">Flag to Supervisor same day with exact missed questions.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text">Couldn't reach 3 HHs</td>
+                                        <td class="edit-text">Mark as 'refused' to hit targets.</td>
+                                        <td class="edit-text">Mark as 'non-contact'. Plan revisit with Supervisor.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text">Wrong HH address surveyed</td>
+                                        <td class="edit-text">Submit anyway (same village).</td>
+                                        <td class="edit-text">Do NOT submit. Delete form. Record in Supervisor report.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="scenario-box" style="background: var(--bg-light-green); border-color: var(--heading-green); border-left-color: var(--heading-green);">
+                            <strong class="edit-text" style="display:block; margin-bottom: 5px;">Learning vs. Blame Cultures</strong>
+                            <p class="edit-text" style="margin:0; font-size: 14px; font-style: normal;">In a learning culture, errors are expected, disclosed, and used to improve systems. A blame culture produces hidden errors. Hidden errors compound.</p>
+                        </div>
+                    </div>
+
+                    <div id="v-integrity" class="prep-pane">
+                        <h3 class="edit-text">Integrity & Excellence</h3>
+                        <p class="edit-text">The choice you make when the outcome looks the same whether done well or poorly — and the poor way is easier.</p>
+                        
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="edit-text">Direction</th>
+                                        <th class="edit-text">What It Looks Like</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="edit-text"><strong>When No One Is Watching</strong></td>
+                                        <td class="edit-text">Same interview quality whether or not the Supervisor accompanies you.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text"><strong>Upward Honesty</strong></td>
+                                        <td class="edit-text">Reporting problems to the SC immediately, not waiting for automated QA to flag them.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text"><strong>Downward Honesty</strong></td>
+                                        <td class="edit-text">Giving honest, constructive feedback to junior staff instead of protecting them from reality.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="edit-text"><strong>Lateral Honesty</strong></td>
+                                        <td class="edit-text">Acknowledging when a colleague finds an error. Not blaming peers for shared failures.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="edge-to-edge cinematic-section">
+    <div style="max-width: 1400px; margin: 0 auto; position: relative; z-index: 1;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="eyebrow edit-text" style="color: #64ffda; background: rgba(100,255,218,0.1);">Non-Negotiables</span>
+            <h2 class="edit-text" style="color: white; margin-bottom: 10px;">Protection Policies</h2>
+            <p class="edit-text" style="color: #cbd5e1;">Legal and ethical obligations in all field sites, vehicles, and accommodations.</p>
+        </div>
+        
+        <div class="bento-grid" style="margin-top: 0; gap: 40px;">
+            <div class="dark-card bento-wide">
+                <h3 class="edit-text" style="color: white;">🛑 POSH (Prevention of Sexual Harassment)</h3>
+                <p class="edit-text" style="font-size: 14px; color: #cbd5e1; margin-bottom: 20px;">Applies to physical, verbal, visual, and digital (WhatsApp/messages) conduct. The test is whether the conduct was <em>unwelcome</em>, not the intent.</p>
+                
+                <h4 class="edit-text" style="color: #64ffda; font-size: 14px; text-transform: uppercase;">Reporting Flow:</h4>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; font-size: 14px; color: white; font-weight: 600; margin-bottom: 20px;">
+                    <span class="edit-text">Supervisor ➔ Survey Coordinator ➔ RA / POSH IC</span>
+                </div>
+                <ul class="edit-text" style="font-size: 14px; color: #e2e8f0; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;">• You may report <strong>anonymously</strong>.</li>
+                    <li style="margin-bottom: 8px;">• <strong>Zero Retaliation:</strong> Strict protection for complainants.</li>
+                    <li>• <strong>Silence is Complicity:</strong> Supervisors MUST transmit complaints within 24h. SCs must transmit to IC within 7 days. Do not mediate informally.</li>
+                </ul>
+            </div>
+
+            <div class="dark-card">
+                <h3 class="edit-text" style="color: var(--accent-blue);">🛡️ Child Protection</h3>
+                <p class="edit-text" style="font-size: 14px; color: #cbd5e1;">No child is harmed as a result of our work.</p>
+                <ul class="edit-text" style="font-size: 14px; color: #e2e8f0; list-style: none; padding: 0; margin-bottom: 20px;">
+                    <li style="margin-bottom: 8px;">• <strong>Consent:</strong> Never interview without guardian.</li>
+                    <li style="margin-bottom: 8px;">• <strong>Isolation:</strong> Never be alone with a child.</li>
+                    <li style="margin-bottom: 8px;">• <strong>Disclosure:</strong> STOP probing. LISTEN. RECORD. REPORT to SC same day.</li>
+                </ul>
+                <div style="background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); padding: 15px; border-radius: 12px;">
+                    <strong class="edit-text" style="color: #fca5a5; font-size: 13px; display: block; margin-bottom: 5px;">Zero Tolerance: Social Media</strong>
+                    <span class="edit-text" style="font-size: 12px; color: #fecaca; line-height: 1.4; display: block;">Never post images of children to WhatsApp status, IG, or X. Field sites are not tourism. Violation results in immediate removal.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-wrapper bg-white">
+    <div class="section-padding">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="eyebrow edit-text">Code of Conduct</span>
+            <h2 class="edit-text">The Three Arenas & Ethical Dilemmas</h2>
+            <p class="edit-text">Excellence in one arena does not compensate for failures in another.</p>
+        </div>
+
+        <div class="bento-grid" style="margin-top: 0; margin-bottom: 60px;">
+            <div class="bento-card" style="padding: 25px;">
+                <h4 class="edit-text" style="color: var(--heading-green); font-size: 18px;">1. Community</h4>
+                <ul class="edit-text" style="font-size: 14px; padding-left: 15px; margin: 0;">
+                    <li style="margin-bottom: 8px;">Honest introductions.</li>
+                    <li style="margin-bottom: 8px;">Observe local norms.</li>
+                    <li style="margin-bottom: 8px;">Zero substance/alcohol use on field days.</li>
+                    <li>No personal/romantic community relationships.</li>
+                </ul>
+            </div>
+            <div class="bento-card" style="padding: 25px;">
+                <h4 class="edit-text" style="color: var(--heading-green); font-size: 18px;">2. Team</h4>
+                <ul class="edit-text" style="font-size: 14px; padding-left: 15px; margin: 0;">
+                    <li style="margin-bottom: 8px;">Resolve disagreements professionally.</li>
+                    <li style="margin-bottom: 8px;">No hierarchy abuse or cliques.</li>
+                    <li style="margin-bottom: 8px;">No financial transactions between staff.</li>
+                    <li>Disclose conflicts of interest.</li>
+                </ul>
+            </div>
+            <div class="bento-card" style="padding: 25px;">
+                <h4 class="edit-text" style="color: var(--heading-green); font-size: 18px;">3. Organisation</h4>
+                <ul class="edit-text" style="font-size: 14px; padding-left: 15px; margin: 0;">
+                    <li style="margin-bottom: 8px;">Permanent data confidentiality.</li>
+                    <li style="margin-bottom: 8px;">Appropriate resource use (tablets).</li>
+                    <li>Strict financial integrity on expenses.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 class="edit-text" style="border-top: 1px solid var(--border-soft); padding-top: 40px; margin-bottom: 30px;">Ethical Dilemmas in Practice</h3>
+        
+        <div class="bento-grid" style="grid-template-columns: 1fr 1fr; margin-top:0;">
+            <div class="scenario-box">
+                <span class="scenario-label edit-text" style="background: var(--brand-dark);">Dilemma 1: Distressed Respondent</span>
+                <p class="edit-text" style="font-size: 14px; margin-bottom: 5px;">A widow cries discussing housing rejection but says "keep asking."</p>
+                <p class="edit-text" style="font-size: 14px; margin: 0; color: var(--heading-green);"><strong>Resolution:</strong> Rigour needs accuracy. Distressed recall is unreliable. Pause the survey.</p>
+            </div>
+            <div class="scenario-box">
+                <span class="scenario-label edit-text" style="background: var(--brand-dark);">Dilemma 2: Supervisor is Wrong</span>
+                <p class="edit-text" style="font-size: 14px; margin-bottom: 5px;">Supervisor says to substitute households if a module is refused.</p>
+                <p class="edit-text" style="font-size: 14px; margin: 0; color: var(--heading-green);"><strong>Resolution:</strong> Protocol overrides authority. Respectfully escalate to SC privately. Do not defy publicly.</p>
+            </div>
+            <div class="scenario-box">
+                <span class="scenario-label edit-text" style="background: var(--brand-dark);">Dilemma 3: Hospitality Trap</span>
+                <p class="edit-text" style="font-size: 14px; margin-bottom: 5px;">Sarpanch invites team to a meal on Day 1.</p>
+                <p class="edit-text" style="font-size: 14px; margin: 0; color: var(--heading-green);"><strong>Resolution:</strong> Decline politely to avoid sampling bias. Offer to share a meal at the END of deployment.</p>
+            </div>
+            <div class="scenario-box">
+                <span class="scenario-label edit-text" style="background: var(--brand-dark);">Dilemma 4: Colleague in Trouble</span>
+                <p class="edit-text" style="font-size: 14px; margin-bottom: 5px;">A close friend on the team is fabricating survey durations.</p>
+                <p class="edit-text" style="font-size: 14px; margin: 0; color: var(--heading-green);"><strong>Resolution:</strong> Speak privately, urge self-reporting. If they refuse, report them. Silence is complicity.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-wrapper bg-light-green">
+    <div class="section-padding">
+        <div class="split-layout">
+            <div class="col-1">
+                <span class="eyebrow edit-text">Chapter 12</span>
+                <h2 class="edit-text">Leadership Presence & Team Rhythm</h2>
+                <p class="edit-text">Data collection is teamwork. Leadership presence connects people to values. It means being in the field, curious, and building systems for rapid upward information flow.</p>
+                
+                <div class="image-card tilt-right" style="margin-top: 30px;">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" class="photo-img edit-img" alt="Team">
+                </div>
+            </div>
+            
+            <div class="col-2">
+                <div class="bento-grid" style="grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 0;">
+                    <div class="bento-card" style="padding: 25px;">
+                        <h4 class="edit-text" style="color: var(--heading-green);">The 30-40% Rule</h4>
+                        <p class="edit-text" style="font-size: 13px; margin: 0;">RAs must spend 30-40% of active data collection days in the field. Direct observation catches what remote reports miss.</p>
+                    </div>
+                    <div class="bento-card" style="padding: 25px;">
+                        <h4 class="edit-text" style="color: var(--heading-green);">The Weekly Loop</h4>
+                        <p class="edit-text" style="font-size: 13px; margin: 0;">Every Friday: Track deviation between Supervisor tracking sheets and SurveyCTO data. This surfaces reality.</p>
+                    </div>
+                    <div class="bento-card bento-wide" style="padding: 25px;">
+                        <h4 class="edit-text" style="color: var(--heading-green);">Skip-Level Chats</h4>
+                        <p class="edit-text" style="font-size: 13px; margin-bottom: 10px;">Informal talks bypassing hierarchy to hear unfiltered voices. <strong>Rule: Absolute confidentiality.</strong></p>
+                        <ul class="edit-text" style="font-size: 13px; padding-left: 15px; margin:0; color: var(--text-light);">
+                            <li><strong>Wellbeing:</strong> 'Kaise ho genuinely?'</li>
+                            <li><strong>Field conditions:</strong> 'Sabse badi pareshani kya thi?'</li>
+                            <li><strong>Recognition:</strong> 'Aapne sabse accha kya kiya?'</li>
+                        </ul>
+                    </div>
+                    <div class="bento-card bento-wide" style="padding: 25px; background: var(--brand-dark); color: white;">
+                        <h4 class="edit-text" style="color: #64ffda;">Specific Recognition</h4>
+                        <p class="edit-text" style="font-size: 13px; color: #cbd5e1; margin-bottom: 0;">"Great job team" is white noise. Keep "Running Notes" of specific actions. "Sunita, you caught your Supervisor's ID error and reported it. That saved 9 forms." Recognition at the right moment changes behaviour.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-wrapper bg-white">
+    <div class="section-padding">
+        <h2 class="edit-text" style="text-align: center;">Accountability & Self-Assessment</h2>
+        
+        <div class="table-wrapper" style="margin-top: 40px; margin-bottom: 60px;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th class="edit-text">Key Accountability (RACI)</th>
+                        <th class="edit-text">Surveyor</th>
+                        <th class="edit-text">Field Sup.</th>
+                        <th class="edit-text">SC</th>
+                        <th class="edit-text">RA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="edit-text">Sign Code of Conduct</td>
+                        <td class="edit-text"><strong>R</strong>esponsible</td>
+                        <td class="edit-text"><strong>C</strong>onsulted</td>
+                        <td class="edit-text"><strong>R/A</strong></td>
+                        <td class="edit-text"><strong>I</strong>nformed</td>
+                    </tr>
+                    <tr>
+                        <td class="edit-text">Report Child Protection</td>
+                        <td class="edit-text"><strong>R</strong> (Same day)</td>
+                        <td class="edit-text"><strong>R</strong> (Same day)</td>
+                        <td class="edit-text"><strong>R</strong> (24h)</td>
+                        <td class="edit-text"><strong>A</strong>ccountable</td>
+                    </tr>
+                    <tr>
+                        <td class="edit-text">Grievance Against Supervisor</td>
+                        <td class="edit-text"><strong>R</strong> (Report to SC)</td>
+                        <td class="edit-text">-</td>
+                        <td class="edit-text"><strong>R/A</strong></td>
+                        <td class="edit-text"><strong>A</strong>ccountable</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="checklist-container" style="max-width: 800px; margin: 0 auto;">
+            <div class="prep-progress-header">
+                <h3 class="edit-text">Field Staff Self-Assessment</h3>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="self-bar"></div></div>
+                    <span id="self-text" style="font-weight: 800;">0%</span>
+                </div>
+            </div>
+            
+            <p class="edit-text" style="font-size: 14px; font-style: italic;">Complete before signing the Field Code of Conduct.</p>
+
+            <div class="check-list">
+                <div class="check-item" onclick="toggleSelfChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I can explain the five values in field-specific language.</div></div>
+                <div class="check-item" onclick="toggleSelfChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know what constitutes sexual harassment and how to report it (anonymously if needed).</div></div>
+                <div class="check-item" onclick="toggleSelfChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know the child protection protocol (Stop, Listen, Record, Report).</div></div>
+                <div class="check-item" onclick="toggleSelfChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I understand data confidentiality survives my contract permanently.</div></div>
+                <div class="check-item" onclick="toggleSelfChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">I know 'not my business' is unacceptable when a colleague is in distress.</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="action-section" style="padding-top: 40px; padding-bottom: 60px; text-align: center; background: var(--bg-off-white);">
+    <p class="edit-text" style="font-size: 14px; color: var(--text-light);">For questions, contact: <br><a href="/cdn-cgi/l/email-protection#9fe9f6eff1b1f4eaf2feeddff6f9f2edb1fefcb1f6f1" class="edit-link" style="color: var(--heading-green); font-weight: 700;">Research Operations Vertical | [ADD EMAIL ID] </a></p>
+</div>
+</div>
+</div>
+
+<!-- ═══ PANEL: TRAINING MANUAL ═══════════════════════════════════════════ -->
+<div id="panel-tm" class="tab-panel">
+<div class="panel-label-strip"><span>Training Academy &rsaquo; </span><strong class="edit-text">The Training Manual</strong></div>
+<div class="panel-body">
+<div style="max-width:900px;margin:48px auto 48px;text-align:center;">
+  <p class="edit-text" style="font-size:16px;line-height:1.8;color:var(--muted);">A Training Manual is not merely a printed copy of the questionnaire. It is a comprehensive instructional guide that translates complex academic intent into actionable, localized field protocols. It empowers surveyors to navigate ambiguity, build trust, probe neutrally, and capture reality without bias.</p>
+</div>
+<div class="hero-container">
+    <div class="orb-1"></div>
+    <div class="hero-glass">
+        <span class="eyebrow">Training Academy | Sub-Page</span>
+        <h1>The Training Manual</h1>
+        <p style="font-size: 18px; color: var(--brand-dark); max-width: 800px; margin: 0 auto; font-weight: 500;">
+            The definitive blueprint for field excellence. A robust training manual is the single most critical document standing between a theoretical research design and high-quality, ground-level data collection.
+        </p>
+    </div>
+</div>
+
+<div class="section-padding">
+    
+    <div style="max-width: 900px; margin: 0 auto 50px auto; text-align: center;">
+        <p style="font-size: 16px; line-height: 1.8;">
+            A Training Manual is not merely a printed copy of the questionnaire. It is a comprehensive instructional guide that translates complex academic intent into actionable, localized field protocols. It empowers surveyors to navigate ambiguity, build trust, probe neutrally, and capture reality without bias.
+        </p>
+    </div>
+
+    <div class="zigzag-row">
+        <div class="content-col">
+            <h2>1. Ownership, Timeline & Approvals</h2>
+            <p>The creation of the Training Manual is a highly collaborative, rigorous process. It cannot be rushed in the week before training begins.</p>
+            
+            <h4>Joint Development (RA & SC)</h4>
+            <p>The manual is a <strong>joint resource developed continuously by the Research Associate (RA) and the Survey Coordinator (SC)</strong>. The RA provides the scientific intent, ethical guidelines, and survey logic. The SC translates this into field reality, local vernacular, contextual probing strategies, and logistical workflows.</p>
+
+            <h4>The Timeline Trigger</h4>
+            <p>Drafting the Training Manual must begin <strong>as soon as the hiring request is raised</strong>. By the time candidates are being interviewed, the core modules of the manual should already be in the drafting phase to ensure the training architecture matches the skills being hired for.</p>
+
+            <div class="callout" style="border-left-color: #d32f2f; background: #ffebee;">
+                <strong style="color: #c62828;">Mandatory Approval Gate</strong>
+                Before any manual is sent to print or shared with incoming field staff, the final draft MUST be submitted to both the <strong>Director (Research Operations)</strong> and the <strong>Director (Research)</strong> for comprehensive review and final approval.
+            </div>
+        </div>
+        
+        <div class="visual-col">
+            <div class="glass-widget">
+                <div class="widget-header">Development Lifecycle</div>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px;">
+                    <li style="margin-bottom: 15px;"><strong>T-Minus 6 Weeks:</strong> Hiring Request Raised. RA & SC begin drafting core modules and definitions.</li>
+                    <li style="margin-bottom: 15px;"><strong>T-Minus 4 Weeks:</strong> Translations tested. Probing guidelines added based on early pre-pilots.</li>
+                    <li style="margin-bottom: 15px;"><strong>T-Minus 2 Weeks:</strong> Agenda finalized. Logistics and tablet management protocols integrated.</li>
+                    <li style="margin-bottom: 0;"><strong>T-Minus 1 Week:</strong> Submitted to Director (RO) and Director (Research) for final sign-off.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="zigzag-row reverse">
+        <div class="content-col">
+            <h2>2. Structuring the Training Agenda</h2>
+            <p>A well-structured manual includes a clear, minute-by-minute training agenda. A standard 6-to-7 day training must balance theoretical knowledge with aggressive, repetitive practical application.</p>
+            
+            <p>The agenda must explicitly detail:</p>
+            <ul>
+                <li><strong>Resource Persons:</strong> Clearly identifying who leads which session (e.g., PI for Study Overview, SC for Field Logistics, RA for Data Quality).</li>
+                <li><strong>General Sessions:</strong> Dedicated hours for J-PAL protocols, ethical conduct, device management, and gender/safeguarding policies.</li>
+                <li><strong>Questionnaire Walkthrough:</strong> Screen-by-screen reading, explaining the intent of every single module.</li>
+                <li><strong>Classroom Practice (Pairs):</strong> Supervised role-play. One acts as the respondent, one as the surveyor. SCs and RAs must actively monitor and correct probing techniques.</li>
+                <li><strong>Field Practice:</strong> Mandatory full-day deployment in a non-sample village to stress-test skills in real-world conditions.</li>
+                <li><strong>Tests & Mock Quizzes:</strong> Daily written/digital quizzes to test retention, culminating in a final certification mock interview before field deployment.</li>
+            </ul>
+        </div>
+        
+        <div class="visual-col">
+            <div class="glass-widget">
+                <div class="widget-header">Exemplar: Time Allocation</div>
+                <table>
+                    <tr><th>Training Component</th><th>Estimated Hours</th></tr>
+                    <tr><td>General & Ethics</td><td>4 - 6 Hours</td></tr>
+                    <tr><td>Q-naire Walkthrough</td><td>12 - 16 Hours</td></tr>
+                    <tr><td>Pair Practice (Classroom)</td><td>8 - 12 Hours</td></tr>
+                    <tr><td>Device & Logistics</td><td>3 - 4 Hours</td></tr>
+                    <tr><td>Field Practice (Pilot)</td><td>8 - 10 Hours</td></tr>
+                    <tr><td>Debrief, Quizzes & Mocks</td><td>6 - 8 Hours</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="zigzag-row">
+        <div class="content-col">
+            <h2>3. Core Attributes of Surveying</h2>
+            <p>Before touching the specific project questionnaire, the manual must establish the universal attributes of a high-quality surveyor. The SC and RA must build comprehensive sections detailing how to operate in the field.</p>
+            
+            <h4>Building Trust & Informed Consent</h4>
+            <p>Trust is the currency of field research. The manual must provide exact scripts and behavioral guidelines for entering a village, introducing the organization, addressing community leaders, and securing true, uncoerced informed consent. It must cover how to explain data privacy in simple, vernacular terms.</p>
+
+            <h4>Tackling Challenges & Refusals</h4>
+            <p>Surveyors must be trained to differentiate between a "Soft Refusal" (I'm busy right now, come back later) and a "Hard Refusal" (I will not participate, leave my property). The manual must provide de-escalation strategies, methods for handling hostile crowds, and clear escalation protocols to the Field Supervisor.</p>
+
+            <h4>Neutrality & Positioning</h4>
+            <p>Surveyors must learn to maintain an absolute neutral posture—neither approving nor disapproving of a respondent's answers. The manual must highlight the dangers of leading questions, non-verbal bias (nodding, frowning), and making assumptions based on visual socio-economic indicators.</p>
+        </div>
+        
+        <div class="visual-col">
+            <div class="scenario-box">
+                <strong>🗣️ The Golden Rule of Probing</strong>
+                <p>The manual must dedicate significant space to <em>Probing Techniques</em>. If a respondent says "I earn enough," the surveyor cannot write "Sufficient." They must be taught to use <strong>Laddering</strong> ("Could you help me understand what enough means in rupees per month?") and <strong>Strategic Silence</strong> (waiting 3 seconds after an incomplete answer to encourage the respondent to elaborate without leading them).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="zigzag-row reverse">
+        <div class="content-col">
+            <h2>4. The Questionnaire Deep Dive</h2>
+            <p>This is the heart of the manual. The RA and SC must break down the questionnaire not just by section, but question by question. A raw survey form tells the surveyor <em>what</em> to ask. The manual must tell them <em>why</em> they are asking it, and <em>how</em> to handle it when things go wrong.</p>
+            
+            <p>For every critical or complex module, the manual must define:</p>
+            <ul>
+                <li><strong>The Intent:</strong> Why is the researcher asking this? (e.g., "We ask about fertilizer usage not to judge their farming, but to calculate input costs.")</li>
+                <li><strong>Definitions:</strong> Clear, localized definitions of complex terms. (e.g., What counts as a 'pucca' house? What defines a 'joint family' in this specific district?)</li>
+                <li><strong>Tricky Scenarios:</strong> What to do if the respondent doesn't know the answer, refuses to answer, or gives an answer that contradicts a previous module.</li>
+                <li><strong>Observation vs. Asking:</strong> Clear instructions on which questions must be explicitly asked, and which data points (like roof material) should be captured via silent observation.</li>
+            </ul>
+        </div>
+        
+        <div class="visual-col">
+            <div class="glass-widget">
+                <div class="widget-header">Exemplar Layout: Module Breakdown</div>
+                <div style="font-size: 13px; line-height: 1.6; color: var(--brand-dark);">
+                    <strong>Module 3: Agricultural Income</strong><br>
+                    <span style="color: var(--text-light);">Q3.4: "In the last Kharif season, how much did you spend on labor?"</span>
+                    <hr style="border: 0; border-top: 1px solid var(--border-soft); margin: 8px 0;">
+                    <strong>Intent:</strong> To capture out-of-pocket expenditure on hired help. Do NOT include family labor.<br><br>
+                    <strong>Definitions:</strong> 'Kharif season' refers to the monsoon crop (typically June-October in this region).<br><br>
+                    <strong>Probing Instruction:</strong> Farmers often forget cash paid to daily wage workers during harvest. Ask specifically: "Did you hire anyone for sowing? Did you hire anyone for cutting?" If paid in grains instead of cash, estimate the market value of the grains.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+<!-- ═══ PANEL: MINIMUM MUST-DOS ══════════════════════════════════════════ -->
+<div id="panel-min" class="tab-panel">
+<div class="panel-label-strip"><span>Training Academy &rsaquo; </span><strong class="edit-text">Training Minimum Must-Dos</strong></div>
+<div class="panel-body">
+<div class="hero-container">
+    <div class="hero-bg-img"></div>
+    <div class="orb-1"></div>
+    
+    <div class="hero-glass fade-up">
+        <div class="text-column">
+            <span class="eyebrow edit-text">Training Academy</span>
+            <h1 class="edit-text" id="admin-doorbell">Training Minimum Must-Dos</h1>
+            <p class="edit-text" style="font-size: 20px; color: var(--brand-dark); font-weight: 700; margin-bottom: 20px;">
+                The Irreducible Minimum Architecture Every Project Training Must Meet
+            </p>
+            <p class="edit-text" style="margin-bottom: 15px;">
+                Mandatory Hours • Mandatory Topics • Mandatory Role-Plays • Sign-Off Requirements<br>
+                <strong style="color: var(--danger-red);">Before the First Household Visit, This Checklist Must Be Complete — No Exceptions</strong>
+            </p>
+            <p class="edit-text" style="font-size: 12px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin: 0;">
+                Primary Users: SCs, RAs | Reference: Field Supervisors • Version 1.0
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="section-padding fade-up delay-1">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+        <span class="eyebrow edit-text">Context</span>
+        <h2 class="edit-text">Stated Assumptions</h2>
+        <p class="edit-text">This document is primarily addressed to the Survey Coordinator (SC) who designs and delivers field staff training. The RA uses it to audit training quality.</p>
+    </div>
+
+    <div class="bento-grid">
+        <div class="bento-card">
+            <h4 class="edit-text" style="color: var(--heading-green);">Instrument Calibration</h4>
+            <p class="edit-text" style="font-size: 14px; margin: 0;">Minimums defined for Short (<25 min, 3 modules) and Standard (25–75 min, 4–8 modules). Complex instruments require additional hours.</p>
+        </div>
+        <div class="bento-card">
+            <h4 class="edit-text" style="color: var(--heading-green);">The Floor, Not the Target</h4>
+            <p class="edit-text" style="font-size: 14px; margin: 0;">These are minimum requirements. An SC who is 'done' after meeting the minimum has met the compliance bar — not the excellence bar.</p>
+        </div>
+        <div class="bento-card">
+            <h4 class="edit-text" style="color: var(--danger-red);">Go/No-Go Standard</h4>
+            <p class="edit-text" style="font-size: 14px; margin: 0;">No survey launch should proceed if any component is incomplete. The consequences of an undertrained team are worse than a delayed launch.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section-wrapper bg-light-green">
+    <div class="section-padding">
+        <div class="split-layout">
+            <div class="col-1">
+                <span class="eyebrow edit-text">Chapter 1</span>
+                <h2 class="edit-text">Why Minimums Exist</h2>
+                <p class="edit-text">Every SC believes their training was adequate. The ones who discover it wasn't have usually already launched data collection. Every compression of training time transfers the cost from the training phase — where it is cheap to fix — to the data collection phase, where it is expensive.</p>
+                
+                <div class="warning-card">
+                    <h4 class="edit-text">✅ SC Authority to Block Launch</h4>
+                    <p class="edit-text" style="font-size: 13px; margin:0;">SCs have the professional obligation to decline launch if minimums aren't met. If pressured to launch, the SC must document the instruction and their recommendation against it.</p>
+                </div>
+            </div>
+            
+            <div class="col-2">
+                <div class="scenario-box" style="border-left-color: var(--brand-dark);">
+                    <span class="scenario-label edit-text" style="background: var(--brand-dark);">Cost Analysis</span>
+                    <strong class="edit-text" style="display:block; margin-bottom: 10px; font-size: 16px;">The 3-Day Training That Became a 3-Week Remediation (Bihar)</strong>
+                    <p class="edit-text" style="font-size: 13px; margin-bottom: 10px;">A nutrition baseline was compressed to 1.5 days. Role-plays for household ID and sync protocols were skipped.</p>
+                    <ul class="edit-text" style="font-size: 13px; padding-left: 15px; margin-bottom: 10px;">
+                        <li>34% of forms had GPS >500m off polygon.</li>
+                        <li>12 sync failures = 8 permanently lost forms.</li>
+                        <li>3 complaints from leaders due to skipped entry protocols.</li>
+                    </ul>
+                    <p class="edit-text" style="font-size: 13px; margin: 0; color: var(--danger-red);"><strong>Cost:</strong> 3 weeks of remediation. ₹2.8 lakh in extra costs. The skipped training would have cost ₹12,000.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="edit-text" style="margin-top: 40px; margin-bottom: 20px;">The Quantified Cost of Training Gaps</h3>
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th class="edit-text">Training Gap</th>
+                        <th class="edit-text">Cost to the Project</th>
+                        <th class="edit-text">Catchability?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="edit-text">Household definition misunderstood (chulha rule)</td>
+                        <td class="edit-text">₹12k–20k per 100 HHs revisited. 3–5 day delay.</td>
+                        <td class="edit-text">Catchable via back-check (requires re-visits).</td>
+                    </tr>
+                    <tr>
+                        <td class="edit-text">Probing not practiced (vague answers accepted)</td>
+                        <td class="edit-text">Key recall variables systematically understated by 20–35%.</td>
+                        <td class="edit-text">Partially catchable — bias is hard to correct post-data.</td>
+                    </tr>
+                    <tr>
+                        <td class="edit-text">Consent script not practiced</td>
+                        <td class="edit-text">IRB violation. Extreme cases: data destruction & restart.</td>
+                        <td class="edit-text">Not catchable after the fact — IRB is binary.</td>
+                    </tr>
+                    <tr>
+                        <td class="edit-text">Data sync protocol not practiced</td>
+                        <td class="edit-text">Lost forms: ₹500–800 revisit cost + analyst time per form.</td>
+                        <td class="edit-text">Not recoverable if device is lost.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="section-wrapper bg-white">
+    <div class="section-padding">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+            <span class="eyebrow edit-text">Chapters 2 & 3</span>
+            <h2 class="edit-text">Mandatory Training Components</h2>
+            <p class="edit-text">Training is a lifecycle. An SC may not clear a person for deployment if any mandatory component below has not been delivered and signed off.</p>
+        </div>
+
+        <div class="prep-console" id="components-console">
+            <div class="prep-body">
+                <div class="prep-tabs">
+                    <div class="prep-tab active edit-text" onclick="switchConsoleTab(event, 'tab-sc', 'components-console')">SC Preparation</div>
+                    <div class="prep-tab edit-text" onclick="switchConsoleTab(event, 'tab-surv', 'components-console')">Surveyor Minimums</div>
+                    <div class="prep-tab edit-text" onclick="switchConsoleTab(event, 'tab-sup', 'components-console')">Supervisor Add-ons</div>
+                    <div class="prep-tab edit-text" onclick="switchConsoleTab(event, 'tab-ongoing', 'components-console')">Ongoing & Post-Survey</div>
+                </div>
+                
+                <div class="prep-content-area">
+                    <div id="tab-sc" class="prep-pane active">
+                        <h3 class="edit-text">SC Mandatory Preparation</h3>
+                        <p class="edit-text">An SC arriving at Day 1 without this prep cannot deliver effective training.</p>
+                        <table class="data-table" style="margin-top: 20px;">
+                            <thead>
+                                <tr>
+                                    <th class="edit-text">Component</th>
+                                    <th class="edit-text">Timeline</th>
+                                    <th class="edit-text">Output</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="edit-text">Full instrument familiarity</td>
+                                    <td class="edit-text">T-7 days</td>
+                                    <td class="edit-text">SC can navigate every hard stop & skip logic from memory.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">Manual customisation</td>
+                                    <td class="edit-text">T-5 days</td>
+                                    <td class="edit-text">Zero template tags remaining. RA approved.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">Role-play & Quiz prep</td>
+                                    <td class="edit-text">T-4 days</td>
+                                    <td class="edit-text">8 Character cards printed. 3 quizzes with answer keys.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">Tablet preparation</td>
+                                    <td class="edit-text">T-3 days</td>
+                                    <td class="edit-text">Test submissions received on server for ALL tablets.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="tab-surv" class="prep-pane">
+                        <h3 class="edit-text">Surveyor Mandatory Components</h3>
+                        <table class="data-table" style="margin-top: 20px;">
+                            <thead>
+                                <tr>
+                                    <th class="edit-text">Key Component</th>
+                                    <th class="edit-text">Delivery</th>
+                                    <th class="edit-text">Sign-Off</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="edit-text">Module Walkthrough</td>
+                                    <td class="edit-text">Lecture + tablet demo</td>
+                                    <td class="edit-text">Can name modules & eligible respondents.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">SurveyCTO Navigation</td>
+                                    <td class="edit-text">Individual tablet practice</td>
+                                    <td class="edit-text">Completes 1 test form and syncs it.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">Probing Practice</td>
+                                    <td class="edit-text">Paired role-plays</td>
+                                    <td class="edit-text">Assessed against Probing Hierarchy.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">Respondent Types</td>
+                                    <td class="edit-text">Group role-plays</td>
+                                    <td class="edit-text">Plays surveyor in ≥2 scenarios.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">Values & POSH</td>
+                                    <td class="edit-text">Lecture + discussion</td>
+                                    <td class="edit-text">Signed Field Code of Conduct.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="tab-sup" class="prep-pane">
+                        <h3 class="edit-text">Field Supervisor Add-Ons</h3>
+                        <p class="edit-text">Supervisors complete all Surveyor components PLUS these (ideally in a separate session before Surveyor training).</p>
+                        <table class="data-table" style="margin-top: 20px;">
+                            <thead>
+                                <tr>
+                                    <th class="edit-text">Component</th>
+                                    <th class="edit-text">Sign-Off Required</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="edit-text">Manual Review Session</td>
+                                    <td class="edit-text">Can answer questions without reading the manual.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">Daily Data Review Protocol</td>
+                                    <td class="edit-text">Completes full data review on simulated data.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">Accompaniment Standards</td>
+                                    <td class="edit-text">SC observes Supervisor giving post-visit feedback.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">Escalation Authority Matrix</td>
+                                    <td class="edit-text">8/8 score on decision matrix quiz.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="tab-ongoing" class="prep-pane">
+                        <h3 class="edit-text">Ongoing & Post-Survey</h3>
+                        <p class="edit-text">Treating launch as the end of training is a common error.</p>
+                        
+                        <div class="scenario-box" style="margin-bottom: 20px;">
+                            <span class="scenario-label edit-text">During Deployment</span>
+                            <ul class="edit-text" style="font-size: 14px; padding-left: 15px; margin: 0;">
+                                <li><strong>Error found in back-check:</strong> Supervisor runs 20-min corrective session within 24h.</li>
+                                <li><strong>New joiner:</strong> Full 3-day training + Pilot required. No shortcuts.</li>
+                                <li><strong>Form update pushed:</strong> SC runs 30-min tablet update practice before next field day.</li>
+                            </ul>
+                        </div>
+
+                        <div class="bento-card" style="background: var(--bg-light-green); border-color: var(--heading-green); padding: 20px;">
+                            <h4 class="edit-text" style="color: var(--brand-dark); margin-top:0;">Post-Survey Debrief (2 Hours)</h4>
+                            <p class="edit-text" style="font-size: 13px; margin-bottom: 10px;">Capture intelligence before the team disperses. Ask:</p>
+                            <ul class="edit-text" style="font-size: 13px; padding-left: 15px; margin: 0; color: var(--text-main);">
+                                <li>What were the 3 most confusing questions?</li>
+                                <li>What situation did we encounter that the manual missed?</li>
+                                <li>What would you add to Day 1 next time?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="edge-to-edge cinematic-section">
+    <div style="max-width: 1400px; margin: 0 auto; position: relative; z-index: 1;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="eyebrow edit-text" style="color: #64ffda; background: rgba(100,255,218,0.1);">Chapter 4</span>
+            <h2 class="edit-text" style="color: white; margin-bottom: 10px;">Time Budget & Pilot Day</h2>
+            <p class="edit-text" style="color: #cbd5e1;">Content delivered over 3 days produces 3-5x better retention than 1.5 days.</p>
+        </div>
+
+        <div class="bento-grid" style="grid-template-columns: 1fr 1fr; margin-top: 0; gap: 40px;">
+            <div class="dark-card" style="background: rgba(0,0,0,0.5);">
+                <h3 class="edit-text" style="color: var(--accent-orange);">⚠️ 2-Day Accelerated Format</h3>
+                <p class="edit-text" style="font-size: 14px; color: #cbd5e1; margin-bottom: 20px;">Permissible ONLY if BOTH conditions are TRUE simultaneously:</p>
+                <ul class="edit-text" style="font-size: 14px; color: white; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;">✅ Instrument is <25 min AND ≤3 modules.</li>
+                    <li style="margin-bottom: 15px;">✅ ≥50% of surveyor team are returning staff trained in the past 12 months.</li>
+                </ul>
+                <div style="background: rgba(245, 158, 11, 0.15); border-left: 4px solid var(--accent-orange); padding: 15px; border-radius: 8px;">
+                    <strong class="edit-text" style="color: #fde68a; font-size: 13px;">The Buffer Day Is Not Optional</strong>
+                    <p class="edit-text" style="font-size: 12px; margin: 5px 0 0 0; color: #fef3c7;">Build a half-day buffer before Pilot Day for overnight retention and SC quiz review.</p>
+                </div>
+            </div>
+
+            <div class="dark-card" style="background: rgba(0,0,0,0.5);">
+                <h3 class="edit-text" style="color: #64ffda;">🚀 The Pilot Day</h3>
+                <p class="edit-text" style="font-size: 14px; color: #cbd5e1; margin-bottom: 20px;">The last opportunity to course-correct. Real households, real data (not included in study).</p>
+                <table class="data-table" style="background: transparent; color: white; border: none;">
+                    <tbody>
+                        <tr>
+                            <td class="edit-text" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;"><strong>Target:</strong></td>
+                            <td class="edit-text" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">2 forms per surveyor by 5 PM. Quality > Volume.</td>
+                        </tr>
+                        <tr>
+                            <td class="edit-text" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;"><strong>Supervision:</strong></td>
+                            <td class="edit-text" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">Accompany ≥2 surveyors for full interviews.</td>
+                        </tr>
+                        <tr>
+                            <td class="edit-text" style="border-bottom: none; padding: 10px 0;"><strong>SC Review:</strong></td>
+                            <td class="edit-text" style="border-bottom: none; padding: 10px 0;">Check duration, GPS, mandatory fields by 6 PM.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-wrapper bg-white">
+    <div class="section-padding">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+            <span class="eyebrow edit-text">Chapters 5 & 6</span>
+            <h2 class="edit-text">Certification & Role-Plays</h2>
+            <p class="edit-text">Every surveyor must pass specific gates before Day 1. No role-play, no clearance.</p>
+        </div>
+
+        <div class="prep-console" id="cert-console">
+            <div class="prep-body">
+                <div class="prep-tabs" style="background: var(--bg-off-white);">
+                    <div class="prep-tab active edit-text" onclick="switchConsoleTab(event, 'cert-gates', 'cert-console')" style="color: var(--brand-dark); border-bottom-color: var(--border-soft);">The 3 Gates</div>
+                    <div class="prep-tab edit-text" onclick="switchConsoleTab(event, 'cert-pdra', 'cert-console')" style="color: var(--brand-dark); border-bottom-color: var(--border-soft);">PDRA Assessment</div>
+                    <div class="prep-tab edit-text" onclick="switchConsoleTab(event, 'cert-rp', 'cert-console')" style="color: var(--brand-dark); border-bottom-color: var(--border-soft);">Mandatory Role-Plays</div>
+                    <div class="prep-tab edit-text" onclick="switchConsoleTab(event, 'cert-critical', 'cert-console')" style="color: var(--danger-red); border-bottom-color: var(--border-soft);">Critical Pilot Errors</div>
+                </div>
+                
+                <div class="prep-content-area" style="background: white;">
+                    <div id="cert-gates" class="prep-pane active">
+                        <h3 class="edit-text">The Pass/Fail Gates</h3>
+                        <table class="data-table" style="margin-top: 20px;">
+                            <thead>
+                                <tr>
+                                    <th class="edit-text">Gate</th>
+                                    <th class="edit-text">Criterion</th>
+                                    <th class="edit-text">If Failed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="edit-text"><strong>1: PDRA</strong></td>
+                                    <td class="edit-text">90% overall + pass all 4 sections.</td>
+                                    <td class="edit-text">Individual remediation + re-test.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text"><strong>2: Pilot Day</strong></td>
+                                    <td class="edit-text">No critical errors. Duration >30m. GPS captured.</td>
+                                    <td class="edit-text">Re-Pilot OR deployed with mandatory accompaniment.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text"><strong>3: Supervisor</strong></td>
+                                    <td class="edit-text">Complete specific components + simulated data review.</td>
+                                    <td class="edit-text">Assigned a 'buddy Supervisor' for 3 days.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cert-pdra" class="prep-pane">
+                        <h3 class="edit-text">Pre-Deployment Readiness Assessment (PDRA)</h3>
+                        <p class="edit-text">Administered Day 3. Diagnostic, not punitive.</p>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="edit-text">Section</th>
+                                    <th class="edit-text">Pass Mark</th>
+                                    <th class="edit-text">Content</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="edit-text">A: Instrument Knowledge</td>
+                                    <td class="edit-text">5 of 6 (83%)</td>
+                                    <td class="edit-text">Modules, eligible respondents, definitions.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">B: Probing & Classification</td>
+                                    <td class="edit-text">5 of 6 (83%)</td>
+                                    <td class="edit-text">Vague scenarios, ambiguous households.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">C: Protocol Knowledge</td>
+                                    <td class="edit-text">4 of 5 (80%)</td>
+                                    <td class="edit-text">Consent, privacy, escalation.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text">D: SurveyCTO Practical</td>
+                                    <td class="edit-text">3 of 3 tasks</td>
+                                    <td class="edit-text">Soft blocks, submit, sync.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cert-rp" class="prep-pane">
+                        <h3 class="edit-text">The 8 Non-Negotiable Role-Plays</h3>
+                        <p class="edit-text">Role-plays test application. If pressed for time, drop lectures, not role-plays.</p>
+                        <ul class="edit-text" style="font-size: 14px; color: var(--text-main); margin-bottom: 20px;">
+                            <li>1. The Complete Household (15m)</li>
+                            <li>2. Migrant Worker Household (15m)</li>
+                            <li>3. Leased-In Land (15m)</li>
+                            <li><strong>4. Hostile Household Head (15m) *SC Assessed</strong></li>
+                            <li>5. Over-Helpful Neighbour (15m)</li>
+                            <li><strong>6. Module 6 Privacy Protocol (20m) *SC Assessed</strong></li>
+                            <li>7. Reluctant Respondent (15m)</li>
+                            <li>8. Expenditure Recall - No Anchoring (15m)</li>
+                        </ul>
+                        
+                        <div class="scenario-box" style="padding: 15px 20px;">
+                            <span class="scenario-label edit-text">Failure Protocol</span>
+                            <p class="edit-text" style="font-size: 13px; margin:0;"><strong>Attempt 1:</strong> No sign-off. Debrief. <strong>Attempt 2 (Next Day):</strong> Diff card. If fail -> 30 min SC Coaching. <strong>Attempt 3:</strong> If fail -> Mandatory supervisor accompaniment in Week 1.</p>
+                        </div>
+                    </div>
+
+                    <div id="cert-critical" class="prep-pane">
+                        <h3 class="edit-text" style="color: var(--danger-red);">Critical Pilot Errors</h3>
+                        <p class="edit-text">These trigger automatic non-clearance on Pilot Day review.</p>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="edit-text" style="background: var(--danger-red);">Error Type</th>
+                                    <th class="edit-text" style="background: var(--danger-red);">Definition</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="edit-text"><strong>Consent Missing</strong></td>
+                                    <td class="edit-text">No consent screen completed or is blank.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text"><strong>Wrong Respondent</strong></td>
+                                    <td class="edit-text">E.g., Module 6 without eligible woman.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text"><strong>Duration <25 mins</strong></td>
+                                    <td class="edit-text">For a 50+ min standard instrument.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text"><strong>GPS Missing >50%</strong></td>
+                                    <td class="edit-text">GPS coordinate not captured on >half of forms.</td>
+                                </tr>
+                                <tr>
+                                    <td class="edit-text"><strong>HH Definition Error</strong></td>
+                                    <td class="edit-text">Roster demonstrably wrong (obs. by Supervisor).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="section-wrapper bg-light-green">
+    <div class="section-padding">
+        <h2 class="edit-text" style="text-align: center; margin-bottom: 20px;">Training Activities RACI</h2>
+        <p class="edit-text" style="text-align: center; margin-bottom: 40px; font-size: 14px;"><strong>R</strong>esponsible | <strong>A</strong>ccountable | <strong>C</strong>onsulted | <strong>I</strong>nformed</p>
+        
+        <div class="table-wrapper" style="margin-bottom: 60px;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th class="edit-text">Activity</th>
+                        <th class="edit-text">Surveyor</th>
+                        <th class="edit-text">Field Sup.</th>
+                        <th class="edit-text">SC</th>
+                        <th class="edit-text">RA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="edit-text">Deliver Surveyor Training Days 1–3</td>
+                        <td class="edit-text">R (learner)</td>
+                        <td class="edit-text">R (co-facilitate)</td>
+                        <td class="edit-text"><strong>R/A</strong></td>
+                        <td class="edit-text">C</td>
+                    </tr>
+                    <tr>
+                        <td class="edit-text">Review and sign off role-plays</td>
+                        <td class="edit-text">-</td>
+                        <td class="edit-text">R (4 of 8)</td>
+                        <td class="edit-text"><strong>R/A</strong> (all 8)</td>
+                        <td class="edit-text">I</td>
+                    </tr>
+                    <tr>
+                        <td class="edit-text">Make Go/No-Go decision on launch</td>
+                        <td class="edit-text">-</td>
+                        <td class="edit-text">I</td>
+                        <td class="edit-text"><strong>R/A</strong></td>
+                        <td class="edit-text">C</td>
+                    </tr>
+                    <tr>
+                        <td class="edit-text">Conduct post-survey training debrief</td>
+                        <td class="edit-text">-</td>
+                        <td class="edit-text">C</td>
+                        <td class="edit-text"><strong>R/A</strong></td>
+                        <td class="edit-text">I</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
+            <span class="eyebrow edit-text">Definitive Verification</span>
+            <h2 class="edit-text">Master Training Compliance Checklist</h2>
+            <p class="edit-text">The SC completes this after Pilot Day and before Field Day 1. In a data audit, this document demonstrates training standards were met.</p>
+        </div>
+
+        <div class="checklist-container" id="master-check-wrapper">
+            <div class="prep-progress-header">
+                <div>
+                    <h3 class="edit-text">Compliance Score</h3>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="master-progress-fill"></div></div>
+                    <span id="master-progress-text" style="font-weight: 800;">0%</span>
+                </div>
+            </div>
+
+            <h4 class="edit-text" style="color: var(--heading-green); margin-top: 30px;">Part A: Pre-Training Prep (T-3 Days)</h4>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Manual finalised — zero [PROJECT-SPECIFIC] tags. RA approved.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Supervisor Review Session completed.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">All tablets configured; test submission received on server.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Character Cards for all 8 role-plays prepared and printed.</div></div>
+            
+            <h4 class="edit-text" style="color: var(--heading-green); margin-top: 30px;">Part B: Training Days Completion</h4>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">All Surveyor & Supervisor mandatory components delivered.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">PDRA administered. All passed or have remediation plan.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">All 8 mandatory role-plays conducted & signed off.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">All signed POSH, Code of Conduct, and Data Quality policies.</div></div>
+
+            <h4 class="edit-text" style="color: var(--heading-green); margin-top: 30px;">Part C: Pilot Day & Go/No-Go</h4>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">All Pilot forms downloaded and reviewed by 6 PM.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Zero uncorrected critical errors remaining.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Pilot Day Debrief Memo distributed to Supervisors.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Go/No-Go decision documented and sent to RA.</div></div>
+
+            <h4 class="edit-text" style="color: var(--heading-green); margin-top: 30px;">Part D: Ongoing Compliance</h4>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Week 1: SC accompaniment to observe live interviews.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Week 3: Mid-deployment culture check-in conducted.</div></div>
+            <div class="check-item" onclick="toggleMasterChk(this)"><div class="custom-checkbox">✓</div><div class="check-text edit-text">Post-survey debrief conducted within 3 working days of close.</div></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="action-section" style="padding-top: 60px; padding-bottom: 80px; text-align: center; background: var(--bg-white);">
+    <span class="eyebrow edit-text">Related Documents</span>
+    <h2 class="edit-text" style="font-size: 28px; color: var(--brand-dark); margin-bottom: 30px;">Knowledge Bank Resources</h2>
+    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+        <a href="#" class="edit-link" style="background: var(--bg-off-white); border: 1px solid var(--border-soft); padding: 12px 20px; border-radius: 50px; color: var(--brand-dark); text-decoration: none; font-weight: 600; font-size: 14px;">Training Manual Template</a>
+        <a href="#" class="edit-link" style="background: var(--bg-off-white); border: 1px solid var(--border-soft); padding: 12px 20px; border-radius: 50px; color: var(--brand-dark); text-decoration: none; font-weight: 600; font-size: 14px;">Core Session: POSH</a>
+        <a href="#" class="edit-link" style="background: var(--bg-off-white); border: 1px solid var(--border-soft); padding: 12px 20px; border-radius: 50px; color: var(--brand-dark); text-decoration: none; font-weight: 600; font-size: 14px;">Remote Training Manual</a>
+    </div>
+    <p class="edit-text" style="font-size: 13px; color: var(--text-light); margin-top: 40px;">Research Operations Division | J-PAL South Asia | <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89fbecfae6f9fac9e3f9e8e5a7e6fbee">[email&#160;protected]</a></p>
+</div>
+</div>
+</div>
+
+<!-- ═══ ADMIN TOOLKIT ════════════════════════════════════════════════════ -->
+<div id="admin-kit" style="display:none;">
+  <span style="color:#94a3b8;font-size:12px;font-weight:600;font-family:var(--sans);">Edit Mode</span>
+  <button class="abt copy" onclick="copyCode()">Copy HTML</button>
+  <button class="abt exit" onclick="lockPage()">Exit</button>
+</div>
+<div id="img-bubble">
+  <p>Paste Image URL</p>
+  <input type="text" id="img-val" placeholder="Google Drive or web link...">
+  <button onclick="applyImg()">Update Image</button>
+  <button class="cancel" onclick="hideBubble()">Cancel</button>
+</div>
+
+<script>
+// ── Tab config (hero stats + podcast update per tab) ──────────────────────────
+var TAB_CFG = {
+  'panel-home':{s:[["4", "Sub-sections"],["14+", "Guides"],["4", "Checklists"]],pod:{title:"Training Academy: The Full Picture",desc:"Building field teams \u2014 from values to certification gates",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-pc':{s:[["5", "Core values"],["3", "Policy areas"],["1", "Self-assessment"]],pod:{title:"People & Culture",desc:"Values, Code of Conduct, POSH & Child Protection policies",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-tm':{s:[["4", "Sections"],["1", "Framework"],["1", "Template"]],pod:{title:"The Training Manual",desc:"Blueprint for excellence \u2014 from ownership to questionnaire deep dive",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-min':{s:[["8", "Sections"],["8", "Must-Do role-plays"],["1", "Compliance checklist"]],pod:{title:"Training Minimum Must-Dos",desc:"Certification gates, RACI, and the master compliance score",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+};
+
+
+function updateHero(panelId) {
+  var cfg = TAB_CFG[panelId]; if (!cfg) return;
+  var nums = [1,2,3].map(function(i){ return document.getElementById('hero-stat-'+i+'-num'); });
+  var lbls = [1,2,3].map(function(i){ return document.getElementById('hero-stat-'+i+'-lbl'); });
+  nums.forEach(function(n){ if(n) n.classList.add('fade'); });
+  setTimeout(function() {
+    cfg.s.forEach(function(s,i) {
+      if(nums[i]) { nums[i].textContent=s[0]; nums[i].classList.remove('fade'); }
+      if(lbls[i]) lbls[i].textContent = s[1];
+    });
+  }, 250);
+  var t = document.getElementById('podcast-title');
+  var dc = document.getElementById('podcast-desc');
+  var fr = document.getElementById('podcast-iframe');
+  if(t) t.textContent = cfg.pod.title;
+  if(dc) dc.textContent = cfg.pod.desc;
+  if(fr) fr.src = cfg.pod.src;
+}
+
+function switchTab(evt, panelId) {
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  document.getElementById(panelId).classList.add('active');
+  if (evt && evt.currentTarget) {
+    evt.currentTarget.classList.add('active');
+    evt.currentTarget.setAttribute('aria-selected','true');
+  }
+  updateHero(panelId);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Source JS functions — verbatim from source files ─────────────────────────
+
+// People & Culture: Five Values console
+
+    function openTab(evt, tabId) {
+        document.querySelectorAll('.prep-pane').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.prep-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        evt.currentTarget.classList.add('active');
+    }
+
+
+// People & Culture: Self-assessment checklist
+
+    function toggleSelfChk(el) {
+        el.classList.toggle('completed');
+        const items = document.querySelectorAll('.checklist-container .check-item');
+        const done = document.querySelectorAll('.checklist-container .check-item.completed');
+        const pct = Math.round((done.length / items.length) * 100);
+        document.getElementById('self-bar').style.width = pct + "%";
+        document.getElementById('self-text').innerText = pct + "%";
+    }
+
+
+// Minimum Must-Dos: Console tab switcher
+
+    // Localized console tab switcher
+    function switchConsoleTab(evt, tabId, wrapperId) {
+        const wrapper = document.getElementById(wrapperId);
+        wrapper.querySelectorAll('.prep-pane').forEach(p => p.classList.remove('active'));
+        wrapper.querySelectorAll('.prep-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        evt.currentTarget.classList.add('active');
+    }
+
+
+// Minimum Must-Dos: Master compliance checklist
+
+    function toggleMasterChk(el) {
+        el.classList.toggle('completed');
+        const wrapper = document.getElementById('master-check-wrapper');
+        const items = wrapper.querySelectorAll('.check-item');
+        const done = wrapper.querySelectorAll('.check-item.completed');
+        const pct = Math.round((done.length / items.length) * 100);
+        document.getElementById('master-progress-fill').style.width = pct + "%";
+        document.getElementById('master-progress-text').innerText = pct + "%";
+    }
+
+
+// ── Admin edit mode ───────────────────────────────────────────────────────────
+var isAdmin = false, targetImg = null, targetLink = null;
+
+document.addEventListener('keydown', function(e) {
+  if (e.altKey && e.shiftKey && (e.code === 'KeyE' || e.key === 'e' || e.key === 'E')) {
+    e.preventDefault();
+    if (!isAdmin) unlockPage();
+  }
+});
+
+// Triple-click kicker unlocks
+var _cc=0, _ct=null, _kicker=document.querySelector('.hero-kicker');
+if (_kicker) {
+  _kicker.addEventListener('click', function() {
+    _cc++; clearTimeout(_ct);
+    _ct = setTimeout(function(){ _cc=0; }, 600);
+    if (_cc >= 3) { _cc=0; if (!isAdmin) unlockPage(); }
+  });
+}
+// URL hash trigger
+if (window.location.hash === '#edit') window.addEventListener('load', function(){ unlockPage(); });
+// Double-click h1
+var _h1 = document.querySelector('.hero h1');
+if (_h1) _h1.addEventListener('dblclick', function(e){ e.preventDefault(); if(!isAdmin) unlockPage(); });
+
+function unlockPage() {
+  isAdmin = true;
+  document.getElementById('admin-kit').style.display = 'flex';
+  document.body.classList.add('edit-mode-active');
+  document.querySelectorAll('.edit-text, .edit-link').forEach(function(el) {
+    el.setAttribute('contenteditable','true');
+    if (el.tagName.toLowerCase() === 'a') el.addEventListener('click', openLinkEditor);
+  });
+  document.querySelectorAll('.edit-img').forEach(function(img) { img.addEventListener('click', openImgEditor); });
+}
+
+function lockPage() {
+  isAdmin = false;
+  document.getElementById('admin-kit').style.display = 'none';
+  hideBubble();
+  document.body.classList.remove('edit-mode-active');
+  document.querySelectorAll('.edit-text, .edit-link').forEach(function(el) {
+    el.removeAttribute('contenteditable');
+    if (el.tagName.toLowerCase() === 'a') el.removeEventListener('click', openLinkEditor);
+  });
+  document.querySelectorAll('.edit-img').forEach(function(img) { img.removeEventListener('click', openImgEditor); });
+}
+
+function openImgEditor(e) {
+  if (!isAdmin) return;
+  e.preventDefault();
+  hideBubble();
+  targetImg = e.target;
+  var b = document.getElementById('img-bubble');
+  var c = targetImg.closest('.bento-card,.zigzag-row,.dark-card,.glass-widget') || targetImg.parentElement;
+  if (getComputedStyle(c).position === 'static') c.style.position = 'relative';
+  c.appendChild(b);
+  b.style.display = 'block';
+  document.getElementById('img-val').value = targetImg.src;
+  document.getElementById('img-val').focus();
+}
+
+function openLinkEditor(e) {
+  if (!isAdmin) return;
+  e.preventDefault();
+  hideBubble();
+  targetLink = e.currentTarget;
+  document.getElementById('img-val').value = targetLink.href || '';
+  document.getElementById('img-val').focus();
+}
+
+function hideBubble() { document.getElementById('img-bubble').style.display = 'none'; }
+
+function applyImg() {
+  var v = document.getElementById('img-val').value.trim();
+  if (targetImg && v) {
+    var m = v.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/);
+    targetImg.src = m ? 'https://drive.google.com/thumbnail?id=' + m[1] + '&sz=w1600' : v;
+  }
+  hideBubble();
+}
+
+function copyCode() {
+  var was = isAdmin; lockPage();
+  var clone = document.documentElement.cloneNode(true);
+  var k = clone.querySelector('#admin-kit'); if (k) k.remove();
+  var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(html).then(function(){ alert('HTML copied!'); }).catch(function(){ _fb(html); });
+  } else { _fb(html); }
+  if (was) unlockPage();
+}
+function _fb(html) {
+  var t = document.createElement('textarea'); document.body.appendChild(t);
+  t.value = html; t.select(); document.execCommand('copy');
+  document.body.removeChild(t); alert('HTML copied!');
+}
+</script>
+
+</div><!-- /main-content-area -->
+</div><!-- /page-layout -->
+</body>
+</html>
