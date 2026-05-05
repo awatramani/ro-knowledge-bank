@@ -800,17 +800,17 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </head>
 <body>
 
-<div id="kb-banner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:10000;background:#1e40af;color:white;text-align:center;padding:7px;font-size:12px;font-weight:600;">Edit Mode — click any text, link, image to edit. Alt+Shift+E to exit.</div>
+<div id="kb-banner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:10000;background:#1e40af;color:white;text-align:center;padding:7px;font-size:12px;font-weight:600;font-family:system-ui,sans-serif;">Edit Mode — click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
 <div id="kb-toolbar" style="display:none;position:fixed;bottom:24px;right:24px;background:#0d1117;padding:12px 20px;border-radius:40px;box-shadow:0 16px 36px rgba(0,0,0,.4);gap:12px;align-items:center;z-index:999999;border:1px solid rgba(255,255,255,.08);">
   <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
-  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:600;font-size:12px;cursor:pointer;color:white;background:#0369a1;" onclick="window._kbCopy()">Copy HTML</button>
-  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:600;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;" onclick="window._kbExit()">Exit</button>
+  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0e7c86;">Copy HTML</button>
+  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
 <div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0,.11);">
-  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">URL</label>
+  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">URL</label>
   <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
-  <button onclick="window._kbApply()" style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
-  <button onclick="window._kbClose()" style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
+  <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0e7c86;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
+  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
 
 <div class="page-layout">
@@ -2050,88 +2050,207 @@ calcCapacity();
 
 <script>
 (function(){
-  var editing = false, target = null;
+  var editing = false, tgt = null;
+
   function enter() {
     editing = true;
     document.body.classList.add('edit-mode-active');
-    document.getElementById('kb-banner').style.display = 'block';
-    document.getElementById('kb-toolbar').style.display = 'flex';
+    show('kb-banner'); show('kb-toolbar');
     document.addEventListener('click', handler, true);
   }
+
   function exit() {
     editing = false;
     document.body.classList.remove('edit-mode-active');
-    document.getElementById('kb-banner').style.display = 'none';
-    document.getElementById('kb-toolbar').style.display = 'none';
-    closeBubble();
-    var els = document.querySelectorAll('[contenteditable]');
-    for (var i = 0; i < els.length; i++) { els[i].removeAttribute('contenteditable'); els[i].blur(); }
+    hide('kb-banner'); hide('kb-toolbar'); hide('kb-bubble');
+    tgt = null;
+    var ce = document.querySelectorAll('[contenteditable]');
+    for (var i = 0; i < ce.length; i++) {
+      ce[i].removeAttribute('contenteditable');
+      ce[i].blur();
+    }
     document.removeEventListener('click', handler, true);
   }
+
   function handler(e) {
     if (!editing) return;
-    e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
-    if (e.target.closest && e.target.closest('.left-nav')) return;
-    if (e.target.closest && (e.target.closest('#kb-toolbar') || e.target.closest('#kb-bubble'))) return;
-    // Tab buttons: allow switching
-    if (e.target.closest && e.target.closest('.tab-nav')) {
-      var btn = e.target.closest('.tab-btn');
-      if (btn) btn.click();
+
+    // ── Toolbar: handle Copy/Exit clicks DIRECTLY inside handler ──
+    var tbBtn = e.target.closest ? e.target.closest('#kb-toolbar button') : null;
+    if (tbBtn) {
+      e.preventDefault(); e.stopPropagation();
+      var txt = (tbBtn.textContent || '').trim().toLowerCase();
+      if (txt.indexOf('copy') > -1) copyHTML();
+      else if (txt.indexOf('exit') > -1) exit();
       return;
     }
-    var tag = (e.target.tagName || '').toUpperCase();
-    if (tag === 'IMG') { target = e.target; openBubble(e.target.src || '', 'Image URL'); return; }
-    if (tag === 'IFRAME') { target = e.target; openBubble(e.target.src || '', 'Video/Audio URL'); return; }
-    var anc = e.target.closest ? e.target.closest('a') : null;
-    if (anc && !anc.closest('.left-nav')) {
-      target = anc; openBubble(anc.getAttribute('href') || '', 'Link URL: ' + (anc.textContent || '').trim().slice(0, 40)); return;
+    // Toolbar container (non-button area) — ignore
+    if (e.target.closest && e.target.closest('#kb-toolbar')) return;
+
+    // ── Bubble: handle Apply/Cancel clicks DIRECTLY ──
+    var bbBtn = e.target.closest ? e.target.closest('#kb-bubble button') : null;
+    if (bbBtn) {
+      e.preventDefault(); e.stopPropagation();
+      var btxt = (bbBtn.textContent || '').trim().toLowerCase();
+      if (btxt.indexOf('apply') > -1) applyBubble();
+      else if (btxt.indexOf('cancel') > -1) { hide('kb-bubble'); tgt = null; }
+      return;
     }
+    // Bubble input — let it work
+    if (e.target.closest && e.target.closest('#kb-bubble')) return;
+
+    // ── Left-nav: let links navigate normally ──
+    if (e.target.closest && e.target.closest('.left-nav')) return;
+
+    // ── Tab buttons: let them switch tabs ──
+    if (e.target.closest && e.target.closest('.tab-nav')) return;
+
+    // ── Everything else: block native behavior ──
+    e.preventDefault();
+    e.stopPropagation();
+
+    var tag = (e.target.tagName || '').toUpperCase();
+
+    // IMG
+    if (tag === 'IMG') {
+      tgt = e.target;
+      openBubble(e.target.src || '', 'Image URL or Google Drive link');
+      return;
+    }
+
+    // IFRAME
+    if (tag === 'IFRAME') {
+      tgt = e.target;
+      openBubble(e.target.src || '', 'Audio / Video URL');
+      return;
+    }
+
+    // ANCHOR
+    var anc = e.target.closest ? e.target.closest('a') : null;
+    if (anc && !(anc.closest && anc.closest('.left-nav'))) {
+      tgt = anc;
+      var label = (anc.textContent || '').trim().slice(0, 50);
+      openBubble(anc.getAttribute('href') || '', 'Link URL' + (label ? ': ' + label : ''));
+      return;
+    }
+
+    // TEXT — walk up to find a meaningful container
     var el = e.target;
-    var textTags = ['P','H1','H2','H3','H4','H5','H6','LI','TD','TH','BLOCKQUOTE','SPAN','LABEL'];
+    var textNodes = ['P','H1','H2','H3','H4','H5','H6','LI','TD','TH','BLOCKQUOTE','SPAN','LABEL'];
     while (el && el !== document.body) {
-      if (textTags.indexOf((el.tagName||'').toUpperCase()) > -1) break;
-      if ((el.tagName||'').toUpperCase() === 'DIV' && el.children.length <= 2 && el.textContent.trim().length < 500) break;
+      var tn = (el.tagName || '').toUpperCase();
+      if (textNodes.indexOf(tn) > -1) break;
+      if (tn === 'DIV' && el.children.length <= 3 && el.textContent.trim().length < 600) break;
       el = el.parentElement;
     }
     if (!el || el === document.body) return;
     if (el.getAttribute('contenteditable') === 'true') return;
+
+    // Clear previous
     var prev = document.querySelectorAll('[contenteditable]');
-    for (var i = 0; i < prev.length; i++) { if (prev[i] !== el) prev[i].removeAttribute('contenteditable'); }
-    el.setAttribute('contenteditable', 'true'); el.focus();
+    for (var i = 0; i < prev.length; i++) {
+      if (prev[i] !== el) prev[i].removeAttribute('contenteditable');
+    }
+    el.setAttribute('contenteditable', 'true');
+    el.focus();
   }
+
+  // ── Bubble ──
   function openBubble(val, label) {
-    document.getElementById('kb-bubble-label').textContent = label;
-    document.getElementById('kb-bubble-input').value = val;
-    document.getElementById('kb-bubble').style.display = 'block';
-    setTimeout(function(){ document.getElementById('kb-bubble-input').focus(); }, 50);
+    var lbl = document.getElementById('kb-bubble-label');
+    var inp = document.getElementById('kb-bubble-input');
+    if (lbl) lbl.textContent = label;
+    if (inp) inp.value = val;
+    show('kb-bubble');
+    if (inp) setTimeout(function(){ inp.focus(); }, 60);
   }
-  function closeBubble() { document.getElementById('kb-bubble').style.display = 'none'; target = null; }
-  function apply() {
-    var val = document.getElementById('kb-bubble-input').value.trim();
-    if (!target || !val) { closeBubble(); return; }
-    var tag = (target.tagName || '').toUpperCase();
-    var m = val.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/);
-    if (tag === 'IMG') target.src = m ? 'https://drive.google.com/thumbnail?id=' + m[1] + '&sz=w800' : val;
-    else if (tag === 'IFRAME') target.src = m ? 'https://drive.google.com/file/d/' + m[1] + '/preview' : val;
-    else if (tag === 'A') target.setAttribute('href', val);
-    closeBubble();
+
+  function applyBubble() {
+    var inp = document.getElementById('kb-bubble-input');
+    var val = inp ? inp.value.trim() : '';
+    if (!tgt || !val) { hide('kb-bubble'); tgt = null; return; }
+    var tag = (tgt.tagName || '').toUpperCase();
+    var dm = val.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/);
+    if (tag === 'IMG') {
+      tgt.src = dm ? 'https://drive.google.com/thumbnail?id=' + dm[1] + '&sz=w800' : val;
+    } else if (tag === 'IFRAME') {
+      tgt.src = dm ? 'https://drive.google.com/file/d/' + dm[1] + '/preview' : val;
+    } else if (tag === 'A') {
+      tgt.setAttribute('href', val);
+    }
+    hide('kb-bubble'); tgt = null;
   }
+
+  // ── Copy HTML ──
   function copyHTML() {
-    var was = editing; exit();
+    var wasEditing = editing;
+    exit();
     var clone = document.documentElement.cloneNode(true);
-    ['kb-banner','kb-toolbar','kb-bubble'].forEach(function(id){ var el = clone.querySelector('#'+id); if(el) el.parentNode.removeChild(el); });
+    // Strip edit UI
+    ['kb-banner','kb-toolbar','kb-bubble'].forEach(function(id) {
+      var el = clone.querySelector('#' + id);
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+    });
+    // Strip edit script
+    var ss = clone.querySelectorAll('script');
+    for (var i = 0; i < ss.length; i++) {
+      if (ss[i].textContent && ss[i].textContent.indexOf('_kbExit') > -1) {
+        ss[i].parentNode.removeChild(ss[i]);
+      }
+    }
     var html = '<!DOCTYPE html>\n' + clone.outerHTML;
-    if (navigator.clipboard) { navigator.clipboard.writeText(html).then(function(){alert('HTML copied!');}).catch(function(){fbCopy(html);}); }
-    else { fbCopy(html); }
-    if (was) enter();
+    // Copy to clipboard
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(html).then(function() {
+        alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
+      }).catch(function() { fallbackCopy(html); });
+    } else {
+      fallbackCopy(html);
+    }
+    if (wasEditing) setTimeout(enter, 150);
   }
-  function fbCopy(html) { var t=document.createElement('textarea');t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.value=html;t.select();document.execCommand('copy');document.body.removeChild(t);alert('HTML copied!'); }
+
+  function fallbackCopy(html) {
+    var ta = document.createElement('textarea');
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0.01;';
+    ta.value = html;
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
+    } catch(err) {
+      alert('Could not copy automatically. Use Ctrl+A then Ctrl+C in the text area.');
+      ta.style.cssText = 'position:fixed;top:10%;left:10%;width:80%;height:80%;z-index:999999;font-size:10px;';
+    }
+    if (ta.parentNode) document.body.removeChild(ta);
+  }
+
+  // ── Helpers ──
+  function show(id) { var el = document.getElementById(id); if (el) el.style.display = (id === 'kb-toolbar' ? 'flex' : 'block'); }
+  function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
+
+  // ── Keyboard trigger: Alt + Shift + E ──
   document.addEventListener('keydown', function(e) {
-    if (e.altKey && e.shiftKey && e.key && e.key.toLowerCase() === 'e') { e.preventDefault(); editing ? exit() : enter(); }
+    if (e.altKey && e.shiftKey && e.key && e.key.toLowerCase() === 'e') {
+      e.preventDefault();
+      editing ? exit() : enter();
+    }
   }, false);
-  if (window.location.hash === '#edit') { if (document.readyState === 'complete') enter(); else window.addEventListener('load', enter); }
-  window._kbExit = exit; window._kbCopy = copyHTML; window._kbApply = apply; window._kbClose = closeBubble;
+
+  // ── URL hash trigger ──
+  if (window.location.hash === '#edit') {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enter);
+    else enter();
+  }
+
+  // ── Expose for any external callers ──
+  window._kbExit  = exit;
+  window._kbCopy  = copyHTML;
+  window._kbApply = applyBubble;
+  window._kbClose = function() { hide('kb-bubble'); tgt = null; };
 })();
+
 </script>
 </body>
 </html>
