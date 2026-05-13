@@ -10,12 +10,12 @@
 /* ═══ GLOBAL :root — hub vars + ALL session CSS vars (every shorthand included) ═══ */
 :root {
   /* Hub */
-  --hub-green:#1A7A6D; --hub-ink:#0d1117; --hub-border:rgba(0,0,0,0.07);
+  --hub-green:#b45309; --hub-ink:#0d1117; --hub-border:rgba(0,0,0,0.07);
   --hub-sans:'DM Sans',system-ui,sans-serif;
   --hub-mono:'DM Mono','Courier New',monospace;
   --hub-ease:cubic-bezier(.4,0,.2,1);
   /* Session standard names */
-  --green:#1A7A6D; --green-dark:#155f54; --green-light:#fdf4f5;
+  --green:#b45309; --green-dark:#155f54; --green-light:#fdf4f5;
   --brand-dark:#1e293b; --text-main:#334155; --text-light:#64748b;
   --bg-off:#f8fafc; --border:rgba(0,0,0,0.07);
   --red:#dc2626; --red-light:#fff1f1; --red-lt:#fef2f2; --rl:#fff1f1;
@@ -23,7 +23,7 @@
   --blue:#0369a1; --blue-light:#eff6ff; --blue-lt:#eff6ff; --bl:#eff6ff;
   --purple:#7c3aed; --purple-light:#ede9fe;
   --fg:#166534; --fgl:#dcfce7;
-  --shadow:0 8px 30px rgba(0,0,0,0.06); --shadow-hover:0 20px 50px rgba(26,122,109,0.14);
+  --shadow:0 8px 30px rgba(0,0,0,0.06); --shadow-hover:0 20px 50px rgba(180,83,9,0.14);
   --shad:0 8px 30px rgba(0,0,0,0.06); --sh:0 8px 30px rgba(0,0,0,0.06);
   --ease:cubic-bezier(0.22,1,0.36,1);
   /* Abbreviated aliases (fs05, fs06) */
@@ -52,7 +52,7 @@ a{text-decoration:none;color:inherit;}
 .left-nav-items::-webkit-scrollbar{display:none;}
 .left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#64748b;font-size:13px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:6px;margin:1px 8px;transition:background .15s,color .15s;text-decoration:none;border-left:2px solid transparent;}
 .left-nav-item:hover{background:rgba(255,255,255,.05);color:#e2e8f0;}
-.left-nav-item.active{background:rgba(26,122,109,.15);color:#34d399;font-weight:600;border-left-color:var(--hub-green);}
+.left-nav-item.active{background:rgba(180,83,9,.15);color:#fde68a;font-weight:600;border-left-color:#b45309;}
 .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:10px;color:#334155;line-height:1.6;font-family:var(--hub-mono);}
 
 /* ── Tab navigation ── */
@@ -125,7 +125,7 @@ body.edit-on img:hover{outline:3px dashed #f59e0b !important;cursor:pointer;}
 html {scroll-behavior:smooth;}
 #panel-fs00 {font-family:'Open Sans',system-ui,sans-serif;color:var(--text-main);background:#f8fafc;background-image:radial-gradient(#cbd5e1 1px,transparent 1px);background-size:36px 36px;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 #panel-fs00 a {text-decoration:none;color:inherit;}
-#panel-fs00 .hero {background:linear-gradient(135deg,#0f2027 0%,#203a43 45%,#1A7A6D 100%);color:white;padding:72px 5% 64px;position:relative;overflow:hidden;}
+#panel-fs00 .hero {background:linear-gradient(135deg,#0f2027 0%,#203a43 45%,#b45309 100%);color:white;padding:72px 5% 64px;position:relative;overflow:hidden;}
 #panel-fs00 .hero::before {content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:rgba(255,255,255,0.03);border-radius:50%;}
 #panel-fs00 .hero::after {content:'';position:absolute;bottom:-60px;left:5%;width:300px;height:300px;background:rgba(255,255,255,0.02);border-radius:50%;}
 #panel-fs00 .hero-inner {max-width:920px;position:relative;z-index:2;}
@@ -149,10 +149,10 @@ html {scroll-behavior:smooth;}
 /* Session timeline */
 #panel-fs00 .timeline {display:flex;flex-direction:column;gap:0;}
 #panel-fs00 .tl-item {display:grid;grid-template-columns:72px 1fr;gap:0;position:relative;}
-#panel-fs00 .tl-item::before {content:'';position:absolute;left:35px;top:56px;bottom:-1px;width:2px;background:linear-gradient(to bottom,var(--green),rgba(26,122,109,0.1));z-index:0;}
+#panel-fs00 .tl-item::before {content:'';position:absolute;left:35px;top:56px;bottom:-1px;width:2px;background:linear-gradient(to bottom,var(--green),rgba(180,83,9,0.1));z-index:0;}
 #panel-fs00 .tl-item:last-child::before {display:none;}
 #panel-fs00 .tl-left {display:flex;flex-direction:column;align-items:center;padding-top:22px;z-index:1;}
-#panel-fs00 .tl-dot {width:18px;height:18px;border-radius:50%;background:var(--green);border:3px solid white;box-shadow:0 0 0 3px rgba(26,122,109,0.2);flex-shrink:0;}
+#panel-fs00 .tl-dot {width:18px;height:18px;border-radius:50%;background:var(--green);border:3px solid white;box-shadow:0 0 0 3px rgba(180,83,9,0.2);flex-shrink:0;}
 #panel-fs00 .tl-time {font-size:10px;font-weight:800;color:var(--text-light);text-align:center;margin-top:6px;white-space:nowrap;}
 #panel-fs00 .tl-right {padding:16px 0 32px 20px;}
 #panel-fs00 .tl-card {background:white;border:1px solid var(--border);border-left:4px solid var(--green);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow);transition:all 0.3s var(--ease);cursor:pointer;}
@@ -842,7 +842,7 @@ html {scroll-behavior:smooth;}
   <span class="left-nav-section">Navigation</span>
   <nav class="left-nav-items">
     <a class="left-nav-item" href="hub-v2-notion.html" target="_self">The Hub</a>
-    <a class="left-nav-item" href="pre-field-ops-V4.html" target="_self">Pre-Field Ops</a>
+    <a class="left-nav-item" href="pre-field-ops.html" target="_self">Pre-Field Ops</a>
     <a class="left-nav-item" href="field-readiness.html" target="_self">Field Readiness</a>
     <a class="left-nav-item" href="training-academy.html" target="_self">Training Academy</a>
     <a class="left-nav-item" href="onboarding-ra-pa.html" target="_self">On-boarding RA/PA</a>
