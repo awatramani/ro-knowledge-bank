@@ -278,10 +278,19 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </style>
 </head>
 <body class="">
-
-
-
-
+<!-- ═══ EDIT MODE UI ═══ -->
+<div id="kb-banner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:10000;background:#1e40af;color:white;text-align:center;padding:7px;font-size:12px;font-weight:600;font-family:system-ui,sans-serif;">Edit Mode — click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
+<div id="kb-toolbar" style="display:none;position:fixed;bottom:24px;right:24px;background:#0d1117;padding:12px 20px;border-radius:40px;box-shadow:0 16px 36px rgba(0,0,0,.4);gap:12px;align-items:center;z-index:999999;border:1px solid rgba(255,255,255,.08);">
+  <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
+  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0369a1;">Copy HTML</button>
+  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
+</div>
+<div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0,.11);">
+  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">URL</label>
+  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
+  <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
+  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
+</div>
 
 <div class="page-layout">
 
