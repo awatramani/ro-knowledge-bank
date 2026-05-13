@@ -14,12 +14,12 @@
 /* OFS :root — exact copy, extended with hub blue palette */
 :root {
   /* Hub shell */
-  --hub-green:#1A7A6D; --hub-ink:#0d1117; --hub-border:rgba(0,0,0,0.07);
+  --hub-green:#0369a1; --hub-ink:#0d1117; --hub-border:rgba(0,0,0,0.07);
   --hub-sans:'DM Sans',system-ui,sans-serif;
   --hub-mono:'DM Mono','Courier New',monospace;
   --hub-ease:cubic-bezier(.4,0,.2,1);
   /* Session/content standard names */
-  --green:#1A7A6D; --green-dark:#155f54; --green-light:#fdf4f5;
+  --green:#0369a1; --green-dark:#155f54; --green-light:#fdf4f5;
   --brand-dark:#1e293b; --text-main:#334155; --text-light:#64748b;
   --bg-off:#f8fafc; --border:rgba(0,0,0,0.07);
   --red:#dc2626; --red-light:#fff1f1;
@@ -66,7 +66,7 @@ a{text-decoration:none;color:inherit;}
 .left-nav-items::-webkit-scrollbar{display:none;}
 .left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#64748b;font-size:13px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:6px;margin:1px 8px;transition:background .15s,color .15s;text-decoration:none;border-left:2px solid transparent;}
 .left-nav-item:hover{background:rgba(255,255,255,.05);color:#e2e8f0;}
-.left-nav-item.active{background:rgba(26,122,109,.15);color:#34d399;font-weight:600;border-left-color:var(--hub-green);}
+.left-nav-item.active{background:rgba(3,105,161,.15);color:#7dd3fc;font-weight:600;border-left-color:#0369a1;}
 .left-nav-divider{height:1px;background:rgba(255,255,255,.04);margin:6px 14px;}
 .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:10px;color:#334155;line-height:1.6;font-family:var(--hub-mono);}
 
@@ -269,6 +269,12 @@ body.edit-on a:not(.left-nav-item):hover{outline:2px dashed #a78bfa !important;o
   .life-links{grid-template-columns:1fr;}
 }
 
+
+body.edit-mode-active *:not(.left-nav *):not(button):not(input):hover{outline:2px dashed rgba(14,165,233,0.5)!important;outline-offset:2px;border-radius:3px;}
+body.edit-mode-active img:hover,body.edit-mode-active iframe:hover{outline:3px dashed #f59e0b!important;outline-offset:3px;cursor:pointer;}
+body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!important;outline-offset:2px;cursor:pointer;}
+[contenteditable="true"]{outline:2px solid #0ea5e9!important;outline-offset:2px;border-radius:3px;background:rgba(14,165,233,0.04)!important;cursor:text!important;}
+
 </style>
 </head>
 <body class="">
@@ -296,7 +302,7 @@ body.edit-on a:not(.left-nav-item):hover{outline:2px dashed #a78bfa !important;o
   <span class="left-nav-section">Knowledge Library</span>
   <nav class="left-nav-items">
     <a class="left-nav-item active" href="hub-v2-notion.html" target="_self">The Hub</a>
-    <a class="left-nav-item" href="pre-field-ops-V4.html" target="_self">Pre-Field Ops</a>
+    <a class="left-nav-item" href="pre-field-ops.html" target="_self">Pre-Field Ops</a>
     <a class="left-nav-item" href="field-readiness.html" target="_self">Field Readiness</a>
     <a class="left-nav-item" href="training-academy.html" target="_self">Training Academy</a>
     <a class="left-nav-item" href="onboarding-ra-pa.html" target="_self">On-boarding RA/PA</a>
@@ -358,7 +364,7 @@ body.edit-on a:not(.left-nav-item):hover{outline:2px dashed #a78bfa !important;o
     <div class="bento">
 
       <!-- 01 Pre-Field Ops -->
-      <div class="bc bc-pfo" onclick="window.open('pre-field-ops-V4.html','_self')">
+      <div class="bc bc-pfo" onclick="window.open('pre-field-ops.html','_self')">
         <div class="card-num">·&nbsp;Pre-Field Ops</div>
         <h3>Planning &amp; Survey Design</h3>
         <p class="bc-desc">Architectural groundwork: Begins 12–16 weeks before deployment. Translate research methodology into field-ready systems.</p>
@@ -597,5 +603,245 @@ body.edit-on a:not(.left-nav-item):hover{outline:2px dashed #a78bfa !important;o
 
 
 
+
+<script>
+
+var SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
+(function(){
+  var row = document.getElementById('announcements-row');
+  var status = document.getElementById('sync-status');
+  if (!SHEET_ID || SHEET_ID === 'YOUR_GOOGLE_SHEET_ID_HERE') {
+    if (status) status.textContent = 'Configure SHEET_ID in script for live sync';
+    return;
+  }
+  fetch('https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/export?format=csv&gid=0&t='+Date.now())
+    .then(function(r){return r.text();})
+    .then(function(csv){
+      var today=new Date();today.setHours(0,0,0,0);
+      var end=new Date(today);end.setDate(today.getDate()+30);
+      var lines=csv.trim().split('\n').slice(1);
+      var evts=[];
+      lines.forEach(function(line){
+        var c=line.split(',');if(!c[0]||!c[1])return;
+        var d=new Date(c[0].trim());if(isNaN(d))return;d.setHours(0,0,0,0);
+        if(d>=today&&d<=end)evts.push({d:d,t:(c[1]||'').trim(),desc:(c[2]||'').trim(),cat:(c[3]||'General').trim(),col:(c[4]||'').trim()});
+      });
+      evts.sort(function(a,b){return a.d-b.d;});
+      if(!evts.length&&row){row.innerHTML='<div class="updates-empty">No events in the next 30 days.</div>';return;}
+      var cats={'training':'#7c3aed','survey':'#0369a1','policy':'#0f172a','hiring':'#d97706','general':'#334155'};
+      if(row)row.innerHTML=evts.map(function(e){
+        var col=e.col||cats[e.cat.toLowerCase()]||'#0369a1';
+        return '<div class="update-pill"><div class="upd-date-block" style="background:'+col+'"><div class="upd-date-day">'+e.d.getDate()+'</div><div class="upd-date-mon">'+e.d.toLocaleString("en",{month:"short"}).toUpperCase()+'</div></div><div class="upd-content"><div class="upd-tag" style="color:'+col+'">'+e.cat+'</div><div class="upd-text">'+e.t+'</div>'+(e.desc?'<div class="upd-desc">'+e.desc+'</div>':'')+'</div></div>';
+      }).join('');
+      if(status)status.textContent='Synced just now';
+    }).catch(function(){});
+})();
+
+</script>
+
+<script>
+(function(){
+  var editing = false, tgt = null;
+
+  function enter() {
+    editing = true;
+    document.body.classList.add('edit-mode-active');
+    show('kb-banner'); show('kb-toolbar');
+    document.addEventListener('click', handler, true);
+  }
+
+  function exit() {
+    editing = false;
+    document.body.classList.remove('edit-mode-active');
+    hide('kb-banner'); hide('kb-toolbar'); hide('kb-bubble');
+    tgt = null;
+    var ce = document.querySelectorAll('[contenteditable]');
+    for (var i = 0; i < ce.length; i++) {
+      ce[i].removeAttribute('contenteditable');
+      ce[i].blur();
+    }
+    document.removeEventListener('click', handler, true);
+  }
+
+  function handler(e) {
+    if (!editing) return;
+
+    // ── Toolbar: handle Copy/Exit clicks DIRECTLY inside handler ──
+    var tbBtn = e.target.closest ? e.target.closest('#kb-toolbar button') : null;
+    if (tbBtn) {
+      e.preventDefault(); e.stopPropagation();
+      var txt = (tbBtn.textContent || '').trim().toLowerCase();
+      if (txt.indexOf('copy') > -1) copyHTML();
+      else if (txt.indexOf('exit') > -1) exit();
+      return;
+    }
+    // Toolbar container (non-button area) — ignore
+    if (e.target.closest && e.target.closest('#kb-toolbar')) return;
+
+    // ── Bubble: handle Apply/Cancel clicks DIRECTLY ──
+    var bbBtn = e.target.closest ? e.target.closest('#kb-bubble button') : null;
+    if (bbBtn) {
+      e.preventDefault(); e.stopPropagation();
+      var btxt = (bbBtn.textContent || '').trim().toLowerCase();
+      if (btxt.indexOf('apply') > -1) applyBubble();
+      else if (btxt.indexOf('cancel') > -1) { hide('kb-bubble'); tgt = null; }
+      return;
+    }
+    // Bubble input — let it work
+    if (e.target.closest && e.target.closest('#kb-bubble')) return;
+
+    // ── Left-nav: let links navigate normally ──
+    if (e.target.closest && e.target.closest('.left-nav')) return;
+
+    // ── Tab buttons: let them switch tabs ──
+    if (e.target.closest && e.target.closest('.tab-nav')) return;
+
+    // ── Everything else: block native behavior ──
+    e.preventDefault();
+    e.stopPropagation();
+
+    var tag = (e.target.tagName || '').toUpperCase();
+
+    // IMG
+    if (tag === 'IMG') {
+      tgt = e.target;
+      openBubble(e.target.src || '', 'Image URL or Google Drive link');
+      return;
+    }
+
+    // IFRAME
+    if (tag === 'IFRAME') {
+      tgt = e.target;
+      openBubble(e.target.src || '', 'Audio / Video URL');
+      return;
+    }
+
+    // ANCHOR
+    var anc = e.target.closest ? e.target.closest('a') : null;
+    if (anc && !(anc.closest && anc.closest('.left-nav'))) {
+      tgt = anc;
+      var label = (anc.textContent || '').trim().slice(0, 50);
+      openBubble(anc.getAttribute('href') || '', 'Link URL' + (label ? ': ' + label : ''));
+      return;
+    }
+
+    // TEXT — walk up to find a meaningful container
+    var el = e.target;
+    var textNodes = ['P','H1','H2','H3','H4','H5','H6','LI','TD','TH','BLOCKQUOTE','SPAN','LABEL'];
+    while (el && el !== document.body) {
+      var tn = (el.tagName || '').toUpperCase();
+      if (textNodes.indexOf(tn) > -1) break;
+      if (tn === 'DIV' && el.children.length <= 3 && el.textContent.trim().length < 600) break;
+      el = el.parentElement;
+    }
+    if (!el || el === document.body) return;
+    if (el.getAttribute('contenteditable') === 'true') return;
+
+    // Clear previous
+    var prev = document.querySelectorAll('[contenteditable]');
+    for (var i = 0; i < prev.length; i++) {
+      if (prev[i] !== el) prev[i].removeAttribute('contenteditable');
+    }
+    el.setAttribute('contenteditable', 'true');
+    el.focus();
+  }
+
+  // ── Bubble ──
+  function openBubble(val, label) {
+    var lbl = document.getElementById('kb-bubble-label');
+    var inp = document.getElementById('kb-bubble-input');
+    if (lbl) lbl.textContent = label;
+    if (inp) inp.value = val;
+    show('kb-bubble');
+    if (inp) setTimeout(function(){ inp.focus(); }, 60);
+  }
+
+  function applyBubble() {
+    var inp = document.getElementById('kb-bubble-input');
+    var val = inp ? inp.value.trim() : '';
+    if (!tgt || !val) { hide('kb-bubble'); tgt = null; return; }
+    var tag = (tgt.tagName || '').toUpperCase();
+    var dm = val.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/);
+    if (tag === 'IMG') {
+      tgt.src = dm ? 'https://drive.google.com/thumbnail?id=' + dm[1] + '&sz=w800' : val;
+    } else if (tag === 'IFRAME') {
+      tgt.src = dm ? 'https://drive.google.com/file/d/' + dm[1] + '/preview' : val;
+    } else if (tag === 'A') {
+      tgt.setAttribute('href', val);
+    }
+    hide('kb-bubble'); tgt = null;
+  }
+
+  // ── Copy HTML ──
+  function copyHTML() {
+    var wasEditing = editing;
+    exit();
+    var clone = document.documentElement.cloneNode(true);
+    // Strip edit UI
+    ['kb-banner','kb-toolbar','kb-bubble'].forEach(function(id) {
+      var el = clone.querySelector('#' + id);
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+    });
+    // Strip edit script
+    var ss = clone.querySelectorAll('script');
+    for (var i = 0; i < ss.length; i++) {
+      if (ss[i].textContent && ss[i].textContent.indexOf('_kbExit') > -1) {
+        ss[i].parentNode.removeChild(ss[i]);
+      }
+    }
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    // Copy to clipboard
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(html).then(function() {
+        alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
+      }).catch(function() { fallbackCopy(html); });
+    } else {
+      fallbackCopy(html);
+    }
+    if (wasEditing) setTimeout(enter, 150);
+  }
+
+  function fallbackCopy(html) {
+    var ta = document.createElement('textarea');
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0.01;';
+    ta.value = html;
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
+    } catch(err) {
+      alert('Could not copy automatically. Use Ctrl+A then Ctrl+C in the text area.');
+      ta.style.cssText = 'position:fixed;top:10%;left:10%;width:80%;height:80%;z-index:999999;font-size:10px;';
+    }
+    if (ta.parentNode) document.body.removeChild(ta);
+  }
+
+  // ── Helpers ──
+  function show(id) { var el = document.getElementById(id); if (el) el.style.display = (id === 'kb-toolbar' ? 'flex' : 'block'); }
+  function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
+
+  // ── Keyboard trigger: Alt + Shift + E ──
+  document.addEventListener('keydown', function(e) {
+    if (e.altKey && e.shiftKey && e.key && e.key.toLowerCase() === 'e') {
+      e.preventDefault();
+      editing ? exit() : enter();
+    }
+  }, false);
+
+  // ── URL hash trigger ──
+  if (window.location.hash === '#edit') {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enter);
+    else enter();
+  }
+
+  // ── Expose for any external callers ──
+  window._kbExit  = exit;
+  window._kbCopy  = copyHTML;
+  window._kbApply = applyBubble;
+  window._kbClose = function() { hide('kb-bubble'); tgt = null; };
+})();
+
+</script>
 
 </body></html>
