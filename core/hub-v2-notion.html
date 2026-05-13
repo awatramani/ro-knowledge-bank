@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Field Knowledge Hub | J-PAL SA Research Operations</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&amp;family=DM+Mono:wght@400;500&amp;family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kb-theme.css">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   THE HUB — CSS built from OFS shell exactly
+   Font: DM Sans (nav shell) + Open Sans (content) + DM Mono (labels)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* OFS :root — exact copy, extended with hub blue palette */
+:root {
+  /* Hub shell */
+  --hub-green:#0369a1; --hub-ink:#0d1117; --hub-border:rgba(0,0,0,0.07);
+  --hub-sans:'DM Sans',system-ui,sans-serif;
+  --hub-mono:'DM Mono','Courier New',monospace;
+  --hub-ease:cubic-bezier(.4,0,.2,1);
+  /* Session/content standard names */
+  --green:#0369a1; --green-dark:#155f54; --green-light:#fdf4f5;
+  --brand-dark:#1e293b; --text-main:#334155; --text-light:#64748b;
+  --bg-off:#f8fafc; --border:rgba(0,0,0,0.07);
+  --red:#dc2626; --red-light:#fff1f1;
+  --amber:#d97706; --amber-light:#fffbeb;
+  --blue:#0369a1; --blue-light:#eff6ff;
+  --purple:#7c3aed; --purple-light:#ede9fe;
+  --shadow:0 8px 30px rgba(0,0,0,0.06);
+  --shadow-hover:0 20px 50px rgba(0,0,0,0.12);
+  --ease:cubic-bezier(0.22,1,0.36,1);
+  --mono:'DM Mono','Courier New',monospace;
+  --sans:'Open Sans',system-ui,sans-serif;
+}
+
+/* OFS reset — exact */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--hub-sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+
+/* Layout — OFS exact */
+.page-layout{display:flex;align-items:flex-start;min-height:100vh;}
+.main-content-area{flex:1;min-width:0;overflow-x:hidden;}
+
+/* ── Content body — Open Sans (OFS session panel font) ── */
+.content-body{
+  font-family:'Open Sans',system-ui,sans-serif;
+  color:var(--text-main);
+  background:#f8fafc;
+  background-image:radial-gradient(#cbd5e1 1px,transparent 1px);
+  background-size:36px 36px;
+  overflow-x:hidden;
+}
+
+/* ── SIDEBAR — OFS exact ── */
+.left-nav{width:200px;min-width:200px;height:100vh;position:sticky;top:0;background:#0d1117;display:flex;flex-direction:column;overflow:hidden;z-index:900;flex-shrink:0;border-right:1px solid rgba(255,255,255,.06);box-shadow:2px 0 16px rgba(0,0,0,.10);}
+.left-nav-brand{height:56px;min-height:56px;display:flex;align-items:center;padding:0 18px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;}
+.left-nav-logo{width:26px;height:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.left-nav-logo img{width:26px;height:auto;filter:brightness(0) invert(1);opacity:.9;display:block;}
+.left-nav-logo-fallback{display:none;width:26px;height:26px;border-radius:7px;background:var(--hub-green);align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+.left-nav-brand-text strong{display:block;font-size:12px;font-weight:700;color:#e2e8f0;line-height:1.25;}
+.left-nav-brand-text span{font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:.8px;font-family:var(--hub-mono);}
+.left-nav-section{font-family:var(--hub-mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:#334155;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
+.left-nav-items{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none;}
+.left-nav-items::-webkit-scrollbar{display:none;}
+.left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#64748b;font-size:13px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:6px;margin:1px 8px;transition:background .15s,color .15s;text-decoration:none;border-left:2px solid transparent;}
+.left-nav-item:hover{background:rgba(255,255,255,.05);color:#e2e8f0;}
+.left-nav-item.active{background:rgba(3,105,161,.15);color:#7dd3fc;font-weight:600;border-left-color:#0369a1;}
+.left-nav-divider{height:1px;background:rgba(255,255,255,.04);margin:6px 14px;}
+.left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:10px;color:#334155;line-height:1.6;font-family:var(--hub-mono);}
+
+/* ── HERO — full width single column, no video on right ── */
+.hero{background:linear-gradient(135deg,#0c2340 0%,#0f3460 45%,#1e5799 100%);color:white;padding:72px 5% 64px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;}
+.hero::after{content:'HUB';position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:200px;font-weight:800;color:rgba(255,255,255,.025);line-height:1;pointer-events:none;font-family:var(--hub-mono);}
+.hero-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;}
+.hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.8);animation:pulse 2.4s ease infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+.hero h1{font-family:'Open Sans',system-ui,sans-serif;font-size:clamp(36px,5.5vw,64px);font-weight:800;color:white;line-height:1.06;letter-spacing:-2px;margin-bottom:18px;}
+.hero h1 em{font-style:normal;color:rgba(255,255,255,.65);}
+.hero-sub{font-family:'Open Sans',system-ui,sans-serif;font-size:17px;color:rgba(255,255,255,.78);line-height:1.7;max-width:680px;margin-bottom:36px;}
+.hero-stats{display:flex;flex-wrap:wrap;gap:32px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12);}
+.stat-item{display:flex;flex-direction:column;}
+.stat-num{font-family:var(--hub-mono);font-size:30px;font-weight:800;color:white;letter-spacing:-1px;line-height:1;}
+.stat-label{font-family:var(--hub-mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:rgba(255,255,255,.45);margin-top:5px;}
+
+/* ── QUOTE STRIP ── */
+.quote-strip{background:white;border-bottom:1px solid var(--border);padding:24px 5%;}
+.quote-strip-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.quote-strip blockquote{font-family:'Open Sans',system-ui,sans-serif;font-size:15px;font-style:italic;color:var(--text-main);flex:1;min-width:200px;line-height:1.65;border-left:3px solid var(--blue);padding-left:18px;}
+.quote-author{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.author-av{width:38px;height:38px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-family:'Open Sans',system-ui,sans-serif;font-size:13px;font-weight:800;flex-shrink:0;}
+.author-name{font-family:'Open Sans',system-ui,sans-serif;font-size:13.5px;font-weight:700;color:var(--brand-dark);}
+.author-role{font-family:var(--hub-mono);font-size:10.5px;color:var(--blue);margin-top:1px;}
+
+/* ── SECTION HEADER ── */
+.section-wrap{padding:60px 5%;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-label{font-family:var(--hub-mono);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--blue);background:var(--blue-light);padding:4px 11px;border-radius:12px;display:inline-block;margin-bottom:12px;}
+.section-title{font-family:'Open Sans',system-ui,sans-serif;font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--brand-dark);letter-spacing:-.5px;line-height:1.2;margin-bottom:10px;}
+.section-sub{font-family:'Open Sans',system-ui,sans-serif;font-size:15.5px;color:var(--text-light);line-height:1.7;margin-bottom:32px;max-width:700px;}
+
+/* ── BENTO DIRECTORY ── */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;}
+.bc{background:white;border:1px solid var(--border);border-radius:16px;padding:26px 26px 22px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:box-shadow .25s var(--ease),transform .25s var(--ease);cursor:pointer;}
+.bc:hover{box-shadow:0 12px 40px rgba(0,0,0,.1);transform:translateY(-3px);}
+.bc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.bc-pfo::before{background:linear-gradient(90deg,#78350f,#d97706);}
+.bc-fr::before {background:linear-gradient(90deg,#052e16,#16a34a);}
+.bc-ta::before {background:linear-gradient(90deg,#2e1065,#7c3aed);}
+.bc-fe::before {background:linear-gradient(90deg,#0c2340,#0ea5e9);}
+.bc-ob::before {background:linear-gradient(90deg,#0c2340,#0369a1);}
+.bc-life::before{background:linear-gradient(90deg,#1a1a2e,#475569);}
+.bc-pfo,.bc-fr{grid-column:span 6;}
+.bc-ta,.bc-fe{grid-column:span 6;}
+.bc-ob {grid-column:span 6;}
+.bc-life{grid-column:span 6;background:#0f172a;border-color:rgba(255,255,255,.05);}
+.card-num{font-family:var(--hub-mono);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:10px;}
+.bc-life .card-num{color:#475569;}
+.bc h3{font-family:'Open Sans',system-ui,sans-serif;font-size:16px;font-weight:800;color:var(--brand-dark);letter-spacing:-.3px;margin-bottom:8px;line-height:1.25;}
+.bc-life h3{color:#e2e8f0;}
+.bc-desc{font-family:'Open Sans',system-ui,sans-serif;font-size:13.5px;color:var(--text-light);line-height:1.65;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.bc-life .bc-desc{color:#64748b;border-bottom-color:rgba(255,255,255,.05);}
+.llist{list-style:none;flex:1;padding:0;}
+.llist li{margin-bottom:4px;}
+.llist a{font-family:'Open Sans',system-ui,sans-serif;display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--text-main);padding:5px 8px;border-radius:6px;transition:all .15s;}
+.llist a:hover{background:var(--blue-light);color:var(--blue);}
+.llist a::before{content:'';width:4px;height:4px;border-radius:50%;background:#cbd5e1;flex-shrink:0;transition:background .15s;}
+.llist a:hover::before{background:var(--blue);}
+.bc-life .llist a{color:#94a3b8;}
+.bc-life .llist a:hover{background:rgba(255,255,255,.05);color:#e2e8f0;}
+.sector-label{font-family:var(--hub-mono);font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-light);margin-bottom:7px;}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.pill{font-family:'Open Sans',system-ui,sans-serif;font-size:11.5px;font-weight:700;color:var(--brand-dark);background:#f1f5f9;border:1px solid var(--border);padding:4px 11px;border-radius:100px;transition:all .15s;cursor:pointer;}
+.pill:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.fe-cols{display:flex;gap:20px;flex-wrap:wrap;flex:1;}
+.fe-left{flex:1;min-width:140px;}.fe-right{flex:1.1;min-width:160px;}
+.life-inner{display:flex;gap:18px;flex-direction:column;flex:1;}
+.life-links{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px;}
+.life-link{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:9px 13px;border-radius:8px;font-family:'Open Sans',system-ui,sans-serif;font-size:12.5px;font-weight:700;color:#94a3b8;display:flex;align-items:center;justify-content:space-between;transition:all .15s;}
+.life-link:hover{background:var(--blue);border-color:var(--blue);color:white;}
+.life-link::after{content:'→';font-size:11px;color:rgba(255,255,255,.4);}
+.life-link:hover::after{color:white;}
+
+/* ── VIDEO SECTION ── */
+.video-section{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 5%;}
+.video-section-inner{max-width:1100px;margin:0 auto;}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;}
+.vid-card{background:#060a12;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.07);box-shadow:0 16px 40px rgba(0,0,0,.25);transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
+.vid-card:hover{transform:translateY(-5px);box-shadow:0 28px 56px rgba(0,0,0,.35);}
+.vid-wrap{position:relative;padding-bottom:56.25%;height:0;}
+.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.vid-meta{padding:14px 18px;background:#030609;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.05);}
+.vid-title{font-family:'Open Sans',system-ui,sans-serif;font-size:13px;font-weight:700;color:#e2e8f0;}
+.vid-sub{font-family:var(--hub-mono);font-size:10.5px;color:rgba(255,255,255,.38);margin-top:2px;}
+.vid-badge{font-family:var(--hub-mono);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.65);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:4px 10px;border-radius:4px;}
+
+/* ── SPOTLIGHT ── */
+.spotlight{background:#0f172a;padding:68px 5%;position:relative;overflow:hidden;}
+.spotlight::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 90% 50%,rgba(3,105,161,.08) 0%,transparent 70%);pointer-events:none;}
+.spot-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.spot-eyebrow{font-family:var(--hub-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:12px;display:block;}
+.spotlight h2{font-family:'Open Sans',system-ui,sans-serif;font-size:28px;font-weight:800;color:#e2e8f0;letter-spacing:-.5px;margin-bottom:10px;}
+.spotlight>.spot-inner>p{font-family:'Open Sans',system-ui,sans-serif;font-size:15px;color:#64748b;max-width:640px;line-height:1.72;}
+.spot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px;}
+.spot-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:24px;transition:all .2s;}
+.spot-card:hover{background:rgba(255,255,255,.06);border-color:rgba(3,105,161,.3);}
+.spot-card h4{font-family:'Open Sans',system-ui,sans-serif;font-size:14.5px;font-weight:700;color:#e2e8f0;margin-bottom:8px;}
+.spot-card p{font-family:'Open Sans',system-ui,sans-serif;font-size:13.5px;color:#64748b;line-height:1.65;margin-bottom:12px;}
+.spot-card ul{list-style:none;padding:0;}
+.spot-card li{font-family:'Open Sans',system-ui,sans-serif;font-size:13.5px;color:#94a3b8;margin-bottom:7px;display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.spot-card li::before{content:'–';color:rgba(255,255,255,.3);flex-shrink:0;font-weight:700;}
+
+/* ── BUILT BY FIELD ── */
+.built-section{background:white;padding:64px 5%;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.built-inner{max-width:680px;margin:0 auto;}
+.built-eyebrow{font-family:var(--hub-mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);display:inline-block;margin-bottom:16px;}
+.built-inner h2{font-family:'Open Sans',system-ui,sans-serif;font-size:28px;font-weight:800;letter-spacing:-.5px;margin-bottom:16px;color:var(--brand-dark);}
+.built-inner p{font-family:'Open Sans',system-ui,sans-serif;font-size:15.5px;color:var(--text-light);line-height:1.8;margin-bottom:12px;}
+.built-divider{width:32px;height:2px;background:var(--blue);margin:22px auto;opacity:.4;}
+.version-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--hub-mono);font-size:11px;color:var(--text-light);background:var(--bg-off);border:1px solid var(--border);padding:6px 14px;border-radius:100px;}
+.version-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);}
+
+/* ── ANNOUNCEMENTS ── */
+.updates{background:var(--bg-off);padding:36px 5%;border-bottom:1px solid var(--border);}
+.updates-inner{max-width:1100px;margin:0 auto;}
+.updates-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px;}
+.updates-label-group{display:flex;flex-direction:column;gap:4px;}
+.updates-label{font-family:var(--hub-mono);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text-light);display:flex;align-items:center;gap:8px;}
+.updates-window{font-family:var(--hub-mono);font-size:10px;color:rgba(3,105,161,.7);background:var(--blue-light);border:1px solid rgba(3,105,161,.15);padding:2px 9px;border-radius:4px;display:inline-block;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#ef4444;animation:pulse 2s ease infinite;flex-shrink:0;}
+.updates-header-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.updates-sync{font-family:var(--hub-mono);font-size:11px;color:var(--text-light);}
+.sheet-edit-btn{font-family:var(--hub-mono);font-size:10.5px;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid rgba(3,105,161,.2);padding:4px 10px;border-radius:5px;transition:all .15s;white-space:nowrap;}
+.sheet-edit-btn:hover{background:var(--blue);color:white;}
+.updates-row{display:flex;gap:10px;flex-wrap:wrap;min-height:60px;}
+.update-pill{display:flex;align-items:flex-start;gap:12px;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 16px;flex:1;min-width:240px;transition:border-color .15s,box-shadow .15s;}
+.update-pill:hover{border-color:rgba(3,105,161,.25);box-shadow:0 2px 12px rgba(3,105,161,.07);}
+.upd-date-block{display:flex;flex-direction:column;align-items:center;background:var(--blue);border-radius:7px;padding:6px 10px;flex-shrink:0;min-width:46px;}
+.upd-date-day{font-family:var(--hub-mono);font-size:16px;font-weight:800;color:white;line-height:1;}
+.upd-date-mon{font-family:var(--hub-mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.65);margin-top:2px;}
+.upd-content{flex:1;}
+.upd-tag{font-family:var(--hub-mono);font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px;}
+.upd-text{font-family:'Open Sans',system-ui,sans-serif;font-size:13.5px;color:var(--text-main);line-height:1.45;font-weight:700;margin-bottom:2px;}
+.upd-desc{font-family:'Open Sans',system-ui,sans-serif;font-size:12.5px;color:var(--text-light);line-height:1.45;}
+.updates-footer{margin-top:12px;}
+.updates-footer-note{font-family:var(--hub-mono);font-size:10px;color:rgba(100,116,139,.55);}
+.updates-loading{font-family:var(--hub-mono);font-size:12px;color:var(--text-light);padding:16px 0;}
+.updates-empty{font-family:'Open Sans',system-ui,sans-serif;font-size:13px;color:var(--text-light);padding:20px 0;font-style:italic;}
+
+/* ── RO ACTIONS ── */
+.actions{padding:48px 5%;background:white;}
+.actions-inner{max-width:1100px;margin:0 auto;text-align:center;}
+.actions-inner h2{font-family:'Open Sans',system-ui,sans-serif;font-size:22px;font-weight:800;letter-spacing:-.3px;margin-bottom:7px;color:var(--brand-dark);}
+.actions-inner p{font-family:'Open Sans',system-ui,sans-serif;font-size:15px;color:var(--text-light);margin-bottom:24px;}
+.action-row{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;}
+.act-btn{display:inline-flex;align-items:center;background:var(--bg-off);border:1.5px solid var(--border);border-radius:10px;padding:11px 20px;font-family:'Open Sans',system-ui,sans-serif;font-size:13.5px;font-weight:600;color:var(--text-main);transition:all .18s var(--ease);}
+.act-btn:hover{background:var(--blue);color:white;border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 16px rgba(3,105,161,.25);}
+
+/* ── EDIT MODE — OFS exact pattern ── */
+body.edit-on p:hover,body.edit-on h1:hover,body.edit-on h2:hover,
+body.edit-on h3:hover,body.edit-on h4:hover,body.edit-on h5:hover,
+body.edit-on h6:hover,body.edit-on li:hover,body.edit-on td:hover,
+body.edit-on th:hover,body.edit-on blockquote:hover,body.edit-on span:hover,
+body.edit-on .section-label:hover,body.edit-on .section-title:hover,
+body.edit-on .section-sub:hover,body.edit-on .hero-eyebrow:hover,
+body.edit-on .hero-sub:hover,body.edit-on .stat-num:hover,
+body.edit-on .stat-label:hover,body.edit-on .card-num:hover,
+body.edit-on .bc-desc:hover,body.edit-on .bc h3:hover,
+body.edit-on .vid-title:hover,body.edit-on .vid-sub:hover,
+body.edit-on .built-eyebrow:hover,body.edit-on .spot-eyebrow:hover,
+body.edit-on .upd-text:hover,body.edit-on .upd-desc:hover,
+body.edit-on .upd-tag:hover,body.edit-on .author-name:hover,
+body.edit-on .author-role:hover,body.edit-on .act-btn:hover,
+body.edit-on .life-link:hover,body.edit-on .pill:hover,
+body.edit-on .sector-label:hover,body.edit-on .version-tag:hover,
+body.edit-on .updates-label:hover,body.edit-on .updates-window:hover {
+  outline:2px dashed #0ea5e9 !important;outline-offset:2px;cursor:text;border-radius:3px;
+}
+body.edit-on img:hover{outline:3px dashed #f59e0b !important;cursor:pointer;}
+body.edit-on iframe:hover{outline:3px dashed #f59e0b !important;cursor:pointer;}
+body.edit-on a:not(.left-nav-item):hover{outline:2px dashed #a78bfa !important;outline-offset:2px;cursor:pointer;border-radius:3px;}
+[contenteditable="true"]{outline:2px solid #0ea5e9 !important;outline-offset:2px;border-radius:3px;background:rgba(14,165,233,0.04) !important;}
+
+/* ── Admin kit — OFS exact ── */
+#admin-kit{display:none;position:fixed;bottom:24px;right:24px;background:#0d1117;padding:12px 20px;border-radius:40px;box-shadow:0 16px 40px rgba(0,0,0,.4);gap:12px;align-items:center;z-index:9999;border:1px solid rgba(255,255,255,.08);}
+.abt{border:none;padding:8px 16px;border-radius:24px;font-weight:600;font-size:12px;cursor:pointer;color:white;font-family:var(--hub-sans);}
+.abt.copy{background:var(--hub-green);}.abt.exit{background:transparent;color:#ef4444;border:1px solid #ef4444;}
+#edit-banner{display:none;position:fixed;top:0;left:0;right:0;z-index:10000;background:#1e40af;color:white;text-align:center;padding:7px;font-size:12px;font-weight:600;font-family:var(--hub-sans);}
+#img-bubble{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.25);z-index:10001;width:340px;border:1px solid #e2e8f0;}
+#img-bubble label{font-size:11px;font-weight:700;display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;color:var(--brand-dark);}
+#img-bubble input{width:100%;padding:10px 12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:10px;font-size:13px;}
+#img-bubble .ib-apply{width:100%;padding:10px;border:none;border-radius:8px;background:var(--hub-green);color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;}
+#img-bubble .ib-cancel{width:100%;padding:10px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;}
+
+/* ── Mobile — OFS exact ── */
+@media(max-width:768px){
+  .page-layout{flex-direction:column;}
+  .left-nav{width:100%!important;height:auto;min-height:48px;position:relative;flex-direction:column;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}
+  .left-nav-brand{height:48px;min-height:48px;}
+  .left-nav-section{padding:10px 18px 5px;}
+  .left-nav-items{max-height:200px;}
+  #edit-banner{left:0;}
+  .bc-pfo,.bc-fr,.bc-ta,.bc-fe,.bc-ob,.bc-life{grid-column:span 12;}
+  .video-grid{grid-template-columns:1fr;}
+  .spot-grid{grid-template-columns:1fr;}
+  .life-links{grid-template-columns:1fr;}
+}
+
+
+body.edit-mode-active *:not(.left-nav *):not(button):not(input):hover{outline:2px dashed rgba(14,165,233,0.5)!important;outline-offset:2px;border-radius:3px;}
+body.edit-mode-active img:hover,body.edit-mode-active iframe:hover{outline:3px dashed #f59e0b!important;outline-offset:3px;cursor:pointer;}
+body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!important;outline-offset:2px;cursor:pointer;}
+[contenteditable="true"]{outline:2px solid #0ea5e9!important;outline-offset:2px;border-radius:3px;background:rgba(14,165,233,0.04)!important;cursor:text!important;}
+
+</style>
+</head>
+<body class="">
+
+
+
+
+
+<div class="page-layout">
+
+<!-- ════════════════════════════════════════════════
+     SIDEBAR
+════════════════════════════════════════════════ -->
+<aside class="left-nav">
+  <div class="left-nav-brand">
+    <div class="left-nav-logo">
+      <img src="https://www.povertyactionlab.org/themes/custom/jpal/logo.svg" alt="J-PAL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="left-nav-logo-fallback">RO</div>
+    </div>
+    <div class="left-nav-brand-text">
+      <strong>RO Knowledge Bank</strong>
+      <span>J-PAL South Asia</span>
+    </div>
+  </div>
+  <span class="left-nav-section">Knowledge Library</span>
+  <nav class="left-nav-items">
+    <a class="left-nav-item active" href="hub-v2-notion.html" target="_self">The Hub</a>
+    <a class="left-nav-item" href="pre-field-ops.html" target="_self">Pre-Field Ops</a>
+    <a class="left-nav-item" href="field-readiness.html" target="_self">Field Readiness</a>
+    <a class="left-nav-item" href="training-academy.html" target="_self">Training Academy</a>
+    <a class="left-nav-item" href="onboarding-ra-pa.html" target="_self">On-boarding RA/PA</a>
+    <a class="left-nav-item" href="onboarding-field-staff.html" target="_self">On-boarding Field Staff</a>
+    <div class="left-nav-divider"></div>
+    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_top">Field Execution</a>
+    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" target="_top">Resources &amp; Field Staff</a>
+  </nav>
+  <div class="left-nav-footer">v1.0 · April 2025<br>J-PAL SA · Research Ops</div>
+</aside>
+
+<div class="main-content-area">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">J-PAL SA · Research Operations</div>
+      <h1>The Field<br><em>Knowledge Hub</em></h1>
+      <p class="hero-sub">Transforming scattered institutional memory into a unified, actionable operational framework: Built by the people who are behind the scenes, executing and managing projects across JPAL SA.</p>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">Core sections</div></div>
+        <div class="stat-item"><div class="stat-num">60+</div><div class="stat-label">Field guides</div></div>
+        <div class="stat-item"><div class="stat-num">12+</div><div class="stat-label">Interactive tools</div></div>
+        <div class="stat-item"><div class="stat-num">v1.0</div><div class="stat-label">Apr 2025</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     QUOTE STRIP
+════════════════════════════════════════════════ -->
+<div class="content-body">
+<div class="quote-strip">
+  <div class="quote-strip-inner">
+    <blockquote>As a thumb rule for all the projects training that I support, I ensure we spend at least 2 to 3 days (sometimes even more) just role-playing the consent script followed by good 2 to 3 days of practice in the field. By the time we hit the first village, the surveyors aren't just reading, they were communicating. That invisible infrastructure makes all the difference.</blockquote>
+    <div class="quote-author">
+      <div class="author-av">VA</div>
+      <div>
+        <div class="author-name">Vaseem Ahmed</div>
+        <div class="author-role">Senior PA · Bihar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     DIRECTORY
+════════════════════════════════════════════════ -->
+<div class="section-wrap">
+  <div class="section-inner">
+    <div class="section-label">Navigate the Library</div>
+    <h2 class="section-title">The Survey Lifecycle</h2>
+    <p class="section-sub">Mirrors the chronological lifecycle of a research project. Each section links to standardised guides, checklists, and field wisdom built by the teams who ran the surveys.</p>
+
+    <div class="bento">
+
+      <!-- 01 Pre-Field Ops -->
+      <div class="bc bc-pfo" onclick="window.open('pre-field-ops.html','_self')">
+        <div class="card-num">·&nbsp;Pre-Field Ops</div>
+        <h3>Planning &amp; Survey Design</h3>
+        <p class="bc-desc">Architectural groundwork: Begins 12–16 weeks before deployment. Translate research methodology into field-ready systems.</p>
+        <ul class="llist">
+          <li><a href="https://awatramani.github.io/ro-knowledge-bank/core/pre-field-ops.html#panel-ro&gt;Availing RO Support&lt;/a&gt;" target="_top" onclick="event.stopPropagation()">Planning and Preparation (C1 Manual)</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/Pre-Field-Ops/availing-ro-support?authuser=0" target="_top" onclick="event.stopPropagation()">Availing RO Support &amp; SLAs</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/Pre-Field-Ops/mapping-households-in-the-field?authuser=0" target="_top" onclick="event.stopPropagation()">Mapping Households via GPS</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/Pre-Field-Ops/survey-logistics-jpal-sa-plug-in?authuser=0" target="_top" onclick="event.stopPropagation()">Survey Logistics &amp; Budgeting</a></li>
+        </ul>
+      </div>
+
+      <!-- 02 Field Readiness -->
+      <div class="bc bc-fr" onclick="window.open('https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness?authuser=0','_top')">
+        <div class="card-num">· Field Readiness</div>
+        <h3>Hiring, Piloting &amp; Launch</h3>
+        <p class="bc-desc">Bridge design with reality through rigorous hiring, hardware piloting, and digital tracking infrastructure.</p>
+        <ul class="llist">
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/hiring-field-staff-and-core-team?authuser=0" target="_top" onclick="event.stopPropagation()">Hiring Field Staff &amp; Core Teams</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/piloting-and-pre-launch-activities?authuser=0" target="_top" onclick="event.stopPropagation()">Piloting and Pre-Launch</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/survey-launch-and-initial-days?authuser=0" target="_top" onclick="event.stopPropagation()">Survey Launch &amp; Initial Days</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/google-maps-to-track-survey-productivity?authuser=0" target="_top" onclick="event.stopPropagation()">Google Maps Tracking</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-readiness/digital-attendance-tracking?authuser=0" target="_top" onclick="event.stopPropagation()">Digital Attendance Tracking</a></li>
+        </ul>
+      </div>
+
+      <!-- 03 Training Academy -->
+      <div class="bc bc-ta" onclick="window.open('https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy?authuser=0','_top')">
+        <div class="card-num">· Training Academy</div>
+        <h3>Training &amp; Certification</h3>
+        <p class="bc-desc">Cultivating capability through exhaustive manuals, mock-interview protocols, ethics sessions, and mandatory certification gates.</p>
+        <ul class="llist">
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/people-and-culture?authuser=0" target="_top" onclick="event.stopPropagation()">People and Culture Guidelines</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-minimum-must-dos?authuser=0" target="_top" onclick="event.stopPropagation()">Training Minimum Must-Dos</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-manual?authuser=0" target="_top" onclick="event.stopPropagation()">The Master Training Manual</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-resources-core-sessions?authuser=0" target="_top" onclick="event.stopPropagation()">Training Resources: Core Sessions</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-resources-human-subjects-certification?authuser=0" target="_top" onclick="event.stopPropagation()">Human Subjects Certification</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/training-manual-remote-training?authuser=0" target="_top" onclick="event.stopPropagation()">Remote Training Manual</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/training-academy/tablet-management-checklist-for-project-associate?authuser=0" target="_top" onclick="event.stopPropagation()">Tablet Management Checklist</a></li>
+        </ul>
+      </div>
+
+      <!-- 04 Field Execution -->
+      <div class="bc bc-fe" onclick="window.open('https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0','_top')">
+        <div class="card-num">· Field Execution</div>
+        <h3>Active Data Collection</h3>
+        <p class="bc-desc">The daily engine room: Active data collection, safety protocols, deviation frameworks, and sector-specific wisdom.</p>
+        <div class="fe-cols">
+          <div class="fe-left">
+            <ul class="llist">
+              <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/contracting-and-screening?authuser=0" target="_top" onclick="event.stopPropagation()">Contracting &amp; Screening</a></li>
+              <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/foundational-guidelines?authuser=0" target="_top" onclick="event.stopPropagation()">Surveyor Manual (Operations)</a></li>
+              <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_top" onclick="event.stopPropagation()">Field Safety &amp; Adverse Events</a></li>
+              <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_top" onclick="event.stopPropagation()">Quality Management (HFCs)</a></li>
+            </ul>
+          </div>
+          <div class="fe-right">
+            <div class="sector-label">Sector-Specific Guidelines</div>
+            <div class="pills">
+              <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/education?authuser=0" class="pill" target="_top" onclick="event.stopPropagation()">Education</a>
+              <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/health?authuser=0" class="pill" target="_top" onclick="event.stopPropagation()">Health</a>
+              <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/gender?authuser=0" class="pill" target="_top" onclick="event.stopPropagation()">Gender</a>
+              <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/social-protection?authuser=0" class="pill" target="_top" onclick="event.stopPropagation()">Social Protection</a>
+              <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/agriculture?authuser=0" class="pill" target="_top" onclick="event.stopPropagation()">Agriculture</a>
+              <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/governance?authuser=0" class="pill" target="_top" onclick="event.stopPropagation()">Governance</a>
+              <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution/surveyor-manual/sector-specific-guidelines/labor-market?authuser=0" class="pill" target="_top" onclick="event.stopPropagation()">Labour Market</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 On-boarding RA/PA -->
+      <div class="bc bc-ob" onclick="window.open('https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0','_top')">
+        <div class="card-num">· On-boarding RA/PA</div>
+        <h3>RA/PA Field Operations Programme</h3>
+        <p class="bc-desc">Five structured sessions: A standardized course content that is used for onboarding RAs and PAs on field operations and managing field team on ground, from roles to data quality, ethics, risk readiness, and project wrap-up. Each session includes scenario quizzes.</p>
+        <ul class="llist">
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0" target="_top" onclick="event.stopPropagation()">Session 1: Roles &amp; Organisation</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0" target="_top" onclick="event.stopPropagation()">Session 2: Pre-Field Planning</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0" target="_top" onclick="event.stopPropagation()">Session 3: Ethics &amp; Core Policies</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0" target="_top" onclick="event.stopPropagation()">Session 4: Survey Execution</a></li>
+          <li><a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/onboarding-ra-pa?authuser=0" target="_top" onclick="event.stopPropagation()">Session 5: Risk Readiness</a></li>
+        </ul>
+      </div>
+
+      <!-- 06 Resources — dark card -->
+      <div class="bc bc-life">
+        <div class="card-num">· Resources</div>
+        <div class="life-inner">
+          <div>
+            <h3>Resources for/by Field Staff</h3>
+            <p class="bc-desc">Beyond the protocols lies the grit, empathy, and ingenuity of field teams, stories, mental health frameworks, and career progression resources.</p>
+            <div class="life-links">
+              <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff/stories-from-the-field?authuser=0" class="life-link" target="_top" onclick="event.stopPropagation()">Stories from the Field</a>
+              <a href="#" class="life-link" onclick="event.stopPropagation()">Mental Health Support</a>
+              <a href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" class="life-link" target="_top" onclick="event.stopPropagation()">Remote Data Collection</a>
+              <a href="#" class="life-link" onclick="event.stopPropagation()">Team Milestones</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     VIDEO SECTION
+════════════════════════════════════════════════ -->
+<div class="video-section">
+  <div class="video-section-inner">
+    <div class="section-label">J-PAL SA · Through the Lens</div>
+    <h2 class="section-title">The People Behind the Surveys</h2>
+    <p class="section-sub">Two films that captures who we are and how our work actually looks like, the people behind it, and the reality of life in the field.</p>
+    <div class="video-grid">
+      <div class="vid-card">
+        <div class="vid-wrap">
+          <iframe src="https://drive.google.com/file/d/15WwoLxLj27Bu9LajfCuwE-NUSY-OWZQI/preview" allow="autoplay"></iframe>
+        </div>
+        <div class="vid-meta">
+          <div>
+            <div class="vid-title">The People of J-PAL SA</div>
+            <div class="vid-sub">Kumarakom Field Training Spotlight</div>
+          </div>
+          <span class="vid-badge">Watch</span>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-wrap">
+          <iframe src="https://drive.google.com/file/d/13pSFVRq49QxdqDqyniTmgUYlujBxZBND/preview" allow="autoplay"></iframe>
+        </div>
+        <div class="vid-meta">
+          <div>
+            <div class="vid-title">The Field Life</div>
+            <div class="vid-sub">Reality Check — Field Cam</div>
+          </div>
+          <span class="vid-badge">Watch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SPOTLIGHT
+════════════════════════════════════════════════ -->
+<section class="spotlight">
+  <div class="spot-inner">
+    <span class="spot-eyebrow">Operations Infrastructure</span>
+    <h2>Spotlight: Field Management</h2>
+    <p>The "invisible" infrastructure that keeps the engine running, from vendor reimbursements and hardware tracking to securing vulnerable participant privacy.</p>
+    <div class="spot-grid">
+      <div class="spot-card">
+        <h4>Logistics &amp; Safeguarding</h4>
+        <p>Travel norms, medical kit readiness, and physical transit protocols across rugged terrain.</p>
+        <ul><li>Two-wheeler travel log verification</li><li>People and Culture</li><li>Working on sensitive questions</li></ul>
+      </div>
+      <div class="spot-card">
+        <h4>Financial Integrity</h4>
+        <p>Transparent guidelines for logistical buffers ensuring clean, timely, and auditable financial closure.</p>
+        <ul><li>Daily Allowance (DA) matrices</li><li>Daily Attendance Tracker</li><li>Expenses in the Field</li></ul>
+      </div>
+      <div class="spot-card">
+        <h4>Helpdesk &amp; Escalation</h4>
+        <p>A documented intake route for adverse situations guaranteeing rapid, structured support.</p>
+        <ul><li>Tablet Requisition</li><li>Support for storage (post project wrap up)</li><li>Adverse situations in the Field</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     BUILT BY THE FIELD
+════════════════════════════════════════════════ -->
+<section class="built-section">
+  <div class="built-inner">
+    <span class="built-eyebrow">A Collaborative Achievement</span>
+    <h2>Built by the Field</h2>
+    <p>The culmination of years of hard-won experience. Gratitude to every team member across <strong>Research</strong> and <strong>Research Operations,&nbsp;</strong>from front-line Surveyors mapping the households, to Project Associates managing operations, to Research Associates and Survey Coordinators leading and supporting to research infrastructure for JPAL SA.</p>
+    <p style="font-size:14px;color:var(--text-light);">Your contributions of standardised templates and personal field stories form the bedrock of this platform.</p>
+    <div class="built-divider"></div>
+    <div class="version-tag"><span class="version-dot"></span>Version 1.0 · Live 01 June 2026 · Updates twice yearly</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ANNOUNCEMENTS
+════════════════════════════════════════════════ -->
+<section class="updates">
+  <div class="updates-inner">
+    <div class="updates-header">
+      <div class="updates-label-group">
+        <span class="updates-label"><span class="live-dot"></span>Live Announcements &amp; Upcoming Events</span>
+        <span class="updates-window">Next 30 days</span>
+      </div>
+      <div class="updates-header-right">
+        <span class="updates-sync" id="sync-status">Loading…</span>
+        <a id="sheet-edit-link" href="#" class="sheet-edit-btn" target="_blank" style="display:none;">Edit in Google Sheets</a>
+      </div>
+    </div>
+    <div id="announcements-row" class="updates-row">
+      <!-- Populated by JS from Google Sheets -->
+      <div class="updates-loading">Fetching upcoming events…</div>
+    </div>
+    <div class="updates-footer">
+      <span class="updates-footer-note">Showing events dated within the next 30 days from today. Past events are hidden automatically.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     RO SUPPORT
+════════════════════════════════════════════════ -->
+<section class="actions">
+  <div class="actions-inner">
+    <h2>Initiate RO Support</h2>
+    <p>Raise requests directly through the internal portal — no email chains required.</p>
+    <div class="action-row">
+      <a href="https://jpalsouth.asia/Raise_HiringRequest_v2" class="act-btn" target="_blank">Hiring Request</a>
+      <a href="https://jpalsouth.asia/ROS_RARM_MainInterface" class="act-btn" target="_blank">Training Request</a>
+      <a href="https://jpalsouth.asia/ROS_RARM_MainInterface" class="act-btn" target="_blank">Monitoring Visit</a>
+      <a href="https://jpalsouth.asia/ROS_FCP_Request" class="act-btn" target="_blank">Field Connect</a>
+      <a href="https://jpalsouth.asia/ROS_Tablet_Declaration?Newlink=CB" class="act-btn" target="_blank">Tablet Declaration</a>
+      <a href="https://jpalsouth.asia/OpenNewTicket" class="act-btn" target="_blank">Digitisation Ticket</a>
+      <a href="https://jpalsouth.asia/ROS_Storage_Declaration?Newlink=CB" class="act-btn" target="_top">Storage Declaration</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /content-body -->
+</div><!-- /main-content-area -->
+</div><!-- /page-layout -->
+
+<!-- ════════════════════════════════════════════════
+     ADMIN KIT
+════════════════════════════════════════════════ -->
+
+
+
+
+<script>
+
+var SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
+(function(){
+  var row = document.getElementById('announcements-row');
+  var status = document.getElementById('sync-status');
+  if (!SHEET_ID || SHEET_ID === 'YOUR_GOOGLE_SHEET_ID_HERE') {
+    if (status) status.textContent = 'Configure SHEET_ID in script for live sync';
+    return;
+  }
+  fetch('https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/export?format=csv&gid=0&t='+Date.now())
+    .then(function(r){return r.text();})
+    .then(function(csv){
+      var today=new Date();today.setHours(0,0,0,0);
+      var end=new Date(today);end.setDate(today.getDate()+30);
+      var lines=csv.trim().split('\n').slice(1);
+      var evts=[];
+      lines.forEach(function(line){
+        var c=line.split(',');if(!c[0]||!c[1])return;
+        var d=new Date(c[0].trim());if(isNaN(d))return;d.setHours(0,0,0,0);
+        if(d>=today&&d<=end)evts.push({d:d,t:(c[1]||'').trim(),desc:(c[2]||'').trim(),cat:(c[3]||'General').trim(),col:(c[4]||'').trim()});
+      });
+      evts.sort(function(a,b){return a.d-b.d;});
+      if(!evts.length&&row){row.innerHTML='<div class="updates-empty">No events in the next 30 days.</div>';return;}
+      var cats={'training':'#7c3aed','survey':'#0369a1','policy':'#0f172a','hiring':'#d97706','general':'#334155'};
+      if(row)row.innerHTML=evts.map(function(e){
+        var col=e.col||cats[e.cat.toLowerCase()]||'#0369a1';
+        return '<div class="update-pill"><div class="upd-date-block" style="background:'+col+'"><div class="upd-date-day">'+e.d.getDate()+'</div><div class="upd-date-mon">'+e.d.toLocaleString("en",{month:"short"}).toUpperCase()+'</div></div><div class="upd-content"><div class="upd-tag" style="color:'+col+'">'+e.cat+'</div><div class="upd-text">'+e.t+'</div>'+(e.desc?'<div class="upd-desc">'+e.desc+'</div>':'')+'</div></div>';
+      }).join('');
+      if(status)status.textContent='Synced just now';
+    }).catch(function(){});
+})();
+
+</script>
+
+<script>
+(function(){
+  var editing = false, tgt = null;
+
+  function enter() {
+    editing = true;
+    document.body.classList.add('edit-mode-active');
+    show('kb-banner'); show('kb-toolbar');
+    document.addEventListener('click', handler, true);
+  }
+
+  function exit() {
+    editing = false;
+    document.body.classList.remove('edit-mode-active');
+    hide('kb-banner'); hide('kb-toolbar'); hide('kb-bubble');
+    tgt = null;
+    var ce = document.querySelectorAll('[contenteditable]');
+    for (var i = 0; i < ce.length; i++) {
+      ce[i].removeAttribute('contenteditable');
+      ce[i].blur();
+    }
+    document.removeEventListener('click', handler, true);
+  }
+
+  function handler(e) {
+    if (!editing) return;
+
+    // ── Toolbar: handle Copy/Exit clicks DIRECTLY inside handler ──
+    var tbBtn = e.target.closest ? e.target.closest('#kb-toolbar button') : null;
+    if (tbBtn) {
+      e.preventDefault(); e.stopPropagation();
+      var txt = (tbBtn.textContent || '').trim().toLowerCase();
+      if (txt.indexOf('copy') > -1) copyHTML();
+      else if (txt.indexOf('exit') > -1) exit();
+      return;
+    }
+    // Toolbar container (non-button area) — ignore
+    if (e.target.closest && e.target.closest('#kb-toolbar')) return;
+
+    // ── Bubble: handle Apply/Cancel clicks DIRECTLY ──
+    var bbBtn = e.target.closest ? e.target.closest('#kb-bubble button') : null;
+    if (bbBtn) {
+      e.preventDefault(); e.stopPropagation();
+      var btxt = (bbBtn.textContent || '').trim().toLowerCase();
+      if (btxt.indexOf('apply') > -1) applyBubble();
+      else if (btxt.indexOf('cancel') > -1) { hide('kb-bubble'); tgt = null; }
+      return;
+    }
+    // Bubble input — let it work
+    if (e.target.closest && e.target.closest('#kb-bubble')) return;
+
+    // ── Left-nav: let links navigate normally ──
+    if (e.target.closest && e.target.closest('.left-nav')) return;
+
+    // ── Tab buttons: let them switch tabs ──
+    if (e.target.closest && e.target.closest('.tab-nav')) return;
+
+    // ── Everything else: block native behavior ──
+    e.preventDefault();
+    e.stopPropagation();
+
+    var tag = (e.target.tagName || '').toUpperCase();
+
+    // IMG
+    if (tag === 'IMG') {
+      tgt = e.target;
+      openBubble(e.target.src || '', 'Image URL or Google Drive link');
+      return;
+    }
+
+    // IFRAME
+    if (tag === 'IFRAME') {
+      tgt = e.target;
+      openBubble(e.target.src || '', 'Audio / Video URL');
+      return;
+    }
+
+    // ANCHOR
+    var anc = e.target.closest ? e.target.closest('a') : null;
+    if (anc && !(anc.closest && anc.closest('.left-nav'))) {
+      tgt = anc;
+      var label = (anc.textContent || '').trim().slice(0, 50);
+      openBubble(anc.getAttribute('href') || '', 'Link URL' + (label ? ': ' + label : ''));
+      return;
+    }
+
+    // TEXT — walk up to find a meaningful container
+    var el = e.target;
+    var textNodes = ['P','H1','H2','H3','H4','H5','H6','LI','TD','TH','BLOCKQUOTE','SPAN','LABEL'];
+    while (el && el !== document.body) {
+      var tn = (el.tagName || '').toUpperCase();
+      if (textNodes.indexOf(tn) > -1) break;
+      if (tn === 'DIV' && el.children.length <= 3 && el.textContent.trim().length < 600) break;
+      el = el.parentElement;
+    }
+    if (!el || el === document.body) return;
+    if (el.getAttribute('contenteditable') === 'true') return;
+
+    // Clear previous
+    var prev = document.querySelectorAll('[contenteditable]');
+    for (var i = 0; i < prev.length; i++) {
+      if (prev[i] !== el) prev[i].removeAttribute('contenteditable');
+    }
+    el.setAttribute('contenteditable', 'true');
+    el.focus();
+  }
+
+  // ── Bubble ──
+  function openBubble(val, label) {
+    var lbl = document.getElementById('kb-bubble-label');
+    var inp = document.getElementById('kb-bubble-input');
+    if (lbl) lbl.textContent = label;
+    if (inp) inp.value = val;
+    show('kb-bubble');
+    if (inp) setTimeout(function(){ inp.focus(); }, 60);
+  }
+
+  function applyBubble() {
+    var inp = document.getElementById('kb-bubble-input');
+    var val = inp ? inp.value.trim() : '';
+    if (!tgt || !val) { hide('kb-bubble'); tgt = null; return; }
+    var tag = (tgt.tagName || '').toUpperCase();
+    var dm = val.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/);
+    if (tag === 'IMG') {
+      tgt.src = dm ? 'https://drive.google.com/thumbnail?id=' + dm[1] + '&sz=w800' : val;
+    } else if (tag === 'IFRAME') {
+      tgt.src = dm ? 'https://drive.google.com/file/d/' + dm[1] + '/preview' : val;
+    } else if (tag === 'A') {
+      tgt.setAttribute('href', val);
+    }
+    hide('kb-bubble'); tgt = null;
+  }
+
+  // ── Copy HTML ──
+  function copyHTML() {
+    var wasEditing = editing;
+    exit();
+    var clone = document.documentElement.cloneNode(true);
+    // Strip edit UI
+    ['kb-banner','kb-toolbar','kb-bubble'].forEach(function(id) {
+      var el = clone.querySelector('#' + id);
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+    });
+    // Strip edit script
+    var ss = clone.querySelectorAll('script');
+    for (var i = 0; i < ss.length; i++) {
+      if (ss[i].textContent && ss[i].textContent.indexOf('_kbExit') > -1) {
+        ss[i].parentNode.removeChild(ss[i]);
+      }
+    }
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    // Copy to clipboard
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(html).then(function() {
+        alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
+      }).catch(function() { fallbackCopy(html); });
+    } else {
+      fallbackCopy(html);
+    }
+    if (wasEditing) setTimeout(enter, 150);
+  }
+
+  function fallbackCopy(html) {
+    var ta = document.createElement('textarea');
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0.01;';
+    ta.value = html;
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
+    } catch(err) {
+      alert('Could not copy automatically. Use Ctrl+A then Ctrl+C in the text area.');
+      ta.style.cssText = 'position:fixed;top:10%;left:10%;width:80%;height:80%;z-index:999999;font-size:10px;';
+    }
+    if (ta.parentNode) document.body.removeChild(ta);
+  }
+
+  // ── Helpers ──
+  function show(id) { var el = document.getElementById(id); if (el) el.style.display = (id === 'kb-toolbar' ? 'flex' : 'block'); }
+  function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
+
+  // ── Keyboard trigger: Alt + Shift + E ──
+  document.addEventListener('keydown', function(e) {
+    if (e.altKey && e.shiftKey && e.key && e.key.toLowerCase() === 'e') {
+      e.preventDefault();
+      editing ? exit() : enter();
+    }
+  }, false);
+
+  // ── URL hash trigger ──
+  if (window.location.hash === '#edit') {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enter);
+    else enter();
+  }
+
+  // ── Expose for any external callers ──
+  window._kbExit  = exit;
+  window._kbCopy  = copyHTML;
+  window._kbApply = applyBubble;
+  window._kbClose = function() { hide('kb-bubble'); tgt = null; };
+})();
+
+</script>
+
+</body></html>
