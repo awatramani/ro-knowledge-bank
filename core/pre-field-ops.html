@@ -1959,11 +1959,29 @@ function switchTab(evt, panelId) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
     document.getElementById(panelId).classList.add('active');
-    evt.currentTarget.classList.add('active');
+    if(evt&&evt.currentTarget)evt.currentTarget.classList.add('active');
     evt.currentTarget.setAttribute('aria-selected','true');
     updateHero(panelId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+// ── Auto-open tab from URL hash (runs immediately — DOM is ready) ──
+(function(){
+  var hash = window.location.hash.replace('#','');
+  if (!hash || hash === 'edit') return;
+  var panel = document.getElementById(hash);
+  if (!panel) return;
+  // Find the matching tab button and click it
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < btns.length; i++) {
+    var oc = btns[i].getAttribute('onclick') || '';
+    if (oc.indexOf(hash) > -1) { btns[i].click(); return; }
+  }
+  // Fallback: activate panel directly
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  panel.classList.add('active');
+})();
+
 
 // ---- PLANNING PANEL PHASE TABS ----
 function switchPhase(evt, phaseId) {
