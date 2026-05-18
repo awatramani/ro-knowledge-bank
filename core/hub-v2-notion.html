@@ -279,18 +279,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </head>
 <body class="">
 <!-- ═══ EDIT MODE UI ═══ -->
-<div id="kb-banner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:10000;background:#1e40af;color:white;text-align:center;padding:7px;font-size:12px;font-weight:600;font-family:system-ui,sans-serif;">Edit Mode — click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
-<div id="kb-toolbar" style="display:none;position:fixed;bottom:24px;right:24px;background:#0d1117;padding:12px 20px;border-radius:40px;box-shadow:0 16px 36px rgba(0,0,0,.4);gap:12px;align-items:center;z-index:999999;border:1px solid rgba(255,255,255,.08);">
-  <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
-  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0369a1;">Copy HTML</button>
-  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
-</div>
-<div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0,.11);">
-  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">URL</label>
-  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
-  <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
-  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
-</div>
+
+
+
 
 <div class="page-layout">
 
@@ -527,16 +518,16 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <div class="spot-grid">
       <div class="spot-card">
         <h4>Logistics &amp; Safeguarding</h4>
-        <p>Travel norms, medical kit readiness, and physical transit protocols across rugged terrain.</p>
+        <p>Travel norms, readiness to handle adverse situations and physical transit protocols across rugged terrain.</p>
         <ul><li>Two-wheeler travel log verification</li><li>People and Culture</li><li>Working on sensitive questions</li></ul>
       </div>
       <div class="spot-card">
         <h4>Financial Integrity</h4>
-        <p>Transparent guidelines for logistical buffers ensuring clean, timely, and auditable financial closure.</p>
+        <p>Transparent guidelines for field around logistical buffers and operational management</p>
         <ul><li>Daily Allowance (DA) matrices</li><li>Daily Attendance Tracker</li><li>Expenses in the Field</li></ul>
       </div>
       <div class="spot-card">
-        <h4>Helpdesk &amp; Escalation</h4>
+        <h4>Support structure</h4>
         <p>A documented intake route for adverse situations guaranteeing rapid, structured support.</p>
         <ul><li>Tablet Requisition</li><li>Support for storage (post project wrap up)</li><li>Adverse situations in the Field</li></ul>
       </div>
@@ -551,7 +542,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
   <div class="built-inner">
     <span class="built-eyebrow">A Collaborative Achievement</span>
     <h2>Built by the Field</h2>
-    <p>The culmination of years of hard-won experience. Gratitude to every team member across <strong>Research</strong> and <strong>Research Operations,&nbsp;</strong>from front-line Surveyors mapping the households, to Project Associates managing operations, to Research Associates and Survey Coordinators leading and supporting to research infrastructure for JPAL SA.</p>
+    <p autocomplete="off">This is the culmination of years of hard-won experience. Gratitude to every team member across <strong>Research</strong> and <strong>Research Operations,&nbsp;</strong>from front-line Surveyors mapping the households, to Project Associates managing operations, to Research Associates and Survey Coordinators, leading and supporting the research infrastructure for JPAL SA.</p>
     <p style="font-size:14px;color:var(--text-light);">Your contributions of standardised templates and personal field stories form the bedrock of this platform.</p>
     <div class="built-divider"></div>
     <div class="version-tag"><span class="version-dot"></span>Version 1.0 · Live 01 June 2026 · Updates twice yearly</div>
@@ -569,7 +560,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <span class="updates-window">Next 30 days</span>
       </div>
       <div class="updates-header-right">
-        <span class="updates-sync" id="sync-status">Loading…</span>
+        <span class="updates-sync" id="sync-status">Configure SHEET_ID in script for live sync</span>
         <a id="sheet-edit-link" href="#" class="sheet-edit-btn" style="display:none;">Edit in Google Sheets</a>
       </div>
     </div>
@@ -648,209 +639,7 @@ var SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
 
 </script>
 
-<script>
-(function(){
-  var editing = false, tgt = null;
 
-  function enter() {
-    editing = true;
-    document.body.classList.add('edit-mode-active');
-    show('kb-banner'); show('kb-toolbar');
-    document.addEventListener('click', handler, true);
-  }
 
-  function exit() {
-    editing = false;
-    document.body.classList.remove('edit-mode-active');
-    hide('kb-banner'); hide('kb-toolbar'); hide('kb-bubble');
-    tgt = null;
-    var ce = document.querySelectorAll('[contenteditable]');
-    for (var i = 0; i < ce.length; i++) {
-      ce[i].removeAttribute('contenteditable');
-      ce[i].blur();
-    }
-    document.removeEventListener('click', handler, true);
-  }
 
-  function handler(e) {
-    if (!editing) return;
-
-    // ── Toolbar: handle Copy/Exit clicks DIRECTLY inside handler ──
-    var tbBtn = e.target.closest ? e.target.closest('#kb-toolbar button') : null;
-    if (tbBtn) {
-      e.preventDefault(); e.stopPropagation();
-      var txt = (tbBtn.textContent || '').trim().toLowerCase();
-      if (txt.indexOf('copy') > -1) copyHTML();
-      else if (txt.indexOf('exit') > -1) exit();
-      return;
-    }
-    // Toolbar container (non-button area) — ignore
-    if (e.target.closest && e.target.closest('#kb-toolbar')) return;
-
-    // ── Bubble: handle Apply/Cancel clicks DIRECTLY ──
-    var bbBtn = e.target.closest ? e.target.closest('#kb-bubble button') : null;
-    if (bbBtn) {
-      e.preventDefault(); e.stopPropagation();
-      var btxt = (bbBtn.textContent || '').trim().toLowerCase();
-      if (btxt.indexOf('apply') > -1) applyBubble();
-      else if (btxt.indexOf('cancel') > -1) { hide('kb-bubble'); tgt = null; }
-      return;
-    }
-    // Bubble input — let it work
-    if (e.target.closest && e.target.closest('#kb-bubble')) return;
-
-    // ── Left-nav: let links navigate normally ──
-    if (e.target.closest && e.target.closest('.left-nav')) return;
-
-    // ── Tab buttons: let them switch tabs ──
-    if (e.target.closest && e.target.closest('.tab-nav')) return;
-
-    // ── Everything else: block native behavior ──
-    e.preventDefault();
-    e.stopPropagation();
-
-    var tag = (e.target.tagName || '').toUpperCase();
-
-    // IMG
-    if (tag === 'IMG') {
-      tgt = e.target;
-      openBubble(e.target.src || '', 'Image URL or Google Drive link');
-      return;
-    }
-
-    // IFRAME
-    if (tag === 'IFRAME') {
-      tgt = e.target;
-      openBubble(e.target.src || '', 'Audio / Video URL');
-      return;
-    }
-
-    // ANCHOR
-    var anc = e.target.closest ? e.target.closest('a') : null;
-    if (anc && !(anc.closest && anc.closest('.left-nav'))) {
-      tgt = anc;
-      var label = (anc.textContent || '').trim().slice(0, 50);
-      openBubble(anc.getAttribute('href') || '', 'Link URL' + (label ? ': ' + label : ''));
-      return;
-    }
-
-    // TEXT — walk up to find a meaningful container
-    var el = e.target;
-    var textNodes = ['P','H1','H2','H3','H4','H5','H6','LI','TD','TH','BLOCKQUOTE','SPAN','LABEL'];
-    while (el && el !== document.body) {
-      var tn = (el.tagName || '').toUpperCase();
-      if (textNodes.indexOf(tn) > -1) break;
-      if (tn === 'DIV' && el.children.length <= 3 && el.textContent.trim().length < 600) break;
-      el = el.parentElement;
-    }
-    if (!el || el === document.body) return;
-    if (el.getAttribute('contenteditable') === 'true') return;
-
-    // Clear previous
-    var prev = document.querySelectorAll('[contenteditable]');
-    for (var i = 0; i < prev.length; i++) {
-      if (prev[i] !== el) prev[i].removeAttribute('contenteditable');
-    }
-    el.setAttribute('contenteditable', 'true');
-    el.focus();
-  }
-
-  // ── Bubble ──
-  function openBubble(val, label) {
-    var lbl = document.getElementById('kb-bubble-label');
-    var inp = document.getElementById('kb-bubble-input');
-    if (lbl) lbl.textContent = label;
-    if (inp) inp.value = val;
-    show('kb-bubble');
-    if (inp) setTimeout(function(){ inp.focus(); }, 60);
-  }
-
-  function applyBubble() {
-    var inp = document.getElementById('kb-bubble-input');
-    var val = inp ? inp.value.trim() : '';
-    if (!tgt || !val) { hide('kb-bubble'); tgt = null; return; }
-    var tag = (tgt.tagName || '').toUpperCase();
-    var dm = val.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/);
-    if (tag === 'IMG') {
-      tgt.src = dm ? 'https://drive.google.com/thumbnail?id=' + dm[1] + '&sz=w800' : val;
-    } else if (tag === 'IFRAME') {
-      tgt.src = dm ? 'https://drive.google.com/file/d/' + dm[1] + '/preview' : val;
-    } else if (tag === 'A') {
-      tgt.setAttribute('href', val);
-    }
-    hide('kb-bubble'); tgt = null;
-  }
-
-  // ── Copy HTML ──
-  function copyHTML() {
-    var wasEditing = editing;
-    exit();
-    var clone = document.documentElement.cloneNode(true);
-    // Strip edit UI
-    ['kb-banner','kb-toolbar','kb-bubble'].forEach(function(id) {
-      var el = clone.querySelector('#' + id);
-      if (el && el.parentNode) el.parentNode.removeChild(el);
-    });
-    // Strip edit script
-    var ss = clone.querySelectorAll('script');
-    for (var i = 0; i < ss.length; i++) {
-      if (ss[i].textContent && ss[i].textContent.indexOf('_kbExit') > -1) {
-        ss[i].parentNode.removeChild(ss[i]);
-      }
-    }
-    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
-    // Copy to clipboard
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(html).then(function() {
-        alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
-      }).catch(function() { fallbackCopy(html); });
-    } else {
-      fallbackCopy(html);
-    }
-    if (wasEditing) setTimeout(enter, 150);
-  }
-
-  function fallbackCopy(html) {
-    var ta = document.createElement('textarea');
-    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0.01;';
-    ta.value = html;
-    document.body.appendChild(ta);
-    ta.select();
-    try {
-      document.execCommand('copy');
-      alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
-    } catch(err) {
-      alert('Could not copy automatically. Use Ctrl+A then Ctrl+C in the text area.');
-      ta.style.cssText = 'position:fixed;top:10%;left:10%;width:80%;height:80%;z-index:999999;font-size:10px;';
-    }
-    if (ta.parentNode) document.body.removeChild(ta);
-  }
-
-  // ── Helpers ──
-  function show(id) { var el = document.getElementById(id); if (el) el.style.display = (id === 'kb-toolbar' ? 'flex' : 'block'); }
-  function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
-
-  // ── Keyboard trigger: Alt + Shift + E ──
-  document.addEventListener('keydown', function(e) {
-    if (e.altKey && e.shiftKey && e.key && e.key.toLowerCase() === 'e') {
-      e.preventDefault();
-      editing ? exit() : enter();
-    }
-  }, false);
-
-  // ── URL hash trigger ──
-  if (window.location.hash === '#edit') {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enter);
-    else enter();
-  }
-
-  // ── Expose for any external callers ──
-  window._kbExit  = exit;
-  window._kbCopy  = copyHTML;
-  window._kbApply = applyBubble;
-  window._kbClose = function() { hide('kb-bubble'); tgt = null; };
-})();
-
-</script>
-
-</body></html>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div></body></html>
