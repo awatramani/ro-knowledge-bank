@@ -1302,19 +1302,19 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     </div>
     <div class="phase-container">
         <div class="phase-tabs">
-            <button class="phase-tab-btn active" onclick="switchPhase(event,'phase1')">Phase 1: Post-IRB</button>
-            <button class="phase-tab-btn" onclick="switchPhase(event,'phase2')">Phase 2: Digitization</button>
+            <button class="phase-tab-btn" onclick="switchPhase(event,'phase1')">Phase 1: Post-IRB</button>
+            <button class="phase-tab-btn active" onclick="switchPhase(event,'phase2')">Phase 2: Digitization</button>
             <button class="phase-tab-btn" onclick="switchPhase(event,'phase3')">Phase 3: Logistics</button>
         </div>
-        <div id="phase1" class="phase-content active">
+        <div id="phase1" class="phase-content">
             <h3 style="color:var(--heading-green);">Phase 1: Post-IRB &amp; Design Lock</h3>
             <p>Establish a comprehensive Change Record tracker. Every single change made to the instrument or protocol must be documented, regardless of how small. For every tweak, record whether it requires a formal amendment. If it needs full institutional approval, log the exact date the official go ahead is received. If it is a minor operational change that does not require a formal review, it must still be explicitly confirmed by the internal ethics coordinator, and that approval must be logged in the tracker. Alongside this strict version control, the overarching methodology, sampling framework, and project timeline must be locked in with the Principal Investigators</p>
             <div class="info-card card-warn"><strong>The Late Night PI Request</strong>"Your PI emails late at night: 'We need to add a new module on Mental Health? We were planning to be in the field in a week, the latest changes are critical and would definitely need to be approved by IRB. We will have to put out field plans on hold, may be retain a few senior field staff, this entails absorbing some financial costs. The version control tracker should include these details as it will help assess the reasons for the increased per survey cost at the end of the project.&nbsp;</div>
         </div>
-        <div id="phase2" class="phase-content">
+        <div id="phase2" class="phase-content active">
             <h3 style="color:var(--heading-green);">Phase 2: Digitization &amp; Translation</h3>
-            <p>Lock the instrument. Execute the translation process using proper forward and backward translation protocols (Target: &lt;5% discrepancy). Test logical flows and skip patterns on the actual tablet models you will deploy to the field.</p>
-            <div class="info-card card-warn"><strong>The Field Dilemma</strong>"The translation vendor needs 5 more days. Your PA speaks the language fluently. Do you let the PA translate to save the deadline? No. Never use internal staff for primary translations to maintain neutrality."</div>
+            <p>Before a single line of code is written, the English instrument must be finalized and locked. The translation process demands strict independence to preserve scientific integrity. A certified external Translator performs the forward translation into the local language. For the backward translation, teams can utilize an experienced Project Associate or a Survey Coordinator if available. Ideally, this person should never have seen the original English version of the instrument and must translate the localized text back into English. The research team then compares the original document and the backward translation to reconcile any discrepancies. Never rely on automated tools for the primary draft, as they inevitably overlook regional dialect nuances.<br>Once translations are verified, digitization begins. Programming a survey goes far beyond replicating questions on a screen. It requires building operational guardrails. Incorporate hard constraints to prevent physically impossible answers, such as a respondent working 25 hours in a single day.&nbsp;</p>
+            <div class="info-card card-warn" autocomplete="off"><strong>The Field Dilemma</strong>"The translation vendor needs 5 more days. Your PA speaks the language fluently. Do you let the PA translate to save the deadline? No. Never use internal staff for primary translations."</div>
         </div>
         <div id="phase3" class="phase-content">
             <h3 style="color:var(--heading-green);">Phase 3: Survey Logistics</h3>
@@ -1377,7 +1377,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <thead><tr><th style="min-width:250px;">Task / Activity</th><th style="text-align:center;">RM</th><th style="text-align:center;">RA</th><th style="text-align:center;">SC</th><th style="text-align:center;">PA</th><th style="min-width:250px;">Execution Notes</th></tr></thead>
                 <tbody>
                     <tr class="phase-row"><td colspan="6">Pre-Planning &amp; Reconnaissance</td></tr>
-                    <tr><td autocomplete="off">Confirm Study Design &amp; Scope (with PI)</td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center">-</td><td align="center">-</td><td>Management signs off before execution.</td></tr>
+                    <tr><td>Confirm Study Design &amp; Scope (with PI)</td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center">-</td><td align="center">-</td><td>Management signs off before execution.</td></tr>
                     <tr><td>Execute Field Reconnaissance</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td>Assess terrain; coordinators advise on safety.</td></tr>
                     <tr class="phase-row"><td colspan="6">Instrument &amp; Infrastructure</td></tr>
                     <tr><td>Map Geographic Clusters</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center">-</td><td align="center"><span class="raci-badge r-badge">R</span></td><td>Generate digital map overlays for approval.</td></tr>
