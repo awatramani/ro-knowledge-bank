@@ -841,7 +841,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero">
+<section class="hero" style="background: linear-gradient(135deg, rgb(120, 53, 15) 0%, rgb(180, 83, 9) 45%, rgb(217, 119, 6) 100%);">
     <div class="aurora"></div>
     <div class="hero-inner">
         <div class="hero-text">
@@ -850,16 +850,16 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <p class="hero-sub edit-text">The critical planning phase that separates chaotic deployments from flawless ones — everything that needs to happen before Day 1 in the field.</p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-1-num">4</div>
-                    <div class="stat-label" id="hero-stat-1-lbl">Sub-sections</div>
+                    <div class="stat-num edit-text" id="hero-stat-1-num">3</div>
+                    <div class="stat-label" id="hero-stat-1-lbl">Phases</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-2-num">12+</div>
-                    <div class="stat-label" id="hero-stat-2-lbl">Field guides</div>
+                    <div class="stat-num edit-text" id="hero-stat-2-num">1</div>
+                    <div class="stat-label" id="hero-stat-2-lbl">C1 Manual</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-3-num">5</div>
-                    <div class="stat-label" id="hero-stat-3-lbl">Checklists</div>
+                    <div class="stat-num edit-text" id="hero-stat-3-num">1</div>
+                    <div class="stat-label" id="hero-stat-3-lbl">Checklist</div>
                 </div>
             </div>
         </div>
@@ -869,8 +869,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                     <div class="podcast-play">▶</div>
                     <div class="podcast-top-text">
                         <div class="podcast-tag">Field Ops Podcast</div>
-                        <div class="podcast-title edit-text" id="podcast-title">Deep Dive: Pre-Field Planning</div>
-                        <div class="podcast-desc edit-text" id="podcast-desc">Survey planning, IRB timelines &amp; field realities</div>
+                        <div class="podcast-title edit-text" id="podcast-title">Planning &amp; Preparing for Survey Operations</div>
+                        <div class="podcast-desc edit-text" id="podcast-desc">IRB timelines, RACI matrices &amp; 3-phase roadmap</div>
                     </div>
                 </div>
                 <div class="podcast-player">
@@ -887,15 +887,15 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')">Pre-Field Ops</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-planning')">Survey Planning</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-ro')">Availing RO Support</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-mapping')">Mapping Households</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-logistics')">Survey Logistics</button>
+    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Pre-Field Ops</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-planning')" aria-selected="true">Survey Planning</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-ro')" aria-selected="false">Availing RO Support</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-mapping')" aria-selected="false">Mapping Households</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-logistics')" aria-selected="false">Survey Logistics</button>
   </nav>
 </div>
 
-<div id="panel-home" class="tab-panel active">
+<div id="panel-home" class="tab-panel">
 
 <div class="section-wrapper bg-white">
     <div class="section-container split-layout">
@@ -1276,7 +1276,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 2: PLANNING AND PREPARING FOR SURVEY OPERATIONS
      ===================================================== -->
 
-<div id="panel-planning" class="tab-panel">
+<div id="panel-planning" class="tab-panel active">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Planning and Preparing for Survey Operations</strong></div>
 
@@ -1284,11 +1284,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <div class="split-row">
         <div class="col-text">
             <h2>Why Planning Matters</h2>
-            <p>The seamless appearance of field operations — where a surveyor arrives at the correct dwelling, fully equipped with a charged tablet, communicating fluently in the local tongue — is the direct consequence of relentless behind-the-scenes preparation.</p>
-            <p>This guidance assumes you are organizing substantial in-person fieldwork (e.g., 6,000 households across multiple states). With deployment mere weeks away for a team of 150 individuals, the margin between success and total disarray is established entirely during this preliminary phase.</p>
-            <div class="blueprint-box">
-                Preparation is not merely charting timelines; it involves <strong>converting theoretical research designs into pragmatic field systems</strong>. Attempting to rush this timeline inevitably leads to poorly trained staff, missing resources, flawed sampling frames, and chaotic early days in the field.
-            </div>
+            <p><p data-path-to-node="4">When a surveyor knocks on the correct door, turns on a fully charged tablet, and speaks to the respondent in their exact local dialect, it looks incredibly easy. But anyone who has actually run a project knows the truth. That single smooth interaction is built on weeks of relentless planning.</p><p data-path-to-node="5">We are talking about massive data collection efforts. Imagine mobilizing 150 surveyors to reach 6,000 households across multiple states. With deployment just weeks away, the line between a successful launch and a complete operational breakdown is drawn right now. You cannot fix logistical failures once your teams are out in the villages. You have to anticipate and solve them during this exact preparation phase</p></p>
+            <p>This guidance assumes you are organizing substantial in-person fieldwork&nbsp;</p>
+            <div class="blueprint-box"><p data-path-to-node="5">Preparation goes far beyond filling out a calendar or checking boxes on a screen. It requires the rigorous work of translating academic theory into operational reality.&nbsp;<div>The single most important step is engaging the Research Operations vertical 12 to 16 weeks before launch. Compressing this timeline never saves time.&nbsp;</div><div>It simply guarantees that mistakes happen in front of the community rather than in a controlled environment. Rushing produces very specific consequences on the ground. It results in surveyors freezing in panic during difficult respondent interactions because their training modules were abbreviated. It leads to tablet screens going dark at noon because no one verified the power infrastructure at the rural base camp.</div><div>It ensures that entire secluded settlements are excluded from the sample because the mapping teams were instructed to hurry. This phase builds the complete operational safety net for the team. A fragile foundation leads to immediate breakdowns on the very first day of data collection.</div><div>&nbsp;</div></p><p data-path-to-node="6"><br></p></div>
         </div>
         <div class="col-visual">
             <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&amp;fit=crop&amp;w=800&amp;q=80" class="visual-img edit-img" alt="Strategic Planning">
@@ -1300,7 +1298,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <div style="text-align:center;max-width:800px;margin:0 auto;">
         <span class="eyebrow">The Roadmap</span>
         <h2>Planning Timeline: What Needs to Happen</h2>
-        <p>Planning is a cascading sequence of milestones. Field training cannot commence until the digital form is tested; accommodations cannot be secured until cluster mapping is locked.</p>
+        <p>Planning is a cascading sequence of milestones. Field training cannot commence until the digital form is tested; vendor contracts cannot be setup until route maps are planned and finalized.</p>
     </div>
     <div class="phase-container">
         <div class="phase-tabs">
@@ -1310,8 +1308,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         </div>
         <div id="phase1" class="phase-content active">
             <h3 style="color:var(--heading-green);">Phase 1: Post-IRB &amp; Design Lock</h3>
-            <p>Establish a "Change Record." Decide when a tweak requires a formal re-submission versus a minor operational amendment. Lock in the overarching methodology, sampling framework, and project timeline with Principal Investigators.</p>
-            <div class="info-card card-warn"><strong>The Late Night PI Request</strong>"Your PI emails late at night: 'Can we add a new module on Mental Health? We are already in the field.' This is why strict version control and IRB amendment protocols must be established early."</div>
+            <p>Establish a comprehensive Change Record tracker. Every single change made to the instrument or protocol must be documented, regardless of how small. For every tweak, record whether it requires a formal amendment. If it needs full institutional approval, log the exact date the official go ahead is received. If it is a minor operational change that does not require a formal review, it must still be explicitly confirmed by the internal ethics coordinator, and that approval must be logged in the tracker. Alongside this strict version control, the overarching methodology, sampling framework, and project timeline must be locked in with the Principal Investigators</p>
+            <div class="info-card card-warn"><strong>The Late Night PI Request</strong>"Your PI emails late at night: 'We need to add a new module on Mental Health? We were planning to be in the field in a week, the latest changes are critical and would definitely need to be approved by IRB. We will have to put out field plans on hold, may be retain a few senior field staff, this entails absorbing some financial costs. The version control tracker should include these details as it will help assess the reasons for the increased per survey cost at the end of the project.&nbsp;</div>
         </div>
         <div id="phase2" class="phase-content">
             <h3 style="color:var(--heading-green);">Phase 2: Digitization &amp; Translation</h3>
@@ -1351,15 +1349,15 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <div class="checklist-grid">
         <div class="check-card">
             <h4>Context Mapping &amp; Recce</h4>
-            <ul><li>Evaluate physical geography, road types, and monsoon impacts.</li><li>Survey lodging options and record standard pricing.</li><li>Test cellular networks in remote areas for data syncing.</li><li>Randomly select a batch of households from the frame and verify physical presence.</li></ul>
+            <ul><li>Evaluate physical geography, road types, and monsoon impacts.</li><li>Despite us not providing accommodation to the field staff, it is always a good practice to get a sense of lodging and accommodations options and details.</li><li>Get a sense of the cellular networks in the remote areas.</li><li>Randomly select a batch of households from the sample and visit these places to get a 'near perfect' sense of travel and working conditions&nbsp;in the field.</li></ul>
         </div>
         <div class="check-card">
             <h4>Building the Core Team</h4>
-            <ul><li>Initiate hiring via internal portal (prioritize coordinators/monitors first).</li><li>Filter for dialect authenticity and tech comfort.</li><li>Invite 120% of required staff to training as an attrition safeguard.</li><li>Ensure adherence to the 90-day fixed-term contract limitations.</li></ul>
+            <ul><li>Initiate hiring via internal portal (prioritize Field Supervisors and Field Monitors first).</li><li>Always good to filter for dialect authenticity and tech comfort.</li><li>Invite 120% of required staff to training as an attrition safeguard.</li><li>Ensure adherence to the 90-day fixed-term contract limitations.</li></ul>
         </div>
         <div class="check-card">
             <h4>Equipment &amp; Readiness</h4>
-            <ul><li>Maintain a strict 10% surplus of tablets at headquarters.</li><li>Distribute robust external power banks.</li><li>Exhaustively pilot the programmed tool on actual deployment devices.</li><li>Implement strict heat/weather safety protocols.</li></ul>
+            <ul><li>Keep a couple of extra tablets at the base station.&nbsp;</li><li>Make it a point to plan and put together a plan with clear R&amp;R to systematically getting the tablets charged and then getting team to record confirmation on tablets being full charged before going to the field.</li><li>Exhaustively pilot the programmed tool in actual deployment working conditions with a 'new accurate' travel representation from an average household/school.</li><li>Implement strict heat/weather safety protocols.</li></ul>
         </div>
     </div>
 </div>
@@ -1379,7 +1377,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <thead><tr><th style="min-width:250px;">Task / Activity</th><th style="text-align:center;">RM</th><th style="text-align:center;">RA</th><th style="text-align:center;">SC</th><th style="text-align:center;">PA</th><th style="min-width:250px;">Execution Notes</th></tr></thead>
                 <tbody>
                     <tr class="phase-row"><td colspan="6">Pre-Planning &amp; Reconnaissance</td></tr>
-                    <tr><td>Lock Study Design &amp; Scope</td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center">-</td><td align="center">-</td><td>Management signs off before execution.</td></tr>
+                    <tr><td autocomplete="off">Confirm Study Design &amp; Scope (with PI)</td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center">-</td><td align="center">-</td><td>Management signs off before execution.</td></tr>
                     <tr><td>Execute Field Reconnaissance</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td>Assess terrain; coordinators advise on safety.</td></tr>
                     <tr class="phase-row"><td colspan="6">Instrument &amp; Infrastructure</td></tr>
                     <tr><td>Map Geographic Clusters</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center">-</td><td align="center"><span class="raci-badge r-badge">R</span></td><td>Generate digital map overlays for approval.</td></tr>
@@ -2232,4 +2230,5 @@ calcCapacity();
 </script>
 
 
-</div><iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div></body></html>
+</div><iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe></body></html>
