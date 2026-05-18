@@ -2403,19 +2403,19 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </style>
 </head>
 <body>
-
 <div id="kb-banner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:10000;background:#1e40af;color:white;text-align:center;padding:7px;font-size:12px;font-weight:600;font-family:system-ui,sans-serif;">Edit Mode — click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
 <div id="kb-toolbar" style="display:none;position:fixed;bottom:24px;right:24px;background:#0d1117;padding:12px 20px;border-radius:40px;box-shadow:0 16px 36px rgba(0,0,0,.4);gap:12px;align-items:center;z-index:999999;border:1px solid rgba(255,255,255,.08);">
   <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
-  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0e7c86;">Copy HTML</button>
+  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0369a1;">Copy HTML</button>
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
 <div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0,.11);">
   <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">URL</label>
   <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
-  <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0e7c86;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
+  <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
   <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
+
 
 <div class="page-layout">
 
@@ -4759,6 +4759,7 @@ var _h1=document.querySelector('.hero h1');
 if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdmin)unlockPage();});
 </script>
 
+
 <script>
 (function(){
   var editing = false, tgt = null;
@@ -4786,7 +4787,6 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
   function handler(e) {
     if (!editing) return;
 
-    // ── Toolbar: handle Copy/Exit clicks DIRECTLY inside handler ──
     var tbBtn = e.target.closest ? e.target.closest('#kb-toolbar button') : null;
     if (tbBtn) {
       e.preventDefault(); e.stopPropagation();
@@ -4795,10 +4795,8 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
       else if (txt.indexOf('exit') > -1) exit();
       return;
     }
-    // Toolbar container (non-button area) — ignore
     if (e.target.closest && e.target.closest('#kb-toolbar')) return;
 
-    // ── Bubble: handle Apply/Cancel clicks DIRECTLY ──
     var bbBtn = e.target.closest ? e.target.closest('#kb-bubble button') : null;
     if (bbBtn) {
       e.preventDefault(); e.stopPropagation();
@@ -4807,36 +4805,27 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
       else if (btxt.indexOf('cancel') > -1) { hide('kb-bubble'); tgt = null; }
       return;
     }
-    // Bubble input — let it work
     if (e.target.closest && e.target.closest('#kb-bubble')) return;
-
-    // ── Left-nav: let links navigate normally ──
     if (e.target.closest && e.target.closest('.left-nav')) return;
-
-    // ── Tab buttons: let them switch tabs ──
     if (e.target.closest && e.target.closest('.tab-nav')) return;
 
-    // ── Everything else: block native behavior ──
     e.preventDefault();
     e.stopPropagation();
 
     var tag = (e.target.tagName || '').toUpperCase();
 
-    // IMG
     if (tag === 'IMG') {
       tgt = e.target;
       openBubble(e.target.src || '', 'Image URL or Google Drive link');
       return;
     }
 
-    // IFRAME
     if (tag === 'IFRAME') {
       tgt = e.target;
       openBubble(e.target.src || '', 'Audio / Video URL');
       return;
     }
 
-    // ANCHOR
     var anc = e.target.closest ? e.target.closest('a') : null;
     if (anc && !(anc.closest && anc.closest('.left-nav'))) {
       tgt = anc;
@@ -4845,7 +4834,6 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
       return;
     }
 
-    // TEXT — walk up to find a meaningful container
     var el = e.target;
     var textNodes = ['P','H1','H2','H3','H4','H5','H6','LI','TD','TH','BLOCKQUOTE','SPAN','LABEL'];
     while (el && el !== document.body) {
@@ -4857,7 +4845,6 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
     if (!el || el === document.body) return;
     if (el.getAttribute('contenteditable') === 'true') return;
 
-    // Clear previous
     var prev = document.querySelectorAll('[contenteditable]');
     for (var i = 0; i < prev.length; i++) {
       if (prev[i] !== el) prev[i].removeAttribute('contenteditable');
@@ -4866,7 +4853,6 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
     el.focus();
   }
 
-  // ── Bubble ──
   function openBubble(val, label) {
     var lbl = document.getElementById('kb-bubble-label');
     var inp = document.getElementById('kb-bubble-input');
@@ -4892,28 +4878,27 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
     hide('kb-bubble'); tgt = null;
   }
 
-  // ── Copy HTML ──
   function copyHTML() {
     var wasEditing = editing;
     exit();
+    // Clone the ENTIRE document — keep edit UI and scripts intact
     var clone = document.documentElement.cloneNode(true);
-    // Strip edit UI
-    ['kb-banner','kb-toolbar','kb-bubble'].forEach(function(id) {
-      var el = clone.querySelector('#' + id);
-      if (el && el.parentNode) el.parentNode.removeChild(el);
-    });
-    // Strip edit script
-    var ss = clone.querySelectorAll('script');
-    for (var i = 0; i < ss.length; i++) {
-      if (ss[i].textContent && ss[i].textContent.indexOf('_kbExit') > -1) {
-        ss[i].parentNode.removeChild(ss[i]);
-      }
-    }
+    // Just ensure edit UI is hidden (not removed)
+    var banner = clone.querySelector('#kb-banner');
+    var toolbar = clone.querySelector('#kb-toolbar');
+    var bubble = clone.querySelector('#kb-bubble');
+    if (banner) banner.style.display = 'none';
+    if (toolbar) toolbar.style.display = 'none';
+    if (bubble) bubble.style.display = 'none';
+    // Remove any leftover contenteditable attributes
+    var editables = clone.querySelectorAll('[contenteditable]');
+    for (var i = 0; i < editables.length; i++) editables[i].removeAttribute('contenteditable');
+    // Remove edit-mode-active from body
+    clone.querySelector('body').classList.remove('edit-mode-active');
     var html = '<!DOCTYPE html>\n' + clone.outerHTML;
-    // Copy to clipboard
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(html).then(function() {
-        alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
+        alert('HTML copied (' + Math.round(html.length/1024) + ' KB). Edit mode is preserved — paste and upload directly.');
       }).catch(function() { fallbackCopy(html); });
     } else {
       fallbackCopy(html);
@@ -4923,25 +4908,22 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
 
   function fallbackCopy(html) {
     var ta = document.createElement('textarea');
-    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0.01;';
+    ta.style.cssText = 'position:fixed;top:10%;left:10%;width:80%;height:80%;z-index:9999999;font-size:10px;';
     ta.value = html;
     document.body.appendChild(ta);
     ta.select();
     try {
       document.execCommand('copy');
-      alert('Done! HTML copied to clipboard (' + Math.round(html.length/1024) + ' KB).');
+      document.body.removeChild(ta);
+      alert('HTML copied (' + Math.round(html.length/1024) + ' KB). Edit mode is preserved.');
     } catch(err) {
-      alert('Could not copy automatically. Use Ctrl+A then Ctrl+C in the text area.');
-      ta.style.cssText = 'position:fixed;top:10%;left:10%;width:80%;height:80%;z-index:999999;font-size:10px;';
+      alert('Auto-copy failed. The HTML is shown in a text area — use Ctrl+A then Ctrl+C to copy manually.');
     }
-    if (ta.parentNode) document.body.removeChild(ta);
   }
 
-  // ── Helpers ──
   function show(id) { var el = document.getElementById(id); if (el) el.style.display = (id === 'kb-toolbar' ? 'flex' : 'block'); }
   function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
 
-  // ── Keyboard trigger: Alt + Shift + E ──
   document.addEventListener('keydown', function(e) {
     if (e.altKey && e.shiftKey && e.key && e.key.toLowerCase() === 'e') {
       e.preventDefault();
@@ -4949,13 +4931,11 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
     }
   }, false);
 
-  // ── URL hash trigger ──
   if (window.location.hash === '#edit') {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enter);
     else enter();
   }
 
-  // ── Expose for any external callers ──
   window._kbExit  = exit;
   window._kbCopy  = copyHTML;
   window._kbApply = applyBubble;
