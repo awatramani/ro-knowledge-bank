@@ -784,6 +784,117 @@ input[type=range]::-webkit-slider-thumb { height: 20px; width: 20px; border-radi
 }
 
 
+/* ── CALL SERIES ─────────────────────────────────────────────── */
+.call-series-intro { background: linear-gradient(135deg, #0d1117 0%, #1e293b 100%); padding: 48px; border-radius: var(--radius-lg); color: white; margin-bottom: 48px; position: relative; overflow: hidden; }
+.call-series-intro::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(3,105,161,0.15), transparent 70%); }
+.call-series-intro * { position: relative; z-index: 1; }
+.call-series-intro h2 { color: white; margin-bottom: 12px; }
+.call-series-intro p { color: #94a3b8; font-size: 15px; }
+.call-series-intro .people-row { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+.person-chip { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); padding: 8px 16px 8px 8px; border-radius: 40px; }
+.person-chip img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(3,105,161,0.4); }
+.person-chip .p-name { font-size: 13px; font-weight: 600; color: #e2e8f0; }
+.person-chip .p-role { font-size: 10px; color: #64748b; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.5px; }
+
+.call-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 48px 0; }
+.call-card { background: var(--surface); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); transition: transform .25s var(--ease), box-shadow .25s var(--ease); cursor: pointer; position: relative; }
+.call-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.call-card-header { padding: 28px 24px 20px; border-bottom: 1px solid var(--border); position: relative; }
+.call-card-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.call-card:nth-child(1) .call-card-header::before { background: linear-gradient(90deg, #0369a1, #0ea5e9); }
+.call-card:nth-child(2) .call-card-header::before { background: linear-gradient(90deg, #d97706, #f59e0b); }
+.call-card:nth-child(3) .call-card-header::before { background: linear-gradient(90deg, #059669, #10b981); }
+.call-num { font-family: var(--mono); font-size: 56px; font-weight: 700; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--border-md); position: absolute; top: 16px; right: 20px; }
+.call-card:nth-child(1):hover .call-num { -webkit-text-stroke-color: var(--green); }
+.call-card:nth-child(2):hover .call-num { -webkit-text-stroke-color: var(--orange); }
+.call-card:nth-child(3):hover .call-num { -webkit-text-stroke-color: var(--success); }
+.call-week { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+.call-title { font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.call-card-body { padding: 20px 24px; }
+.call-card-body p { font-size: 13.5px; margin-bottom: 14px; }
+.call-topics { list-style: none; margin: 0; }
+.call-topics li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+.call-topics li:last-child { border-bottom: none; }
+.call-topics li::before { content: '→'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+.call-card-footer { padding: 16px 24px; background: var(--off); border-top: 1px solid var(--border); }
+.deliverable-tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--green); background: var(--green-dim); padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(3,105,161,0.12); }
+
+/* ── CALL DETAIL PANELS ─────────────────────────────────────── */
+.call-detail-section { background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 48px; overflow: hidden; }
+.call-detail-header { display: flex; align-items: center; gap: 18px; padding: 24px 32px; cursor: pointer; transition: background .15s; }
+.call-detail-header:hover { background: var(--off); }
+.call-detail-header h3 { margin: 0; flex: 1; font-size: 18px; }
+.call-detail-chevron { width: 24px; height: 24px; transition: transform .25s var(--ease); color: var(--muted); }
+.call-detail-section.open .call-detail-chevron { transform: rotate(180deg); }
+.call-detail-body { display: none; padding: 0 32px 32px; }
+.call-detail-section.open .call-detail-body { display: block; animation: fadeUp .3s var(--ease); }
+.agenda-block { margin-bottom: 24px; }
+.agenda-block h4 { font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.agenda-block h4 .time-badge { font-family: var(--mono); font-size: 10px; background: var(--green-dim); color: var(--green); padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+.decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.decision-item { background: var(--off); padding: 16px; border-radius: 10px; border: 1px solid var(--border); }
+.decision-item h5 { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--green); margin-bottom: 6px; }
+.decision-item p { font-size: 13px; margin: 0; }
+
+/* ── DELIVERABLE CARDS ──────────────────────────────────────── */
+.deliverable-showcase { background: var(--ink); border-radius: var(--radius-lg); padding: 36px; margin: 32px 0; color: white; position: relative; overflow: hidden; }
+.deliverable-showcase::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 90% 30%, rgba(3,105,161,0.12), transparent 70%); }
+.deliverable-showcase * { position: relative; z-index: 1; }
+.deliverable-showcase h4 { color: #7dd3fc; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 10px; }
+.deliverable-showcase h3 { color: white; font-size: 20px; margin-bottom: 12px; }
+.deliverable-showcase p { color: #94a3b8; font-size: 14px; }
+.deliverable-mini-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.deliverable-mini-table th { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; text-align: left; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.deliverable-mini-table td { font-size: 13px; color: #cbd5e1; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.deliverable-mini-table tr:last-child td { border-bottom: none; }
+
+/* ── SIMULATION TOOL ────────────────────────────────────────── */
+.sim-container { background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--border); overflow: hidden; margin: 48px 0; }
+.sim-header { background: linear-gradient(135deg, #0d1117, #1e293b); padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; }
+.sim-header h3 { color: white; margin: 0; font-size: 18px; }
+.sim-progress-bar { display: flex; gap: 4px; }
+.sim-progress-dot { width: 32px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.12); transition: background .3s; }
+.sim-progress-dot.active { background: var(--green); }
+.sim-progress-dot.done { background: var(--success); }
+.sim-body { padding: 32px; min-height: 420px; }
+.sim-step { display: none; animation: fadeUp .3s var(--ease); }
+.sim-step.active { display: block; }
+.sim-question { font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.35; }
+.sim-context { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+.sim-options { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sim-option { background: var(--off); border: 2px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all .2s var(--ease); }
+.sim-option:hover { border-color: var(--green); background: var(--green-glow); transform: translateY(-2px); }
+.sim-option.selected { border-color: var(--green); background: rgba(3,105,161,0.06); }
+.sim-option h4 { font-size: 14px; margin-bottom: 6px; }
+.sim-option p { font-size: 12.5px; margin: 0; color: var(--muted); }
+.sim-feedback { background: var(--off); border-radius: 12px; padding: 20px; margin-top: 20px; border-left: 3px solid var(--green); display: none; }
+.sim-feedback.show { display: block; animation: fadeUp .3s var(--ease); }
+.sim-feedback.warn { border-left-color: var(--orange); background: #fffbeb; }
+.sim-footer { padding: 20px 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.sim-btn { padding: 10px 24px; border: none; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; font-family: var(--sans); transition: all .15s; }
+.sim-btn-primary { background: var(--green); color: white; }
+.sim-btn-primary:hover { background: #025d91; }
+.sim-btn-secondary { background: var(--off); color: var(--ink); border: 1px solid var(--border); }
+.sim-btn-secondary:hover { background: var(--off2); }
+.sim-score { font-family: var(--mono); font-size: 14px; color: var(--green); font-weight: 700; }
+
+/* ── WORKSTREAM DEPENDENCY VIS ──────────────────────────────── */
+.workstream-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 24px 0; }
+.ws-card { background: var(--off); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; transition: all .2s; }
+.ws-card:hover { border-color: var(--green); background: var(--green-glow); transform: translateY(-2px); box-shadow: var(--shadow); }
+.ws-icon { font-size: 24px; margin-bottom: 8px; }
+.ws-name { font-size: 12px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.ws-phase { font-family: var(--mono); font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+
+/* ── PHOTO BANNER ───────────────────────────────────────────── */
+.photo-banner { width: 100%; height: 260px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin: 32px 0; border: 1px solid var(--border); }
+
+@media (max-width: 900px) {
+  .call-card-grid { grid-template-columns: 1fr; }
+  .decision-grid { grid-template-columns: 1fr; }
+  .sim-options { grid-template-columns: 1fr; }
+}
+
 /* ── Universal edit mode ── */
 body.edit-mode-active *:not(.left-nav *):not(button):not(input):hover{outline:2px dashed rgba(14,165,233,0.5)!important;outline-offset:2px;border-radius:3px;}
 body.edit-mode-active img:hover,body.edit-mode-active iframe:hover{outline:3px dashed #f59e0b!important;outline-offset:3px;cursor:pointer;}
@@ -1280,20 +1391,355 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Planning and Preparing for Survey Operations</strong></div>
 
+<!-- ═══ SECTION 1: WHY PLANNING MATTERS (RETAINED + ENRICHED) ═══ -->
 <div class="pp-section-padding">
     <div class="split-row">
         <div class="col-text">
             <h2>Why Planning Matters</h2>
-            <p></p><p data-path-to-node="4">When a surveyor knocks on the correct door, turns on a fully charged tablet, and speaks to the respondent in their exact local dialect, it looks incredibly easy. But anyone who has actually run a project knows the truth. That single smooth interaction is built on weeks of relentless planning.</p><p data-path-to-node="5">We are talking about massive data collection efforts. Imagine mobilizing 150 surveyors to reach 6,000 households across multiple states. With deployment just weeks away, the line between a successful launch and a complete operational breakdown is drawn right now. You cannot fix logistical failures once your teams are out in the villages. You have to anticipate and solve them during this exact preparation phase</p><p></p>
-            <p>This guidance assumes you are organizing substantial in-person fieldwork&nbsp;</p>
-            <div class="blueprint-box"><p data-path-to-node="5">Preparation goes far beyond filling out a calendar or checking boxes on a screen. It requires the rigorous work of translating academic theory into operational reality.&nbsp;</p><div>The single most important step is engaging the Research Operations vertical 12 to 16 weeks before launch. Compressing this timeline never saves time.&nbsp;</div><div>It simply guarantees that mistakes happen in front of the community rather than in a controlled environment. Rushing produces very specific consequences on the ground. It results in surveyors freezing in panic during difficult respondent interactions because their training modules were abbreviated. It leads to tablet screens going dark at noon because no one verified the power infrastructure at the rural base camp.</div><div>It ensures that entire secluded settlements are excluded from the sample because the mapping teams were instructed to hurry. This phase builds the complete operational safety net for the team. A fragile foundation leads to immediate breakdowns on the very first day of data collection.</div><div>&nbsp;</div><p></p><p data-path-to-node="6"><br></p></div>
+            <p>When a surveyor knocks on the correct door, turns on a fully charged tablet, and speaks to the respondent in their exact local dialect, it looks incredibly easy. But anyone who has actually run a project knows the truth. That single smooth interaction is built on weeks of relentless planning.</p>
+            <p>We are talking about massive data collection efforts. Imagine mobilizing 150 surveyors to reach 6,000 households across multiple states. With deployment just weeks away, the line between a successful launch and a complete operational breakdown is drawn right now. You cannot fix logistical failures once your teams are out in the villages. You have to anticipate and solve them during this exact preparation phase.</p>
+            <p>This guidance assumes you are organizing substantial in-person fieldwork.</p>
+            <div class="blueprint-box">
+                <p>Preparation goes far beyond filling out a calendar or checking boxes on a screen. It requires the rigorous work of translating academic theory into operational reality.</p>
+                <p>The single most important step is engaging the Research Operations vertical 12 to 16 weeks before launch. Compressing this timeline never saves time. It simply guarantees that mistakes happen in front of the community rather than in a controlled environment.</p>
+                <p><strong>The Field Entropy Cascade:</strong> Week 1 — logistics delays from poor route planning reduce effective working hours. Week 2 — shortened hours cause missed targets. Week 3 — missed targets create pressure on surveyors. Week 4 — pressure drives data shortcuts, fabrication risk, and attrition. This cascade is the single most common failure pattern in field research, and its root cause is always the same: insufficient or unstructured planning.</p>
+            </div>
         </div>
         <div class="col-visual">
-            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&amp;fit=crop&amp;w=800&amp;q=80" class="visual-img edit-img" alt="Strategic Planning">
+            <img src="https://drive.google.com/thumbnail?id=1LgXE8bpm_YfPE90IT_lPX3o0m7Wf_9d_&sz=w1600" class="visual-img edit-img" alt="Strategic Planning">
         </div>
     </div>
 </div>
 
+<!-- ═══ SECTION 2: THE 7 WORKSTREAMS ═══ -->
+<div class="pp-section-padding" style="padding-top:0;">
+    <div style="text-align:center;max-width:800px;margin:0 auto 32px;">
+        <span class="eyebrow">The Architecture</span>
+        <h2>Seven Parallel Workstreams</h2>
+        <p>The planning runway is not a linear checklist. It is a set of seven interdependent workstreams that must advance in parallel, with explicit synchronisation points. The PA and SC must manage it as a portfolio of concurrent activities.</p>
+    </div>
+    <div class="workstream-grid">
+        <div class="ws-card"><div class="ws-icon">📋</div><div class="ws-name">Instrument Finalisation &amp; Programming</div><div class="ws-phase">Phase 1</div></div>
+        <div class="ws-card"><div class="ws-icon">📍</div><div class="ws-name">Sampling &amp; Site Intelligence</div><div class="ws-phase">Phase 1</div></div>
+        <div class="ws-card"><div class="ws-icon">🤝</div><div class="ws-name">Permissions &amp; Community Entry</div><div class="ws-phase">Phase 1–2</div></div>
+        <div class="ws-card"><div class="ws-icon">👥</div><div class="ws-name">Hiring &amp; Team Assembly</div><div class="ws-phase">Phase 2</div></div>
+        <div class="ws-card"><div class="ws-icon">🎓</div><div class="ws-name">Training &amp; Readiness Certification</div><div class="ws-phase">Phase 2–3</div></div>
+        <div class="ws-card"><div class="ws-icon">🚗</div><div class="ws-name">Logistics &amp; Infrastructure Setup</div><div class="ws-phase">Phase 2–3</div></div>
+        <div class="ws-card"><div class="ws-icon">📊</div><div class="ws-name">QA System Design &amp; Activation</div><div class="ws-phase">Phase 3</div></div>
+    </div>
+    <div class="info-card card-tip" style="margin-top:24px;">
+        <strong>Critical Dependencies</strong>
+        The instrument cannot be piloted until it is programmed and bench-tested (WS1 → WS5). The hiring plan cannot be finalised until site intelligence dossiers reveal the terrain difficulty (WS2 → WS4). Permissions must be secured before training teams can pilot in real villages (WS3 → WS5). A delay in any upstream workstream cascades into every downstream one.
+    </div>
+</div>
+
+<!-- ═══ SECTION 3: THE 3-CALL PLANNING SERIES ═══ -->
+<div class="pp-section-padding" style="background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding-left:5%;padding-right:5%;">
+<div style="max-width:1200px;margin:0 auto;">
+    <div class="call-series-intro">
+        <span class="eyebrow" style="color:#7dd3fc;background:rgba(125,211,252,0.1);border-color:rgba(125,211,252,0.2);">New: Structured Planning Framework</span>
+        <h2>The 3-Call Survey Planning Series</h2>
+        <p>A systematic, structured collaboration between the Research Team (RA) and the Research Operations Team (SC, Team Lead, Senior Manager) to meticulously plan every aspect of survey operations. Each call has a defined agenda, pre-identified decision checklist, and produces a concrete deliverable.</p>
+        <div class="people-row">
+            <div class="person-chip">
+                <img src="https://www.povertyactionlab.org/sites/default/files/styles/headshot/public/images/2023/11/Veena%20Jayaram.jpg?itok=sE_R5m8V" alt="Veena Jayaram" class="edit-img">
+                <div><div class="p-name">Veena Jayaram</div><div class="p-role">Senior Manager (Research Operations)</div></div>
+            </div>
+            <div class="person-chip">
+                <img src="https://www.povertyactionlab.org/sites/default/files/styles/headshot/public/images/2023/05/Hansa%20Parmar.jpg?itok=tXtWQYy4" alt="Hansa Parmar" class="edit-img">
+                <div><div class="p-name">Hansa Parmar</div><div class="p-role">Team Lead (Research Operations)</div></div>
+            </div>
+            <div class="person-chip">
+                <img src="https://drive.google.com/thumbnail?id=1hMDk2sWmjj8Qs-qQPhH7n0BgvxB373tO&sz=w200" alt="RA" class="edit-img">
+                <div><div class="p-name">Research Associate</div><div class="p-role">Project Research Team</div></div>
+            </div>
+            <div class="person-chip">
+                <img src="https://drive.google.com/thumbnail?id=1LgXE8bpm_YfPE90IT_lPX3o0m7Wf_9d_&sz=w200" alt="SC" class="edit-img">
+                <div><div class="p-name">Survey Coordinator</div><div class="p-role">Research Operations (Field)</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CALL OVERVIEW CARDS -->
+    <div class="call-card-grid">
+        <div class="call-card" onclick="toggleCallDetail('call-detail-1')">
+            <div class="call-card-header">
+                <div class="call-num">01</div>
+                <div class="call-week">T-12 to T-8 Weeks</div>
+                <div class="call-title">Foundation &amp; Design Lock</div>
+            </div>
+            <div class="call-card-body">
+                <p>Establish the research-to-operations bridge. Lock the instrument, sampling frame, IRB status, and permissions strategy.</p>
+                <ul class="call-topics">
+                    <li>Research design &amp; instrument status review</li>
+                    <li>Sampling frame &amp; site intelligence</li>
+                    <li>IRB/ethics compliance timeline</li>
+                    <li>Permissions &amp; community entry strategy</li>
+                    <li>Budget &amp; timeline alignment</li>
+                </ul>
+            </div>
+            <div class="call-card-footer">
+                <span class="deliverable-tag">📄 Survey Planning Brief</span>
+            </div>
+        </div>
+        <div class="call-card" onclick="toggleCallDetail('call-detail-2')">
+            <div class="call-card-header">
+                <div class="call-num">02</div>
+                <div class="call-week">T-8 to T-4 Weeks</div>
+                <div class="call-title">Operational Architecture</div>
+            </div>
+            <div class="call-card-body">
+                <p>Build the people, logistics, and infrastructure engine. Firm up hiring, vendor contracts, training design, and equipment.</p>
+                <ul class="call-topics">
+                    <li>Hiring plan &amp; team assembly</li>
+                    <li>Training curriculum &amp; schedule</li>
+                    <li>Transport &amp; vendor management</li>
+                    <li>Equipment procurement &amp; tablet setup</li>
+                    <li>Office/base camp &amp; accommodation</li>
+                </ul>
+            </div>
+            <div class="call-card-footer">
+                <span class="deliverable-tag">📊 Field Ops Readiness Tracker</span>
+            </div>
+        </div>
+        <div class="call-card" onclick="toggleCallDetail('call-detail-3')">
+            <div class="call-card-header">
+                <div class="call-num">03</div>
+                <div class="call-week">T-4 to Launch + 15 Days</div>
+                <div class="call-title">Launch Systems &amp; Quality</div>
+            </div>
+            <div class="call-card-body">
+                <p>Activate quality systems, daily rhythms, reporting architecture, and adverse-situation protocols for launch and beyond.</p>
+                <ul class="call-topics">
+                    <li>Go-Live readiness sign-off</li>
+                    <li>Daily feedback &amp; reporting cadence</li>
+                    <li>Quality control (HFCs, back-checks)</li>
+                    <li>Adverse situation &amp; safety protocols</li>
+                    <li>Wrapping up &amp; asset return</li>
+                </ul>
+            </div>
+            <div class="call-card-footer">
+                <span class="deliverable-tag">✅ Go-Live Readiness Checklist</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ CALL 1 DETAIL ═══ -->
+    <div class="call-detail-section open" id="call-detail-1">
+        <div class="call-detail-header" onclick="toggleCallDetail('call-detail-1')" style="border-left:4px solid var(--green);">
+            <div>
+                <div style="font-family:var(--mono);font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px;">Call 1 · T-12 to T-8 Weeks</div>
+                <h3>Foundation &amp; Design Lock</h3>
+            </div>
+            <svg class="call-detail-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="call-detail-body">
+            <p>This is the most intellectually demanding call. Decisions made here constrain everything downstream, and errors here are the most expensive to correct. The RA presents the research design; the RO team translates it into an operational feasibility assessment.</p>
+            
+            <img src="https://drive.google.com/thumbnail?id=14QDgkjXCJfVBLBNh7lnIgCsGyY9wvvYj&sz=w1600" class="photo-banner edit-img" alt="Planning session" style="height:200px;">
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">15 min</span> Instrument &amp; Design Status Review</h4>
+                <p style="font-size:14px;">RA presents the instrument status: which modules are locked, which are still under revision. Review the change record tracker. Discuss whether pending PI changes will require IRB amendments — and the cost of delay.</p>
+                <div class="decision-grid">
+                    <div class="decision-item"><h5>Decision Required</h5><p>Is the instrument content-frozen? If not, what is the hard deadline for content freeze?</p></div>
+                    <div class="decision-item"><h5>Decision Required</h5><p>Has translation been commissioned? Is back-translation planned with an independent translator?</p></div>
+                </div>
+            </div>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">15 min</span> Sampling &amp; Site Intelligence</h4>
+                <p style="font-size:14px;">RA shares the sample frame and randomisation outputs. SC begins building site intelligence dossiers: settlement type (compact village, urban slum, scattered habitations), access conditions (road quality, seasonal restrictions), and local governance contacts.</p>
+                <div class="decision-grid">
+                    <div class="decision-item"><h5>Decision Required</h5><p>How many geographies? What is the estimated team size per geography?</p></div>
+                    <div class="decision-item"><h5>Decision Required</h5><p>Are there accessibility risks that require field reconnaissance before planning?</p></div>
+                </div>
+            </div>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">10 min</span> IRB &amp; Permissions Strategy</h4>
+                <p style="font-size:14px;">Review IRB submission status and expected turnaround. Map permission requirements: district-level, block-level, and village-level authorities. Assign who initiates outreach and when.</p>
+            </div>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">10 min</span> Budget &amp; Timeline Alignment</h4>
+                <p style="font-size:14px;">Confirm budget codes are active. Align on a realistic launch date by working backward from the Gantt. Discuss the "6-week red line" — projects compressed below 6 weeks enter a danger zone where at least one workstream will be fatally compromised.</p>
+            </div>
+
+            <!-- DELIVERABLE 1 -->
+            <div class="deliverable-showcase">
+                <h4>Deliverable</h4>
+                <h3>📄 Survey Planning Brief</h3>
+                <p>A 2-page document jointly prepared by the RA and RO Team Lead after Call 1. This brief becomes the single source of truth for the planning runway and is shared with the Research Manager.</p>
+                <table class="deliverable-mini-table">
+                    <thead><tr><th>Section</th><th>Content</th><th>Owner</th></tr></thead>
+                    <tbody>
+                        <tr><td>Study Overview</td><td>Research question, sample size, geographies, survey round type</td><td>RA</td></tr>
+                        <tr><td>Instrument Status</td><td>Content freeze date, translation timeline, SurveyCTO programming ETA</td><td>RA</td></tr>
+                        <tr><td>IRB &amp; Compliance</td><td>Submission date, expected clearance, amendment risks</td><td>RA</td></tr>
+                        <tr><td>Site Intelligence Summary</td><td>Geography complexity, access risks, terrain-based team sizing</td><td>SC / TL</td></tr>
+                        <tr><td>Permissions Map</td><td>Authority contacts, outreach strategy, community entry plan</td><td>SC</td></tr>
+                        <tr><td>Timeline &amp; Budget</td><td>Agreed Gantt, budget code status, contingency allocation</td><td>RA + TL</td></tr>
+                        <tr><td>Risk Register (Initial)</td><td>Top 5 risks identified, with mitigation owners assigned</td><td>Joint</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ CALL 2 DETAIL ═══ -->
+    <div class="call-detail-section" id="call-detail-2">
+        <div class="call-detail-header" onclick="toggleCallDetail('call-detail-2')" style="border-left:4px solid var(--orange);">
+            <div>
+                <div style="font-family:var(--mono);font-size:10px;color:var(--orange);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px;">Call 2 · T-8 to T-4 Weeks</div>
+                <h3>Operational Architecture</h3>
+            </div>
+            <svg class="call-detail-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="call-detail-body">
+            <p>The second call builds the operational engine. By now, Phase 1 gates should be cleared: instrument bench-tested, site intelligence dossiers complete. This call focuses on people, logistics, and infrastructure — the areas where the SC's ground-truth knowledge is indispensable.</p>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">15 min</span> People Management — Hiring &amp; Team Assembly</h4>
+                <p style="font-size:14px;">Review the staffing plan: total surveyors needed, supervisors, field monitors. Apply the buffer rule (invite 120% of needed staff). Discuss hiring channels — the SC knows which local channels produce reliable candidates and which produce people who quit in Week 2. Address the 90-day contract limit and 7-day cooling-off period.</p>
+                <div class="decision-grid">
+                    <div class="decision-item"><h5>Decision Required</h5><p>Final team size with buffer. Has the hiring ticket been raised on the portal?</p></div>
+                    <div class="decision-item"><h5>Decision Required</h5><p>Screening criteria: dialect fluency, tech literacy, prior field experience thresholds?</p></div>
+                </div>
+            </div>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">10 min</span> Training Design &amp; Schedule</h4>
+                <p style="font-size:14px;">Review the 14-day training architecture: Days 1–4 (org induction, ethics, study context), Days 5–8 (instrument walkthrough), Days 9–10 (mock interviews), Days 11–12 (field practice in non-sample villages), Day 13 (pilot &amp; calibration), Day 14 (final assessment &amp; selection). Confirm training venue, facilitator assignments, and material readiness.</p>
+            </div>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">10 min</span> Vendor &amp; Transport Management</h4>
+                <p style="font-size:14px;">Confirm transport strategy: vehicle type by terrain (sedan for urban, SUV for rural, 4x4 for hilly), vendor contracts with written agreements, driver protocols, fuel/toll/parking cost allocation. Identify 2-3 backup vendors. Discuss accommodation: base camp power backup, charging infrastructure for 20+ tablets.</p>
+            </div>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">10 min</span> Equipment &amp; Office Management</h4>
+                <p style="font-size:14px;">Tablet provisioning status (request via RO portal, 10-14 day SLA). MDM configuration. Training tablets. Power banks (2 per surveyor + spares). Field office setup: secure storage for consent forms, locked cabinet for PII, daily charging station R&amp;R.</p>
+            </div>
+
+            <!-- DELIVERABLE 2 -->
+            <div class="deliverable-showcase" style="background:linear-gradient(135deg, #78350f, #92400e);">
+                <h4>Deliverable</h4>
+                <h3>📊 Field Operations Readiness Tracker</h3>
+                <p>A live Google Sheet or Excel tracker maintained jointly by the PA and SC. Updated weekly until launch. Reviewed during the weekly planning sync (PA, SC, RA — 45 minutes).</p>
+                <table class="deliverable-mini-table">
+                    <thead><tr><th>Workstream</th><th>Key Milestones Tracked</th><th>RAG Status</th></tr></thead>
+                    <tbody>
+                        <tr><td>Hiring &amp; Contracts</td><td>Screening complete, shortlists finalized, contracts issued, joining confirmed</td><td>🔴🟡🟢</td></tr>
+                        <tr><td>Training Prep</td><td>Venue booked, materials printed, mock scripts ready, facilitators briefed</td><td>🔴🟡🟢</td></tr>
+                        <tr><td>Transport &amp; Vendors</td><td>Quotes received, contracts signed, driver briefings done, backup vendors listed</td><td>🔴🟡🟢</td></tr>
+                        <tr><td>Equipment</td><td>Tablets requested, received, configured, SurveyCTO deployed, GPS tested</td><td>🔴🟡🟢</td></tr>
+                        <tr><td>Permissions</td><td>District letters sent, block permissions secured, village entry contacts confirmed</td><td>🔴🟡🟢</td></tr>
+                        <tr><td>Logistics</td><td>Route maps finalized, accommodation confirmed, field kits assembled</td><td>🔴🟡🟢</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ CALL 3 DETAIL ═══ -->
+    <div class="call-detail-section" id="call-detail-3">
+        <div class="call-detail-header" onclick="toggleCallDetail('call-detail-3')" style="border-left:4px solid var(--success);">
+            <div>
+                <div style="font-family:var(--mono);font-size:10px;color:var(--success);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px;">Call 3 · T-4 Weeks to Launch + 15 Days</div>
+                <h3>Launch Systems &amp; Quality Architecture</h3>
+            </div>
+            <svg class="call-detail-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="call-detail-body">
+            <p>The third call activates quality systems, establishes daily rhythms, and sets up reporting architecture. It also covers adverse-situation protocols, wrapping-up procedures, and the critical first 15 days of data collection where the quality trajectory of the entire survey is determined.</p>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">10 min</span> Daily &amp; Weekly Reporting Architecture</h4>
+                <p style="font-size:14px;">Establish the reporting cadence: Daily Productivity Report (PA → RA, SC, RO Team Lead), Weekly Deviation Report (comparing field logs vs. SurveyCTO data, Sat–Fri cycle, due Monday EOD), and the Daily Quality Tracker (5-dimension scoring: protocol compliance, consent adherence, data completeness, duration compliance, probing quality — each scored out of 20 for a total of 100).</p>
+            </div>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">10 min</span> Core Team Calls &amp; Feedback Sessions</h4>
+                <p style="font-size:14px;">Define feedback session attendance: Days 1–5 both SC and PA must be present. Days 6–12 PA continues daily, SC joins every 2–3 days. Continue until the team's Daily Quality Score reaches 90% for 3 consecutive days (RA approved). Evening feedback calls (30–45 min): productivity review (5 min), quality flags (10 min), instrument clarifications (10 min), team morale check (5 min), next-day planning (5 min).</p>
+            </div>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">10 min</span> Quality Control &amp; Adverse Situation Handling</h4>
+                <p style="font-size:14px;">Activate HFC scripts (high-frequency checks): flag short-duration interviews, GPS variance, high "don't know" rates, and skip-pattern anomalies. Schedule back-checks on 5–10% of completed interviews. Accompaniment schedule published and briefed. Adverse situations: hostile community → withdraw and engage Sarpanch; safety threat → immediate halt, escalation to RA/RM; weather disruption → shelter protocol; transport breakdown → petty cash for emergency transport.</p>
+            </div>
+
+            <div class="agenda-block">
+                <h4><span class="time-badge">10 min</span> Wrapping Up &amp; Asset Return</h4>
+                <p style="font-size:14px;">Plan the wind-down: final data reconciliation, consent form collection and secure storage, tablet data backup and factory reset, asset return with verification against the register, driver settlement, vendor final payments. The PA submits the Field Completion Report to the Research Manager.</p>
+            </div>
+
+            <!-- DELIVERABLE 3 -->
+            <div class="deliverable-showcase" style="background:linear-gradient(135deg, #064e3b, #065f46);">
+                <h4>Deliverable</h4>
+                <h3>✅ Go-Live Readiness Checklist</h3>
+                <p>A 15-item checklist that must be signed off by the PA and approved by the RA before the first surveyor enters the field. No partial launches — either the operation is ready or it is not.</p>
+                <table class="deliverable-mini-table">
+                    <thead><tr><th>#</th><th>Checklist Item</th><th>Owner</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>Instrument frozen and deployed on all devices</td><td>PA</td></tr>
+                        <tr><td>2</td><td>All field staff passed readiness certification</td><td>SC</td></tr>
+                        <tr><td>3</td><td>Permissions secured for 100% of first-month sites</td><td>PA</td></tr>
+                        <tr><td>4</td><td>Transport &amp; accommodation confirmed for first 2 weeks</td><td>SC</td></tr>
+                        <tr><td>5</td><td>All devices tested in field conditions (GPS, offline, battery)</td><td>SC</td></tr>
+                        <tr><td>6</td><td>HFC script live and producing correct flags on test data</td><td>PA / Data</td></tr>
+                        <tr><td>7</td><td>Back-check form deployed and tested</td><td>PA / Data</td></tr>
+                        <tr><td>8</td><td>Accompaniment schedule published and briefed</td><td>SC</td></tr>
+                        <tr><td>9</td><td>Reconciliation template distributed to all supervisors</td><td>SC</td></tr>
+                        <tr><td>10</td><td>Escalation phone tree tested in low-connectivity areas</td><td>SC</td></tr>
+                        <tr><td>11</td><td>Field kits assembled and distributed</td><td>SC</td></tr>
+                        <tr><td>12</td><td>First-week route plan finalised and shared</td><td>SC</td></tr>
+                        <tr><td>13</td><td>Risk register reviewed; no unmitigated critical risks</td><td>PA</td></tr>
+                        <tr><td>14</td><td>PA briefing to Research Manager completed</td><td>PA</td></tr>
+                        <tr><td>15</td><td>RA sign-off obtained</td><td>RA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div><!-- /call series bg wrapper -->
+
+<!-- ═══ SECTION 4: INTERACTIVE SIMULATION ═══ -->
+<div class="pp-section-padding">
+    <div style="text-align:center;max-width:800px;margin:0 auto 32px;">
+        <span class="eyebrow">Interactive Tool</span>
+        <h2>Survey Planning Decision Simulator</h2>
+        <p>Walk through real planning scenarios that Research Teams and Research Operations Teams face. Make decisions and see how they cascade through the planning runway.</p>
+    </div>
+
+    <div class="sim-container" id="planning-sim">
+        <div class="sim-header">
+            <h3>🎯 Planning Scenario Walkthrough</h3>
+            <div class="sim-progress-bar" id="sim-progress">
+                <div class="sim-progress-dot active"></div>
+                <div class="sim-progress-dot"></div>
+                <div class="sim-progress-dot"></div>
+                <div class="sim-progress-dot"></div>
+                <div class="sim-progress-dot"></div>
+                <div class="sim-progress-dot"></div>
+                <div class="sim-progress-dot"></div>
+                <div class="sim-progress-dot"></div>
+            </div>
+        </div>
+        <div class="sim-body" id="sim-body">
+            <!-- Steps rendered by JS -->
+        </div>
+        <div class="sim-footer">
+            <button class="sim-btn sim-btn-secondary" id="sim-prev" onclick="simPrev()" style="visibility:hidden;">← Previous</button>
+            <div class="sim-score" id="sim-score"></div>
+            <button class="sim-btn sim-btn-primary" id="sim-next" onclick="simNext()">Begin Simulation →</button>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ SECTION 5: PLANNING TIMELINE (RETAINED + ENRICHED) ═══ -->
 <div class="pp-section-padding">
     <div style="text-align:center;max-width:800px;margin:0 auto;">
         <span class="eyebrow">The Roadmap</span>
@@ -1302,28 +1748,34 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     </div>
     <div class="phase-container">
         <div class="phase-tabs">
-            <button class="phase-tab-btn" onclick="switchPhase(event,'phase1')">Phase 1: Post-IRB</button>
-            <button class="phase-tab-btn" onclick="switchPhase(event,'phase2')">Phase 2: Digitization</button>
-            <button class="phase-tab-btn active" onclick="switchPhase(event,'phase3')">Phase 3: Logistics</button>
+            <button class="phase-tab-btn active" onclick="switchPhase(event,'phase1')">Phase 1: Foundation (Wk 1–4)</button>
+            <button class="phase-tab-btn" onclick="switchPhase(event,'phase2')">Phase 2: Assembly (Wk 5–8)</button>
+            <button class="phase-tab-btn" onclick="switchPhase(event,'phase3')">Phase 3: Launch Prep (Wk 9–12)</button>
         </div>
-        <div id="phase1" class="phase-content">
-            <h3 style="color:var(--heading-green);">Phase 1: Post-IRB &amp; Design Lock</h3>
-            <p>Establish a comprehensive Change Record tracker. Every single change made to the instrument or protocol must be documented, regardless of how small. For every tweak, record whether it requires a formal amendment. If it needs full institutional approval, log the exact date the official go ahead is received. If it is a minor operational change that does not require a formal review, it must still be explicitly confirmed by the internal ethics coordinator, and that approval must be logged in the tracker. Alongside this strict version control, the overarching methodology, sampling framework, and project timeline must be locked in with the Principal Investigators</p>
-            <div class="info-card card-warn"><strong>The Late Night PI Request</strong>"Your PI emails late at night: 'We need to add a new module on Mental Health? We were planning to be in the field in a week, the latest changes are critical and would definitely need to be approved by IRB. We will have to put out field plans on hold, may be retain a few senior field staff, this entails absorbing some financial costs. The version control tracker should include these details as it will help assess the reasons for the increased per survey cost at the end of the project.&nbsp;</div>
+        <div id="phase1" class="phase-content active">
+            <h3 style="color:var(--heading-green);">Phase 1: Foundation Setting (Weeks 1–4)</h3>
+            <p>This is the most intellectually demanding phase. The RA finalises the survey instrument. The PA coordinates SurveyCTO programming, including skip logic, validation constraints, calculated fields, and GPS capture. Bench testing begins by Week 3. The SC builds site intelligence dossiers for each location. Permissions outreach begins immediately — starting in Week 1 avoids the single most common preventable delay.</p>
+            <div class="info-card card-warn"><strong>The Late Night PI Request</strong>"Your PI emails late at night: 'We need to add a new module on Mental Health.' We are planning to be in the field in a week, the latest changes are critical and would definitely need IRB approval. We will have to put our field plans on hold, potentially retain a few senior field staff at extra cost. The version control tracker should capture these details — it will help assess the reasons for increased per-survey cost at the end of the project."</div>
+            <p style="margin-top:16px;"><strong>Hard Gate:</strong> Site intelligence dossiers complete for all sites AND instrument bench-tested and pilot-ready by end of Phase 1. No exceptions.</p>
         </div>
         <div id="phase2" class="phase-content">
-            <h3 style="color:var(--heading-green);">Phase 2: Digitization &amp; Translation</h3>
-            <p>Before a single line of code is written, the English instrument must be finalized and locked. The translation process demands strict independence to preserve scientific integrity. A certified external Translator performs the forward translation into the local language. For the backward translation, teams can utilize an experienced Project Associate or a Survey Coordinator if available. Ideally, this person should never have seen the original English version of the instrument and must translate the localized text back into English. The research team then compares the original document and the backward translation to reconcile any discrepancies. Never rely on automated tools for the primary draft, as they inevitably overlook regional dialect nuances.<br>Once translations are verified, digitization begins. Programming a survey goes far beyond replicating questions on a screen. It requires building operational guardrails. Incorporate hard constraints to prevent physically impossible answers, such as a respondent working 25 hours in a single day.&nbsp;</p>
-            <div class="info-card card-warn" autocomplete="off"><strong>The Field Dilemma</strong>"The translation vendor needs 5 more days. Your PA speaks the language fluently. Do you let the PA translate to save the deadline? No. Never use internal staff for primary translations."</div>
+            <h3 style="color:var(--heading-green);">Phase 2: Operational Assembly (Weeks 5–8)</h3>
+            <p>Before a single line of code is written, the English instrument must be finalized and locked. Translation demands strict independence: a certified external translator performs the forward translation; an experienced PA or SC who has never seen the original performs the backward translation. Once translations are verified, SurveyCTO programming builds operational guardrails — hard constraints to prevent impossible answers.</p>
+            <p>Simultaneously, the hiring engine activates. SC raises the hiring ticket with full details. Screening calls assess dialect fluency, tech comfort, and prior field experience. The buffer rule applies: invite 120% of needed staff to training.</p>
+            <div class="info-card card-warn"><strong>The Translation Dilemma</strong>"The translation vendor needs 5 more days. Your PA speaks the language fluently. Do you let the PA translate to save the deadline? No. Never use internal staff for primary translations — it compromises scientific integrity."</div>
+            <p style="margin-top:16px;"><strong>Hard Gate:</strong> Team hired and training begun by mid-Phase 2.</p>
         </div>
-        <div id="phase3" class="phase-content active">
-            <h3 style="color:var(--heading-green);">Phase 3: Survey Logistics</h3>
-            <p>Set up a series of calls with the Survey Coordinator and Team Lead to map out the operational puzzle before deployment. Execute field reconnaissance over three to five days to verify actual road conditions, transit times, and local accommodation costs to set realistic Daily Allowance rates. During this visit, physically verify thirty to fifty households to test sample viability and local migration rates.<p data-path-to-node="5">Finalize hiring plans by raising requests on the internal portal and applying the buffer rule, which requires inviting one hundred twenty percent of the needed staff to training to safeguard against attrition. All staffing plans must strictly account for the ninety day fixed term contract limit and the mandatory seven day cooling off period.</p><p data-path-to-node="6">For device procurement, acquire additional tablets specifically dedicated for training purposes and field contingencies. Establish a robust and systematic plan with clear roles and responsibilities to ensure every tablet is fully charged before daily deployment. A mandatory morning confirmation process must be recorded across all teams and staff before they depart for the field.</p><p data-path-to-node="7">Finally, confirm the transport strategy. Research teams are strongly advised to look into the possibilities of identifying vendors for cabs and setting up vendor contracts for light multi purpose vehicles, such as Maruti Eeco, Tata Ace, or Tata Magic, which can comfortably transport five to six people. While organizing shared transport requires more initial administrative work, there is immense operational value in moving teams together. It strictly enforces time management, allows for immediate peer learning, ensures consistent supervision, and maintains total alignment across the field team.</p></p>
-            <div class="info-card card-tip" autocomplete="off"><strong>The "Stress Test" Rule for Piloting</strong>"Do not pilot in convenient locations with provisions may not be available to field staff across all locations. Choose distant areas (<i>not the farthest areas but still areas that are a good representation of average travel field staff will take up</i>) and strip away all special provisions. If your field team will rely on public buses to reach the villages, your pilot must use public buses. You must perfectly replicate the friction of actual fieldwork. Testing under these harsh, realistic conditions is the only way to establish a true baseline. Idealistic expectations built on easy pilots will immediately alienate your field staff"</div>
+        <div id="phase3" class="phase-content">
+            <h3 style="color:var(--heading-green);">Phase 3: Launch Preparation (Weeks 9–12)</h3>
+            <p>Execute field reconnaissance over 3–5 days to verify actual road conditions, transit times, and local accommodation costs. During this visit, physically verify 30–50 households to test sample viability and migration rates. Finalize all vendor contracts — written agreements covering daily rates, fuel, tolls, driver meals, and contingency terms.</p>
+            <p>The 14-day intensive training begins. Tablet provisioning, field kits, consent forms, referral cards, ID cards, and authorization letters are printed and assembled. The logistics dry-run verifies every element under realistic conditions.</p>
+            <div class="info-card card-tip"><strong>The Stress Test Rule</strong>"Do not pilot in convenient locations. Choose areas that represent average travel conditions. If your field team will rely on public buses, your pilot must use public buses. You must perfectly replicate the friction of actual fieldwork."</div>
+            <p style="margin-top:16px;"><strong>Hard Gate:</strong> Go-Live readiness checklist signed off. No partial launches.</p>
         </div>
     </div>
 </div>
 
+<!-- ═══ SECTION 6: GANTT CHART (RETAINED) ═══ -->
 <div class="pp-section-padding">
     <h2>The 12-Week Operational Gantt</h2>
     <p style="max-width:900px;margin-bottom:30px;">Observe how ethical compliance requirements establish a rigid boundary before any actual training or field deployment can occur. Schedule the survey launch based on realistic compliance turnaround times rather than optimistic estimates.</p>
@@ -1334,65 +1786,56 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <span>Wk 1</span><span>Wk 2</span><span>Wk 3</span><span>Wk 4</span><span>Wk 5</span><span>Wk 6</span><span>Wk 7</span><span>Wk 8</span><span>Wk 9</span><span>Wk 10</span><span>Wk 11</span><span>Wk 12</span>
             </div>
             <div class="gantt-row"><div class="gantt-label">Research &amp; Design</div><div class="gantt-track"><div class="gantt-bar bar-research" style="grid-column:1/4;">Instrument Drafting</div><div class="gantt-bar bar-research" style="grid-column:4/6;">Translations</div></div></div>
-            <div class="gantt-row"><div class="gantt-label">Compliance &amp; HR</div><div class="gantt-track"><div class="gantt-bar bar-compliance" style="grid-column:5/6;">IRB Prep</div><div class="gantt-bar bar-compliance" style="grid-column:6/10;">IRB Review (Flexible)</div><div class="gantt-milestone" style="grid-column:10;"></div></div></div>
-            <div class="gantt-row"><div class="gantt-label">Field Operations</div><div class="gantt-track"><div class="gantt-bar bar-ops" style="grid-column:7/9;">Recce &amp; Hardware</div><div class="gantt-bar bar-ops" style="grid-column:9/11;">Staff Recruitment</div><div class="gantt-bar bar-ops" style="grid-column:11/13;">Intensive Training</div></div></div>
+            <div class="gantt-row"><div class="gantt-label">Compliance &amp; HR</div><div class="gantt-track"><div class="gantt-bar bar-compliance" style="grid-column:2/4;">IRB Prep</div><div class="gantt-bar bar-compliance" style="grid-column:4/8;">IRB Review</div><div class="gantt-milestone" style="grid-column:8;"></div></div></div>
+            <div class="gantt-row"><div class="gantt-label">Site Intelligence</div><div class="gantt-track"><div class="gantt-bar bar-ops" style="grid-column:1/5;">Dossiers &amp; Permissions</div></div></div>
+            <div class="gantt-row"><div class="gantt-label">Hiring &amp; Assembly</div><div class="gantt-track"><div class="gantt-bar bar-compliance" style="grid-column:5/8;">Screening &amp; Recruitment</div><div class="gantt-bar bar-compliance" style="grid-column:8/9;">Contracts</div></div></div>
+            <div class="gantt-row"><div class="gantt-label">Logistics &amp; Recon</div><div class="gantt-track"><div class="gantt-bar bar-ops" style="grid-column:6/9;">Recce, Vendors, Equipment</div></div></div>
+            <div class="gantt-row"><div class="gantt-label">Training</div><div class="gantt-track"><div class="gantt-bar bar-ops" style="grid-column:9/11;">14-Day Training</div><div class="gantt-milestone" style="grid-column:11;"></div></div></div>
+            <div class="gantt-row"><div class="gantt-label">QA &amp; Launch</div><div class="gantt-track"><div class="gantt-bar bar-research" style="grid-column:10/12;">QA Setup &amp; Pilot</div><div class="gantt-bar" style="grid-column:12/13;background:linear-gradient(90deg,#059669,#10b981);color:white;">GO LIVE</div></div></div>
         </div>
     </div>
 </div>
 
-<div class="pp-section-padding">
-    <div style="text-align:center;max-width:800px;margin:0 auto 50px auto;">
-        <span class="eyebrow">The Master List</span>
-        <h2>Operations Checklist</h2>
-        <p>Overlooking any element here generally results in a critical delay closer to the launch date.</p>
-    </div>
-    <div class="checklist-grid">
-        <div class="check-card">
-            <h4>Context Mapping &amp; Recce</h4>
-            <ul><li>Evaluate physical geography, road types, and monsoon impacts.</li><li>Despite us not providing accommodation to the field staff, it is always a good practice to get a sense of lodging and accommodations options and details.</li><li>Get a sense of the cellular networks in the remote areas.</li><li>Randomly select a batch of households from the sample and visit these places to get a 'near perfect' sense of travel and working conditions&nbsp;in the field.</li></ul>
-        </div>
-        <div class="check-card">
-            <h4>Building the Core Team</h4>
-            <ul><li>Initiate hiring via internal portal (prioritize Field Supervisors and Field Monitors first).</li><li>Always good to filter for dialect authenticity and tech comfort.</li><li>Invite 120% of required staff to training as an attrition safeguard.</li><li>Ensure adherence to the 90-day fixed-term contract limitations.</li></ul>
-        </div>
-        <div class="check-card">
-            <h4>Equipment &amp; Readiness</h4>
-            <ul><li>Keep a couple of extra tablets at the base station.&nbsp;</li><li>Make it a point to plan and put together a plan with clear R&amp;R to systematically getting the tablets charged and then getting team to record confirmation on tablets being full charged before going to the field.</li><li>Exhaustively pilot the programmed tool in actual deployment working conditions with a 'new accurate' travel representation from an average household/school.</li><li>Implement strict heat/weather safety protocols.</li></ul>
-        </div>
-    </div>
-</div>
-
+<!-- ═══ SECTION 7: RACI MATRIX (RETAINED + EXPANDED) ═══ -->
 <div class="pp-section-padding">
     <h2>Operational RACI Matrix</h2>
-    <p>A definitive chain of command facilitates swift troubleshooting and maintains rigorous quality oversight.</p>
+    <p>A definitive chain of command facilitates swift troubleshooting and maintains rigorous quality oversight across all seven workstreams.</p>
     <div class="raci-wrapper">
         <div class="raci-legend">
-            <span><span class="raci-badge r-badge">R</span> <strong>Responsible</strong> (Executes)</span>
-            <span><span class="raci-badge a-badge">A</span> <strong>Accountable</strong> (Approves)</span>
-            <span><span class="raci-badge c-badge">C</span> <strong>Consulted</strong> (Advises)</span>
-            <span><span class="raci-badge i-badge">I</span> <strong>Informed</strong> (Updated)</span>
+            <span><span class="raci-badge r-badge">R</span> <strong>Responsible</strong> (Does the work)</span>
+            <span><span class="raci-badge a-badge">A</span> <strong>Accountable</strong> (Owns the outcome)</span>
+            <span><span class="raci-badge c-badge">C</span> <strong>Consulted</strong> (Provides input)</span>
+            <span><span class="raci-badge i-badge">I</span> <strong>Informed</strong> (Kept updated)</span>
         </div>
         <div style="overflow-x:auto;">
             <table class="raci-table">
-                <thead><tr><th style="min-width:250px;">Task / Activity</th><th style="text-align:center;">RM</th><th style="text-align:center;">RA</th><th style="text-align:center;">SC</th><th style="text-align:center;">PA</th><th style="min-width:250px;">Execution Notes</th></tr></thead>
+                <thead><tr><th style="min-width:280px;">Activity</th><th style="text-align:center;">RA</th><th style="text-align:center;">PA</th><th style="text-align:center;">SC</th><th style="text-align:center;">Supvsr</th><th style="text-align:center;">Data/QA</th></tr></thead>
                 <tbody>
-                    <tr class="phase-row"><td colspan="6">Pre-Planning &amp; Reconnaissance</td></tr>
-                    <tr><td>Confirm Study Design &amp; Scope (with PI)</td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center">-</td><td align="center">-</td><td>Management signs off before execution.</td></tr>
-                    <tr><td>Execute Field Reconnaissance</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td>Assess terrain; coordinators advise on safety.</td></tr>
-                    <tr class="phase-row"><td colspan="6">Instrument &amp; Infrastructure</td></tr>
-                    <tr><td>Map Geographic Clusters</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center">-</td><td align="center"><span class="raci-badge r-badge">R</span></td><td>Generate digital map overlays for approval.</td></tr>
-                    <tr><td>Program Digital Forms</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center">-</td><td>Exhaustive logic testing required prior to deployment.</td></tr>
-                    <tr class="phase-row"><td colspan="6">Training &amp; Launch</td></tr>
-                    <tr><td>Lead Daily Review Sessions</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td>Execute mandatory evening debriefs.</td></tr>
-                    <tr><td>Audit Server vs. Manual Records</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td>Identify synchronization gaps immediately.</td></tr>
+                    <tr class="phase-row"><td colspan="6">Foundation &amp; Design (Call 1)</td></tr>
+                    <tr><td>Instrument content finalisation</td><td align="center"><span class="raci-badge a-badge">A</span><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge i-badge">I</span></td></tr>
+                    <tr><td>SurveyCTO programming &amp; bench testing</td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge a-badge">A</span><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center">–</td><td align="center"><span class="raci-badge r-badge">R</span></td></tr>
+                    <tr><td>Sample frame &amp; randomisation</td><td align="center"><span class="raci-badge a-badge">A</span><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center">–</td><td align="center">–</td></tr>
+                    <tr><td>Site intelligence dossiers</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center">–</td></tr>
+                    <tr><td>Permission outreach &amp; documentation</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center">–</td></tr>
+                    <tr class="phase-row"><td colspan="6">Operational Architecture (Call 2)</td></tr>
+                    <tr><td>Staffing plan &amp; hiring</td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center">–</td></tr>
+                    <tr><td>Training design &amp; delivery</td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td></tr>
+                    <tr><td>Transport, accommodation, equipment</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center">–</td></tr>
+                    <tr><td>Logistics dry-run</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center">–</td></tr>
+                    <tr class="phase-row"><td colspan="6">Launch Systems &amp; Quality (Call 3)</td></tr>
+                    <tr><td>HFC script &amp; back-check design</td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center">–</td><td align="center"><span class="raci-badge r-badge">R</span></td></tr>
+                    <tr><td>Daily feedback &amp; reporting</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td></tr>
+                    <tr><td>Go-live readiness sign-off</td><td align="center"><span class="raci-badge a-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge c-badge">C</span></td></tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div style="text-align:center;margin-top:80px;padding-bottom:80px;">
+
+    <div style="text-align:center;margin-top:80px;padding-bottom:40px;">
         <h2 style="color:var(--heading-green);">The Principle of Invisible Infrastructure</h2>
-        <p style="font-size:18px;font-style:italic;max-width:900px;margin:0 auto;line-height:1.8;">An expertly coordinated survey remains completely unseen by the respondent. To them, the experience is simply a well-prepared surveyor arriving punctually. What remains invisible are the months of exhaustive preparation.</p>
+        <p style="font-size:18px;font-style:italic;max-width:900px;margin:0 auto;line-height:1.8;">A well-planned survey is invisible to the respondent. They see a confident, prepared surveyor who arrives on time, knows their questions, treats them with respect, and finishes efficiently. What they do not see is the months of planning that made that interaction possible.</p>
     </div>
+
     <a href="#" target="_blank" class="doc-card">
         <div class="doc-icon">📄</div>
         <div class="doc-text"><h4>Chapter C1: Survey Planning Master Manual</h4><p>Access the unabridged Google Document containing the complete master schedules, daily quality rubrics, and definitive operational matrices.</p></div>
@@ -1905,8 +2348,8 @@ const TAB_CFG = {
     },
     'panel-planning': {
         bg:'linear-gradient(135deg,#78350f 0%,#b45309 45%,#d97706 100%)',
-        s: [['3','Phases'],['1','C1 Manual'],['1','Checklist']],
-        pod: { title:'Planning & Preparing for Survey Operations', desc:'IRB timelines, RACI matrices & 3-phase roadmap', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+        s: [['3','Planning Calls'],['7','Workstreams'],['3','Deliverables']],
+        pod: { title:'Planning & Preparing for Survey Operations', desc:'3-call series, RACI matrices & decision simulation', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
     },
     'panel-ro': {
         bg:'linear-gradient(135deg,#2e1065 0%,#5b21b6 50%,#7c3aed 100%)',
@@ -1985,6 +2428,164 @@ function toggleTask(element) {
     document.getElementById('master-progress-fill').style.width = pct + '%';
     document.getElementById('master-progress-text').innerText   = pct + '%';
 }
+
+// ---- CALL DETAIL TOGGLE ----
+function toggleCallDetail(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('open');
+}
+
+// ---- PLANNING DECISION SIMULATOR ----
+var SIM_DATA = [
+    {
+        q: "Your PI wants to launch the survey in 5 weeks. The instrument is 80% ready, IRB is not yet submitted, and no Survey Coordinator has been assigned. What do you recommend?",
+        ctx: "The typical planning runway requires 8–12 weeks minimum. Projects compressed below 6 weeks enter the danger zone.",
+        opts: [
+            { label: "Push back with data", desc: "Present the compressed timeline risks: 'Here is what we can deliver in 5 weeks, here is what we cannot, and here are the specific quality risks.'", good: true, fb: "Correct. Frame the trade-off and put the decision with the PI. This is not a 'no' — it's a structured risk assessment that protects the research." },
+            { label: "Agree and rush", desc: "Accept the timeline and try to compress all workstreams. The team will work harder to make it happen.", good: false, fb: "This triggers the Field Entropy Cascade. Week 1: logistics delays. Week 2: missed targets. Week 3: pressure on surveyors. Week 4: data shortcuts and attrition. The root cause is always insufficient planning time." }
+        ]
+    },
+    {
+        q: "The translation vendor needs 5 more days. Your PA speaks the local language fluently. Do you let the PA translate to save the deadline?",
+        ctx: "Translation demands strict independence. A certified external translator performs forward translation; an independent person performs backward translation.",
+        opts: [
+            { label: "Wait for the vendor", desc: "Absorb the 5-day delay. Adjust downstream milestones. Scientific integrity of translation is non-negotiable.", good: true, fb: "Correct. Never use internal staff for primary translations. The PA may unconsciously use research jargon or make assumptions about question intent. Independent translation preserves measurement validity." },
+            { label: "Let the PA translate", desc: "The PA is fluent and familiar with the instrument. Save 5 days and get back on schedule.", good: false, fb: "This compromises scientific integrity. The PA knows the research intent and will unconsciously translate meaning rather than words. Regional dialect nuances will be missed, and there's no independent validation." }
+        ]
+    },
+    {
+        q: "You need 40 surveyors for the field team. How many candidates should you invite to the 14-day training?",
+        ctx: "Apply the buffer rule to safeguard against training-period attrition and performance-based selection.",
+        opts: [
+            { label: "48 candidates (120% buffer)", desc: "Invite 120% of the required count. Some will fail equipment checks, some will drop mid-training, some will underperform in assessments.", good: true, fb: "Correct. The 120% buffer is the institutional standard. It ensures you can select the best 40 from 48 trained candidates. Undershoot and you're forced to deploy underperformers or delay launch." },
+            { label: "42 candidates (small buffer)", desc: "A 5% buffer should be enough if screening is done well. More candidates means higher training costs.", good: false, fb: "A 5% buffer gives you zero margin. If even 3 candidates drop or fail, you launch with 39 — below strength. Teams under capacity face overwork, which degrades data quality within the first week." }
+        ]
+    },
+    {
+        q: "It is Day 7 of data collection. The team's Daily Quality Score is averaging 72/100. The SC wants to reduce feedback sessions from daily to every-other-day. What do you decide?",
+        ctx: "The 90% Rule: Continue intensive daily feedback until the team scores 90% for 3 consecutive days, confirmed by the RA.",
+        opts: [
+            { label: "Continue daily sessions", desc: "The 90% threshold has not been met. Daily feedback continues until 3 consecutive days at 90%+ with RA approval.", good: true, fb: "Correct. At 72%, the team has significant quality gaps that will compound if unsupervised. The first 15 days determine the quality trajectory of the entire survey — this is not the time to reduce oversight." },
+            { label: "Switch to every-other-day", desc: "The team is improving and the SC is stretched thin. Every-other-day should be sufficient.", good: false, fb: "At 72/100, the team has 28 points of quality gap across protocol compliance, consent, data completeness, duration, and probing. Reducing feedback now means those gaps become habits that are nearly impossible to correct later." }
+        ]
+    },
+    {
+        q: "A car vendor cancels the night before training begins. 20 surveyors need transport to the training venue tomorrow morning. What is the immediate action?",
+        ctx: "Vehicle breakdowns and vendor cancellations are routine field realities. Contingency planning is part of the logistics workstream.",
+        opts: [
+            { label: "Activate backup vendor list", desc: "Contact the 2-3 pre-identified backup vendors immediately. Use petty cash for emergency auto-rickshaws or shared tempos if needed.", good: true, fb: "Correct. This is exactly why the planning calls require identifying 2-3 backup vendors. Petty cash for emergency transport should be pre-approved. The training cannot be delayed — every day of delay compresses the launch window." },
+            { label: "Postpone training by 2 days", desc: "Use the time to find a new vendor properly. Rushing transport arrangements could compromise safety.", good: false, fb: "A 2-day delay cascades through the entire Gantt chart. If you budgeted 14 days for training, you now have 12 — which means cutting field practice or the pilot. The contingency plan should have been built during Call 2." }
+        ]
+    },
+    {
+        q: "During the field pilot, a surveyor reports: 'The instrument works perfectly. No issues found.' What should concern you?",
+        ctx: "A successful pilot is one that finds errors. If it comes back clean, the test was not rigorous enough.",
+        opts: [
+            { label: "Investigate further", desc: "A 'perfect' pilot is a red flag. Check if the pilot conditions were realistic: distance, respondent difficulty, environment. Re-pilot under stress conditions if needed.", good: true, fb: "Correct. A clean pilot means either the pilot conditions were too easy or the surveyor is not calibrated to identify problems. The Stress Test Rule: pilot with the busiest, most distracted respondent in a chaotic setting. That is your real baseline." },
+            { label: "Move to launch", desc: "If the instrument works and no issues surfaced, the team is ready. Proceed to go-live.", good: false, fb: "Dangerous assumption. Clean pilots almost always mean insufficient testing conditions. Real fieldwork will surface skip logic errors, confusing questions, missing response options, and duration overruns — all of which cost far more to fix after launch." }
+        ]
+    },
+    {
+        q: "It is 7 PM. A field team is stuck with no transport. They want to walk 3km to the main road in the dark. Do you approve?",
+        ctx: "Data is never worth a safety risk. Field staff may take decisions that increase their risk exposure just to hit targets.",
+        opts: [
+            { label: "Deny and arrange safe pickup", desc: "Safety is non-negotiable. Halt the day's work, arrange emergency transport, and absorb the missed targets.", good: true, fb: "Correct. You must explicitly empower teams to stop work and abandon targets if they feel unsafe. This can only happen once you set up expectations that safety is never compromised. Arrange emergency auto-rickshaws using petty cash." },
+            { label: "Approve the walk", desc: "3km is a short distance and the team can use phone flashlights. They'll reach the main road quickly.", good: false, fb: "Never. Walking on rural roads after dark exposes the team to traffic, terrain, and security risks. If a safety incident occurs, the project faces legal liability, team morale collapse, and potential shutdown. Data is never worth a safety risk." }
+        ]
+    },
+    {
+        q: "Congratulations! You have completed the Survey Planning Decision Simulator.",
+        ctx: "",
+        opts: [],
+        final: true
+    }
+];
+
+var simStep = 0;
+var simPoints = 0;
+var simTotal = 0;
+
+function renderSimStep() {
+    var body = document.getElementById('sim-body');
+    var data = SIM_DATA[simStep];
+    var dots = document.querySelectorAll('#sim-progress .sim-progress-dot');
+    dots.forEach(function(d, i) {
+        d.className = 'sim-progress-dot';
+        if (i < simStep) d.classList.add('done');
+        else if (i === simStep) d.classList.add('active');
+    });
+    document.getElementById('sim-prev').style.visibility = simStep > 0 ? 'visible' : 'hidden';
+    
+    if (data.final) {
+        var pct = simTotal > 0 ? Math.round((simPoints / simTotal) * 100) : 0;
+        var grade = pct >= 85 ? 'Excellent' : pct >= 60 ? 'Good' : 'Needs Review';
+        var color = pct >= 85 ? 'var(--success)' : pct >= 60 ? 'var(--orange)' : 'var(--red)';
+        body.innerHTML = '<div style="text-align:center;padding:40px 0;"><div style="font-size:64px;margin-bottom:16px;">🎯</div><h2 style="margin-bottom:8px;">Score: ' + pct + '% — ' + grade + '</h2><p style="font-size:15px;color:var(--muted);max-width:500px;margin:0 auto;">You got ' + simPoints + ' out of ' + simTotal + ' decisions right. Review the 3-Call Planning Series above for areas where your planning instincts can be sharpened.</p><button class="sim-btn sim-btn-primary" onclick="simReset()" style="margin-top:24px;">Restart Simulation</button></div>';
+        document.getElementById('sim-next').style.display = 'none';
+        document.getElementById('sim-score').textContent = '';
+        return;
+    }
+
+    var html = '<div class="sim-step active">';
+    html += '<div class="sim-question">' + data.q + '</div>';
+    if (data.ctx) html += '<div class="sim-context">' + data.ctx + '</div>';
+    html += '<div class="sim-options" id="sim-opts">';
+    data.opts.forEach(function(o, i) {
+        html += '<div class="sim-option" onclick="simSelect(' + i + ')" id="sim-opt-' + i + '"><h4>' + o.label + '</h4><p>' + o.desc + '</p></div>';
+    });
+    html += '</div>';
+    html += '<div class="sim-feedback" id="sim-fb"></div>';
+    html += '</div>';
+    body.innerHTML = html;
+    
+    document.getElementById('sim-next').textContent = 'Next →';
+    document.getElementById('sim-next').style.display = 'inline-block';
+    document.getElementById('sim-next').disabled = true;
+    document.getElementById('sim-next').style.opacity = '0.5';
+    document.getElementById('sim-score').textContent = simTotal > 0 ? simPoints + '/' + simTotal + ' correct' : '';
+}
+
+function simSelect(idx) {
+    var data = SIM_DATA[simStep];
+    if (!data || !data.opts[idx]) return;
+    var opts = document.querySelectorAll('.sim-option');
+    opts.forEach(function(o) { o.style.pointerEvents = 'none'; o.style.opacity = '0.6'; });
+    var selected = document.getElementById('sim-opt-' + idx);
+    selected.classList.add('selected');
+    selected.style.opacity = '1';
+    
+    var fb = document.getElementById('sim-fb');
+    var opt = data.opts[idx];
+    fb.innerHTML = '<strong>' + (opt.good ? '✓ Good call.' : '✕ Not ideal.') + '</strong> ' + opt.fb;
+    fb.className = 'sim-feedback show' + (opt.good ? '' : ' warn');
+    
+    simTotal++;
+    if (opt.good) simPoints++;
+    
+    document.getElementById('sim-next').disabled = false;
+    document.getElementById('sim-next').style.opacity = '1';
+    document.getElementById('sim-score').textContent = simPoints + '/' + simTotal + ' correct';
+}
+
+function simNext() {
+    simStep++;
+    if (simStep >= SIM_DATA.length) simStep = SIM_DATA.length - 1;
+    renderSimStep();
+}
+
+function simPrev() {
+    if (simStep > 0) { simStep--; renderSimStep(); }
+}
+
+function simReset() {
+    simStep = 0; simPoints = 0; simTotal = 0;
+    document.getElementById('sim-next').style.display = 'inline-block';
+    renderSimStep();
+}
+
+// Initialize simulation on load
+if (document.getElementById('sim-body')) renderSimStep();
 
 // ---- RECRUITMENT FUNNEL CALCULATOR ----
 function calcFunnel() {
