@@ -915,9 +915,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0369a1;">Copy HTML</button>
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
-<div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0,.11);">
-  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">URL</label>
-  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
+<div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
+  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">Image URL or Google Drive link</label>
+  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;" autocomplete="off">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
   <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
@@ -952,7 +952,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(46, 16, 101) 0%, rgb(91, 33, 182) 50%, rgb(124, 58, 237) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(5, 46, 22) 0%, rgb(22, 101, 52) 55%, rgb(22, 163, 74) 100%);">
     <div class="aurora"></div>
     <div class="hero-inner">
         <div class="hero-text">
@@ -961,12 +961,12 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <p class="hero-sub edit-text">The critical planning phase that separates chaotic deployments from flawless ones, everything that needs to happen before Day 1 in the field.</p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-1-num">4</div>
-                    <div class="stat-label" id="hero-stat-1-lbl">RO Services</div>
+                    <div class="stat-num edit-text" id="hero-stat-1-num">2</div>
+                    <div class="stat-label" id="hero-stat-1-lbl">Methods</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-2-num">3</div>
-                    <div class="stat-label" id="hero-stat-2-lbl">SLA tiers</div>
+                    <div class="stat-num edit-text" id="hero-stat-2-num">4</div>
+                    <div class="stat-label" id="hero-stat-2-lbl">Field guides</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num edit-text" id="hero-stat-3-num">1</div>
@@ -980,8 +980,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                     <div class="podcast-play">▶</div>
                     <div class="podcast-top-text">
                         <div class="podcast-tag">Field Ops Podcast</div>
-                        <div class="podcast-title edit-text" id="podcast-title">Availing RO Support</div>
-                        <div class="podcast-desc edit-text" id="podcast-desc">Service intake, SLAs &amp; raising support requests</div>
+                        <div class="podcast-title edit-text" id="podcast-title">Mapping Households in the Field</div>
+                        <div class="podcast-desc edit-text" id="podcast-desc">GPS vs physical mapping, protocols &amp; right-hand rule</div>
                     </div>
                 </div>
                 <div class="podcast-player">
@@ -1000,8 +1000,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
   <nav class="tab-nav" role="tablist">
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Pre-Field Ops</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-planning')" aria-selected="false">Survey Planning</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-ro')" aria-selected="true">Availing RO Support</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-mapping')" aria-selected="false">Mapping Households</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-ro')" aria-selected="false">Availing RO Support</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-mapping')" aria-selected="true">Mapping Households</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-logistics')" aria-selected="false">Survey Logistics</button>
   </nav>
 </div>
@@ -1847,7 +1847,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 3: AVAILING RO SUPPORT
      ===================================================== -->
 
-<div id="panel-ro" class="tab-panel active">
+<div id="panel-ro" class="tab-panel">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Availing RO Support</strong></div>
 
@@ -1969,7 +1969,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     </div>
     <div class="alert-box">
         <div style="font-size:24px;">🚨</div>
-        <div autocomplete="off"><strong>Escalations &amp; Emergencies:</strong> If you experience a sudden field emergency that violates these timelines, please reach out to Veena Jayaram (Senior Manager (Research Operations)).</div>
+        <div><strong>Escalations &amp; Emergencies:</strong> If you experience a sudden field emergency that violates these timelines, please reach out to Veena Jayaram (Senior Manager (Research Operations)).</div>
     </div>
 </div>
 </div>
@@ -1980,13 +1980,13 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 4: MAPPING HOUSEHOLDS IN THE FIELD
      ===================================================== -->
 
-<div id="panel-mapping" class="tab-panel">
+<div id="panel-mapping" class="tab-panel active">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Mapping Households</strong></div>
 
 <div class="map-section">
     <h2>Mapping vs. Census: What Is the Difference?</h2>
-    <p>These two terms are often used interchangeably in conversation, but they are distinct activities with very different purposes. Understanding this distinction is fundamental before entering the field.</p>
+    <p>These two terms can sometimes be used interchangeably in conversation, but they are distinct activities with very different purposes. Understanding this distinction is fundamental before entering the field.</p>
     <div class="comparison-grid">
         <div class="comp-card">
             <div class="comp-header"><h3>Physical Mapping</h3><span style="font-size:13px;color:var(--heading-green);font-weight:600;">(Household Listing)</span></div>
@@ -1994,34 +1994,34 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <div class="comp-row"><span class="comp-label">Purpose</span><span class="comp-value">Create a complete spatial register of every dwelling in the village so that no household is missed.</span></div>
                 <div class="comp-row"><span class="comp-label">What you produce</span><span class="comp-value">A numbered settlement map showing every dwelling, lane, and landmark, plus a total dwelling count.</span></div>
                 <div class="comp-row"><span class="comp-label">Who &amp; How Long</span><span class="comp-value">A dedicated pair of surveyors physically traverse the settlement (0.5–2 days per site).</span></div>
-                <div class="comp-row"><span class="comp-label">The Analogy</span><span class="comp-value" style="font-style:italic;">Drawing the blueprint of a building before you inspect every room.</span></div>
+                <div class="comp-row"><span class="comp-label">The Analogy</span><span class="comp-value" style="font-style:italic;">Drawing the blueprint of the village or a building before you survey every household in the vilage/apartment.</span></div>
             </div>
         </div>
         <div class="comp-card">
-            <div class="comp-header"><h3>Census Enumeration</h3><span style="font-size:13px;color:var(--accent-blue);font-weight:600;">(Building the Frame)</span></div>
+            <div class="comp-header"><h3>Census Enumeration</h3><span style="font-size:13px;color:var(--accent-blue);font-weight:600;">(Building the Sampling Frame)</span></div>
             <div class="comp-body">
                 <div class="comp-row"><span class="comp-label">Purpose</span><span class="comp-value">Collect basic demographic and screening data from every listed household to build the sampling frame.</span></div>
                 <div class="comp-row"><span class="comp-label">What you produce</span><span class="comp-value">A dataset with one record per household: head of household name, size, and screening responses.</span></div>
                 <div class="comp-row"><span class="comp-label">Who &amp; How Long</span><span class="comp-value">Individual surveyors assigned to zones on the completed map (1–6 days depending on count).</span></div>
-                <div class="comp-row"><span class="comp-label">The Analogy</span><span class="comp-value" style="font-style:italic;">Inspecting every room in the building using the blueprint as your guide.</span></div>
+                <div class="comp-row"><span class="comp-label">The Analogy</span><span class="comp-value" style="font-style:italic;">Inspecting every household in the village/apartment in the village/building using the blueprint as your guide.</span></div>
             </div>
         </div>
     </div>
     <div class="note-box insight-box" style="margin-top:50px;">
         <span class="note-title">The Key Insight &amp; What Goes Wrong</span>
-        <p><strong>Mapping ensures you do not miss anyone. Census ensures you know enough about everyone to select the right sample. Skip or rush either one, and the entire research project is built on a flawed foundation.</strong></p>
-        <p style="margin-bottom:0;">Field experience reveals a consistent set of deviations. Surveyors, under time pressure or lack of experience, skip peripheral settlements, secluded hamlets, or construction-worker shanties behind a market. Multi-household structures or chawls remain undercounted if surveyors don't enter floor-by-floor.</p>
+        <p><strong>Mapping ensures you do not miss anyone. Census ensures you know enough about everyone to select the right sample. Skip or rush either one, and the project is built on a flawed foundation.</strong></p>
+        <p style="margin-bottom:0;">Field experience reveals a consistent set of deviations. Surveyors, under time pressure or lack of experience, skip peripheral settlements, secluded hamlets, or construction-worker shanties behind a market. Multi-household structures or society apartments remain undercounted if surveyors don't enter and scan systematically.</p>
     </div>
 </div>
 
 <div class="map-bg-white">
 <div class="map-section">
     <h2>The Operating Model</h2>
-    <p>As a Research Associate/Survey Coordinator, you are the architect and accountable owner of the listing operation.</p>
+    <p>As a Research Associate/Survey Coordinator, you are the architect and accountable owner of the listing operation. You operate on three parallel fronts:</p>
     <div class="bento-grid" style="grid-template-columns:repeat(3,1fr);">
-        <div class="bento-card"><h4>As Planner</h4><p>You sequence villages into batches, size teams to match settlement complexity, secure advance approvals, and build realistic timelines.</p></div>
-        <div class="bento-card"><h4>As Field Commander</h4><p>You ensure the mapping method is followed precisely, that supervisors verify coverage in real time, and that exceptions are logged and escalated the same day.</p></div>
-        <div class="bento-card"><h4>As Quality Steward</h4><p>You reconcile daily counts against map estimates, investigate discrepancies, and certify the final listing package before it is handed over for sampling.</p></div>
+        <div class="bento-card"><h4>As Planner</h4><p>You sequence villages into batches, size teams to match settlement complexity, secure advance approvals (where-ever possible), and build realistic timelines.</p></div>
+        <div class="bento-card"><h4>As Field Supervisor</h4><p>You ensure the mapping method is followed precisely, that supervisors verify coverage in real time, and that exceptions are logged and escalated the same day.</p></div>
+        <div class="bento-card"><h4>As Quality Controller</h4><p>You reconcile daily counts against map estimates, investigate discrepancies, and certify the final listing package before it is finalized for sampling.</p></div>
     </div>
     <h3 style="margin-top:60px;color:var(--heading-green);">Four Governing Principles</h3>
     <div class="bento-grid" style="grid-template-columns:repeat(2,1fr);margin-top:20px;">
@@ -2037,16 +2037,16 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <div class="flex-row">
         <div class="flex-col-large">
             <h2>Pre-Field Intelligence &amp; Planning</h2>
-            <p>This phase happens 10–14 days before field deployment. The goal is to eliminate surprises. <strong>Every hour invested here saves three hours of crisis management in the field.</strong></p>
+            <p>This phase happens at least a week before field deployment (ideally 2 weeks before the field deployment). The goal is to eliminate surprises. <strong>Every hour invested here saves three hours of crisis management in the field.</strong></p>
             <div class="note-box">
                 <span class="note-title">Why Pre-Field Maps Matter</span>
-                Any rule-based traversal method works well when dwellings are on roads or lanes. But in Indian villages, many households sit on open land, inside farms, behind orchards, or along footpaths (pagdandis). These households are systematically missed by road-based traversal. The pre-field intelligence exercise identifies them before the team arrives.
+                Any rule-based traversal method works well when dwellings are on roads or lanes. But in Indian villages, many households sit on open land, inside farms, behind revenue land, or along footpaths (pagdandis). These households are systematically missed by road-based traversal. The pre-field intelligence exercise identifies them before the team arrives.
             </div>
-            <p>For each village, the PA opens satellite imagery (Google Maps/Earth) and systematically examines five dimensions: <strong>Household spread pattern</strong>, <strong>Road and lane networks</strong>, <strong>Peripheral habitations</strong>, <strong>Off-road households</strong>, and <strong>Natural/administrative boundaries</strong>.</p>
+            <p>For each village, the PA opens satellite imagery (Google Maps) and systematically examines five dimensions:&nbsp;<div><strong>- Household spread pattern</strong></div><div><strong>- Road and lane networks</strong></div><div>-&nbsp;<strong>Peripheral habitations</strong><div>-&nbsp;<strong>Off-road households</strong><div><strong>- Natural/administrative boundaries</strong>.</div></div></div></p>
         </div>
         <div class="flex-col-small">
             <div class="img-blueprint">
-                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Satellite Map Annotation">
+                <img src="https://drive.google.com/thumbnail?id=1NvAOCdmTFi2pD-KMvSGA2BZDjcUJkDJA&amp;sz=w800" alt="Satellite Map Annotation">
             </div>
         </div>
     </div>
@@ -2055,8 +2055,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <table class="map-checklist-table">
             <thead><tr><th style="width:5%;text-align:center;">#</th><th style="width:65%;">Checklist Item</th><th style="width:15%;">Owner</th><th style="width:15%;">Status</th></tr></thead>
             <tbody>
-                <tr><td style="text-align:center;">1</td><td>Satellite imagery reviewed for village on Google Maps/Earth</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
-                <tr><td style="text-align:center;">2</td><td>Settlement morphology classified (compact / linear / scattered / mixed)</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">1</td><td>Satellite imagery reviewed for village on Google Maps</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">2</td><td>Settlement density classified (compact / linear / scattered / mixed)</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">3</td><td>All visible roads, lanes, bi-lanes, and pagdandis marked on printed map</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">4</td><td>Peripheral habitations identified and marked (with approximate HH count)</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">5</td><td>Off-road/off-grid households identified on imagery and marked</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
@@ -2075,19 +2075,19 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <div class="flex-row">
         <div class="flex-col-large">
             <h2>Permissions and Community Entry</h2>
-            <p>Community buy-in helps in carrying out field activities smoothly. 3–5 days before the mapping team arrives, the Supervisor visits the village to meet leaders (Sarpanch, Mukhiya, ward members, or respected elders).</p>
-            <p>After securing permission, the Supervisor asks leaders to help create a <strong>rough sketch map</strong> of the village, identifying boundaries, main habitations, peripheral settlements, and off-road households. This sketch is compared with the PA's satellite map to resolve discrepancies.</p>
+            <p>Community buy-in helps in carrying out field activities smoothly. It is not a requirement and is also not guaranteed but in the early days, while you are still figuring our survey plan and during your exploratory visit to the field, try and get a sense of securing some kind of go ahead from community leaders (Sarpanch, Mukhiya, ward members) in the villages.&nbsp;&nbsp;<div>Even a courtesy visit asking for verbal operations and then introducing PAs and Field Supervisor can go a long way.</div></p>
+            <p><br></p>
         </div>
         <div class="flex-col-small">
             <div class="img-polaroid">
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Community Entry Meeting">
+                <img src="https://drive.google.com/thumbnail?id=1Cxx42PM5mJfmrhcYusOMKqDaksGWEASV&amp;sz=w800" alt="Community Entry Meeting">
             </div>
         </div>
     </div>
     <h3 style="margin-top:40px;color:var(--heading-green);">Settlement-Specific Protocols</h3>
     <div class="protocol-grid">
         <div class="protocol-card"><h4>Rural Settings</h4><p style="font-size:14px;margin:0;">The Sarpanch's verbal endorsement is top-tier. If not possible, engage ward members. Follow up verbal endorsements with a WhatsApp message for documentation. Visit peripheral hamlet leaders separately.</p></div>
-        <div class="protocol-card"><h4>Urban Slums</h4><p style="font-size:14px;margin:0;">Identify leaders through Anganwadi workers or Municipal offices. Address suspicion directly: explain this is an NGO research project. Triangulate boundaries with 2-3 community members.</p></div>
+        <div class="protocol-card"><h4>Urban Slums</h4><p style="font-size:14px;margin:0;">Identify leaders through Anganwadi workers or Municipal offices. Address suspicion directly: explain this is a research project. Triangulate boundaries with 2-3 community members.</p></div>
         <div class="protocol-card"><h4>Apartment Complexes</h4><p style="font-size:14px;margin:0;">Send a formal letter to the RWA President/Secretary 7–10 days prior. Follow up by phone after 3 days. Be prepared to present at the society meeting.</p></div>
         <div class="protocol-card"><h4>Sensitive Settings</h4><p style="font-size:14px;margin:0;">Seek introduction through a trusted intermediary (health worker, teacher, religious leader). Deploy a smaller mapping team. Accept that multiple visits may be needed before mapping can begin.</p></div>
     </div>
@@ -2096,9 +2096,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <table class="map-checklist-table">
             <thead><tr><th style="width:5%;text-align:center;">#</th><th style="width:65%;">Checklist Item</th><th style="width:15%;">Owner</th><th style="width:15%;">Status</th></tr></thead>
             <tbody>
-                <tr><td style="text-align:center;">1</td><td>Sarpanch/Mukhiya/local authority met face-to-face</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
-                <tr><td style="text-align:center;">2</td><td>Permission obtained and documented (signed letter / WhatsApp / call log)</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
-                <tr><td style="text-align:center;">3</td><td>Rough sketch map created with village leaders showing all habitations</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">1</td><td>Met and updated the Sarpanch/Mukhiya/local authority&nbsp;</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">2</td><td>Some kind of go ahead is secured</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">3</td><td>Rough sketch map created with village leaders (can be elderly people as well who know the village well) showing all habitations</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">4</td><td>All peripheral hamlets and colonies identified by name</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">5</td><td>Off-road households confirmed or discovered (count estimated)</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">6</td><td>Village boundary confirmed and compared with PA's Google maps review</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
@@ -2129,13 +2129,13 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <span class="note-title" style="color:var(--brand-dark);border-bottom-color:rgba(0,0,0,0.1);">Critical Discipline</span>
         Complete every branch of every street before moving to the next main street. If, while traversing a side lane, you emerge onto another main street, do not turn onto it. U-turn and complete your current branch.
     </div>
-    <img src="https://images.unsplash.com/photo-1596706915573-048cce06c74d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" class="img-panorama edit-img" alt="Rural Traversal">
+    <img src="https://drive.google.com/thumbnail?id=1KAiutvw5PbPyNu6L_sTWjKQCvdZ_RzMg&amp;sz=w800" class="img-panorama edit-img" alt="Rural Traversal">
     <h3 style="margin-top:60px;color:var(--heading-green);">Where the Right-Hand Rule Falls Short</h3>
     <p>The right-hand rule is a powerful starting point, but it has well-documented limitations in Indian field conditions:</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px;">
-        <div style="background:white;padding:20px;border-radius:12px;border:1px solid var(--border-soft);"><strong style="color:var(--accent-orange);">Households not on any road:</strong> Dwellings on open farmland, hilltops, or across streams are invisible to road-based traversal (often 10-20% of households).</div>
-        <div style="background:white;padding:20px;border-radius:12px;border:1px solid var(--border-soft);"><strong style="color:var(--accent-orange);">Ambiguous road definitions:</strong> Is a gap between two walls a lane? Different surveyors make different judgements, compounding errors.</div>
-        <div style="background:white;padding:20px;border-radius:12px;border:1px solid var(--border-soft);"><strong style="color:var(--accent-orange);">Density bias &amp; Interior loops:</strong> The rule spends more time in dense cores and may skip sparse peripheries or households trapped inside closed ring-road loops.</div>
+        <div style="background:white;padding:20px;border-radius:12px;border:1px solid var(--border-soft);"><strong style="color:var(--accent-orange);">Households not on any road:</strong>&nbsp;<div>Dwellings on open farmland, hilltops, or across streams are invisible to road-based traversal (often 10-20% of households).</div></div>
+        <div style="background:white;padding:20px;border-radius:12px;border:1px solid var(--border-soft);"><strong style="color:var(--accent-orange);">Ambiguous road definitions:</strong>&nbsp;<div>Is a gap between two walls a lane? Different surveyors make different judgements, compounding errors.</div></div>
+        <div style="background:white;padding:20px;border-radius:12px;border:1px solid var(--border-soft);"><strong style="color:var(--accent-orange);">Density bias &amp; Interior loops:</strong>&nbsp;<div>The rule spends more time in dense cores and may skip sparse peripheries or households trapped inside closed ring-road loops.</div></div>
     </div>
     <h3 style="margin-top:60px;color:var(--heading-green);">The 4-Step Strategy-Led Mapping Approach</h3>
     <div class="step-container">
