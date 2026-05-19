@@ -917,7 +917,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </div>
 <div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
   <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">Image URL or Google Drive link</label>
-  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;" autocomplete="off">
+  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
   <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
@@ -952,7 +952,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(5, 46, 22) 0%, rgb(22, 101, 52) 55%, rgb(22, 163, 74) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(12, 35, 64) 0%, rgb(3, 105, 161) 55%, rgb(14, 165, 233) 100%);">
     <div class="aurora"></div>
     <div class="hero-inner">
         <div class="hero-text">
@@ -961,12 +961,12 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <p class="hero-sub edit-text">The critical planning phase that separates chaotic deployments from flawless ones, everything that needs to happen before Day 1 in the field.</p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-1-num">2</div>
-                    <div class="stat-label" id="hero-stat-1-lbl">Methods</div>
+                    <div class="stat-num edit-text" id="hero-stat-1-num">3</div>
+                    <div class="stat-label" id="hero-stat-1-lbl">Modules</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-2-num">4</div>
-                    <div class="stat-label" id="hero-stat-2-lbl">Field guides</div>
+                    <div class="stat-num edit-text" id="hero-stat-2-num">6</div>
+                    <div class="stat-label" id="hero-stat-2-lbl">Templates</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num edit-text" id="hero-stat-3-num">1</div>
@@ -980,8 +980,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                     <div class="podcast-play">▶</div>
                     <div class="podcast-top-text">
                         <div class="podcast-tag">Field Ops Podcast</div>
-                        <div class="podcast-title edit-text" id="podcast-title">Mapping Households in the Field</div>
-                        <div class="podcast-desc edit-text" id="podcast-desc">GPS vs physical mapping, protocols &amp; right-hand rule</div>
+                        <div class="podcast-title edit-text" id="podcast-title">Survey Logistics &amp; Budgeting</div>
+                        <div class="podcast-desc edit-text" id="podcast-desc">DA matrices, vendor contracts &amp; travel norms</div>
                     </div>
                 </div>
                 <div class="podcast-player">
@@ -1001,8 +1001,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Pre-Field Ops</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-planning')" aria-selected="false">Survey Planning</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-ro')" aria-selected="false">Availing RO Support</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-mapping')" aria-selected="true">Mapping Households</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-logistics')" aria-selected="false">Survey Logistics</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-mapping')" aria-selected="false">Mapping Households</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-logistics')" aria-selected="true">Survey Logistics</button>
   </nav>
 </div>
 
@@ -1980,7 +1980,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 4: MAPPING HOUSEHOLDS IN THE FIELD
      ===================================================== -->
 
-<div id="panel-mapping" class="tab-panel active">
+<div id="panel-mapping" class="tab-panel">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Mapping Households</strong></div>
 
@@ -2152,13 +2152,13 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 5: SURVEY LOGISTICS
      ===================================================== -->
 
-<div id="panel-logistics" class="tab-panel">
+<div id="panel-logistics" class="tab-panel active">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Survey Logistics</strong></div>
 
 <div class="sl-section-padding">
     <div style="max-width:900px;margin:0 auto 50px auto;text-align:center;">
-        <p style="font-size:16px;line-height:1.8;">Logistics are not an administrative afterthought; they dictate data quality. Poor logistics lead to exhausted enumerators, broken devices, and rushed interviews. This guide translates decades of Indian field research into practical systems — whether you are managing teams in a dense Mumbai slum, navigating flooded kaccha roads in Bihar, or establishing base camps in tribal blocks.</p>
+        <p style="font-size:16px;line-height:1.8;">Logistics are not an administrative afterthought; they dictate data quality. Poor logistics lead to exhausted enumerators, poor motivation and morale of field staff, and rushed interviews. This sub-page translates the JJPAL SA's experience from more than decades of field research into practical systems, whether you are managing teams in a dense urban slum, navigating flooded kaccha roads in Bihar, or establishing field offices in Chhattisgarh, this is for you.</p>
     </div>
 
     <div class="zigzag-row">
@@ -2170,25 +2170,25 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <li><strong>Acquire Boundaries:</strong> Map district, block, tehsil, and Gram Panchayat boundaries. Plot sample HHs on QGIS or Google Earth.</li>
                 <li><strong>Cluster the Sample:</strong> Group sample points based on realistic daily travel limits (e.g., maximum 40 km radius per team).</li>
                 <li><strong>Assess Terrain &amp; Seasons:</strong> Identify paved state highways vs. village kaccha roads. During the monsoon or Rabi harvest season, travel times can double.</li>
-                <li><strong>Network Mapping:</strong> Identify mobile network dead zones to plan offline SurveyCTO caching and designated end-of-day sync points.</li>
+                <li><strong>Network Mapping:</strong> Identify mobile network, look into the plans to conducting surveys off-line, designated end-of-day sync points.</li>
             </ol>
             <h4 class="sl-h4">Resource Planning Matrix</h4>
             <table class="sl-table">
                 <tbody><tr><th>Parameter</th><th>Calculation Logic</th><th>Example (2,000 HHs, Rural India)</th></tr>
                 <tr><td><strong>Survey Duration</strong></td><td>(Total sample ÷ Interviews per team/day) ÷ Teams</td><td>2000 ÷ 6/day ÷ 10 teams = ~33 days</td></tr>
                 <tr><td><strong>Tablets Required</strong></td><td>(Enumerators + TLs) × 1.1 (10% backup buffer)</td><td>40 field staff × 1.1 = 44 tablets</td></tr>
-                <tr><td><strong>Power Banks</strong></td><td>2 per enumerator + team spares</td><td>(40 × 2) + 10 = 90 power banks (20k mAh)</td></tr>
+                <tr><td><strong>Bag/Notebooks</strong></td><td>1 per enumerator + team spares</td><td>(40 × 1) + 10 = 50</td></tr>
             </tbody></table>
-            <div class="callout"><strong>Base Camps &amp; Infrastructure</strong>When booking dharamshalas, government rest houses, or local rentals, verify power backup (inverter/generator) capacity. You will need to charge 20+ tablets simultaneously.</div>
+            <div class="callout"><strong>Base Camp</strong><strong><span style="font-size: 13.5px; color: rgb(51, 65, 85);">Looking into the possibility of setting up a base-station, mainly, field office, which acts as a central and starting location for data collection team is useful. Projects that are operating in conditions where the team is moving from one district to another may find this challenging. In such cases, the Research Team should think of setting up temporary meeting points to conduct in-person feedback sessions, team meetings and other operational tasks that requires people to connect with each other.&nbsp;</span></strong></div>
         </div>
         <div class="visual-col">
             <ul class="checklist-sl">
                 <li style="font-weight:bold;color:var(--brand-dark);font-size:15px;">T-Minus 14 Days Checklist</li>
                 <li>Sample finalized and geographically mapped.</li>
-                <li>Local authorities (SP, District Collector) informed.</li>
-                <li>Letters of authorization printed in local language.</li>
-                <li>Vehicles booked with written agreements.</li>
-                <li>Accommodation secured with verified power backup.</li>
+                <li>Met the community leaders</li>
+                <li>Letters of authorization (if any) printed.</li>
+                <li>Cab vendors contracts are underway</li>
+                <li>Route-plan in places, clarity on average daily distances, route plans beyond 125 k.m. (to &amp; fro) identified and&nbsp;alternative plans are in place</li>
             </ul>
         </div>
     </div>
@@ -2200,18 +2200,18 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <h4 class="sl-h4">Decision Table: Vehicle Selection in India</h4>
             <table class="sl-table">
                 <tbody><tr><th>Vehicle Type</th><th>Optimal Terrain / Scenario</th><th>Est. Daily Rate (₹)</th></tr>
-                <tr><td><strong>Sedan (Swift, Dzire)</strong></td><td>Urban wards, state highways, small teams (3-4 pax)</td><td>₹1,500 - ₹2,500</td></tr>
-                <tr><td><strong>SUV (Bolero, Scorpio)</strong></td><td>Rural blocks, standard village roads, teams (5-7 pax)</td><td>₹2,500 - ₹3,500</td></tr>
-                <tr><td><strong>4x4 (Thar, Camper)</strong></td><td>Hilly terrains, flooded monsoon tracks, deep interiors</td><td>₹3,500 - ₹5,000</td></tr>
-                <tr><td><strong>Motorcycle / Scooty</strong></td><td>Scattered samples, narrow slum lanes, last-mile access</td><td>₹500 - ₹800 (DA)</td></tr>
+                <tr><td><strong>Sedan (Swift, Dzire)</strong></td><td>Urban wards, state highways, small teams (3-4 pax)</td><td>₹2,000 - ₹2,500</td></tr>
+                <tr><td><strong>SUV (Innova, Scorpio, Bolero)</strong></td><td>Hilly terrains, flooded monsoon tracks, deep interiors</td><td>₹3,000 - ₹4,500</td></tr>
+                <tr><td><strong>Economy MPV (Tata Ace, Tata Magic, Maruti Eco)</strong></td><td>Rural blocks, standard village roads, teams (5-7 pax),&nbsp;</td><td>₹2,000 - ₹3,500</td></tr>
+                <tr><td><strong>Motorcycle / Scooty</strong></td><td>Scattered samples, narrow slum lanes, last-mile access</td><td>₹500 - ₹600 (As per bike log)</td></tr>
             </tbody></table>
             <h4 class="sl-h4">Step-by-Step Driver &amp; Fleet Protocols</h4>
             <ol>
-                <li><strong>Briefing:</strong> Set strict rules: no alcohol, mandatory seatbelts, fixed reporting times.</li>
-                <li><strong>Clear Financials:</strong> Define who pays for tolls, parking, and driver meals/night halts to avoid mid-survey disputes.</li>
+                <li><strong>Briefing:</strong> Set strict rules: Mandatory seatbelts, fixed reporting times.</li>
+                <li><strong>Clear Financials:</strong> Define who pays for tolls, parking, and driver meals to avoid mid-survey disputes.</li>
                 <li><strong>Logbooks:</strong> Implement the Daily Vehicle Log. The Team Leader must sign the logbook at end of every day.</li>
             </ol>
-            <div class="callout" style="background:#fff8e1;border-color:#ffb300;"><strong style="color:#e65100;">Contingency Planning</strong>Vehicles will break down. Always keep a list of 2-3 backup local vendors. Maintain petty cash for emergency auto-rickshaws, shared tempos, or tractor lifts to get teams back to base.</div>
+            <div class="callout" style="background:#fff8e1;border-color:#ffb300;"><strong style="color:#e65100;">Contingency Planning</strong>Vehicles will break down. Always keep a list of 2-3 backup local vendors. Maintain some advance amount for emergency auto-rickshaws, shared tempos for the teams to bet back to base-station.</div>
         </div>
         <div class="visual-col">
             <ul class="checklist-sl">
@@ -2219,7 +2219,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <li>Valid Driving License submitted to PA.</li>
                 <li>Vehicle Insurance active.</li>
                 <li>ISI-marked Helmets mandatory for rider and pillion.</li>
-                <li>Daily fuel allowance (DA) matrix strictly followed.</li>
+                <li>Daily bike log tracking and recording is setup and is strictly followed.</li>
             </ul>
         </div>
     </div>
@@ -2230,16 +2230,16 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <p><strong>Context &amp; Purpose:</strong> Without a strict daily rhythm, teams lose focus, data goes unsynced, and safety issues escalate unseen.</p>
             <h4 class="sl-h4">The Standard Operating Rhythm</h4>
             <ol>
-                <li><strong>7:00 AM - Briefing:</strong> TLs distribute daily targets. Verify tablets/power banks are &gt;80%. Ensure all enumerators have ID cards and referral directories.</li>
-                <li><strong>1:00 PM - Mid-Day Sync:</strong> TL collects progress updates. Identifies blockers and redistributes HH assignments via WhatsApp.</li>
-                <li><strong>6:00 PM - Debrief:</strong> Mandatory return to base. Connect tablets to WiFi hotspot. Sync all SurveyCTO/ODK forms. Complete the structured Daily Progress Report.</li>
+                <li><strong>7:00 AM - Briefing:</strong> Field Monitors/Field Supervisors define daily targets. Verify tablets/power banks are &gt;80%. Ensure all enumerators have ID cards and other documentation.</li>
+                <li><strong>1:00 PM - Mid-Day Sync:</strong>&nbsp;Field Supervisors collects progress updates. Identifies blockers and redistributes HH assignments via Phone call/WhatsApp.</li>
+                <li><strong>6:00 PM - Debrief:</strong> Mandatory return to base. Connect tablets to WiFi hotspot, if data not uploaded yet. Sync all SurveyCTO/ODK forms. Complete the structured Daily Progress Report.</li>
             </ol>
             <h4 class="sl-h4">Troubleshooting Common Field Problems</h4>
             <table class="sl-table">
                 <tbody><tr><th>Scenario</th><th>Immediate Field Action</th><th>Escalate to PA/RM When:</th></tr>
                 <tr><td><strong>Respondent Unavailable</strong></td><td>Schedule callback. Note best time.</td><td>3+ failed attempts on different days/times.</td></tr>
-                <tr><td><strong>Hostile Community</strong></td><td>Withdraw. Engage local Sarpanch or ASHA worker for mediation.</td><td>Any verbal abuse or physical threat occurs.</td></tr>
-                <tr><td><strong>SurveyCTO/ODK Crash</strong></td><td>Force close → Clear Cache → Restart tablet.</td><td>Data loss occurs or persistent crashes.</td></tr>
+                <tr><td><strong>Hostile Community</strong></td><td>Withdraw. Engage local Sarpanch, ward member or ASHA worker for mediation and help, if needed.&nbsp;</td><td>Any verbal abuse or physical threat occurs.</td></tr>
+                <tr><td><strong>Technology Crash</strong></td><td>Force close → Clear Cache → Restart tablet.</td><td>Data loss occurs or persistent crashes.</td></tr>
                 <tr><td><strong>Severe Weather</strong></td><td>Halt survey. Seek shelter in local Panchayat office or school.</td><td>Disruption lasts &gt; 4 hours.</td></tr>
             </tbody></table>
         </div>
@@ -2261,26 +2261,26 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <p><strong>Context &amp; Purpose:</strong> A dead battery or a lost tablet halts production instantly. Strict chain-of-custody must be maintained.</p>
             <h4 class="sl-h4">Device Configuration Protocols</h4>
             <ol>
-                <li><strong>Naming Convention:</strong> Label physically (e.g., TAB-001) and digitally in the device settings.</li>
-                <li><strong>Lockdown:</strong> Uninstall all non-essential apps. Set screen timeout to 5+ minutes. Enforce PIN locks.</li>
+                <li><strong>Naming Convention:</strong> Labeling tablets physically (e.g., TAB-001) is always a good practice, especially when your survey will go on for some time.&nbsp;</li>
+                <li><strong>Lockdown:</strong> Uninstall all non-essential apps. Enforce app lock</li>
                 <li><strong>GPS Settings:</strong> Ensure Location is set to "High Accuracy" (GPS + WiFi + Bluetooth).</li>
             </ol>
             <h4 class="sl-h4">The Enumerator Field Bag</h4>
             <ul>
-                <li>Fully charged Tablet + 20k mAh Power Bank + Cables.</li>
+                <li>Fully charged Tablet + charging cable.</li>
                 <li>Printed Authorization Letter + ID Badge.</li>
                 <li>5 Paper Backup Questionnaires + Clipboard + 2 Pens.</li>
-                <li>1.5L Water, ORS Sachets, Sunscreen/Umbrella, Ziploc bags for electronics.</li>
+                <li autocomplete="off">1L Water, ORS Sachets,</li>
             </ul>
         </div>
         <div class="visual-col">
             <ul class="checklist-sl">
-                <li style="font-weight:bold;color:var(--brand-dark);font-size:15px;">PA's Field Repair Kit</li>
-                <li>Multi-port wall charger &amp; surge protector.</li>
-                <li>Assorted charging cables (Type-C, Micro-USB).</li>
+                <li style="font-weight:bold;color:var(--brand-dark);font-size:15px;">PA's Tablet CHarging Kit</li>
+                <li>Multi-port wall charger with surge protector.</li>
+                <li>Assorted extra charging cables (Type-C, Micro-USB).</li>
                 <li>1 Fully configured backup tablet.</li>
-                <li>Spare SIM cards (Jio/Airtel depending on region).</li>
-                <li>Micro-fiber cloths &amp; electrical tape.</li>
+                <li>Tracker with details on distributed tablets along with names of field staff</li>
+                <li>All tablets have tablets cover.</li>
             </ul>
         </div>
     </div>
