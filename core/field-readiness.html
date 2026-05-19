@@ -2408,8 +2408,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0369a1;">Copy HTML</button>
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
-<div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0,.11);">
-  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">URL</label>
+<div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
+  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">Link URL: Raise Hiring Request</label>
   <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
   <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
@@ -2437,7 +2437,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero">
+<section class="hero" style="background: linear-gradient(135deg, rgb(120, 53, 15) 0%, rgb(146, 64, 14) 50%, rgb(180, 83, 9) 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2445,9 +2445,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
       <h1 class="edit-text">Field <em>Readiness</em></h1>
       <p class="hero-sub edit-text">The bridge between planning and execution, where your survey instrument, field team, logistics, and monitoring architecture come together and are stress-tested before scale.</p>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">6</div><div class="stat-label" id="hero-stat-1-lbl">Sub-sections</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">14+</div><div class="stat-label" id="hero-stat-2-lbl">Field guides</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">6</div><div class="stat-label" id="hero-stat-3-lbl">Checklists</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">1</div><div class="stat-label" id="hero-stat-1-lbl">Core strategy</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">11</div><div class="stat-label" id="hero-stat-2-lbl">Sections</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Checklist</div></div>
       </div>
     </div>
     <div class="hero-podcast-side">
@@ -2456,8 +2456,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
           <div class="podcast-play">▶</div>
           <div class="podcast-top-text">
             <div class="podcast-tag">Field Readiness Podcast</div>
-            <div class="podcast-title edit-text" id="podcast-title">Field Readiness: The Full Picture</div>
-            <div class="podcast-desc edit-text" id="podcast-desc">Bridging planning and launch — the complete readiness journey</div>
+            <div class="podcast-title edit-text" id="podcast-title">Hiring for Resilience</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">The buffer rule, calculators, Core Values, and the 6 core responsibilities</div>
           </div>
         </div>
         <div class="podcast-player">
@@ -2474,17 +2474,17 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')">Field Readiness</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-hiring')">Hiring Field Staff</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-pilot')">Piloting &amp; Pre-Launch</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-launch')">Survey Launch</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-maps')">Google Maps</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-attend')">Digital Attendance</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-remote')">Remote Data Collection</button>
+    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Field Readiness</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-hiring')" aria-selected="true">Hiring Field Staff</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-pilot')" aria-selected="false">Piloting &amp; Pre-Launch</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-launch')" aria-selected="false">Survey Launch</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-maps')" aria-selected="false">Google Maps</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-attend')" aria-selected="false">Digital Attendance</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-remote')" aria-selected="false">Remote Data Collection</button>
   </nav>
 </div>
 
-<div id="panel-home" class="tab-panel active">
+<div id="panel-home" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Field Readiness Overview</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -2675,7 +2675,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <div class="scenario-box">
                 <strong>🗣️ How Maps Saved 3 Weeks in Udaipur</strong>
                 <p>RA Meera initially assigned villages alphabetically. When mapped, she found Team A was crossing 3 tehsils daily (60km apart), while Team C was clustered within 8km. She reorganized geographically.</p>
-                <div class="cost" autocomplete="off">Result: Daily travel dropped from 45km to 18km per team. Saved ₹25000 to 50000 in travel costs and gave teams 1.5 extra survey hours daily.</div>
+                <div class="cost">Result: Daily travel dropped from 45km to 18km per team. Saved ₹25000 to 50000 in travel costs and gave teams 1.5 extra survey hours daily.</div>
                 <div class="lesson">Lesson: Always plot before you deploy. Geography is the primary planning variable.</div>
             </div>
         </div>
@@ -2694,7 +2694,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </div>
 </div>
 
-<div id="panel-hiring" class="tab-panel">
+<div id="panel-hiring" class="tab-panel active">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Hiring Field Staff</strong></div>
 <div class="panel-body">
 
@@ -2704,7 +2704,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
   <div class="fr-content-card">
     <h3 class="fr-card-h3">The "Buffer" Rule</h3>
-    <p class="fr-guide-text">Hiring for the field is unique. You aren't just looking for competence; you are looking for resilience. In short-term projects, the biggest risk is "ghosting" — where staff vanish after training.</p>
+    <p class="fr-guide-text">Hiring for the field is unique. You aren't just looking for competence; you are looking for resilience. In short-term projects, the biggest risk is attrition, where staff do not show up after training.&nbsp;</p>
     <p class="fr-guide-text"><strong>The 20% Rule:</strong> If you need 20 surveyors, train 25. If all 25 stay, you finish data collection early. If 5 drop out, your timeline is safe.</p>
     <div class="fr-tip-box">
       <strong>Pro Tip: The Language Switch</strong>
@@ -2774,28 +2774,28 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Target Surveyors Needed</span>
-            <span class="fr-ctrl-val" id="funnel-target-val">20</span>
+            <span class="fr-ctrl-val" id="funnel-target-val">55</span>
           </div>
           <input type="range" id="funnel-target" min="5" max="150" step="5" value="20" oninput="calcFunnel()">
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Buffer Percentage</span>
-            <span class="fr-ctrl-val" id="funnel-buffer-val">20%</span>
+            <span class="fr-ctrl-val" id="funnel-buffer-val">10%</span>
           </div>
           <input type="range" id="funnel-buffer" min="10" max="40" step="5" value="20" oninput="calcFunnel()">
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Training Drop-off Rate</span>
-            <span class="fr-ctrl-val" id="funnel-dropout-val">15%</span>
+            <span class="fr-ctrl-val" id="funnel-dropout-val">10%</span>
           </div>
           <input type="range" id="funnel-dropout" min="5" max="35" step="5" value="15" oninput="calcFunnel()">
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Screening Pass Rate</span>
-            <span class="fr-ctrl-val" id="funnel-pass-val">60%</span>
+            <span class="fr-ctrl-val" id="funnel-pass-val">70%</span>
           </div>
           <input type="range" id="funnel-pass" min="30" max="80" step="5" value="60" oninput="calcFunnel()">
         </div>
@@ -2803,22 +2803,22 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
       <div class="fr-calc-metrics">
         <div class="fr-metric-card fr-mc-green">
           <span class="fr-m-title">Train This Many</span>
-          <div class="fr-m-value" id="funnel-train">29</div>
+          <div class="fr-m-value" id="funnel-train">68</div>
           <span class="fr-m-sub">to deploy your target headcount</span>
         </div>
         <div class="fr-metric-card fr-mc-orange">
           <span class="fr-m-title">Invite to Interview</span>
-          <div class="fr-m-value" id="funnel-interview">49</div>
+          <div class="fr-m-value" id="funnel-interview">98</div>
           <span class="fr-m-sub">candidates to shortlist enough</span>
         </div>
         <div class="fr-metric-card fr-mc-blue">
           <span class="fr-m-title">Source / Cold-Call</span>
-          <div class="fr-m-value" id="funnel-source">98</div>
+          <div class="fr-m-value" id="funnel-source">196</div>
           <span class="fr-m-sub">at a 50% show-up rate</span>
         </div>
         <div class="fr-metric-card fr-mc-purple">
           <span class="fr-m-title">Buffer Headcount</span>
-          <div class="fr-m-value" id="funnel-buf-count">4</div>
+          <div class="fr-m-value" id="funnel-buf-count">6</div>
           <span class="fr-m-sub">extra trained as bench strength</span>
         </div>
       </div>
@@ -2905,7 +2905,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <tr><td><span class="fr-task-name">Sourcing Candidates</span><span class="fr-task-desc">Cold Calling &amp; Portals</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-a">Accountable</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
         <tr><td><span class="fr-task-name">Conducting Interviews</span><span class="fr-task-desc">Screening &amp; Logistics</span></td><td><span class="fr-role-tag fr-tag-c">Consulted</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-c">Consulted</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
         <tr><td><span class="fr-task-name">Final Hiring Decision</span><span class="fr-task-desc">Shortlists &amp; Approvals</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-a">Accountable</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
-        <tr><td><span class="fr-task-name">Salary Negotiation</span><span class="fr-task-desc">Setting Budget &amp; Exceptions</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-a">Accountable</span></td><td><span class="fr-role-tag fr-tag-c">Consulted</span></td></tr>
+        <tr><td><span class="fr-task-name">Salary Details</span><span class="fr-task-desc">Setting Budget &amp; Exceptions</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-a">Accountable</span></td><td><span class="fr-role-tag fr-tag-c">Consulted</span></td></tr>
         <tr><td><span class="fr-task-name">Contracting</span><span class="fr-task-desc">90-day contract issuance</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-c">Consulted</span></td><td><span class="fr-role-tag fr-tag-a">Accountable</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
       </tbody>
     </table>
@@ -2916,7 +2916,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
   <div class="fr-content-card">
     <h3 class="fr-card-h3">90-Day Contract Policy</h3>
-    <p class="fr-guide-text">All field staff — including Project Associates, Field Supervisors, and Surveyors — are hired on a short-term, fixed-term, non-extendable 90-day contract.</p>
+    <p class="fr-guide-text">All field staff, including Project Associates, Field Supervisors, and Surveyors, are hired on a short-term, fixed-term, non-extendable 90-day contract.</p>
     <div class="fr-callout">
       <strong>The 7-Day Cooling-Off Rule</strong>
       When a contract expires, a new contract can be raised only after a mandatory 7-day cooling-off period. This is non-negotiable and must be factored into your staffing plan. If your survey extends beyond 90 days, plan the contract renewal cycle in advance so there is no gap in coverage.
@@ -2924,10 +2924,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <table class="fr-inline-table">
       <thead><tr><th>Role</th><th>Contract Duration</th><th>Hire Timeline</th><th>Key Condition</th></tr></thead>
       <tbody>
-        <tr><td>Project Associate (PA)</td><td>90 days</td><td>10–12 weeks before launch</td><td>Must have prior field research experience</td></tr>
-        <tr><td>Field Supervisor (FS)</td><td>90 days</td><td>8–10 weeks before launch</td><td>Best FSs are experienced surveyors promoted from within</td></tr>
+        <tr><td>Project Associate (PA)</td><td>90 days</td><td>6–10 weeks before launch</td><td>Must have prior field research experience</td></tr>
+        <tr><td>Field Supervisor (FS)</td><td>90 days</td><td>2– 3 weeks before launch</td><td>Best FSs are experienced surveyors promoted from within</td></tr>
         <tr><td>Surveyor</td><td>90 days</td><td>Post-training absorption</td><td>Must pass end-of-training validation</td></tr>
-        <tr><td>Field Monitor (FM)</td><td>90 days</td><td>8–10 weeks before launch</td><td>Must understand the instrument and be comfortable with data analysis</td></tr>
+        <tr><td>Field Monitor (FM)</td><td>90 days</td><td>6–10 weeks before launch</td><td>Must understand the instrument&nbsp;</td></tr>
       </tbody>
     </table>
   </div>
@@ -2957,7 +2957,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
   <div class="fr-content-card">
     <h3 class="fr-card-h3">The Person Behind Every Data Point</h3>
-    <p class="fr-guide-text">The surveyor is the crucial bridge between the organisation and the communities where data is collected. Every data point analysed by researchers began as a conversation between a surveyor and a respondent. The quality of that conversation — and therefore the quality of your data — depends entirely on who you hire and how well you train them.</p>
+    <p class="fr-guide-text" autocomplete="off">The surveyor is the crucial bridge between the organization and the communities where data is collected. Every data point analysed by researchers began as a conversation between a surveyor and a respondent. The quality of that conversation, and therefore the quality of your data, depends entirely on who you hire and how well you train them.</p>
     <p class="fr-guide-text">Whether working in the streets of old Jaipur or the remote villages of Bihar, the surveyor's presence, empathy, and attention to detail determines whether the data reflects reality or manufactures fiction.</p>
     <div class="fr-danger-box">
       <strong>The Cost of a Bad Hire</strong>
