@@ -2437,7 +2437,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(46, 16, 101) 0%, rgb(91, 33, 182) 50%, rgb(124, 58, 237) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(12, 35, 64) 0%, rgb(15, 52, 96) 50%, rgb(30, 87, 153) 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2445,9 +2445,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
       <h1 class="edit-text">Field <em>Readiness</em></h1>
       <p class="hero-sub edit-text">The bridge between planning and execution, where your survey instrument, field team, logistics, and monitoring architecture come together and are stress-tested before scale.</p>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">4</div><div class="stat-label" id="hero-stat-1-lbl">Pilot phases</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">6</div><div class="stat-label" id="hero-stat-2-lbl">Field guides</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Checklist</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">4</div><div class="stat-label" id="hero-stat-1-lbl">Launch pillars</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">3</div><div class="stat-label" id="hero-stat-2-lbl">Templates</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Quiz</div></div>
       </div>
     </div>
     <div class="hero-podcast-side">
@@ -2456,8 +2456,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
           <div class="podcast-play">▶</div>
           <div class="podcast-top-text">
             <div class="podcast-tag">Field Readiness Podcast</div>
-            <div class="podcast-title edit-text" id="podcast-title">Piloting: Stress-Testing the System</div>
-            <div class="podcast-desc edit-text" id="podcast-desc">Crash-testing instruments, logistics, and team calibration</div>
+            <div class="podcast-title edit-text" id="podcast-title">Survey Launch &amp; the Gestation Phase</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">The first 10-15 days: routines, momentum, and the forecaster</div>
           </div>
         </div>
         <div class="podcast-player">
@@ -2476,8 +2476,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
   <nav class="tab-nav" role="tablist">
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Field Readiness</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-hiring')" aria-selected="false">Hiring Field Staff</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-pilot')" aria-selected="true">Piloting &amp; Pre-Launch</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-launch')" aria-selected="false">Survey Launch</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-pilot')" aria-selected="false">Piloting &amp; Pre-Launch</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-launch')" aria-selected="true">Survey Launch</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-maps')" aria-selected="false">Google Maps</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-attend')" aria-selected="false">Digital Attendance</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-remote')" aria-selected="false">Remote Data Collection</button>
@@ -3097,7 +3097,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </div>
 </div>
 
-<div id="panel-pilot" class="tab-panel active">
+<div id="panel-pilot" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Piloting &amp; Pre-Launch</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -3458,7 +3458,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         </div>
                     </div>
                     <ul class="task-list">
-                        <li autocomplete="off">Load digital forms onto testing devices.</li>
+                        <li>Load digital forms onto testing devices.</li>
                         <li>Test server syncing and data upload flow.</li>
                         <li>Verify translations within the digital interface.</li>
                         <li>Print physical paper backups for emergency use.</li>
@@ -3581,7 +3581,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </div>
 </div>
 
-<div id="panel-launch" class="tab-panel">
+<div id="panel-launch" class="tab-panel active">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Survey Launch</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -3645,7 +3645,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <div class="control-group">
                     <div class="control-header">
                         <p class="control-label">Target Sample Size</p>
-                        <span class="control-value" id="val-sample">2,000 HHs</span>
+                        <span class="control-value" id="val-sample">2,600 HHs</span>
                     </div>
                     <input type="range" id="in-sample" min="500" max="10000" step="100" value="2000" oninput="calculate()">
                 </div>
@@ -3653,7 +3653,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <div class="control-group">
                     <div class="control-header">
                         <p class="control-label">Surveyors Available</p>
-                        <span class="control-value" id="val-staff">15 Staff</span>
+                        <span class="control-value" id="val-staff">20 Staff</span>
                     </div>
                     <input type="range" id="in-staff" min="5" max="100" step="1" value="15" oninput="calculate()">
                 </div>
@@ -3681,8 +3681,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         <p class="control-label">Hardware Safety Buffer</p>
                     </div>
                     <div class="toggle-group">
-                        <div class="toggle-btn" id="btn-buf-10" onclick="setBuffer(0.1, this)">10% Standard</div>
-                        <div class="toggle-btn active" id="btn-buf-20" onclick="setBuffer(0.2, this)">20% High Risk</div>
+                        <div class="toggle-btn active" id="btn-buf-10" onclick="setBuffer(0.1, this)">10% Standard</div>
+                        <div class="toggle-btn" id="btn-buf-20" onclick="setBuffer(0.2, this)">20% High Risk</div>
                     </div>
                 </div>
             </div>
@@ -3690,25 +3690,25 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <div class="metrics-panel">
                 <div class="metric-card mc-time">
                     <span class="m-title">Estimated Duration</span>
-                    <div class="m-value" id="out-days">27 <span style="font-size: 20px;">Days</span></div>
+                    <div class="m-value" id="out-days">26 <span style="font-size: 20px;">Days</span></div>
                     <span class="m-subtext">Assuming 6-day work weeks</span>
                 </div>
 
                 <div class="metric-card mc-staff">
                     <span class="m-title">Logistics Infrastructure</span>
-                    <div class="m-value" id="out-vehicles">4 <span style="font-size: 20px;">Vehicles</span></div>
-                    <span class="m-subtext" id="out-teams">Broken into 4 field teams + 4 Monitors</span>
+                    <div class="m-value" id="out-vehicles">5 <span style="font-size: 20px;">Vehicles</span></div>
+                    <span class="m-subtext" id="out-teams">Broken into 5 field teams + 5 Monitors</span>
                 </div>
 
                 <div class="metric-card mc-hardware">
                     <span class="m-title">Tablets Required</span>
-                    <div class="m-value" id="out-tablets">23 <span style="font-size: 20px;">Units</span></div>
+                    <div class="m-value" id="out-tablets">28 <span style="font-size: 20px;">Units</span></div>
                     <span class="m-subtext">Includes surveyors, monitors + backup buffer</span>
                 </div>
 
                 <div class="metric-card mc-hardware" style="border-left-color: #f59e0b;">
                     <span class="m-title">Power Banks (20k mAh)</span>
-                    <div class="m-value" style="color: #f59e0b;" id="out-power">42 <span style="font-size: 20px;">Units</span></div>
+                    <div class="m-value" style="color: #f59e0b;" id="out-power">55 <span style="font-size: 20px;">Units</span></div>
                     <span class="m-subtext">2 per surveyor + vehicle spares</span>
                 </div>
 
@@ -3717,7 +3717,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         <span class="m-title">Est. Transport &amp; DA Budget</span>
                         <span class="m-subtext" style="display: block; margin-top: 5px;">Rough estimate covering daily allowances and vehicle rentals for the entire duration.</span>
                     </div>
-                    <div class="m-value" id="out-budget">₹5.8L</div>
+                    <div class="m-value" id="out-budget">₹7.2L</div>
                 </div>
             </div>
 
@@ -3806,7 +3806,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             </ul>
             <div class="scenario-box" style="background: #f0fdf4; border-color: var(--success-green); color: #166534;">
                 <strong style="color: var(--success-green);">Pro Tip</strong>
-                Make the first 5–7 debriefs mandatory and highly structured—this builds discipline and trust early on.
+                Make the first 5–7 debriefs mandatory and highly structured, this builds discipline and trust early on.
             </div>
         </div>
 
@@ -3822,10 +3822,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
     <h2 class="section-title">RA Launch Checklist &amp; Tips</h2>
     <ul class="tips-list">
-        <li><strong>Create a launch kick-off pack:</strong> Include printed field plans, route maps, supervisor contacts, attendance formats, and team rosters.</li>
-        <li><strong>Printer Access:</strong> Ensure at least one field team member has portable printer access or knows a local shop for emergency forms/logs.</li>
-        <li><strong>Schedule Yourself:</strong> Work with RO to build a launch week schedule that includes heavy in-field time for you and the SC. Do not manage launch week from a desk.</li>
-        <li><strong>The 3-Day Check-in:</strong> Conduct a short surveyor self-reflection after 3 days. Ask them directly: what’s working, what’s not?</li>
+        <li><strong>Create a launch kick-off plan that are documented and shared:</strong> Include printed field plans, route maps, supervisor contacts, attendance formats, and team rosters.</li>
+        <li><strong>Printer Access or Google sheet:</strong> Ensure at least one field team member has portable printer access or knows a local shop for emergency forms/logs. Alternatively, setup a Google sheet tracking ecosystem to ensure every detail of what happening on the ground gets recorded across teams. Field Supervisors and Field Monitors should be given the responsibility to spend on the ground infusing quality, discipline, rigor and team cohesiveness</li>
+        <li><strong>Schedule Yourself:</strong> Work with RO to build a launch week schedule that includes heavy in-field time for the Research Associate and the SC. <b>Do not manage launch week remotely</b>.</li>
+        <li><strong>The 3-Day Check-in:</strong> Conduct a short surveyor self-reflection after 3 days. Ask them directly: what’s working, what’s not? Setup a system to check on the overall well-being, talk to different people to check on how they are doing, if they have any concerns, be clear in communicating any deviation of values shall not be tolerated.</li>
     </ul>
 
     <div class="quiz-container">
@@ -3835,9 +3835,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="quiz-option" onclick="checkAnswer(this, false)">
             A) Tell the surveyor to wait in the village until evening to see if they return.
         </div>
-        <div class="quiz-option" onclick="checkAnswer(this, false)">
-            B) Tell the surveyor to independently find replacement households in the same village.
-        </div>
+        <div class="quiz-option" onclick="checkAnswer(this, false)" autocomplete="off">
+            B) The surveyor records it and sigh a breath as his allocated H/H are now not available. He joins other surveyor in their surveys and helps them in surveying.</div>
         <div class="quiz-option" onclick="checkAnswer(this, true)">
             C) Surveyor flags to Field Supervisor -&gt; Supervisor informs PA via Mid-Day Sync -&gt; PA redistributes backup HH assignments via WhatsApp.
         </div>
