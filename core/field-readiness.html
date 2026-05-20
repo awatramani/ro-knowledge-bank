@@ -2437,7 +2437,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(12, 35, 64) 0%, rgb(15, 52, 96) 50%, rgb(30, 87, 153) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(5, 46, 22) 0%, rgb(22, 101, 52) 55%, rgb(22, 163, 74) 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2445,9 +2445,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
       <h1 class="edit-text">Field <em>Readiness</em></h1>
       <p class="hero-sub edit-text">The bridge between planning and execution, where your survey instrument, field team, logistics, and monitoring architecture come together and are stress-tested before scale.</p>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">4</div><div class="stat-label" id="hero-stat-1-lbl">Launch pillars</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">3</div><div class="stat-label" id="hero-stat-2-lbl">Templates</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Quiz</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">6</div><div class="stat-label" id="hero-stat-1-lbl">Training steps</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">1</div><div class="stat-label" id="hero-stat-2-lbl">Dataset</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Assessment</div></div>
       </div>
     </div>
     <div class="hero-podcast-side">
@@ -2456,8 +2456,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
           <div class="podcast-play">▶</div>
           <div class="podcast-top-text">
             <div class="podcast-tag">Field Readiness Podcast</div>
-            <div class="podcast-title edit-text" id="podcast-title">Survey Launch &amp; the Gestation Phase</div>
-            <div class="podcast-desc edit-text" id="podcast-desc">The first 10-15 days: routines, momentum, and the forecaster</div>
+            <div class="podcast-title edit-text" id="podcast-title">Google My Maps Masterclass</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">Spatial intelligence for tracking complex field deployments</div>
           </div>
         </div>
         <div class="podcast-player">
@@ -2477,8 +2477,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Field Readiness</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-hiring')" aria-selected="false">Hiring Field Staff</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-pilot')" aria-selected="false">Piloting &amp; Pre-Launch</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-launch')" aria-selected="true">Survey Launch</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-maps')" aria-selected="false">Google Maps</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-launch')" aria-selected="false">Survey Launch</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-maps')" aria-selected="true">Google Maps</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-attend')" aria-selected="false">Digital Attendance</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-remote')" aria-selected="false">Remote Data Collection</button>
   </nav>
@@ -2774,28 +2774,28 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Target Surveyors Needed</span>
-            <span class="fr-ctrl-val" id="funnel-target-val">55</span>
+            <span class="fr-ctrl-val" id="funnel-target-val">20</span>
           </div>
           <input type="range" id="funnel-target" min="5" max="150" step="5" value="20" oninput="calcFunnel()">
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Buffer Percentage</span>
-            <span class="fr-ctrl-val" id="funnel-buffer-val">10%</span>
+            <span class="fr-ctrl-val" id="funnel-buffer-val">20%</span>
           </div>
           <input type="range" id="funnel-buffer" min="10" max="40" step="5" value="20" oninput="calcFunnel()">
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Training Drop-off Rate</span>
-            <span class="fr-ctrl-val" id="funnel-dropout-val">10%</span>
+            <span class="fr-ctrl-val" id="funnel-dropout-val">15%</span>
           </div>
           <input type="range" id="funnel-dropout" min="5" max="35" step="5" value="15" oninput="calcFunnel()">
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Screening Pass Rate</span>
-            <span class="fr-ctrl-val" id="funnel-pass-val">70%</span>
+            <span class="fr-ctrl-val" id="funnel-pass-val">60%</span>
           </div>
           <input type="range" id="funnel-pass" min="30" max="80" step="5" value="60" oninput="calcFunnel()">
         </div>
@@ -2803,22 +2803,22 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
       <div class="fr-calc-metrics">
         <div class="fr-metric-card fr-mc-green">
           <span class="fr-m-title">Train This Many</span>
-          <div class="fr-m-value" id="funnel-train">68</div>
+          <div class="fr-m-value" id="funnel-train">29</div>
           <span class="fr-m-sub">to deploy your target headcount</span>
         </div>
         <div class="fr-metric-card fr-mc-orange">
           <span class="fr-m-title">Invite to Interview</span>
-          <div class="fr-m-value" id="funnel-interview">98</div>
+          <div class="fr-m-value" id="funnel-interview">49</div>
           <span class="fr-m-sub">candidates to shortlist enough</span>
         </div>
         <div class="fr-metric-card fr-mc-blue">
           <span class="fr-m-title">Source / Cold-Call</span>
-          <div class="fr-m-value" id="funnel-source">196</div>
+          <div class="fr-m-value" id="funnel-source">98</div>
           <span class="fr-m-sub">at a 50% show-up rate</span>
         </div>
         <div class="fr-metric-card fr-mc-purple">
           <span class="fr-m-title">Buffer Headcount</span>
-          <div class="fr-m-value" id="funnel-buf-count">6</div>
+          <div class="fr-m-value" id="funnel-buf-count">4</div>
           <span class="fr-m-sub">extra trained as bench strength</span>
         </div>
       </div>
@@ -3458,7 +3458,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         </div>
                     </div>
                     <ul class="task-list">
-                        <li>Load digital forms onto testing devices.</li>
+                        <li autocomplete="off">Load digital forms onto testing devices.</li>
                         <li>Test server syncing and data upload flow.</li>
                         <li>Verify translations within the digital interface.</li>
                         <li>Print physical paper backups for emergency use.</li>
@@ -3581,7 +3581,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </div>
 </div>
 
-<div id="panel-launch" class="tab-panel active">
+<div id="panel-launch" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Survey Launch</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -3645,7 +3645,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <div class="control-group">
                     <div class="control-header">
                         <p class="control-label">Target Sample Size</p>
-                        <span class="control-value" id="val-sample">2,600 HHs</span>
+                        <span class="control-value" id="val-sample">2,000 HHs</span>
                     </div>
                     <input type="range" id="in-sample" min="500" max="10000" step="100" value="2000" oninput="calculate()">
                 </div>
@@ -3653,7 +3653,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <div class="control-group">
                     <div class="control-header">
                         <p class="control-label">Surveyors Available</p>
-                        <span class="control-value" id="val-staff">20 Staff</span>
+                        <span class="control-value" id="val-staff">15 Staff</span>
                     </div>
                     <input type="range" id="in-staff" min="5" max="100" step="1" value="15" oninput="calculate()">
                 </div>
@@ -3681,8 +3681,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         <p class="control-label">Hardware Safety Buffer</p>
                     </div>
                     <div class="toggle-group">
-                        <div class="toggle-btn active" id="btn-buf-10" onclick="setBuffer(0.1, this)">10% Standard</div>
-                        <div class="toggle-btn" id="btn-buf-20" onclick="setBuffer(0.2, this)">20% High Risk</div>
+                        <div class="toggle-btn" id="btn-buf-10" onclick="setBuffer(0.1, this)">10% Standard</div>
+                        <div class="toggle-btn active" id="btn-buf-20" onclick="setBuffer(0.2, this)">20% High Risk</div>
                     </div>
                 </div>
             </div>
@@ -3690,25 +3690,25 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <div class="metrics-panel">
                 <div class="metric-card mc-time">
                     <span class="m-title">Estimated Duration</span>
-                    <div class="m-value" id="out-days">26 <span style="font-size: 20px;">Days</span></div>
+                    <div class="m-value" id="out-days">27 <span style="font-size: 20px;">Days</span></div>
                     <span class="m-subtext">Assuming 6-day work weeks</span>
                 </div>
 
                 <div class="metric-card mc-staff">
                     <span class="m-title">Logistics Infrastructure</span>
-                    <div class="m-value" id="out-vehicles">5 <span style="font-size: 20px;">Vehicles</span></div>
-                    <span class="m-subtext" id="out-teams">Broken into 5 field teams + 5 Monitors</span>
+                    <div class="m-value" id="out-vehicles">4 <span style="font-size: 20px;">Vehicles</span></div>
+                    <span class="m-subtext" id="out-teams">Broken into 4 field teams + 4 Monitors</span>
                 </div>
 
                 <div class="metric-card mc-hardware">
                     <span class="m-title">Tablets Required</span>
-                    <div class="m-value" id="out-tablets">28 <span style="font-size: 20px;">Units</span></div>
+                    <div class="m-value" id="out-tablets">23 <span style="font-size: 20px;">Units</span></div>
                     <span class="m-subtext">Includes surveyors, monitors + backup buffer</span>
                 </div>
 
                 <div class="metric-card mc-hardware" style="border-left-color: #f59e0b;">
                     <span class="m-title">Power Banks (20k mAh)</span>
-                    <div class="m-value" style="color: #f59e0b;" id="out-power">55 <span style="font-size: 20px;">Units</span></div>
+                    <div class="m-value" style="color: #f59e0b;" id="out-power">42 <span style="font-size: 20px;">Units</span></div>
                     <span class="m-subtext">2 per surveyor + vehicle spares</span>
                 </div>
 
@@ -3717,7 +3717,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         <span class="m-title">Est. Transport &amp; DA Budget</span>
                         <span class="m-subtext" style="display: block; margin-top: 5px;">Rough estimate covering daily allowances and vehicle rentals for the entire duration.</span>
                     </div>
-                    <div class="m-value" id="out-budget">₹7.2L</div>
+                    <div class="m-value" id="out-budget">₹5.8L</div>
                 </div>
             </div>
 
@@ -3806,7 +3806,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             </ul>
             <div class="scenario-box" style="background: #f0fdf4; border-color: var(--success-green); color: #166534;">
                 <strong style="color: var(--success-green);">Pro Tip</strong>
-                Make the first 5–7 debriefs mandatory and highly structured, this builds discipline and trust early on.
+                Make the first 5–7 debriefs mandatory and highly structured—this builds discipline and trust early on.
             </div>
         </div>
 
@@ -3822,33 +3822,34 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
     <h2 class="section-title">RA Launch Checklist &amp; Tips</h2>
     <ul class="tips-list">
-        <li><strong>Create a launch kick-off plan that are documented and shared:</strong> Include printed field plans, route maps, supervisor contacts, attendance formats, and team rosters.</li>
-        <li><strong>Printer Access or Google sheet:</strong> Ensure at least one field team member has portable printer access or knows a local shop for emergency forms/logs. Alternatively, setup a Google sheet tracking ecosystem to ensure every detail of what happening on the ground gets recorded across teams. Field Supervisors and Field Monitors should be given the responsibility to spend on the ground infusing quality, discipline, rigor and team cohesiveness</li>
-        <li><strong>Schedule Yourself:</strong> Work with RO to build a launch week schedule that includes heavy in-field time for the Research Associate and the SC. <b>Do not manage launch week remotely</b>.</li>
-        <li><strong>The 3-Day Check-in:</strong> Conduct a short surveyor self-reflection after 3 days. Ask them directly: what’s working, what’s not? Setup a system to check on the overall well-being, talk to different people to check on how they are doing, if they have any concerns, be clear in communicating any deviation of values shall not be tolerated.</li>
+        <li><strong>Create a launch kick-off pack:</strong> Include printed field plans, route maps, supervisor contacts, attendance formats, and team rosters.</li>
+        <li><strong>Printer Access:</strong> Ensure at least one field team member has portable printer access or knows a local shop for emergency forms/logs.</li>
+        <li><strong>Schedule Yourself:</strong> Work with RO to build a launch week schedule that includes heavy in-field time for you and the SC. Do not manage launch week from a desk.</li>
+        <li><strong>The 3-Day Check-in:</strong> Conduct a short surveyor self-reflection after 3 days. Ask them directly: what’s working, what’s not?</li>
     </ul>
 
     <div class="quiz-container">
         <h3 style="color: white; margin-top: 0;">Launch Readiness Check</h3>
         <p style="color: #cbd5e1; margin-bottom: 20px;">It's Day 2 of the launch. A surveyor reports that 4 out of 6 assigned respondents in a village are attending a local festival and are unavailable. What is the correct escalation procedure?</p>
         
-        <div class="quiz-option" onclick="checkAnswer(this, false)">
+        <div class="quiz-option" onclick="checkAnswer(this, false)" style="pointer-events: none;">
             A) Tell the surveyor to wait in the village until evening to see if they return.
         </div>
-        <div class="quiz-option" onclick="checkAnswer(this, false)" autocomplete="off">
-            B) The surveyor records it and sigh a breath as his allocated H/H are now not available. He joins other surveyor in their surveys and helps them in surveying.</div>
-        <div class="quiz-option" onclick="checkAnswer(this, true)">
+        <div class="quiz-option" onclick="checkAnswer(this, false)" style="pointer-events: none;">
+            B) Tell the surveyor to independently find replacement households in the same village.
+        </div>
+        <div class="quiz-option correct" onclick="checkAnswer(this, true)" style="pointer-events: none;">
             C) Surveyor flags to Field Supervisor -&gt; Supervisor informs PA via Mid-Day Sync -&gt; PA redistributes backup HH assignments via WhatsApp.
         </div>
 
-        <div class="quiz-feedback" id="quizFeedback"></div>
+        <div class="quiz-feedback" id="quizFeedback" style="display: block; background-color: rgba(16, 185, 129, 0.2); border: 1px solid var(--success-green); color: rgb(110, 231, 183);"><strong>Correct!</strong> Following the structured escalation protocol ensures the PA can manage the sample replacement systematically without losing the whole day's productivity.</div>
     </div>
 
 </div>
 </div>
 </div>
 
-<div id="panel-maps" class="tab-panel">
+<div id="panel-maps" class="tab-panel active">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Google Maps Tracking</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -3865,10 +3866,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <div class="sandbox-box">
         <h3>The Masterclass Sandbox</h3>
         <p>
-            This document is a hands-on masterclass — not a passive reading exercise[cite: 73]. We have provided a companion CSV file containing 500 dummy household records[cite: 74]. These coordinates point to open desert wasteland in the Thar Desert to ensure no real person's location is accidentally exposed[cite: 116]. 
+            This document is a hands-on masterclass, not a passive reading exercise. We have provided a companion CSV file containing 500 dummy household records. These coordinates point to open desert wasteland in the Thar Desert to ensure no real person's location is accidentally exposed. 
         </p>
         <p>
-            You are expected to follow along on your computer, building your own Google My Map using the step-by-step instructions below[cite: 75]. Once you complete this exercise, you will be able to apply these exact steps to your live project datasets.
+            You are expected to follow along on your computer, building your own Google My Map using the step-by-step instructions below. Once you complete this exercise, you will be able to apply these exact steps to your live project datasets.
         </p>
         <a href="https://drive.google.com/file/d/1VkTYrRle_y5NTnyJUhHV5ip8Wd8eGlYD/view?usp=sharing" class="download-btn" target="_blank">
             📥 Download Dummy Dataset (CSV)
@@ -3898,7 +3899,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
                 <div class="alert-box">
                     <strong>🚩 The #1 Reason Maps Break</strong>
-                    If your treatment_status column contains 'Treatment', 'treatment', 'TREATMENT', and 'treat' — Google My Maps will create 4 separate categories instead of 2. Your color coding will break. <strong>Rule: Run a UNIQUE() check on every categorical column before importing[cite: 103].</strong>
+                    If your treatment status column contains 'Treatment', 'treatment', 'TREATMENT', and 'treat', Google My Maps will create 4 separate categories instead of 2. Your color coding will break. <strong>Rule: Run a UNIQUE() check on every categorical column before importing.</strong>
                 </div>
             </div>
             <div class="story-visual">
@@ -3912,10 +3913,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="story-row reverse">
             <div class="story-text">
                 <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">2. Creating &amp; Importing Your Map</h2>
-                <p>Google My Maps is a free, browser-based tool that lets you create custom maps with pins, routes, and multiple layers[cite: 89]. Follow these exact steps to load your dummy data.</p>
+                <p>Google My Maps is a free, browser-based tool that lets you create custom maps with pins, routes, and multiple layers. Follow these exact steps to load your dummy data.</p>
                 
                 <div class="step-box">
-                    <h4>Step 1: Upload to Google Sheets First [cite: 127]</h4>
+                    <h4>Step 1: Upload to Google Sheets First&nbsp;</h4>
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>Go to sheets.google.com → Blank spreadsheet.</li>
                         <li>File → Import → Upload → Select dummy_hh_500_field_tracking.csv.</li>
@@ -3925,10 +3926,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 </div>
 
                 <div class="step-box">
-                    <h4>Step 2: Create Map &amp; Import [cite: 125, 128]</h4>
+                    <h4>Step 2: Create Map &amp; Import&nbsp;</h4>
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>Go to mymaps.google.com and click '+ CREATE A NEW MAP'.</li>
-                        <li>Name your map: 'JSM-RCT — Field Tracking Map — April 2026'[cite: 126].</li>
+                        <li>Name your map: 'JSM-RCT — Field Tracking Map — April 2026'.</li>
                         <li>Click 'Import' in the Untitled layer → Select 'Google Sheets' tab → Choose your Master sheet.</li>
                         <li><strong>Position columns:</strong> Check 'latitude' and 'longitude'.</li>
                         <li><strong>Title column:</strong> Choose 'hh_id'. Click Finish.</li>
@@ -3946,10 +3947,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="story-row">
             <div class="story-text">
                 <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">3. Styling &amp; Color-Coding</h2>
-                <p>The most critical visual distinction is Treatment vs. Control[cite: 130]. You cannot apply two color schemes to the same layer, so we will create distinct layers for different views[cite: 135].</p>
+                <p>The most critical visual distinction is Treatment vs. Control. You cannot apply two color schemes to the same layer, so we will create distinct layers for different views.</p>
                 
                 <div class="step-box">
-                    <h4>Step 3: Color-Code Treatment Arms [cite: 132]</h4>
+                    <h4>Step 3: Color-Code Treatment Arms&nbsp;</h4>
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>In the layer panel, click 'Uniform style' → Change to 'Style by data column'.</li>
                         <li>Select 'treatment_status'.</li>
@@ -3959,7 +3960,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 </div>
 
                 <div class="step-box">
-                    <h4>Step 4: Create Team Assignment Layer [cite: 135]</h4>
+                    <h4>Step 4: Create Team Assignment Layer&nbsp;</h4>
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>Click 'Add layer' in the left panel and name it 'Team Assignments'.</li>
                         <li>Import the same Google Sheet into this new layer.</li>
@@ -3978,10 +3979,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="story-row reverse">
             <div class="story-text">
                 <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">4. Route Planning &amp; The 3+3 Model</h2>
-                <p>This is the most operationally powerful layer. For each day, you create a sub-layer showing only that day's targets for each biker[cite: 158]. We use the <strong>3+3 Model</strong>: 3 primary targets and 3 buffer households to ensure no surveyor has a zero-productivity day[cite: 194].</p>
+                <p>This is the most operationally powerful layer. For each day, you create a sub-layer showing only that day's targets for each biker[cite: 158]. We use the <strong>3+3 Model</strong>: 3 primary targets and 3 buffer households to ensure no surveyor has a zero-productivity day.</p>
                 
                 <div class="step-box">
-                    <h4>Step 5: Filter and Import Daily Routes [cite: 159, 190, 191]</h4>
+                    <h4>Step 5: Filter and Import Daily Routes&nbsp;</h4>
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>In Google Sheets, create a new tab 'Day_01'.</li>
                         <li>Use formula: <code>=FILTER(Master!A:O, Master!J:J = "Day-01")</code></li>
@@ -3991,7 +3992,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 </div>
 
                 <div class="step-box">
-                    <h4>Step 6: Add Driving Directions [cite: 192]</h4>
+                    <h4>Step 6: Add Driving Directions</h4>
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>Click the 'Add directions' button (🔀) beneath the search bar.</li>
                         <li>Set transport mode to 🏍️ Driving.</li>
@@ -4011,14 +4012,14 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="story-row">
             <div class="story-text">
                 <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">5. Daily Tracking &amp; Updates</h2>
-                <p>A map that is not updated daily is a decoration, not a tool[cite: 203]. Every evening, the PA/SC performs a 15-minute map review to track progress and identify fraud[cite: 216].</p>
+                <p>A map that is not updated daily is a decoration, not a tool. Every evening, the PA/SC performs a 15-minute map review to track progress and identify fraud.</p>
 
                 <div class="step-box">
                     <h4>Step 7: End-of-Day Status Update [cite: 210]</h4>
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>Biker reports results: <em>'JSM-0041 Completed, JSM-0043 Refused, JSM-0044 Buffer Used'</em>.</li>
                         <li>SC opens the Google Sheet and updates the <code>survey_status</code> column accordingly.</li>
-                        <li>After all updates, REFRESH the Google My Maps browser tab. Pins will change color based on the new status[cite: 210, 211].</li>
+                        <li>After all updates, REFRESH the Google My Maps browser tab. Pins will change color based on the new status.</li>
                     </ol>
                 </div>
 
@@ -4038,19 +4039,19 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="story-row reverse">
             <div class="story-text">
                 <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">6. Sharing &amp; Self-Assessment</h2>
-                <p>Once your map is built, you can share it securely or export it for PI presentations[cite: 242].</p>
+                <p>Once your map is built, you can share it securely or export it for PI presentations.</p>
                 
                 <div class="step-box">
-                    <h4>Step 8: Share &amp; Export [cite: 244, 249]</h4>
+                    <h4>Step 8: Share &amp; Export&nbsp;</h4>
                     <ul style="margin-bottom: 0; font-size: 14px;">
-                        <li><strong>Share:</strong> Click 'Share'. Give PA/SC 'Can edit' access. Give Surveyors 'Can view' access[cite: 244].</li>
-                        <li><strong>Export:</strong> Click the ⋮ (three dots) next to the map title → 'Export to KML/KMZ'. You can open this file in Google Earth for 3D terrain visualization[cite: 249].</li>
+                        <li><strong>Share:</strong> Click 'Share'. Give PA/SC 'Can edit' access. Give Surveyors 'Can view' access.</li>
+                        <li><strong>Export:</strong> Click the ⋮ (three dots) next to the map title → 'Export to KML/KMZ'. You can open this file in Google Earth for 3D terrain visualization.</li>
                     </ul>
                 </div>
 
                 <div class="alert-box" style="border-left-color: #2e7d32; background: #e8f5e9;">
                     <strong style="color: #2e7d32;">✅ Self-Assessment Checklist</strong>
-                    <p style="margin-bottom: 5px;">If you followed the steps using the dummy data, verify you can do the following [cite: 268-279]:</p>
+                    <p style="margin-bottom: 5px;" autocomplete="off">If you followed the steps using the dummy data, verify you can do the following:</p>
                     <ul style="margin-bottom: 0; font-size: 13px; line-height: 1.5;">
                         <li>Import a Google Sheet into My Maps</li>
                         <li>Color-code pins by Treatment and Team</li>
@@ -4942,4 +4943,5 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
 
 </script>
 
-<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div></body></html>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe></body></html>
