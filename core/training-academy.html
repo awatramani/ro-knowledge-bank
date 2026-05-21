@@ -2603,7 +2603,7 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(22, 78, 99) 55%, rgb(14, 116, 144) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(12, 35, 64) 0%, rgb(15, 52, 96) 50%, rgb(30, 87, 153) 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2611,9 +2611,9 @@ body.edit-mode-active .panel-body iframe {
       <h1 class="edit-text">Training <em>Academy</em></h1>
       <p class="hero-sub edit-text">The one-stop guide for RAs, PAs, and SCs to design and run an effective and successful field-staff training program.</p>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">6</div><div class="stat-label" id="hero-stat-1-lbl">Questions</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">2</div><div class="stat-label" id="hero-stat-2-lbl">Layers</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Brief</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">2-14</div><div class="stat-label" id="hero-stat-1-lbl">Days</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">14</div><div class="stat-label" id="hero-stat-2-lbl">Day backbone</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">ToT model</div></div>
       </div>
     </div>
     <div class="hero-podcast-side">
@@ -2622,8 +2622,8 @@ body.edit-mode-active .panel-body iframe {
           <div class="podcast-play">▶</div>
           <div class="podcast-top-text">
             <div class="podcast-tag">Training Academy Podcast</div>
-            <div class="podcast-title edit-text" id="podcast-title">Read Your Study First</div>
-            <div class="podcast-desc edit-text" id="podcast-desc">Sector, population, sensitivity, mode, instrument, team — what each one changes</div>
+            <div class="podcast-title edit-text" id="podcast-title">From Diagnosis to a Schedule</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">Duration, the master schedule, team size, in-person vs remote, and budget</div>
           </div>
         </div>
         <div class="podcast-player">
@@ -2641,8 +2641,8 @@ body.edit-mode-active .panel-body iframe {
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">The Academy</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-diagnose')" aria-selected="true">Diagnose Your Training</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-design')" aria-selected="false">Design the Program</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-diagnose')" aria-selected="false">Diagnose Your Training</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-design')" aria-selected="true">Design the Program</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-build')" aria-selected="false">Build the Materials</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-deliver')" aria-selected="false">Deliver &amp; Facilitate</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-sensitive')" aria-selected="false">Special Populations</button>
@@ -2784,7 +2784,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 
 <!-- ════════════════ PANEL 2: DIAGNOSE YOUR TRAINING ════════════════ -->
-<div id="panel-diagnose" class="tab-panel active">
+<div id="panel-diagnose" class="tab-panel">
 <div class="panel-label-strip"><span>Training Academy › </span><strong class="edit-text">Diagnose Your Training</strong></div>
 <div class="panel-body">
 <div class="section-padding">
@@ -2884,7 +2884,7 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-content-card">
       <h3 class="fr-card-h3 edit-text">Every Training Teaches Two Layers</h3>
       <p class="fr-guide-text edit-text">It helps to think of training as two stacked layers. The <strong>generic layer</strong> is the same on every study, how to be a surveyor: ethics and consent, org policies/ neutral interviewing and probing, Tablet/SurveyCTO navigation, tracking and status codes, professional conduct, data quality, and safety. The <strong>study-specific layer</strong> sits on top: your sector's domain knowledge, your instrument's modules and definitions, your population's special needs, and your study's protocols.</p>
-      <p class="fr-guide-text edit-text" autocomplete="off">A common downer is to spend all the training time on the study-specific layer (because that's what feels urgent) and assume the generic layer "is obvious." It isn't. A surveyor who can recite your agriculture module but doesn't know how to take neutral consent or probe a vague answer will still produce bad data. Budget for both layers deliberately.</p>
+      <p class="fr-guide-text edit-text">A common downer is to spend all the training time on the study-specific layer (because that's what feels urgent) and assume the generic layer "is obvious." It isn't. A surveyor who can recite your agriculture module but doesn't know how to take neutral consent or probe a vague answer will still produce bad data. Budget for both layers deliberately.</p>
       <div class="ta-pill-row">
         <span class="ta-pill">Generic: ethics &amp; consent</span>
         <span class="ta-pill">Generic: interviewing &amp; probing</span>
@@ -2910,7 +2910,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 
 <!-- ════════════════ PANEL 3: DESIGN THE PROGRAM ════════════════ -->
-<div id="panel-design" class="tab-panel">
+<div id="panel-design" class="tab-panel active">
 <div class="panel-label-strip"><span>Training Academy › </span><strong class="edit-text">Design the Program</strong></div>
 <div class="panel-body">
 <div class="section-padding">
@@ -2923,7 +2923,7 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-section-title"><div class="fr-step-num">1</div>How Long Should Training Be?</div>
     <div class="fr-content-card">
       <h3 class="fr-card-h3 edit-text">Duration Is a Calculation, Not a Habit</h3>
-      <p class="fr-guide-text edit-text">There is no fixed length. Start from your instrument and adjust for the factors from your diagnosis. As a baseline from across J-PAL SA projects: a short instrument (~10–15 min) typically needs 2–3 days; a longer one (~20–30 min) anywhere from 5–7 days; and a complex multi-module or measurement-heavy study can run the full 14 days. Then adjust.</p>
+      <p class="fr-guide-text edit-text">There is no fixed length. Start from your instrument and adjust for the factors from your diagnosis. As a baseline from across J-PAL SA projects: a short instrument (~30–40 min) typically needs at least 7 days to develop strong surveying skills; a longer one (~60–75 min) anywhere from 10–15 days; and a complex multi-module or measurement-heavy study can run the full 21 days. These are of course some estimates based on past data and observation</p>
       <table class="fr-inline-table">
         <thead><tr><th>Factor</th><th>Add time when…</th><th>Save time when…</th></tr></thead>
         <tbody>
@@ -2935,7 +2935,7 @@ body.edit-mode-active .panel-body iframe {
       </table>
       <div class="fr-danger-box">
         <strong>Always build in buffer</strong>
-        <span class="edit-text">Whatever you calculate, add buffer time. Trainings always run over: a module takes longer than planned, a pilot surfaces an instrument problem, half the team struggles with one concept. A training with no slack is a training that will cut corners on Day 6 — usually on mock practice, the worst possible thing to cut.</span>
+        <span class="edit-text">Whatever you calculate, add buffer time. Trainings always run over: a module takes longer than planned, a pilot surfaces an instrument problem, half the team struggles with one concept. A training with no slack is a training that will cut corners on Day 6, usually on mock practice, the worst possible thing to cut.</span>
       </div>
     </div>
   </div>
@@ -2944,7 +2944,7 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-section-title"><div class="fr-step-num">2</div>The Master Schedule (Adapt, Don't Copy)</div>
     <div class="fr-content-card">
       <h3 class="fr-card-h3 edit-text">A Proven 14-Day Backbone</h3>
-      <p class="fr-guide-text edit-text">This is the full-length structure used on large in-person studies. Treat it as a backbone to compress or expand from — a 5-day training keeps the same <em>sequence</em> (induction → fundamentals → context → instrument → mocks → field practice → pilot → assessment) but collapses the day counts. Never reorder it: people cannot practice an instrument they haven't been walked through, and cannot be assessed on skills they haven't practiced.</p>
+      <p class="fr-guide-text edit-text" autocomplete="off">This is the full-length structure used on large in-person studies. Treat it as a backbone to compress or expand from, a 7-day training keeps the same <em>sequence</em> (induction → fundamentals → context → instrument → mocks → field practice → pilot → assessment) but collapses the day counts. Never reorder it: people cannot practice an instrument they haven't been walked through and cannot be assessed on skills they haven't practiced.</p>
       <table class="fr-inline-table">
         <thead><tr><th>Day</th><th>Theme</th><th>Core Activities</th><th>Led By</th></tr></thead>
         <tbody>
