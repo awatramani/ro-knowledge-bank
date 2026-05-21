@@ -11,24 +11,24 @@
    GLOBAL DESIGN TOKENS — matches Hub & Pre-Field Ops exactly
    ═══════════════════════════════════════════════════════ */
 :root {
-  --green:#4f46e5;--green-dim:rgba(14,124,134,0.10);--ink:#0d1117;
-  --ink-mid:#1e293b;--ink-soft:#334155;--muted:#64748b;
+  --green:#1a6b8a;--green-dim:rgba(26,107,138,0.10);--ink:#141820;
+  --ink-mid:#1f2937;--ink-soft:#374151;--muted:#6b7280;
   --border:rgba(0,0,0,0.07);--border-md:rgba(0,0,0,0.11);
-  --surface:#fff;--off:#f8fafc;--off2:#f1f5f9;
-  --orange:#f59e0b;--red:#dc2626;--blue:#0ea5e9;--success:#10b981;
+  --surface:#fff;--off:#f7f6f3;--off2:#efecea;
+  --orange:#b7803a;--red:#b91c1c;--blue:#2d7eb5;--success:#0d7c5f;
   --mono:'DM Mono','Courier New',monospace;
   --sans:'DM Sans',system-ui,sans-serif;
   --ease:cubic-bezier(.4,0,.2,1);
   --radius:12px;--radius-lg:16px;
   --shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 16px rgba(0,0,0,0.04);
   --shadow-md:0 4px 20px rgba(0,0,0,0.07);
-  --shadow-hover:0 8px 32px rgba(14,124,134,0.10),0 1px 4px rgba(0,0,0,0.04);
+  --shadow-hover:0 8px 32px rgba(26,107,138,0.10),0 1px 4px rgba(0,0,0,0.04);
   /* Legacy aliases so ALL source inline styles resolve correctly */
-  --heading-green:#4f46e5;--brand-dark:#1e293b;
-  --bg-off-white:#f8fafc;--bg-light-green:#f2fafa;--bg-white:#fff;
-  --text-main:#334155;--text-light:#64748b;
-  --success-green:#10b981;--danger-red:#dc2626;
-  --accent-orange:#f59e0b;--accent-blue:#0ea5e9;
+  --heading-green:#1a6b8a;--brand-dark:#1f2937;
+  --bg-off-white:#f7f6f3;--bg-light-green:#f7f6f3;--bg-white:#fff;
+  --text-main:#374151;--text-light:#6b7280;
+  --success-green:#0d7c5f;--danger-red:#b91c1c;
+  --accent-orange:#b7803a;--accent-blue:#2d7eb5;
   --border-soft:rgba(0,0,0,0.07);
   --shadow-float:0 1px 3px rgba(0,0,0,0.04),0 4px 16px rgba(0,0,0,0.04);
   --transition-smooth:all 0.3s cubic-bezier(0.25,0.8,0.25,1);
@@ -61,7 +61,7 @@ tr:last-child td{border-bottom:none;}
 
 /* ─── Sidebar ────────────────────────────────────────── */
 .left-nav{width:200px;min-width:200px;height:100vh;position:sticky;top:0;
-  background:#0d1117;display:flex;flex-direction:column;overflow:hidden;
+  background:#141820;display:flex;flex-direction:column;overflow:hidden;
   z-index:900;flex-shrink:0;border-right:1px solid rgba(255,255,255,0.06);
   box-shadow:2px 0 16px rgba(0,0,0,0.10);font-family:var(--sans);}
 .left-nav-brand{height:56px;min-height:56px;display:flex;align-items:center;
@@ -72,26 +72,26 @@ tr:last-child td{border-bottom:none;}
 .left-nav-brand-text strong{display:block;font-size:12px;font-weight:700;color:#e2e8f0;line-height:1.25;}
 .left-nav-brand-text span{font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:0.8px;font-family:var(--mono);}
 .left-nav-section{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:1.6px;color:#334155;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
+  letter-spacing:1.6px;color:#374151;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
 .left-nav-items{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none;}
 .left-nav-items::-webkit-scrollbar{display:none;}
-.left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#64748b;font-size:13px;
+.left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#6b7280;font-size:13px;
   font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   border-radius:6px;margin:1px 8px;transition:background .15s,color .15s;
   text-decoration:none;border-left:2px solid transparent;}
 .left-nav-item:hover{background:rgba(255,255,255,0.05);color:#e2e8f0;}
-.left-nav-item.active{background:rgba(79,70,229,.15);color:#a5b4fc;font-weight:600;border-left-color:#4f46e5;}
+.left-nav-item.active{background:rgba(79,70,229,.15);color:#a5b4fc;font-weight:600;border-left-color:#1a6b8a;}
 .left-nav-footer{border-top:1px solid rgba(255,255,255,0.05);padding:14px 18px;flex-shrink:0;
-  font-size:10px;color:#334155;line-height:1.6;font-family:var(--mono);}
+  font-size:10px;color:#374151;line-height:1.6;font-family:var(--mono);}
 
 /* ─── Hero ───────────────────────────────────────────── */
 .hero{position:relative;padding:72px 5% 64px;color:white;background:var(--hero-bg,linear-gradient(135deg,#0f2027 0%,#203a43 50%,#2c5364 100%));border-bottom:1px solid rgba(255,255,255,0.05);overflow:hidden;transition:background 0.5s ease;}
 .aurora{position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(14,124,134,0.07) 0%,transparent 70%),
-             radial-gradient(ellipse 50% 40% at 10% 80%,rgba(14,124,134,0.04) 0%,transparent 60%);}
+  background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(26,107,138,0.07) 0%,transparent 70%),
+             radial-gradient(ellipse 50% 40% at 10% 80%,rgba(26,107,138,0.04) 0%,transparent 60%);}
 .hero::before{content:'';position:absolute;inset:0;z-index:0;
-  background-image:linear-gradient(rgba(14,124,134,0.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(14,124,134,0.03) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(26,107,138,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(26,107,138,0.03) 1px,transparent 1px);
   background-size:48px 48px;}
 .hero-inner{position:relative;z-index:1;display:flex;align-items:flex-start;
   gap:56px;max-width:1280px;margin:0 auto;}
@@ -99,7 +99,7 @@ tr:last-child td{border-bottom:none;}
 .hero-kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
   font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,0.75);
   background:var(--green-dim);padding:5px 12px;border-radius:4px;margin-bottom:22px;
-  border:1px solid rgba(14,124,134,0.15);}
+  border:1px solid rgba(26,107,138,0.15);}
 .hero-kicker::before{content:'';width:6px;height:6px;border-radius:50%;
   background:var(--green);animation:pulse-dot 2.4s ease infinite;}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
@@ -119,27 +119,27 @@ tr:last-child td{border-bottom:none;}
   transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
 .podcast-card:hover{transform:translateY(-4px);box-shadow:0 32px 56px rgba(0,0,0,0.2);}
 .podcast-top{position:relative;height:132px;overflow:hidden;
-  background:linear-gradient(135deg,#0f1f1c 0%,#0d1117 100%);
+  background:linear-gradient(135deg,#0f1f1c 0%,#141820 100%);
   display:flex;align-items:center;padding:0 22px;gap:16px;}
 .podcast-top::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 80% at 80% 50%,rgba(14,124,134,0.18) 0%,transparent 70%);}
+  background:radial-gradient(ellipse 80% 80% at 80% 50%,rgba(26,107,138,0.18) 0%,transparent 70%);}
 .podcast-play{width:48px;height:48px;border-radius:50%;background:var(--green);
   border:2px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;
   font-size:16px;color:white;flex-shrink:0;position:relative;z-index:1;
-  box-shadow:0 0 0 8px rgba(14,124,134,0.15);}
+  box-shadow:0 0 0 8px rgba(26,107,138,0.15);}
 .podcast-top-text{position:relative;z-index:1;}
 .podcast-tag{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;
   letter-spacing:1.8px;color:#67e8f9;background:rgba(103,232,249,0.1);
   border:1px solid rgba(103,232,249,0.2);padding:3px 9px;border-radius:4px;
   display:inline-block;margin-bottom:7px;}
 .podcast-title{font-size:15px;font-weight:700;color:#e2e8f0;letter-spacing:-0.2px;line-height:1.25;}
-.podcast-desc{font-size:11px;color:#64748b;margin-top:3px;}
+.podcast-desc{font-size:11px;color:#6b7280;margin-top:3px;}
 .podcast-player{background:#060910;border-top:1px solid rgba(255,255,255,0.06);}
 .podcast-player iframe{width:100%;height:76px;border:0;display:block;}
 .podcast-footer{padding:12px 18px;background:rgba(0,0,0,0.3);
   display:flex;align-items:center;justify-content:space-between;
   border-top:1px solid rgba(255,255,255,0.05);}
-.podcast-footer-label{font-size:11px;color:#64748b;font-family:var(--mono);}
+.podcast-footer-label{font-size:11px;color:#6b7280;font-family:var(--mono);}
 .podcast-footer-badge{font-size:10px;font-weight:700;color:#67e8f9;
   background:rgba(103,232,249,0.1);padding:3px 8px;border-radius:3px;
   font-family:var(--mono);text-transform:uppercase;letter-spacing:.8px;}
@@ -162,7 +162,7 @@ tr:last-child td{border-bottom:none;}
 .tab-panel{display:none;}
 .tab-panel.active{display:block;animation:fadeUp .3s var(--ease);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-.panel-label-strip{background:var(--ink);padding:10px 5%;}
+.panel-label-strip{background:#1f2937;padding:10px 5%;}
 .panel-label-strip span{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.35);}
 .panel-label-strip strong{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.7);}
 .panel-body{padding:48px 5% 80px;max-width:1280px;margin:0 auto;}
@@ -178,7 +178,7 @@ tr:last-child td{border-bottom:none;}
 #panel-home .section-padding{padding:0;}
 #panel-home .equation-banner{background:var(--ink);color:white;text-align:center;
   padding:36px 24px;border-radius:var(--radius-lg);margin:32px 0;box-shadow:var(--shadow-md);}
-#panel-home .equation-banner h3{color:#f2fafa;margin-bottom:16px;font-size:17px;font-weight:600;}
+#panel-home .equation-banner h3{color:#f7f6f3;margin-bottom:16px;font-size:17px;font-weight:600;}
 #panel-home .equation-math{font-size:16px;font-weight:700;color:white;
   display:flex;flex-wrap:wrap;justify-content:center;gap:8px;align-items:center;}
 #panel-home .eq-item{background:rgba(255,255,255,0.10);padding:9px 16px;border-radius:8px;}
@@ -195,14 +195,14 @@ tr:last-child td{border-bottom:none;}
 #panel-home .content-col{flex:1.2;}
 #panel-home .visual-col{flex:0.8;}
 #panel-home .zigzag-row h3{font-size:18px;color:var(--green);margin-bottom:12px;}
-#panel-home .callout{background:rgba(14,124,134,0.06);border-left:3px solid var(--green);
+#panel-home .callout{background:rgba(26,107,138,0.06);border-left:3px solid var(--green);
   padding:16px 18px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14px;line-height:1.65;}
 #panel-home .callout strong{color:var(--green);display:block;margin-bottom:5px;}
-#panel-home .scenario-box{background:#fff8e1;border-left:3px solid #ffb300;
+#panel-home .scenario-box{background:#fdfbf7;border-left:3px solid #b7803a;
   padding:18px 20px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14px;line-height:1.65;}
-#panel-home .scenario-box strong{color:#e65100;display:block;margin-bottom:8px;
+#panel-home .scenario-box strong{color:#92702e;display:block;margin-bottom:8px;
   font-size:14px;text-transform:uppercase;letter-spacing:0.5px;}
-#panel-home .scenario-box .cost{font-weight:600;color:#d32f2f;margin-top:8px;font-size:13.5px;}
+#panel-home .scenario-box .cost{font-weight:600;color:#b91c1c;margin-top:8px;font-size:13.5px;}
 #panel-home .scenario-box .lesson{font-style:italic;color:#555;margin-top:8px;
   border-top:1px dashed #ffca28;padding-top:8px;font-size:13px;}
 #panel-home table{font-size:14px;}
@@ -222,7 +222,7 @@ tr:last-child td{border-bottom:none;}
 .fr-content-card{background:white;padding:28px;border-radius:var(--radius-lg);
   box-shadow:var(--shadow);margin-bottom:22px;border:1px solid var(--border);
   transition:transform .2s,box-shadow .2s,border-color .2s;}
-.fr-content-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:rgba(14,124,134,0.2);}
+.fr-content-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:rgba(26,107,138,0.2);}
 .fr-card-h3{font-size:17px;color:var(--green);margin-bottom:12px;}
 .fr-guide-text{font-size:15px;color:var(--ink-soft);margin-bottom:14px;line-height:1.65;}
 .fr-tip-box{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid var(--success);
@@ -232,7 +232,7 @@ tr:last-child td{border-bottom:none;}
 .fr-danger-box{background:#fff1f2;border:1px solid #fecaca;border-left:4px solid var(--red);
   padding:16px 20px;margin-top:18px;border-radius:0 10px 10px 0;font-size:14px;color:#991b1b;}
 .fr-danger-box strong{display:block;margin-bottom:6px;font-size:14px;color:#991b1b;}
-.fr-callout{background:rgba(14,124,134,0.06);border-left:3px solid var(--green);
+.fr-callout{background:rgba(26,107,138,0.06);border-left:3px solid var(--green);
   padding:16px 18px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14px;line-height:1.65;}
 .fr-callout strong{color:var(--green);display:block;margin-bottom:5px;}
 /* Process steps */
@@ -240,7 +240,7 @@ tr:last-child td{border-bottom:none;}
 .fr-process-step{display:flex;align-items:flex-start;gap:16px;padding:18px;
   background:var(--off);border:1px solid var(--border);border-radius:10px;
   transition:border-color .15s,background .15s;}
-.fr-process-step:hover{border-color:rgba(14,124,134,0.3);background:white;}
+.fr-process-step:hover{border-color:rgba(26,107,138,0.3);background:white;}
 .fr-ps-num{width:32px;height:32px;border-radius:50%;background:var(--green);color:white;
   display:flex;align-items:center;justify-content:center;font-family:var(--mono);
   font-size:13px;font-weight:700;flex-shrink:0;}
@@ -249,19 +249,60 @@ tr:last-child td{border-bottom:none;}
 .fr-portal-btn{display:inline-block;margin-top:10px;background:var(--green);color:white;
   padding:8px 18px;border-radius:7px;font-size:12px;font-weight:600;font-family:var(--mono);}
 .fr-portal-btn:hover{background:#135c52;}
+/* Side-by-side calculator layout */
+.calc-duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px;}
+@media(max-width:1100px){.calc-duo{grid-template-columns:1fr;}}
+.calc-duo .fr-calculator-card{margin-bottom:0;}
+/* Dynamic benchmark arrow on slider */
+.fr-bench-row{position:relative;height:30px;margin-top:6px;overflow:visible;}
+.fr-bench-arrow{position:absolute;top:0;display:flex;flex-direction:column;align-items:center;transition:left .3s var(--ease);transform:translateX(-50%);pointer-events:none;z-index:2;}
+.fr-bench-arrow .arrow-tip{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:8px solid #b7803a;}
+.fr-bench-tag{font-family:var(--mono);font-size:9px;font-weight:700;color:#92702e;background:#fdfbf7;border:1px solid #e8e0d4;padding:2px 8px;border-radius:4px;white-space:nowrap;margin-top:1px;letter-spacing:0.3px;}
+/* Daily Time Dist Calculator */
+.dt-result-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px;}
+.dt-result-box{background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;border-top:3px solid var(--green);}
+.dt-result-box .dt-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;margin-bottom:6px;}
+.dt-result-box .dt-val{font-size:36px;font-weight:800;color:var(--green);line-height:1.1;}
+.dt-result-box .dt-sub{font-size:12px;color:var(--muted);margin-top:4px;}
+/* Remote sub-page extras */
+.rm-week-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:24px 0;}
+.rm-week-card{background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.rm-week-card strong{font-size:13px;color:var(--green);display:block;margin-bottom:8px;}
+.rm-week-card p{font-size:13px;margin:0;}
+.rm-scenario{background:#fdfbf7;border:1px solid #e8e0d4;border-left:3px solid #b7803a;border-radius:4px 10px 10px 4px;padding:16px 20px;margin:16px 0;font-size:13.5px;}
+.rm-scenario strong{color:#92702e;display:block;margin-bottom:6px;font-size:12px;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.8px;}
+.rm-sim{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);overflow:hidden;margin:32px 0;}
+.rm-sim-header{background:#1f2937;padding:20px 28px;color:white;display:flex;justify-content:space-between;align-items:center;}
+.rm-sim-body{padding:28px;min-height:300px;}
+.rm-sim-q{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.rm-sim-ctx{font-size:13.5px;color:var(--muted);margin-bottom:20px;}
+.rm-sim-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.rm-opt{background:var(--off);border:2px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;transition:all .2s;}
+.rm-opt:hover{border-color:var(--green);background:rgba(26,107,138,0.03);transform:translateY(-2px);}
+.rm-opt.picked{border-color:var(--green);background:rgba(26,107,138,0.05);}
+.rm-opt h4{font-size:13px;margin-bottom:4px;}
+.rm-opt p{font-size:12px;margin:0;color:var(--muted);}
+.rm-fb{background:var(--off);border-radius:10px;padding:16px;margin-top:16px;border-left:3px solid var(--green);display:none;}
+.rm-fb.show{display:block;}
+.rm-fb.bad{border-left-color:#b7803a;background:#fdfbf7;}
+.rm-sim-footer{padding:16px 28px;border-top:1px solid var(--border);display:flex;justify-content:space-between;}
+.rm-sim-btn{padding:8px 20px;border:none;border-radius:7px;font-weight:700;font-size:12px;cursor:pointer;font-family:var(--sans);}
+.rm-sim-primary{background:var(--green);color:white;}
+.rm-sim-score{font-family:var(--mono);font-size:13px;color:var(--green);font-weight:700;}
+@media(max-width:800px){.rm-sim-opts{grid-template-columns:1fr;}.dt-result-pair{grid-template-columns:1fr;}}
 /* Calculators */
-.fr-calculator-card{background:white;border-radius:var(--radius-lg);overflow:hidden;
+.fr-calculator-card{background:white;border-radius:var(--radius-lg);
   box-shadow:var(--shadow-md);border:1px solid var(--border);margin-bottom:28px;}
 .fr-calc-header{background:var(--ink);padding:24px 28px;color:white;
   display:flex;justify-content:space-between;align-items:center;
   border-bottom:3px solid var(--green);}
 .fr-calc-body{display:flex;flex-wrap:wrap;background:var(--off);}
-.fr-calc-controls{flex:1;min-width:300px;padding:28px;background:white;border-right:1px solid var(--border);}
+.fr-calc-controls{flex:1;min-width:300px;padding:28px;background:white;border-right:1px solid var(--border);overflow:visible;}
 .fr-calc-metrics{flex:1.5;min-width:340px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-content:start;}
 .fr-control-group{margin-bottom:24px;}
 .fr-ctrl-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
 .fr-ctrl-label{font-size:13px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:0.3px;}
-.fr-ctrl-val{font-size:18px;font-weight:700;color:var(--green);background:rgba(14,124,134,0.08);padding:3px 10px;border-radius:7px;font-family:var(--mono);}
+.fr-ctrl-val{font-size:18px;font-weight:700;color:var(--green);background:rgba(26,107,138,0.08);padding:3px 10px;border-radius:7px;font-family:var(--mono);}
 input[type=range]{-webkit-appearance:none;width:100%;background:transparent;margin:8px 0;}
 input[type=range]::-webkit-slider-runnable-track{width:100%;height:7px;cursor:pointer;background:#e2e8f0;border-radius:8px;}
 input[type=range]::-webkit-slider-thumb{height:22px;width:22px;border-radius:50%;background:var(--green);cursor:pointer;-webkit-appearance:none;margin-top:-7px;box-shadow:0 2px 5px rgba(79,70,229,0.35);transition:transform .1s;}
@@ -295,9 +336,9 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15);}
   padding:3px 9px;font-size:10px;text-transform:uppercase;font-weight:700;
   border-radius:5px;letter-spacing:0.5px;font-family:var(--mono);}
 .fr-tag-r{background:#dcfce7;color:#166634;border:1px solid #bbf7d0;}
-.fr-tag-a{background:#fef3c7;color:#9a3412;border:1px solid #fde68a;}
+.fr-tag-a{background:#fef3c7;color:#92702e;border:1px solid #e8e0d4;}
 .fr-tag-c{background:#e0f2fe;color:#075985;border:1px solid #bae6fd;}
-.fr-tag-i{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;}
+.fr-tag-i{background:#efecea;color:#475569;border:1px solid #e2e8f0;}
 /* Inline table */
 .fr-inline-table{width:100%;border-collapse:collapse;margin:14px 0 0;background:white;
   border-radius:10px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);}
@@ -381,7 +422,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15);}
 #img-bubble button{width:100%;padding:9px;border:none;border-radius:7px;
   background:var(--green);color:white;font-weight:700;cursor:pointer;
   font-size:12px;font-family:var(--sans);margin-bottom:6px;}
-#img-bubble .cancel{background:transparent;border:1px solid #e2e8f0;color:#64748b;}
+#img-bubble .cancel{background:transparent;border:1px solid #e2e8f0;color:#6b7280;}
 
 /* ─── Responsive ─────────────────────────────────────── */
 @media(max-width:1024px){
@@ -501,7 +542,7 @@ body {
 #panel-pilot /* --- QUIRKY "CRASH TEST" STICKY NOTES --- */
         .sticky-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 40px;}
 #panel-pilot .sticky-note {
-            background: #fffdf2; border: 1px solid #fde68a; padding: 30px; 
+            background: #fffdf2; border: 1px solid #e8e0d4; padding: 30px; 
             border-radius: 2px 20px 20px 20px; color: #475569; width: 300px;
             box-shadow: 4px 4px 0px rgba(245, 158, 11, 0.15);
             position: relative; transition: var(--transition-smooth);
@@ -528,7 +569,7 @@ body {
             border-radius: 50%; background: white; border: 3px solid var(--heading-green);
             transition: var(--transition-smooth); box-shadow: 0 0 0 4px white;
         }
-#panel-pilot .tl-item:hover .tl-dot { background: var(--heading-green); transform: scale(1.2); box-shadow: 0 0 0 4px rgba(14,124,134,0.2);}
+#panel-pilot .tl-item:hover .tl-dot { background: var(--heading-green); transform: scale(1.2); box-shadow: 0 0 0 4px rgba(26,107,138,0.2);}
 #panel-pilot .tl-item.zero-hour .tl-dot { border-color: var(--accent-orange); }
 #panel-pilot .tl-item.zero-hour:hover .tl-dot { background: var(--accent-orange); box-shadow: 0 0 0 4px rgba(245,158,11,0.2);}
 #panel-pilot .tl-time { font-size: 12px; font-weight: 800; color: var(--heading-green); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; display: block;}
@@ -558,7 +599,7 @@ body {
         .raci-table-wrapper { overflow-x: auto; background: white; }
 #panel-pilot .raci-table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; min-width: 800px; }
 #panel-pilot .raci-table th {
-            background-color: #f1f5f9; color: var(--brand-dark); padding: 16px 20px;
+            background-color: #efecea; color: var(--brand-dark); padding: 16px 20px;
             font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;
             border-bottom: 1px solid var(--border-soft);
         }
@@ -573,9 +614,9 @@ body {
             font-size: 12px; margin-right: 8px;
         }
 #panel-pilot .bg-r { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
-#panel-pilot .bg-a { background: #fef3c7; color: #9a3412; border: 1px solid #fde68a; }
+#panel-pilot .bg-a { background: #fef3c7; color: #92702e; border: 1px solid #e8e0d4; }
 #panel-pilot .bg-c { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
-#panel-pilot .bg-i { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+#panel-pilot .bg-i { background: #efecea; color: #475569; border: 1px solid #cbd5e1; }
 #panel-pilot /* --- UNIFIED ROLE PILLS --- */
         .role-group { display: flex; gap: 6px; flex-wrap: wrap;}
 #panel-pilot .role-pill {
@@ -688,7 +729,7 @@ body {
             background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2000&q=80');
             background-position: center;
         }
-#panel-launch .orb-1 { position: absolute; top: -20%; left: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(14,124,134,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
+#panel-launch .orb-1 { position: absolute; top: -20%; left: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(26,107,138,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
 #panel-launch .hero-glass {
             position: relative; z-index: 1; background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -714,12 +755,12 @@ body {
             border: 1px solid var(--border-soft); transition: var(--transition-smooth);
             display: flex; flex-direction: column;
         }
-#panel-launch .content-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: rgba(14,124,134,0.3);}
+#panel-launch .content-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: rgba(26,107,138,0.3);}
 #panel-launch .content-card h3 { font-size: 18px; color: var(--heading-green); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;}
 #panel-launch .scenario-box {
-            background: #fffbeb; border-left: 4px solid var(--accent-orange);
+            background: #fdfbf7; border-left: 4px solid var(--accent-orange);
             padding: 15px 20px; border-radius: 0 8px 8px 0; margin-top: auto;
-            font-size: 13.5px; color: #9a3412;
+            font-size: 13.5px; color: #92702e;
         }
 #panel-launch .scenario-box strong { display: block; margin-bottom: 5px; color: var(--accent-orange); text-transform: uppercase; font-size: 11px; letter-spacing: 1px;}
 #panel-launch /* --- 4. INTERACTIVE FORECASTER DASHBOARD --- */
@@ -865,7 +906,7 @@ body {
             color: var(--text-main);
             line-height: 1.7;
             margin: 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #eefcfd 100%);
+            background: linear-gradient(135deg, #f7f6f3 0%, #eefcfd 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -876,7 +917,7 @@ body {
             padding: 80px 5% 60px 5%; overflow: hidden;
             border-bottom: 1px solid var(--border-soft);
         }
-#panel-maps .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(14,124,134,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
+#panel-maps .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(26,107,138,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
 #panel-maps .hero-glass {
             position: relative; z-index: 1; background: var(--glass-bg);
             backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -942,9 +983,9 @@ body {
 #panel-maps th, #panel-maps td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-soft); font-size: 13px; vertical-align: top;}
 #panel-maps th { background: var(--bg-light-green); color: var(--brand-dark); font-weight: 700; }
 #panel-maps tr:last-child td { border-bottom: none; }
-#panel-maps .scenario-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
-#panel-maps .scenario-box strong { color: #e65100; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
-#panel-maps .alert-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-maps .scenario-box { background: #fdfbf7; border-left: 4px solid #b7803a; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-maps .scenario-box strong { color: #92702e; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
+#panel-maps .alert-box { background: #ffebee; border-left: 4px solid #b91c1c; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
 #panel-maps .alert-box strong { color: #c62828; display: block; margin-bottom: 5px;}
 #panel-maps /* --- AI IMAGE PLACEHOLDER --- */
         .ai-image-placeholder {
@@ -977,7 +1018,7 @@ body {
             color: var(--text-main);
             line-height: 1.7;
             margin: 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #eefcfd 100%);
+            background: linear-gradient(135deg, #f7f6f3 0%, #eefcfd 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -988,7 +1029,7 @@ body {
             padding: 80px 5% 60px 5%; overflow: hidden;
             border-bottom: 1px solid var(--border-soft);
         }
-#panel-attend .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(14,124,134,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
+#panel-attend .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(26,107,138,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
 #panel-attend .hero-glass {
             position: relative; z-index: 1; background: var(--glass-bg);
             backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -1054,9 +1095,9 @@ body {
 #panel-attend th, #panel-attend td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-soft); font-size: 13px; vertical-align: top;}
 #panel-attend th { background: var(--bg-light-green); color: var(--brand-dark); font-weight: 700; }
 #panel-attend tr:last-child td { border-bottom: none; }
-#panel-attend .scenario-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
-#panel-attend .scenario-box strong { color: #e65100; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
-#panel-attend .alert-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-attend .scenario-box { background: #fdfbf7; border-left: 4px solid #b7803a; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-attend .scenario-box strong { color: #92702e; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
+#panel-attend .alert-box { background: #ffebee; border-left: 4px solid #b91c1c; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
 #panel-attend .alert-box strong { color: #c62828; display: block; margin-bottom: 5px;}
 #panel-attend /* --- AI IMAGE PLACEHOLDER --- */
         .ai-image-placeholder {
@@ -1089,7 +1130,7 @@ body {
             color: var(--text-main);
             line-height: 1.7;
             margin: 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #eefcfd 100%);
+            background: linear-gradient(135deg, #f7f6f3 0%, #eefcfd 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -1100,7 +1141,7 @@ body {
             padding: 80px 5% 60px 5%; overflow: hidden;
             border-bottom: 1px solid var(--border-soft);
         }
-#panel-remote .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(14,124,134,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
+#panel-remote .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(26,107,138,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
 #panel-remote .hero-glass {
             position: relative; z-index: 1; background: var(--glass-bg);
             backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -1166,9 +1207,9 @@ body {
 #panel-remote th, #panel-remote td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-soft); font-size: 13px; vertical-align: top;}
 #panel-remote th { background: var(--bg-light-green); color: var(--brand-dark); font-weight: 700; }
 #panel-remote tr:last-child td { border-bottom: none; }
-#panel-remote .scenario-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
-#panel-remote .scenario-box strong { color: #e65100; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
-#panel-remote .alert-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-remote .scenario-box { background: #fdfbf7; border-left: 4px solid #b7803a; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-remote .scenario-box strong { color: #92702e; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
+#panel-remote .alert-box { background: #ffebee; border-left: 4px solid #b91c1c; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
 #panel-remote .alert-box strong { color: #c62828; display: block; margin-bottom: 5px;}
 #panel-remote /* --- AI IMAGE PLACEHOLDER --- */
         .ai-image-placeholder {
@@ -1193,39 +1234,39 @@ body {
             .story-visual { width: 100%; flex: auto; }
         }
 
-    .left-nav{width:200px;min-width:200px;height:100vh;position:sticky;top:0;background:#0d1117;display:flex;flex-direction:column;overflow:hidden;z-index:900;flex-shrink:0;border-right:1px solid rgba(255,255,255,.06);box-shadow:2px 0 16px rgba(0,0,0,.10);}
+    .left-nav{width:200px;min-width:200px;height:100vh;position:sticky;top:0;background:#141820;display:flex;flex-direction:column;overflow:hidden;z-index:900;flex-shrink:0;border-right:1px solid rgba(255,255,255,.06);box-shadow:2px 0 16px rgba(0,0,0,.10);}
 .left-nav-brand{height:56px;min-height:56px;display:flex;align-items:center;padding:0 18px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;}
 .left-nav-logo{width:26px;height:26px;flex-shrink:0;}.left-nav-logo img{width:26px;height:auto;filter:brightness(0) invert(1);opacity:.9;display:block;}
 .left-nav-brand-text strong{display:block;font-size:12px;font-weight:700;color:#e2e8f0;line-height:1.25;}.left-nav-brand-text span{font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:.8px;font-family:var(--mono);}
-.left-nav-section{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:#334155;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
+.left-nav-section{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:#374151;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
 .left-nav-items{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none;}.left-nav-items::-webkit-scrollbar{display:none;}
-.left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#64748b;font-size:13px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:6px;margin:1px 8px;transition:background .15s,color .15s;text-decoration:none;border-left:2px solid transparent;}
+.left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#6b7280;font-size:13px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:6px;margin:1px 8px;transition:background .15s,color .15s;text-decoration:none;border-left:2px solid transparent;}
 .left-nav-item:hover{background:rgba(255,255,255,.05);color:#e2e8f0;}
-.left-nav-item.active{background:rgba(14,124,134,.15);color:#67e8f9;font-weight:600;border-left-color:#0e7c86;}
+.left-nav-item.active{background:rgba(26,107,138,.15);color:#67e8f9;font-weight:600;border-left-color:#0e7c86;}
 .left-nav-divider{height:1px;background:rgba(255,255,255,.04);margin:6px 14px;}
-.left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:10px;color:#334155;line-height:1.6;font-family:var(--mono);}
+.left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:10px;color:#374151;line-height:1.6;font-family:var(--mono);}
 /* ═══════════════════════════════════════════════════════
    GLOBAL DESIGN TOKENS — matches Hub & Pre-Field Ops exactly
    ═══════════════════════════════════════════════════════ */
 :root {
-  --green:#4f46e5;--green-dim:rgba(14,124,134,0.10);--ink:#0d1117;
-  --ink-mid:#1e293b;--ink-soft:#334155;--muted:#64748b;
+  --green:#1a6b8a;--green-dim:rgba(26,107,138,0.10);--ink:#141820;
+  --ink-mid:#1f2937;--ink-soft:#374151;--muted:#6b7280;
   --border:rgba(0,0,0,0.07);--border-md:rgba(0,0,0,0.11);
-  --surface:#fff;--off:#f8fafc;--off2:#f1f5f9;
-  --orange:#f59e0b;--red:#dc2626;--blue:#0ea5e9;--success:#10b981;
+  --surface:#fff;--off:#f7f6f3;--off2:#efecea;
+  --orange:#b7803a;--red:#b91c1c;--blue:#2d7eb5;--success:#0d7c5f;
   --mono:'DM Mono','Courier New',monospace;
   --sans:'DM Sans',system-ui,sans-serif;
   --ease:cubic-bezier(.4,0,.2,1);
   --radius:12px;--radius-lg:16px;
   --shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 16px rgba(0,0,0,0.04);
   --shadow-md:0 4px 20px rgba(0,0,0,0.07);
-  --shadow-hover:0 8px 32px rgba(14,124,134,0.10),0 1px 4px rgba(0,0,0,0.04);
+  --shadow-hover:0 8px 32px rgba(26,107,138,0.10),0 1px 4px rgba(0,0,0,0.04);
   /* Legacy aliases so ALL source inline styles resolve correctly */
-  --heading-green:#4f46e5;--brand-dark:#1e293b;
-  --bg-off-white:#f8fafc;--bg-light-green:#f2fafa;--bg-white:#fff;
-  --text-main:#334155;--text-light:#64748b;
-  --success-green:#10b981;--danger-red:#dc2626;
-  --accent-orange:#f59e0b;--accent-blue:#0ea5e9;
+  --heading-green:#1a6b8a;--brand-dark:#1f2937;
+  --bg-off-white:#f7f6f3;--bg-light-green:#f7f6f3;--bg-white:#fff;
+  --text-main:#374151;--text-light:#6b7280;
+  --success-green:#0d7c5f;--danger-red:#b91c1c;
+  --accent-orange:#b7803a;--accent-blue:#2d7eb5;
   --border-soft:rgba(0,0,0,0.07);
   --shadow-float:0 1px 3px rgba(0,0,0,0.04),0 4px 16px rgba(0,0,0,0.04);
   --transition-smooth:all 0.3s cubic-bezier(0.25,0.8,0.25,1);
@@ -1258,7 +1299,7 @@ tr:last-child td{border-bottom:none;}
 
 /* ─── Sidebar ────────────────────────────────────────── */
 .left-nav{width:200px;min-width:200px;height:100vh;position:sticky;top:0;
-  background:#0d1117;display:flex;flex-direction:column;overflow:hidden;
+  background:#141820;display:flex;flex-direction:column;overflow:hidden;
   z-index:900;flex-shrink:0;border-right:1px solid rgba(255,255,255,0.06);
   box-shadow:2px 0 16px rgba(0,0,0,0.10);font-family:var(--sans);}
 .left-nav-brand{height:56px;min-height:56px;display:flex;align-items:center;
@@ -1269,26 +1310,26 @@ tr:last-child td{border-bottom:none;}
 .left-nav-brand-text strong{display:block;font-size:12px;font-weight:700;color:#e2e8f0;line-height:1.25;}
 .left-nav-brand-text span{font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:0.8px;font-family:var(--mono);}
 .left-nav-section{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:1.6px;color:#334155;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
+  letter-spacing:1.6px;color:#374151;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
 .left-nav-items{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none;}
 .left-nav-items::-webkit-scrollbar{display:none;}
-.left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#64748b;font-size:13px;
+.left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#6b7280;font-size:13px;
   font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   border-radius:6px;margin:1px 8px;transition:background .15s,color .15s;
   text-decoration:none;border-left:2px solid transparent;}
 .left-nav-item:hover{background:rgba(255,255,255,0.05);color:#e2e8f0;}
-.left-nav-item.active{background:rgba(14,124,134,0.15);color:#67e8f9;font-weight:600;border-left-color:var(--green);}
+.left-nav-item.active{background:rgba(26,107,138,0.15);color:#67e8f9;font-weight:600;border-left-color:var(--green);}
 .left-nav-footer{border-top:1px solid rgba(255,255,255,0.05);padding:14px 18px;flex-shrink:0;
-  font-size:10px;color:#334155;line-height:1.6;font-family:var(--mono);}
+  font-size:10px;color:#374151;line-height:1.6;font-family:var(--mono);}
 
 /* ─── Hero ───────────────────────────────────────────── */
 .hero{position:relative;padding:72px 5% 64px;color:white;background:var(--hero-bg,linear-gradient(135deg,#0f2027 0%,#203a43 50%,#2c5364 100%));border-bottom:1px solid rgba(255,255,255,0.05);overflow:hidden;transition:background 0.5s ease;}
 .aurora{position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(14,124,134,0.07) 0%,transparent 70%),
-             radial-gradient(ellipse 50% 40% at 10% 80%,rgba(14,124,134,0.04) 0%,transparent 60%);}
+  background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(26,107,138,0.07) 0%,transparent 70%),
+             radial-gradient(ellipse 50% 40% at 10% 80%,rgba(26,107,138,0.04) 0%,transparent 60%);}
 .hero::before{content:'';position:absolute;inset:0;z-index:0;
-  background-image:linear-gradient(rgba(14,124,134,0.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(14,124,134,0.03) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(26,107,138,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(26,107,138,0.03) 1px,transparent 1px);
   background-size:48px 48px;}
 .hero-inner{position:relative;z-index:1;display:flex;align-items:flex-start;
   gap:56px;max-width:1280px;margin:0 auto;}
@@ -1296,7 +1337,7 @@ tr:last-child td{border-bottom:none;}
 .hero-kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
   font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,0.75);
   background:var(--green-dim);padding:5px 12px;border-radius:4px;margin-bottom:22px;
-  border:1px solid rgba(14,124,134,0.15);}
+  border:1px solid rgba(26,107,138,0.15);}
 .hero-kicker::before{content:'';width:6px;height:6px;border-radius:50%;
   background:var(--green);animation:pulse-dot 2.4s ease infinite;}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
@@ -1316,27 +1357,27 @@ tr:last-child td{border-bottom:none;}
   transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
 .podcast-card:hover{transform:translateY(-4px);box-shadow:0 32px 56px rgba(0,0,0,0.2);}
 .podcast-top{position:relative;height:132px;overflow:hidden;
-  background:linear-gradient(135deg,#0f1f1c 0%,#0d1117 100%);
+  background:linear-gradient(135deg,#0f1f1c 0%,#141820 100%);
   display:flex;align-items:center;padding:0 22px;gap:16px;}
 .podcast-top::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 80% at 80% 50%,rgba(14,124,134,0.18) 0%,transparent 70%);}
+  background:radial-gradient(ellipse 80% 80% at 80% 50%,rgba(26,107,138,0.18) 0%,transparent 70%);}
 .podcast-play{width:48px;height:48px;border-radius:50%;background:var(--green);
   border:2px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;
   font-size:16px;color:white;flex-shrink:0;position:relative;z-index:1;
-  box-shadow:0 0 0 8px rgba(14,124,134,0.15);}
+  box-shadow:0 0 0 8px rgba(26,107,138,0.15);}
 .podcast-top-text{position:relative;z-index:1;}
 .podcast-tag{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;
   letter-spacing:1.8px;color:#67e8f9;background:rgba(103,232,249,0.1);
   border:1px solid rgba(103,232,249,0.2);padding:3px 9px;border-radius:4px;
   display:inline-block;margin-bottom:7px;}
 .podcast-title{font-size:15px;font-weight:700;color:#e2e8f0;letter-spacing:-0.2px;line-height:1.25;}
-.podcast-desc{font-size:11px;color:#64748b;margin-top:3px;}
+.podcast-desc{font-size:11px;color:#6b7280;margin-top:3px;}
 .podcast-player{background:#060910;border-top:1px solid rgba(255,255,255,0.06);}
 .podcast-player iframe{width:100%;height:76px;border:0;display:block;}
 .podcast-footer{padding:12px 18px;background:rgba(0,0,0,0.3);
   display:flex;align-items:center;justify-content:space-between;
   border-top:1px solid rgba(255,255,255,0.05);}
-.podcast-footer-label{font-size:11px;color:#64748b;font-family:var(--mono);}
+.podcast-footer-label{font-size:11px;color:#6b7280;font-family:var(--mono);}
 .podcast-footer-badge{font-size:10px;font-weight:700;color:#67e8f9;
   background:rgba(103,232,249,0.1);padding:3px 8px;border-radius:3px;
   font-family:var(--mono);text-transform:uppercase;letter-spacing:.8px;}
@@ -1359,7 +1400,7 @@ tr:last-child td{border-bottom:none;}
 .tab-panel{display:none;}
 .tab-panel.active{display:block;animation:fadeUp .3s var(--ease);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-.panel-label-strip{background:var(--ink);padding:10px 5%;}
+.panel-label-strip{background:#1f2937;padding:10px 5%;}
 .panel-label-strip span{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.35);}
 .panel-label-strip strong{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.7);}
 .panel-body{padding:48px 5% 80px;max-width:1280px;margin:0 auto;}
@@ -1375,7 +1416,7 @@ tr:last-child td{border-bottom:none;}
 #panel-home .section-padding{padding:0;}
 #panel-home .equation-banner{background:var(--ink);color:white;text-align:center;
   padding:36px 24px;border-radius:var(--radius-lg);margin:32px 0;box-shadow:var(--shadow-md);}
-#panel-home .equation-banner h3{color:#f2fafa;margin-bottom:16px;font-size:17px;font-weight:600;}
+#panel-home .equation-banner h3{color:#f7f6f3;margin-bottom:16px;font-size:17px;font-weight:600;}
 #panel-home .equation-math{font-size:16px;font-weight:700;color:white;
   display:flex;flex-wrap:wrap;justify-content:center;gap:8px;align-items:center;}
 #panel-home .eq-item{background:rgba(255,255,255,0.10);padding:9px 16px;border-radius:8px;}
@@ -1392,14 +1433,14 @@ tr:last-child td{border-bottom:none;}
 #panel-home .content-col{flex:1.2;}
 #panel-home .visual-col{flex:0.8;}
 #panel-home .zigzag-row h3{font-size:18px;color:var(--green);margin-bottom:12px;}
-#panel-home .callout{background:rgba(14,124,134,0.06);border-left:3px solid var(--green);
+#panel-home .callout{background:rgba(26,107,138,0.06);border-left:3px solid var(--green);
   padding:16px 18px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14px;line-height:1.65;}
 #panel-home .callout strong{color:var(--green);display:block;margin-bottom:5px;}
-#panel-home .scenario-box{background:#fff8e1;border-left:3px solid #ffb300;
+#panel-home .scenario-box{background:#fdfbf7;border-left:3px solid #b7803a;
   padding:18px 20px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14px;line-height:1.65;}
-#panel-home .scenario-box strong{color:#e65100;display:block;margin-bottom:8px;
+#panel-home .scenario-box strong{color:#92702e;display:block;margin-bottom:8px;
   font-size:14px;text-transform:uppercase;letter-spacing:0.5px;}
-#panel-home .scenario-box .cost{font-weight:600;color:#d32f2f;margin-top:8px;font-size:13.5px;}
+#panel-home .scenario-box .cost{font-weight:600;color:#b91c1c;margin-top:8px;font-size:13.5px;}
 #panel-home .scenario-box .lesson{font-style:italic;color:#555;margin-top:8px;
   border-top:1px dashed #ffca28;padding-top:8px;font-size:13px;}
 #panel-home table{font-size:14px;}
@@ -1419,7 +1460,7 @@ tr:last-child td{border-bottom:none;}
 .fr-content-card{background:white;padding:28px;border-radius:var(--radius-lg);
   box-shadow:var(--shadow);margin-bottom:22px;border:1px solid var(--border);
   transition:transform .2s,box-shadow .2s,border-color .2s;}
-.fr-content-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:rgba(14,124,134,0.2);}
+.fr-content-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:rgba(26,107,138,0.2);}
 .fr-card-h3{font-size:17px;color:var(--green);margin-bottom:12px;}
 .fr-guide-text{font-size:15px;color:var(--ink-soft);margin-bottom:14px;line-height:1.65;}
 .fr-tip-box{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid var(--success);
@@ -1429,7 +1470,7 @@ tr:last-child td{border-bottom:none;}
 .fr-danger-box{background:#fff1f2;border:1px solid #fecaca;border-left:4px solid var(--red);
   padding:16px 20px;margin-top:18px;border-radius:0 10px 10px 0;font-size:14px;color:#991b1b;}
 .fr-danger-box strong{display:block;margin-bottom:6px;font-size:14px;color:#991b1b;}
-.fr-callout{background:rgba(14,124,134,0.06);border-left:3px solid var(--green);
+.fr-callout{background:rgba(26,107,138,0.06);border-left:3px solid var(--green);
   padding:16px 18px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14px;line-height:1.65;}
 .fr-callout strong{color:var(--green);display:block;margin-bottom:5px;}
 /* Process steps */
@@ -1437,7 +1478,7 @@ tr:last-child td{border-bottom:none;}
 .fr-process-step{display:flex;align-items:flex-start;gap:16px;padding:18px;
   background:var(--off);border:1px solid var(--border);border-radius:10px;
   transition:border-color .15s,background .15s;}
-.fr-process-step:hover{border-color:rgba(14,124,134,0.3);background:white;}
+.fr-process-step:hover{border-color:rgba(26,107,138,0.3);background:white;}
 .fr-ps-num{width:32px;height:32px;border-radius:50%;background:var(--green);color:white;
   display:flex;align-items:center;justify-content:center;font-family:var(--mono);
   font-size:13px;font-weight:700;flex-shrink:0;}
@@ -1447,18 +1488,18 @@ tr:last-child td{border-bottom:none;}
   padding:8px 18px;border-radius:7px;font-size:12px;font-weight:600;font-family:var(--mono);}
 .fr-portal-btn:hover{background:#135c52;}
 /* Calculators */
-.fr-calculator-card{background:white;border-radius:var(--radius-lg);overflow:hidden;
+.fr-calculator-card{background:white;border-radius:var(--radius-lg);
   box-shadow:var(--shadow-md);border:1px solid var(--border);margin-bottom:28px;}
 .fr-calc-header{background:var(--ink);padding:24px 28px;color:white;
   display:flex;justify-content:space-between;align-items:center;
   border-bottom:3px solid var(--green);}
 .fr-calc-body{display:flex;flex-wrap:wrap;background:var(--off);}
-.fr-calc-controls{flex:1;min-width:300px;padding:28px;background:white;border-right:1px solid var(--border);}
+.fr-calc-controls{flex:1;min-width:300px;padding:28px;background:white;border-right:1px solid var(--border);overflow:visible;}
 .fr-calc-metrics{flex:1.5;min-width:340px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-content:start;}
 .fr-control-group{margin-bottom:24px;}
 .fr-ctrl-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
 .fr-ctrl-label{font-size:13px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:0.3px;}
-.fr-ctrl-val{font-size:18px;font-weight:700;color:var(--green);background:rgba(14,124,134,0.08);padding:3px 10px;border-radius:7px;font-family:var(--mono);}
+.fr-ctrl-val{font-size:18px;font-weight:700;color:var(--green);background:rgba(26,107,138,0.08);padding:3px 10px;border-radius:7px;font-family:var(--mono);}
 input[type=range]{-webkit-appearance:none;width:100%;background:transparent;margin:8px 0;}
 input[type=range]::-webkit-slider-runnable-track{width:100%;height:7px;cursor:pointer;background:#e2e8f0;border-radius:8px;}
 input[type=range]::-webkit-slider-thumb{height:22px;width:22px;border-radius:50%;background:var(--green);cursor:pointer;-webkit-appearance:none;margin-top:-7px;box-shadow:0 2px 5px rgba(79,70,229,0.35);transition:transform .1s;}
@@ -1492,9 +1533,9 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15);}
   padding:3px 9px;font-size:10px;text-transform:uppercase;font-weight:700;
   border-radius:5px;letter-spacing:0.5px;font-family:var(--mono);}
 .fr-tag-r{background:#dcfce7;color:#166634;border:1px solid #bbf7d0;}
-.fr-tag-a{background:#fef3c7;color:#9a3412;border:1px solid #fde68a;}
+.fr-tag-a{background:#fef3c7;color:#92702e;border:1px solid #e8e0d4;}
 .fr-tag-c{background:#e0f2fe;color:#075985;border:1px solid #bae6fd;}
-.fr-tag-i{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;}
+.fr-tag-i{background:#efecea;color:#475569;border:1px solid #e2e8f0;}
 /* Inline table */
 .fr-inline-table{width:100%;border-collapse:collapse;margin:14px 0 0;background:white;
   border-radius:10px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);}
@@ -1578,7 +1619,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15);}
 #img-bubble button{width:100%;padding:9px;border:none;border-radius:7px;
   background:var(--green);color:white;font-weight:700;cursor:pointer;
   font-size:12px;font-family:var(--sans);margin-bottom:6px;}
-#img-bubble .cancel{background:transparent;border:1px solid #e2e8f0;color:#64748b;}
+#img-bubble .cancel{background:transparent;border:1px solid #e2e8f0;color:#6b7280;}
 
 /* ─── Responsive ─────────────────────────────────────── */
 @media(max-width:1024px){
@@ -1698,7 +1739,7 @@ body {
 #panel-pilot /* --- QUIRKY "CRASH TEST" STICKY NOTES --- */
         .sticky-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 40px;}
 #panel-pilot .sticky-note {
-            background: #fffdf2; border: 1px solid #fde68a; padding: 30px; 
+            background: #fffdf2; border: 1px solid #e8e0d4; padding: 30px; 
             border-radius: 2px 20px 20px 20px; color: #475569; width: 300px;
             box-shadow: 4px 4px 0px rgba(245, 158, 11, 0.15);
             position: relative; transition: var(--transition-smooth);
@@ -1725,7 +1766,7 @@ body {
             border-radius: 50%; background: white; border: 3px solid var(--heading-green);
             transition: var(--transition-smooth); box-shadow: 0 0 0 4px white;
         }
-#panel-pilot .tl-item:hover .tl-dot { background: var(--heading-green); transform: scale(1.2); box-shadow: 0 0 0 4px rgba(14,124,134,0.2);}
+#panel-pilot .tl-item:hover .tl-dot { background: var(--heading-green); transform: scale(1.2); box-shadow: 0 0 0 4px rgba(26,107,138,0.2);}
 #panel-pilot .tl-item.zero-hour .tl-dot { border-color: var(--accent-orange); }
 #panel-pilot .tl-item.zero-hour:hover .tl-dot { background: var(--accent-orange); box-shadow: 0 0 0 4px rgba(245,158,11,0.2);}
 #panel-pilot .tl-time { font-size: 12px; font-weight: 800; color: var(--heading-green); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; display: block;}
@@ -1755,7 +1796,7 @@ body {
         .raci-table-wrapper { overflow-x: auto; background: white; }
 #panel-pilot .raci-table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; min-width: 800px; }
 #panel-pilot .raci-table th {
-            background-color: #f1f5f9; color: var(--brand-dark); padding: 16px 20px;
+            background-color: #efecea; color: var(--brand-dark); padding: 16px 20px;
             font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;
             border-bottom: 1px solid var(--border-soft);
         }
@@ -1770,9 +1811,9 @@ body {
             font-size: 12px; margin-right: 8px;
         }
 #panel-pilot .bg-r { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
-#panel-pilot .bg-a { background: #fef3c7; color: #9a3412; border: 1px solid #fde68a; }
+#panel-pilot .bg-a { background: #fef3c7; color: #92702e; border: 1px solid #e8e0d4; }
 #panel-pilot .bg-c { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
-#panel-pilot .bg-i { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+#panel-pilot .bg-i { background: #efecea; color: #475569; border: 1px solid #cbd5e1; }
 #panel-pilot /* --- UNIFIED ROLE PILLS --- */
         .role-group { display: flex; gap: 6px; flex-wrap: wrap;}
 #panel-pilot .role-pill {
@@ -1885,7 +1926,7 @@ body {
             background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2000&q=80');
             background-position: center;
         }
-#panel-launch .orb-1 { position: absolute; top: -20%; left: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(14,124,134,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
+#panel-launch .orb-1 { position: absolute; top: -20%; left: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(26,107,138,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
 #panel-launch .hero-glass {
             position: relative; z-index: 1; background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -1911,12 +1952,12 @@ body {
             border: 1px solid var(--border-soft); transition: var(--transition-smooth);
             display: flex; flex-direction: column;
         }
-#panel-launch .content-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: rgba(14,124,134,0.3);}
+#panel-launch .content-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: rgba(26,107,138,0.3);}
 #panel-launch .content-card h3 { font-size: 18px; color: var(--heading-green); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;}
 #panel-launch .scenario-box {
-            background: #fffbeb; border-left: 4px solid var(--accent-orange);
+            background: #fdfbf7; border-left: 4px solid var(--accent-orange);
             padding: 15px 20px; border-radius: 0 8px 8px 0; margin-top: auto;
-            font-size: 13.5px; color: #9a3412;
+            font-size: 13.5px; color: #92702e;
         }
 #panel-launch .scenario-box strong { display: block; margin-bottom: 5px; color: var(--accent-orange); text-transform: uppercase; font-size: 11px; letter-spacing: 1px;}
 #panel-launch /* --- 4. INTERACTIVE FORECASTER DASHBOARD --- */
@@ -2062,7 +2103,7 @@ body {
             color: var(--text-main);
             line-height: 1.7;
             margin: 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #eefcfd 100%);
+            background: linear-gradient(135deg, #f7f6f3 0%, #eefcfd 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -2073,7 +2114,7 @@ body {
             padding: 80px 5% 60px 5%; overflow: hidden;
             border-bottom: 1px solid var(--border-soft);
         }
-#panel-maps .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(14,124,134,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
+#panel-maps .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(26,107,138,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
 #panel-maps .hero-glass {
             position: relative; z-index: 1; background: var(--glass-bg);
             backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -2139,9 +2180,9 @@ body {
 #panel-maps th, #panel-maps td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-soft); font-size: 13px; vertical-align: top;}
 #panel-maps th { background: var(--bg-light-green); color: var(--brand-dark); font-weight: 700; }
 #panel-maps tr:last-child td { border-bottom: none; }
-#panel-maps .scenario-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
-#panel-maps .scenario-box strong { color: #e65100; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
-#panel-maps .alert-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-maps .scenario-box { background: #fdfbf7; border-left: 4px solid #b7803a; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-maps .scenario-box strong { color: #92702e; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
+#panel-maps .alert-box { background: #ffebee; border-left: 4px solid #b91c1c; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
 #panel-maps .alert-box strong { color: #c62828; display: block; margin-bottom: 5px;}
 #panel-maps /* --- AI IMAGE PLACEHOLDER --- */
         .ai-image-placeholder {
@@ -2174,7 +2215,7 @@ body {
             color: var(--text-main);
             line-height: 1.7;
             margin: 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #eefcfd 100%);
+            background: linear-gradient(135deg, #f7f6f3 0%, #eefcfd 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -2185,7 +2226,7 @@ body {
             padding: 80px 5% 60px 5%; overflow: hidden;
             border-bottom: 1px solid var(--border-soft);
         }
-#panel-attend .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(14,124,134,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
+#panel-attend .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(26,107,138,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
 #panel-attend .hero-glass {
             position: relative; z-index: 1; background: var(--glass-bg);
             backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -2251,9 +2292,9 @@ body {
 #panel-attend th, #panel-attend td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-soft); font-size: 13px; vertical-align: top;}
 #panel-attend th { background: var(--bg-light-green); color: var(--brand-dark); font-weight: 700; }
 #panel-attend tr:last-child td { border-bottom: none; }
-#panel-attend .scenario-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
-#panel-attend .scenario-box strong { color: #e65100; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
-#panel-attend .alert-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-attend .scenario-box { background: #fdfbf7; border-left: 4px solid #b7803a; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-attend .scenario-box strong { color: #92702e; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
+#panel-attend .alert-box { background: #ffebee; border-left: 4px solid #b91c1c; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
 #panel-attend .alert-box strong { color: #c62828; display: block; margin-bottom: 5px;}
 #panel-attend /* --- AI IMAGE PLACEHOLDER --- */
         .ai-image-placeholder {
@@ -2286,7 +2327,7 @@ body {
             color: var(--text-main);
             line-height: 1.7;
             margin: 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #eefcfd 100%);
+            background: linear-gradient(135deg, #f7f6f3 0%, #eefcfd 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -2297,7 +2338,7 @@ body {
             padding: 80px 5% 60px 5%; overflow: hidden;
             border-bottom: 1px solid var(--border-soft);
         }
-#panel-remote .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(14,124,134,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
+#panel-remote .orb-1 { position: absolute; top: -20%; right: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(26,107,138,0.06) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); z-index: 0; }
 #panel-remote .hero-glass {
             position: relative; z-index: 1; background: var(--glass-bg);
             backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -2363,9 +2404,9 @@ body {
 #panel-remote th, #panel-remote td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-soft); font-size: 13px; vertical-align: top;}
 #panel-remote th { background: var(--bg-light-green); color: var(--brand-dark); font-weight: 700; }
 #panel-remote tr:last-child td { border-bottom: none; }
-#panel-remote .scenario-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
-#panel-remote .scenario-box strong { color: #e65100; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
-#panel-remote .alert-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-remote .scenario-box { background: #fdfbf7; border-left: 4px solid #b7803a; padding: 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
+#panel-remote .scenario-box strong { color: #92702e; display: block; margin-bottom: 10px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
+#panel-remote .alert-box { background: #ffebee; border-left: 4px solid #b91c1c; padding: 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 14px; }
 #panel-remote .alert-box strong { color: #c62828; display: block; margin-bottom: 5px;}
 #panel-remote /* --- AI IMAGE PLACEHOLDER --- */
         .ai-image-placeholder {
@@ -2393,12 +2434,43 @@ body {
     
 
 body.edit-mode-active *:not(.left-nav *):not(.tab-nav *):not(button):not(input):not(select):hover{outline:2px dashed rgba(14,165,233,0.5)!important;outline-offset:2px;border-radius:3px;}
-body.edit-mode-active img:hover,body.edit-mode-active iframe:hover{outline:3px dashed #f59e0b!important;outline-offset:3px;cursor:pointer;}
+body.edit-mode-active img:hover,body.edit-mode-active iframe:hover{outline:3px dashed #b7803a!important;outline-offset:3px;cursor:pointer;}
 body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!important;outline-offset:2px;cursor:pointer;}
-[contenteditable="true"]{outline:2px solid #0ea5e9!important;outline-offset:2px;border-radius:3px;background:rgba(14,165,233,0.04)!important;cursor:text!important;}
+[contenteditable="true"]{outline:2px solid #2d7eb5!important;outline-offset:2px;border-radius:3px;background:rgba(14,165,233,0.04)!important;cursor:text!important;}
 
 @media(max-width:768px){.page-layout{flex-direction:column;}.left-nav{width:100%!important;height:auto;min-height:48px;position:relative;flex-direction:column;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}}
 
+
+/* Universal editability for all panel content */
+body.edit-mode-active .panel-body h1,
+body.edit-mode-active .panel-body h2,
+body.edit-mode-active .panel-body h3,
+body.edit-mode-active .panel-body h4,
+body.edit-mode-active .panel-body p,
+body.edit-mode-active .panel-body li,
+body.edit-mode-active .panel-body td,
+body.edit-mode-active .panel-body th,
+body.edit-mode-active .panel-body strong,
+body.edit-mode-active .panel-body span,
+body.edit-mode-active .fr-card-h3,
+body.edit-mode-active .fr-guide-text,
+body.edit-mode-active .fr-tip-box,
+body.edit-mode-active .fr-callout,
+body.edit-mode-active .fr-danger-box,
+body.edit-mode-active .fr-domain-card strong,
+body.edit-mode-active .fr-domain-card p,
+body.edit-mode-active .fr-value-card h4,
+body.edit-mode-active .fr-value-card p,
+body.edit-mode-active .rm-scenario,
+body.edit-mode-active .dt-label,
+body.edit-mode-active .fr-m-title,
+body.edit-mode-active .fr-m-sub {
+  cursor: text !important;
+}
+body.edit-mode-active .panel-body img,
+body.edit-mode-active .panel-body iframe {
+  cursor: pointer !important;
+}
 </style>
 </head>
 <body class="">
@@ -2409,10 +2481,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
 <div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
-  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">Link URL: Raise Hiring Request</label>
+  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1f2937;">Link URL: Raise Hiring Request</label>
   <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
-  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
+  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f7f6f3;color:#374151;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
 
 
@@ -2437,7 +2509,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(5, 46, 22) 0%, rgb(22, 101, 52) 55%, rgb(22, 163, 74) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2c5282 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2461,7 +2533,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
           </div>
         </div>
         <div class="podcast-player">
-          <iframe id="podcast-iframe" src="https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview" allow="autoplay"></iframe>
+          <iframe id="podcast-iframe" class="edit-img" src="https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview" allow="autoplay"></iframe>
         </div>
         <div class="podcast-footer">
           <span class="podcast-footer-label edit-text">J-PAL SA Research Operations</span>
@@ -2474,17 +2546,17 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Field Readiness</button>
+    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')" aria-selected="true">Field Readiness</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-hiring')" aria-selected="false">Hiring Field Staff</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-pilot')" aria-selected="false">Piloting &amp; Pre-Launch</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-launch')" aria-selected="false">Survey Launch</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-maps')" aria-selected="true">Google Maps</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-maps')" aria-selected="false">Google Maps</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-attend')" aria-selected="false">Digital Attendance</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-remote')" aria-selected="false">Remote Data Collection</button>
   </nav>
 </div>
 
-<div id="panel-home" class="tab-panel">
+<div id="panel-home" class="tab-panel active">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Field Readiness Overview</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -2587,7 +2659,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         </div>
         
         <div class="visual-col">
-            <div class="callout" style="border-left-color: #d32f2f; background: #ffebee;">
+            <div class="callout" style="border-left-color: #b91c1c; background: #ffebee;">
                 <strong style="color: #c62828;">🚩 The Cost of a Bad Hire</strong>
                 One surveyor who fabricates 1 survey per day across a 30-day deployment produces 30 fraudulent SURVEYS. At ₹500/survey for back-check remediation, that single deviation and inability to catch these deviations early costs ₹30,000, plus weeks of team disruption and potential IRB complications.
             </div>
@@ -2758,8 +2830,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     </div>
   </div>
 
-  <!-- ─── SECTION 3: Recruitment Funnel Calculator ─────────────────── -->
-  <div class="fr-section-title"><div class="fr-step-num">3</div>Recruitment Funnel Calculator</div>
+  <!-- ─── SECTION 3: Planning Calculators ────────────────────────────── -->
+  <div class="fr-section-title"><div class="fr-step-num">3</div>Planning Calculators</div>
+  <div class="calc-duo">
 
   <div class="fr-calculator-card">
     <div class="fr-calc-header">
@@ -2784,6 +2857,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <span class="fr-ctrl-val" id="funnel-buffer-val">20%</span>
           </div>
           <input type="range" id="funnel-buffer" min="10" max="40" step="5" value="20" oninput="calcFunnel()">
+          <div class="fr-bench-row"><div class="fr-bench-arrow" id="bench-buf-arrow" style="left:33%"><div class="arrow-tip"></div><span class="fr-bench-tag">J-PAL: 20%</span></div></div>
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
@@ -2791,6 +2865,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <span class="fr-ctrl-val" id="funnel-dropout-val">15%</span>
           </div>
           <input type="range" id="funnel-dropout" min="5" max="35" step="5" value="15" oninput="calcFunnel()">
+          <div class="fr-bench-row"><div class="fr-bench-arrow" id="bench-drop-arrow" style="left:33%"><div class="arrow-tip"></div><span class="fr-bench-tag">J-PAL: 20%</span></div></div>
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
@@ -2825,8 +2900,6 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     </div>
   </div>
 
-  <!-- ─── SECTION 4: True Capacity Calculator ──────────────────────── -->
-  <div class="fr-section-title"><div class="fr-step-num">4</div>True Capacity Calculator</div>
 
   <div class="fr-calculator-card">
     <div class="fr-calc-header">
@@ -2882,6 +2955,50 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
           <span class="fr-m-title">True Efficiency Rate</span>
           <div class="fr-m-value" id="cap-efficiency">84%</div>
           <span class="fr-m-sub">of theoretical max output actually usable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /calc-duo -->
+
+  <!-- ─── SECTION 4: Daily Time Distribution ──────────────────────── -->
+  <div class="fr-section-title"><div class="fr-step-num">4</div>Daily Time Distribution &amp; Productivity Estimator</div>
+
+  <div class="fr-calculator-card">
+    <div class="fr-calc-header">
+      <div>
+        <h3 style="margin:0;color:white;font-size:20px;font-weight:700;">🕐 Daily Time Distribution &amp; Productivity Estimator</h3>
+        <p style="margin:4px 0 0;font-size:13px;color:#94a3b8;">Calculate realistic daily output per surveyor based on field friction.</p>
+      </div>
+      <div class="fr-live-badge"><div class="fr-pulse"></div>Interactive</div>
+    </div>
+    <div class="fr-calc-body">
+      <div class="fr-calc-controls">
+        <div class="fr-control-group">
+          <div class="fr-ctrl-hdr"><span class="fr-ctrl-label">Total Shift Duration</span><span class="fr-ctrl-val" id="dt-shift-val">9 hrs</span></div>
+          <input type="range" id="dt-shift" min="6" max="12" step="0.5" value="9" oninput="calcDayTime()">
+          <div class="fr-bench-row"><div class="fr-bench-arrow" id="bench-shift" style="left:50%"><div class="arrow-tip"></div><span class="fr-bench-tag">J-PAL: 9 hrs</span></div></div>
+        </div>
+        <div class="fr-control-group">
+          <div class="fr-ctrl-hdr"><span class="fr-ctrl-label">Total 2-Way Travel Time</span><span class="fr-ctrl-val" id="dt-travel-val">2 hrs</span></div>
+          <input type="range" id="dt-travel" min="0.5" max="5" step="0.5" value="2" oninput="calcDayTime()">
+          <div class="fr-bench-row"><div class="fr-bench-arrow" id="bench-travel" style="left:33%"><div class="arrow-tip"></div><span class="fr-bench-tag">J-PAL: 2 hrs</span></div></div>
+        </div>
+        <div class="fr-control-group">
+          <div class="fr-ctrl-hdr"><span class="fr-ctrl-label">Lunch, Syncs &amp; Breaks</span><span class="fr-ctrl-val" id="dt-breaks-val">45 mins</span></div>
+          <input type="range" id="dt-breaks" min="15" max="90" step="15" value="45" oninput="calcDayTime()">
+          <div class="fr-bench-row"><div class="fr-bench-arrow" id="bench-breaks" style="left:40%"><div class="arrow-tip"></div><span class="fr-bench-tag">J-PAL: 45 min</span></div></div>
+        </div>
+        <div class="fr-control-group">
+          <div class="fr-ctrl-hdr"><span class="fr-ctrl-label">Avg. Survey + Inter-HH Transit</span><span class="fr-ctrl-val" id="dt-survtime-val">60 mins</span></div>
+          <input type="range" id="dt-survtime" min="15" max="120" step="5" value="60" oninput="calcDayTime()">
+        </div>
+      </div>
+      <div style="flex:1;min-width:300px;padding:28px;">
+        <div class="dt-result-pair">
+          <div class="dt-result-box"><div class="dt-label">Usable Field Time</div><div class="dt-val" id="dt-usable">6.25</div><div class="dt-sub">hrs — actual surveying time</div></div>
+          <div class="dt-result-box" style="border-top-color:#b7803a;"><div class="dt-label">Max Surveys / Day</div><div class="dt-val" id="dt-max-surveys" style="color:#b7803a;">6</div><div class="dt-sub">per surveyor</div></div>
         </div>
       </div>
     </div>
@@ -3002,7 +3119,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
   <div class="fr-resp-grid">
     <div class="fr-resp-card">
-      <div class="fr-resp-front">
+      <div class="fr-resp-inner"><div class="fr-resp-front">
         <div class="fr-resp-num">01</div>
         <h4>Data Collection</h4>
       </div>
@@ -3010,9 +3127,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <h4>Data Collection</h4>
         <p>Conducting interviews following standardised protocols. Accurate recording of responses. Proper use of survey tools (digital/paper). Following skip patterns and maintaining data quality standards.</p>
       </div>
-    </div>
+    </div></div>
     <div class="fr-resp-card">
-      <div class="fr-resp-front">
+      <div class="fr-resp-inner"><div class="fr-resp-front">
         <div class="fr-resp-num">02</div>
         <h4>Ethical Conduct</h4>
       </div>
@@ -3020,9 +3137,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <h4>Ethical Conduct</h4>
         <p>Obtaining informed consent before every interview. Maintaining strict confidentiality of respondent data. Never fabricating or altering responses under any circumstance.</p>
       </div>
-    </div>
+    </div></div>
     <div class="fr-resp-card">
-      <div class="fr-resp-front">
+      <div class="fr-resp-inner"><div class="fr-resp-front">
         <div class="fr-resp-num">03</div>
         <h4>Reporting &amp; Communication</h4>
       </div>
@@ -3030,9 +3147,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <h4>Reporting &amp; Communication</h4>
         <p>Daily progress reporting to Field Supervisor. Flagging issues immediately through the escalation chain. Participating in morning briefings and evening debriefs.</p>
       </div>
-    </div>
+    </div></div>
     <div class="fr-resp-card">
-      <div class="fr-resp-front">
+      <div class="fr-resp-inner"><div class="fr-resp-front">
         <div class="fr-resp-num">04</div>
         <h4>Equipment Stewardship</h4>
       </div>
@@ -3040,9 +3157,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <h4>Equipment Stewardship</h4>
         <p>Keeping tablets charged and protected. Syncing data at the end of every field day. Reporting hardware issues immediately to avoid data loss.</p>
       </div>
-    </div>
+    </div></div>
     <div class="fr-resp-card">
-      <div class="fr-resp-front">
+      <div class="fr-resp-inner"><div class="fr-resp-front">
         <div class="fr-resp-num">05</div>
         <h4>Community Relations</h4>
       </div>
@@ -3050,9 +3167,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <h4>Community Relations</h4>
         <p>Building trust with respondents and local leaders. Managing refusals with patience and professionalism. Never pressuring or coercing respondents.</p>
       </div>
-    </div>
+    </div></div>
     <div class="fr-resp-card">
-      <div class="fr-resp-front">
+      <div class="fr-resp-inner"><div class="fr-resp-front">
         <div class="fr-resp-num">06</div>
         <h4>Professional Development</h4>
       </div>
@@ -3060,7 +3177,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <h4>Professional Development</h4>
         <p>Continuous skill enhancement and self-improvement. Learning from field experiences and adapting to new methodologies. Contributing to team process improvements.</p>
       </div>
-    </div>
+    </div></div>
   </div>
 
   <!-- ─── SECTION 11: Launch Checklist ─────────────────────────────── -->
@@ -3671,18 +3788,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         <p class="control-label">Terrain &amp; Routing Density</p>
                     </div>
                     <div class="toggle-group">
-                        <div class="toggle-btn active" id="btn-dense" onclick="setTerrain('dense', this)">Dense / Urban<br><span style="font-size: 10px; font-weight: 400;">(4 Staff / Team)</span></div>
-                        <div class="toggle-btn" id="btn-scattered" onclick="setTerrain('scattered', this)">Scattered / Rural<br><span style="font-size: 10px; font-weight: 400;">(3 Staff / Team)</span></div>
-                    </div>
-                </div>
-
-                <div class="control-group" style="margin-bottom: 0;">
-                    <div class="control-header">
-                        <p class="control-label">Hardware Safety Buffer</p>
-                    </div>
-                    <div class="toggle-group">
-                        <div class="toggle-btn" id="btn-buf-10" onclick="setBuffer(0.1, this)">10% Standard</div>
-                        <div class="toggle-btn active" id="btn-buf-20" onclick="setBuffer(0.2, this)">20% High Risk</div>
+                        <div class="toggle-btn active" id="btn-dense" onclick="setTerrain('dense', this)">Dense / Urban<br><span style="font-size: 10px; font-weight: 400;">(7–8 Staff / Team)</span></div>
+                        <div class="toggle-btn" id="btn-scattered" onclick="setTerrain('scattered', this)">Scattered / Rural<br><span style="font-size: 10px; font-weight: 400;">(4–6 Staff / Team)</span></div>
                     </div>
                 </div>
             </div>
@@ -3704,12 +3811,6 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                     <span class="m-title">Tablets Required</span>
                     <div class="m-value" id="out-tablets">23 <span style="font-size: 20px;">Units</span></div>
                     <span class="m-subtext">Includes surveyors, monitors + backup buffer</span>
-                </div>
-
-                <div class="metric-card mc-hardware" style="border-left-color: #f59e0b;">
-                    <span class="m-title">Power Banks (20k mAh)</span>
-                    <div class="m-value" style="color: #f59e0b;" id="out-power">42 <span style="font-size: 20px;">Units</span></div>
-                    <span class="m-subtext">2 per surveyor + vehicle spares</span>
                 </div>
 
                 <div class="metric-card mc-budget">
@@ -3743,10 +3844,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <div class="schedule-task">First interviews commence in the village.</div>
             <div class="schedule-owner">Surveyors</div>
         </div>
-        <div class="schedule-item" style="background: #fffbeb; border-color: #fde68a;">
+        <div class="schedule-item" style="background: #fdfbf7; border-color: #e8e0d4;">
             <div class="time-badge" style="background: var(--accent-orange);">1:00 PM</div>
-            <div class="schedule-task" style="color: #9a3412;">Mandatory Lunch Break. Hydration check. Mid-day progress sync.</div>
-            <div class="schedule-owner" style="background: #fef3c7; color: #9a3412;">Entire Team</div>
+            <div class="schedule-task" style="color: #92702e;">Mandatory Lunch Break. Hydration check. Mid-day progress sync.</div>
+            <div class="schedule-owner" style="background: #fef3c7; color: #92702e;">Entire Team</div>
         </div>
         <div class="schedule-item">
             <div class="time-badge">5:00 PM</div>
@@ -3849,7 +3950,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </div>
 </div>
 
-<div id="panel-maps" class="tab-panel active">
+<div id="panel-maps" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Google Maps Tracking</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -3858,7 +3959,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <span class="eyebrow">Module: Field Tracking &amp; Logistics</span>
             <h1>Google My Maps Masterclass</h1>
             <p style="font-size: 18px; color: var(--brand-dark); max-width: 800px; margin: 0 auto; font-weight: 500;">
-                A Hands-On Training Guide for Research Associates and Survey Coordinators[cite: 7]. Master spatial intelligence to manage complex field deployments.
+                A Hands-On Training Guide for Research Associates and Survey Coordinators. Master spatial intelligence to manage complex field deployments.
             </p>
         </div>
     </div>
@@ -3881,13 +3982,13 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="story-row">
             <div class="story-text">
                 <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">1. Preparing Your Dataset</h2>
-                <p>Your map is only as good as your data. Before you touch Google My Maps, you must prepare a clean, well-structured dataset in Google Sheets[cite: 94]. Every field tracking dataset should follow this standard schema[cite: 97]:</p>
+                <p>Your map is only as good as your data. Before you touch Google My Maps, you must prepare a clean, well-structured dataset in Google Sheets. Every field tracking dataset should follow this standard schema:</p>
                 
                 <table>
                     <tbody><tr>
                         <th>Column Name</th>
                         <th>Required?</th>
-                        <th>Description [cite: 99]</th>
+                        <th>Description </th>
                     </tr>
                     <tr><td><strong>hh_id</strong></td><td>✅ Yes</td><td>Unique household identifier (e.g., JSM-0001)</td></tr>
                     <tr><td><strong>latitude / longitude</strong></td><td>✅ Yes</td><td>GPS coords in decimal degrees (e.g., 26.753462)</td></tr>
@@ -3903,10 +4004,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 </div>
             </div>
             <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A clean, zoomed-in view of a perfectly formatted Google Sheet highlighting the 'latitude', 'longitude', and 'treatment_status' columns.</p>
-                </div>
+                <img src="https://drive.google.com/thumbnail?id=1LgXE8bpm_YfPE90IT_lPX3o0m7Wf_9d_&sz=w600" alt="Google Sheets dataset preparation" class="edit-img" style="width:100%;border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);">
             </div>
         </div>
 
@@ -3937,10 +4035,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 </div>
             </div>
             <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A computer screen showing the Google My Maps import dialog box, with an arrow pointing to the "Google Drive" import option.</p>
-                </div>
+                <img src="https://drive.google.com/thumbnail?id=14QDgkjXCJfVBLBNh7lnIgCsGyY9wvvYj&sz=w600" alt="Google My Maps import dialog" class="edit-img" style="width:100%;border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);">
             </div>
         </div>
 
@@ -3969,17 +4064,14 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 </div>
             </div>
             <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A map interface showing a sea of green and red pins, with a user's cursor clicking the "paint bucket" tool on the sidebar.</p>
-                </div>
+                <img src="https://drive.google.com/thumbnail?id=1LgXE8bpm_YfPE90IT_lPX3o0m7Wf_9d_&sz=w600" alt="Field operations" class="edit-img" style="width:100%;border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);">
             </div>
         </div>
 
         <div class="story-row reverse">
             <div class="story-text">
                 <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">4. Route Planning &amp; The 3+3 Model</h2>
-                <p>This is the most operationally powerful layer. For each day, you create a sub-layer showing only that day's targets for each biker[cite: 158]. We use the <strong>3+3 Model</strong>: 3 primary targets and 3 buffer households to ensure no surveyor has a zero-productivity day.</p>
+                <p>This is the most operationally powerful layer. For each day, you create a sub-layer showing only that day's targets for each biker. We use the <strong>3+3 Model</strong>: 3 primary targets and 3 buffer households to ensure no surveyor has a zero-productivity day.</p>
                 
                 <div class="step-box">
                     <h4>Step 5: Filter and Import Daily Routes&nbsp;</h4>
@@ -4002,10 +4094,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 </div>
             </div>
             <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A map showing a defined route line connecting three blue circles (Primary targets), with three yellow diamonds (Buffers) clustered nearby.</p>
-                </div>
+                <img src="https://drive.google.com/thumbnail?id=1LgXE8bpm_YfPE90IT_lPX3o0m7Wf_9d_&sz=w600" alt="Field operations" class="edit-img" style="width:100%;border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);">
             </div>
         </div>
 
@@ -4015,7 +4104,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <p>A map that is not updated daily is a decoration, not a tool. Every evening, the PA/SC performs a 15-minute map review to track progress and identify fraud.</p>
 
                 <div class="step-box">
-                    <h4>Step 7: End-of-Day Status Update [cite: 210]</h4>
+                    <h4>Step 7: End-of-Day Status Update </h4>
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>Biker reports results: <em>'JSM-0041 Completed, JSM-0043 Refused, JSM-0044 Buffer Used'</em>.</li>
                         <li>SC opens the Google Sheet and updates the <code>survey_status</code> column accordingly.</li>
@@ -4024,15 +4113,12 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 </div>
 
                 <div class="scenario-box">
-                    <strong>📱 The WhatsApp Screenshot Hack [cite: 207]</strong>
+                    <strong>📱 The WhatsApp Screenshot Hack </strong>
                     <p>Most field staff don't open Google My Maps on their phones. Every morning, take a screenshot of each biker's daily route on your PC and send it to their WhatsApp. It takes 2 minutes per biker but eliminates the #1 field excuse: <em>'Mujhe pata nahi tha kahan jaana hai' (I didn't know where to go)</em>.</p>
                 </div>
             </div>
             <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A smartphone displaying a WhatsApp chat where a supervisor has sent a clear screenshot of a map route with instructions to a surveyor.</p>
-                </div>
+                <img src="https://drive.google.com/thumbnail?id=1LgXE8bpm_YfPE90IT_lPX3o0m7Wf_9d_&sz=w600" alt="Field operations" class="edit-img" style="width:100%;border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);">
             </div>
         </div>
 
@@ -4062,10 +4148,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 </div>
             </div>
             <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A checklist graphic with green checkmarks appearing next to map-building skills, symbolizing completion of the masterclass.</p>
-                </div>
+                <img src="https://drive.google.com/thumbnail?id=1LgXE8bpm_YfPE90IT_lPX3o0m7Wf_9d_&sz=w600" alt="Field operations" class="edit-img" style="width:100%;border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);">
             </div>
         </div>
 
@@ -4076,450 +4159,473 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 <div id="panel-attend" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Digital Attendance</strong></div>
 <div class="panel-body">
-<div class="hero-container">
-        <div class="orb-1"></div>
-        <div class="hero-glass">
-            <span class="eyebrow">Module: Field Tracking &amp; Logistics</span>
-            <h1>Google My Maps Masterclass</h1>
-            <p style="font-size: 18px; color: var(--brand-dark); max-width: 800px; margin: 0 auto; font-weight: 500;">
-                A Hands-On Training Guide for Research Associates and Survey Coordinators[cite: 7]. Master spatial intelligence to manage complex field deployments.
-            </p>
-        </div>
+
+<div style="text-align:center;max-width:800px;margin:0 auto 48px;">
+  <span style="font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--green);background:rgba(26,107,138,0.08);padding:5px 14px;border-radius:20px;border:1px solid rgba(26,107,138,0.15);display:inline-block;margin-bottom:16px;">Module: Digital Attendance System</span>
+  <h1 style="font-size:36px;font-weight:800;color:var(--brand-dark);margin-bottom:16px;letter-spacing:-1px;">Digital Attendance<br>Manual &amp; Guidelines</h1>
+  <p style="font-size:16px;color:var(--text-light);max-width:700px;margin:0 auto;">J-PAL SA Research Operations rolled out a digital attendance tracking system for all field staff in January 2025. This comprehensive guide trains Project Associates on setting up, managing, and monitoring digital attendance across their projects.</p>
+</div>
+
+<!-- SECTION 1: Why Digital Attendance -->
+<div class="fr-section-title"><div class="fr-step-num">1</div>Why Digital Attendance Matters</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">From Paper to GPS-Verified Tracking</h3>
+  <p class="fr-guide-text">Paper attendance registers are easy to fabricate, impossible to verify remotely, and provide zero spatial intelligence. The digital attendance system captures four GPS coordinates per day per staff member, creating a verifiable trail of field presence. This transforms attendance from a trust-based system into a data-driven one.</p>
+  <p class="fr-guide-text">The system serves three stakeholders: <strong>Project Associates</strong> gain real-time visibility into team deployment, <strong>Research Associates</strong> can correlate attendance patterns with data quality, and <strong>Research Operations</strong> can benchmark productivity across projects.</p>
+  <div class="fr-callout"><strong>The Accountability Chain</strong>
+  Every morning a surveyor starts their day, the app captures their home location (L1). When they reach the field, it captures the first survey site (L2). When they finish fieldwork, it captures the last site (L3). When they return home, it captures the end point (L4). Four coordinates, four verifiable moments, zero ambiguity.</div>
+</div>
+
+<!-- SECTION 2: PA Setup Responsibilities -->
+<div class="fr-section-title"><div class="fr-step-num">2</div>PA Setup Responsibilities (Before Launch)</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">What the PA Must Do Before Day 1 of Fieldwork</h3>
+  <p class="fr-guide-text">The PA is responsible for ensuring every field staff member has the app installed, configured, and tested before the first day of data collection. This is not optional — it is a pre-launch gate item.</p>
+  <div class="fr-process-steps">
+    <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong>Verify Active Contracts</strong><p>Only staff with active contracts will receive the login OTP. Before training begins, confirm all contracts are processed. If a contract is pending, the staff member cannot use the app.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong>Collect & Verify Mobile Numbers</strong><p>The app login requires the exact mobile number registered at the time of contract. Mismatches = no OTP = no attendance. Verify numbers during the hiring process itself.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">3</div><div class="fr-ps-body"><strong>Dedicate Training Time</strong><p>Allocate 30-45 minutes during the training program for a hands-on attendance app session. Do not assume staff will figure it out on their own. Walk through every step live, with screens projected.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">4</div><div class="fr-ps-body"><strong>Identify the Approval Manager</strong><p>Ensure each surveyor's Approval Manager/Supervisor is visible in the dropdown. If not, contact Mohd Faizan (backend configuration required). Common reasons for missing supervisors: supervisor on payroll (not contract), supervisor contract expired, backend sync delay.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">5</div><div class="fr-ps-body"><strong>Conduct a Dry Run</strong><p>On the last day of training, have all staff complete one full attendance cycle: Start Day → Time In → Time Out → Day End. Verify that all 4 GPS coordinates are captured correctly. Fix issues before deployment.</p></div></div>
+  </div>
+</div>
+
+<!-- SECTION 3: App Installation -->
+<div class="fr-section-title"><div class="fr-step-num">3</div>Attendance App Setup (For All Staff)</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">Installation &amp; First Login</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:20px 0;">
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;">
+      <div style="font-size:28px;margin-bottom:8px;">⚙️</div>
+      <strong style="font-size:13px;display:block;margin-bottom:6px;">Allow Unknown Sources</strong>
+      <p style="font-size:12px;color:var(--muted);margin:0;">Settings → Security → Enable "Install from Unknown Sources"</p>
     </div>
-
-    <div class="sandbox-box">
-        <h3>The Masterclass Sandbox</h3>
-        <p>
-            This document is a hands-on masterclass — not a passive reading exercise[cite: 73]. We have provided a companion CSV file containing 500 dummy household records[cite: 74]. These coordinates point to open desert wasteland in the Thar Desert to ensure no real person's location is accidentally exposed[cite: 116]. 
-        </p>
-        <p>
-            You are expected to follow along on your computer, building your own Google My Map using the step-by-step instructions below[cite: 75]. Once you complete this exercise, you will be able to apply these exact steps to your live project datasets.
-        </p>
-        <a href="https://drive.google.com/file/d/1VkTYrRle_y5NTnyJUhHV5ip8Wd8eGlYD/view?usp=sharing" class="download-btn" target="_blank">
-            📥 Download Dummy Dataset (CSV)
-        </a>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;">
+      <div style="font-size:28px;margin-bottom:8px;">📲</div>
+      <strong style="font-size:13px;display:block;margin-bottom:6px;">Install the App</strong>
+      <p style="font-size:12px;color:var(--muted);margin:0;">Download from the official link shared during training or by the PA</p>
     </div>
-
-    <div class="section-padding">
-
-        <div class="story-row">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">1. Preparing Your Dataset</h2>
-                <p>Your map is only as good as your data. Before you touch Google My Maps, you must prepare a clean, well-structured dataset in Google Sheets[cite: 94]. Every field tracking dataset should follow this standard schema[cite: 97]:</p>
-                
-                <table>
-                    <tbody><tr>
-                        <th>Column Name</th>
-                        <th>Required?</th>
-                        <th>Description [cite: 99]</th>
-                    </tr>
-                    <tr><td><strong>hh_id</strong></td><td>✅ Yes</td><td>Unique household identifier (e.g., JSM-0001)</td></tr>
-                    <tr><td><strong>latitude / longitude</strong></td><td>✅ Yes</td><td>GPS coords in decimal degrees (e.g., 26.753462)</td></tr>
-                    <tr><td><strong>treatment_status</strong></td><td>✅ Yes</td><td>Treatment or Control</td></tr>
-                    <tr><td><strong>biker_team</strong></td><td>✅ Yes</td><td>Assigned surveyor/biker ID (e.g., Biker-03)</td></tr>
-                    <tr><td><strong>survey_day</strong></td><td>✅ Yes</td><td>Scheduled survey day (e.g., Day-01)</td></tr>
-                    <tr><td><strong>survey_status</strong></td><td>✅ Yes</td><td>Pending / Completed / Refused / Revisit</td></tr>
-                </tbody></table>
-
-                <div class="alert-box">
-                    <strong>🚩 The #1 Reason Maps Break</strong>
-                    If your treatment_status column contains 'Treatment', 'treatment', 'TREATMENT', and 'treat' — Google My Maps will create 4 separate categories instead of 2. Your color coding will break. <strong>Rule: Run a UNIQUE() check on every categorical column before importing[cite: 103].</strong>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A clean, zoomed-in view of a perfectly formatted Google Sheet highlighting the 'latitude', 'longitude', and 'treatment_status' columns.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row reverse">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">2. Creating &amp; Importing Your Map</h2>
-                <p>Google My Maps is a free, browser-based tool that lets you create custom maps with pins, routes, and multiple layers[cite: 89]. Follow these exact steps to load your dummy data.</p>
-                
-                <div class="step-box">
-                    <h4>Step 1: Upload to Google Sheets First [cite: 127]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Go to sheets.google.com → Blank spreadsheet.</li>
-                        <li>File → Import → Upload → Select dummy_hh_500_field_tracking.csv.</li>
-                        <li>Name the sheet: 'JSM_HH_Sample_Master'.</li>
-                        <li><em>Why? Google My Maps imports from Sheets more reliably than from raw CSVs.</em></li>
-                    </ol>
-                </div>
-
-                <div class="step-box">
-                    <h4>Step 2: Create Map &amp; Import [cite: 125, 128]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Go to mymaps.google.com and click '+ CREATE A NEW MAP'.</li>
-                        <li>Name your map: 'JSM-RCT — Field Tracking Map — April 2026'[cite: 126].</li>
-                        <li>Click 'Import' in the Untitled layer → Select 'Google Sheets' tab → Choose your Master sheet.</li>
-                        <li><strong>Position columns:</strong> Check 'latitude' and 'longitude'.</li>
-                        <li><strong>Title column:</strong> Choose 'hh_id'. Click Finish.</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A computer screen showing the Google My Maps import dialog box, with an arrow pointing to the "Google Drive" import option.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">3. Styling &amp; Color-Coding</h2>
-                <p>The most critical visual distinction is Treatment vs. Control[cite: 130]. You cannot apply two color schemes to the same layer, so we will create distinct layers for different views[cite: 135].</p>
-                
-                <div class="step-box">
-                    <h4>Step 3: Color-Code Treatment Arms [cite: 132]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>In the layer panel, click 'Uniform style' → Change to 'Style by data column'.</li>
-                        <li>Select 'treatment_status'.</li>
-                        <li>Click the paint bucket next to 'Treatment' → Choose 🟢 GREEN (#34A853).</li>
-                        <li>Click the paint bucket next to 'Control' → Choose 🔴 RED (#EA4335).</li>
-                    </ol>
-                </div>
-
-                <div class="step-box">
-                    <h4>Step 4: Create Team Assignment Layer [cite: 135]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Click 'Add layer' in the left panel and name it 'Team Assignments'.</li>
-                        <li>Import the same Google Sheet into this new layer.</li>
-                        <li>Style by data column → 'biker_team'. Google will auto-assign 20 distinct colors.</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A map interface showing a sea of green and red pins, with a user's cursor clicking the "paint bucket" tool on the sidebar.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row reverse">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">4. Route Planning &amp; The 3+3 Model</h2>
-                <p>This is the most operationally powerful layer. For each day, you create a sub-layer showing only that day's targets for each biker[cite: 158]. We use the <strong>3+3 Model</strong>: 3 primary targets and 3 buffer households to ensure no surveyor has a zero-productivity day[cite: 194].</p>
-                
-                <div class="step-box">
-                    <h4>Step 5: Filter and Import Daily Routes [cite: 159, 190, 191]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>In Google Sheets, create a new tab 'Day_01'.</li>
-                        <li>Use formula: <code>=FILTER(Master!A:O, Master!J:J = "Day-01")</code></li>
-                        <li>In My Maps, 'Add layer' named 'Day 01 — Routes' and import this new tab.</li>
-                        <li>Style by <code>survey_type</code>: Primary = 🔵 Blue Circle, Buffer = 🟡 Yellow Diamond.</li>
-                    </ol>
-                </div>
-
-                <div class="step-box">
-                    <h4>Step 6: Add Driving Directions [cite: 192]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Click the 'Add directions' button (🔀) beneath the search bar.</li>
-                        <li>Set transport mode to 🏍️ Driving.</li>
-                        <li>Enter waypoints in order: Base Camp → Primary HH #1 → Primary HH #2 → Primary HH #3.</li>
-                        <li>Google will auto-calculate the route line. Change its color to match the biker's team color.</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A map showing a defined route line connecting three blue circles (Primary targets), with three yellow diamonds (Buffers) clustered nearby.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">5. Daily Tracking &amp; Updates</h2>
-                <p>A map that is not updated daily is a decoration, not a tool[cite: 203]. Every evening, the PA/SC performs a 15-minute map review to track progress and identify fraud[cite: 216].</p>
-
-                <div class="step-box">
-                    <h4>Step 7: End-of-Day Status Update [cite: 210]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Biker reports results: <em>'JSM-0041 Completed, JSM-0043 Refused, JSM-0044 Buffer Used'</em>.</li>
-                        <li>SC opens the Google Sheet and updates the <code>survey_status</code> column accordingly.</li>
-                        <li>After all updates, REFRESH the Google My Maps browser tab. Pins will change color based on the new status[cite: 210, 211].</li>
-                    </ol>
-                </div>
-
-                <div class="scenario-box">
-                    <strong>📱 The WhatsApp Screenshot Hack [cite: 207]</strong>
-                    <p>Most field staff don't open Google My Maps on their phones. Every morning, take a screenshot of each biker's daily route on your PC and send it to their WhatsApp. It takes 2 minutes per biker but eliminates the #1 field excuse: <em>'Mujhe pata nahi tha kahan jaana hai' (I didn't know where to go)</em>.</p>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A smartphone displaying a WhatsApp chat where a supervisor has sent a clear screenshot of a map route with instructions to a surveyor.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row reverse">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">6. Sharing &amp; Self-Assessment</h2>
-                <p>Once your map is built, you can share it securely or export it for PI presentations[cite: 242].</p>
-                
-                <div class="step-box">
-                    <h4>Step 8: Share &amp; Export [cite: 244, 249]</h4>
-                    <ul style="margin-bottom: 0; font-size: 14px;">
-                        <li><strong>Share:</strong> Click 'Share'. Give PA/SC 'Can edit' access. Give Surveyors 'Can view' access[cite: 244].</li>
-                        <li><strong>Export:</strong> Click the ⋮ (three dots) next to the map title → 'Export to KML/KMZ'. You can open this file in Google Earth for 3D terrain visualization[cite: 249].</li>
-                    </ul>
-                </div>
-
-                <div class="alert-box" style="border-left-color: #2e7d32; background: #e8f5e9;">
-                    <strong style="color: #2e7d32;">✅ Self-Assessment Checklist</strong>
-                    <p style="margin-bottom: 5px;">If you followed the steps using the dummy data, verify you can do the following [cite: 268-279]:</p>
-                    <ul style="margin-bottom: 0; font-size: 13px; line-height: 1.5;">
-                        <li>Import a Google Sheet into My Maps</li>
-                        <li>Color-code pins by Treatment and Team</li>
-                        <li>Filter and import a specific day's route</li>
-                        <li>Add driving directions between waypoints</li>
-                        <li>Update status in Sheets and refresh the map</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A checklist graphic with green checkmarks appearing next to map-building skills, symbolizing completion of the masterclass.</p>
-                </div>
-            </div>
-        </div>
-
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;">
+      <div style="font-size:28px;margin-bottom:8px;">🔑</div>
+      <strong style="font-size:13px;display:block;margin-bottom:6px;">Login with OTP</strong>
+      <p style="font-size:12px;color:var(--muted);margin:0;">Use the mobile number registered in your contract. Enter OTP to verify.</p>
     </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;">
+      <div style="font-size:28px;margin-bottom:8px;">📍</div>
+      <strong style="font-size:13px;display:block;margin-bottom:6px;">Allow Location</strong>
+      <p style="font-size:12px;color:var(--muted);margin:0;">Grant location permission when prompted. Required for GPS-based tracking.</p>
+    </div>
+  </div>
+  <div class="fr-tip-box"><strong>Troubleshooting Tip</strong><span>If the app fails to install, contact Mohd Faizan immediately. If OTP is not received: verify the mobile number matches the contract, ensure good network, and if still failing, the PA should email the request copying Faizan.</span></div>
+</div>
+
+<!-- SECTION 4: The Daily 7-Step Workflow -->
+<div class="fr-section-title"><div class="fr-step-num">4</div>The Daily 7-Step Attendance Workflow</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">Every Staff Member, Every Day, No Exceptions</h3>
+  <p class="fr-guide-text">The system captures 4 GPS coordinates (L1–L4) at specific moments throughout the day. These coordinates allow supervisors to verify actual field presence without micromanagement.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0;">
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px;border-left:3px solid var(--green);">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">☀ Morning — Before Leaving Home</div>
+      <p style="font-size:13.5px;margin:0 0 10px;"><strong>Step 1:</strong> Open app → Click "Start". Captures <strong>GPS L1</strong> (Home/Start).</p>
+      <p style="font-size:13.5px;margin:0 0 10px;"><strong>Step 2:</strong> Select your Approval Manager from the dropdown.</p>
+      <p style="font-size:13.5px;margin:0;"><strong>Step 3:</strong> Fill form: Working (Yes/No), Data Collection (Yes/No), WFH, Training, Surveys Planned.</p>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px;border-left:3px solid #2d7eb5;">
+      <div style="font-family:var(--mono);font-size:10px;color:#2d7eb5;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🏠 During Fieldwork</div>
+      <p style="font-size:13.5px;margin:0 0 10px;"><strong>Step 4:</strong> At first field location → Tap "Time In". Captures <strong>GPS L2</strong> (Field Start).</p>
+      <p style="font-size:13.5px;margin:0 0 10px;"><strong>Step 5:</strong> After surveys → Enter actual count completed.</p>
+      <p style="font-size:13.5px;margin:0;"><strong>Step 6:</strong> Before leaving field → Tap "Time Out". Captures <strong>GPS L3</strong> (Field End).</p>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px;border-left:3px solid #0d7c5f;">
+      <div style="font-family:var(--mono);font-size:10px;color:#0d7c5f;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🌙 Evening — After Reaching Home</div>
+      <p style="font-size:13.5px;margin:0;"><strong>Step 7:</strong> Open app → Click "Day End". Captures <strong>GPS L4</strong> (Back Home). This completes the daily cycle.</p>
+    </div>
+  </div>
+  <div class="fr-danger-box"><strong>What If Staff Forget to Punch?</strong>The SC can add working days using the "Add Days" option in the portal: Double-click staff name → "Additional Days" → Select date → Update. However, this should be the exception, not the norm. Repeated missed punches indicate a compliance problem that must be addressed.</div>
+</div>
+
+<!-- SECTION 5: Portal Dashboard -->
+<div class="fr-section-title"><div class="fr-step-num">5</div>Attendance Portal: The PA's Dashboard</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">Navigating &amp; Using the Portal</h3>
+  <p class="fr-guide-text">The attendance portal is the PA's primary tool for monitoring team presence, productivity, and location compliance. Access it at <a href="https://jpalsouth.asia/index" target="_blank" style="color:var(--green);font-weight:600;">jpalsouth.asia/index</a> → Research Ops → Field Staff Attendance.</p>
+  <div class="fr-domain-grid">
+    <div class="fr-domain-card"><span class="fr-domain-num">a</span><strong>Survey Efficiency</strong><p>Average surveys per staff per day. Use to identify performance gaps, optimize staffing, and benchmark teams. A sudden drop flags potential problems.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">b</span><strong>Quantitative Summary</strong><p>How many staff are present vs assigned. How many are actively collecting data vs doing other tasks. Shows workforce utilization at a glance.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">c</span><strong>Staff-wise Data</strong><p>Individual tracking: Field Time/Day, Survey Efficiency, Working Days, DC Days, Surveys Planned vs Actual. Your performance management evidence base.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">d</span><strong>Map View</strong><p>See where each staff member punched L1–L4 on a single map. Instantly verify: are they at assigned villages? Are routes logical? Are there location anomalies?</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">e</span><strong>Additional Days</strong><p>Correct missed punches. Double-click name → "Additional Days" → New → Select date → Update. Use sparingly — track who needs corrections frequently.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">f</span><strong>Detailed Daily Download</strong><p>Export CSV: Date, Working, DC, Time In/Out, Surveys Planned/Actual, all 4 GPS coords, remarks. Your audit trail and evidence for any disputes.</p></div>
+  </div>
+  <a href="https://jpalsouth.asia/index" target="_blank" class="fr-portal-btn">Open Attendance Portal ↗</a>
+</div>
+
+<!-- SECTION 6: Special Situations -->
+<div class="fr-section-title"><div class="fr-step-num">6</div>Handling Special Situations</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">Edge Cases the PA Must Know</h3>
+  <div style="display:grid;gap:14px;">
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;">
+      <span style="font-size:20px;">🏠</span>
+      <div><strong style="font-size:14px;color:var(--brand-dark);">Work From Home (WFH)</strong><p style="margin:4px 0 0;font-size:13px;">Staff must still punch: Start Day (when beginning work) → Time-In (same time) → Time-Out (when finishing) → Day End. The WFH checkbox must be ticked.</p></div>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;">
+      <span style="font-size:20px;">🎓</span>
+      <div><strong style="font-size:14px;color:var(--brand-dark);">Training Days</strong><p style="margin:4px 0 0;font-size:13px;">Select "Training: Yes" in the form. Time-In/Out corresponds to training start/end. Location will be training venue.</p></div>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;">
+      <span style="font-size:20px;">🏖️</span>
+      <div><strong style="font-size:14px;color:var(--brand-dark);">Paid Weekly Off / Holidays</strong><p style="margin:4px 0 0;font-size:13px;">Even on paid days off, staff should punch attendance. This maintains proper records and ensures accurate payment processing.</p></div>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;">
+      <span style="font-size:20px;">🚫</span>
+      <div><strong style="font-size:14px;color:var(--brand-dark);">Not Returning Home After Field</strong><p style="margin:4px 0 0;font-size:13px;">Inform supervisor → Mark "Day End" when leaving the field → Supervisor adds a remark while approving. L4 will show field location instead of home — that's acceptable with a remark.</p></div>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;">
+      <span style="font-size:20px;">⚠️</span>
+      <div><strong style="font-size:14px;color:var(--brand-dark);">Mistaken Entry (Marked "No" Instead of "Yes")</strong><p style="margin:4px 0 0;font-size:13px;">Report immediately to supervisor/PA and SC. The SC can correct using "Add Days" in the portal. Do not leave it — it affects payment processing.</p></div>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;">
+      <span style="font-size:20px;">📱</span>
+      <div><strong style="font-size:14px;color:var(--brand-dark);">App Hanging / Not Responding</strong><p style="margin:4px 0 0;font-size:13px;">Try closing and reopening. Check internet. Restart phone. Reinstall if needed. If nothing works, contact Mohd Faizan directly.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: RACI -->
+<div class="fr-section-title"><div class="fr-step-num">7</div>Roles &amp; Responsibilities</div>
+<div class="fr-content-card">
+  <div class="fr-raci-wrapper">
+    <table class="fr-raci-table">
+      <thead><tr><th style="width:22%">Role</th><th style="width:40%">Responsibility</th><th style="width:38%">Escalation Protocol</th></tr></thead>
+      <tbody>
+        <tr><td><strong>PA</strong></td><td>Pre-launch: ensure all staff have app installed and tested. Daily: monitor attendance, flag non-compliance. Weekly: review portal data with SC.</td><td>Non-compliance after 2 warnings → escalate to SC and RA. Technical issues → email Faizan immediately.</td></tr>
+        <tr><td><strong>SC</strong></td><td>Use portal to view/edit attendance. Correct missed punches via "Add Days". Monitor Survey Efficiency metrics. Review map view weekly.</td><td>Persistent location anomalies → flag to RA. Systematic missed punches → discuss with PA for corrective action.</td></tr>
+        <tr><td><strong>Supervisor</strong></td><td>Approve daily attendance for team. Add remarks for exceptions. Morning check: verify all team members punched "Start Day" before departure.</td><td>Staff refuses to use app → report to PA same day. Suspicious patterns → flag immediately.</td></tr>
+        <tr><td><strong>Field Staff</strong></td><td>Complete 7-step process daily without exception. Carry charged phone with location enabled. Report issues immediately.</td><td>App issues → WhatsApp supervisor immediately. If unresolved → PA escalates to Faizan.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 8: Video Walkthrough -->
+<div class="fr-section-title"><div class="fr-step-num">8</div>Video Walkthrough</div>
+<div class="fr-content-card" style="padding:0;overflow:hidden;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:320px;">
+    <div style="padding:32px;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin-bottom:12px;">▶ Complete Tutorial</div>
+      <h3 style="font-size:22px;color:var(--brand-dark);margin-bottom:12px;">Attendance System — Full Walkthrough</h3>
+      <p style="font-size:14px;color:var(--text-light);margin-bottom:20px;">Watch this end-to-end walkthrough to see every feature of the digital attendance system: from first-time app setup to daily punching to portal dashboard navigation.</p>
+      <p style="font-size:13px;color:var(--muted);">Duration: ~12 min · Covers: App setup, daily workflow, portal features, troubleshooting</p>
+    </div>
+    <div style="position:relative;background:#141820;min-height:320px;">
+      <iframe src="https://drive.google.com/file/d/16PeeeD-xbsV_oUJxMk7RVaCKs-Um5owo/preview" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="autoplay" allowfullscreen class="edit-img"></iframe>
+    </div>
+  </div>
+</div>
+
 </div>
 </div>
+
 
 <div id="panel-remote" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Remote Data Collection</strong></div>
 <div class="panel-body">
-<div class="hero-container">
-        <div class="orb-1"></div>
-        <div class="hero-glass">
-            <span class="eyebrow">Module: Field Tracking &amp; Logistics</span>
-            <h1>Google My Maps Masterclass</h1>
-            <p style="font-size: 18px; color: var(--brand-dark); max-width: 800px; margin: 0 auto; font-weight: 500;">
-                A Hands-On Training Guide for Research Associates and Survey Coordinators[cite: 7]. Master spatial intelligence to manage complex field deployments.
-            </p>
-        </div>
+
+<div style="text-align:center;max-width:860px;margin:0 auto 48px;">
+  <span style="font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--green);background:rgba(26,107,138,0.08);padding:5px 14px;border-radius:20px;border:1px solid rgba(26,107,138,0.15);display:inline-block;margin-bottom:16px;">Comprehensive Implementation Guide</span>
+  <h1 style="font-size:36px;font-weight:800;color:var(--brand-dark);margin-bottom:16px;letter-spacing:-1px;">Remote Survey Operations:<br>The Complete Playbook</h1>
+  <p style="font-size:16px;color:var(--text-light);max-width:740px;margin:0 auto;">A practitioner's guide for PAs implementing large-scale telephone surveys end-to-end. From contact database preparation through deployment, quality management, and close-out — covering CATI methodology, Exotel integration, remote training architecture, and daily operations.</p>
+</div>
+
+<!-- ═══ SECTION 1: Strategic Overview ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">1</div>Strategic Overview: What Is a Remote Survey?</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">Understanding Phone-Based Data Collection (CATI)</h3>
+  <p class="fr-guide-text">A remote survey — also called CATI (Computer-Assisted Telephone Interviewing) — is a mode where the entire survey process happens over phone calls. Surveyors work from their homes or local offices, not centralised call centres. The instrument is administered via SurveyCTO, and calls are routed through Exotel, which masks surveyor personal numbers.</p>
+  <p class="fr-guide-text">Remote surveys became mainstream post-COVID-19 but their value extends beyond pandemic contingency: faster deployment (no travel logistics), lower per-survey cost, ability to reach vast geographies simultaneously. However, they introduce three critical risks absent in face-to-face collection:</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;">
+    <div style="background:#fdfbf7;border:1px solid #e8e0d4;border-radius:10px;padding:18px;border-top:3px solid #b91c1c;">
+      <strong style="font-size:13px;color:#b91c1c;display:block;margin-bottom:6px;">Verification Risk</strong>
+      <p style="font-size:12.5px;margin:0;">Cannot visually confirm respondent identity or household context. Must rely on verbal verification questions.</p>
     </div>
-
-    <div class="sandbox-box">
-        <h3>The Masterclass Sandbox</h3>
-        <p>
-            This document is a hands-on masterclass — not a passive reading exercise[cite: 73]. We have provided a companion CSV file containing 500 dummy household records[cite: 74]. These coordinates point to open desert wasteland in the Thar Desert to ensure no real person's location is accidentally exposed[cite: 116]. 
-        </p>
-        <p>
-            You are expected to follow along on your computer, building your own Google My Map using the step-by-step instructions below[cite: 75]. Once you complete this exercise, you will be able to apply these exact steps to your live project datasets.
-        </p>
-        <a href="https://drive.google.com/file/d/1VkTYrRle_y5NTnyJUhHV5ip8Wd8eGlYD/view?usp=sharing" class="download-btn" target="_blank">
-            📥 Download Dummy Dataset (CSV)
-        </a>
+    <div style="background:#fdfbf7;border:1px solid #e8e0d4;border-radius:10px;padding:18px;border-top:3px solid #b7803a;">
+      <strong style="font-size:13px;color:#b7803a;display:block;margin-bottom:6px;">Engagement Risk</strong>
+      <p style="font-size:12.5px;margin:0;">Phone disconnections, distractions, limited rapport. Respondents can hang up with zero social cost.</p>
     </div>
-
-    <div class="section-padding">
-
-        <div class="story-row">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">1. Preparing Your Dataset</h2>
-                <p>Your map is only as good as your data. Before you touch Google My Maps, you must prepare a clean, well-structured dataset in Google Sheets[cite: 94]. Every field tracking dataset should follow this standard schema[cite: 97]:</p>
-                
-                <table>
-                    <tbody><tr>
-                        <th>Column Name</th>
-                        <th>Required?</th>
-                        <th>Description [cite: 99]</th>
-                    </tr>
-                    <tr><td><strong>hh_id</strong></td><td>✅ Yes</td><td>Unique household identifier (e.g., JSM-0001)</td></tr>
-                    <tr><td><strong>latitude / longitude</strong></td><td>✅ Yes</td><td>GPS coords in decimal degrees (e.g., 26.753462)</td></tr>
-                    <tr><td><strong>treatment_status</strong></td><td>✅ Yes</td><td>Treatment or Control</td></tr>
-                    <tr><td><strong>biker_team</strong></td><td>✅ Yes</td><td>Assigned surveyor/biker ID (e.g., Biker-03)</td></tr>
-                    <tr><td><strong>survey_day</strong></td><td>✅ Yes</td><td>Scheduled survey day (e.g., Day-01)</td></tr>
-                    <tr><td><strong>survey_status</strong></td><td>✅ Yes</td><td>Pending / Completed / Refused / Revisit</td></tr>
-                </tbody></table>
-
-                <div class="alert-box">
-                    <strong>🚩 The #1 Reason Maps Break</strong>
-                    If your treatment_status column contains 'Treatment', 'treatment', 'TREATMENT', and 'treat' — Google My Maps will create 4 separate categories instead of 2. Your color coding will break. <strong>Rule: Run a UNIQUE() check on every categorical column before importing[cite: 103].</strong>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A clean, zoomed-in view of a perfectly formatted Google Sheet highlighting the 'latitude', 'longitude', and 'treatment_status' columns.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row reverse">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">2. Creating &amp; Importing Your Map</h2>
-                <p>Google My Maps is a free, browser-based tool that lets you create custom maps with pins, routes, and multiple layers[cite: 89]. Follow these exact steps to load your dummy data.</p>
-                
-                <div class="step-box">
-                    <h4>Step 1: Upload to Google Sheets First [cite: 127]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Go to sheets.google.com → Blank spreadsheet.</li>
-                        <li>File → Import → Upload → Select dummy_hh_500_field_tracking.csv.</li>
-                        <li>Name the sheet: 'JSM_HH_Sample_Master'.</li>
-                        <li><em>Why? Google My Maps imports from Sheets more reliably than from raw CSVs.</em></li>
-                    </ol>
-                </div>
-
-                <div class="step-box">
-                    <h4>Step 2: Create Map &amp; Import [cite: 125, 128]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Go to mymaps.google.com and click '+ CREATE A NEW MAP'.</li>
-                        <li>Name your map: 'JSM-RCT — Field Tracking Map — April 2026'[cite: 126].</li>
-                        <li>Click 'Import' in the Untitled layer → Select 'Google Sheets' tab → Choose your Master sheet.</li>
-                        <li><strong>Position columns:</strong> Check 'latitude' and 'longitude'.</li>
-                        <li><strong>Title column:</strong> Choose 'hh_id'. Click Finish.</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A computer screen showing the Google My Maps import dialog box, with an arrow pointing to the "Google Drive" import option.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">3. Styling &amp; Color-Coding</h2>
-                <p>The most critical visual distinction is Treatment vs. Control[cite: 130]. You cannot apply two color schemes to the same layer, so we will create distinct layers for different views[cite: 135].</p>
-                
-                <div class="step-box">
-                    <h4>Step 3: Color-Code Treatment Arms [cite: 132]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>In the layer panel, click 'Uniform style' → Change to 'Style by data column'.</li>
-                        <li>Select 'treatment_status'.</li>
-                        <li>Click the paint bucket next to 'Treatment' → Choose 🟢 GREEN (#34A853).</li>
-                        <li>Click the paint bucket next to 'Control' → Choose 🔴 RED (#EA4335).</li>
-                    </ol>
-                </div>
-
-                <div class="step-box">
-                    <h4>Step 4: Create Team Assignment Layer [cite: 135]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Click 'Add layer' in the left panel and name it 'Team Assignments'.</li>
-                        <li>Import the same Google Sheet into this new layer.</li>
-                        <li>Style by data column → 'biker_team'. Google will auto-assign 20 distinct colors.</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A map interface showing a sea of green and red pins, with a user's cursor clicking the "paint bucket" tool on the sidebar.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row reverse">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">4. Route Planning &amp; The 3+3 Model</h2>
-                <p>This is the most operationally powerful layer. For each day, you create a sub-layer showing only that day's targets for each biker[cite: 158]. We use the <strong>3+3 Model</strong>: 3 primary targets and 3 buffer households to ensure no surveyor has a zero-productivity day[cite: 194].</p>
-                
-                <div class="step-box">
-                    <h4>Step 5: Filter and Import Daily Routes [cite: 159, 190, 191]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>In Google Sheets, create a new tab 'Day_01'.</li>
-                        <li>Use formula: <code>=FILTER(Master!A:O, Master!J:J = "Day-01")</code></li>
-                        <li>In My Maps, 'Add layer' named 'Day 01 — Routes' and import this new tab.</li>
-                        <li>Style by <code>survey_type</code>: Primary = 🔵 Blue Circle, Buffer = 🟡 Yellow Diamond.</li>
-                    </ol>
-                </div>
-
-                <div class="step-box">
-                    <h4>Step 6: Add Driving Directions [cite: 192]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Click the 'Add directions' button (🔀) beneath the search bar.</li>
-                        <li>Set transport mode to 🏍️ Driving.</li>
-                        <li>Enter waypoints in order: Base Camp → Primary HH #1 → Primary HH #2 → Primary HH #3.</li>
-                        <li>Google will auto-calculate the route line. Change its color to match the biker's team color.</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A map showing a defined route line connecting three blue circles (Primary targets), with three yellow diamonds (Buffers) clustered nearby.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">5. Daily Tracking &amp; Updates</h2>
-                <p>A map that is not updated daily is a decoration, not a tool[cite: 203]. Every evening, the PA/SC performs a 15-minute map review to track progress and identify fraud[cite: 216].</p>
-
-                <div class="step-box">
-                    <h4>Step 7: End-of-Day Status Update [cite: 210]</h4>
-                    <ol style="margin-bottom: 0; font-size: 14px;">
-                        <li>Biker reports results: <em>'JSM-0041 Completed, JSM-0043 Refused, JSM-0044 Buffer Used'</em>.</li>
-                        <li>SC opens the Google Sheet and updates the <code>survey_status</code> column accordingly.</li>
-                        <li>After all updates, REFRESH the Google My Maps browser tab. Pins will change color based on the new status[cite: 210, 211].</li>
-                    </ol>
-                </div>
-
-                <div class="scenario-box">
-                    <strong>📱 The WhatsApp Screenshot Hack [cite: 207]</strong>
-                    <p>Most field staff don't open Google My Maps on their phones. Every morning, take a screenshot of each biker's daily route on your PC and send it to their WhatsApp. It takes 2 minutes per biker but eliminates the #1 field excuse: <em>'Mujhe pata nahi tha kahan jaana hai' (I didn't know where to go)</em>.</p>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A smartphone displaying a WhatsApp chat where a supervisor has sent a clear screenshot of a map route with instructions to a surveyor.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="story-row reverse">
-            <div class="story-text">
-                <h2 style="color: var(--brand-dark); font-size: 26px; margin-bottom: 15px;">6. Sharing &amp; Self-Assessment</h2>
-                <p>Once your map is built, you can share it securely or export it for PI presentations[cite: 242].</p>
-                
-                <div class="step-box">
-                    <h4>Step 8: Share &amp; Export [cite: 244, 249]</h4>
-                    <ul style="margin-bottom: 0; font-size: 14px;">
-                        <li><strong>Share:</strong> Click 'Share'. Give PA/SC 'Can edit' access. Give Surveyors 'Can view' access[cite: 244].</li>
-                        <li><strong>Export:</strong> Click the ⋮ (three dots) next to the map title → 'Export to KML/KMZ'. You can open this file in Google Earth for 3D terrain visualization[cite: 249].</li>
-                    </ul>
-                </div>
-
-                <div class="alert-box" style="border-left-color: #2e7d32; background: #e8f5e9;">
-                    <strong style="color: #2e7d32;">✅ Self-Assessment Checklist</strong>
-                    <p style="margin-bottom: 5px;">If you followed the steps using the dummy data, verify you can do the following [cite: 268-279]:</p>
-                    <ul style="margin-bottom: 0; font-size: 13px; line-height: 1.5;">
-                        <li>Import a Google Sheet into My Maps</li>
-                        <li>Color-code pins by Treatment and Team</li>
-                        <li>Filter and import a specific day's route</li>
-                        <li>Add driving directions between waypoints</li>
-                        <li>Update status in Sheets and refresh the map</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="story-visual">
-                <div class="ai-image-placeholder">
-                    <span>🎨 AI Image Placeholder</span>
-                    <p>A checklist graphic with green checkmarks appearing next to map-building skills, symbolizing completion of the masterclass.</p>
-                </div>
-            </div>
-        </div>
-
+    <div style="background:#fdfbf7;border:1px solid #e8e0d4;border-radius:10px;padding:18px;border-top:3px solid #312e81;">
+      <strong style="font-size:13px;color:#312e81;display:block;margin-bottom:6px;">Visibility Risk</strong>
+      <p style="font-size:12.5px;margin:0;">Supervisors cannot observe surveyor technique. Requires stronger systems for quality monitoring (call recordings, HFCs).</p>
     </div>
+  </div>
+  <div class="fr-tip-box"><strong>When to Use Remote vs In-Person</strong><span>Use remote when: contact databases exist, instrument is under 30 min, questions don't require visual observation, geography is too dispersed for field teams. Use in-person when: measurement needs physical tools, respondent literacy is very low, or community trust requires face-to-face rapport.</span></div>
+</div>
+
+<!-- ═══ SECTION 2: The Five Pillars ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">2</div>The Five Pillars of a Successful Remote Survey</div>
+<div class="fr-content-card">
+  <div class="fr-values-grid">
+    <div class="fr-value-card"><div class="fr-value-icon">📱</div><h4>Contact Database Readiness</h4><p>The single most important input. Numbers must be current (under 6 months old), correctly formatted, consent-verified. Expect 20–40% invalid. The RA must audit the database before anything else begins.</p></div>
+    <div class="fr-value-card"><div class="fr-value-icon">🎓</div><h4>Systematic Remote Training</h4><p>3–7 day training via video conferencing. Smaller batches (8–12 per session). Move from protocols → instrument → mock calls → supervised pilot → deployment. Never skip the "no forms" conceptual walkthrough.</p></div>
+    <div class="fr-value-card"><div class="fr-value-icon">📞</div><h4>Telephony Integration</h4><p>Exotel integrated with SurveyCTO. Respondent numbers masked. Calls auto-logged. Recharge managed by A&F. If balance runs out mid-call, the call disconnects — monitor credits daily.</p></div>
+    <div class="fr-value-card"><div class="fr-value-icon">📊</div><h4>Active Quality Management</h4><p>Real-time monitoring: call recordings, high-frequency checks, daily debriefs, immediate corrective action. Flag short calls, excessive "don't know" responses, and skip logic violations.</p></div>
+    <div class="fr-value-card"><div class="fr-value-icon">🔒</div><h4>PII Protection (Non-Negotiable)</h4><p>Respondent phone numbers must NEVER appear in WhatsApp groups, tracking sheets, or unsecured channels. Exotel masking is the first line of defense. Violations can shut down the entire project.</p></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 3: Week-by-Week Execution Timeline ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">3</div>PA's Week-by-Week Execution Timeline</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">The 4-Week Runway to Launch</h3>
+  <p class="fr-guide-text">This is the PA's operational playbook. Each week has a primary objective, specific daily tasks, and common pitfalls to avoid.</p>
+
+  <div class="rm-week-grid" style="grid-template-columns:repeat(2,1fr);">
+    <div class="rm-week-card" style="border-left:3px solid var(--green);">
+      <strong>Week 1: Recruitment &amp; Infrastructure Setup</strong>
+      <p><strong>Objective:</strong> Build a surveyor roster with verified equipment. Post job openings (WhatsApp groups, local colleges, previous surveyor networks). Screen every candidate via 15-minute call: verify Android phone (6.0+), network provider, headphones with mic, quiet workspace, regional language fluency. Select 15% more than needed.</p>
+      <div class="rm-scenario"><strong>Common Pitfall</strong>You call 50 candidates but only 30 respond. Solution: over-recruit by 30–40% at posting stage. Send follow-up messages with a deadline.</div>
+    </div>
+    <div class="rm-week-card" style="border-left:3px solid #2d7eb5;">
+      <strong>Week 2: Resource Development &amp; Platform Testing</strong>
+      <p><strong>Objective:</strong> Finalize all training materials and test platform with selected candidates. Build: Training Manual (15–25 pages, mobile-readable), Introductory Script (verbatim for first 60 seconds), 3–5 demo call recordings, daily quizzes (Google Forms), visual guides (SurveyCTO screenshots). Thursday: 30-min platform orientation — teach join/mute/chat, test audio for each person.</p>
+      <div class="rm-scenario"><strong>Field Lesson</strong>One PA discovered during platform orientation that 3 surveyors had iPhones, not Android. Too late to replace. Lesson: verify device type during screening in Week 1.</div>
+    </div>
+    <div class="rm-week-card" style="border-left:3px solid #b7803a;">
+      <strong>Week 3: The Training Week (5 Days)</strong>
+      <p><strong>Your daily routine:</strong> 8:30 AM prep (log in early, test screen share). 10 AM morning session (content delivery, name-calling every 10–15 min, rotation reading). 1 PM lunch. 2 PM afternoon (practice-heavy: mock calls, breakout rooms). 4:30 PM quiz + wrap-up. 5:30 PM evening review (analyze quiz results, prep next day). Never schedule more than 3.5 hours continuous.</p>
+      <div class="rm-scenario"><strong>Engagement Insight</strong>Engagement drops dramatically after 2 PM. Schedule hands-on practice in the afternoon (keeps people awake) and lecture content in the morning.</div>
+    </div>
+    <div class="rm-week-card" style="border-left:3px solid #0d7c5f;">
+      <strong>Week 4: Pilot &amp; Deployment</strong>
+      <p><strong>Objective:</strong> Supervised pilot calls (each trainee makes 1–2 real calls while senior staff listens on conference bridge), calibration session (review pilot data, correct patterns), final assessment and team selection, deployment with first-week intensive monitoring. Set up daily dashboard before Day 1.</p>
+      <div class="rm-scenario"><strong>Quality Gate</strong>Do not deploy anyone who has not completed at least 2 supervised pilot calls with acceptable quality scores. This is your last filter.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 4: Remote Training Design ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">4</div>Remote Training Architecture: The 5-Day Model</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">Training Schedule for a 20-Minute Instrument</h3>
+  <table class="fr-inline-table">
+    <thead><tr><th>Day</th><th>Morning (10 AM – 1 PM)</th><th>Afternoon (2 PM – 5 PM)</th><th>EOD Task</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Day 1</strong></td><td>Welcome, org induction, study context, research purpose</td><td>Platform familiarisation, attendance setup, team norms</td><td>Quiz 1 (5 Qs)</td></tr>
+      <tr><td><strong>Day 2</strong></td><td>Calling protocols, consent script practice (verbatim memorisation)</td><td>Group walkthrough of instrument (NO forms — conceptual only)</td><td>Quiz 2 + Doubts</td></tr>
+      <tr><td><strong>Day 3</strong></td><td>SurveyCTO navigation, Exotel setup, form walkthrough with devices</td><td>Demo call recording exercise: listen + fill form independently</td><td>Quiz 3</td></tr>
+      <tr><td><strong>Day 4</strong></td><td>Peer mock calls in breakout rooms (paired, rotate every 10 min)</td><td>Senior staff as "difficult respondents" — live coaching</td><td>Quiz 4</td></tr>
+      <tr><td><strong>Day 5</strong></td><td>Supervised pilot calls to real respondents (1–2 per trainee)</td><td>Calibration: review pilot data, address patterns, final Q&A</td><td>Final assessment</td></tr>
+    </tbody>
+  </table>
+
+  <div class="fr-callout" style="margin-top:20px;"><strong>The Progressive Practice Sequence</strong>
+  Day 2: Group Walkthrough (no forms — understand logic before fighting technology). Day 3: Individual Silent Practice (play demo, fill form independently, compare). Day 3–4: Peer Role-Play (breakout rooms of 4–5). Day 4: SC/PA as difficult respondent (live coaching). Day 5: Supervised real calls. Don't skip the "no forms" step — one project jumped straight to SurveyCTO and surveyors learned button-clicking but not question intent.</div>
+
+  <h3 class="fr-card-h3" style="margin-top:24px;">Engagement Techniques That Work</h3>
+  <div class="fr-domain-grid">
+    <div class="fr-domain-card"><span class="fr-domain-num">1</span><strong>Name-Calling</strong><p>Every 10–15 minutes, call 2–3 specific people: "Ramesh, can you hear me? Priya, what should you do if the respondent says they're busy?"</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">2</span><strong>Rotation Reading</strong><p>Have surveyors take turns reading sections of the manual aloud. "Suresh, please read the next paragraph." Creates accountability.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">3</span><strong>Random Video Checks</strong><p>Randomly ask 3–4 people to turn on cameras for 5 minutes. Prevents multitasking.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">4</span><strong>Breakout Room Practice</strong><p>Split groups of 15+ into rooms of 4–5 for mock calls. Trainer joins random rooms to observe.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">5</span><strong>Daily Quizzes</strong><p>10-question Google Form at 4:30 PM. Review aggregate results. Start next day by revisiting topics where >40% got wrong answers.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">6</span><strong>Screen Sharing</strong><p>During mock surveys, have the trainee share their screen so everyone sees them navigate the form.</p></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 5: The Survey Call Process ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">5</div>The Survey Call Process: Step-by-Step for Surveyors</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">Every Call Follows This Exact Structure</h3>
+  <div class="fr-process-steps">
+    <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong>Before You Dial</strong><p>Open SurveyCTO → correct form. Check network (2+ bars). Put on headphones, test mic. Review respondent info. Take a breath — sound calm and professional.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong>Making the Call</strong><p>Tap the phone icon in SurveyCTO → Exotel dials automatically. Wait 25–30 seconds before hanging up. Many rural respondents take time to reach their phone.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">3</div><div class="fr-ps-body"><strong>Introduction Script (Memorise Verbatim)</strong><p>"Namaste, my name is [NAME] calling from [ORG]. May I speak with [RESPONDENT]?" → Verify identity → Explain purpose → State duration → Obtain consent.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">4</div><div class="fr-ps-body"><strong>Respondent Verification (Critical)</strong><p>Ask open-ended: "What is your name?" — do NOT ask "Is this [NAME]?" (people say yes to be polite even when it's not them). Verify 2–3 identifying details.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">5</div><div class="fr-ps-body"><strong>Conducting the Survey</strong><p>Read questions EXACTLY as written. Read ALL answer options. Speak slowly. Never suggest answers. Follow skip logic (trust SurveyCTO). Record answers immediately. Remain neutral — no surprise, agreement, or disagreement.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">6</div><div class="fr-ps-body"><strong>Closing the Call</strong><p>"Thank you for your time. Your responses are very valuable. If you have questions, contact [SUPERVISOR] at [NUMBER]." Submit the form. Sync immediately.</p></div></div>
+  </div>
+
+  <h3 class="fr-card-h3" style="margin-top:24px;">Handling Difficult Moments</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+    <div class="rm-scenario"><strong>Inconsistent Answers</strong>"Earlier you mentioned 3 children, now you're saying 2 attend school. Just to confirm — how many school-age children do you have?" Gently clarify, never accuse.</div>
+    <div class="rm-scenario"><strong>Respondent Gets Emotional</strong>"I understand this is difficult. Take your time. Would you like a short break?" Show empathy. If they want to stop, respect it — mark partial, offer callback.</div>
+    <div class="rm-scenario"><strong>Call Drops (Network)</strong>Wait 30 seconds → call back immediately → "I'm sorry we got disconnected. Can we continue?" SurveyCTO should have saved responses to the last question.</div>
+    <div class="rm-scenario"><strong>Respondent Busy Mid-Survey</strong>"We've completed X of Y questions. May I call back? When is convenient?" Record callback time, save partial survey.</div>
+    <div class="rm-scenario"><strong>Asks for Personal Number</strong>"I'm calling through a research line. For questions, please contact my supervisor at [NUMBER]." Never give your personal number.</div>
+    <div class="rm-scenario"><strong>Respondent Becomes Abusive</strong>Stay calm: "I understand. Your participation is voluntary. I'll end the call now. Thank you." Hang up. Report to supervisor immediately.</div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 6: Call Attempt Protocols ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">6</div>Call Attempt Protocols</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">Systematic Persistence, Not Random Redials</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:20px 0;">
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;border-top:3px solid var(--green);">
+      <div style="font-size:28px;font-weight:800;color:var(--green);">1</div>
+      <strong style="font-size:12px;">First call at assigned time</strong>
+      <p style="font-size:11px;color:var(--muted);margin:4px 0 0;">If no answer → wait 2–4 hours</p>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;border-top:3px solid #2d7eb5;">
+      <div style="font-size:28px;font-weight:800;color:#2d7eb5;">2</div>
+      <strong style="font-size:12px;">Different time of day</strong>
+      <p style="font-size:11px;color:var(--muted);margin:4px 0 0;">If morning failed → try afternoon</p>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;border-top:3px solid #b7803a;">
+      <div style="font-size:28px;font-weight:800;color:#b7803a;">3</div>
+      <strong style="font-size:12px;">Next day, different slot</strong>
+      <p style="font-size:11px;color:var(--muted);margin:4px 0 0;">If still no contact → mark "Non-contact after 3 attempts"</p>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;border-top:3px solid #b91c1c;">
+      <div style="font-size:28px;font-weight:800;color:#b91c1c;">✋</div>
+      <strong style="font-size:12px;">Refused = STOP</strong>
+      <p style="font-size:11px;color:var(--muted);margin:4px 0 0;">Do NOT attempt again. Respect their decision.</p>
+    </div>
+  </div>
+  <div class="rm-scenario"><strong>Field Wisdom</strong>One surveyor had very low contact rates because she only called 10 AM–12 PM. Most rural respondents were in fields during those hours. When she shifted to 6–8 PM, her contact rate jumped from 40% to 75%. Time of day matters enormously.</div>
+</div>
+
+<!-- ═══ SECTION 7: Quality & Productivity ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">7</div>Quality Control &amp; Productivity Monitoring</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">PA's Daily Monitoring Dashboard</h3>
+  <table class="fr-inline-table">
+    <thead><tr><th>Metric</th><th>Target</th><th>Red Flag</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>Calls Attempted / Day</td><td>20–30</td><td>Below 15</td><td>1-on-1 call with surveyor to understand barriers</td></tr>
+      <tr><td>Completion Rate</td><td>≥70% of contacted</td><td>Below 50%</td><td>Review call recordings, check if consent script is too long</td></tr>
+      <tr><td>Avg. Call Duration</td><td>Within ±20% of median</td><td>30%+ shorter than peers</td><td>Flag for potential rushing or question skipping</td></tr>
+      <tr><td>Response Rate (overall)</td><td>≥70%</td><td>Below 50% after 3 attempts</td><td>Audit contact database quality, check call timing</td></tr>
+      <tr><td>Skip Pattern Errors</td><td>&lt;2% of surveys</td><td>&gt;5%</td><td>Retrain on form navigation, check SurveyCTO constraints</td></tr>
+      <tr><td>"Don't Know" Rate</td><td>&lt;10% on factual Qs</td><td>&gt;15%</td><td>Review probing technique, check if questions are clear</td></tr>
+      <tr><td>Daily Productivity</td><td>5–8 completed</td><td>Below 4 consistently</td><td>Check infrastructure (network, workspace), time management</td></tr>
+    </tbody>
+  </table>
+
+  <div class="fr-callout" style="margin-top:20px;"><strong>High-Frequency Checks (HFCs)</strong>
+  Your supervisor runs automated checks on submitted surveys. These flag: very short surveys (potential rushing), excessive "don't know" responses (potential disengagement), impossible values (age=150), and skip logic violations. Clean data = fewer follow-up questions from your supervisor. Build HFC review into your daily evening routine.</div>
+</div>
+
+<!-- ═══ SECTION 8: Data Security & Privacy ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">8</div>Data Security &amp; PII Protection</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">Non-Negotiable Rules — No Exceptions</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="background:#fef5f5;border:1px solid rgba(185,28,28,0.15);border-radius:10px;padding:18px;">
+      <strong style="color:#b91c1c;font-size:13px;display:block;margin-bottom:10px;">❌ NEVER Do This</strong>
+      <p style="font-size:13px;margin:0 0 6px;">Share respondent names/numbers in WhatsApp groups</p>
+      <p style="font-size:13px;margin:0 0 6px;">Take screenshots of contact lists or survey responses</p>
+      <p style="font-size:13px;margin:0 0 6px;">Save respondent info on personal phone outside the survey app</p>
+      <p style="font-size:13px;margin:0 0 6px;">Conduct surveys in public places where others can overhear</p>
+      <p style="font-size:13px;margin:0;">Discuss specific respondent details with anyone outside the project</p>
+    </div>
+    <div style="background:#f0f7f4;border:1px solid rgba(13,124,95,0.15);border-radius:10px;padding:18px;">
+      <strong style="color:#0d7c5f;font-size:13px;display:block;margin-bottom:10px;">✅ ALWAYS Do This</strong>
+      <p style="font-size:13px;margin:0 0 6px;">Log out of SurveyCTO when not actively surveying</p>
+      <p style="font-size:13px;margin:0 0 6px;">Delete completed surveys from device if instructed</p>
+      <p style="font-size:13px;margin:0 0 6px;">Report data security concerns to supervisor immediately</p>
+      <p style="font-size:13px;margin:0 0 6px;">Use Exotel for all calls (never personal number)</p>
+      <p style="font-size:13px;margin:0;">Keep workspace private during calls</p>
+    </div>
+  </div>
+  <div class="fr-danger-box" style="margin-top:16px;"><strong>Real Incident</strong>A surveyor shared a screenshot in the team WhatsApp group showing "I completed 10 surveys today!" The screenshot showed respondent names and phone numbers. This was a serious privacy violation — respondent data was now visible to 50+ people in the group. The project had to report to the IRB. Lesson: celebrate achievements without sharing screens that contain PII.</div>
+</div>
+
+<!-- ═══ SECTION 9: Daily Reporting ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">9</div>Daily Reporting &amp; Communication Protocols</div>
+<div class="fr-content-card">
+  <h3 class="fr-card-h3">The End-of-Day Report (Every Day, No Exceptions)</h3>
+  <p class="fr-guide-text">Every surveyor sends this to their supervisor by 6 PM daily via WhatsApp or the designated tracking system:</p>
+  <div style="background:#1f2937;border-radius:12px;padding:24px;color:white;font-family:var(--mono);font-size:13px;line-height:1.8;margin:16px 0;">
+    <div style="color:#93c5e4;font-weight:700;margin-bottom:8px;">TODAY'S SUMMARY — [DATE]</div>
+    • Total calls attempted: [X]<br>
+    • Completed surveys: [X]<br>
+    • Partial completions: [X] (callback scheduled)<br>
+    • Refusals: [X]<br>
+    • Wrong numbers / disconnected: [X]<br>
+    • Technical issues faced: [describe]<br>
+    • Tomorrow's plan: [X respondents assigned]
+  </div>
+  <table class="fr-inline-table" style="margin-top:16px;">
+    <thead><tr><th>Issue Type</th><th>Channel</th><th>Timeline</th></tr></thead>
+    <tbody>
+      <tr><td>Urgent technical (app crash, form error)</td><td>WhatsApp to supervisor</td><td>Immediately during work hours</td></tr>
+      <tr><td>Protocol clarification</td><td>WhatsApp to supervisor</td><td>Ask immediately — never guess</td></tr>
+      <tr><td>Respondent complaint/concern</td><td>Report to supervisor</td><td>Within 1 hour</td></tr>
+      <tr><td>General questions</td><td>Daily team call or non-urgent message</td><td>End of day</td></tr>
+      <tr><td>Completion numbers</td><td>End-of-day report</td><td>By 6 PM</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══ SECTION 10: Interactive Simulator ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">10</div>Remote Survey Decision Simulator</div>
+<div class="rm-sim" id="rm-sim">
+  <div class="rm-sim-header">
+    <h3 style="margin:0;font-size:17px;">🎯 Test Your Remote Survey Instincts</h3>
+    <div class="rm-sim-score" id="rm-score"></div>
+  </div>
+  <div class="rm-sim-body" id="rm-sim-body"></div>
+  <div class="rm-sim-footer">
+    <button class="rm-sim-btn" style="background:var(--off);color:var(--ink);border:1px solid var(--border);" id="rm-prev" onclick="rmPrev()" style="visibility:hidden;">← Back</button>
+    <button class="rm-sim-btn rm-sim-primary" id="rm-next" onclick="rmNext()">Begin →</button>
+  </div>
+</div>
+
+<!-- ═══ SECTION 11: RACI ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">11</div>Remote Survey RACI Matrix</div>
+<div class="fr-raci-wrapper">
+  <table class="fr-raci-table">
+    <thead><tr><th style="width:28%">Activity</th><th>RA</th><th>PA</th><th>SC</th><th>Supervisor</th></tr></thead>
+    <tbody>
+      <tr><td><span class="fr-task-name">Contact Database Preparation</span></td><td><span class="fr-role-tag fr-tag-a">A</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-c">C</span></td><td><span class="fr-role-tag fr-tag-i">I</span></td></tr>
+      <tr><td><span class="fr-task-name">Exotel Setup &amp; Integration</span></td><td><span class="fr-role-tag fr-tag-i">I</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-c">C</span></td><td><span class="fr-role-tag fr-tag-i">I</span></td></tr>
+      <tr><td><span class="fr-task-name">Training Material Development</span></td><td><span class="fr-role-tag fr-tag-a">A</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-c">C</span></td></tr>
+      <tr><td><span class="fr-task-name">Remote Training Delivery</span></td><td><span class="fr-role-tag fr-tag-c">C</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-a">A</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td></tr>
+      <tr><td><span class="fr-task-name">Surveyor Screening &amp; Selection</span></td><td><span class="fr-role-tag fr-tag-i">I</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-a">A</span></td><td><span class="fr-role-tag fr-tag-c">C</span></td></tr>
+      <tr><td><span class="fr-task-name">Daily Productivity Monitoring</span></td><td><span class="fr-role-tag fr-tag-i">I</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-a">A</span></td></tr>
+      <tr><td><span class="fr-task-name">HFC &amp; Back-check Design</span></td><td><span class="fr-role-tag fr-tag-a">A</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-c">C</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td></tr>
+      <tr><td><span class="fr-task-name">PII Compliance Enforcement</span></td><td><span class="fr-role-tag fr-tag-a">A</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td><td><span class="fr-role-tag fr-tag-r">R</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══ SECTION 12: Success Metrics ═══ -->
+<div class="fr-section-title"><div class="fr-step-num">12</div>Success Metrics &amp; Benchmarks</div>
+<div class="fr-content-card">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;border-top:3px solid var(--green);">
+      <div style="font-size:28px;font-weight:800;color:var(--green);">≥70%</div>
+      <strong style="font-size:11px;">Response Rate</strong>
+      <p style="font-size:10px;color:var(--muted);margin:4px 0 0;">Varies by population</p>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;border-top:3px solid #2d7eb5;">
+      <div style="font-size:28px;font-weight:800;color:#2d7eb5;">≥85%</div>
+      <strong style="font-size:11px;">Completion Rate</strong>
+      <p style="font-size:10px;color:var(--muted);margin:4px 0 0;">Of started interviews</p>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;border-top:3px solid #b7803a;">
+      <div style="font-size:28px;font-weight:800;color:#b7803a;">&lt;5%</div>
+      <strong style="font-size:11px;">Skip Pattern Errors</strong>
+      <p style="font-size:10px;color:var(--muted);margin:4px 0 0;">Per submitted survey</p>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;border-top:3px solid #0d7c5f;">
+      <div style="font-size:28px;font-weight:800;color:#0d7c5f;">5–8</div>
+      <strong style="font-size:11px;">Surveys / Day</strong>
+      <p style="font-size:10px;color:var(--muted);margin:4px 0 0;">Per surveyor (20-min instrument)</p>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;border-top:3px solid #312e81;">
+      <div style="font-size:28px;font-weight:800;color:#312e81;">≥60%</div>
+      <strong style="font-size:11px;">3-Attempt Efficiency</strong>
+      <p style="font-size:10px;color:var(--muted);margin:4px 0 0;">Completed within 3 calls</p>
+    </div>
+  </div>
+</div>
+
 </div>
 </div>
+
 
 <div id="admin-kit" style="display:none;">
   <span style="color:#94a3b8;font-size:12px;font-weight:600;font-family:var(--sans);">Edit Mode</span>
@@ -4539,13 +4645,13 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 <script>
 // ── Tab config ────────────────────────────────────────────────────────────────
 var TAB_CFG = {
-  'panel-home': {bg:'linear-gradient(135deg,#0f2027 0%,#203a43 50%,#2c5364 100%)',s:[["6", "Sub-sections"],["14+", "Field guides"],["6", "Checklists"]],pod:{title:"Field Readiness: The Full Picture",desc:"Bridging planning and launch \u2014 the complete readiness journey",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
-  'panel-hiring': {bg:'linear-gradient(135deg,#78350f 0%,#92400e 50%,#b45309 100%)',s:[["1", "Core strategy"],["11", "Sections"],["1", "Checklist"]],pod:{title:"Hiring for Resilience",desc:"The buffer rule, calculators, Core Values, and the 6 core responsibilities",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
-  'panel-pilot': {bg:'linear-gradient(135deg,#2e1065 0%,#5b21b6 50%,#7c3aed 100%)',s:[["4", "Pilot phases"],["6", "Field guides"],["1", "Checklist"]],pod:{title:"Piloting: Stress-Testing the System",desc:"Crash-testing instruments, logistics, and team calibration",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
-  'panel-launch': {bg:'linear-gradient(135deg,#0c2340 0%,#0f3460 50%,#1e5799 100%)',s:[["4", "Launch pillars"],["3", "Templates"],["1", "Quiz"]],pod:{title:"Survey Launch & the Gestation Phase",desc:"The first 10-15 days: routines, momentum, and the forecaster",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
-  'panel-maps': {bg:'linear-gradient(135deg,#052e16 0%,#166534 55%,#16a34a 100%)',s:[["6", "Training steps"],["1", "Dataset"],["1", "Assessment"]],pod:{title:"Google My Maps Masterclass",desc:"Spatial intelligence for tracking complex field deployments",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
-  'panel-attend': {bg:'linear-gradient(135deg,#1e1b4b 0%,#3730a3 50%,#4f46e5 100%)',s:[["3", "Modules"],["2", "Templates"],["1", "Checklist"]],pod:{title:"Digital Attendance Tracking",desc:"Managing field staff attendance with digital tools",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
-  'panel-remote': {bg:'linear-gradient(135deg,#422006 0%,#78350f 55%,#b45309 100%)',s:[["4", "Methods"],["3", "Protocols"],["1", "Checklist"]],pod:{title:"Remote Data Collection",desc:"Conducting surveys remotely \u2014 tools, protocols, and quality",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-home': {bg:'linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#2c5282 100%)',s:[["6", "Sub-sections"],["14+", "Field guides"],["6", "Checklists"]],pod:{title:"Field Readiness: The Full Picture",desc:"Bridging planning and launch \u2014 the complete readiness journey",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-hiring': {bg:'linear-gradient(135deg,#1c1917 0%,#44403c 50%,#78716c 100%)',s:[["3", "Calculators"],["12", "Sections"],["1", "Checklist"]],pod:{title:"Hiring for Resilience",desc:"The buffer rule, calculators, Core Values, and the 6 core responsibilities",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-pilot': {bg:'linear-gradient(135deg,#0f172a 0%,#312e81 50%,#4338ca 100%)',s:[["4", "Pilot phases"],["6", "Field guides"],["1", "Checklist"]],pod:{title:"Piloting: Stress-Testing the System",desc:"Crash-testing instruments, logistics, and team calibration",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-launch': {bg:'linear-gradient(135deg,#0f172a 0%,#164e63 55%,#0e7490 100%)',s:[["4", "Launch pillars"],["3", "Templates"],["1", "Quiz"]],pod:{title:"Survey Launch & the Gestation Phase",desc:"The first 10-15 days: routines, momentum, and the forecaster",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-maps': {bg:'linear-gradient(135deg,#0f172a 0%,#14532d 55%,#166534 100%)',s:[["6", "Training steps"],["1", "Dataset"],["1", "Assessment"]],pod:{title:"Google My Maps Masterclass",desc:"Spatial intelligence for tracking complex field deployments",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-attend': {bg:'linear-gradient(135deg,#0f172a 0%,#1e3a5f 55%,#2c5282 100%)',s:[["7", "Steps"],["6", "Dashboard"],["7", "FAQs"]],pod:{title:"Digital Attendance Tracking",desc:"Managing field staff attendance with digital tools",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
+  'panel-remote': {bg:'linear-gradient(135deg,#1c1917 0%,#44403c 55%,#57534e 100%)',s:[["12", "Sections"],["1", "Simulator"],["1", "RACI"]],pod:{title:"Remote Data Collection",desc:"Conducting surveys remotely \u2014 tools, protocols, and quality",src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview'}},
 };
 
 function updateHero(panelId) {
@@ -4571,104 +4677,136 @@ function updateHero(panelId) {
 function switchTab(evt,panelId) {
   document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
   document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-selected','false');});
-  document.getElementById(panelId).classList.add('active');
-  if(evt&&evt.currentTarget)evt.currentTarget.classList.add('active');
-  evt.currentTarget.setAttribute('aria-selected','true');
+  var panel=document.getElementById(panelId);if(panel)panel.classList.add('active');
+  if(evt&&evt.currentTarget){evt.currentTarget.classList.add('active');evt.currentTarget.setAttribute('aria-selected','true');}
+  else{document.querySelectorAll('.tab-btn').forEach(function(b){var oc=b.getAttribute('onclick')||'';if(oc.indexOf(panelId)>-1){b.classList.add('active');b.setAttribute('aria-selected','true');}});}
   updateHero(panelId);
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
-// ── Auto-open tab from URL hash (runs immediately — DOM is ready) ──
 (function(){
-  var hash = window.location.hash.replace('#','');
-  if (!hash || hash === 'edit') return;
-  var panel = document.getElementById(hash);
-  if (!panel) return;
-  // Find the matching tab button and click it
-  var btns = document.querySelectorAll('.tab-btn');
-  for (var i = 0; i < btns.length; i++) {
-    var oc = btns[i].getAttribute('onclick') || '';
-    if (oc.indexOf(hash) > -1) { btns[i].click(); return; }
-  }
-  // Fallback: activate panel directly
-  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
-  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-  panel.classList.add('active');
+  function go(){var h=window.location.hash.replace('#','');if(!h||h==='edit')return;var p=document.getElementById(h);if(p&&p.classList.contains('tab-panel'))switchTab(null,h);}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+  window.addEventListener('hashchange',go);
 })();
 
+// ── Dynamic Benchmark Arrow Helper ──
+function positionBenchArrow(arrowId,sliderEl,benchVal){
+  var el=document.getElementById(arrowId);if(!el||!sliderEl)return;
+  var min=parseFloat(sliderEl.min),max=parseFloat(sliderEl.max);
+  var pct=((benchVal-min)/(max-min))*100;
+  el.style.left=pct+'%';
+}
 
-// ── Hiring Calculators ────────────────────────────────────────────────────────
-
-// ── Recruitment Funnel Calculator ────────────────────────────────────────────
+// ── Recruitment Funnel Calculator with Dynamic Benchmarks ──
 function calcFunnel() {
   var target   = parseInt(document.getElementById('funnel-target').value);
   var buffer   = parseInt(document.getElementById('funnel-buffer').value) / 100;
   var dropout  = parseInt(document.getElementById('funnel-dropout').value) / 100;
   var passRate = parseInt(document.getElementById('funnel-pass').value) / 100;
-
   document.getElementById('funnel-target-val').textContent = target;
   document.getElementById('funnel-buffer-val').textContent = document.getElementById('funnel-buffer').value + '%';
   document.getElementById('funnel-dropout-val').textContent = document.getElementById('funnel-dropout').value + '%';
   document.getElementById('funnel-pass-val').textContent = document.getElementById('funnel-pass').value + '%';
-
-  var bufCount  = Math.ceil(target * buffer);
-  var trainNeed = target + bufCount;
-  var trainWithDropout = Math.ceil(trainNeed / (1 - dropout));
-  var interviewNeed = Math.ceil(trainWithDropout / passRate);
-  var sourceNeed    = Math.ceil(interviewNeed * 2); // 50% show-up
-
-  document.getElementById('funnel-train').textContent    = trainWithDropout;
-  document.getElementById('funnel-interview').textContent = interviewNeed;
-  document.getElementById('funnel-source').textContent   = sourceNeed;
-  document.getElementById('funnel-buf-count').textContent = bufCount;
+  // Dynamic J-PAL SA Benchmarks
+  var benchBuf = target <= 40 ? 20 : (target <= 60 ? 15 : 10);
+  var benchDrop = target <= 60 ? 20 : 10;
+  // Position arrows dynamically
+  var bufSlider=document.getElementById('funnel-buffer');
+  var dropSlider=document.getElementById('funnel-dropout');
+  var ba=document.getElementById('bench-buf-arrow');
+  var da=document.getElementById('bench-drop-arrow');
+  if(ba){positionBenchArrow('bench-buf-arrow',bufSlider,benchBuf);ba.querySelector('.fr-bench-tag').textContent='J-PAL: '+benchBuf+'% ('+target+' staff)';}
+  if(da){positionBenchArrow('bench-drop-arrow',dropSlider,benchDrop);da.querySelector('.fr-bench-tag').textContent='J-PAL: '+benchDrop+'% ('+(target<=60?'≤60':'>60')+' staff)';}
+  var bufCount=Math.ceil(target*buffer);
+  var trainNeed=target+bufCount;
+  var trainWithDropout=Math.ceil(trainNeed/(1-dropout));
+  var interviewNeed=Math.ceil(trainWithDropout/passRate);
+  var sourceNeed=Math.ceil(interviewNeed*2);
+  document.getElementById('funnel-train').textContent=trainWithDropout;
+  document.getElementById('funnel-interview').textContent=interviewNeed;
+  document.getElementById('funnel-source').textContent=sourceNeed;
+  document.getElementById('funnel-buf-count').textContent=bufCount;
 }
 
-// ── True Capacity Calculator ─────────────────────────────────────────────────
+// ── True Capacity Calculator ──
 function calcCapacity() {
-  var surveyors = parseInt(document.getElementById('cap-surveyors').value);
-  var daily     = parseInt(document.getElementById('cap-daily').value);
-  var absent    = parseInt(document.getElementById('cap-absent').value) / 100;
-  var reject    = parseInt(document.getElementById('cap-reject').value) / 100;
-
-  document.getElementById('cap-surveyors-val').textContent = surveyors;
-  document.getElementById('cap-daily-val').textContent     = daily;
-  document.getElementById('cap-absent-val').textContent    = document.getElementById('cap-absent').value + '%';
-  document.getElementById('cap-reject-val').textContent    = document.getElementById('cap-reject').value + '%';
-
-  var gross      = surveyors * daily;
-  var afterAbsent= Math.floor(gross * (1 - absent));
-  var net        = Math.floor(afterAbsent * (1 - reject));
-  var efficiency = Math.round((net / gross) * 100);
-
-  document.getElementById('cap-gross').textContent      = gross;
-  document.getElementById('cap-net').textContent        = net;
-  document.getElementById('cap-efficiency').textContent = efficiency + '%';
+  var surveyors=parseInt(document.getElementById('cap-surveyors').value);
+  var daily=parseInt(document.getElementById('cap-daily').value);
+  var absent=parseInt(document.getElementById('cap-absent').value)/100;
+  var reject=parseInt(document.getElementById('cap-reject').value)/100;
+  document.getElementById('cap-surveyors-val').textContent=surveyors;
+  document.getElementById('cap-daily-val').textContent=daily;
+  document.getElementById('cap-absent-val').textContent=document.getElementById('cap-absent').value+'%';
+  document.getElementById('cap-reject-val').textContent=document.getElementById('cap-reject').value+'%';
+  var gross=surveyors*daily;
+  var afterAbsent=Math.floor(gross*(1-absent));
+  var net=Math.floor(afterAbsent*(1-reject));
+  var efficiency=gross>0?Math.round((net/gross)*100):0;
+  document.getElementById('cap-gross').textContent=gross;
+  document.getElementById('cap-net').textContent=net;
+  document.getElementById('cap-efficiency').textContent=efficiency+'%';
 }
 
-// Run on load
-calcFunnel();
-calcCapacity();
+// ── Daily Time Distribution & Productivity Estimator ──
+function calcDayTime() {
+  var shift=parseFloat(document.getElementById('dt-shift').value);
+  var travel=parseFloat(document.getElementById('dt-travel').value);
+  var breaks=parseFloat(document.getElementById('dt-breaks').value);
+  var survTime=parseFloat(document.getElementById('dt-survtime').value);
+  document.getElementById('dt-shift-val').textContent=shift+' hrs';
+  document.getElementById('dt-travel-val').textContent=travel+' hrs';
+  document.getElementById('dt-breaks-val').textContent=breaks+' mins';
+  document.getElementById('dt-survtime-val').textContent=survTime+' mins';
+  // Position benchmark arrows
+  positionBenchArrow('bench-shift',document.getElementById('dt-shift'),9);
+  positionBenchArrow('bench-travel',document.getElementById('dt-travel'),2);
+  positionBenchArrow('bench-breaks',document.getElementById('dt-breaks'),45);
+  var usable=shift-travel-(breaks/60);if(usable<0)usable=0;
+  var maxSurveys=survTime>0?Math.floor((usable*60)/survTime):0;
+  document.getElementById('dt-usable').textContent=usable.toFixed(2);
+  document.getElementById('dt-max-surveys').textContent=maxSurveys;
+}
+
+calcFunnel();calcCapacity();
+if(document.getElementById('dt-shift'))calcDayTime();
+
+// ── Remote Survey Simulator ──
+var RM_SIM=[
+  {q:"A surveyor screened during Week 1 reports they have an iPhone. Training starts in 3 days. What do you do?",ctx:"SurveyCTO requires Android 6.0+. iPhones cannot run the survey app.",opts:[{l:"Ask them to borrow an Android",d:"Tell them to find an Android phone from family/friends before training.",g:false,fb:"Risky — borrowed phones create ongoing problems (owner needs it back, unfamiliar device). Better to replace with a verified Android candidate now than manage device issues during the entire survey."},{l:"Replace with backup candidate",d:"Activate a backup from your 15% over-recruitment buffer. Inform the iPhone candidate.",g:true,fb:"Correct. This is exactly why you over-recruit by 15%. Replacing now costs nothing; discovering this during training wastes a training slot and delays deployment."}]},
+  {q:"It's Day 3 of training. Quiz results show 60% of surveyors got the consent script question wrong. What's your priority?",ctx:"Daily quizzes surface misunderstandings early. >40% wrong = revisit the topic.",opts:[{l:"Move on, cover it again later",d:"The training schedule is tight. You'll revisit consent during mock practice on Day 4.",g:false,fb:"Dangerous. Consent is non-negotiable. If 60% misunderstand it by Day 3, mock practice on Day 4 will reinforce wrong habits. You must stop and re-teach before proceeding."},{l:"Restart Day 4 with consent deep-dive",d:"Dedicate the first 45 minutes of Day 4 to re-teaching consent with role-play practice.",g:true,fb:"Correct. Start Day 4: 'Many people were confused about consent yesterday. Let's clarify.' Use role-play — one person reads consent, others evaluate. Test again at EOD."}]},
+  {q:"A surveyor's daily report shows 12 completed surveys when the team average is 5. Call duration is 8 minutes for a 25-minute instrument. What do you suspect?",ctx:"Call duration significantly below median is a red flag for rushing or fabrication.",opts:[{l:"Investigate immediately",d:"Pull call recordings, cross-check with HFC flags, and schedule a 1-on-1 conversation.",g:true,fb:"Correct. 8 minutes for a 25-minute instrument is a severe red flag. Either questions are being skipped, answers are being pre-filled, or calls are fabricated. Pull recordings and HFC data before the conversation."},{l:"Praise the high productivity",d:"This surveyor is clearly efficient. Share their output as a benchmark for the team.",g:false,fb:"This is almost certainly a quality failure, not efficiency. A 25-minute instrument completed in 8 minutes means roughly 70% of questions were rushed or skipped. Praising this would incentivize the entire team to cut corners."}]},
+  {q:"A respondent asks: 'What will you do with my information? Who will see my answers?'",ctx:"Respondents have a right to know. Your answer must be truthful and reassuring.",opts:[{l:"Give the standard response",d:"'Your responses will be analyzed along with many others. Individual answers remain confidential and are used only for research.'",g:true,fb:"Correct. Be truthful: data is aggregated, individual responses are confidential, used only for research purposes. If they want more detail, refer them to the supervisor contact number."},{l:"Deflect and move on",d:"'Don't worry about that. Let's continue with the questions.'",g:false,fb:"Never deflect. This violates informed consent principles. The respondent has every right to ask, and dismissing their concern destroys trust and may violate IRB protocols."}]},
+  {q:"Simulation complete!",ctx:"",opts:[],final:true}
+];
+var rmStep=0,rmPts=0,rmTot=0;
+function renderRmStep(){
+  var b=document.getElementById('rm-sim-body');var d=RM_SIM[rmStep];
+  document.getElementById('rm-prev').style.visibility=rmStep>0?'visible':'hidden';
+  if(d.final){var pct=rmTot>0?Math.round((rmPts/rmTot)*100):0;b.innerHTML='<div style="text-align:center;padding:40px 0;"><div style="font-size:48px;margin-bottom:12px;">🎯</div><h3>Score: '+pct+'% ('+rmPts+'/'+rmTot+')</h3><p style="color:var(--muted);font-size:14px;">Review the sections above to strengthen areas where your instincts need sharpening.</p><button class="rm-sim-btn rm-sim-primary" onclick="rmStep=0;rmPts=0;rmTot=0;renderRmStep();" style="margin-top:16px;">Restart</button></div>';document.getElementById('rm-next').style.display='none';document.getElementById('rm-score').textContent='';return;}
+  var h='<div class="rm-sim-q">'+d.q+'</div>';if(d.ctx)h+='<div class="rm-sim-ctx">'+d.ctx+'</div>';
+  h+='<div class="rm-sim-opts" id="rm-opts">';
+  d.opts.forEach(function(o,i){h+='<div class="rm-opt" onclick="rmPick('+i+')" id="rmo-'+i+'"><h4>'+o.l+'</h4><p>'+o.d+'</p></div>';});
+  h+='</div><div class="rm-fb" id="rm-fb"></div>';
+  b.innerHTML=h;document.getElementById('rm-next').style.display='inline-block';document.getElementById('rm-next').disabled=true;document.getElementById('rm-next').style.opacity='0.5';
+  document.getElementById('rm-score').textContent=rmTot>0?rmPts+'/'+rmTot:'';
+}
+function rmPick(i){var d=RM_SIM[rmStep];if(!d||!d.opts[i])return;document.querySelectorAll('.rm-opt').forEach(function(o){o.style.pointerEvents='none';o.style.opacity='0.6';});var s=document.getElementById('rmo-'+i);s.classList.add('picked');s.style.opacity='1';var fb=document.getElementById('rm-fb');var o=d.opts[i];fb.innerHTML='<strong>'+(o.g?'✓ Correct.':'✕ Not ideal.')+'</strong> '+o.fb;fb.className='rm-fb show'+(o.g?'':' bad');rmTot++;if(o.g)rmPts++;document.getElementById('rm-next').disabled=false;document.getElementById('rm-next').style.opacity='1';document.getElementById('rm-score').textContent=rmPts+'/'+rmTot;}
+function rmNext(){rmStep++;if(rmStep>=RM_SIM.length)rmStep=RM_SIM.length-1;renderRmStep();}
+function rmPrev(){if(rmStep>0){rmStep--;renderRmStep();}}
+if(document.getElementById('rm-sim-body'))renderRmStep();
 
 
-// ── Launch Forecaster (from source, verbatim) ─────────────────────────────────
+// ── Launch Forecaster ──
 
     // --- FORECASTER SCRIPT ---
-    let terrainSize = 4; 
-    let hardwareBuffer = 0.2; 
+    let terrainSize = 7; 
+    let transportMode = 'cab';
 
     function setTerrain(type, element) {
         document.getElementById('btn-dense').classList.remove('active');
         document.getElementById('btn-scattered').classList.remove('active');
         element.classList.add('active');
-        terrainSize = type === 'dense' ? 4 : 3;
-        calculate();
-    }
-
-    function setBuffer(val, element) {
-        document.getElementById('btn-buf-10').classList.remove('active');
-        document.getElementById('btn-buf-20').classList.remove('active');
-        element.classList.add('active');
-        hardwareBuffer = val;
+        terrainSize = type === 'dense' ? 7 : 5;
         calculate();
     }
 
@@ -4692,8 +4830,7 @@ calcCapacity();
         const monitors = teams; 
         const totalFieldPersonnel = staff + monitors;
         
-        const tabletsRequired = Math.ceil(totalFieldPersonnel * (1 + hardwareBuffer));
-        const powerBanksRequired = (staff * 2) + (teams * 3); 
+        const tabletsRequired = Math.ceil(totalFieldPersonnel * 1.10);
 
         const dailyPersonnelCost = totalFieldPersonnel * 500;
         const dailyVehicleCost = teams * 3000;
@@ -4703,9 +4840,8 @@ calcCapacity();
 
         document.getElementById('out-days').innerHTML = `${totalDays} <span style="font-size: 20px;">Days</span>`;
         document.getElementById('out-vehicles').innerHTML = `${teams} <span style="font-size: 20px;">Vehicles</span>`;
-        document.getElementById('out-teams').innerText = `Broken into ${teams} field teams + ${monitors} Monitors`;
+        document.getElementById('out-teams').innerText = `${teams} field teams (${terrainSize === 7 ? '7-8 urban' : '4-6 rural'}) + ${monitors} monitors`;
         document.getElementById('out-tablets').innerHTML = `${tabletsRequired} <span style="font-size: 20px;">Units</span>`;
-        document.getElementById('out-power').innerHTML = `${powerBanksRequired} <span style="font-size: 20px;">Units</span>`;
         document.getElementById('out-budget').innerText = `₹${budgetLakhs}L`;
     }
 
@@ -4943,5 +5079,5 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
 
 </script>
 
-<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
-<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe></body></html>
+
+</body></html>
