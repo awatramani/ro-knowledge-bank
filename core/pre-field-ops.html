@@ -1090,8 +1090,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                     <p style="margin:0;font-size:13px;color:#94a3b8;">Complete all tasks across tabs to reach 100%.</p>
                 </div>
                 <div style="display:flex;align-items:center;gap:15px;">
-                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="master-progress-fill" style="width: 50%;"></div></div>
-                    <span class="progress-text" id="master-progress-text">50%</span>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="master-progress-fill" style="width: 0%;"></div></div>
+                    <span class="progress-text" id="master-progress-text">0%</span>
                 </div>
             </div>
             <div class="prep-body">
@@ -1107,7 +1107,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         <h3 class="pane-title">Timeline &amp; Calendar</h3>
                         <p class="pane-desc">The master schedule dictates the pace of the entire operation. Work backwards from your hard survey start date.</p>
                         <div class="check-list">
-                            <div class="check-item completed" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Buffer time (min 20%) added for admin approvals and vendor negotiations.</div></div>
+                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Buffer time (min 20%) added for admin approvals and vendor negotiations.</div></div>
                             <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Draft timeline shared and approved by Senior Manager of Research Operations.</div></div>
                         </div>
                         <div class="pane-trap"><h4>The Trap</h4><p><span style="color: rgb(153, 27, 27); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(254, 242, 242); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Assuming IRB approval equals field-readiness can turn out to be a sticky point. IRB clearance is just the starting point; vendor contracts for local travel for cabs may take time. Not getting cabs and getting people to use bikes in situations where cabs would have been better is a lost opportunity. You are missing out the opportunity to setup a cohesive team management and movement.&nbsp;</span></p></div>
@@ -1116,16 +1116,16 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         <h3 class="pane-title">Hiring &amp; Onboarding</h3>
                         <p class="pane-desc">Finding resilient staff is more important than finding experienced staff. Fieldwork requires true grit.</p>
                         <div class="check-list">
-                            <div class="check-item completed" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Field staff requests raised through the official J-PAL Hiring Portal.</div></div>
+                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Field staff requests raised through the official J-PAL Hiring Portal.</div></div>
                             <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text"><strong>Buffer Rule applied:</strong> Hiring and training 20% more staff than the target output requires.</div></div>
-                            <div class="check-item completed" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Screening protocols include language fluidity and host-respondent mock scenarios.</div></div>
+                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Screening protocols include language fluidity and host-respondent mock scenarios.</div></div>
                         </div>
                     </div>
                     <div id="tab-training" class="prep-pane">
                         <h3 class="pane-title">Training &amp; Delivery</h3>
                         <p class="pane-desc">A survey is only as good as the person asking the questions. Bridge the gap between academic intent and field execution.</p>
                         <div class="check-list">
-                            <div class="check-item completed" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Agenda built: Project objectives, Code of Conduct, Informed Consent, Research Ethics.</div></div>
+                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Agenda built: Project objectives, Code of Conduct, Informed Consent, Research Ethics.</div></div>
                             <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">At least one full day dedicated to dry runs or practice interviews in the community.</div></div>
                         </div>
                     </div>
@@ -1133,9 +1133,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                         <h3 class="pane-title">Logistics &amp; Transport</h3>
                         <p class="pane-desc">Data collection is essentially a logistics operation. Without transport and power, the research stops.</p>
                         <div class="check-list">
-                            <div class="check-item completed" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Base camps identified with guaranteed power backup for 20+ tablets.</div></div>
-                            <div class="check-item completed" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Vehicle contracts finalized emphasizing high-ground-clearance SUVs (Bolero/Sumo).</div></div>
-                            <div class="check-item" onclick="toggleTask(this)" autocomplete="off"><div class="custom-checkbox">✓</div><div class="check-text">Advance request raised to deal with any emergency field expenses.</div></div>
+                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Base camps identified with guaranteed power backup for 20+ tablets.</div></div>
+                            <div class="check-item" onclick="toggleTask(this)"><div class="custom-checkbox">✓</div><div class="check-text">Vehicle contracts finalized emphasizing high-ground-clearance SUVs (Bolero/Sumo).</div></div>
+                            <div class="check-item" onclick="toggleTask(this)" autocomplete="off"><div class="custom-checkbox">✓</div><div class="check-text" autocomplete="off">Advance request raised with A&amp;F to deal with any emergency field expenses.</div></div>
                         </div>
                         <div class="pane-trap"><h4>The Trap</h4><p>Assuming drivers will cover their own food and parking costs without establishing clear financial terms upfront.</p></div>
                     </div>
@@ -2861,6 +2861,7 @@ calcCapacity();
 
 
 </div><iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
