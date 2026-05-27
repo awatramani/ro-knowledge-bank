@@ -820,7 +820,8 @@ var SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
   function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
 
   document.addEventListener('keydown', function(e) {
-    if (e.altKey && e.shiftKey && e.key && e.key.toLowerCase() === 'e') {
+    var isE = (e.code === 'KeyE') || (e.key && e.key.toLowerCase() === 'e') || (e.keyCode === 69);
+    if (e.altKey && e.shiftKey && isE) {
       e.preventDefault();
       editing ? exit() : enter();
     }
