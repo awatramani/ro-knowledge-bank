@@ -916,7 +916,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
 <div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
-  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">Link URL: Thirumeni Annamalai</label>
+  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">Image URL or Google Drive link</label>
   <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#1a6b8a;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
   <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f7f6f3;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
@@ -952,7 +952,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2c5282 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(28, 25, 23) 0%, rgb(68, 64, 60) 50%, rgb(120, 113, 108) 100%);">
     <div class="aurora"></div>
     <div class="hero-inner">
         <div class="hero-text">
@@ -962,15 +962,15 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <div class="hero-stats">
                 <div class="stat-item">
                     <div class="stat-num edit-text" id="hero-stat-1-num">3</div>
-                    <div class="stat-label" id="hero-stat-1-lbl">Modules</div>
+                    <div class="stat-label" id="hero-stat-1-lbl">Planning Calls</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-2-num">6</div>
-                    <div class="stat-label" id="hero-stat-2-lbl">Templates</div>
+                    <div class="stat-num edit-text" id="hero-stat-2-num">7</div>
+                    <div class="stat-label" id="hero-stat-2-lbl">Workstreams</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-3-num">1</div>
-                    <div class="stat-label" id="hero-stat-3-lbl">Checklist</div>
+                    <div class="stat-num edit-text" id="hero-stat-3-num">3</div>
+                    <div class="stat-label" id="hero-stat-3-lbl">Deliverables</div>
                 </div>
             </div>
         </div>
@@ -980,8 +980,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                     <div class="podcast-play">▶</div>
                     <div class="podcast-top-text">
                         <div class="podcast-tag">Field Ops Podcast</div>
-                        <div class="podcast-title edit-text" id="podcast-title">Survey Logistics &amp; Budgeting</div>
-                        <div class="podcast-desc edit-text" id="podcast-desc">DA matrices, vendor contracts &amp; travel norms</div>
+                        <div class="podcast-title edit-text" id="podcast-title">Planning &amp; Preparing for Survey Operations</div>
+                        <div class="podcast-desc edit-text" id="podcast-desc">3-call series, RACI matrices &amp; decision simulation</div>
                     </div>
                 </div>
                 <div class="podcast-player">
@@ -998,15 +998,15 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')" aria-selected="true">Pre-Field Ops</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-planning')" aria-selected="false">Survey Planning</button>
+    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Pre-Field Ops</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-planning')" aria-selected="true">Survey Planning</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-ro')" aria-selected="false">Availing RO Support</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-mapping')" aria-selected="false">Mapping Households</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-logistics')" aria-selected="false">Survey Logistics</button>
   </nav>
 </div>
 
-<div id="panel-home" class="tab-panel active">
+<div id="panel-home" class="tab-panel">
 
 <div class="section-wrapper bg-white">
     <div class="section-container split-layout">
@@ -1387,7 +1387,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 2: PLANNING AND PREPARING FOR SURVEY OPERATIONS
      ===================================================== -->
 
-<div id="panel-planning" class="tab-panel">
+<div id="panel-planning" class="tab-panel active">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Planning and Preparing for Survey Operations</strong></div>
 
@@ -1419,34 +1419,33 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <p>The planning runway is not a linear checklist. It is a set of seven interdependent workstreams that systematically allows research and research operations team to ensure each and every piece and nuance is carefully planned. The Research team along with the Research Operations team must manage it as a portfolio of concurrent activities and should take a systematic approach to take these individual pieces together</p>
     </div>
     <div class="workstream-grid">
-        <div class="ws-card"><div class="ws-icon">📋</div><div class="ws-name">Instrument Finalisation &amp; Programming</div><div class="ws-phase">Phase 1</div></div>
-        <div class="ws-card"><div class="ws-icon">📍</div><div class="ws-name">Sampling &amp; Site Intelligence</div><div class="ws-phase">Phase 1</div></div>
-        <div class="ws-card"><div class="ws-icon">🤝</div><div class="ws-name">Permissions &amp; Community Entry</div><div class="ws-phase">Phase 1–2</div></div>
-        <div class="ws-card"><div class="ws-icon">👥</div><div class="ws-name">Hiring &amp; Team Structure</div><div class="ws-phase">Phase 2</div></div>
-        <div class="ws-card"><div class="ws-icon">🎓</div><div class="ws-name">Training &amp; Field Readiness&nbsp;</div><div class="ws-phase">Phase 2–3</div></div>
-        <div class="ws-card"><div class="ws-icon">🚗</div><div class="ws-name">Logistics &amp; Infrastructure Setup</div><div class="ws-phase">Phase 2–3</div></div>
+        <div class="ws-card"><div class="ws-icon">📋</div><div class="ws-name">Instrument finalization &amp; programming</div><div class="ws-phase">Phase 1</div></div>
+        <div class="ws-card"><div class="ws-icon">📍</div><div class="ws-name">Sampling &amp; site information</div><div class="ws-phase">Phase 1</div></div>
+        <div class="ws-card"><div class="ws-icon">🤝</div><div class="ws-name">Permissions &amp; community connect</div><div class="ws-phase">Phase 1–2</div></div>
+        <div class="ws-card"><div class="ws-icon">👥</div><div class="ws-name">Hiring &amp; team structure</div><div class="ws-phase">Phase 2</div></div>
+        <div class="ws-card"><div class="ws-icon">🎓</div><div class="ws-name">Training &amp; field readiness&nbsp;</div><div class="ws-phase">Phase 2–3</div></div>
+        <div class="ws-card"><div class="ws-icon">🚗</div><div class="ws-name">Logistics &amp; infrastructure setup</div><div class="ws-phase">Phase 2–3</div></div>
         <div class="ws-card"><div class="ws-icon">📊</div><div class="ws-name">Quality control and efficiency</div><div class="ws-phase">Phase 3</div></div>
     </div>
     <div class="info-card card-tip" style="margin-top:24px;">
         <strong>Critical Dependencies</strong>
-        The instrument cannot be piloted until it is finalized and digitized, the hiring plan cannot be finalized until the details around the local context is clearly understood and accounted for. Contracting formalities must be completed before training teams can pilot in real villages. A delay in any upstream workstream cascades into every downstream one.
-    </div>
+        The instrument cannot be piloted until it is finalized and digitized, the hiring plan cannot be finalized until the details around the local context is clearly understood and accounted for. Contracting formalities must be completed before training teams can practice surveying in real villages. A delay in any upstream activity cascades into every other activity following it.</div>
 </div>
 
 <!-- ═══ SECTION 3: THE 3-CALL PLANNING SERIES ═══ -->
 <div class="pp-section-padding" style="background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding-left:5%;padding-right:5%;">
 <div style="max-width:1200px;margin:0 auto;">
     <div class="call-series-intro">
-        <span class="eyebrow" style="color:#93c5e4;background:rgba(147,197,228,0.1);border-color:rgba(147,197,228,0.2);">New: Structured Planning Framework</span>
+        <span class="eyebrow" style="color:#93c5e4;background:rgba(147,197,228,0.1);border-color:rgba(147,197,228,0.2);">Make Survey planning Scientific collaboration: Structured Planning Framework</span>
         <h2>The 3-Call Survey Planning Series</h2>
-        <p>A systematic, structured collaboration between the Research Team (RA) and the Research Operations Team (SC, Team Lead, Senior Manager) to meticulously plan every aspect of survey operations. Each call has a defined agenda, pre-identified decision checklist, and produces a concrete deliverable.</p>
+        <p>There's enormous value that we can create by setting up a systematic, structured collaboration between the Research Team (RA) and the Research Operations Team (SC, Team Lead, Senior Manager) to meticulously plan every aspect of survey operations. Each call can have a defined agenda, pre-identified decision checklist, and can produce a concrete deliverable.</p>
         <div class="people-row">
             <div class="person-chip">
-                <img src="https://www.povertyactionlab.org/sites/default/files/styles/headshot/public/images/2023/11/Veena%20Jayaram.jpg?itok=sE_R5m8V" alt="Veena Jayaram" class="edit-img">
+                <img src="https://www.povertyactionlab.org/sites/default/files/styles/hea/public/images/2022/10/Veena%20Jayaram.jpg?itok=ynhiMDTx" alt="Veena Jayaram" class="edit-img">
                 <div><div class="p-name">Veena Jayaram</div><div class="p-role">Senior Manager (Research Operations)</div></div>
             </div>
             <div class="person-chip">
-                <img src="https://www.povertyactionlab.org/sites/default/files/styles/headshot/public/images/2023/05/Hansa%20Parmar.jpg?itok=tXtWQYy4" alt="Hansa Parmar" class="edit-img">
+                <img src="https://www.povertyactionlab.org/sites/default/files/styles/hea/public/images/2026/04/Hansa-Parmar.jpg?itok=PQV10i3j" alt="Hansa Parmar" class="edit-img">
                 <div><div class="p-name">Hansa Parmar</div><div class="p-role">Team Lead (Research Operations)</div></div>
             </div>
             <div class="person-chip">
@@ -1469,7 +1468,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <div class="call-title">Foundation &amp; Design Lock</div>
             </div>
             <div class="call-card-body">
-                <p>Establish the research-to-operations bridge. Lock the instrument, sampling frame, IRB status, and permissions strategy.</p>
+                <p>Establish the research-to-operations bridge. Share, get acquainted and discuss in detail the instrument, sampling frame, IRB status, and permissions strategy.</p>
                 <ul class="call-topics">
                     <li>Research design &amp; instrument status review</li>
                     <li>Sampling frame &amp; site intelligence</li>
@@ -1489,13 +1488,13 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <div class="call-title">Operational Architecture</div>
             </div>
             <div class="call-card-body">
-                <p>Build the people, logistics, and infrastructure engine. Firm up hiring, vendor contracts, training design, and equipment.</p>
+                <p>Build the people, logistics, and infrastructure engine. Firm up hiring, finalize plans strengthening Field Core Team (Field Monitors &amp; Field Supervisor) vendor contracts, training and equipment.</p>
                 <ul class="call-topics">
                     <li>Hiring plan &amp; team assembly</li>
-                    <li>Training curriculum &amp; schedule</li>
+                    <li>Training agenda &amp; schedule</li>
                     <li>Transport &amp; vendor management</li>
                     <li>Equipment procurement &amp; tablet setup</li>
-                    <li>Office/base camp &amp; accommodation</li>
+                    <li>Field Office setup&nbsp;<div><br></div><div><br></div><div><br></div></li>
                 </ul>
             </div>
             <div class="call-card-footer">
@@ -1509,7 +1508,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <div class="call-title">Launch Systems &amp; Quality</div>
             </div>
             <div class="call-card-body">
-                <p>Activate quality systems, daily rhythms, reporting architecture, and adverse-situation protocols for launch and beyond.</p>
+                <p>Activate quality systems, daily rhythms, reporting architecture, deviation reporting (Tracking data v/s Survey CTO submission) and adverse-situation protocols for launch and beyond.</p>
                 <ul class="call-topics">
                     <li>Go-Live readiness sign-off</li>
                     <li>Daily feedback &amp; reporting cadence</li>
@@ -1543,13 +1542,13 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <p style="font-size:14px;">RA presents the instrument status: which modules are locked, which are still under revision. Review the change record tracker. Discuss whether pending PI changes will require IRB amendments — and the cost of delay.</p>
                 <div class="decision-grid">
                     <div class="decision-item"><h5>Decision Required</h5><p>Is the instrument content-frozen? If not, what is the hard deadline for content freeze?</p></div>
-                    <div class="decision-item"><h5>Decision Required</h5><p>Has translation been commissioned? Is back-translation planned with an independent translator?</p></div>
+                    <div class="decision-item"><h5>Decision Required</h5><p>Has translation done correctly? Is back-translation planned with PA or SC?</p></div>
                 </div>
             </div>
 
             <div class="agenda-block">
-                <h4><span class="time-badge">15 min</span> Sampling &amp; Site Intelligence</h4>
-                <p style="font-size:14px;">RA shares the sample frame and randomisation outputs. SC begins building site intelligence dossiers: settlement type (compact village, urban slum, scattered habitations), access conditions (road quality, seasonal restrictions), and local governance contacts.</p>
+                <h4><span class="time-badge">15 min</span> Sampling &amp; Site Information</h4>
+                <p style="font-size:14px;">RA shares the details around the sample sites, SC puts together basic physical details about the site intelligence and puts together a dossier that is shared before the call 2 is scheduled, the dossier should cover details around the settlement type (compact village, urban slum, scattered habitations), access conditions (road quality, seasonal restrictions), accommodation options for field staff (this is where RA and SC can discuss the right DA, any need for outstation DA), local festivals, migration patterns, any other existing issue, in addition to finding more about the local governance contacts (if possible).</p>
                 <div class="decision-grid">
                     <div class="decision-item"><h5>Decision Required</h5><p>How many geographies? What is the estimated team size per geography?</p></div>
                     <div class="decision-item"><h5>Decision Required</h5><p>Are there accessibility risks that require field reconnaissance before planning?</p></div>
@@ -1563,24 +1562,24 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
             <div class="agenda-block">
                 <h4><span class="time-badge">10 min</span> Budget &amp; Timeline Alignment</h4>
-                <p style="font-size:14px;">Confirm budget codes are active. Align on a realistic launch date by working backward from the Gantt. Discuss the "6-week red line" — projects compressed below 6 weeks enter a danger zone where at least one workstream will be fatally compromised.</p>
+                <p style="font-size:14px;">Confirm and share active budget codes to be used for field operations. Align on a realistic launch date by working backward from the Gantt. Discuss the "6-week red line", projects compressed below 6 weeks operate on a thin and narrow line with compromised planning and higher risks of issues.</p>
             </div>
 
             <!-- DELIVERABLE 1 -->
             <div class="deliverable-showcase">
                 <h4>Deliverable</h4>
                 <h3>📄 Survey Planning Brief</h3>
-                <p>A 2-page document jointly prepared by the RA and RO Team Lead after Call 1. This brief becomes the single source of truth for the planning runway and is shared with the Research Manager.</p>
+                <p>A 2-page document jointly prepared by the RA and RO Team Lead after Call 1. This brief becomes the single source of truth for the planning runway and is shared with the Research Manager and Senior Research Manager (Research Operations).</p>
                 <table class="deliverable-mini-table">
                     <thead><tr><th>Section</th><th>Content</th><th>Owner</th></tr></thead>
                     <tbody>
                         <tr><td>Study Overview</td><td>Research question, sample size, geographies, survey round type</td><td>RA</td></tr>
                         <tr><td>Instrument Status</td><td>Content freeze date, translation timeline, SurveyCTO programming ETA</td><td>RA</td></tr>
-                        <tr><td>IRB &amp; Compliance</td><td>Submission date, expected clearance, amendment risks</td><td>RA</td></tr>
-                        <tr><td>Site Intelligence Summary</td><td>Geography complexity, access risks, terrain-based team sizing</td><td>SC / TL</td></tr>
+                        <tr><td>IRB &amp; Compliance</td><td>Submission date, expected clearance</td><td>RA</td></tr>
+                        <tr><td>Site Intelligence Summary</td><td>Geography complexity, access risks, terrain-based team sizing</td><td>SC / PA</td></tr>
                         <tr><td>Permissions Map</td><td>Authority contacts, outreach strategy, community entry plan</td><td>SC</td></tr>
-                        <tr><td>Timeline &amp; Budget</td><td>Agreed Gantt, budget code status, contingency allocation</td><td>RA + TL</td></tr>
-                        <tr><td>Risk Register (Initial)</td><td>Top 5 risks identified, with mitigation owners assigned</td><td>Joint</td></tr>
+                        <tr><td>Timeline &amp; Budget</td><td>Agreed Gantt, budget code details</td><td>RA&nbsp;</td></tr>
+                        <tr><td>Risk Mitigation Plan</td><td>Top 5 risks identified, with clearly identified next steps and POC identified.</td><td>RA / SC</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1589,7 +1588,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
     <!-- ═══ CALL 2 DETAIL ═══ -->
     <div class="call-detail-section" id="call-detail-2">
-        <div class="call-detail-header" onclick="toggleCallDetail('call-detail-2')" style="border-left:4px solid var(--orange);">
+        <div class="call-detail-header" onclick="toggleCallDetail('call-detail-2')" style="border-left:4px solid var(--orange);" autocomplete="off">
             <div>
                 <div style="font-family:var(--mono);font-size:10px;color:var(--orange);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px;">Call 2 · T-8 to T-4 Weeks</div>
                 <h3>Operational Architecture</h3>
@@ -2861,6 +2860,7 @@ calcCapacity();
 
 
 </div><iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
