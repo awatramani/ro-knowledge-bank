@@ -952,7 +952,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(49, 46, 129) 50%, rgb(67, 56, 202) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(22, 78, 99) 55%, rgb(14, 116, 144) 100%);">
     <div class="aurora"></div>
     <div class="hero-inner">
         <div class="hero-text">
@@ -961,12 +961,12 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <p class="hero-sub edit-text">The critical planning phase that separates chaotic deployments from flawless ones, everything that needs to happen before Day 1 in the field.</p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-1-num">4</div>
-                    <div class="stat-label" id="hero-stat-1-lbl">RO Services</div>
+                    <div class="stat-num edit-text" id="hero-stat-1-num">3</div>
+                    <div class="stat-label" id="hero-stat-1-lbl">Modules</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-2-num">3</div>
-                    <div class="stat-label" id="hero-stat-2-lbl">SLA tiers</div>
+                    <div class="stat-num edit-text" id="hero-stat-2-num">6</div>
+                    <div class="stat-label" id="hero-stat-2-lbl">Templates</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num edit-text" id="hero-stat-3-num">1</div>
@@ -980,8 +980,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                     <div class="podcast-play">▶</div>
                     <div class="podcast-top-text">
                         <div class="podcast-tag">Field Ops Podcast</div>
-                        <div class="podcast-title edit-text" id="podcast-title">Availing RO Support</div>
-                        <div class="podcast-desc edit-text" id="podcast-desc">Service intake, SLAs &amp; raising support requests</div>
+                        <div class="podcast-title edit-text" id="podcast-title">Survey Logistics &amp; Budgeting</div>
+                        <div class="podcast-desc edit-text" id="podcast-desc">DA matrices, vendor contracts &amp; travel norms</div>
                     </div>
                 </div>
                 <div class="podcast-player">
@@ -1000,9 +1000,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
   <nav class="tab-nav" role="tablist">
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Pre-Field Ops</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-planning')" aria-selected="false">Survey Planning</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-ro')" aria-selected="true">Availing RO Support</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-ro')" aria-selected="false">Availing RO Support</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-mapping')" aria-selected="false">Mapping Households</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-logistics')" aria-selected="false">Survey Logistics</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-logistics')" aria-selected="true">Survey Logistics</button>
   </nav>
 </div>
 
@@ -1846,7 +1846,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 3: AVAILING RO SUPPORT
      ===================================================== -->
 
-<div id="panel-ro" class="tab-panel active">
+<div id="panel-ro" class="tab-panel">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Availing RO Support</strong></div>
 
@@ -1854,7 +1854,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 <div class="ro-section-container">
     <div class="ro-text-block">
         <span class="eyebrow">Strategic Partnership</span>
-        <h2 autocomplete="off"><span style="letter-spacing: -0.6px;">You steer the research; we help you setup and manage survey and data operations</span>.</h2>
+        <h2><span style="letter-spacing: -0.6px;">You steer the research; we help you setup and manage survey and data operations</span>.</h2>
         <p>The Research Operations (RO) vertical is not a "Help Desk" meant only for administrative emergencies; we are your strategic partners in field execution. Launching a survey requires meticulous planning and an alive response system that strategically responds to various changes and situations it encounters along the way, navigating remote geographies, and handling people management and active data flow, securely.</p>
         <p>Our core objective is to <strong>de-risk your project</strong>. By collaborating effectively and actively with Research Operations team on the field level logistics, operations, people and task management, the Research Associates can focus entirely on data quality, efficiency and overall data tracking.&nbsp;</p>
         <p>All support is routed exclusively via the unified <strong>RO Support Portal</strong>. This centralized communication, tracks accountability, and ensures strict compliance with institutional guidelines.</p>
@@ -2054,16 +2054,16 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <table class="map-checklist-table">
             <thead><tr><th style="width:5%;text-align:center;">#</th><th style="width:65%;">Checklist Item</th><th style="width:15%;">Owner</th><th style="width:15%;">Status</th></tr></thead>
             <tbody>
-                <tr><td style="text-align:center;">1</td><td>Satellite imagery reviewed for village on Google Maps</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">1</td><td>Village physical imagery reviewed and profiled key details on Google Maps</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">2</td><td>Settlement density classified (compact / linear / scattered / mixed)</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">3</td><td>All visible roads, lanes, bi-lanes, and pagdandis marked on printed map</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">4</td><td>Peripheral habitations identified and marked (with approximate HH count)</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">5</td><td>Off-road/off-grid households identified on imagery and marked</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">6</td><td>Revenue village boundary confirmed against administrative records</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
-                <tr><td style="text-align:center;">7</td><td>Estimated total dwelling count recorded (from imagery + admin data)</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
-                <tr><td style="text-align:center;">8</td><td>Mapping strategy decided: standard right-hand rule / sector-based / hybrid</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">7</td><td>Estimated total dwelling count recorded (from imagery + available data)</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">8</td><td>Mapping strategy decided: standard right-hand rule routes / identified habitation and dwellings that are off the track</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">9</td><td>Specific instructions written for Supervisor on peripheral and off-road HHs</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
-                <tr><td style="text-align:center;">10</td><td>Deployment batch sequence finalised with difficulty ratings</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">10</td><td>Approximate number of households total and as per lanes and habitations</td><td><span class="owner-badge">PA</span></td><td><span class="status-pill">Pending</span></td></tr>
             </tbody>
         </table>
     </div>
@@ -2096,7 +2096,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <thead><tr><th style="width:5%;text-align:center;">#</th><th style="width:65%;">Checklist Item</th><th style="width:15%;">Owner</th><th style="width:15%;">Status</th></tr></thead>
             <tbody>
                 <tr><td style="text-align:center;">1</td><td>Met and updated the Sarpanch/Mukhiya/local authority&nbsp;</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
-                <tr><td style="text-align:center;">2</td><td>Some kind of go ahead is secured</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
+                <tr><td style="text-align:center;">2</td><td>Verbal Go-ahead (Whatsapp Go-ahead) secured</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">3</td><td>Rough sketch map created with village leaders (can be elderly people as well who know the village well) showing all habitations</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">4</td><td>All peripheral hamlets and colonies identified by name</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
                 <tr><td style="text-align:center;">5</td><td>Off-road households confirmed or discovered (count estimated)</td><td><span class="owner-badge" style="color:var(--brand-dark);background:#e2e8f0;">Sup</span></td><td><span class="status-pill">Pending</span></td></tr>
@@ -2151,7 +2151,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 5: SURVEY LOGISTICS
      ===================================================== -->
 
-<div id="panel-logistics" class="tab-panel">
+<div id="panel-logistics" class="tab-panel active">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Survey Logistics</strong></div>
 
@@ -2214,7 +2214,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         </div>
         <div class="visual-col">
             <ul class="checklist-sl">
-                <li style="font-weight:bold;color:var(--brand-dark);font-size:15px;">Two-Wheeler Safety Protocol</li>
+                <li style="color: var(--brand-dark); font-size: 15px;">Two-Wheeler Safety Protocol<span style="font-weight: bold; color: var(--brand-dark);"><br></span></li>
                 <li>Valid Driving License submitted to PA.</li>
                 <li>Vehicle Insurance active.</li>
                 <li>ISI-marked Helmets mandatory for rider and pillion.</li>
@@ -2274,7 +2274,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         </div>
         <div class="visual-col">
             <ul class="checklist-sl">
-                <li style="font-weight:bold;color:var(--brand-dark);font-size:15px;">PA's Tablet CHarging Kit</li>
+                <li style="font-weight:bold;color:var(--brand-dark);font-size:15px;">PA's Tablet Charging Kit</li>
                 <li>Multi-port wall charger with surge protector.</li>
                 <li>Assorted extra charging cables (Type-C, Micro-USB).</li>
                 <li>1 Fully configured backup tablet.</li>
@@ -2302,11 +2302,11 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <table class="sl-table" style="font-family:'Courier New',monospace;font-size:13px;">
                 <tbody><tr><th>S.No.</th><th>Item Description</th><th>ID/Serial No.</th><th>Issued To</th><th>Team</th><th>Issue Date</th><th>Signature</th><th>Return Date</th><th>Condition</th></tr>
                 <tr><td>1</td><td>Tablet (Samsung A8)</td><td>TAB-042</td><td>Rahul S.</td><td>Team A</td><td>12-Oct</td><td><em>[Sign]</em></td><td></td><td></td></tr>
-                <tr><td>2</td><td>Power Bank (20k mAh)</td><td>PB-019</td><td>Rahul S.</td><td>Team A</td><td>12-Oct</td><td><em>[Sign]</em></td><td></td><td></td></tr>
+                <tr><td>2</td><td>Charging Cable&nbsp;</td><td>PB-019</td><td>Rahul S.</td><td>Team A</td><td>12-Oct</td><td><em>[Sign]</em></td><td></td><td></td></tr>
             </tbody></table>
         </div>
         <div class="template-box">
-            <div class="template-header">Annexure F: Daily Vehicle Log Template</div>
+            <div class="template-header" autocomplete="off">Annexure F: Daily Vehicle (CAB) Log Template</div>
             <table class="sl-table" style="font-family:'Courier New',monospace;font-size:13px;">
                 <tbody><tr><th>Date</th><th>Driver</th><th>Start KM</th><th>End KM</th><th>Total KM</th><th>Locations Visited</th><th>Fuel (L)</th><th>Fuel Cost (₹)</th><th>Remarks / TL Sign</th></tr>
                 <tr><td>14-Oct</td><td>Ramesh</td><td>45120</td><td>45210</td><td>90</td><td>Block Office, Ward 4</td><td>10 L</td><td>₹980</td><td><em>[Sign]</em></td></tr>
