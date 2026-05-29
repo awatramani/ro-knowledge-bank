@@ -952,7 +952,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(28, 25, 23) 0%, rgb(68, 64, 60) 50%, rgb(120, 113, 108) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(49, 46, 129) 50%, rgb(67, 56, 202) 100%);">
     <div class="aurora"></div>
     <div class="hero-inner">
         <div class="hero-text">
@@ -961,16 +961,16 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <p class="hero-sub edit-text">The critical planning phase that separates chaotic deployments from flawless ones, everything that needs to happen before Day 1 in the field.</p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-1-num">3</div>
-                    <div class="stat-label" id="hero-stat-1-lbl">Planning Calls</div>
+                    <div class="stat-num edit-text" id="hero-stat-1-num">4</div>
+                    <div class="stat-label" id="hero-stat-1-lbl">RO Services</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-2-num">7</div>
-                    <div class="stat-label" id="hero-stat-2-lbl">Workstreams</div>
+                    <div class="stat-num edit-text" id="hero-stat-2-num">3</div>
+                    <div class="stat-label" id="hero-stat-2-lbl">SLA tiers</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num edit-text" id="hero-stat-3-num">3</div>
-                    <div class="stat-label" id="hero-stat-3-lbl">Deliverables</div>
+                    <div class="stat-num edit-text" id="hero-stat-3-num">1</div>
+                    <div class="stat-label" id="hero-stat-3-lbl">Checklist</div>
                 </div>
             </div>
         </div>
@@ -980,8 +980,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                     <div class="podcast-play">▶</div>
                     <div class="podcast-top-text">
                         <div class="podcast-tag">Field Ops Podcast</div>
-                        <div class="podcast-title edit-text" id="podcast-title">Planning &amp; Preparing for Survey Operations</div>
-                        <div class="podcast-desc edit-text" id="podcast-desc">3-call series, RACI matrices &amp; decision simulation</div>
+                        <div class="podcast-title edit-text" id="podcast-title">Availing RO Support</div>
+                        <div class="podcast-desc edit-text" id="podcast-desc">Service intake, SLAs &amp; raising support requests</div>
                     </div>
                 </div>
                 <div class="podcast-player">
@@ -999,8 +999,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Pre-Field Ops</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-planning')" aria-selected="true">Survey Planning</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-ro')" aria-selected="false">Availing RO Support</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-planning')" aria-selected="false">Survey Planning</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-ro')" aria-selected="true">Availing RO Support</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-mapping')" aria-selected="false">Mapping Households</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-logistics')" aria-selected="false">Survey Logistics</button>
   </nav>
@@ -1387,7 +1387,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 2: PLANNING AND PREPARING FOR SURVEY OPERATIONS
      ===================================================== -->
 
-<div id="panel-planning" class="tab-panel active">
+<div id="panel-planning" class="tab-panel">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Planning and Preparing for Survey Operations</strong></div>
 
@@ -1846,7 +1846,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 3: AVAILING RO SUPPORT
      ===================================================== -->
 
-<div id="panel-ro" class="tab-panel">
+<div id="panel-ro" class="tab-panel active">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Availing RO Support</strong></div>
 
@@ -1854,7 +1854,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 <div class="ro-section-container">
     <div class="ro-text-block">
         <span class="eyebrow">Strategic Partnership</span>
-        <h2>We build the engine.<br>You steer the research.</h2>
+        <h2 autocomplete="off"><span style="letter-spacing: -0.6px;">You steer the research; we help you setup and manage survey and data operations</span>.</h2>
         <p>The Research Operations (RO) vertical is not a "Help Desk" meant only for administrative emergencies; we are your strategic partners in field execution. Launching a survey requires meticulous planning and an alive response system that strategically responds to various changes and situations it encounters along the way, navigating remote geographies, and handling people management and active data flow, securely.</p>
         <p>Our core objective is to <strong>de-risk your project</strong>. By collaborating effectively and actively with Research Operations team on the field level logistics, operations, people and task management, the Research Associates can focus entirely on data quality, efficiency and overall data tracking.&nbsp;</p>
         <p>All support is routed exclusively via the unified <strong>RO Support Portal</strong>. This centralized communication, tracks accountability, and ensures strict compliance with institutional guidelines.</p>
@@ -2860,6 +2860,7 @@ calcCapacity();
 
 
 </div><iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
