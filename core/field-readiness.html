@@ -2509,7 +2509,7 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2c5282 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(28, 25, 23) 0%, rgb(68, 64, 60) 50%, rgb(120, 113, 108) 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2517,9 +2517,9 @@ body.edit-mode-active .panel-body iframe {
       <h1 class="edit-text">Field <em>Readiness</em></h1>
       <p class="hero-sub edit-text">The bridge between planning and execution, where your survey instrument, field team, logistics, and monitoring architecture come together and are stress-tested before scale.</p>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">6</div><div class="stat-label" id="hero-stat-1-lbl">Training steps</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">1</div><div class="stat-label" id="hero-stat-2-lbl">Dataset</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Assessment</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">3</div><div class="stat-label" id="hero-stat-1-lbl">Calculators</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">12</div><div class="stat-label" id="hero-stat-2-lbl">Sections</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Checklist</div></div>
       </div>
     </div>
     <div class="hero-podcast-side">
@@ -2528,8 +2528,8 @@ body.edit-mode-active .panel-body iframe {
           <div class="podcast-play">▶</div>
           <div class="podcast-top-text">
             <div class="podcast-tag">Field Readiness Podcast</div>
-            <div class="podcast-title edit-text" id="podcast-title">Google My Maps Masterclass</div>
-            <div class="podcast-desc edit-text" id="podcast-desc">Spatial intelligence for tracking complex field deployments</div>
+            <div class="podcast-title edit-text" id="podcast-title">Hiring for Resilience</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">The buffer rule, calculators, Core Values, and the 6 core responsibilities</div>
           </div>
         </div>
         <div class="podcast-player">
@@ -2546,8 +2546,8 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')" aria-selected="true">Field Readiness</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-hiring')" aria-selected="false">Hiring Field Staff</button>
+    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Field Readiness</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-hiring')" aria-selected="true">Hiring Field Staff</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-pilot')" aria-selected="false">Piloting &amp; Pre-Launch</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-launch')" aria-selected="false">Survey Launch</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-maps')" aria-selected="false">Google Maps</button>
@@ -2556,7 +2556,7 @@ body.edit-mode-active .panel-body iframe {
   </nav>
 </div>
 
-<div id="panel-home" class="tab-panel active">
+<div id="panel-home" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Field Readiness Overview</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -2745,7 +2745,7 @@ body.edit-mode-active .panel-body iframe {
         <div class="visual-col">
             <div class="scenario-box">
                 <strong>🗣️ How Maps Saved 3 Weeks in Udaipur</strong>
-                <p autocomplete="off">RA Meera generated her field assignments using Stata, logically clustering the sampled villages by their official Gram Panchayat (GP) and Block codes. Mathematically, it was the optimal way to distribute the workload, so she assigned all 15 villages in "Block X" to Team A.<div>Before finalizing the plan, Meera uploaded the GPS coordinates of the sampled households into Google My Maps. The visual layout immediately revealed a critical issue that the spreadsheet hid: Block X was bisected by a major river, and the nearest bridge was 40 kilometers south.</div><div>While Villages 1 and 2 shared the exact same administrative codes, driving between them would force Team A into a 2-hour detour. Furthermore, the map revealed that two villages in neighboring "Block Y" were actually located on the same highway just 5 kilometers from Team A's route.</div><div>Instead of strictly following administrative boundaries, Meera reorganized the assignments geographically. She grouped the trans-river villages with Team B (who were already operating on that side of the water) and absorbed the highway-adjacent Block Y villages into Team A's route. This 10-minute visual check saved the field teams hours of dead transit time and fuel costs.</div></p>
+                <p autocomplete="off">RA Meera generated her field assignments using Stata, logically clustering the sampled villages by their official Gram Panchayat (GP) and Block codes. Mathematically, it was the optimal way to distribute the workload, so she assigned all 15 villages in "Block X" to Team A.</p><div>Before finalizing the plan, Meera uploaded the GPS coordinates of the sampled households into Google My Maps. The visual layout immediately revealed a critical issue that the spreadsheet hid: Block X was bisected by a major river, and the nearest bridge was 40 kilometers south.</div><div>While Villages 1 and 2 shared the exact same administrative codes, driving between them would force Team A into a 2-hour detour. Furthermore, the map revealed that two villages in neighboring "Block Y" were actually located on the same highway just 5 kilometers from Team A's route.</div><div>Instead of strictly following administrative boundaries, Meera reorganized the assignments geographically. She grouped the trans-river villages with Team B (who were already operating on that side of the water) and absorbed the highway-adjacent Block Y villages into Team A's route. This 10-minute visual check saved the field teams hours of dead transit time and fuel costs.</div><p></p>
                 <div class="cost">Result: Daily travel dropped from 45km to 18km per team. Saved ₹25000 to 50000 in travel costs and gave teams 1.5 extra survey hours daily.</div>
                 <div class="lesson">Lesson: Always plot before you deploy. Geography is the primary planning variable.</div>
             </div>
@@ -2765,7 +2765,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 </div>
 
-<div id="panel-hiring" class="tab-panel">
+<div id="panel-hiring" class="tab-panel active">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Hiring Field Staff</strong></div>
 <div class="panel-body">
 
@@ -2779,7 +2779,7 @@ body.edit-mode-active .panel-body iframe {
     <p class="fr-guide-text"><strong>The 20% Rule:</strong> If you need 20 surveyors, train 25. If all 25 stay, you finish data collection early. If 5 drop out, your timeline is safe.</p>
     <div class="fr-tip-box">
       <strong>Pro Tip: The Language Switch</strong>
-      <span>Don't just interview in one language. During the screening call, switch languages mid-sentence (e.g., English to Hindi/Tamil). If they stumble or panic, they will likely struggle with translation in the field.</span>
+      <span>Don't just interview in one language. During the screening call, switch languages mid-sentence (e.g., English to Hindi/Tamil). If they stumble, they will likely struggle with translation in the field.</span>
     </div>
   </div>
 
@@ -2846,7 +2846,7 @@ body.edit-mode-active .panel-body iframe {
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Target Surveyors Needed</span>
-            <span class="fr-ctrl-val" id="funnel-target-val">20</span>
+            <span class="fr-ctrl-val" id="funnel-target-val">15</span>
           </div>
           <input type="range" id="funnel-target" min="5" max="150" step="5" value="20" oninput="calcFunnel()">
         </div>
@@ -2856,7 +2856,7 @@ body.edit-mode-active .panel-body iframe {
             <span class="fr-ctrl-val" id="funnel-buffer-val">20%</span>
           </div>
           <input type="range" id="funnel-buffer" min="10" max="40" step="5" value="20" oninput="calcFunnel()">
-          <div class="fr-bench-row"><div class="fr-bench-arrow" id="bench-buf-arrow" style="left: 33.3333%;"><div class="arrow-tip"></div><span class="fr-bench-tag">J-PAL: 20% (20 staff)</span></div></div>
+          <div class="fr-bench-row"><div class="fr-bench-arrow" id="bench-buf-arrow" style="left: 33.3333%;"><div class="arrow-tip"></div><span class="fr-bench-tag">J-PAL: 20% (15 staff)</span></div></div>
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
@@ -2877,22 +2877,22 @@ body.edit-mode-active .panel-body iframe {
       <div class="fr-calc-metrics">
         <div class="fr-metric-card fr-mc-green">
           <span class="fr-m-title">Train This Many</span>
-          <div class="fr-m-value" id="funnel-train">29</div>
+          <div class="fr-m-value" id="funnel-train">22</div>
           <span class="fr-m-sub">to deploy your target headcount</span>
         </div>
         <div class="fr-metric-card fr-mc-orange">
           <span class="fr-m-title">Invite to Interview</span>
-          <div class="fr-m-value" id="funnel-interview">49</div>
+          <div class="fr-m-value" id="funnel-interview">37</div>
           <span class="fr-m-sub">candidates to shortlist enough</span>
         </div>
         <div class="fr-metric-card fr-mc-blue">
           <span class="fr-m-title">Source / Cold-Call</span>
-          <div class="fr-m-value" id="funnel-source">98</div>
+          <div class="fr-m-value" id="funnel-source">74</div>
           <span class="fr-m-sub">at a 50% show-up rate</span>
         </div>
         <div class="fr-metric-card fr-mc-purple">
           <span class="fr-m-title">Buffer Headcount</span>
-          <div class="fr-m-value" id="funnel-buf-count">4</div>
+          <div class="fr-m-value" id="funnel-buf-count">3</div>
           <span class="fr-m-sub">extra trained as bench strength</span>
         </div>
       </div>
@@ -3011,18 +3011,18 @@ body.edit-mode-active .panel-body iframe {
       <thead>
         <tr>
           <th style="width:28%">Activity</th>
-          <th style="width:18%">Proj. Assoc (PA)</th>
+          <th style="width:18%">TeaM LeaD&nbsp; (TL)</th>
           <th style="width:18%">Survey Coord (SC)</th>
           <th style="width:18%">Research Assoc (RA)</th>
           <th style="width:18%">Research Mgr (RM)</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td><span class="fr-task-name">Sourcing Candidates</span><span class="fr-task-desc">Cold Calling &amp; Portals</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-a">Accountable</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
-        <tr><td><span class="fr-task-name">Conducting Interviews</span><span class="fr-task-desc">Screening &amp; Logistics</span></td><td><span class="fr-role-tag fr-tag-c">Consulted</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-c">Consulted</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
-        <tr><td><span class="fr-task-name">Final Hiring Decision</span><span class="fr-task-desc">Shortlists &amp; Approvals</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-a">Accountable</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
+        <tr><td><span class="fr-task-name">Sourcing Candidates</span><span class="fr-task-desc">Cold Calling &amp; Portals</span></td><td><span class="fr-role-tag fr-tag-r">ACCOUNTABLE</span></td><td><span class="fr-role-tag fr-tag-a">Responsible</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
+        <tr><td><span class="fr-task-name">Conducting Interviews</span><span class="fr-task-desc">Screening &amp; Logistics</span></td><td><span class="fr-role-tag fr-tag-c">Accountable</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-c">Informed Consulted</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
+        <tr><td><span class="fr-task-name">Final Hiring Decision</span><span class="fr-task-desc">Shortlists &amp; Approvals</span></td><td><span class="fr-role-tag fr-tag-i">Accountable</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-a">Informed</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
         <tr><td><span class="fr-task-name">Salary Details</span><span class="fr-task-desc">Setting Budget &amp; Exceptions</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-a">Accountable</span></td><td><span class="fr-role-tag fr-tag-c">Consulted</span></td></tr>
-        <tr><td><span class="fr-task-name">Contracting</span><span class="fr-task-desc">90-day contract issuance</span></td><td><span class="fr-role-tag fr-tag-r">Responsible</span></td><td><span class="fr-role-tag fr-tag-c">Consulted</span></td><td><span class="fr-role-tag fr-tag-a">Accountable</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
+        <tr><td><span class="fr-task-name">Contracting</span><span class="fr-task-desc">90-day contract issuance</span></td><td><span class="fr-role-tag fr-tag-r">Informed</span></td><td><span class="fr-role-tag fr-tag-c">Responsible</span></td><td><span class="fr-role-tag fr-tag-a">Informed</span></td><td><span class="fr-role-tag fr-tag-i">Informed</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -3041,9 +3041,9 @@ body.edit-mode-active .panel-body iframe {
       <thead><tr><th>Role</th><th>Contract Duration</th><th>Hire Timeline</th><th>Key Condition</th></tr></thead>
       <tbody>
         <tr><td>Project Associate (PA)</td><td>90 days</td><td>6–10 weeks before launch</td><td>Must have prior field research experience</td></tr>
-        <tr><td>Field Supervisor (FS)</td><td>90 days</td><td>2– 3 weeks before launch</td><td>Best FSs are experienced surveyors promoted from within</td></tr>
+        <tr><td>Field Supervisor (FS)</td><td>90 days</td><td>2– 3 weeks before launch</td><td>Best FSs are experienced surveyors promoted from within. Hire them and train them for a week before the main training starts</td></tr>
         <tr><td>Surveyor</td><td>90 days</td><td>Post-training absorption</td><td>Must pass end-of-training validation</td></tr>
-        <tr><td>Field Monitor (FM)</td><td>90 days</td><td>6–10 weeks before launch</td><td>Must understand the instrument&nbsp;</td></tr>
+        <tr><td>Field Monitor (FM)</td><td>90 days</td><td>3–6 weeks before launch</td><td>Must understand the instrument, Instrumental in reporting, day to day tracking, quality management, team management. Hire them at least 3 weeks before the main training starts and train them well on reporting, communication, tracking, People and operational management&nbsp;</td></tr>
       </tbody>
     </table>
   </div>
@@ -3185,11 +3185,11 @@ body.edit-mode-active .panel-body iframe {
   <div class="fr-checklist-container">
     <div class="fr-check-item" onclick="this.classList.toggle('fr-completed')">
       <div class="fr-check-box">✓</div>
-      <div class="fr-check-content"><strong>Budget Confirmation</strong><span>Has the RM approved the daily rate AND the "buffer" count via email?</span></div>
+      <div class="fr-check-content"><strong>Budget Confirmation</strong><span>Has the RM approved the daily rate and the "buffer" count via email?</span></div>
     </div>
     <div class="fr-check-item" onclick="this.classList.toggle('fr-completed')">
       <div class="fr-check-box">✓</div>
-      <div class="fr-check-content"><strong>The "Blacklist" Check</strong><span>Has the SC run names through the RO database to check for past performance issues?</span></div>
+      <div class="fr-check-content"><strong>The "Blacklist" Check</strong><span autocomplete="off">Has the SC run names through the RO database to check for past performance issues?</span></div>
     </div>
     <div class="fr-check-item" onclick="this.classList.toggle('fr-completed')">
       <div class="fr-check-box">✓</div>
@@ -5080,4 +5080,5 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
 
 
 
-<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div></body></html>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe></body></html>
