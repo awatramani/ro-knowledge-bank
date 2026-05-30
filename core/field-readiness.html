@@ -2509,7 +2509,7 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(28, 25, 23) 0%, rgb(68, 64, 60) 50%, rgb(120, 113, 108) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(49, 46, 129) 50%, rgb(67, 56, 202) 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2517,8 +2517,8 @@ body.edit-mode-active .panel-body iframe {
       <h1 class="edit-text">Field <em>Readiness</em></h1>
       <p class="hero-sub edit-text">The bridge between planning and execution, where your survey instrument, field team, logistics, and monitoring architecture come together and are stress-tested before scale.</p>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">3</div><div class="stat-label" id="hero-stat-1-lbl">Calculators</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">12</div><div class="stat-label" id="hero-stat-2-lbl">Sections</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">4</div><div class="stat-label" id="hero-stat-1-lbl">Pilot phases</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">6</div><div class="stat-label" id="hero-stat-2-lbl">Field guides</div></div>
         <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Checklist</div></div>
       </div>
     </div>
@@ -2528,8 +2528,8 @@ body.edit-mode-active .panel-body iframe {
           <div class="podcast-play">▶</div>
           <div class="podcast-top-text">
             <div class="podcast-tag">Field Readiness Podcast</div>
-            <div class="podcast-title edit-text" id="podcast-title">Hiring for Resilience</div>
-            <div class="podcast-desc edit-text" id="podcast-desc">The buffer rule, calculators, Core Values, and the 6 core responsibilities</div>
+            <div class="podcast-title edit-text" id="podcast-title">Piloting: Stress-Testing the System</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">Crash-testing instruments, logistics, and team calibration</div>
           </div>
         </div>
         <div class="podcast-player">
@@ -2547,8 +2547,8 @@ body.edit-mode-active .panel-body iframe {
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Field Readiness</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-hiring')" aria-selected="true">Hiring Field Staff</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-pilot')" aria-selected="false">Piloting &amp; Pre-Launch</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-hiring')" aria-selected="false">Hiring Field Staff</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-pilot')" aria-selected="true">Piloting &amp; Pre-Launch</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-launch')" aria-selected="false">Survey Launch</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-maps')" aria-selected="false">Google Maps</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-attend')" aria-selected="false">Digital Attendance</button>
@@ -2765,7 +2765,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 </div>
 
-<div id="panel-hiring" class="tab-panel active">
+<div id="panel-hiring" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Hiring Field Staff</strong></div>
 <div class="panel-body">
 
@@ -2846,7 +2846,7 @@ body.edit-mode-active .panel-body iframe {
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
             <span class="fr-ctrl-label">Target Surveyors Needed</span>
-            <span class="fr-ctrl-val" id="funnel-target-val">15</span>
+            <span class="fr-ctrl-val" id="funnel-target-val">20</span>
           </div>
           <input type="range" id="funnel-target" min="5" max="150" step="5" value="20" oninput="calcFunnel()">
         </div>
@@ -2856,7 +2856,7 @@ body.edit-mode-active .panel-body iframe {
             <span class="fr-ctrl-val" id="funnel-buffer-val">20%</span>
           </div>
           <input type="range" id="funnel-buffer" min="10" max="40" step="5" value="20" oninput="calcFunnel()">
-          <div class="fr-bench-row"><div class="fr-bench-arrow" id="bench-buf-arrow" style="left: 33.3333%;"><div class="arrow-tip"></div><span class="fr-bench-tag">J-PAL: 20% (15 staff)</span></div></div>
+          <div class="fr-bench-row"><div class="fr-bench-arrow" id="bench-buf-arrow" style="left: 33.3333%;"><div class="arrow-tip"></div><span class="fr-bench-tag">J-PAL: 20% (20 staff)</span></div></div>
         </div>
         <div class="fr-control-group">
           <div class="fr-ctrl-hdr">
@@ -2877,22 +2877,22 @@ body.edit-mode-active .panel-body iframe {
       <div class="fr-calc-metrics">
         <div class="fr-metric-card fr-mc-green">
           <span class="fr-m-title">Train This Many</span>
-          <div class="fr-m-value" id="funnel-train">22</div>
+          <div class="fr-m-value" id="funnel-train">29</div>
           <span class="fr-m-sub">to deploy your target headcount</span>
         </div>
         <div class="fr-metric-card fr-mc-orange">
           <span class="fr-m-title">Invite to Interview</span>
-          <div class="fr-m-value" id="funnel-interview">37</div>
+          <div class="fr-m-value" id="funnel-interview">49</div>
           <span class="fr-m-sub">candidates to shortlist enough</span>
         </div>
         <div class="fr-metric-card fr-mc-blue">
           <span class="fr-m-title">Source / Cold-Call</span>
-          <div class="fr-m-value" id="funnel-source">74</div>
+          <div class="fr-m-value" id="funnel-source">98</div>
           <span class="fr-m-sub">at a 50% show-up rate</span>
         </div>
         <div class="fr-metric-card fr-mc-purple">
           <span class="fr-m-title">Buffer Headcount</span>
-          <div class="fr-m-value" id="funnel-buf-count">3</div>
+          <div class="fr-m-value" id="funnel-buf-count">4</div>
           <span class="fr-m-sub">extra trained as bench strength</span>
         </div>
       </div>
@@ -3213,7 +3213,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 </div>
 
-<div id="panel-pilot" class="tab-panel">
+<div id="panel-pilot" class="tab-panel active">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Piloting &amp; Pre-Launch</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -3229,15 +3229,15 @@ body.edit-mode-active .panel-body iframe {
 <div class="section-padding">
     <div class="philosophy-box fade-up delay-1">
         <h2>The Human Dimension of Piloting</h2>
-        <p>A pilot is not only a test of tools and protocols, but also an opportunity to understand the <span class="highlight-text">human realities of field implementation</span>. The individuals who will eventually carry out large-scale data collection are the backbone of the process, and their ability to work effectively depends on the environment and conditions in which they operate.</p>
-        <p>This means assessing the physical demands and logistical constraints that field staff will encounter is as critical as assessing if the instrument works, if there are questions that are not received the way we want them to, are there surprises we can expect when it comes to expecting cooperation from the school/households. Teams should take a critical view of travel distances, the complexity of routes, terrain challenges, and the impact of geographic spread. Long travel times, poor connectivity, unpredictable transport options, or difficult terrain can all impact data quality and enumerator well-being if not anticipated early.</p>
+        <p>A pilot is not only a test of tools and protocols, but also an opportunity to understand the <span class="highlight-text">human realities of field implementation</span>. The individuals who will eventually carry out large-scale data collection are the backbone of the process, and their ability to work effectively depends on the environment and conditions in which they operate along with the applicability and appropriateness of the instrument and the processes that can enable them to carry out their work effectively.</p>
+        <p>This means that assessing the physical demands and logistical constraints that field staff will encounter is as critical as assessing if the instrument works, if there are questions that are not received the way we want them to, the expected cooperation and smooth functioning will be a far-fetched dream.&nbsp; Teams should take a critical view of travel distances, the complexity of routes, terrain challenges, and the impact of geographic spread and be thoroughly informed about the intricate working conditions in which field staff will operate to get a reasonable assessment of the daily workload and expected productivity. One should keep room for less experienced surveyors and other field staff to lean and grow, we need to accept the fact that there indeed is a learning curve when it comes to mastering the art of flawless surveying and survey management and that people will take time to reach to that level at different pace. Long travel times, poor connectivity, unpredictable transport options, or difficult terrain can all impact data quality and enumerator's motivation, morale, confidence and overall well-being, if not anticipated early.</p>
         <p style="margin-bottom: 0; font-weight: 600; color: white;">Ultimately, the aim is to pre-empt fatigue, bottlenecks, and operational risks, laying the groundwork for a data collection phase that is not only efficient but also humane and sustainable.</p>
     </div>
 
     <div class="fade-up delay-2">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; border-bottom: 2px solid var(--border-soft); padding-bottom: 10px;">
             <h2 style="margin: 0;">Key Objectives of Piloting</h2>
-            <span style="font-size: 13px; color: var(--text-light); font-weight: 700; text-transform: uppercase;">Hover for methodology</span>
+            <span style="font-size: 13px; color: var(--text-light); font-weight: 700; text-transform: uppercase;">FOcus &amp; methodology</span>
         </div>
         
         <div class="obj-grid">
@@ -3247,7 +3247,7 @@ body.edit-mode-active .panel-body iframe {
             </div>
             <div class="obj-card">
                 <h4>Respondent Burden</h4>
-                <p>Evaluate the comfort level and burden on respondents. Understand the exact time required for each module under real field conditions.</p>
+                <p>Evaluate the comfort level and burden on respondents. Understand the exact time required for each module under real field conditions across different set of staff leading it based on experience.</p>
             </div>
             <div class="obj-card">
                 <h4>Logistical Friction</h4>
@@ -3371,7 +3371,7 @@ body.edit-mode-active .panel-body iframe {
                         </div>
                         <div class="flip-back">
                             <h4>The Field Reality</h4>
-                            <p>This fails to reveal true complexities. When the actual project involves remote villages or crowded slums, the easy pilot hides critical travel bottlenecks.</p>
+                            <p>This is a half-baked pilot that will fail to assess the operational and logistical complexity. When the actual project involves remote villages or crowded slums, the easy pilot hides critical travel bottlenecks.</p>
                         </div>
                     </div>
                 </div>
@@ -3384,7 +3384,7 @@ body.edit-mode-active .panel-body iframe {
                         </div>
                         <div class="flip-back">
                             <h4>The Field Reality</h4>
-                            <p>The agency used formal academic phrasing. During the pilot, the village speaks a local dialect and finds the questions incredibly confusing.</p>
+                            <p>The agency used formal academic phrasing, the RA doesn't speak the regional language. During the pilot, the village speaks a local dialect and finds the questions incredibly confusing.</p>
                         </div>
                     </div>
                 </div>
@@ -3465,7 +3465,7 @@ body.edit-mode-active .panel-body iframe {
                     </tr>
                     <tr>
                         <td class="task-column">Device setup and form upload</td>
-                        <td><span class="role-pill">RA</span></td>
+                        <td><span class="role-pill">RA, PA</span></td>
                         <td><span class="role-pill">RM</span></td>
                         <td><span class="role-pill">Data Team</span></td>
                         <td><span class="role-pill">PA</span></td>
@@ -3640,7 +3640,7 @@ body.edit-mode-active .panel-body iframe {
                         </div>
                     </div>
                     <ul class="task-list">
-                        <li>Conduct twice–daily reflection sessions for immediate adjustments.</li>
+                        <li autocomplete="off">Conduct daily reflection sessions for immediate adjustments.</li>
                         <li>Complete the formal Debrief Form.</li>
                         <li>Document required instrument and logistical fixes.</li>
                     </ul>
@@ -5081,4 +5081,5 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
 
 
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe></body></html>
