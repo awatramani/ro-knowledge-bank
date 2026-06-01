@@ -2575,7 +2575,7 @@ body.edit-mode-active .panel-body iframe {
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
 <div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
-  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1f2937;">Link URL: Raise Hiring Request</label>
+  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1f2937;">Link URL: Add your resource link →</label>
   <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
   <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f7f6f3;color:#374151;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
@@ -2603,7 +2603,7 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(12, 35, 64) 0%, rgb(15, 52, 96) 50%, rgb(30, 87, 153) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(30, 27, 75) 0%, rgb(55, 48, 163) 50%, rgb(79, 70, 229) 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2611,9 +2611,9 @@ body.edit-mode-active .panel-body iframe {
       <h1 class="edit-text">Training <em>Academy</em></h1>
       <p class="hero-sub edit-text">The one-stop guide for RAs, PAs, and SCs to design and run an effective and successful field-staff training program.</p>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">2-14</div><div class="stat-label" id="hero-stat-1-lbl">Days</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">14</div><div class="stat-label" id="hero-stat-2-lbl">Day backbone</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">ToT model</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">1</div><div class="stat-label" id="hero-stat-1-lbl">Manual</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">4</div><div class="stat-label" id="hero-stat-2-lbl">Deep-dive fields</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">8</div><div class="stat-label" id="hero-stat-3-lbl">Character cards</div></div>
       </div>
     </div>
     <div class="hero-podcast-side">
@@ -2622,8 +2622,8 @@ body.edit-mode-active .panel-body iframe {
           <div class="podcast-play">▶</div>
           <div class="podcast-top-text">
             <div class="podcast-tag">Training Academy Podcast</div>
-            <div class="podcast-title edit-text" id="podcast-title">From Diagnosis to a Schedule</div>
-            <div class="podcast-desc edit-text" id="podcast-desc">Duration, the master schedule, team size, in-person vs remote, and budget</div>
+            <div class="podcast-title edit-text" id="podcast-title">Materials That Do the Teaching</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">The manual, assessment, quizzes, mock cards, demo videos, and device prep</div>
           </div>
         </div>
         <div class="podcast-player">
@@ -2642,8 +2642,8 @@ body.edit-mode-active .panel-body iframe {
   <nav class="tab-nav" role="tablist">
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">The Academy</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-diagnose')" aria-selected="false">Diagnose Your Training</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-design')" aria-selected="true">Design the Program</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-build')" aria-selected="false">Build the Materials</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-design')" aria-selected="false">Design the Program</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-build')" aria-selected="true">Build the Materials</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-deliver')" aria-selected="false">Deliver &amp; Facilitate</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-sensitive')" aria-selected="false">Special Populations</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-certify')" aria-selected="false">Assess, Certify &amp; Sustain</button>
@@ -2910,7 +2910,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 
 <!-- ════════════════ PANEL 3: DESIGN THE PROGRAM ════════════════ -->
-<div id="panel-design" class="tab-panel active">
+<div id="panel-design" class="tab-panel">
 <div class="panel-label-strip"><span>Training Academy › </span><strong class="edit-text">Design the Program</strong></div>
 <div class="panel-body">
 <div class="section-padding">
@@ -3022,7 +3022,7 @@ body.edit-mode-active .panel-body iframe {
       <p class="fr-guide-text edit-text">Every field staff member is on a fixed-term, non-extendable 90-day contract; a new contract can only be raised after a mandatory 7-day cooling-off period. If your survey runs beyond 90 days you will lose productivity to cooling-off, you may look into staggering contracts across the team rather than starting everyone on the same day, and factor this into when you train (and whether you need a mid-project refresher training for replacements).</p>
       <div class="fr-callout">
         <strong>Where not to economise</strong>
-        <span class="edit-text" autocomplete="off">When budget is tight, the temptation is to shorten training. Resist it.The cheapest line item to cut is also the one that creates the most expensive downstream failures. Cut venue frills, not practice days.</span>
+        <span class="edit-text">When budget is tight, the temptation is to shorten training. Resist it.The cheapest line item to cut is also the one that creates the most expensive downstream failures. Cut venue frills, not practice days.</span>
       </div>
     </div>
   </div>
@@ -3032,7 +3032,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 
 <!-- ════════════════ PANEL 4: BUILD THE MATERIALS ════════════════ -->
-<div id="panel-build" class="tab-panel">
+<div id="panel-build" class="tab-panel active">
 <div class="panel-label-strip"><span>Training Academy › </span><strong class="edit-text">Build the Materials</strong></div>
 <div class="panel-body">
 <div class="section-padding">
@@ -3110,10 +3110,7 @@ body.edit-mode-active .panel-body iframe {
       <div class="ta-ref-card">
         <div class="ic">🎬</div>
         <div>
-          <h4 class="edit-text">If handy, Embed videos directly into SurveyCTO</h4>
-          <p class="edit-text">A field plug-in lets you embed training videos into the SurveyCTO form itself, so refresher content travels with the surveyor. Worth setting up for complex or measurement-heavy instruments.</p>
-          <a href="#" class="edit-text">Add your resource link →</a>
-        </div>
+          <h4 class="edit-text">If handy, Embed videos into your training material</h4></div>
       </div>
     </div>
   </div>
@@ -3132,13 +3129,8 @@ body.edit-mode-active .panel-body iframe {
           <tr><td class="edit-text">Tablets configured</td><td class="edit-text">T-3 days</td><td class="edit-text">Test submission received on the server for every device</td></tr>
         </tbody>
       </table>
-      <div class="ta-ref-card">
-        <div class="ic">📱</div>
-        <div>
-          <h4 class="edit-text">Full device &amp; tablet management lives in Field Readiness</h4>
-          <p class="edit-text">MDM configuration, charging, rental and asset registers, and the Tablet Management Checklist are covered there — pull them into your pre-training prep.</p>
-          <a href="field-readiness.html" class="edit-text">Open Field Readiness →</a>
-        </div>
+      <div class="ta-ref-card" autocomplete="off">
+        <div class="ic"><br></div>
       </div>
     </div>
   </div>
