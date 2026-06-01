@@ -2603,7 +2603,7 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(59, 7, 100) 0%, rgb(107, 33, 168) 50%, rgb(147, 51, 234) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(49, 46, 99) 50%, rgb(91, 58, 138) 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2611,9 +2611,9 @@ body.edit-mode-active .panel-body iframe {
       <h1 class="edit-text">Training <em>Academy</em></h1>
       <p class="hero-sub edit-text">The one-stop guide for RAs, PAs, and SCs to design and run an effective and successful field-staff training program.</p>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">6</div><div class="stat-label" id="hero-stat-1-lbl">Populations</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">4</div><div class="stat-label" id="hero-stat-2-lbl">Distress levels</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">4</div><div class="stat-label" id="hero-stat-3-lbl">Legal pillars</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">7</div><div class="stat-label" id="hero-stat-1-lbl">Modules</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">11</div><div class="stat-label" id="hero-stat-2-lbl">Sectors covered</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">3</div><div class="stat-label" id="hero-stat-3-lbl">Phases</div></div>
       </div>
     </div>
     <div class="hero-podcast-side">
@@ -2622,8 +2622,8 @@ body.edit-mode-active .panel-body iframe {
           <div class="podcast-play">▶</div>
           <div class="podcast-top-text">
             <div class="podcast-tag">Training Academy Podcast</div>
-            <div class="podcast-title edit-text" id="podcast-title">When Studies Carry Obligations</div>
-            <div class="podcast-desc edit-text" id="podcast-desc">Children, vulnerable groups, sensitive topics, trauma-informed care, self-care</div>
+            <div class="podcast-title edit-text" id="podcast-title">Designing Training for Your Study</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">Why no two trainings should look the same — and how to build yours</div>
           </div>
         </div>
         <div class="podcast-player">
@@ -2640,18 +2640,18 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">The Academy</button>
+    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')" aria-selected="true">The Academy</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-diagnose')" aria-selected="false">Diagnose Your Training</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-design')" aria-selected="false">Design the Program</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-build')" aria-selected="false">Build the Materials</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-deliver')" aria-selected="false">Deliver &amp; Facilitate</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-sensitive')" aria-selected="true">Special Populations</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-sensitive')" aria-selected="false">Special Populations</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-certify')" aria-selected="false">Assess, Certify &amp; Sustain</button>
   </nav>
 </div>
 
 <!-- ════════════════ PANEL 1: THE ACADEMY ════════════════ -->
-<div id="panel-home" class="tab-panel">
+<div id="panel-home" class="tab-panel active">
 <div class="panel-label-strip"><span>Training Academy › </span><strong class="edit-text">Overview &amp; First Principles</strong></div>
 <div class="panel-body">
 <div class="section-padding">
@@ -2667,7 +2667,7 @@ body.edit-mode-active .panel-body iframe {
       <span class="eq-item edit-text">Crystal clear R&amp;Rs</span> <span class="eq-operator">×</span>
       <span class="eq-item edit-text">Materials that teach intent, not just questions</span> <span class="eq-operator">×</span>
       <span class="eq-item edit-text">Delivery that builds skill through practice</span> <span class="eq-operator">×</span>
-      <span class="eq-item edit-text">Honest assessment with the courage to deselect</span> <span class="eq-operator">=</span>
+      <span class="eq-item edit-text" autocomplete="off">Honest assessment with acceptance that some will learn with more pratice</span> <span class="eq-operator">=</span>
       <span class="eq-result edit-text">A Field-Ready Team</span>
     </div>
     <p class="edit-text" style="margin-top:20px;opacity:.9;font-size:14px;max-width:840px;margin-left:auto;margin-right:auto;">
@@ -3243,13 +3243,13 @@ body.edit-mode-active .panel-body iframe {
 </div>
 
 <!-- ════════════════ PANEL 6: SPECIAL POPULATIONS ════════════════ -->
-<div id="panel-sensitive" class="tab-panel active">
+<div id="panel-sensitive" class="tab-panel">
 <div class="panel-label-strip"><span>Training Academy › </span><strong class="edit-text">Special Populations &amp; Sensitive Topics</strong></div>
 <div class="panel-body">
 <div class="section-padding">
 
   <div class="ta-lead">
-    <p class="big edit-text"><span style="color: rgb(55, 65, 81); font-size: 17px;">Some studies carry obligations and accountability far beyond the accuracy of the data. Preparing and training field staff on research ethics becomes even more if respondents are children, elderly, or vulnerable, and when there are modules that cover violence, mental health, or abuse, female health. The capacity development plans for field staff must focus on building skills that protect people, equips field staff to go over sensitive modules as expected.&nbsp;</span><div><font color="#374151"><span style="font-size: 17px;">This is a non-negotiable and it is where compromised training program does real harm.&nbsp;<br></span></font><div><br></div></div></p>
+    <p class="big edit-text"><span style="color: rgb(55, 65, 81); font-size: 17px;">Some studies carry obligations and accountability far beyond the accuracy of the data. Preparing and training field staff on research ethics becomes even more if respondents are children, elderly, or vulnerable, and when there are modules that cover violence, mental health, or abuse, female health. The capacity development plans for field staff must focus on building skills that protect people, equips field staff to go over sensitive modules as expected.&nbsp;</span></p><div><font color="#374151"><span style="font-size: 17px;">This is a non-negotiable and it is where compromised training program does real harm.&nbsp;<br></span></font><div><br></div></div><p></p>
     <p class="edit-text">Add the relevant parts of this module to your program based on your diagnosis (Module 01). If even one sub-section of your instrument is sensitive, you train the full protocol for it.</p>
   </div>
 
@@ -3747,5 +3747,6 @@ function toggleCheck(el){
 
 
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe></body></html>
