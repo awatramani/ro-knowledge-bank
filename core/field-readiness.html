@@ -2509,7 +2509,7 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="main-content-area">
 
-<section class="hero" style="background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(49, 46, 129) 50%, rgb(67, 56, 202) 100%);">
+<section class="hero" style="background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(22, 78, 99) 55%, rgb(14, 116, 144) 100%);">
   <div class="aurora"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -2517,9 +2517,9 @@ body.edit-mode-active .panel-body iframe {
       <h1 class="edit-text">Field <em>Readiness</em></h1>
       <p class="hero-sub edit-text">The bridge between planning and execution, where your survey instrument, field team, logistics, and monitoring architecture come together and are stress-tested before scale.</p>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">4</div><div class="stat-label" id="hero-stat-1-lbl">Pilot phases</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">6</div><div class="stat-label" id="hero-stat-2-lbl">Field guides</div></div>
-        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Checklist</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-1-num">4</div><div class="stat-label" id="hero-stat-1-lbl">Launch pillars</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-2-num">3</div><div class="stat-label" id="hero-stat-2-lbl">Templates</div></div>
+        <div class="stat-item"><div class="stat-num edit-text" id="hero-stat-3-num">1</div><div class="stat-label" id="hero-stat-3-lbl">Quiz</div></div>
       </div>
     </div>
     <div class="hero-podcast-side">
@@ -2528,8 +2528,8 @@ body.edit-mode-active .panel-body iframe {
           <div class="podcast-play">▶</div>
           <div class="podcast-top-text">
             <div class="podcast-tag">Field Readiness Podcast</div>
-            <div class="podcast-title edit-text" id="podcast-title">Piloting: Stress-Testing the System</div>
-            <div class="podcast-desc edit-text" id="podcast-desc">Crash-testing instruments, logistics, and team calibration</div>
+            <div class="podcast-title edit-text" id="podcast-title">Survey Launch &amp; the Gestation Phase</div>
+            <div class="podcast-desc edit-text" id="podcast-desc">The first 10-15 days: routines, momentum, and the forecaster</div>
           </div>
         </div>
         <div class="podcast-player">
@@ -2548,8 +2548,8 @@ body.edit-mode-active .panel-body iframe {
   <nav class="tab-nav" role="tablist">
     <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Field Readiness</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-hiring')" aria-selected="false">Hiring Field Staff</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-pilot')" aria-selected="true">Piloting &amp; Pre-Launch</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-launch')" aria-selected="false">Survey Launch</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-pilot')" aria-selected="false">Piloting &amp; Pre-Launch</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-launch')" aria-selected="true">Survey Launch</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-maps')" aria-selected="false">Google Maps</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-attend')" aria-selected="false">Digital Attendance</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-remote')" aria-selected="false">Remote Data Collection</button>
@@ -3213,7 +3213,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 </div>
 
-<div id="panel-pilot" class="tab-panel active">
+<div id="panel-pilot" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Piloting &amp; Pre-Launch</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -3697,7 +3697,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 </div>
 
-<div id="panel-launch" class="tab-panel">
+<div id="panel-launch" class="tab-panel active">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Survey Launch</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -3723,17 +3723,17 @@ body.edit-mode-active .panel-body iframe {
         <div class="content-card">
             <h3>1. Clarity for Field Staff</h3>
             <p>At launch, staff must have absolute clarity on roles, contracting details, daily routines, working conditions, and payment terms (stipend/DA frequency). There is no room for ambiguity.</p>
-            <p><strong>Action:</strong> Distribute Field Manuals and R&amp;R documents in advance. Review them extensively during training and reiterate them on launch morning.</p>
+            <p><strong>Action:</strong> Distribute Field Manuals and R&amp;R documents in advance. Review them extensively during training and reiterate them on launch morning. Call out on the key R&amp;R and expectations</p>
             <div class="scenario-box">
                 <strong>Field Scenario</strong>
-                A surveyor arrives on Day 1 confused about whether transport is reimbursed daily or weekly. They spend the first two hours arguing with the supervisor instead of conducting surveys. <em>Clear payment terms prevent Day 1 friction.</em>
+                A surveyor arrives on Day 1 confused about whether transport is reimbursed based on actual bills that she should collect or is a flat allowance. They spend the first two hours arguing with the supervisor instead of conducting surveys. <em>Clear payment terms prevent Day 1 friction.</em>
             </div>
         </div>
 
         <div class="content-card">
             <h3>2. Logistics &amp; Field Readiness</h3>
             <p>Every element of planning must be finalized: Start times, pickup points, whether taxi routes are fixed, lunch arrangements, emergency contacts, and device charging protocols.</p>
-            <p><strong>Action:</strong> Document all of this in a <em>Field Logistics SOP</em>. Keep laminated hard copies inside every team vehicle.</p>
+            <p><strong>Action:</strong> Document all of this in a <em>Field Logistics SOP</em>. The Project specific 'Field Logistics SOP' with clear expectations and timeline is an extremely useful resource. Keep laminated hard copies inside every team vehicle.</p>
             <div class="scenario-box">
                 <strong>Field Scenario</strong>
                 The team reaches a remote village, but the tablets are at 15% battery because the charging protocol wasn't enforced the night before. The entire day is lost. <em>Logistics dictate data flow.</em>
@@ -3742,7 +3742,7 @@ body.edit-mode-active .panel-body iframe {
     </div>
 
     <h2 class="section-title" style="margin-top: 80px;">Interactive Forecaster</h2>
-    <p style="margin-bottom: 30px;">Use this tool to calculate your hardware, team structures, and daily budget parameters instantly based on your sampling frame.</p>
+    <p style="margin-bottom: 30px;">Use this tool to calculate your hardware, team structures, and daily budget parameters instantly based on your sampling frame (not an accurate tool but can help in terms of making ball-park assessments(.</p>
 
     <div class="dashboard-tool">
         <div class="dash-header">
@@ -3825,7 +3825,7 @@ body.edit-mode-active .panel-body iframe {
     </div>
 
     <h2 class="section-title">The Standard Daily Rhythm</h2>
-    <p style="margin-bottom: 30px;">A predictable daily routine minimizes cognitive load on your surveyors, allowing them to focus entirely on data collection.</p>
+    <p style="margin-bottom: 30px;">A predictable daily routine minimizes cognitive load on your surveyors, allowing them to focus entirely on data collection (You may setup a Standard Daily Rhythm for your project which gives clarity across teams and people in terms of broader time management in the field.</p>
     
     <div class="schedule-wrapper">
         <div class="schedule-item">
@@ -3845,7 +3845,7 @@ body.edit-mode-active .panel-body iframe {
         </div>
         <div class="schedule-item" style="background: #fdfbf7; border-color: #e8e0d4;">
             <div class="time-badge" style="background: var(--accent-orange);">1:00 PM</div>
-            <div class="schedule-task" style="color: #92702e;">Mandatory Lunch Break. Hydration check. Mid-day progress sync.</div>
+            <div class="schedule-task" style="color: #92702e;">Mandatory Lunch Break. Mid-day progress sync.</div>
             <div class="schedule-owner" style="background: #fef3c7; color: #92702e;">Entire Team</div>
         </div>
         <div class="schedule-item">
@@ -3856,7 +3856,7 @@ body.edit-mode-active .panel-body iframe {
         <div class="schedule-item" style="background: #f0fdf4; border-color: #bbf7d0;">
             <div class="time-badge" style="background: var(--success-green);">6:00 PM</div>
             <div class="schedule-task" style="color: #166534;">Mandatory Debrief Session. Data sync and device handover.</div>
-            <div class="schedule-owner" style="background: #dcfce7; color: #166534;">SC / FM</div>
+            <div class="schedule-owner" style="background: #dcfce7; color: #166534;">PA / FM/SC</div>
         </div>
     </div>
 
@@ -3874,7 +3874,7 @@ body.edit-mode-active .panel-body iframe {
                 <tr>
                     <td><span class="role-pill">Project Associate (PA)</span></td>
                     <td><strong>Ground Lead for Daily Ops</strong></td>
-                    <td>Vendor contact, field team planning, morning schedule enforcement. Ensuring teams reach sites and start surveying on time. Managing lodging issues and daily output tracking.</td>
+                    <td>Vendor contact, field team planning, morning schedule enforcement. Ensuring teams reach sites and start surveying on time. Managing lodging issues and daily output tracking. Weekly deviation and resolution report (Field data v/Survey CTO submission per Field Staff per day)</td>
                 </tr>
                 <tr>
                     <td><span class="role-pill">Field Manager (FM)</span></td>
@@ -3889,7 +3889,7 @@ body.edit-mode-active .panel-body iframe {
                 <tr>
                     <td><span class="role-pill">Research Assoc. (RA)</span></td>
                     <td><strong>Strategy &amp; Systems</strong></td>
-                    <td>Overall quality checks, digital system setup, server monitoring, and maintaining the high-level feedback loop with PIs.</td>
+                    <td>Overall quality checks, digital system setup, server monitoring, and maintaining the high-level feedback loop with PIs. Daily closure of Survey progress, Survey Efficiency, Quality</td>
                 </tr>
             </tbody>
         </table>
@@ -3900,13 +3900,13 @@ body.edit-mode-active .panel-body iframe {
             <h3>Reporting &amp; Debriefing Systems</h3>
             <p>The launch week must introduce the culture of daily field reflection.</p>
             <ul>
-                <li>Decide who leads daily debriefs (usually SC or PA).</li>
-                <li>Use a <strong>Debrief Tracker</strong> to capture key themes.</li>
-                <li>Encourage open conversations: what’s working, what’s frustrating?</li>
+                <li>Decide who leads daily debriefs (Usually PA schedules and facilitates it along with RA and SC (joining remotely is not at site).</li>
+                <li>Maintain a <strong>Debrief Tracker</strong> to capture and record key themes.</li>
+                <li>Encourage open conversations: what’s working, what’s frustrating? Make efforts to open up people, this is where RAs and SC need to add value, they need to instill confidence into people&nbsp;</li>
             </ul>
             <div class="scenario-box" style="background: #f0fdf4; border-color: var(--success-green); color: #166534;">
                 <strong style="color: var(--success-green);">Pro Tip</strong>
-                Make the first 5–7 debriefs mandatory and highly structured—this builds discipline and trust early on.
+                Make the debriefs for the first 10 days mandatory and highly structured, this builds discipline and trust early on.
             </div>
         </div>
 
@@ -3914,8 +3914,8 @@ body.edit-mode-active .panel-body iframe {
             <h3>Monitoring &amp; Escalation Setup</h3>
             <p>Finalize exactly how survey progress and emergencies will be tracked.</p>
             <ul>
-                <li>Share protocols for flagging: device failures, respondent refusals, or safety concerns.</li>
-                <li>Assign point persons for Attendance Logs, Logistics Tracking (PA/FM), and Backcheck Planning (SC/FM).</li>
+                <li>Share protocols, point of contact and escalation ladder: device failures, cab delays, respondent refusals, community issues, or safety concerns.<div><br></div></li>
+                <li>Assign point persons for Daily Attendance, Bike logs, Field Staff Outstation Travel Tracker, Vendor Issues, Logistics Tracking (PA/FM), and Backcheck team (RA).</li>
             </ul>
         </div>
     </div>
@@ -3923,8 +3923,8 @@ body.edit-mode-active .panel-body iframe {
     <h2 class="section-title">RA Launch Checklist &amp; Tips</h2>
     <ul class="tips-list">
         <li><strong>Create a launch kick-off pack:</strong> Include printed field plans, route maps, supervisor contacts, attendance formats, and team rosters.</li>
-        <li><strong>Printer Access:</strong> Ensure at least one field team member has portable printer access or knows a local shop for emergency forms/logs.</li>
-        <li><strong>Schedule Yourself:</strong> Work with RO to build a launch week schedule that includes heavy in-field time for you and the SC. Do not manage launch week from a desk.</li>
+        <li><strong>Printer Access:</strong>&nbsp;Ensure at least one field team member knows a local shop for emergency forms/logs.</li>
+        <li autocomplete="off"><strong>Schedule Yourself:</strong> Work with RO to build a launch week schedule that includes active in-field time splits between you and the SC for the coming weeks and ensure the unpredictability of the visit remains in place. Please ensure you do not manage launch and the first 15 days being on desk alone, active field presence in the field sets up the project right. Please coordinate with SRM (Research Operations) to put together a field visit schedule between you and SC.</li>
         <li><strong>The 3-Day Check-in:</strong> Conduct a short surveyor self-reflection after 3 days. Ask them directly: what’s working, what’s not?</li>
     </ul>
 
@@ -5081,6 +5081,7 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
 
 
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe></body></html>
