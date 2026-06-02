@@ -706,6 +706,7 @@ html {scroll-behavior:smooth;}
     <a class="left-nav-item" href="field-readiness.html" target="_self">Field Readiness</a>
     <a class="left-nav-item" href="training-academy.html" target="_self">Training Academy</a>
     <a class="left-nav-item active" href="onboarding-ra-pa.html" target="_self">On-boarding RA/PA</a>
+    <a class="left-nav-item" href="onboarding-field-staff.html" target="_self">On-boarding Field Staff</a>
     <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0">Field Execution</a>
     <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0">Resources &amp; Field Staff</a>
   </nav>
@@ -3036,7 +3037,102 @@ html {scroll-behavior:smooth;}
 </div>
 </div>
 <script>
+// ── Tab switching ──────────────────────────────────────────────────────────
+var _jumpH=null;
 
+function switchTab(evt,pid){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  var panel=document.getElementById(pid);
+  if(!panel)return;
+  panel.classList.add('active');
+  if(evt&&evt.currentTarget)evt.currentTarget.classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+  setTimeout(function(){initJumpNav(panel);},60);
+}
+
+// ── Jump nav — works for any jump nav class & section selector ──────────────
+function initJumpNav(panel){
+  if(!panel)panel=document.querySelector('.tab-panel.active');
+  if(!panel)return;
+  var links=Array.from(panel.querySelectorAll('.jump-link,.jl'));
+  if(!links.length)return;
+  var ids=[];
+  links.forEach(function(l){
+    var h=(l.getAttribute('href')||'');
+    if(h.startsWith('#')&&h.length>1)ids.push(h.slice(1));
+  });
+  if(!ids.length)return;
+  if(_jumpH)window.removeEventListener('scroll',_jumpH,{passive:true});
+  _jumpH=function(){
+    var sy=window.scrollY,cur=ids[0];
+    for(var i=0;i<ids.length;i++){
+      var el=document.getElementById(ids[i]);
+      if(el&&sy+150>=el.getBoundingClientRect().top+sy)cur=ids[i];
+    }
+    links.forEach(function(l){
+      var h=(l.getAttribute('href')||'').slice(1);
+      l.classList.toggle('active',h===cur);
+      l.classList.toggle('a',h===cur);
+    });
+  };
+  window.addEventListener('scroll',_jumpH,{passive:true});
+  _jumpH();
+}
+
+// jump link click → smooth scroll
+document.addEventListener('click',function(e){
+  var link=e.target.closest('.jump-link,.jl');
+  if(!link)return;
+  var href=(link.getAttribute('href')||'');
+  if(!href.startsWith('#')||href.length<2)return;
+  var t=document.getElementById(href.slice(1));
+  if(!t)return;
+  e.preventDefault();
+  window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-110,behavior:'smooth'});
+});
+initJumpNav(document.querySelector('.tab-panel.active'));
+
+// ── Quiz — handles submitQuiz, submitQ, sel/.selected ─────────────────────
+document.addEventListener('click',function(e){
+  if(document.body.classList.contains('edit-mode-active'))return;
+  var opt=e.target.closest('.q-opt,.qo');
+  if(!opt)return;
+  var block=opt.closest('.q-block,.qb');
+  if(!block)return;
+  block.querySelectorAll('.q-opt,.qo').forEach(function(o){
+    o.classList.remove('selected','sel');
+  });
+  opt.classList.add('selected','sel');
+});
+
+// unified submit — called by both submitQuiz(this) and submitQ(btn)
+function _runQuiz(btn){
+  var panel=btn.closest('.tab-panel');
+  var blocks=Array.from((panel||document).querySelectorAll('.q-block,.qb'));
+  var score=0;
+  blocks.forEach(function(block){
+    var correct=block.dataset.answer||block.dataset.ans;
+    var sel=block.querySelector('.q-opt.selected,.qo.sel,.q-opt.sel,.qo.selected');
+    var expl=block.querySelector('.q-explanation,.qex,.qexp');
+    block.querySelectorAll('.q-opt,.qo').forEach(function(opt){
+      var v=opt.dataset.val||opt.dataset.v;
+      if(v===correct)opt.classList.add('correct');
+      else if(opt.classList.contains('selected')||opt.classList.contains('sel'))opt.classList.add('wrong');
+    });
+    if(sel){var sv=sel.dataset.val||sel.dataset.v;if(sv===correct)score++;}
+    if(expl)expl.classList.add('show');
+  });
+  var total=blocks.length;
+  var se=btn.nextElementSibling||btn.closest('.quiz-section,.qs')&&btn.closest('.quiz-section,.qs').querySelector('.quiz-score,.qscore,.qsc');
+  if(se){
+    se.textContent=score>=Math.ceil(total*.8)?'✅ Score: '+score+'/'+total+' — Excellent! Move to the next session.':score>=Math.ceil(total*.6)?'📝 Score: '+score+'/'+total+' — Good — review explanations before moving on.':'🔄 Score: '+score+'/'+total+' — Please review this session before continuing.';
+    se.classList.add('show');
+  }
+  btn.disabled=true;btn.style.opacity='0.5';
+}
+function submitQuiz(btn){_runQuiz(btn);}
+function submitQ(btn){_runQuiz(btn);}
 </script>
 </div>
 </div>
