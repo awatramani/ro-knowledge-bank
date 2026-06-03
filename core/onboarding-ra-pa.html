@@ -786,8 +786,10 @@ html {scroll-behavior:smooth;}
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0369a1;">Copy HTML</button>
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
-<div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0,.11);">
-  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">URL</label>
+<div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
+  <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">Link URL: Session 4 · 90 min
+            
+            People</label>
   <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
   <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
@@ -815,8 +817,8 @@ html {scroll-behavior:smooth;}
 <div class="main-content-area">
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-s00')">Overview</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-s01')">Session 1: Your Role &amp; Reporting</button>
+    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-s00')">Overview</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-s01')">Session 1: Your Role &amp; Reporting</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-spipe')">Session 2: Field Staff Journey</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-s02')">Session 3: Pre-Field Planning</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-s03')">Session 4: Ethics &amp; Policies</button>
@@ -824,12 +826,12 @@ html {scroll-behavior:smooth;}
     <button class="tab-btn" onclick="switchTab(event,'panel-s05')">Session 6: Risk Readiness</button>
   </nav>
 </div>
-<div id="panel-s00" class="tab-panel">
+<div id="panel-s00" class="tab-panel active">
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow fade-up">J-PAL South Asia · Research Operations</div>
     <h1 class="fade-up d1">Field Survey Operations<br><span>Onboarding Package</span></h1>
-    <p class="hero-sub fade-up d2">A one-day, six-session field operations orientation for Research Associates and Project Associates working a round of data collection. It is built for a mixed group — the RA-to-PA ratio is rarely even — and is just as relevant for experienced RAs, PAs, Research Consultants, and Senior Project Associates whom an RM has assigned to a fresh round as it is for newly hired staff. The focus is what actually happens behind the scenes of fieldwork: how field staff are screened, invited, trained, paid, assessed, and contracted, and what you are responsible for once they reach the field.</p>
+    <p class="hero-sub fade-up d2">A one-day, six-session field operations orientation for Research Associates and Project Associates working a round of data collection. It is built for a mixed group; the RA-to-PA ratio is rarely even, and is just as relevant for experienced RAs, PAs, Research Consultants, and Senior Project Associates whom an RM has assigned to a fresh round as it is for newly hired staff. The focus is what actually happens behind the scenes of fieldwork: how field staff are screened, invited, trained, paid, assessed, and contracted, and what you are responsible for once they reach the field.</p>
     <div class="hero-meta fade-up d3">
       <div class="hero-meta-item"><span>Audience</span>RAs &amp; PAs (mixed)</div>
       <div class="hero-meta-item"><span>Duration</span>1 Full Day · 6 Sessions</div>
@@ -845,7 +847,7 @@ html {scroll-behavior:smooth;}
   <div class="section">
     <div class="section-label">Programme Overview</div>
     <h2 class="section-title">What This Onboarding Covers</h2>
-    <p class="section-sub">This is a field operations onboarding — not an institutional orientation. It assumes you already know what J-PAL South Asia is and moves straight to how a round of data collection actually runs: how field staff reach the field, what your reporting rhythm looks like, and how to keep quality, ethics, and safety intact from Day 1. Every session combines clear principles, real field scenarios, role-specific responsibilities, and hands-on exercises.</p>
+    <p class="section-sub">This is a field operations onboarding, not an institutional orientation. It assumes you already know what J-PAL South Asia is and moves straight to how a round of data collection actually runs: how field staff reach the field, what your reporting rhythm looks like, and how to keep quality, ethics, and safety intact from Day 1. Every session combines clear principles, real field scenarios, role-specific responsibilities, and hands-on exercises.</p>
 
     <div class="info-box">
       <strong>How to use these sessions:</strong> Each session page is self-contained and can be run independently. Every session ends with scenario-based MCQs and a brief field simulation. Facilitators should print the scenario cards, set up the group exercises in advance, and ensure tablets are charged for Sessions 4 and 5.
@@ -855,7 +857,7 @@ html {scroll-behavior:smooth;}
       <div class="outcome-card">
         <span class="outcome-icon">🧩</span>
         <h4>Know the Field Staff Journey</h4>
-        <p>Understand everything behind the scenes — screening by SCs, training invites, the offer letter, document collection, training payments, post-training assessment, and contracting.</p>
+        <p>Understand everything behind the scenes; screening by SCs, training invites, the offer letter, document collection, training payments, post-training assessment, and contracting.</p>
       </div>
       <div class="outcome-card">
         <span class="outcome-icon">📋</span>
@@ -891,9 +893,9 @@ html {scroll-behavior:smooth;}
     <h2 class="section-title">Three Mandatory Policy Areas</h2>
     <p class="section-sub">These policies are embedded in the sessions where they are most relevant. Every participant must understand and confirm their commitment before fieldwork begins.</p>
     <div class="policy-strip">
-      <div class="policy-badge"><div class="pbadge-dot red"></div><div><strong>POSH — Prevention of Sexual Harassment</strong><span>Covered in Session 4 — Ethics &amp; People Management</span></div></div>
-      <div class="policy-badge"><div class="pbadge-dot amber"></div><div><strong>Child Protection in the Field</strong><span>Covered in Session 4 — Ethics &amp; People Management</span></div></div>
-      <div class="policy-badge"><div class="pbadge-dot blue"></div><div><strong>Safety &amp; Security Protocols</strong><span>Covered in Session 1 — Your Role &amp; Reporting</span></div></div>
+      <div class="policy-badge"><div class="pbadge-dot red"></div><div><strong>POSH — Prevention of Sexual Harassment</strong><span>Covered in Session 4: Ethics &amp; People Management</span></div></div>
+      <div class="policy-badge"><div class="pbadge-dot amber"></div><div><strong>Child Protection in the Field</strong><span>Covered in Session 4: Ethics &amp; People Management</span></div></div>
+      <div class="policy-badge"><div class="pbadge-dot blue"></div><div><strong>Safety &amp; Security Protocols</strong><span>Covered in Session 1: Your Role &amp; Reporting</span></div></div>
     </div>
   </div>
 
@@ -901,7 +903,7 @@ html {scroll-behavior:smooth;}
   <div class="section" style="padding-top:0;">
     <div class="section-label">Daily Programme</div>
     <h2 class="section-title">Six Sessions · One Day</h2>
-    <p class="section-sub">The sessions build sequentially — each one assumes the last. Run as a full day with breaks; the times below are indicative and can be compressed for a returning group that needs less time on the basics.</p>
+    <p class="section-sub">The sessions build sequentially, each one assumes the last. Run as a full day with breaks; the times below are indicative and can be compressed for a returning group that needs less time on the basics.</p>
 
     <div class="timeline">
 
@@ -1102,7 +1104,7 @@ html {scroll-behavior:smooth;}
       <div style="background:white;border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow);">
         <div style="font-size:22px;margin-bottom:10px;">🎯</div>
         <strong style="display:block;margin-bottom:6px;color:var(--brand-dark);">Participant Mix</strong>
-        <p style="font-size:13px;color:var(--text-light);line-height:1.6;" autocomplete="off">This is built for a <strong>mixed group of RAs and PAs</strong> — the ratio is rarely even, so expect more of one role than the other. It is also for people an RM has put on a <strong>fresh round of data collection</strong>, not only new hires: experienced RAs, PAs, Research Consultants, and Senior PAs all benefit from a reset on field operations. Where instructions are role-specific they are marked <strong style="color:var(--green);">[RA]</strong> and <strong style="color:var(--blue);">[PA]</strong>. Note that RA-only responsibilities are handled in separate joint sessions, not here.</p>
+        <p style="font-size:13px;color:var(--text-light);line-height:1.6;" autocomplete="off">This is built for a <strong>mixed group of RAs and PAs,&nbsp;</strong>the ratio is rarely even, so expect more of one role than the other. It is also for people an RM has put on a <strong>fresh round of data collection</strong>, not only new hires: experienced RAs, PAs, Research Consultants, and Senior PAs all benefit from a reset on field operations. Where instructions are role-specific they are marked <strong style="color:var(--green);">[RA]</strong> and <strong style="color:var(--blue);">[PA]</strong>. Note that RA-only responsibilities are handled in separate joint sessions, not here.</p>
       </div>
       <div style="background:white;border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow);">
         <div style="font-size:22px;margin-bottom:10px;">✅</div>
@@ -1120,7 +1122,7 @@ html {scroll-behavior:smooth;}
   <span style="font-size:11px;">Confidential — For Authorized ResOps Personnel Only</span>
 </div>
 </div>
-<div id="panel-s01" class="tab-panel active">
+<div id="panel-s01" class="tab-panel">
 <div class="hero">
   <div class="hero-eyebrow">Session 1 of 6 · 90 Minutes · 9:00 AM</div>
   <h1>Your Role, Reporting<br><em>&amp; Field Culture</em></h1>
@@ -1137,13 +1139,13 @@ html {scroll-behavior:smooth;}
 
 <div class="jump-nav">
   <a class="jump-link" href="#s1-org">Field Operations</a>
-  <a class="jump-link active a" href="#s1-roles">Your Role &amp; Reporting</a>
+  <a class="jump-link" href="#s1-roles">Your Role &amp; Reporting</a>
   <a class="jump-link" href="#s1-hierarchy">Hierarchy &amp; Supervision</a>
   <a class="jump-link" href="#s1-ffr">FFR Framework</a>
   <a class="jump-link" href="#s1-coc">Code of Conduct</a>
   <a class="jump-link" href="#s1-safety">Safety Policy</a>
   <a class="jump-link" href="#s1-exercise">Exercise</a>
-  <a class="jump-link" href="#s1-quiz">Quiz</a>
+  <a class="jump-link active a" href="#s1-quiz">Quiz</a>
 </div>
 
 <div class="body-wrap">
@@ -1806,14 +1808,14 @@ html {scroll-behavior:smooth;}
 </div>
 
 <div class="jump-nav">
-  <a class="jump-link active a" href="#s2-team">Team Planning</a>
+  <a class="jump-link" href="#s2-team">Team Planning</a>
   <a class="jump-link" href="#s2-trackers">Trackers &amp; PII</a>
   <a class="jump-link" href="#s2-comms">Communication</a>
   <a class="jump-link" href="#s2-assets">Assets</a>
   <a class="jump-link" href="#s2-dailyplan">Daily Field Plan</a>
   <a class="jump-link" href="#s2-contexts">Survey Contexts</a>
   <a class="jump-link" href="#s2-exercise">Exercise</a>
-  <a class="jump-link" href="#s2-quiz">Quiz</a>
+  <a class="jump-link active a" href="#s2-quiz">Quiz</a>
 </div>
 
 <div class="body-wrap">
@@ -3729,4 +3731,5 @@ function submitQ(btn){_runQuiz(btn);}
 
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
-</body></html>
+
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe></body></html>
