@@ -306,6 +306,56 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
 }
 </style>
 
+<style id="kb-podcast-style">
+/* ── PODCAST SECTION ── */
+.podcast-section{background:#0b1220;border-top:1px solid var(--border);padding:60px 5%;position:relative;overflow:hidden;}
+.podcast-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 12% 18%,rgba(26,107,138,.16) 0%,transparent 70%);pointer-events:none;}
+.podcast-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.podcast-inner .section-label{background:rgba(26,107,138,.18);color:#7cc3e3;}
+.podcast-inner .section-title{color:#eef2f7;}
+.podcast-inner .section-sub{color:#8595ab;}
+.podcast-card{display:grid;grid-template-columns:300px 1fr;margin-top:28px;background:#0f1726;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+/* cover panel */
+.pod-cover{position:relative;background:linear-gradient(155deg,#0f172a 0%,#16567a 95%,#1a6b8a 130%);display:flex;flex-direction:column;justify-content:space-between;padding:24px;min-height:320px;overflow:hidden;}
+.pod-cover::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:30px 30px;pointer-events:none;z-index:1;}
+.pod-cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.30;z-index:0;}
+.pod-cover-top,.pod-cover-mid,.pod-cover-bottom{position:relative;z-index:2;}
+.pod-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--hub-mono);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#dceff8;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 11px;border-radius:100px;}
+.pod-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#ef4444;animation:pulse 2s ease infinite;}
+.pod-cover-mic{width:40px;height:40px;color:rgba(255,255,255,.92);margin-bottom:12px;}
+.pod-cover h3{font-family:'Open Sans',system-ui,sans-serif;font-size:21px;font-weight:800;color:#fff;line-height:1.18;letter-spacing:-.5px;}
+.pod-cover .pod-ep{font-family:var(--hub-mono);font-size:10.5px;color:rgba(255,255,255,.62);margin-top:8px;letter-spacing:.5px;}
+.pod-wave{display:flex;align-items:flex-end;gap:3px;height:36px;margin-top:18px;}
+.pod-wave span{flex:1;background:rgba(255,255,255,.55);border-radius:2px;height:30%;animation:podwave 1.2s ease-in-out infinite;}
+@keyframes podwave{0%,100%{height:18%}50%{height:100%}}
+.pod-wave span:nth-child(4n+1){animation-delay:-.2s}
+.pod-wave span:nth-child(4n+2){animation-delay:-.5s}
+.pod-wave span:nth-child(4n+3){animation-delay:-.9s}
+.pod-wave span:nth-child(4n+4){animation-delay:-1.1s}
+.pod-wave span:nth-child(3n){animation-duration:1.6s}
+.pod-wave span:nth-child(5n){animation-duration:.9s}
+.pod-wave span:nth-child(7n){animation-duration:1.4s}
+/* body panel */
+.pod-body{padding:28px 30px;display:flex;flex-direction:column;}
+.pod-hosts{display:flex;gap:22px;margin-bottom:18px;flex-wrap:wrap;}
+.pod-host{display:flex;align-items:center;gap:11px;}
+.pod-host-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#1a6b8a,#2c5282);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;border:2px solid rgba(255,255,255,.14);}
+.pod-host-av svg{width:20px;height:20px;}
+.pod-host-name{font-family:'Open Sans',system-ui,sans-serif;font-size:13.5px;font-weight:700;color:#e9eef5;}
+.pod-host-role{font-family:var(--hub-mono);font-size:10px;color:#7cc3e3;margin-top:2px;text-transform:uppercase;letter-spacing:.6px;}
+.pod-desc{font-family:'Open Sans',system-ui,sans-serif;font-size:14px;color:#9aa8bd;line-height:1.72;margin-bottom:18px;}
+.pod-audio{background:#060b14;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.pod-audio iframe{width:100%;height:120px;border:0;display:block;}
+.pod-topics{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px;}
+.pod-topic{font-family:'Open Sans',system-ui,sans-serif;font-size:11.5px;font-weight:700;color:#cbe7f4;background:rgba(26,107,138,.18);border:1px solid rgba(26,107,138,.38);padding:4px 12px;border-radius:100px;}
+.pod-foot{font-family:var(--hub-mono);font-size:10.5px;color:#5f6f87;display:flex;align-items:center;gap:8px;margin-top:auto;flex-wrap:wrap;}
+.pod-foot a{color:#7cc3e3;text-decoration:underline;}
+@media(max-width:768px){
+  .podcast-card{grid-template-columns:1fr;}
+  .pod-cover{min-height:220px;}
+}
+</style>
+
 </head>
 <body class="">
 <div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode, click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
@@ -504,6 +554,80 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
               <a href="#" class="life-link" onclick="event.stopPropagation()">Team Milestones</a>
             </div>
           </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     PODCAST
+════════════════════════════════════════════════ -->
+<div class="podcast-section">
+  <div class="podcast-inner">
+    <div class="section-label">Listen · RO Field Notes</div>
+    <h2 class="section-title">The Hub, in Conversation</h2>
+    <p class="section-sub">Press play for a short, two-voice walkthrough of the Field Knowledge Hub: what it is, why Research Operations built it, and how to find your way around it before you dive into the guides.</p>
+
+    <div class="podcast-card">
+
+      <!-- cover -->
+      <div class="pod-cover">
+        <!-- Optional cover art: in Edit Mode (Alt+Shift+E) click this image and paste a Google Drive link from the RO_KnowledgeBank_Images folder. Until then it stays hidden. -->
+        <img class="pod-cover-img" src="" alt="" onerror="this.style.display='none'" style="display:none">
+        <div class="pod-cover-top">
+          <span class="pod-badge">Episode 01</span>
+        </div>
+        <div class="pod-cover-mid">
+          <svg class="pod-cover-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          <h3>Inside the Field<br>Knowledge Hub</h3>
+          <div class="pod-ep">A guided audio tour · approx. 10 min</div>
+        </div>
+        <div class="pod-cover-bottom">
+          <div class="pod-wave">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- body -->
+      <div class="pod-body">
+        <div class="pod-hosts">
+          <div class="pod-host">
+            <div class="pod-host-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line></svg></div>
+            <div>
+              <div class="pod-host-name">Host</div>
+              <div class="pod-host-role">Research Operations</div>
+            </div>
+          </div>
+          <div class="pod-host">
+            <div class="pod-host-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-1a4 4 0 0 1 4-4h2"></path><circle cx="8" cy="7" r="3"></circle><path d="M14 8h7M14 12h7M14 16h5"></path></svg></div>
+            <div>
+              <div class="pod-host-name">Co-host</div>
+              <div class="pod-host-role">Field Operations</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="pod-desc">Two voices from the team talk through the Hub the way a colleague would explain it on your first week: how scattered institutional memory became one shared library, how the directory mirrors the survey lifecycle from planning to wrap-up, and where to start depending on the role you are stepping into.</p>
+
+        <div class="pod-audio">
+          <iframe src="https://drive.google.com/file/d/1Qyk7q8iU8n8iPkBvb6dHlKMn-HwFAVnd/preview" allow="autoplay"></iframe>
+        </div>
+
+        <div class="pod-topics">
+          <span class="pod-topic">Why the Hub exists</span>
+          <span class="pod-topic">The survey lifecycle</span>
+          <span class="pod-topic">Navigating the library</span>
+          <span class="pod-topic">Built by the field</span>
+          <span class="pod-topic">Tools and guides</span>
+        </div>
+
+        <div class="pod-foot">
+          <span>Audio hosted on Google Drive</span>
+          <span>·</span>
+          <a href="https://drive.google.com/file/d/1Qyk7q8iU8n8iPkBvb6dHlKMn-HwFAVnd/view" target="_blank" rel="noopener">Open in a new tab</a>
         </div>
       </div>
 
