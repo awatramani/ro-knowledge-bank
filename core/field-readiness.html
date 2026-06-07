@@ -2472,9 +2472,39 @@ body.edit-mode-active .panel-body iframe {
   cursor: pointer !important;
 }
 </style>
+
+<style id="kb-canon-nav">
+/* ===== KB-CANON-NAV : identical sidebar on every page ===== */
+.page-layout{display:flex;align-items:flex-start;min-height:100vh;}
+.main-content-area{flex:1;min-width:0;overflow-x:hidden;}
+@media(min-width:769px){
+ aside.left-nav{width:212px!important;min-width:212px!important;max-width:212px!important;height:100vh!important;position:sticky!important;top:0!important;flex-shrink:0!important;flex-direction:column!important;display:flex!important;z-index:900;}
+}
+aside.left-nav{background:#141820;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid rgba(255,255,255,.06);box-shadow:2px 0 16px rgba(0,0,0,.10);}
+aside.left-nav .left-nav-brand{height:58px;min-height:58px;display:flex;align-items:center;padding:0 18px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;}
+aside.left-nav .left-nav-logo{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+aside.left-nav .left-nav-logo img{width:28px;height:auto;filter:brightness(0) invert(1);opacity:.92;display:block;}
+aside.left-nav .left-nav-logo-fallback{display:none;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0d9488,#22d3a8);align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#04221f;flex-shrink:0;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+aside.left-nav .left-nav-brand-text strong{display:block;font-size:12px;font-weight:800;color:#e9eef5;line-height:1.25;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+aside.left-nav .left-nav-brand-text span{font-size:9.5px;color:#64748b;text-transform:uppercase;letter-spacing:.9px;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+aside.left-nav .left-nav-section{font-family:'DM Mono',ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:#3a4759;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
+aside.left-nav .left-nav-items{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none;display:flex;flex-direction:column;}
+aside.left-nav .left-nav-items::-webkit-scrollbar{display:none;}
+aside.left-nav .left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#7b8aa0;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:7px;margin:1px 8px;transition:background .15s,color .15s;text-decoration:none;border-left:2px solid transparent;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+aside.left-nav .left-nav-item:hover{background:rgba(255,255,255,.05);color:#e9eef5;}
+aside.left-nav .left-nav-item.active{background:rgba(13,148,136,.18);color:#34e3c4;font-weight:700;border-left-color:#0d9488;}
+aside.left-nav .left-nav-divider{height:1px;background:rgba(255,255,255,.06);margin:8px 14px;flex-shrink:0;}
+aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:9.5px;color:#3a4759;line-height:1.7;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+@media(max-width:768px){
+ aside.left-nav{width:100%!important;min-width:0!important;max-width:none!important;height:auto!important;min-height:48px;position:relative!important;flex-direction:column;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}
+ aside.left-nav .left-nav-brand{height:48px;min-height:48px;}
+ aside.left-nav .left-nav-items{max-height:200px;}
+}
+</style>
+
 </head>
 <body class="">
-<div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode — click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
+<div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode, click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
 <div id="kb-toolbar" style="display: none; position: fixed; bottom: 24px; right: 24px; background: rgb(13, 17, 23); padding: 12px 20px; border-radius: 40px; box-shadow: rgba(0, 0, 0, 0.4) 0px 16px 36px; gap: 12px; align-items: center; z-index: 999999; border: 1px solid rgba(255, 255, 255, 0.08);">
   <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0369a1;">Copy HTML</button>
@@ -2482,29 +2512,36 @@ body.edit-mode-active .panel-body iframe {
 </div>
 <div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
   <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1f2937;">Link URL: Raise Hiring Request</label>
-  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
+  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
-  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f7f6f3;color:#374151;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
+  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0.11);border-radius:8px;background:#f7f6f3;color:#374151;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
 
 
 <div class="page-layout">
 
 <aside class="left-nav">
-  <div class="left-nav-brand"><div class="left-nav-logo"><img src="https://www.povertyactionlab.org/themes/custom/jpal/logo.svg" alt="J-PAL"></div><div class="left-nav-brand-text"><strong>RO Knowledge Bank</strong><span>J-PAL South Asia</span></div></div>
+  <div class="left-nav-brand">
+    <div class="left-nav-logo">
+      <img src="https://www.povertyactionlab.org/themes/custom/jpal/logo.svg" alt="J-PAL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="left-nav-logo-fallback">RO</div>
+    </div>
+    <div class="left-nav-brand-text">
+      <strong>RO Knowledge Bank</strong>
+      <span>J-PAL South Asia</span>
+    </div>
+  </div>
   <span class="left-nav-section">Knowledge Library</span>
   <nav class="left-nav-items">
-    <a class="left-nav-item" href="hub-v2-notion.html">The Hub</a>
-    <a class="left-nav-item" href="pre-field-ops.html">Pre-Field Ops</a>
-    <a class="left-nav-item active" href="field-readiness.html">Field Readiness</a>
-    <a class="left-nav-item" href="training-academy.html">Training Academy</a>
-    <a class="left-nav-item" href="onboarding-ra-pa.html">On-boarding RA/PA</a>
-    <a class="left-nav-item" href="onboarding-field-staff.html">On-boarding Field Staff</a>
-    <div class="left-nav-divider"></div>
-    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_blank">Field Execution</a>
-    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" target="_blank">Resources &amp; Field Staff</a>
+    <a class="left-nav-item" href="hub-v2-notion.html" target="_self">The Hub</a>
+    <a class="left-nav-item" href="pre-field-ops.html" target="_self">Pre-Field Ops</a>
+    <a class="left-nav-item active" href="field-readiness.html" target="_self">Field Readiness</a>
+    <a class="left-nav-item" href="training-academy.html" target="_self">Training Academy</a>
+    <a class="left-nav-item" href="onboarding-ra-pa.html" target="_self">On-boarding RA/PA</a>
+    <a class="left-nav-item" href="onboarding-field-staff.html" target="_self">On-boarding Field Staff</a>
+    <a class="left-nav-item" href="foundational-surveying-guidelines.html" target="_self">Foundational Surveying Skills</a>
   </nav>
-  <div class="left-nav-footer">v1.0 · April 2025<br>J-PAL SA · Research Ops</div>
+  <div class="left-nav-footer">v1.0 · June 2026<br>J-PAL SA · Research Ops</div>
 </aside>
 
 <div class="main-content-area">
@@ -2546,17 +2583,17 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Field Readiness</button>
+    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')" aria-selected="true">Field Readiness</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-hiring')" aria-selected="false">Hiring Field Staff</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-pilot')" aria-selected="false">Piloting &amp; Pre-Launch</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-launch')" aria-selected="true">Survey Launch</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-launch')" aria-selected="false">Survey Launch</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-maps')" aria-selected="false">Google Maps</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-attend')" aria-selected="false">Digital Attendance</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-remote')" aria-selected="false">Remote Data Collection</button>
   </nav>
 </div>
 
-<div id="panel-home" class="tab-panel">
+<div id="panel-home" class="tab-panel active">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Field Readiness Overview</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -2565,7 +2602,7 @@ body.edit-mode-active .panel-body iframe {
         <span class="eyebrow">Module 3: Launch Prep</span>
         <h1>Field Readiness</h1>
         <p style="font-size: 18px; color: var(--brand-dark); max-width: 800px; margin: 0 auto; font-weight: 500;">
-            The bridge between planning and execution. Field readiness is where your survey instrument, field team, logistics, and monitoring architecture come together—and are stress-tested before scale.
+            The bridge between planning and execution. Field readiness is where your survey instrument, field team, logistics, and monitoring architecture come together, and are stress-tested before scale.
         </p>
     </div>
 </div>
@@ -2996,7 +3033,7 @@ body.edit-mode-active .panel-body iframe {
       </div>
       <div style="flex:1;min-width:300px;padding:28px;">
         <div class="dt-result-pair">
-          <div class="dt-result-box"><div class="dt-label">Usable Field Time</div><div class="dt-val" id="dt-usable">6.25</div><div class="dt-sub">hrs — actual surveying time</div></div>
+          <div class="dt-result-box"><div class="dt-label">Usable Field Time</div><div class="dt-val" id="dt-usable">6.25</div><div class="dt-sub">hrs, actual surveying time</div></div>
           <div class="dt-result-box" style="border-top-color:#b7803a;"><div class="dt-label">Max Surveys / Day</div><div class="dt-val" id="dt-max-surveys" style="color:#b7803a;">6</div><div class="dt-sub">per surveyor</div></div>
         </div>
       </div>
@@ -3040,10 +3077,10 @@ body.edit-mode-active .panel-body iframe {
     <table class="fr-inline-table">
       <thead><tr><th>Role</th><th>Contract Duration</th><th>Hire Timeline</th><th>Key Condition</th></tr></thead>
       <tbody>
-        <tr><td>Project Associate (PA)</td><td>90 days</td><td>6–10 weeks before launch</td><td>Must have prior field research experience</td></tr>
-        <tr><td>Field Supervisor (FS)</td><td>90 days</td><td>2– 3 weeks before launch</td><td>Best FSs are experienced surveyors promoted from within. Hire them and train them for a week before the main training starts</td></tr>
+        <tr><td>Project Associate (PA)</td><td>90 days</td><td>6 to 10 weeks before launch</td><td>Must have prior field research experience</td></tr>
+        <tr><td>Field Supervisor (FS)</td><td>90 days</td><td>2 to 3 weeks before launch</td><td>Best FSs are experienced surveyors promoted from within. Hire them and train them for a week before the main training starts</td></tr>
         <tr><td>Surveyor</td><td>90 days</td><td>Post-training absorption</td><td>Must pass end-of-training validation</td></tr>
-        <tr><td>Field Monitor (FM)</td><td>90 days</td><td>3–6 weeks before launch</td><td>Must understand the instrument, Instrumental in reporting, day to day tracking, quality management, team management. Hire them at least 3 weeks before the main training starts and train them well on reporting, communication, tracking, People and operational management&nbsp;</td></tr>
+        <tr><td>Field Monitor (FM)</td><td>90 days</td><td>3 to 6 weeks before launch</td><td>Must understand the instrument, Instrumental in reporting, day to day tracking, quality management, team management. Hire them at least 3 weeks before the main training starts and train them well on reporting, communication, tracking, People and operational management&nbsp;</td></tr>
       </tbody>
     </table>
   </div>
@@ -3545,7 +3582,7 @@ body.edit-mode-active .panel-body iframe {
                     <div class="step-header">
                         <div>
                             <h3 class="step-title">Preparation</h3>
-                            <span class="step-time">4–6 weeks pre-launch</span>
+                            <span class="step-time">4 to 6 weeks pre-launch</span>
                         </div>
                         <div class="role-group">
                             <span class="role-pill">RM</span>
@@ -3617,7 +3654,7 @@ body.edit-mode-active .panel-body iframe {
                         </div>
                     </div>
                     <ul class="task-list">
-                        <li>Visit 2–3 diverse sites mimicking actual terrain.</li>
+                        <li>Visit 2 to 3 diverse sites mimicking actual terrain.</li>
                         <li>Mimic actual travel durations and survey timing constraints.</li>
                         <li>Fill out the Field Log comprehensively.</li>
                         <li>Resolve minor hardware/logic issues on the go.</li>
@@ -3697,7 +3734,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 </div>
 
-<div id="panel-launch" class="tab-panel active">
+<div id="panel-launch" class="tab-panel">
 <div class="panel-label-strip"><span>Field Readiness › </span><strong class="edit-text">Survey Launch</strong></div>
 <div class="panel-body">
 <div class="hero-container">
@@ -3706,7 +3743,7 @@ body.edit-mode-active .panel-body iframe {
     <div class="hero-glass fade-up">
         <span class="hero-eyebrow">Research Operations Knowledge Bank</span>
         <h1>Survey Launch &amp; Gestation Phase</h1>
-        <p class="hero-subtitle">The survey launch is more than just Day 1 of fieldwork. It is the crucial transition period where your project's blueprint—its people, plans, and protocols—comes to life.</p>
+        <p class="hero-subtitle">The survey launch is more than just Day 1 of fieldwork. It is the crucial transition period where your project's blueprint, its people, plans, and protocols, comes to life.</p>
     </div>
 </div>
 
@@ -3787,8 +3824,8 @@ body.edit-mode-active .panel-body iframe {
                         <p class="control-label">Terrain &amp; Routing Density</p>
                     </div>
                     <div class="toggle-group">
-                        <div class="toggle-btn active" id="btn-dense" onclick="setTerrain('dense', this)">Dense / Urban<br><span style="font-size: 10px; font-weight: 400;">(7–8 Staff / Team)</span></div>
-                        <div class="toggle-btn" id="btn-scattered" onclick="setTerrain('scattered', this)">Scattered / Rural<br><span style="font-size: 10px; font-weight: 400;">(4–6 Staff / Team)</span></div>
+                        <div class="toggle-btn active" id="btn-dense" onclick="setTerrain('dense', this)">Dense / Urban<br><span style="font-size: 10px; font-weight: 400;">(7 to 8 Staff / Team)</span></div>
+                        <div class="toggle-btn" id="btn-scattered" onclick="setTerrain('scattered', this)">Scattered / Rural<br><span style="font-size: 10px; font-weight: 400;">(4 to 6 Staff / Team)</span></div>
                     </div>
                 </div>
             </div>
@@ -4026,7 +4063,7 @@ body.edit-mode-active .panel-body iframe {
                     <h4>Step 2: Create Map &amp; Import&nbsp;</h4>
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>Go to mymaps.google.com and click '+ CREATE A NEW MAP'.</li>
-                        <li>Name your map: 'JSM-RCT — Field Tracking Map — April 2026'.</li>
+                        <li>Name your map: 'JSM-RCT, Field Tracking Map, April 2026'.</li>
                         <li>Click 'Import' in the Untitled layer → Select 'Google Sheets' tab → Choose your Master sheet.</li>
                         <li><strong>Position columns:</strong> Check 'latitude' and 'longitude'.</li>
                         <li><strong>Title column:</strong> Choose 'hh_id'. Click Finish.</li>
@@ -4077,7 +4114,7 @@ body.edit-mode-active .panel-body iframe {
                     <ol style="margin-bottom: 0; font-size: 14px;">
                         <li>In Google Sheets, create a new tab 'Day_01'.</li>
                         <li>Use formula: <code>=FILTER(Master!A:O, Master!J:J = "Day-01")</code></li>
-                        <li>In My Maps, 'Add layer' named 'Day 01 — Routes' and import this new tab.</li>
+                        <li>In My Maps, 'Add layer' named 'Day 01, Routes' and import this new tab.</li>
                         <li>Style by <code>survey_type</code>: Primary = 🔵 Blue Circle, Buffer = 🟡 Yellow Diamond.</li>
                     </ol>
                 </div>
@@ -4179,7 +4216,7 @@ body.edit-mode-active .panel-body iframe {
 <div class="fr-section-title"><div class="fr-step-num">2</div>PA Setup Responsibilities (Before Launch)</div>
 <div class="fr-content-card">
   <h3 class="fr-card-h3">What the PA Must Do Before Day 1 of Fieldwork</h3>
-  <p class="fr-guide-text">The PA is responsible for ensuring every field staff member has the app installed, configured, and tested before the first day of data collection. This is not optional — it is a pre-launch gate item.</p>
+  <p class="fr-guide-text">The PA is responsible for ensuring every field staff member has the app installed, configured, and tested before the first day of data collection. This is not optional, it is a pre-launch gate item.</p>
   <div class="fr-process-steps">
     <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong>Verify Active Contracts</strong><p>Only staff with active contracts will receive the login OTP. Before training begins, confirm all contracts are processed. If a contract is pending, the staff member cannot use the app.</p></div></div>
     <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong>Collect &amp; Verify Mobile Numbers</strong><p>The app login requires the exact mobile number registered at the time of contract. Mismatches = no OTP = no attendance. Verify numbers during the hiring process itself.</p></div></div>
@@ -4222,10 +4259,10 @@ body.edit-mode-active .panel-body iframe {
 <div class="fr-section-title"><div class="fr-step-num">4</div>The Daily 7-Step Attendance Workflow</div>
 <div class="fr-content-card">
   <h3 class="fr-card-h3">Every Staff Member, Every Day, No Exceptions</h3>
-  <p class="fr-guide-text">The system captures 4 GPS coordinates (L1–L4) at specific moments throughout the day. These coordinates allow supervisors to verify actual field presence without micromanagement.</p>
+  <p class="fr-guide-text">The system captures 4 GPS coordinates (L1 to L4) at specific moments throughout the day. These coordinates allow supervisors to verify actual field presence without micromanagement.</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0;">
     <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px;border-left:3px solid var(--green);">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">☀ Morning — Before Leaving Home</div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">☀ Morning, Before Leaving Home</div>
       <p style="font-size:13.5px;margin:0 0 10px;"><strong>Step 1:</strong> Open app → Click "Start". Captures <strong>GPS L1</strong> (Home/Start).</p>
       <p style="font-size:13.5px;margin:0 0 10px;"><strong>Step 2:</strong> Select your Approval Manager from the dropdown.</p>
       <p style="font-size:13.5px;margin:0;"><strong>Step 3:</strong> Fill form: Working (Yes/No), Data Collection (Yes/No), WFH, Training, Surveys Planned.</p>
@@ -4237,7 +4274,7 @@ body.edit-mode-active .panel-body iframe {
       <p style="font-size:13.5px;margin:0;"><strong>Step 6:</strong> Before leaving field → Tap "Time Out". Captures <strong>GPS L3</strong> (Field End).</p>
     </div>
     <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px;border-left:3px solid #0d7c5f;">
-      <div style="font-family:var(--mono);font-size:10px;color:#0d7c5f;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🌙 Evening — After Reaching Home</div>
+      <div style="font-family:var(--mono);font-size:10px;color:#0d7c5f;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🌙 Evening, After Reaching Home</div>
       <p style="font-size:13.5px;margin:0;"><strong>Step 7:</strong> Open app → Click "Day End". Captures <strong>GPS L4</strong> (Back Home). This completes the daily cycle.</p>
     </div>
   </div>
@@ -4253,8 +4290,8 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-domain-card"><span class="fr-domain-num">a</span><strong>Survey Efficiency</strong><p>Average surveys per staff per day. Use to identify performance gaps, optimize staffing, and benchmark teams. A sudden drop flags potential problems.</p></div>
     <div class="fr-domain-card"><span class="fr-domain-num">b</span><strong>Quantitative Summary</strong><p>How many staff are present vs assigned. How many are actively collecting data vs doing other tasks. Shows workforce utilization at a glance.</p></div>
     <div class="fr-domain-card"><span class="fr-domain-num">c</span><strong>Staff-wise Data</strong><p>Individual tracking: Field Time/Day, Survey Efficiency, Working Days, DC Days, Surveys Planned vs Actual. Your performance management evidence base.</p></div>
-    <div class="fr-domain-card"><span class="fr-domain-num">d</span><strong>Map View</strong><p>See where each staff member punched L1–L4 on a single map. Instantly verify: are they at assigned villages? Are routes logical? Are there location anomalies?</p></div>
-    <div class="fr-domain-card"><span class="fr-domain-num">e</span><strong>Additional Days</strong><p>Correct missed punches. Double-click name → "Additional Days" → New → Select date → Update. Use sparingly — track who needs corrections frequently.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">d</span><strong>Map View</strong><p>See where each staff member punched L1 to L4 on a single map. Instantly verify: are they at assigned villages? Are routes logical? Are there location anomalies?</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">e</span><strong>Additional Days</strong><p>Correct missed punches. Double-click name → "Additional Days" → New → Select date → Update. Use sparingly, track who needs corrections frequently.</p></div>
     <div class="fr-domain-card"><span class="fr-domain-num">f</span><strong>Detailed Daily Download</strong><p>Export CSV: Date, Working, DC, Time In/Out, Surveys Planned/Actual, all 4 GPS coords, remarks. Your audit trail and evidence for any disputes.</p></div>
   </div>
   <a href="https://jpalsouth.asia/index" target="_blank" class="fr-portal-btn">Open Attendance Portal ↗</a>
@@ -4279,11 +4316,11 @@ body.edit-mode-active .panel-body iframe {
     </div>
     <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;">
       <span style="font-size:20px;">🚫</span>
-      <div><strong style="font-size:14px;color:var(--brand-dark);">Not Returning Home After Field</strong><p style="margin:4px 0 0;font-size:13px;">Inform supervisor → Mark "Day End" when leaving the field → Supervisor adds a remark while approving. L4 will show field location instead of home — that's acceptable with a remark.</p></div>
+      <div><strong style="font-size:14px;color:var(--brand-dark);">Not Returning Home After Field</strong><p style="margin:4px 0 0;font-size:13px;">Inform supervisor → Mark "Day End" when leaving the field → Supervisor adds a remark while approving. L4 will show field location instead of home, that's acceptable with a remark.</p></div>
     </div>
     <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;">
       <span style="font-size:20px;">⚠️</span>
-      <div><strong style="font-size:14px;color:var(--brand-dark);">Mistaken Entry (Marked "No" Instead of "Yes")</strong><p style="margin:4px 0 0;font-size:13px;">Report immediately to supervisor/PA and SC. The SC can correct using "Add Days" in the portal. Do not leave it — it affects payment processing.</p></div>
+      <div><strong style="font-size:14px;color:var(--brand-dark);">Mistaken Entry (Marked "No" Instead of "Yes")</strong><p style="margin:4px 0 0;font-size:13px;">Report immediately to supervisor/PA and SC. The SC can correct using "Add Days" in the portal. Do not leave it, it affects payment processing.</p></div>
     </div>
     <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;">
       <span style="font-size:20px;">📱</span>
@@ -4314,7 +4351,7 @@ body.edit-mode-active .panel-body iframe {
   <div style="display:grid;grid-template-columns:1fr 1fr;min-height:320px;">
     <div style="padding:32px;display:flex;flex-direction:column;justify-content:center;">
       <div style="font-family:var(--mono);font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin-bottom:12px;">▶ Complete Tutorial</div>
-      <h3 style="font-size:22px;color:var(--brand-dark);margin-bottom:12px;">Attendance System — Full Walkthrough</h3>
+      <h3 style="font-size:22px;color:var(--brand-dark);margin-bottom:12px;">Attendance System, Full Walkthrough</h3>
       <p style="font-size:14px;color:var(--text-light);margin-bottom:20px;">Watch this end-to-end walkthrough to see every feature of the digital attendance system: from first-time app setup to daily punching to portal dashboard navigation.</p>
       <p style="font-size:13px;color:var(--muted);">Duration: ~12 min · Covers: App setup, daily workflow, portal features, troubleshooting</p>
     </div>
@@ -4335,14 +4372,14 @@ body.edit-mode-active .panel-body iframe {
 <div style="text-align:center;max-width:860px;margin:0 auto 48px;">
   <span style="font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--green);background:rgba(26,107,138,0.08);padding:5px 14px;border-radius:20px;border:1px solid rgba(26,107,138,0.15);display:inline-block;margin-bottom:16px;">Comprehensive Implementation Guide</span>
   <h1 style="font-size:36px;font-weight:800;color:var(--brand-dark);margin-bottom:16px;letter-spacing:-1px;">Remote Survey Operations:<br>The Complete Playbook</h1>
-  <p style="font-size:16px;color:var(--text-light);max-width:740px;margin:0 auto;">A practitioner's guide for PAs implementing large-scale telephone surveys end-to-end. From contact database preparation through deployment, quality management, and close-out — covering CATI methodology, Exotel integration, remote training architecture, and daily operations.</p>
+  <p style="font-size:16px;color:var(--text-light);max-width:740px;margin:0 auto;">A practitioner's guide for PAs implementing large-scale telephone surveys end-to-end. From contact database preparation through deployment, quality management, and close-out, covering CATI methodology, Exotel integration, remote training architecture, and daily operations.</p>
 </div>
 
 <!-- ═══ SECTION 1: Strategic Overview ═══ -->
 <div class="fr-section-title"><div class="fr-step-num">1</div>Strategic Overview: What Is a Remote Survey?</div>
 <div class="fr-content-card">
   <h3 class="fr-card-h3">Understanding Phone-Based Data Collection (CATI)</h3>
-  <p class="fr-guide-text">A remote survey — also called CATI (Computer-Assisted Telephone Interviewing) — is a mode where the entire survey process happens over phone calls. Surveyors work from their homes or local offices, not centralised call centres. The instrument is administered via SurveyCTO, and calls are routed through Exotel, which masks surveyor personal numbers.</p>
+  <p class="fr-guide-text">A remote survey, also called CATI (Computer-Assisted Telephone Interviewing), is a mode where the entire survey process happens over phone calls. Surveyors work from their homes or local offices, not centralised call centres. The instrument is administered via SurveyCTO, and calls are routed through Exotel, which masks surveyor personal numbers.</p>
   <p class="fr-guide-text">Remote surveys became mainstream post-COVID-19 but their value extends beyond pandemic contingency: faster deployment (no travel logistics), lower per-survey cost, ability to reach vast geographies simultaneously. However, they introduce three critical risks absent in face-to-face collection:</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;">
     <div style="background:#fdfbf7;border:1px solid #e8e0d4;border-radius:10px;padding:18px;border-top:3px solid #b91c1c;">
@@ -4365,9 +4402,9 @@ body.edit-mode-active .panel-body iframe {
 <div class="fr-section-title"><div class="fr-step-num">2</div>The Five Pillars of a Successful Remote Survey</div>
 <div class="fr-content-card">
   <div class="fr-values-grid">
-    <div class="fr-value-card"><div class="fr-value-icon">📱</div><h4>Contact Database Readiness</h4><p>The single most important input. Numbers must be current (under 6 months old), correctly formatted, consent-verified. Expect 20–40% invalid. The RA must audit the database before anything else begins.</p></div>
-    <div class="fr-value-card"><div class="fr-value-icon">🎓</div><h4>Systematic Remote Training</h4><p>3–7 day training via video conferencing. Smaller batches (8–12 per session). Move from protocols → instrument → mock calls → supervised pilot → deployment. Never skip the "no forms" conceptual walkthrough.</p></div>
-    <div class="fr-value-card"><div class="fr-value-icon">📞</div><h4>Telephony Integration</h4><p>Exotel integrated with SurveyCTO. Respondent numbers masked. Calls auto-logged. Recharge managed by A&amp;F. If balance runs out mid-call, the call disconnects — monitor credits daily.</p></div>
+    <div class="fr-value-card"><div class="fr-value-icon">📱</div><h4>Contact Database Readiness</h4><p>The single most important input. Numbers must be current (under 6 months old), correctly formatted, consent-verified. Expect 20 to 40% invalid. The RA must audit the database before anything else begins.</p></div>
+    <div class="fr-value-card"><div class="fr-value-icon">🎓</div><h4>Systematic Remote Training</h4><p>3 to 7 day training via video conferencing. Smaller batches (8 to 12 per session). Move from protocols → instrument → mock calls → supervised pilot → deployment. Never skip the "no forms" conceptual walkthrough.</p></div>
+    <div class="fr-value-card"><div class="fr-value-icon">📞</div><h4>Telephony Integration</h4><p>Exotel integrated with SurveyCTO. Respondent numbers masked. Calls auto-logged. Recharge managed by A&amp;F. If balance runs out mid-call, the call disconnects, monitor credits daily.</p></div>
     <div class="fr-value-card"><div class="fr-value-icon">📊</div><h4>Active Quality Management</h4><p>Real-time monitoring: call recordings, high-frequency checks, daily debriefs, immediate corrective action. Flag short calls, excessive "don't know" responses, and skip logic violations.</p></div>
     <div class="fr-value-card"><div class="fr-value-icon">🔒</div><h4>PII Protection (Non-Negotiable)</h4><p>Respondent phone numbers must NEVER appear in WhatsApp groups, tracking sheets, or unsecured channels. Exotel masking is the first line of defense. Violations can shut down the entire project.</p></div>
   </div>
@@ -4383,21 +4420,21 @@ body.edit-mode-active .panel-body iframe {
     <div class="rm-week-card" style="border-left:3px solid var(--green);">
       <strong>Week 1: Recruitment &amp; Infrastructure Setup</strong>
       <p><strong>Objective:</strong> Build a surveyor roster with verified equipment. Post job openings (WhatsApp groups, local colleges, previous surveyor networks). Screen every candidate via 15-minute call: verify Android phone (6.0+), network provider, headphones with mic, quiet workspace, regional language fluency. Select 15% more than needed.</p>
-      <div class="rm-scenario"><strong>Common Pitfall</strong>You call 50 candidates but only 30 respond. Solution: over-recruit by 30–40% at posting stage. Send follow-up messages with a deadline.</div>
+      <div class="rm-scenario"><strong>Common Pitfall</strong>You call 50 candidates but only 30 respond. Solution: over-recruit by 30 to 40% at posting stage. Send follow-up messages with a deadline.</div>
     </div>
     <div class="rm-week-card" style="border-left:3px solid #2d7eb5;">
       <strong>Week 2: Resource Development &amp; Platform Testing</strong>
-      <p><strong>Objective:</strong> Finalize all training materials and test platform with selected candidates. Build: Training Manual (15–25 pages, mobile-readable), Introductory Script (verbatim for first 60 seconds), 3–5 demo call recordings, daily quizzes (Google Forms), visual guides (SurveyCTO screenshots). Thursday: 30-min platform orientation — teach join/mute/chat, test audio for each person.</p>
+      <p><strong>Objective:</strong> Finalize all training materials and test platform with selected candidates. Build: Training Manual (15 to 25 pages, mobile-readable), Introductory Script (verbatim for first 60 seconds), 3 to 5 demo call recordings, daily quizzes (Google Forms), visual guides (SurveyCTO screenshots). Thursday: 30-min platform orientation, teach join/mute/chat, test audio for each person.</p>
       <div class="rm-scenario"><strong>Field Lesson</strong>One PA discovered during platform orientation that 3 surveyors had iPhones, not Android. Too late to replace. Lesson: verify device type during screening in Week 1.</div>
     </div>
     <div class="rm-week-card" style="border-left:3px solid #b7803a;">
       <strong>Week 3: The Training Week (5 Days)</strong>
-      <p><strong>Your daily routine:</strong> 8:30 AM prep (log in early, test screen share). 10 AM morning session (content delivery, name-calling every 10–15 min, rotation reading). 1 PM lunch. 2 PM afternoon (practice-heavy: mock calls, breakout rooms). 4:30 PM quiz + wrap-up. 5:30 PM evening review (analyze quiz results, prep next day). Never schedule more than 3.5 hours continuous.</p>
+      <p><strong>Your daily routine:</strong> 8:30 AM prep (log in early, test screen share). 10 AM morning session (content delivery, name-calling every 10 to 15 min, rotation reading). 1 PM lunch. 2 PM afternoon (practice-heavy: mock calls, breakout rooms). 4:30 PM quiz + wrap-up. 5:30 PM evening review (analyze quiz results, prep next day). Never schedule more than 3.5 hours continuous.</p>
       <div class="rm-scenario"><strong>Engagement Insight</strong>Engagement drops dramatically after 2 PM. Schedule hands-on practice in the afternoon (keeps people awake) and lecture content in the morning.</div>
     </div>
     <div class="rm-week-card" style="border-left:3px solid #0d7c5f;">
       <strong>Week 4: Pilot &amp; Deployment</strong>
-      <p><strong>Objective:</strong> Supervised pilot calls (each trainee makes 1–2 real calls while senior staff listens on conference bridge), calibration session (review pilot data, correct patterns), final assessment and team selection, deployment with first-week intensive monitoring. Set up daily dashboard before Day 1.</p>
+      <p><strong>Objective:</strong> Supervised pilot calls (each trainee makes 1 to 2 real calls while senior staff listens on conference bridge), calibration session (review pilot data, correct patterns), final assessment and team selection, deployment with first-week intensive monitoring. Set up daily dashboard before Day 1.</p>
       <div class="rm-scenario"><strong>Quality Gate</strong>Do not deploy anyone who has not completed at least 2 supervised pilot calls with acceptable quality scores. This is your last filter.</div>
     </div>
   </div>
@@ -4408,25 +4445,25 @@ body.edit-mode-active .panel-body iframe {
 <div class="fr-content-card">
   <h3 class="fr-card-h3">Training Schedule for a 20-Minute Instrument</h3>
   <table class="fr-inline-table">
-    <thead><tr><th>Day</th><th>Morning (10 AM – 1 PM)</th><th>Afternoon (2 PM – 5 PM)</th><th>EOD Task</th></tr></thead>
+    <thead><tr><th>Day</th><th>Morning (10 AM to 1 PM)</th><th>Afternoon (2 PM to 5 PM)</th><th>EOD Task</th></tr></thead>
     <tbody>
       <tr><td><strong>Day 1</strong></td><td>Welcome, org induction, study context, research purpose</td><td>Platform familiarisation, attendance setup, team norms</td><td>Quiz 1 (5 Qs)</td></tr>
-      <tr><td><strong>Day 2</strong></td><td>Calling protocols, consent script practice (verbatim memorisation)</td><td>Group walkthrough of instrument (NO forms — conceptual only)</td><td>Quiz 2 + Doubts</td></tr>
+      <tr><td><strong>Day 2</strong></td><td>Calling protocols, consent script practice (verbatim memorisation)</td><td>Group walkthrough of instrument (NO forms, conceptual only)</td><td>Quiz 2 + Doubts</td></tr>
       <tr><td><strong>Day 3</strong></td><td>SurveyCTO navigation, Exotel setup, form walkthrough with devices</td><td>Demo call recording exercise: listen + fill form independently</td><td>Quiz 3</td></tr>
-      <tr><td><strong>Day 4</strong></td><td>Peer mock calls in breakout rooms (paired, rotate every 10 min)</td><td>Senior staff as "difficult respondents" — live coaching</td><td>Quiz 4</td></tr>
-      <tr><td><strong>Day 5</strong></td><td>Supervised pilot calls to real respondents (1–2 per trainee)</td><td>Calibration: review pilot data, address patterns, final Q&amp;A</td><td>Final assessment</td></tr>
+      <tr><td><strong>Day 4</strong></td><td>Peer mock calls in breakout rooms (paired, rotate every 10 min)</td><td>Senior staff as "difficult respondents", live coaching</td><td>Quiz 4</td></tr>
+      <tr><td><strong>Day 5</strong></td><td>Supervised pilot calls to real respondents (1 to 2 per trainee)</td><td>Calibration: review pilot data, address patterns, final Q&amp;A</td><td>Final assessment</td></tr>
     </tbody>
   </table>
 
   <div class="fr-callout" style="margin-top:20px;"><strong>The Progressive Practice Sequence</strong>
-  Day 2: Group Walkthrough (no forms — understand logic before fighting technology). Day 3: Individual Silent Practice (play demo, fill form independently, compare). Day 3–4: Peer Role-Play (breakout rooms of 4–5). Day 4: SC/PA as difficult respondent (live coaching). Day 5: Supervised real calls. Don't skip the "no forms" step — one project jumped straight to SurveyCTO and surveyors learned button-clicking but not question intent.</div>
+  Day 2: Group Walkthrough (no forms, understand logic before fighting technology). Day 3: Individual Silent Practice (play demo, fill form independently, compare). Day 3 to 4: Peer Role-Play (breakout rooms of 4 to 5). Day 4: SC/PA as difficult respondent (live coaching). Day 5: Supervised real calls. Don't skip the "no forms" step, one project jumped straight to SurveyCTO and surveyors learned button-clicking but not question intent.</div>
 
   <h3 class="fr-card-h3" style="margin-top:24px;">Engagement Techniques That Work</h3>
   <div class="fr-domain-grid">
-    <div class="fr-domain-card"><span class="fr-domain-num">1</span><strong>Name-Calling</strong><p>Every 10–15 minutes, call 2–3 specific people: "Ramesh, can you hear me? Priya, what should you do if the respondent says they're busy?"</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">1</span><strong>Name-Calling</strong><p>Every 10 to 15 minutes, call 2 to 3 specific people: "Ramesh, can you hear me? Priya, what should you do if the respondent says they're busy?"</p></div>
     <div class="fr-domain-card"><span class="fr-domain-num">2</span><strong>Rotation Reading</strong><p>Have surveyors take turns reading sections of the manual aloud. "Suresh, please read the next paragraph." Creates accountability.</p></div>
-    <div class="fr-domain-card"><span class="fr-domain-num">3</span><strong>Random Video Checks</strong><p>Randomly ask 3–4 people to turn on cameras for 5 minutes. Prevents multitasking.</p></div>
-    <div class="fr-domain-card"><span class="fr-domain-num">4</span><strong>Breakout Room Practice</strong><p>Split groups of 15+ into rooms of 4–5 for mock calls. Trainer joins random rooms to observe.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">3</span><strong>Random Video Checks</strong><p>Randomly ask 3 to 4 people to turn on cameras for 5 minutes. Prevents multitasking.</p></div>
+    <div class="fr-domain-card"><span class="fr-domain-num">4</span><strong>Breakout Room Practice</strong><p>Split groups of 15+ into rooms of 4 to 5 for mock calls. Trainer joins random rooms to observe.</p></div>
     <div class="fr-domain-card"><span class="fr-domain-num">5</span><strong>Daily Quizzes</strong><p>10-question Google Form at 4:30 PM. Review aggregate results. Start next day by revisiting topics where &gt;40% got wrong answers.</p></div>
     <div class="fr-domain-card"><span class="fr-domain-num">6</span><strong>Screen Sharing</strong><p>During mock surveys, have the trainee share their screen so everyone sees them navigate the form.</p></div>
   </div>
@@ -4437,18 +4474,18 @@ body.edit-mode-active .panel-body iframe {
 <div class="fr-content-card">
   <h3 class="fr-card-h3">Every Call Follows This Exact Structure</h3>
   <div class="fr-process-steps">
-    <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong>Before You Dial</strong><p>Open SurveyCTO → correct form. Check network (2+ bars). Put on headphones, test mic. Review respondent info. Take a breath — sound calm and professional.</p></div></div>
-    <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong>Making the Call</strong><p>Tap the phone icon in SurveyCTO → Exotel dials automatically. Wait 25–30 seconds before hanging up. Many rural respondents take time to reach their phone.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong>Before You Dial</strong><p>Open SurveyCTO → correct form. Check network (2+ bars). Put on headphones, test mic. Review respondent info. Take a breath, sound calm and professional.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong>Making the Call</strong><p>Tap the phone icon in SurveyCTO → Exotel dials automatically. Wait 25 to 30 seconds before hanging up. Many rural respondents take time to reach their phone.</p></div></div>
     <div class="fr-process-step"><div class="fr-ps-num">3</div><div class="fr-ps-body"><strong>Introduction Script (Memorise Verbatim)</strong><p>"Namaste, my name is [NAME] calling from [ORG]. May I speak with [RESPONDENT]?" → Verify identity → Explain purpose → State duration → Obtain consent.</p></div></div>
-    <div class="fr-process-step"><div class="fr-ps-num">4</div><div class="fr-ps-body"><strong>Respondent Verification (Critical)</strong><p>Ask open-ended: "What is your name?" — do NOT ask "Is this [NAME]?" (people say yes to be polite even when it's not them). Verify 2–3 identifying details.</p></div></div>
-    <div class="fr-process-step"><div class="fr-ps-num">5</div><div class="fr-ps-body"><strong>Conducting the Survey</strong><p>Read questions EXACTLY as written. Read ALL answer options. Speak slowly. Never suggest answers. Follow skip logic (trust SurveyCTO). Record answers immediately. Remain neutral — no surprise, agreement, or disagreement.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">4</div><div class="fr-ps-body"><strong>Respondent Verification (Critical)</strong><p>Ask open-ended: "What is your name?", do NOT ask "Is this [NAME]?" (people say yes to be polite even when it's not them). Verify 2 to 3 identifying details.</p></div></div>
+    <div class="fr-process-step"><div class="fr-ps-num">5</div><div class="fr-ps-body"><strong>Conducting the Survey</strong><p>Read questions EXACTLY as written. Read ALL answer options. Speak slowly. Never suggest answers. Follow skip logic (trust SurveyCTO). Record answers immediately. Remain neutral, no surprise, agreement, or disagreement.</p></div></div>
     <div class="fr-process-step"><div class="fr-ps-num">6</div><div class="fr-ps-body"><strong>Closing the Call</strong><p>"Thank you for your time. Your responses are very valuable. If you have questions, contact [SUPERVISOR] at [NUMBER]." Submit the form. Sync immediately.</p></div></div>
   </div>
 
   <h3 class="fr-card-h3" style="margin-top:24px;">Handling Difficult Moments</h3>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-    <div class="rm-scenario"><strong>Inconsistent Answers</strong>"Earlier you mentioned 3 children, now you're saying 2 attend school. Just to confirm — how many school-age children do you have?" Gently clarify, never accuse.</div>
-    <div class="rm-scenario"><strong>Respondent Gets Emotional</strong>"I understand this is difficult. Take your time. Would you like a short break?" Show empathy. If they want to stop, respect it — mark partial, offer callback.</div>
+    <div class="rm-scenario"><strong>Inconsistent Answers</strong>"Earlier you mentioned 3 children, now you're saying 2 attend school. Just to confirm, how many school-age children do you have?" Gently clarify, never accuse.</div>
+    <div class="rm-scenario"><strong>Respondent Gets Emotional</strong>"I understand this is difficult. Take your time. Would you like a short break?" Show empathy. If they want to stop, respect it, mark partial, offer callback.</div>
     <div class="rm-scenario"><strong>Call Drops (Network)</strong>Wait 30 seconds → call back immediately → "I'm sorry we got disconnected. Can we continue?" SurveyCTO should have saved responses to the last question.</div>
     <div class="rm-scenario"><strong>Respondent Busy Mid-Survey</strong>"We've completed X of Y questions. May I call back? When is convenient?" Record callback time, save partial survey.</div>
     <div class="rm-scenario"><strong>Asks for Personal Number</strong>"I'm calling through a research line. For questions, please contact my supervisor at [NUMBER]." Never give your personal number.</div>
@@ -4464,7 +4501,7 @@ body.edit-mode-active .panel-body iframe {
     <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;border-top:3px solid var(--green);">
       <div style="font-size:28px;font-weight:800;color:var(--green);">1</div>
       <strong style="font-size:12px;">First call at assigned time</strong>
-      <p style="font-size:11px;color:var(--muted);margin:4px 0 0;">If no answer → wait 2–4 hours</p>
+      <p style="font-size:11px;color:var(--muted);margin:4px 0 0;">If no answer → wait 2 to 4 hours</p>
     </div>
     <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;border-top:3px solid #2d7eb5;">
       <div style="font-size:28px;font-weight:800;color:#2d7eb5;">2</div>
@@ -4482,7 +4519,7 @@ body.edit-mode-active .panel-body iframe {
       <p style="font-size:11px;color:var(--muted);margin:4px 0 0;">Do NOT attempt again. Respect their decision.</p>
     </div>
   </div>
-  <div class="rm-scenario"><strong>Field Wisdom</strong>One surveyor had very low contact rates because she only called 10 AM–12 PM. Most rural respondents were in fields during those hours. When she shifted to 6–8 PM, her contact rate jumped from 40% to 75%. Time of day matters enormously.</div>
+  <div class="rm-scenario"><strong>Field Wisdom</strong>One surveyor had very low contact rates because she only called 10 AM to 12 PM. Most rural respondents were in fields during those hours. When she shifted to 6 to 8 PM, her contact rate jumped from 40% to 75%. Time of day matters enormously.</div>
 </div>
 
 <!-- ═══ SECTION 7: Quality & Productivity ═══ -->
@@ -4492,13 +4529,13 @@ body.edit-mode-active .panel-body iframe {
   <table class="fr-inline-table">
     <thead><tr><th>Metric</th><th>Target</th><th>Red Flag</th><th>Action</th></tr></thead>
     <tbody>
-      <tr><td>Calls Attempted / Day</td><td>20–30</td><td>Below 15</td><td>1-on-1 call with surveyor to understand barriers</td></tr>
+      <tr><td>Calls Attempted / Day</td><td>20 to 30</td><td>Below 15</td><td>1-on-1 call with surveyor to understand barriers</td></tr>
       <tr><td>Completion Rate</td><td>≥70% of contacted</td><td>Below 50%</td><td>Review call recordings, check if consent script is too long</td></tr>
       <tr><td>Avg. Call Duration</td><td>Within ±20% of median</td><td>30%+ shorter than peers</td><td>Flag for potential rushing or question skipping</td></tr>
       <tr><td>Response Rate (overall)</td><td>≥70%</td><td>Below 50% after 3 attempts</td><td>Audit contact database quality, check call timing</td></tr>
       <tr><td>Skip Pattern Errors</td><td>&lt;2% of surveys</td><td>&gt;5%</td><td>Retrain on form navigation, check SurveyCTO constraints</td></tr>
       <tr><td>"Don't Know" Rate</td><td>&lt;10% on factual Qs</td><td>&gt;15%</td><td>Review probing technique, check if questions are clear</td></tr>
-      <tr><td>Daily Productivity</td><td>5–8 completed</td><td>Below 4 consistently</td><td>Check infrastructure (network, workspace), time management</td></tr>
+      <tr><td>Daily Productivity</td><td>5 to 8 completed</td><td>Below 4 consistently</td><td>Check infrastructure (network, workspace), time management</td></tr>
     </tbody>
   </table>
 
@@ -4509,7 +4546,7 @@ body.edit-mode-active .panel-body iframe {
 <!-- ═══ SECTION 8: Data Security & Privacy ═══ -->
 <div class="fr-section-title"><div class="fr-step-num">8</div>Data Security &amp; PII Protection</div>
 <div class="fr-content-card">
-  <h3 class="fr-card-h3">Non-Negotiable Rules — No Exceptions</h3>
+  <h3 class="fr-card-h3">Non-Negotiable Rules, No Exceptions</h3>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
     <div style="background:#fef5f5;border:1px solid rgba(185,28,28,0.15);border-radius:10px;padding:18px;">
       <strong style="color:#b91c1c;font-size:13px;display:block;margin-bottom:10px;">❌ NEVER Do This</strong>
@@ -4528,7 +4565,7 @@ body.edit-mode-active .panel-body iframe {
       <p style="font-size:13px;margin:0;">Keep workspace private during calls</p>
     </div>
   </div>
-  <div class="fr-danger-box" style="margin-top:16px;"><strong>Real Incident</strong>A surveyor shared a screenshot in the team WhatsApp group showing "I completed 10 surveys today!" The screenshot showed respondent names and phone numbers. This was a serious privacy violation — respondent data was now visible to 50+ people in the group. The project had to report to the IRB. Lesson: celebrate achievements without sharing screens that contain PII.</div>
+  <div class="fr-danger-box" style="margin-top:16px;"><strong>Real Incident</strong>A surveyor shared a screenshot in the team WhatsApp group showing "I completed 10 surveys today!" The screenshot showed respondent names and phone numbers. This was a serious privacy violation, respondent data was now visible to 50+ people in the group. The project had to report to the IRB. Lesson: celebrate achievements without sharing screens that contain PII.</div>
 </div>
 
 <!-- ═══ SECTION 9: Daily Reporting ═══ -->
@@ -4537,7 +4574,7 @@ body.edit-mode-active .panel-body iframe {
   <h3 class="fr-card-h3">The End-of-Day Report (Every Day, No Exceptions)</h3>
   <p class="fr-guide-text">Every surveyor sends this to their supervisor by 6 PM daily via WhatsApp or the designated tracking system:</p>
   <div style="background:#1f2937;border-radius:12px;padding:24px;color:white;font-family:var(--mono);font-size:13px;line-height:1.8;margin:16px 0;">
-    <div style="color:#93c5e4;font-weight:700;margin-bottom:8px;">TODAY'S SUMMARY — [DATE]</div>
+    <div style="color:#93c5e4;font-weight:700;margin-bottom:8px;">TODAY'S SUMMARY, [DATE]</div>
     • Total calls attempted: [X]<br>
     • Completed surveys: [X]<br>
     • Partial completions: [X] (callback scheduled)<br>
@@ -4550,7 +4587,7 @@ body.edit-mode-active .panel-body iframe {
     <thead><tr><th>Issue Type</th><th>Channel</th><th>Timeline</th></tr></thead>
     <tbody>
       <tr><td>Urgent technical (app crash, form error)</td><td>WhatsApp to supervisor</td><td>Immediately during work hours</td></tr>
-      <tr><td>Protocol clarification</td><td>WhatsApp to supervisor</td><td>Ask immediately — never guess</td></tr>
+      <tr><td>Protocol clarification</td><td>WhatsApp to supervisor</td><td>Ask immediately, never guess</td></tr>
       <tr><td>Respondent complaint/concern</td><td>Report to supervisor</td><td>Within 1 hour</td></tr>
       <tr><td>General questions</td><td>Daily team call or non-urgent message</td><td>End of day</td></tr>
       <tr><td>Completion numbers</td><td>End-of-day report</td><td>By 6 PM</td></tr>
@@ -4610,7 +4647,7 @@ body.edit-mode-active .panel-body iframe {
       <p style="font-size:10px;color:var(--muted);margin:4px 0 0;">Per submitted survey</p>
     </div>
     <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;border-top:3px solid #0d7c5f;">
-      <div style="font-size:28px;font-weight:800;color:#0d7c5f;">5–8</div>
+      <div style="font-size:28px;font-weight:800;color:#0d7c5f;">5 to 8</div>
       <strong style="font-size:11px;">Surveys / Day</strong>
       <p style="font-size:10px;color:var(--muted);margin:4px 0 0;">Per surveyor (20-min instrument)</p>
     </div>

@@ -2564,11 +2564,41 @@ body.edit-mode-active .panel-body iframe {
 .ta-callbox p{margin:0;color:rgba(255,255,255,.88);font-size:14.5px;line-height:1.7;}
 .ta-callbox .ref{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
 @media print{.left-nav,.tab-nav-wrapper,.hero,#kb-banner,#kb-toolbar{display:none!important;}.tab-panel{display:block!important;}}
-</style></head>
+</style>
+<style id="kb-canon-nav">
+/* ===== KB-CANON-NAV : identical sidebar on every page ===== */
+.page-layout{display:flex;align-items:flex-start;min-height:100vh;}
+.main-content-area{flex:1;min-width:0;overflow-x:hidden;}
+@media(min-width:769px){
+ aside.left-nav{width:212px!important;min-width:212px!important;max-width:212px!important;height:100vh!important;position:sticky!important;top:0!important;flex-shrink:0!important;flex-direction:column!important;display:flex!important;z-index:900;}
+}
+aside.left-nav{background:#141820;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid rgba(255,255,255,.06);box-shadow:2px 0 16px rgba(0,0,0,.10);}
+aside.left-nav .left-nav-brand{height:58px;min-height:58px;display:flex;align-items:center;padding:0 18px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;}
+aside.left-nav .left-nav-logo{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+aside.left-nav .left-nav-logo img{width:28px;height:auto;filter:brightness(0) invert(1);opacity:.92;display:block;}
+aside.left-nav .left-nav-logo-fallback{display:none;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0d9488,#22d3a8);align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#04221f;flex-shrink:0;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+aside.left-nav .left-nav-brand-text strong{display:block;font-size:12px;font-weight:800;color:#e9eef5;line-height:1.25;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+aside.left-nav .left-nav-brand-text span{font-size:9.5px;color:#64748b;text-transform:uppercase;letter-spacing:.9px;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+aside.left-nav .left-nav-section{font-family:'DM Mono',ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:#3a4759;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
+aside.left-nav .left-nav-items{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none;display:flex;flex-direction:column;}
+aside.left-nav .left-nav-items::-webkit-scrollbar{display:none;}
+aside.left-nav .left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#7b8aa0;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:7px;margin:1px 8px;transition:background .15s,color .15s;text-decoration:none;border-left:2px solid transparent;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+aside.left-nav .left-nav-item:hover{background:rgba(255,255,255,.05);color:#e9eef5;}
+aside.left-nav .left-nav-item.active{background:rgba(13,148,136,.18);color:#34e3c4;font-weight:700;border-left-color:#0d9488;}
+aside.left-nav .left-nav-divider{height:1px;background:rgba(255,255,255,.06);margin:8px 14px;flex-shrink:0;}
+aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:9.5px;color:#3a4759;line-height:1.7;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+@media(max-width:768px){
+ aside.left-nav{width:100%!important;min-width:0!important;max-width:none!important;height:auto!important;min-height:48px;position:relative!important;flex-direction:column;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}
+ aside.left-nav .left-nav-brand{height:48px;min-height:48px;}
+ aside.left-nav .left-nav-items{max-height:200px;}
+}
+</style>
+
+</head>
 
 
 <body class="">
-<div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode — click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
+<div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode, click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
 <div id="kb-toolbar" style="display: none; position: fixed; bottom: 24px; right: 24px; background: rgb(13, 17, 23); padding: 12px 20px; border-radius: 40px; box-shadow: rgba(0, 0, 0, 0.4) 0px 16px 36px; gap: 12px; align-items: center; z-index: 999999; border: 1px solid rgba(255, 255, 255, 0.08);">
   <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#0369a1;">Copy HTML</button>
@@ -2576,29 +2606,36 @@ body.edit-mode-active .panel-body iframe {
 </div>
 <div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
   <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1f2937;">Link URL: Add your resource link →</label>
-  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
+  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#0369a1;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
-  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f7f6f3;color:#374151;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
+  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0.11);border-radius:8px;background:#f7f6f3;color:#374151;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
 
 
 <div class="page-layout">
 
 <aside class="left-nav">
-  <div class="left-nav-brand"><div class="left-nav-logo"><img src="https://www.povertyactionlab.org/themes/custom/jpal/logo.svg" alt="J-PAL"></div><div class="left-nav-brand-text"><strong>RO Knowledge Bank</strong><span>J-PAL South Asia</span></div></div>
+  <div class="left-nav-brand">
+    <div class="left-nav-logo">
+      <img src="https://www.povertyactionlab.org/themes/custom/jpal/logo.svg" alt="J-PAL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="left-nav-logo-fallback">RO</div>
+    </div>
+    <div class="left-nav-brand-text">
+      <strong>RO Knowledge Bank</strong>
+      <span>J-PAL South Asia</span>
+    </div>
+  </div>
   <span class="left-nav-section">Knowledge Library</span>
   <nav class="left-nav-items">
-    <a class="left-nav-item" href="hub-v2-notion.html">The Hub</a>
-    <a class="left-nav-item" href="pre-field-ops.html">Pre-Field Ops</a>
-    <a class="left-nav-item" href="field-readiness.html">Field Readiness</a>
-    <a class="left-nav-item active" href="training-academy.html">Training Academy</a>
-    <a class="left-nav-item" href="onboarding-ra-pa.html">On-boarding RA/PA</a>
-    <a class="left-nav-item" href="onboarding-field-staff.html">On-boarding Field Staff</a>
-    <div class="left-nav-divider"></div>
-    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_blank">Field Execution</a>
-    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" target="_blank">Resources &amp; Field Staff</a>
+    <a class="left-nav-item" href="hub-v2-notion.html" target="_self">The Hub</a>
+    <a class="left-nav-item" href="pre-field-ops.html" target="_self">Pre-Field Ops</a>
+    <a class="left-nav-item" href="field-readiness.html" target="_self">Field Readiness</a>
+    <a class="left-nav-item active" href="training-academy.html" target="_self">Training Academy</a>
+    <a class="left-nav-item" href="onboarding-ra-pa.html" target="_self">On-boarding RA/PA</a>
+    <a class="left-nav-item" href="onboarding-field-staff.html" target="_self">On-boarding Field Staff</a>
+    <a class="left-nav-item" href="foundational-surveying-guidelines.html" target="_self">Foundational Surveying Skills</a>
   </nav>
-  <div class="left-nav-footer">v1.0 · April 2025<br>J-PAL SA · Research Ops</div>
+  <div class="left-nav-footer">v1.0 · June 2026<br>J-PAL SA · Research Ops</div>
 </aside>
 
 <div class="main-content-area">
@@ -2640,18 +2677,18 @@ body.edit-mode-active .panel-body iframe {
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">The Academy</button>
+    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')" aria-selected="true">The Academy</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-diagnose')" aria-selected="false">Diagnose Your Training</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-design')" aria-selected="false">Design the Program</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-build')" aria-selected="false">Build the Materials</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-deliver')" aria-selected="true">Deliver &amp; Facilitate</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-deliver')" aria-selected="false">Deliver &amp; Facilitate</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-sensitive')" aria-selected="false">Special Populations</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-certify')" aria-selected="false">Assess, Certify &amp; Sustain</button>
   </nav>
 </div>
 
 <!-- ════════════════ PANEL 1: THE ACADEMY ════════════════ -->
-<div id="panel-home" class="tab-panel">
+<div id="panel-home" class="tab-panel active">
 <div class="panel-label-strip"><span>Training Academy › </span><strong class="edit-text">Overview &amp; First Principles</strong></div>
 <div class="panel-body">
 <div class="section-padding">
@@ -2698,7 +2735,7 @@ body.edit-mode-active .panel-body iframe {
         <div class="ta-phase-tag">Phase 2 · Delivery</div>
         <h4 class="edit-text">Train &amp; Practice</h4>
         <p class="edit-text">The training itself covers organizational induction, context of the study, and thorough walk-through of the instrument. Field staff learn the true art of interviewing through live mock practice plus daily quizzes. Mandatory field practice sessions mimicking the true working conditions and talking to actual respondents allows field staff to master the skills. This full setup ensures they do well in the real field situations.&nbsp;</p><div><br></div><div><br></div><p></p>
-        <span class="ta-phase-when">2–14 days, may adjust</span>
+        <span class="ta-phase-when">2 to 14 days, may adjust</span>
       </div>
       <div class="ta-phase-card p3">
         <div class="ta-phase-tag">Phase 3 · Certification</div>
@@ -2779,6 +2816,53 @@ body.edit-mode-active .panel-body iframe {
     </div>
   </div>
 
+  <div class="fr-section-wrap" id="ta-core-sessions">
+    <div class="fr-section-title"><div class="fr-step-num">★</div>The Mandatory Core Sessions (Organisational Onboarding)</div>
+    <div class="fr-content-card">
+      <h3 class="fr-card-h3 edit-text">What Every Field Staff Member Is Trained On, Before Your Study Training Begins</h3>
+      <p class="fr-guide-text edit-text">Separate from your study-specific training, every field staff member completes a mandatory set of <strong>organisational Core Sessions</strong> before being finalised for contract. As an RA, PA, or SC, it helps to know what your team has already covered, and to budget around it when you schedule study training. The Prevention of Sexual Harassment (POSH) session has been <strong>expanded from one hour to two</strong>: the first hour on understanding and reporting, the second hour entirely on field scenarios and role play.</p>
+
+      <table>
+        <thead><tr><th style="width:110px;">Duration</th><th style="width:240px;">Session</th><th>Sub-topics covered</th></tr></thead>
+        <tbody>
+          <tr><td>15 mins</td><td><strong>Welcome &amp; Introductions</strong></td><td>Getting started; how the day runs; what to expect.</td></tr>
+          <tr><td>1 hour</td><td><strong>Introduction to J-PAL SA</strong></td><td>Background, mission, verticals, impact, and a brief history of J-PAL.</td></tr>
+          <tr><td>15 mins</td><td><strong>Overview of J-PAL SA Policies</strong></td><td>Why our core policies exist, and how they influence us and our work.</td></tr>
+          <tr><td><strong>2 hours</strong></td><td><strong>Prevention of Sexual Harassment (POSH)</strong> <span class="edit-text" style="font-size:11px;opacity:.7;">↑ expanded from 1 hr</span></td><td>Hour 1, Understanding: objectives, the &lsquo;unwelcome&rsquo; test, what harassment looks like in the field (verbal, digital, pattern, pressure), mindful conduct, the IC/ICC mandate and powers, reporting routes, zero retaliation. Hour 2, Application: sensitive field scenarios, role plays, pitfalls, and group case discussion.</td></tr>
+          <tr><td>45 mins</td><td><strong>Safety &amp; Security Guidelines</strong></td><td>Road safety, staying safe on the field, adverse conditions (threats, riots, curfews), and Dos &amp; Don&rsquo;ts.</td></tr>
+          <tr><td>1 hour</td><td><strong>Child Protection Policy</strong></td><td>Definitions, Dos &amp; Don&rsquo;ts, recognising threats, and mandatory reporting.</td></tr>
+          <tr><td>45 mins</td><td><strong>J-PAL Code of Conduct</strong></td><td>General code of conduct and fieldwork Dos &amp; Don&rsquo;ts.</td></tr>
+          <tr><td>10 to 15 mins</td><td><strong>Drug-free Workplace Policy</strong></td><td>Definitions, violations, and support.</td></tr>
+          <tr><td>1 hour</td><td><strong>J-PAL Values</strong></td><td>Our core values, with fieldwork-related examples.</td></tr>
+          <tr><td>1 hr 45 mins</td><td><strong>Ethics in Research: Human Subjects &amp; IRBs</strong></td><td>Why ethics matters, IRBs and human subjects, exempt vs. non-exempt activities, PIIs, informed consent, and upholding ethical values in the field.</td></tr>
+        </tbody>
+      </table>
+      <p class="fr-guide-text edit-text" style="margin-top:6px;"><strong>Approximate total:</strong> a little over 9 hours of mandatory organisational training, typically across the onboarding day(s) before study-specific training begins. Full participant-facing versions live on the <em>On-boarding Field Staff</em> and <em>On-boarding RA / PA</em> pages.</p>
+    </div>
+
+    <div class="fr-content-card">
+      <h3 class="fr-card-h3 edit-text">POSH Session · Two-Hour Run-of-Show</h3>
+      <p class="fr-guide-text edit-text">If you are asked to host or co-facilitate the POSH Core Session, this is the structure to follow. The principle: <em>this is about protection, not rules</em>, and the second hour only works if the room does the talking.</p>
+      <table>
+        <thead><tr><th style="width:110px;">Duration</th><th style="width:240px;">Segment</th><th>What it covers</th></tr></thead>
+        <tbody>
+          <tr><td colspan="3" style="background:#efe9fb;color:#4c1d95;font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.8px;padding:10px 16px;">Hour 1 · Understanding</td></tr>
+          <tr><td>10 mins</td><td><strong>Welcome &amp; framing</strong></td><td>Set the tone: protection, not rules. Establish psychological safety; invite honest questions.</td></tr>
+          <tr><td>15 mins</td><td><strong>What POSH is, the &lsquo;unwelcome&rsquo; test</strong></td><td>Objectives and definitions. The test is whether conduct was unwelcome, not whether it was intended or explicit. &ldquo;I was joking&rdquo; is not a defence.</td></tr>
+          <tr><td>15 mins</td><td><strong>What it looks like in the field</strong></td><td>Six forms: verbal, non-verbal, physical, digital, pattern / hostile environment, pressure / favour. Why digital and cumulative patterns are missed.</td></tr>
+          <tr><td>10 mins</td><td><strong>Mindful words, even on a lighter note</strong></td><td>Jokes and comments directed at a person, the line is the listener, not the intention.</td></tr>
+          <tr><td>10 mins</td><td><strong>Talking about a third person</strong></td><td>Comments about someone absent, looks, personal life, mimicking a respondent, fall under the same line.</td></tr>
+          <tr><td>10 mins</td><td><strong>IC / ICC, rights &amp; reporting</strong></td><td>Constitution and powers of the Internal Committee; reporting routes; skipping the line; anonymous reporting; interim protection; zero retaliation.</td></tr>
+          <tr><td colspan="3" style="background:#efe9fb;color:#4c1d95;font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.8px;padding:10px 16px;">Hour 2 · Application, examples, situations &amp; role play</td></tr>
+          <tr><td>10 mins</td><td><strong>Sensitive field scenarios</strong></td><td>Two subtle situations: a pattern of late-night personal attention with no &lsquo;explicit&rsquo; act; and a comment that has become &lsquo;normal&rsquo; but targets one quiet colleague. Recognising harm early; the bystander&rsquo;s role.</td></tr>
+          <tr><td>35 mins</td><td><strong>Role plays (small groups)</strong></td><td>RP1, lighter-note moment with a silent vs. redirecting bystander. RP2, naming a subtle pattern, taking it to a trusted person not the source. RP3, the quiet, no-pressure check-in. Rotate so everyone plays the person affected.</td></tr>
+          <tr><td>15 mins</td><td><strong>Group case + pitfalls</strong></td><td>The &lsquo;it&rsquo;s just how our team is&rsquo; case; myth-busting on &lsquo;only joking&rsquo;, &lsquo;must be sure first&rsquo;, &lsquo;not my business&rsquo;, &lsquo;everyone will know&rsquo;.</td></tr>
+          <tr><td>10 mins</td><td><strong>Close, Q&amp;A &amp; sign-off</strong></td><td>Three takeaways, Unwelcome, Mindful, Speak up. Confidential channel reminder. POSH acknowledgment form signed.</td></tr>
+        </tbody>
+      </table>
+      <p class="fr-guide-text edit-text" style="margin-top:6px;">Keep scenarios fictional; never script a real person&rsquo;s situation. Close every role play with three questions: what did the person affected feel? what was the smallest thing a bystander could have done? what would you do differently in the real field? Confidential channel: <strong>resops@jpal.org</strong> (Subject: POSH, Confidential).</p>
+    </div>
+  </div>
 </div>
 </div>
 </div>
@@ -2839,8 +2923,8 @@ body.edit-mode-active .panel-body iframe {
         <div class="q">Question 5</div><h4 class="edit-text">How complex is the instrument?</h4>
         <p class="edit-text">Length and complexity set your duration floor and how much walkthrough + mock time you need.</p>
         <ul>
-          <li class="edit-text">Short (~10–15 min) → 3–4 training days</li>
-          <li class="edit-text">Longer (~20–30 min) → 5–7 days</li>
+          <li class="edit-text">Short (~10 to 15 min) → 3 to 4 training days</li>
+          <li class="edit-text">Longer (~20 to 30 min) → 5 to 7 days</li>
           <li class="edit-text">Multi-module panel / measurements → up to 14 days<div><br></div></li>
         </ul>
       </div>
@@ -2923,7 +3007,7 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-section-title"><div class="fr-step-num">1</div>How Long Should Training Be?</div>
     <div class="fr-content-card">
       <h3 class="fr-card-h3 edit-text">Duration Is a Calculation</h3>
-      <p class="fr-guide-text edit-text">There is no fixed length or any standard duration for the training. Start from your instrument and adjust for the factors from your diagnosis. As a baseline from across J-PAL SA projects: a short instrument (~30–40 min) typically needs at least 7 days to develop strong surveying skills; a longer one (~60–75 min) anywhere from 10–15 days; and a complex multi-module or measurement-heavy study can run the full 21 days. These are of course some estimates based on past data and observation</p>
+      <p class="fr-guide-text edit-text">There is no fixed length or any standard duration for the training. Start from your instrument and adjust for the factors from your diagnosis. As a baseline from across J-PAL SA projects: a short instrument (~30 to 40 min) typically needs at least 7 days to develop strong surveying skills; a longer one (~60 to 75 min) anywhere from 10 to 15 days; and a complex multi-module or measurement-heavy study can run the full 21 days. These are of course some estimates based on past data and observation</p>
       <table class="fr-inline-table">
         <thead><tr><th>Factor</th><th>Add time when…</th><th>Save time when…</th></tr></thead>
         <tbody>
@@ -2950,10 +3034,10 @@ body.edit-mode-active .panel-body iframe {
         <tbody>
           <tr><td class="edit-text">1</td><td class="edit-text">Core sessions (Policies, COC, Induction &amp; Ethics)</td><td class="edit-text">Org overview, policies, values, code of conduct, research ethics, informed consent, confidentiality, safeguarding, POSH, Child Protection, Safety</td><td class="edit-text">RO&nbsp;</td></tr>
           <tr><td class="edit-text">2</td><td class="edit-text">Survey Fundamentals</td><td class="edit-text">Role of the surveyor, sampling concepts, tracking &amp; status codes, professional conduct, intro to CAPI/SurveyCTO</td><td class="edit-text">RO + RA</td></tr>
-          <tr><td class="edit-text">3–4</td><td class="edit-text">Study Context &amp; Design</td><td class="edit-text">Research question, intervention, study arms, what surveyors need to know vs. must NOT know, field plan, R&amp;R</td><td class="edit-text">RA&nbsp;</td></tr>
-          <tr><td class="edit-text">5–8</td><td class="edit-text">Instrument Training</td><td class="edit-text">Section-by-section, question-by-question walkthrough; purpose, phrasing, options, skip logic, probing; sector practicum (e.g. anthropometry)</td><td class="edit-text">RA + SC + PA (some sessions)</td></tr>
-          <tr><td class="edit-text">9–10</td><td class="edit-text">Mock Interviews</td><td class="edit-text">Paired practice, full instrument, rotate roles; SC &amp; FM observe and give real-time feedback</td><td class="edit-text">RA+SC+PA (Lead the practice sessions)</td></tr>
-          <tr><td class="edit-text">11–12</td><td class="edit-text">Field Practice</td><td class="edit-text">2–3 real interviews each in non-sample villages; observed; written feedback; evening debrief</td><td class="edit-text">RA+SC (Lead the field practice)+PA</td></tr>
+          <tr><td class="edit-text">3 to 4</td><td class="edit-text">Study Context &amp; Design</td><td class="edit-text">Research question, intervention, study arms, what surveyors need to know vs. must NOT know, field plan, R&amp;R</td><td class="edit-text">RA&nbsp;</td></tr>
+          <tr><td class="edit-text">5 to 8</td><td class="edit-text">Instrument Training</td><td class="edit-text">Section-by-section, question-by-question walkthrough; purpose, phrasing, options, skip logic, probing; sector practicum (e.g. anthropometry)</td><td class="edit-text">RA + SC + PA (some sessions)</td></tr>
+          <tr><td class="edit-text">9 to 10</td><td class="edit-text">Mock Interviews</td><td class="edit-text">Paired practice, full instrument, rotate roles; SC &amp; FM observe and give real-time feedback</td><td class="edit-text">RA+SC+PA (Lead the practice sessions)</td></tr>
+          <tr><td class="edit-text">11 to 12</td><td class="edit-text">Field Practice</td><td class="edit-text">2 to 3 real interviews each in non-sample villages; observed; written feedback; evening debrief</td><td class="edit-text">RA+SC (Lead the field practice)+PA</td></tr>
           <tr><td class="edit-text">13</td><td class="edit-text">False Launch &amp; Calibration</td><td class="edit-text">Full-scale launch; RA reviews all data; fix instrument problems; compute average duration; set daily targets</td><td class="edit-text">Full team</td></tr>
           <tr><td class="edit-text">14</td><td class="edit-text">Final Assessment &amp; Selection</td><td class="edit-text">Written test + scored mock; top performers offered contracts; bottom performers released</td><td class="edit-text">RA + SC</td></tr>
         </tbody>
@@ -2974,7 +3058,7 @@ body.edit-mode-active .panel-body iframe {
         <strong>The ToT risk</strong>
         <span class="edit-text">ToT only works if the trainers are genuinely trained. It works when the second tier of trainers is well trained and have been equipped to handle training effectively. Please identify staff who performing well and are showing visible sign of being great at training. Poorly-prepared trainer multiply their gaps across an entire group. If you use ToT, assess your trainers as rigorously as you'll assess surveyors, and as the RA or SC spot-check the parallel sessions.</span>
       </div>
-      <p class="fr-guide-text edit-text">Useful ratios to plan around: roughly 1 Field Supervisor per 4–6 surveyors, and 1 Field Monitor per 15–20 surveyors. Always recruit and train a 10–20% buffer above target headcount, some trainees will not pass certification, and you want to deselect without panicking about numbers.</p>
+      <p class="fr-guide-text edit-text">Useful ratios to plan around: roughly 1 Field Supervisor per 4 to 6 surveyors, and 1 Field Monitor per 15 to 20 surveyors. Always recruit and train a 10 to 20% buffer above target headcount, some trainees will not pass certification, and you want to deselect without panicking about numbers.</p>
     </div>
   </div>
 
@@ -2997,7 +3081,7 @@ body.edit-mode-active .panel-body iframe {
           <li class="edit-text">Pre-check every trainee's device, network, headphones</li>
           <li class="edit-text">Pick a platform deliberately; teach it before Day 1</li>
           <li class="edit-text">Smaller groups; cameras on; record every session</li>
-          <li class="edit-text">90-min max blocks; attention checks every 15–20 min</li>
+          <li class="edit-text">90-min max blocks; attention checks every 15 to 20 min</li>
         </ul>
       </div>
     </div>
@@ -3051,10 +3135,10 @@ body.edit-mode-active .panel-body iframe {
         <span class="edit-text">Drafting begins the moment the hiring request is raised. By the time you're interviewing candidates, the core modules should be drafted so your training architecture matches the skills you're hiring for. And before anything is printed, the final draft goes to the Director (Research) and Director (Research Operations) for sign-off.</span>
       </div>
       <div class="fr-process-steps">
-        <div class="fr-process-step"><div class="fr-ps-num">6</div><div class="fr-ps-body"><strong class="edit-text">T-6 wks — Core modules drafted</strong><p class="edit-text">RA &amp; SC draft definitions, the consent script, and the question-by-question deep dive.</p></div></div>
-        <div class="fr-process-step"><div class="fr-ps-num">4</div><div class="fr-ps-body"><strong class="edit-text">T-4 wks — Translations &amp; probes</strong><p class="edit-text">Translations tested; probing guidelines added from early pre-pilots.</p></div></div>
-        <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong class="edit-text">T-2 wks — Agenda &amp; logistics</strong><p class="edit-text">Minute-by-minute agenda, device protocols, special-population modules integrated.</p></div></div>
-        <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong class="edit-text">T-1 wk — Sign-off &amp; print</strong><p class="edit-text">Director (Research) and Director (Research Operations) approval, then print.</p></div></div>
+        <div class="fr-process-step"><div class="fr-ps-num">6</div><div class="fr-ps-body"><strong class="edit-text">T-6 wks, Core modules drafted</strong><p class="edit-text">RA &amp; SC draft definitions, the consent script, and the question-by-question deep dive.</p></div></div>
+        <div class="fr-process-step"><div class="fr-ps-num">4</div><div class="fr-ps-body"><strong class="edit-text">T-4 wks, Translations &amp; probes</strong><p class="edit-text">Translations tested; probing guidelines added from early pre-pilots.</p></div></div>
+        <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong class="edit-text">T-2 wks, Agenda &amp; logistics</strong><p class="edit-text">Minute-by-minute agenda, device protocols, special-population modules integrated.</p></div></div>
+        <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong class="edit-text">T-1 wk, Sign-off &amp; print</strong><p class="edit-text">Director (Research) and Director (Research Operations) approval, then print.</p></div></div>
       </div>
     </div>
 
@@ -3068,8 +3152,8 @@ body.edit-mode-active .panel-body iframe {
         <div class="fr-domain-card"><span class="fr-domain-num">4</span><strong class="edit-text">Observe vs. Ask</strong><p class="edit-text">Which data points are asked, and which (roof material, sanitation) are captured by silent observation.</p></div>
       </div>
       <div class="fr-callout" style="border-left-color:var(--orange);">
-        <strong style="color:var(--orange);">Worked example — Module 3, Q3.4 (agricultural labour)</strong>
-        <span class="edit-text">"In the last Kharif season, how much did you spend on hired labour?" — <strong>Intent:</strong> out-of-pocket spend on hired help; exclude family labour. <strong>Definition:</strong> Kharif = monsoon crop, ~June–Oct here. <strong>Probe:</strong> farmers forget cash paid at harvest, ask "Did you hire anyone for sowing? For cutting?" If paid in grain, estimate market value. Every red-flag question should have a box like this.</span>
+        <strong style="color:var(--orange);">Worked example, Module 3, Q3.4 (agricultural labour)</strong>
+        <span class="edit-text">"In the last Kharif season, how much did you spend on hired labour?", <strong>Intent:</strong> out-of-pocket spend on hired help; exclude family labour. <strong>Definition:</strong> Kharif = monsoon crop, ~June to Oct here. <strong>Probe:</strong> farmers forget cash paid at harvest, ask "Did you hire anyone for sowing? For cutting?" If paid in grain, estimate market value. Every red-flag question should have a box like this.</span>
       </div>
     </div>
   </div>
@@ -3078,7 +3162,7 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-section-title"><div class="fr-step-num">2</div>The Assessment &amp; Daily Quizzes</div>
     <div class="fr-content-card">
       <h3 class="fr-card-h3 edit-text">Build the Test Before You Train</h3>
-      <p class="fr-guide-text edit-text">Design your assessment instruments during preparation, not the night before. You need two things: <strong>daily quizzes</strong> (10 questions — 5 protocol, 5 instrument, maybe use a Google Form, with answer keys) to surface misunderstandings each evening, and a final <strong>assessment</strong> across instrument, ethics, protocols with a scored mock interview. The PDRA framework in Module 06 gives the structure.</p>
+      <p class="fr-guide-text edit-text">Design your assessment instruments during preparation, not the night before. You need two things: <strong>daily quizzes</strong> (10 questions, 5 protocol, 5 instrument, maybe use a Google Form, with answer keys) to surface misunderstandings each evening, and a final <strong>assessment</strong> across instrument, ethics, protocols with a scored mock interview. The PDRA framework in Module 06 gives the structure.</p>
       <div class="fr-tip-box">
         <strong>Frame quizzes as learning, never as exams</strong>
         <span class="edit-text">Tell trainees plainly: "If you get questions wrong, it tells us we need to explain that section better." Otherwise people get anxious or copy, and you lose the diagnostic signal. Any question &gt;40% of the room gets wrong is re-taught the next morning.</span>
@@ -3106,7 +3190,7 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-section-title"><div class="fr-step-num">4</div>Demo Resources &amp; Reusable Aids</div>
     <div class="fr-content-card">
       <h3 class="fr-card-h3 edit-text">Build Once, Use Across the Training</h3>
-      <p class="fr-guide-text edit-text">Allocate preparation time to building resources that do the teaching for you and standardise the message: presentations with voiceover, PDFs with screenshots of each tablet step, and 3–5 demo audio/video recordings of model interviews. A demo recording is especially powerful, play it on Day 3 and have everyone fill the form independently, then compare against the "correct" version to catch systematic errors. Format everything to be readable on a phone, since that's what surveyors will reach for in the field.</p>
+      <p class="fr-guide-text edit-text">Allocate preparation time to building resources that do the teaching for you and standardise the message: presentations with voiceover, PDFs with screenshots of each tablet step, and 3 to 5 demo audio/video recordings of model interviews. A demo recording is especially powerful, play it on Day 3 and have everyone fill the form independently, then compare against the "correct" version to catch systematic errors. Format everything to be readable on a phone, since that's what surveyors will reach for in the field.</p>
       <div class="ta-ref-card">
         <div class="ic">🎬</div>
         <div>
@@ -3140,7 +3224,7 @@ body.edit-mode-active .panel-body iframe {
 </div>
 
 <!-- ════════════════ PANEL 5: DELIVER & FACILITATE ════════════════ -->
-<div id="panel-deliver" class="tab-panel active">
+<div id="panel-deliver" class="tab-panel">
 <div class="panel-label-strip"><span>Training Academy › </span><strong class="edit-text">Deliver &amp; Facilitate</strong></div>
 <div class="panel-body">
 <div class="section-padding">
@@ -3158,7 +3242,7 @@ body.edit-mode-active .panel-body iframe {
       <p class="fr-guide-text edit-text"><strong>3. Use the "worst respondent" exercise liberally.</strong> Role-play hostile, confused, distracted, and non-responsive respondents. It is the closest thing to field reality in a classroom and it builds the confidence that separates competent from great.</p>
       <div class="fr-tip-box">
         <strong>Engagement tactics that work</strong>
-        <span class="edit-text">Call on people by name every 10–15 minutes; rotate who reads sections aloud; schedule hands-on practice for the post-lunch slump and lectures for the morning; keep blocks to ~90 minutes with breaks. One SC found engagement collapsed after 2 PM, especially after lunch, moving practice to the afternoon fixed it.</span>
+        <span class="edit-text">Call on people by name every 10 to 15 minutes; rotate who reads sections aloud; schedule hands-on practice for the post-lunch slump and lectures for the morning; keep blocks to ~90 minutes with breaks. One SC found engagement collapsed after 2 PM, especially after lunch, moving practice to the afternoon fixed it.</span>
       </div>
     </div>
   </div>
@@ -3167,7 +3251,7 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-section-title"><div class="fr-step-num">2</div>The Instrument Walkthrough</div>
     <div class="fr-content-card">
       <h3 class="fr-card-h3 edit-text">Teach the Architecture, Not Just the Buttons</h3>
-      <p class="fr-guide-text edit-text">The instrument walkthrough is the longest single block of the training (Days 5 –12 on the full schedule) and the easiest to do badly. The failure mode is reading questions aloud screen-by-screen while trainees passively watch. Instead, teach the questionnaire as an architecture: every module exists to answer a research question, every skip pattern and validation rule is there for a reason. When surveyors understand <em>why</em> the form is built the way it is, they stop being question-readers and start being data-collection professionals who can anticipate what comes next and flag genuine problems.</p>
+      <p class="fr-guide-text edit-text">The instrument walkthrough is the longest single block of the training (Days 5 to 12 on the full schedule) and the easiest to do badly. The failure mode is reading questions aloud screen-by-screen while trainees passively watch. Instead, teach the questionnaire as an architecture: every module exists to answer a research question, every skip pattern and validation rule is there for a reason. When surveyors understand <em>why</em> the form is built the way it is, they stop being question-readers and start being data-collection professionals who can anticipate what comes next and flag genuine problems.</p>
       <p class="fr-guide-text edit-text">Go module by module, and for each, cover purpose, exact phrasing, response options, skip logic, the common problems, and the probing instruction. Pause every 20 minutes for a practice burst. For measurement modules (anthropometry, plot measurement, assessments), this is hands-on with the actual equipment, led by a trained trainers, not a slide (Anthropometry Trained Trainers: Hansa Parmar, Sabahat Ali, Santosh Kumar Sahoo).</p>
       <div class="fr-callout">
         <strong>"The device is your tool, but you are the instrument"</strong>
@@ -3180,11 +3264,11 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-section-title"><div class="fr-step-num">3</div>The Science of Interviewing &amp; Probing</div>
     <div class="fr-content-card">
       <h3 class="fr-card-h3 edit-text">The Skill That Most Quietly Decides Data Quality</h3>
-      <p class="fr-guide-text edit-text">Interviewing well is a teachable, neutral discipline, not a personality trait. The foundation is rapport and a genuinely neutral posture: no approval or disapproval, no leading, no non-verbal bias (nodding, frowning), no assumptions from a household's apparent wealth. On top of that sits probing: drawing out a complete, codeable answer without putting words in the respondent's mouth. If a respondent says "I earn enough," the surveyor cannot record "sufficient" — but they also cannot ask "so, about 10,000 rupees?" Both fail. The skill is the narrow path between them.</p>
+      <p class="fr-guide-text edit-text">Interviewing well is a teachable, neutral discipline, not a personality trait. The foundation is rapport and a genuinely neutral posture: no approval or disapproval, no leading, no non-verbal bias (nodding, frowning), no assumptions from a household's apparent wealth. On top of that sits probing: drawing out a complete, codeable answer without putting words in the respondent's mouth. If a respondent says "I earn enough," the surveyor cannot record "sufficient", but they also cannot ask "so, about 10,000 rupees?" Both fail. The skill is the narrow path between them.</p>
       <div class="ta-probe-grid">
         <div class="ta-probe-card"><div class="tech">Technique</div><h4 class="edit-text">Laddering</h4><p class="edit-text">Climb from a vague answer down to a concrete one.</p><span class="ex edit-text">"You said farming is 'okay.' Better, worse, or the same as last year? … About how many quintals?"</span></div>
         <div class="ta-probe-card"><div class="tech">Technique</div><h4 class="edit-text">Strategic Silence</h4><p class="edit-text">Wait three seconds after an incomplete answer; silence invites elaboration without leading.</p><span class="ex edit-text">"We had some money trouble." [wait] "…the hospital bill in March, mainly."</span></div>
-        <div class="ta-probe-card"><div class="tech">Technique</div><h4 class="edit-text">Echoing</h4><p class="edit-text">Repeat the last few words as a gentle question.</p><span class="ex edit-text">"I work here and there." "Bas thoda idhar udhar karke gujara chal jaata hai? , "Here and there?", "Construction in the city, farming in the season."</span></div>
+        <div class="ta-probe-card"><div class="tech">Technique</div><h4 class="edit-text">Echoing</h4><p class="edit-text">Repeat the last few words as a gentle question.</p><span class="ex edit-text">"I work here and there." "Bas thoda idhar udhar karke gujara chal jaata hai?, "Here and there?", "Construction in the city, farming in the season."</span></div>
         <div class="ta-probe-card"><div class="tech">Technique</div><h4 class="edit-text">Decomposition</h4><p class="edit-text">Break an un-recallable total into parts and rebuild.</p><span class="ex edit-text">"Rather than the month, what did you spend yesterday? Was yesterday normal?"</span></div>
       </div>
       <div class="fr-tip-box">
@@ -3201,14 +3285,14 @@ body.edit-mode-active .panel-body iframe {
     <div class="ta-stage"><div class="ta-stage-num">2</div><div class="ta-stage-body"><span class="when edit-text">Individual, with forms</span><h4 class="edit-text">Silent Practice vs. a Demo Recording</h4><p class="edit-text">Everyone fills the form independently while a demo plays. Compare submissions against the "correct" version, if everyone miscoded the same item, the problem is your training.</p></div></div>
     <div class="ta-stage"><div class="ta-stage-num">3</div><div class="ta-stage-body"><span class="when edit-text">Peer pairs</span><h4 class="edit-text">Cooperative Role-Play</h4><p class="edit-text">A interviews B (cooperative respondent) through the full instrument, then switch. SC &amp; PA circulate, scoring against the observation sheet. Rotate pairs.</p></div></div>
     <div class="ta-stage"><div class="ta-stage-num">4</div><div class="ta-stage-body"><span class="when edit-text">Senior staff as respondent</span><h4 class="edit-text">The "Worst Respondent" Exercise</h4><p class="edit-text">Senior staff play difficult, vague, suspicious respondents while a trainee interviews and others watch. This is where probing and de-escalation are truly tested. This one can go off-track quite easily, pretending to be a worst responder can backfire, with responder trying to focus on animated toughness, therefore, one of the senior staff should show give some examples of being a 'worst responder'</p></div></div>
-    <div class="ta-stage"><div class="ta-stage-num">5</div><div class="ta-stage-body"><span class="when edit-text">Real respondents</span><h4 class="edit-text">Supervised Field Practice &amp; False Launch</h4><p class="edit-text">2–3 real interviews each in a non-sample village, observed, with written feedback and an evening debrief. The last chance to fix the instrument before it freezes.</p></div></div>
+    <div class="ta-stage"><div class="ta-stage-num">5</div><div class="ta-stage-body"><span class="when edit-text">Real respondents</span><h4 class="edit-text">Supervised Field Practice &amp; False Launch</h4><p class="edit-text">2 to 3 real interviews each in a non-sample village, observed, with written feedback and an evening debrief. The last chance to fix the instrument before it freezes.</p></div></div>
   </div>
 
   <div class="fr-section-wrap">
     <div class="fr-section-title"><div class="fr-step-num">5</div>What to Look For: The Observation Sheet</div>
-    <p style="margin-bottom:14px;color:var(--muted);font-size:14px;" class="edit-text">Score every surveyor on every mock against fixed criteria, not a general impression — that forces specific, defensible feedback. Tap a score to mark it; it totals live. (0 = not demonstrated, 3 = excellent.)</p>
+    <p style="margin-bottom:14px;color:var(--muted);font-size:14px;" class="edit-text">Score every surveyor on every mock against fixed criteria, not a general impression, that forces specific, defensible feedback. Tap a score to mark it; it totals live. (0 = not demonstrated, 3 = excellent.)</p>
     <div class="ta-obs-sheet">
-      <div class="head"><span class="edit-text">Mock Session — Surveyor Observation Sheet</span><span>Live total: <strong id="obs-total">0</strong> / 24</span></div>
+      <div class="head"><span class="edit-text">Mock Session, Surveyor Observation Sheet</span><span>Live total: <strong id="obs-total">0</strong> / 24</span></div>
       <div class="ta-obs-row"><div class="crit edit-text">Introduction &amp; consent<small>Read the full consent script; gave a genuine chance to refuse</small></div><div class="ta-obs-scale"><span class="b" data-v="0">0</span><span class="b" data-v="1">1</span><span class="b" data-v="2">2</span><span class="b" data-v="3">3</span></div></div>
       <div class="ta-obs-row"><div class="crit edit-text">Question reading accuracy<small>Read as worded, not paraphrased or shortened</small></div><div class="ta-obs-scale"><span class="b" data-v="0">0</span><span class="b" data-v="1">1</span><span class="b" data-v="2">2</span><span class="b" data-v="3">3</span></div></div>
       <div class="ta-obs-row"><div class="crit edit-text">Skip-logic &amp; navigation<small>Followed patterns; handled checks without panic</small></div><div class="ta-obs-scale"><span class="b" data-v="0">0</span><span class="b" data-v="1">1</span><span class="b" data-v="2">2</span><span class="b" data-v="3">3</span></div></div>
@@ -3222,9 +3306,9 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-content-card" style="margin-top:14px;">
       <h3 class="fr-card-h3 edit-text">When a Surveyor Doesn't Pass</h3>
       <div class="fr-process-steps">
-        <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong class="edit-text">Attempt 1 — structured debrief</strong><p class="edit-text">Name the specific gap; demonstrate the correct technique. No sign-off.</p></div></div>
-        <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong class="edit-text">Attempt 2 (next day) — fresh card</strong><p class="edit-text">Re-test on a new persona; if failed, 30 min of one-on-one with the PA (and RA/SC, if present)</p></div></div>
-        <div class="fr-process-step"><div class="fr-ps-num">3</div><div class="fr-ps-body"><strong class="edit-text">Attempt 3 — decision</strong><p class="edit-text">Still failing a non-negotiable → don't deploy, or deploy only under Week-1 accompaniment, at RA discretion.</p></div></div>
+        <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong class="edit-text">Attempt 1, structured debrief</strong><p class="edit-text">Name the specific gap; demonstrate the correct technique. No sign-off.</p></div></div>
+        <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong class="edit-text">Attempt 2 (next day), fresh card</strong><p class="edit-text">Re-test on a new persona; if failed, 30 min of one-on-one with the PA (and RA/SC, if present)</p></div></div>
+        <div class="fr-process-step"><div class="fr-ps-num">3</div><div class="fr-ps-body"><strong class="edit-text">Attempt 3, decision</strong><p class="edit-text">Still failing a non-negotiable → don't deploy, or deploy only under Week-1 accompaniment, at RA discretion.</p></div></div>
       </div>
       <div class="fr-danger-box" autocomplete="off"><strong>The hardest part of the job</strong><span class="edit-text">Deselecting someone who invested a week is uncomfortable; deploying an unready surveyor is far costlier. Decide on evidence, not sympathy or staffing pressure. Always try and hire and keep some buffer to address minimum attrition.</span></div>
     </div>
@@ -3259,7 +3343,7 @@ body.edit-mode-active .panel-body iframe {
 
   <div class="fr-section-wrap">
     <div class="fr-section-title"><div class="fr-step-num">2</div>The Distress Spectrum</div>
-    <p style="margin-bottom:14px;color:var(--muted);font-size:14px;" class="edit-text">Teach surveyors to calibrate their response to the level of distress they observe. Not every uncomfortable moment is a crisis , and not every crisis is loud.</p>
+    <p style="margin-bottom:14px;color:var(--muted);font-size:14px;" class="edit-text">Teach surveyors to calibrate their response to the level of distress they observe. Not every uncomfortable moment is a crisis, and not every crisis is loud.</p>
     <div class="ta-spectrum">
       <div class="ta-spec-row l1"><div class="ta-spec-level">Level 1<small>Discomfort (normal)</small></div><div class="ta-spec-body"><div class="sig edit-text">Shifts in seat, pauses, nervous laugh, "this is a strange question."</div><div class="act edit-text"><strong>Response:</strong> Acknowledge ("these are part of our standard form"), continue with empathy.</div></div></div>
       <div class="ta-spec-row l2"><div class="ta-spec-level">Level 2<small>Emotional distress</small></div><div class="ta-spec-body"><div class="sig edit-text">Voice cracks, eyes water, long silences, references to hardship.</div><div class="act edit-text"><strong>Response:</strong> Slow down; offer a pause ("Kya aap thoda rukna chahte hain?"); offer water; let them decide whether to continue.</div></div></div>
@@ -3276,7 +3360,7 @@ body.edit-mode-active .panel-body iframe {
       <div class="fr-process-steps">
         <div class="fr-process-step"><div class="fr-ps-num">1</div><div class="fr-ps-body"><strong class="edit-text">Pause</strong><p class="edit-text">Stop asking questions. Put down the tablet. Gentle eye contact.</p></div></div>
         <div class="fr-process-step"><div class="fr-ps-num">2</div><div class="fr-ps-body"><strong class="edit-text">Acknowledge</strong><p class="edit-text">"Main samajh sakta/sakti hoon ki ye baat karna mushkil hai." (I understand this is difficult.)</p></div></div>
-        <div class="fr-process-step"><div class="fr-ps-num">3</div><div class="fr-ps-body"><strong class="edit-text">Offer choice</strong><p class="edit-text">"Kya aap aage badhna chahte hain, ya hum ruk jayein? Aap chhod bhi sakte hain." (Continue, stop, or skip — your choice.)</p></div></div>
+        <div class="fr-process-step"><div class="fr-ps-num">3</div><div class="fr-ps-body"><strong class="edit-text">Offer choice</strong><p class="edit-text">"Kya aap aage badhna chahte hain, ya hum ruk jayein? Aap chhod bhi sakte hain." (Continue, stop, or skip, your choice.)</p></div></div>
         <div class="fr-process-step"><div class="fr-ps-num">4</div><div class="fr-ps-body"><strong class="edit-text">Wait</strong><p class="edit-text">Do not rush. Give 30 seconds. Silence is not the enemy.</p></div></div>
         <div class="fr-process-step"><div class="fr-ps-num">5</div><div class="fr-ps-body"><strong class="edit-text">Respond</strong><p class="edit-text">Continue slower if they wish; otherwise close the module supportively and move to a non-sensitive section.</p></div></div>
       </div>
@@ -3335,7 +3419,7 @@ body.edit-mode-active .panel-body iframe {
 <div class="section-padding">
 
   <div class="ta-lead">
-    <p class="big edit-text">Training ends with a decision, not a ceremony: is each person ready for the real sample? And then it doesn't really end — quality is sustained in the field through feedback until the team is genuinely stable. This module is the gates, the role-specific tracks, and the systems that carry training forward.</p>
+    <p class="big edit-text">Training ends with a decision, not a ceremony: is each person ready for the real sample? And then it doesn't really end, quality is sustained in the field through feedback until the team is genuinely stable. This module is the gates, the role-specific tracks, and the systems that carry training forward.</p>
   </div>
 
   <div class="fr-section-wrap">
@@ -3350,8 +3434,8 @@ body.edit-mode-active .panel-body iframe {
           <tr><td class="edit-text">3 · Supervisor gate</td><td class="edit-text">Supervisor components + simulated data review</td><td class="edit-text">Assigned a "buddy supervisor" for 3 days</td></tr>
         </tbody>
       </table>
-      <h3 class="fr-card-h3 edit-text" style="margin-top:18px;">The PDRA — Pre-Deployment Readiness Assessment</h3>
-      <p class="fr-guide-text edit-text">Administered around Day 3. Diagnostic, not punitive — its purpose is to find gaps in time to fix them.</p>
+      <h3 class="fr-card-h3 edit-text" style="margin-top:18px;">The PDRA, Pre-Deployment Readiness Assessment</h3>
+      <p class="fr-guide-text edit-text">Administered around Day 3. Diagnostic, not punitive, its purpose is to find gaps in time to fix them.</p>
       <table class="fr-inline-table">
         <thead><tr><th>Section</th><th>Pass Mark</th><th>Content</th></tr></thead>
         <tbody>
@@ -3374,7 +3458,7 @@ body.edit-mode-active .panel-body iframe {
     </div>
     <div id="role-surveyor" class="ta-role-pane active">
       <div class="fr-content-card">
-        <h3 class="fr-card-h3 edit-text">Surveyor — the Core Track</h3>
+        <h3 class="fr-card-h3 edit-text">Surveyor, the Core Track</h3>
         <p class="fr-guide-text edit-text">Every figure in the dataset passed through a surveyor first. Certify on the full PDRA + a scored pilot. Train and assess: standardised interviewing, neutral probing, consent &amp; ethics, tablet/SurveyCTO mastery, GPS &amp; sync, and accurate recording under time pressure.</p>
         <div class="ta-pill-row"><span class="ta-pill">Instrument mastery</span><span class="ta-pill">Neutral probing</span><span class="ta-pill">Consent &amp; ethics</span><span class="ta-pill">CAPI navigation</span><span class="ta-pill">GPS &amp; sync</span></div>
         <div class="fr-danger-box"><strong>The cost of a bad hire</strong><span class="edit-text">One surveyor fabricating two interviews a day across 30 days produces 60 fraudulent records before reconciliation. Training is your cheapest defence; detection is the second line.</span></div>
@@ -3382,33 +3466,33 @@ body.edit-mode-active .panel-body iframe {
     </div>
     <div id="role-supervisor" class="ta-role-pane">
       <div class="fr-content-card">
-        <h3 class="fr-card-h3 edit-text">Field Supervisor — Quality at the Point of Collection</h3>
-        <p class="fr-guide-text edit-text">Manages 4–6 surveyors; first line of quality control. Completes the surveyor track, then a supervisor add-on: route &amp; assignment planning, live accompaniments, enforcing replacement &amp; callback protocols, approving start/end-of-day checklists, running debriefs, and being first contact for any issue or adverse situation. Certify with a simulated data review.</p>
+        <h3 class="fr-card-h3 edit-text">Field Supervisor, Quality at the Point of Collection</h3>
+        <p class="fr-guide-text edit-text">Manages 4 to 6 surveyors; first line of quality control. Completes the surveyor track, then a supervisor add-on: route &amp; assignment planning, live accompaniments, enforcing replacement &amp; callback protocols, approving start/end-of-day checklists, running debriefs, and being first contact for any issue or adverse situation. Certify with a simulated data review.</p>
         <div class="ta-pill-row"><span class="ta-pill">Route planning</span><span class="ta-pill">Accompaniments</span><span class="ta-pill">Replacement protocols</span><span class="ta-pill">Daily debriefs</span><span class="ta-pill">Escalation &amp; safety</span></div>
         <div class="fr-tip-box"><strong>Train them to coach, not just catch</strong><span class="edit-text">A supervisor who only flags errors breeds fear and hidden mistakes. Train them to frame checks as standard procedure and learning.</span></div>
       </div>
     </div>
     <div id="role-monitor" class="ta-role-pane">
       <div class="fr-content-card">
-        <h3 class="fr-card-h3 edit-text">Field Monitor — Independent Verification</h3>
-        <p class="fr-guide-text edit-text">Provides verification independent of the team producing data — that independence is the value. Trained specifically on detection: back-check calls and re-visits on 5–10% of completed surveys, spot-checks to confirm a household was visited, recognising fabrication signatures, and confidential escalation. Does not instruct surveyors directly.</p>
+        <h3 class="fr-card-h3 edit-text">Field Monitor, Independent Verification</h3>
+        <p class="fr-guide-text edit-text">Provides verification independent of the team producing data, that independence is the value. Trained specifically on detection: back-check calls and re-visits on 5 to 10% of completed surveys, spot-checks to confirm a household was visited, recognising fabrication signatures, and confidential escalation. Does not instruct surveyors directly.</p>
         <div class="ta-pill-row"><span class="ta-pill">Back-checks</span><span class="ta-pill">Spot-checks</span><span class="ta-pill">Outlier recognition</span><span class="ta-pill">Confidential escalation</span></div>
-        <div class="fr-callout"><strong>Keep selection random</strong><span class="edit-text">Back-check targets should be random, not aimed at suspected fabricators — that preserves the surprise that makes detection work.</span></div>
+        <div class="fr-callout"><strong>Keep selection random</strong><span class="edit-text">Back-check targets should be random, not aimed at suspected fabricators, that preserves the surprise that makes detection work.</span></div>
       </div>
     </div>
   </div>
 
   <div class="fr-section-wrap">
     <div class="fr-section-title"><div class="fr-step-num">3</div>The Five-Layer Detection System</div>
-    <p style="margin-bottom:14px;color:var(--muted);font-size:14px;" class="edit-text">Every surveyor learns this in training — not as a threat, but so they know honest work is easy to verify and fabrication is almost impossible to hide.</p>
+    <p style="margin-bottom:14px;color:var(--muted);font-size:14px;" class="edit-text">Every surveyor learns this in training, not as a threat, but so they know honest work is easy to verify and fabrication is almost impossible to hide.</p>
     <div class="ta-detect"><div class="ln">L1</div><div><h4 class="edit-text">Duration Checks</h4><p class="edit-text">Interviews far shorter than the piloted median are flagged.</p><span class="rel">High for outliers</span></div></div>
     <div class="ta-detect"><div class="ln">L2</div><div><h4 class="edit-text">GPS Verification</h4><p class="edit-text">Interviews claimed in a village but with GPS at home/office are flagged.</p><span class="rel">High</span></div></div>
-    <div class="ta-detect"><div class="ln">L3</div><div><h4 class="edit-text">Back-Check Re-Interviews</h4><p class="edit-text">5–10% re-contacted; discrepancies trigger investigation.</p><span class="rel">Very high, done right</span></div></div>
+    <div class="ta-detect"><div class="ln">L3</div><div><h4 class="edit-text">Back-Check Re-Interviews</h4><p class="edit-text">5 to 10% re-contacted; discrepancies trigger investigation.</p><span class="rel">Very high, done right</span></div></div>
     <div class="ta-detect"><div class="ln">L4</div><div><h4 class="edit-text">Statistical Outliers</h4><p class="edit-text">Implausibly low variance or odd answer distributions flagged.</p><span class="rel">Medium-high</span></div></div>
     <div class="ta-detect"><div class="ln">L5</div><div><h4 class="edit-text">Accompaniment &amp; Spot-Check</h4><p class="edit-text">Live observation and brief unannounced household visits.</p><span class="rel">Definitive for the surveyor checked</span></div></div>
     <div class="fr-content-card" style="margin-top:14px;">
       <h3 class="fr-card-h3 edit-text">Train the Distinction: Honest Error vs. Fabrication</h3>
-      <p class="fr-guide-text edit-text">The most important cultural message: an honest error carries no personal consequence; concealing one does. "If you made a mistake today, tell your supervisor today — it costs you nothing. The alternative costs you everything."</p>
+      <p class="fr-guide-text edit-text">The most important cultural message: an honest error carries no personal consequence; concealing one does. "If you made a mistake today, tell your supervisor today, it costs you nothing. The alternative costs you everything."</p>
       <table class="fr-inline-table">
         <thead><tr><th>What happened</th><th>Consequence</th></tr></thead>
         <tbody>
@@ -3424,26 +3508,26 @@ body.edit-mode-active .panel-body iframe {
     <div class="fr-section-title"><div class="fr-step-num">4</div>Carrying Training Into the Field</div>
     <div class="fr-content-card">
       <h3 class="fr-card-h3 edit-text">The Daily Quality Tracker &amp; the 90% Rule</h3>
-      <p class="fr-guide-text edit-text">Training continues into data collection. From Day 1, score each team daily on five dimensions (each /20, total /100; RA approves the rubric before launch). Intensive daily feedback continues until a team scores 90%+ for three consecutive days, confirmed by the RA — only then does the cadence ease.</p>
+      <p class="fr-guide-text edit-text">Training continues into data collection. From Day 1, score each team daily on five dimensions (each /20, total /100; RA approves the rubric before launch). Intensive daily feedback continues until a team scores 90%+ for three consecutive days, confirmed by the RA, only then does the cadence ease.</p>
       <table class="fr-inline-table">
-        <thead><tr><th>Dimension (0–20)</th><th>Scoring guide</th></tr></thead>
+        <thead><tr><th>Dimension (0 to 20)</th><th>Scoring guide</th></tr></thead>
         <tbody>
           <tr><td class="edit-text">Consent compliance</td><td class="edit-text">20 = fully compliant; −4 per violation; below 12 = immediate retraining</td></tr>
-          <tr><td class="edit-text">Data completeness</td><td class="edit-text">20 = ≥98%; 16 = 95–97%; 12 = 90–94%</td></tr>
+          <tr><td class="edit-text">Data completeness</td><td class="edit-text">20 = ≥98%; 16 = 95 to 97%; 12 = 90 to 94%</td></tr>
           <tr><td class="edit-text">Duration compliance</td><td class="edit-text">20 = all in range; −2 per outlier; clustered short = fabrication risk</td></tr>
           <tr><td class="edit-text">Probing quality</td><td class="edit-text">From back-checks &amp; accompaniments; 12 = significant gaps</td></tr>
           <tr><td class="edit-text">Tracking compliance</td><td class="edit-text">20 = all protocols; wrong household = automatic 0</td></tr>
         </tbody>
       </table>
-      <div class="fr-tip-box"><strong>A persistent sub-90 score is a signal</strong><span class="edit-text">Investigate: is one surveyor dragging the team? Is the instrument ambiguous? Treat it as diagnosis, not a verdict — and feed what you learn back into the next round's training.</span></div>
+      <div class="fr-tip-box"><strong>A persistent sub-90 score is a signal</strong><span class="edit-text">Investigate: is one surveyor dragging the team? Is the instrument ambiguous? Treat it as diagnosis, not a verdict, and feed what you learn back into the next round's training.</span></div>
     </div>
   </div>
 
   <div class="fr-section-wrap">
     <div class="fr-section-title"><div class="fr-step-num">5</div>Master Training Compliance Checklist</div>
-    <p style="margin-bottom:14px;color:var(--muted);font-size:14px;" class="edit-text">The SC completes this after pilot day and before Field Day 1. In an audit, it demonstrates training standards were met. Tick items — the score updates live.</p>
+    <p style="margin-bottom:14px;color:var(--muted);font-size:14px;" class="edit-text">The SC completes this after pilot day and before Field Day 1. In an audit, it demonstrates training standards were met. Tick items, the score updates live.</p>
     <div style="background:var(--ink);color:#fff;border-radius:var(--radius);padding:14px 20px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
-      <span style="font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.6);">Compliance Score</span>
+      <span style="font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255.6);">Compliance Score</span>
       <span style="font-size:24px;font-weight:800;font-family:var(--mono);" id="compliance-score">0%</span>
     </div>
     <div class="fr-checklist-container" id="compliance-list">
@@ -3460,7 +3544,7 @@ body.edit-mode-active .panel-body iframe {
       <div class="fr-check-item" onclick="toggleCheck(this)"><div class="fr-check-box">✓</div><div class="fr-check-content"><strong class="edit-text">Onboarding sessions delivered</strong><span class="edit-text">Values, POSH, Child Protection, ethics &amp; roles covered with sign-off</span></div></div>
       <div class="fr-check-item" onclick="toggleCheck(this)"><div class="fr-check-box">✓</div><div class="fr-check-content"><strong class="edit-text">Quality tracker ready</strong><span class="edit-text">5-dimension rubric RA-approved; tracker set up for Day 1</span></div></div>
     </div>
-    <div class="fr-danger-box" style="margin-top:16px;"><strong>The Go / No-Go standard</strong><span class="edit-text">No launch should proceed if any component is incomplete. An undertrained team is worse than a delayed launch — and the SC has the authority and obligation to say so, in writing, if pressured to launch early.</span></div>
+    <div class="fr-danger-box" style="margin-top:16px;"><strong>The Go / No-Go standard</strong><span class="edit-text">No launch should proceed if any component is incomplete. An undertrained team is worse than a delayed launch, and the SC has the authority and obligation to say so, in writing, if pressured to launch early.</span></div>
   </div>
 
 </div>

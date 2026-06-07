@@ -276,19 +276,49 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 [contenteditable="true"]{outline:2px solid #2d7eb5!important;outline-offset:2px;border-radius:3px;background:rgba(45,126,181,0.04)!important;cursor:text!important;}
 
 </style>
+
+<style id="kb-canon-nav">
+/* ===== KB-CANON-NAV : identical sidebar on every page ===== */
+.page-layout{display:flex;align-items:flex-start;min-height:100vh;}
+.main-content-area{flex:1;min-width:0;overflow-x:hidden;}
+@media(min-width:769px){
+ aside.left-nav{width:212px!important;min-width:212px!important;max-width:212px!important;height:100vh!important;position:sticky!important;top:0!important;flex-shrink:0!important;flex-direction:column!important;display:flex!important;z-index:900;}
+}
+aside.left-nav{background:#141820;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid rgba(255,255,255,.06);box-shadow:2px 0 16px rgba(0,0,0,.10);}
+aside.left-nav .left-nav-brand{height:58px;min-height:58px;display:flex;align-items:center;padding:0 18px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;}
+aside.left-nav .left-nav-logo{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+aside.left-nav .left-nav-logo img{width:28px;height:auto;filter:brightness(0) invert(1);opacity:.92;display:block;}
+aside.left-nav .left-nav-logo-fallback{display:none;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0d9488,#22d3a8);align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#04221f;flex-shrink:0;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+aside.left-nav .left-nav-brand-text strong{display:block;font-size:12px;font-weight:800;color:#e9eef5;line-height:1.25;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+aside.left-nav .left-nav-brand-text span{font-size:9.5px;color:#64748b;text-transform:uppercase;letter-spacing:.9px;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+aside.left-nav .left-nav-section{font-family:'DM Mono',ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:#3a4759;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
+aside.left-nav .left-nav-items{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none;display:flex;flex-direction:column;}
+aside.left-nav .left-nav-items::-webkit-scrollbar{display:none;}
+aside.left-nav .left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#7b8aa0;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:7px;margin:1px 8px;transition:background .15s,color .15s;text-decoration:none;border-left:2px solid transparent;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+aside.left-nav .left-nav-item:hover{background:rgba(255,255,255,.05);color:#e9eef5;}
+aside.left-nav .left-nav-item.active{background:rgba(13,148,136,.18);color:#34e3c4;font-weight:700;border-left-color:#0d9488;}
+aside.left-nav .left-nav-divider{height:1px;background:rgba(255,255,255,.06);margin:8px 14px;flex-shrink:0;}
+aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:9.5px;color:#3a4759;line-height:1.7;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+@media(max-width:768px){
+ aside.left-nav{width:100%!important;min-width:0!important;max-width:none!important;height:auto!important;min-height:48px;position:relative!important;flex-direction:column;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}
+ aside.left-nav .left-nav-brand{height:48px;min-height:48px;}
+ aside.left-nav .left-nav-items{max-height:200px;}
+}
+</style>
+
 </head>
 <body class="">
-<div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode — click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
+<div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode, click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
 <div id="kb-toolbar" style="display: none; position: fixed; bottom: 24px; right: 24px; background: rgb(20, 24, 32); padding: 12px 20px; border-radius: 40px; box-shadow: rgba(0, 0, 0, 0.4) 0px 16px 36px; gap: 12px; align-items: center; z-index: 999999; border: 1px solid rgba(255, 255, 255, 0.08);">
   <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#1a6b8a;">Copy HTML</button>
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
-<div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0,.11);">
+<div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0.11);">
   <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">URL</label>
-  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
+  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#1a6b8a;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
-  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f7f6f3;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
+  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0.11);border-radius:8px;background:#f7f6f3;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
 
 <!-- ═══ EDIT MODE UI ═══ -->
@@ -320,11 +350,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <a class="left-nav-item" href="training-academy.html" target="_self">Training Academy</a>
     <a class="left-nav-item" href="onboarding-ra-pa.html" target="_self">On-boarding RA/PA</a>
     <a class="left-nav-item" href="onboarding-field-staff.html" target="_self">On-boarding Field Staff</a>
-    <div class="left-nav-divider"></div>
-    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_blank">Field Execution</a>
-    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" target="_blank">Resources &amp; Field Staff</a>
+    <a class="left-nav-item" href="foundational-surveying-guidelines.html" target="_self">Foundational Surveying Skills</a>
   </nav>
-  <div class="left-nav-footer">v1.0 · April 2025<br>J-PAL SA · Research Ops</div>
+  <div class="left-nav-footer">v1.0 · June 2026<br>J-PAL SA · Research Ops</div>
 </aside>
 
 <div class="main-content-area">
@@ -380,7 +408,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
       <div class="bc bc-pfo" onclick="window.open('pre-field-ops.html','_self')">
         <div class="card-num">·&nbsp;Pre-Field Ops</div>
         <h3>Planning &amp; Survey Design</h3>
-        <p class="bc-desc">Architectural groundwork: Begins 12–16 weeks before deployment. Translate research methodology into field-ready systems.</p>
+        <p class="bc-desc">Architectural groundwork: Begins 12 to 16 weeks before deployment. Translate research methodology into field-ready systems.</p>
         <ul class="llist">
           <li><a href="pre-field-ops.html#panel-planning" target="_self" onclick="event.stopPropagation()">Planning and Preparation (C1 Manual)</a></li>
           <li><a href="pre-field-ops.html#panel-ro" target="_self" onclick="event.stopPropagation()">Availing RO Support &amp; SLAs</a></li>
@@ -462,7 +490,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         </ul>
       </div>
 
-      <!-- 06 Resources — dark card -->
+      <!-- 06 Resources, dark card -->
       <div class="bc bc-life">
         <div class="card-num">· Resources</div>
         <div class="life-inner">
@@ -511,7 +539,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
         <div class="vid-meta">
           <div>
             <div class="vid-title">The Field Life</div>
-            <div class="vid-sub">Reality Check — Field Cam</div>
+            <div class="vid-sub">Reality Check, Field Cam</div>
           </div>
           <span class="vid-badge">Watch</span>
         </div>
@@ -593,7 +621,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 <section class="actions">
   <div class="actions-inner">
     <h2 autocomplete="off">Initiate RO Support</h2>
-    <p>Raise requests directly through the internal portal — no email chains required.</p>
+    <p>Raise requests directly through the internal portal, no email chains required.</p>
     <div class="action-row">
       <a href="https://jpalsouth.asia/Raise_HiringRequest_v2" target="_blank" class="act-btn">Hiring Request</a>
       <a href="https://jpalsouth.asia/ROS_RARM_MainInterface" target="_blank" class="act-btn">Training Request</a>

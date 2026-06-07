@@ -907,9 +907,39 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 }
 
 </style>
+
+<style id="kb-canon-nav">
+/* ===== KB-CANON-NAV : identical sidebar on every page ===== */
+.page-layout{display:flex;align-items:flex-start;min-height:100vh;}
+.main-content-area{flex:1;min-width:0;overflow-x:hidden;}
+@media(min-width:769px){
+ aside.left-nav{width:212px!important;min-width:212px!important;max-width:212px!important;height:100vh!important;position:sticky!important;top:0!important;flex-shrink:0!important;flex-direction:column!important;display:flex!important;z-index:900;}
+}
+aside.left-nav{background:#141820;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid rgba(255,255,255,.06);box-shadow:2px 0 16px rgba(0,0,0,.10);}
+aside.left-nav .left-nav-brand{height:58px;min-height:58px;display:flex;align-items:center;padding:0 18px;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;}
+aside.left-nav .left-nav-logo{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+aside.left-nav .left-nav-logo img{width:28px;height:auto;filter:brightness(0) invert(1);opacity:.92;display:block;}
+aside.left-nav .left-nav-logo-fallback{display:none;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0d9488,#22d3a8);align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#04221f;flex-shrink:0;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+aside.left-nav .left-nav-brand-text strong{display:block;font-size:12px;font-weight:800;color:#e9eef5;line-height:1.25;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+aside.left-nav .left-nav-brand-text span{font-size:9.5px;color:#64748b;text-transform:uppercase;letter-spacing:.9px;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+aside.left-nav .left-nav-section{font-family:'DM Mono',ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:#3a4759;padding:18px 18px 7px;white-space:nowrap;flex-shrink:0;}
+aside.left-nav .left-nav-items{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none;display:flex;flex-direction:column;}
+aside.left-nav .left-nav-items::-webkit-scrollbar{display:none;}
+aside.left-nav .left-nav-item{display:flex;align-items:center;padding:9px 18px;color:#7b8aa0;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:7px;margin:1px 8px;transition:background .15s,color .15s;text-decoration:none;border-left:2px solid transparent;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+aside.left-nav .left-nav-item:hover{background:rgba(255,255,255,.05);color:#e9eef5;}
+aside.left-nav .left-nav-item.active{background:rgba(13,148,136,.18);color:#34e3c4;font-weight:700;border-left-color:#0d9488;}
+aside.left-nav .left-nav-divider{height:1px;background:rgba(255,255,255,.06);margin:8px 14px;flex-shrink:0;}
+aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:9.5px;color:#3a4759;line-height:1.7;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
+@media(max-width:768px){
+ aside.left-nav{width:100%!important;min-width:0!important;max-width:none!important;height:auto!important;min-height:48px;position:relative!important;flex-direction:column;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}
+ aside.left-nav .left-nav-brand{height:48px;min-height:48px;}
+ aside.left-nav .left-nav-items{max-height:200px;}
+}
+</style>
+
 </head>
 <body class="">
-<div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode — click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
+<div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode, click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
 <div id="kb-toolbar" style="display: none; position: fixed; bottom: 24px; right: 24px; background: rgb(13, 17, 23); padding: 12px 20px; border-radius: 40px; box-shadow: rgba(0, 0, 0, 0.4) 0px 16px 36px; gap: 12px; align-items: center; z-index: 999999; border: 1px solid rgba(255, 255, 255, 0.08);">
   <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
   <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#1a6b8a;">Copy HTML</button>
@@ -917,9 +947,9 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 </div>
 <div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
   <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">Image URL or Google Drive link</label>
-  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
+  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#1a6b8a;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
-  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0,.11);border-radius:8px;background:#f7f6f3;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
+  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0.11);border-radius:8px;background:#f7f6f3;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
 
 
@@ -928,7 +958,8 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 <aside class="left-nav">
   <div class="left-nav-brand">
     <div class="left-nav-logo">
-      <img src="https://www.povertyactionlab.org/themes/custom/jpal/logo.svg" alt="J-PAL">
+      <img src="https://www.povertyactionlab.org/themes/custom/jpal/logo.svg" alt="J-PAL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="left-nav-logo-fallback">RO</div>
     </div>
     <div class="left-nav-brand-text">
       <strong>RO Knowledge Bank</strong>
@@ -937,17 +968,15 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
   </div>
   <span class="left-nav-section">Knowledge Library</span>
   <nav class="left-nav-items">
-    <a class="left-nav-item" href="hub-v2-notion.html">The Hub</a>
-    <a class="left-nav-item active" href="pre-field-ops.html">Pre-Field Ops</a>
-    <a class="left-nav-item" href="field-readiness.html">Field Readiness</a>
-    <a class="left-nav-item" href="training-academy.html">Training Academy</a>
-    <a class="left-nav-item" href="onboarding-ra-pa.html">On-boarding RA/PA</a>
-    <a class="left-nav-item" href="onboarding-field-staff.html">On-boarding Field Staff</a>
-    <div class="left-nav-divider"></div>
-    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/field-execution?authuser=0" target="_blank">Field Execution</a>
-    <a class="left-nav-item" href="https://sites.google.com/ifmr.ac.in/jpal-sa-ro/the-hub/resources-from-the-field-staff?authuser=0" target="_blank">Resources &amp; Field Staff</a>
+    <a class="left-nav-item" href="hub-v2-notion.html" target="_self">The Hub</a>
+    <a class="left-nav-item active" href="pre-field-ops.html" target="_self">Pre-Field Ops</a>
+    <a class="left-nav-item" href="field-readiness.html" target="_self">Field Readiness</a>
+    <a class="left-nav-item" href="training-academy.html" target="_self">Training Academy</a>
+    <a class="left-nav-item" href="onboarding-ra-pa.html" target="_self">On-boarding RA/PA</a>
+    <a class="left-nav-item" href="onboarding-field-staff.html" target="_self">On-boarding Field Staff</a>
+    <a class="left-nav-item" href="foundational-surveying-guidelines.html" target="_self">Foundational Surveying Skills</a>
   </nav>
-  <div class="left-nav-footer">v1.0 · April 2025<br>J-PAL SA · Research Ops</div>
+  <div class="left-nav-footer">v1.0 · June 2026<br>J-PAL SA · Research Ops</div>
 </aside>
 
 <div class="main-content-area">
@@ -998,15 +1027,15 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Pre-Field Ops</button>
+    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')" aria-selected="true">Pre-Field Ops</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-planning')" aria-selected="false">Survey Planning</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-ro')" aria-selected="false">Availing RO Support</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-mapping')" aria-selected="false">Mapping Households</button>
-    <button class="tab-btn active" onclick="switchTab(event,'panel-logistics')" aria-selected="true">Survey Logistics</button>
+    <button class="tab-btn" onclick="switchTab(event,'panel-logistics')" aria-selected="false">Survey Logistics</button>
   </nav>
 </div>
 
-<div id="panel-home" class="tab-panel">
+<div id="panel-home" class="tab-panel active">
 
 <div class="section-wrapper bg-white">
     <div class="section-container split-layout">
@@ -1366,7 +1395,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 "It is 7 PM. A team is stuck with no transport. They want to walk 3km to the main road in the dark to save time. Do you approve?"
             </div>
             <p><strong>Data is never worth a safety risk.</strong>&nbsp;<span style="background-color: rgb(255, 255, 255);">Field staff, at times, may take decisions that increases their risk exposure, just to hit targets. This is something that you need to fix, you need to setup expectations in a way that safety is never ever compromised. This can only happen once you start trusting people to take the right calls. You must explicitly empower them to stop work and abandon the target if they feel unsafe</span></p>
-            <h3 style="color:var(--brand-dark);font-size:18px;margin-top:30px;">Data Quality (HFCs) — Catch it early:</h3>
+            <h3 style="color:var(--brand-dark);font-size:18px;margin-top:30px;">Data Quality (HFCs), Catch it early:</h3>
             <ul style="padding:20px 20px 20px 40px;border-radius:12px;border:1px solid var(--border-soft);background:var(--bg-off-white);font-size:15px;">
                 <li style="margin-bottom:10px;"><strong>Duration:</strong>&nbsp;<span style="font-size: 16px; background-color: rgb(248, 250, 252);">Too short = skipping;&nbsp;</span><div style="font-size: 16px; background-color: rgb(248, 250, 252);">Too long = respondent fatigue.</div></li>
                 <li style="margin-bottom:10px;"><strong>GPS Variance:</strong>&nbsp;<span style="font-size: 16px; background-color: rgb(248, 250, 252);">are they at the right place?</span></li>
@@ -1421,10 +1450,10 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <div class="workstream-grid">
         <div class="ws-card"><div class="ws-icon">📋</div><div class="ws-name">Instrument finalization &amp; programming</div><div class="ws-phase">Phase 1</div></div>
         <div class="ws-card"><div class="ws-icon">📍</div><div class="ws-name">Sampling &amp; site information</div><div class="ws-phase">Phase 1</div></div>
-        <div class="ws-card"><div class="ws-icon">🤝</div><div class="ws-name">Permissions &amp; community connect</div><div class="ws-phase">Phase 1–2</div></div>
+        <div class="ws-card"><div class="ws-icon">🤝</div><div class="ws-name">Permissions &amp; community connect</div><div class="ws-phase">Phase 1 to 2</div></div>
         <div class="ws-card"><div class="ws-icon">👥</div><div class="ws-name">Hiring &amp; team structure</div><div class="ws-phase">Phase 2</div></div>
-        <div class="ws-card"><div class="ws-icon">🎓</div><div class="ws-name">Training &amp; field readiness&nbsp;</div><div class="ws-phase">Phase 2–3</div></div>
-        <div class="ws-card"><div class="ws-icon">🚗</div><div class="ws-name">Logistics &amp; infrastructure setup</div><div class="ws-phase">Phase 2–3</div></div>
+        <div class="ws-card"><div class="ws-icon">🎓</div><div class="ws-name">Training &amp; field readiness&nbsp;</div><div class="ws-phase">Phase 2 to 3</div></div>
+        <div class="ws-card"><div class="ws-icon">🚗</div><div class="ws-name">Logistics &amp; infrastructure setup</div><div class="ws-phase">Phase 2 to 3</div></div>
         <div class="ws-card"><div class="ws-icon">📊</div><div class="ws-name">Quality control and efficiency</div><div class="ws-phase">Phase 3</div></div>
     </div>
     <div class="info-card card-tip" style="margin-top:24px;">
@@ -1599,7 +1628,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <p>The second call builds the operational engine. By now, Phase 1 gates should be cleared: instrument bench-tested, site information dossiers complete. This call focuses on people, logistics, and infrastructure, the areas where the SC's past experience and ground-truth knowledge is indispensable.</p>
 
             <div class="agenda-block">
-                <h4><span class="time-badge">15 min</span> People Management — Hiring &amp; Team Structure</h4>
+                <h4><span class="time-badge">15 min</span> People Management, Hiring &amp; Team Structure</h4>
                 <p style="font-size:14px;">Review the staffing plan: total surveyors needed, supervisors, field monitors. Apply the buffer rule (invite 120% of needed staff). Discuss hiring channels, the SC shares tentative ideas around local channels and hiring strategies to bring in reliable candidates. Address the 90-day contract limit and 7-day cooling-off period.</p>
                 <div class="decision-grid">
                     <div class="decision-item"><h5>Decision Required</h5><p>Final team size with buffer. Has the hiring ticket been raised on the portal?</p></div>
@@ -1609,7 +1638,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
             <div class="agenda-block">
                 <h4><span class="time-badge">10 min</span> Training Design &amp; Schedule</h4>
-                <p style="font-size:14px;">Review the 14-day training architecture (or whatever the planned duration for the training is) : Days 1–4 (org induction, ethics, study context), Days 5–8 (instrument walkthrough), Days 9–10 (mock interviews), Days 11–12 (field practice in non-sample villages), Day 13 (false launch &amp; calibration), Day 14 (final assessment &amp; selection). Confirm training venue, facilitator assignments, and material readiness.</p>
+                <p style="font-size:14px;">Review the 14-day training architecture (or whatever the planned duration for the training is) : Days 1 to 4 (org induction, ethics, study context), Days 5 to 8 (instrument walkthrough), Days 9 to 10 (mock interviews), Days 11 to 12 (field practice in non-sample villages), Day 13 (false launch &amp; calibration), Day 14 (final assessment &amp; selection). Confirm training venue, facilitator assignments, and material readiness.</p>
             </div>
 
             <div class="agenda-block">
@@ -1656,12 +1685,12 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 
             <div class="agenda-block">
                 <h4><span class="time-badge">10 min</span> Daily &amp; Weekly Reporting Architecture</h4>
-                <p style="font-size:14px;">Establish the reporting cadence: Daily Productivity Report (PA → RA, SC, RO Team Lead), Weekly Deviation Report (comparing field logs vs. SurveyCTO data, Sat–Fri cycle, due Monday EOD), and the Surveying Skills Assessment Tool (5-dimension scoring: protocol compliance, consent adherence, data completeness, duration compliance, probing quality).</p>
+                <p style="font-size:14px;">Establish the reporting cadence: Daily Productivity Report (PA → RA, SC, RO Team Lead), Weekly Deviation Report (comparing field logs vs. SurveyCTO data, Sat to Fri cycle, due Monday EOD), and the Surveying Skills Assessment Tool (5-dimension scoring: protocol compliance, consent adherence, data completeness, duration compliance, probing quality).</p>
             </div>
 
             <div class="agenda-block">
                 <h4><span class="time-badge">10 min</span> Core Team Calls &amp; Feedback Sessions</h4>
-                <p style="font-size:14px;">Define feedback session attendance: Days 1–5 both SC and PA must be present. Days 6–12 PA continues daily, SC joins every 2–3 days. Continue until the team's Daily Quality Score reaches 90% for 3 consecutive days (RA approved). Evening feedback calls (30–45 min): productivity review (5 min), quality flags (10 min), instrument clarifications (10 min), team morale check (5 min), next-day planning (5 min).</p>
+                <p style="font-size:14px;">Define feedback session attendance: Days 1 to 5 both SC and PA must be present. Days 6 to 12 PA continues daily, SC joins every 2 to 3 days. Continue until the team's Daily Quality Score reaches 90% for 3 consecutive days (RA approved). Evening feedback calls (30 to 45 min): productivity review (5 min), quality flags (10 min), instrument clarifications (10 min), team morale check (5 min), next-day planning (5 min).</p>
             </div>
 
             <div class="agenda-block">
@@ -1727,7 +1756,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <div class="sim-progress-dot"></div>
             </div>
         </div>
-        <div class="sim-body" id="sim-body"><div class="sim-step active"><div class="sim-question">Your PI wants to launch the survey in 5 weeks. The instrument is 80% ready, IRB is not yet submitted, and no Survey Coordinator has been assigned. What do you recommend?</div><div class="sim-context">The typical planning runway requires 8–12 weeks minimum. Projects compressed below 6 weeks enter the danger zone.</div><div class="sim-options" id="sim-opts"><div class="sim-option" onclick="simSelect(0)" id="sim-opt-0"><h4>Push back with data</h4><p>Present the compressed timeline risks: 'Here is what we can deliver in 5 weeks, here is what we cannot, and here are the specific quality risks.'</p></div><div class="sim-option" onclick="simSelect(1)" id="sim-opt-1"><h4>Agree and rush</h4><p>Accept the timeline and try to compress all workstreams. The team will work harder to make it happen.</p></div></div><div class="sim-feedback" id="sim-fb"></div></div></div>
+        <div class="sim-body" id="sim-body"><div class="sim-step active"><div class="sim-question">Your PI wants to launch the survey in 5 weeks. The instrument is 80% ready, IRB is not yet submitted, and no Survey Coordinator has been assigned. What do you recommend?</div><div class="sim-context">The typical planning runway requires 8 to 12 weeks minimum. Projects compressed below 6 weeks enter the danger zone.</div><div class="sim-options" id="sim-opts"><div class="sim-option" onclick="simSelect(0)" id="sim-opt-0"><h4>Push back with data</h4><p>Present the compressed timeline risks: 'Here is what we can deliver in 5 weeks, here is what we cannot, and here are the specific quality risks.'</p></div><div class="sim-option" onclick="simSelect(1)" id="sim-opt-1"><h4>Agree and rush</h4><p>Accept the timeline and try to compress all workstreams. The team will work harder to make it happen.</p></div></div><div class="sim-feedback" id="sim-fb"></div></div></div>
         <div class="sim-footer">
             <button class="sim-btn sim-btn-secondary" id="sim-prev" onclick="simPrev()" style="visibility:hidden;">← Previous</button>
             <div class="sim-score" id="sim-score"></div>
@@ -1745,26 +1774,26 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     </div>
     <div class="phase-container">
         <div class="phase-tabs">
-            <button class="phase-tab-btn active" onclick="switchPhase(event,'phase1')">Phase 1: Foundation (Wk 1–4)</button>
-            <button class="phase-tab-btn" onclick="switchPhase(event,'phase2')">Phase 2: Assembly (Wk 5–8)</button>
-            <button class="phase-tab-btn" onclick="switchPhase(event,'phase3')">Phase 3: Launch Prep (Wk 9–12)</button>
+            <button class="phase-tab-btn active" onclick="switchPhase(event,'phase1')">Phase 1: Foundation (Wk 1 to 4)</button>
+            <button class="phase-tab-btn" onclick="switchPhase(event,'phase2')">Phase 2: Assembly (Wk 5 to 8)</button>
+            <button class="phase-tab-btn" onclick="switchPhase(event,'phase3')">Phase 3: Launch Prep (Wk 9 to 12)</button>
         </div>
         <div id="phase1" class="phase-content active">
-            <h3 style="color:var(--heading-green);">Phase 1: Foundation Setting (Weeks 1–4)</h3>
+            <h3 style="color:var(--heading-green);">Phase 1: Foundation Setting (Weeks 1 to 4)</h3>
             <p>This is the most intellectually demanding phase. The RA finalises the survey instrument, coordinates with the data team in setting up SurveyCTO servers, including skip logic, validation constraints, calculated fields, and GPS capture. Bench testing begins by Week 3. The SC builds site information dossiers work sites. Permissions outreach efforts begin, starting in Week 1</p>
             <div class="info-card card-warn"><strong>The Late-Night PI Request</strong>Your PI emails late at night: 'We need to add a new module on Mental Health.' You were planning to be in the field in a week's time, the latest changes are critical and would definitely need IRB approval. You will have to put your field plans on hold, potentially retain a few senior field staff at extra cost and let go other staff. Rehiring the staff again once approval is received will take time and resources, as field staff will be skeptical to join the project next time due to uncertainty of employment.&nbsp;<div>While you will have to navigate these challenges and address them taking into account various factors. The version control tracker you put in place and maintain should capture all the details with respect to changes made to the instrument, the status and details around amendment approval secured, along with the field and financial implications. The information will help assess the reasons for increased per-survey cost at the end of the project.</div></div>
             <p style="margin-top:16px;"><strong>Hard Gate:</strong>&nbsp;Details about data collection sites, route plans, terrain, travel arrangement (the cost to hire cabs, the time one can anticipate it will take to reach sites) and other logistical arrangements are complete for all sites and instrument is IRB approved, digitized and ready for field practice by end of Phase 1. No exceptions.</p>
         </div>
         <div id="phase2" class="phase-content">
-            <h3 style="color:var(--heading-green);">Phase 2: Operational Assembly (Weeks 5–8)</h3>
-            <p>Before a single line of code is written, the English instrument must be finalized and locked. Translation demands strict independence: a certified external translator performs the forward translation; an experienced PA or SC who has never seen the original performs the backward translation. Once translations are verified, SurveyCTO programming builds operational guardrails — hard constraints to prevent impossible answers.</p>
+            <h3 style="color:var(--heading-green);">Phase 2: Operational Assembly (Weeks 5 to 8)</h3>
+            <p>Before a single line of code is written, the English instrument must be finalized and locked. Translation demands strict independence: a certified external translator performs the forward translation; an experienced PA or SC who has never seen the original performs the backward translation. Once translations are verified, SurveyCTO programming builds operational guardrails, hard constraints to prevent impossible answers.</p>
             <p>Simultaneously, the hiring engine activates. SC raises the hiring ticket with full details. Screening calls assess dialect fluency, tech comfort, and prior field experience. The buffer rule applies: invite 120% of needed staff to training.</p>
-            <div class="info-card card-warn"><strong>The Translation Dilemma</strong>"The translation vendor needs 5 more days. Your PA speaks the language fluently. Do you let the PA translate to save the deadline? No. Never use internal staff for primary translations — it compromises scientific integrity."</div>
+            <div class="info-card card-warn"><strong>The Translation Dilemma</strong>"The translation vendor needs 5 more days. Your PA speaks the language fluently. Do you let the PA translate to save the deadline? No. Never use internal staff for primary translations, it compromises scientific integrity."</div>
             <p style="margin-top:16px;"><strong>Hard Gate:</strong> Team hired and training begun by mid-Phase 2.</p>
         </div>
         <div id="phase3" class="phase-content">
-            <h3 style="color:var(--heading-green);">Phase 3: Launch Preparation (Weeks 9–12)</h3>
-            <p>Execute field reconnaissance over 3–5 days to verify actual road conditions, transit times, and local accommodation costs. During this visit, physically verify 30–50 households to test sample viability and migration rates. Finalize all vendor contracts — written agreements covering daily rates, fuel, tolls, driver meals, and contingency terms.</p>
+            <h3 style="color:var(--heading-green);">Phase 3: Launch Preparation (Weeks 9 to 12)</h3>
+            <p>Execute field reconnaissance over 3 to 5 days to verify actual road conditions, transit times, and local accommodation costs. During this visit, physically verify 30 to 50 households to test sample viability and migration rates. Finalize all vendor contracts, written agreements covering daily rates, fuel, tolls, driver meals, and contingency terms.</p>
             <p>The 14-day intensive training begins. Tablet provisioning, field kits, consent forms, referral cards, ID cards, and authorization letters are printed and assembled. The logistics dry-run verifies every element under realistic conditions.</p>
             <div class="info-card card-tip"><strong>The Stress Test Rule</strong>"Do not pilot in convenient locations. Choose areas that represent average travel conditions. If your field team will rely on public buses, your pilot must use public buses. You must perfectly replicate the friction of actual fieldwork."</div>
             <p style="margin-top:16px;"><strong>Hard Gate:</strong> Go-Live readiness checklist signed off. No partial launches.</p>
@@ -1809,20 +1838,20 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
                 <thead><tr><th style="min-width:280px;">Activity</th><th style="text-align:center;">RA</th><th style="text-align:center;">PA</th><th style="text-align:center;">SC</th><th style="text-align:center;">Supvsr</th><th style="text-align:center;">Data Team</th></tr></thead>
                 <tbody>
                     <tr class="phase-row"><td colspan="6">Foundation &amp; Design (Call 1)</td></tr>
-                    <tr><td>Instrument content finalisation</td><td align="center"><span class="raci-badge a-badge">A</span><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge i-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center"><span class="raci-badge i-badge">I</span></td></tr>
-                    <tr><td>SurveyCTO programming &amp; bench testing</td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center">–</td><td align="center"><span class="raci-badge r-badge">R</span></td></tr>
-                    <tr><td>Sample frame &amp; randomisation</td><td align="center"><span class="raci-badge a-badge">A</span><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge i-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center"><span class="raci-badge c-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center">–</td><td align="center">–</td></tr>
-                    <tr><td>Site intelligence dossiers</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center">–</td></tr>
-                    <tr><td>Permission &amp; approvals</td><td align="center"><span class="raci-badge i-badge">R</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center">–</td></tr>
+                    <tr><td>Instrument content finalisation</td><td align="center"><span class="raci-badge a-badge">A</span><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge i-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center"><span class="raci-badge i-badge">I</span></td></tr>
+                    <tr><td>SurveyCTO programming &amp; bench testing</td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center">, </td><td align="center"><span class="raci-badge r-badge">R</span></td></tr>
+                    <tr><td>Sample frame &amp; randomisation</td><td align="center"><span class="raci-badge a-badge">A</span><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge i-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center"><span class="raci-badge c-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center">, </td><td align="center">, </td></tr>
+                    <tr><td>Site intelligence dossiers</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">R</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center">, </td></tr>
+                    <tr><td>Permission &amp; approvals</td><td align="center"><span class="raci-badge i-badge">R</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center">, </td></tr>
                     <tr class="phase-row"><td colspan="6">Operational Architecture (Call 2)</td></tr>
-                    <tr><td>Staffing plan &amp; hiring</td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span><i></i></span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center">–</td></tr>
-                    <tr><td>Training design &amp; delivery</td><td align="center"><span class="raci-badge c-badge">R</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center"><span class="raci-badge r-badge">C</span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center"><span class="raci-badge c-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td></tr>
-                    <tr><td>Transport, equipment</td><td align="center"><span class="raci-badge i-badge">R</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(107, 114, 128);">I</span><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;"></span></span></td><td align="center"><span class="raci-badge r-badge">C</span></td><td align="center"><span class="raci-badge c-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center">–</td></tr>
-                    <tr><td>Logistics dry-run</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">R</span></td><td align="center"><span class="raci-badge r-badge">A</span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center">–</td></tr>
+                    <tr><td>Staffing plan &amp; hiring</td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span><i></i></span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge c-badge">C</span></td><td align="center">, </td></tr>
+                    <tr><td>Training design &amp; delivery</td><td align="center"><span class="raci-badge c-badge">R</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center"><span class="raci-badge r-badge">C</span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center"><span class="raci-badge c-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td></tr>
+                    <tr><td>Transport, equipment</td><td align="center"><span class="raci-badge i-badge">R</span></td><td align="center"><span class="raci-badge a-badge"><span style="color: rgb(107, 114, 128);">I</span><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;"></span></span></td><td align="center"><span class="raci-badge r-badge">C</span></td><td align="center"><span class="raci-badge c-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center">, </td></tr>
+                    <tr><td>Logistics dry-run</td><td align="center"><span class="raci-badge i-badge">I</span></td><td align="center"><span class="raci-badge a-badge">R</span></td><td align="center"><span class="raci-badge r-badge">A</span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center">, </td></tr>
                     <tr class="phase-row"><td colspan="6">Launch Systems &amp; Quality (Call 3)</td></tr>
-                    <tr><td>HFC script &amp; back-check design</td><td align="center"><span class="raci-badge c-badge">R</span></td><td align="center"><span class="raci-badge a-badge">C</span></td><td align="center"><span class="raci-badge i-badge">C</span></td><td align="center">–</td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td></tr>
-                    <tr><td>Daily feedback &amp; reporting</td><td align="center"><span class="raci-badge i-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">A</span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center"><span class="raci-badge c-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td></tr>
-                    <tr><td>Go-live readiness sign-off</td><td align="center"><span class="raci-badge a-badge">R</span></td><td align="center"><span class="raci-badge r-badge">I</span></td><td align="center"><span class="raci-badge r-badge">I</span></td><td align="center"><span class="raci-badge i-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">–</span></span></td><td align="center">–</td></tr>
+                    <tr><td>HFC script &amp; back-check design</td><td align="center"><span class="raci-badge c-badge">R</span></td><td align="center"><span class="raci-badge a-badge">C</span></td><td align="center"><span class="raci-badge i-badge">C</span></td><td align="center">, </td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td></tr>
+                    <tr><td>Daily feedback &amp; reporting</td><td align="center"><span class="raci-badge i-badge">A</span></td><td align="center"><span class="raci-badge r-badge">R</span></td><td align="center"><span class="raci-badge r-badge">A</span></td><td align="center"><span class="raci-badge r-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center"><span class="raci-badge c-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td></tr>
+                    <tr><td>Go-live readiness sign-off</td><td align="center"><span class="raci-badge a-badge">R</span></td><td align="center"><span class="raci-badge r-badge">I</span></td><td align="center"><span class="raci-badge r-badge">I</span></td><td align="center"><span class="raci-badge i-badge"><span style="color: rgb(55, 65, 81); font-family: &quot;Open Sans&quot;, system-ui, sans-serif; font-size: 13px; font-weight: 400;">, </span></span></td><td align="center">, </td></tr>
                 </tbody>
             </table>
         </div>
@@ -1903,7 +1932,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
 <div class="ro-section-container ro-reverse">
     <div class="ro-text-block">
         <h2>Training Logistics &amp; Permissions</h2>
-        <p>Handling the heavy physical arrangements required to equip 5 –150 field staff during intensive training</p>
+        <p>Handling the heavy physical arrangements required to equip 5 to 150 field staff during intensive training</p>
         <div class="details-stack">
             <div class="detail-box"><h4>What RO Delivers</h4><ul><li>PAs and SCs can help securel training venues (hotels/halls) and negotiate any other arrangements needed at the venue.</li><li>Coordinates with the Research team on setting up the agenda, ensuring training meets the minimum must be an effective training program</li><li>Conducts core session on Organizational Policies, Research Ethics, Organizational values</li><li>Co-leads mock sessions along with RA and PA to ensure and confirm if the staff is well-equipped and trained (Strongly recommend Research Team to coordinate with RO, try and get Hansa Parmar (Team Lead (Research Operations)) to lead the overall training program in-person. The quality of training amplifies, and field staff are thoroughly equipped to perform well.</li></ul></div>
             <div class="detail-box box-prereq"><h4>Ticket Prerequisites</h4><ul><li>Confirmed training dates, locations, and finalized trainee headcount.</li><li>Finalized, proofread, and translated survey instrument ready for print.</li></ul></div>
@@ -1992,7 +2021,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <div class="comp-body">
                 <div class="comp-row"><span class="comp-label">Purpose</span><span class="comp-value">Create a complete spatial register of every dwelling in the village so that no household is missed.</span></div>
                 <div class="comp-row"><span class="comp-label">What you produce</span><span class="comp-value">A numbered settlement map showing every dwelling, lane, and landmark, plus a total dwelling count.</span></div>
-                <div class="comp-row"><span class="comp-label">Who &amp; How Long</span><span class="comp-value">A dedicated pair of surveyors physically traverse the settlement (0.5–2 days per site).</span></div>
+                <div class="comp-row"><span class="comp-label">Who &amp; How Long</span><span class="comp-value">A dedicated pair of surveyors physically traverse the settlement (0.5 to 2 days per site).</span></div>
                 <div class="comp-row"><span class="comp-label">The Analogy</span><span class="comp-value" style="font-style:italic;">Drawing the blueprint of the village or a building before you survey every household in the vilage/apartment.</span></div>
             </div>
         </div>
@@ -2001,7 +2030,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
             <div class="comp-body">
                 <div class="comp-row"><span class="comp-label">Purpose</span><span class="comp-value">Collect basic demographic and screening data from every listed household to build the sampling frame.</span></div>
                 <div class="comp-row"><span class="comp-label">What you produce</span><span class="comp-value">A dataset with one record per household: head of household name, size, and screening responses.</span></div>
-                <div class="comp-row"><span class="comp-label">Who &amp; How Long</span><span class="comp-value">Individual surveyors assigned to zones on the completed map (1–6 days depending on count).</span></div>
+                <div class="comp-row"><span class="comp-label">Who &amp; How Long</span><span class="comp-value">Individual surveyors assigned to zones on the completed map (1 to 6 days depending on count).</span></div>
                 <div class="comp-row"><span class="comp-label">The Analogy</span><span class="comp-value" style="font-style:italic;">Inspecting every household in the village/apartment in the village/building using the blueprint as your guide.</span></div>
             </div>
         </div>
@@ -2087,7 +2116,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
     <div class="protocol-grid">
         <div class="protocol-card"><h4>Rural Settings</h4><p style="font-size:14px;margin:0;">The Sarpanch's verbal endorsement is top-tier. If not possible, engage ward members. Follow up verbal endorsements with a WhatsApp message for documentation. Visit peripheral hamlet leaders separately.</p></div>
         <div class="protocol-card"><h4>Urban Slums</h4><p style="font-size:14px;margin:0;">Identify leaders through Anganwadi workers or Municipal offices. Address suspicion directly: explain this is a research project. Triangulate boundaries with 2-3 community members.</p></div>
-        <div class="protocol-card"><h4>Apartment Complexes</h4><p style="font-size:14px;margin:0;">Send a formal letter to the RWA President/Secretary 7–10 days prior. Follow up by phone after 3 days. Be prepared to present at the society meeting.</p></div>
+        <div class="protocol-card"><h4>Apartment Complexes</h4><p style="font-size:14px;margin:0;">Send a formal letter to the RWA President/Secretary 7 to 10 days prior. Follow up by phone after 3 days. Be prepared to present at the society meeting.</p></div>
         <div class="protocol-card"><h4>Sensitive Settings</h4><p style="font-size:14px;margin:0;">Seek introduction through a trusted intermediary (health worker, teacher, religious leader). Deploy a smaller mapping team. Accept that multiple visits may be needed before mapping can begin.</p></div>
     </div>
     <div class="map-checklist-wrapper" style="margin-top:50px;">
@@ -2151,7 +2180,7 @@ body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!imp
      PANEL 5: SURVEY LOGISTICS
      ===================================================== -->
 
-<div id="panel-logistics" class="tab-panel active">
+<div id="panel-logistics" class="tab-panel">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Survey Logistics</strong></div>
 
