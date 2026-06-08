@@ -284,53 +284,87 @@ a { text-decoration: none; color: inherit; }
 .pane-trap h4 { margin: 0 0 4px; color: #991b1b; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-family: var(--mono); }
 .pane-trap p  { margin: 0; font-size: 13px; color: #991b1b; line-height: 1.5; }
 
-/* ── Toolkit calculators ─────────────────────────────────────── */
-.toolkit-container { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 32px 0; }
+/* ── Toolkit calculators — enterprise redesign ───────────────── */
+.toolkit-container { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 36px 0; }
 .dashboard {
-  background: var(--surface); border-radius: var(--radius-lg);
-  overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border);
+  background: var(--surface); border-radius: 14px; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.06);
+  border: 1px solid var(--border-md);
   display: flex; flex-direction: column;
-  transition: box-shadow .25s var(--ease), transform .25s var(--ease);
+  transition: box-shadow .3s var(--ease), transform .3s var(--ease);
 }
-.dashboard:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
-.dash-header {
-  background: #1f2937; padding: 22px 26px; color: white;
-  border-bottom: 3px solid var(--green);
-}
-.dash-header.blue-theme { border-bottom-color: var(--blue); }
-.dash-header h2 { margin: 0; font-size: 18px; font-weight: 700; color: white; letter-spacing: -0.3px; }
-.dash-header p  { margin: 4px 0 0; font-size: 12px; color: #94a3b8; }
-.dash-body { display: flex; flex-direction: column; background: var(--off); flex-grow: 1; }
-.controls-panel { padding: 24px 26px; background: var(--surface); border-bottom: 1px solid var(--border); }
-.control-group { margin-bottom: 20px; }
+.dashboard:hover { box-shadow: 0 18px 44px rgba(26,107,138,0.12); transform: translateY(-3px); }
+.dash-header { background: linear-gradient(135deg,#1d2735 0%,#0f172a 100%); padding: 20px 24px; color: white; position: relative; }
+.dash-header::after { content:''; position:absolute; left:0; right:0; bottom:0; height:3px; background: var(--green); }
+.dash-header.blue-theme::after { background: var(--blue); }
+.dash-eyebrow { font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+.dash-eyebrow::before { content:''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(26,107,138,0.25); }
+.dash-header.blue-theme .dash-eyebrow::before { background: var(--blue); box-shadow: 0 0 0 3px rgba(45,126,181,0.25); }
+.dash-header h2 { margin: 0; font-size: 17px; font-weight: 800; color: white; letter-spacing: -0.3px; }
+.dash-header p  { margin: 5px 0 0; font-size: 12px; color: #94a3b8; line-height: 1.5; }
+.dash-body { display: flex; flex-direction: column; background: var(--surface); flex-grow: 1; }
+.controls-panel { padding: 22px 24px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.control-group { margin-bottom: 22px; }
 .control-group:last-child { margin-bottom: 0; }
-.control-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4px; flex-wrap: wrap; gap: 8px; }
-.control-label { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.5px; margin: 0; display: flex; align-items: center; gap: 8px; }
-.control-value { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--green); background: var(--green-dim); padding: 3px 10px; border-radius: 6px; }
-.blue-theme .control-value { color: var(--blue); background: rgba(14,165,233,0.1); }
-.benchmark-badge { background: #fefce8; color: #a16207; border: 1px solid #fde047; font-size: 9px; padding: 2px 6px; border-radius: 3px; display: none; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; font-family: var(--mono); }
-.benchmark-badge.active { display: inline-block; }
-.slider-wrapper { position: relative; padding-top: 10px; }
-.benchmark-marker { position: absolute; top: 0; transform: translateX(-50%); pointer-events: none; z-index: 10; }
-.benchmark-marker svg { width: 8px; height: 12px; fill: var(--red); }
-input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; margin: 0; }
-input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: var(--off2); border-radius: 6px; }
-input[type=range]::-webkit-slider-thumb { height: 20px; width: 20px; border-radius: 50%; background: var(--green); cursor: pointer; -webkit-appearance: none; margin-top: -7px; box-shadow: 0 2px 6px rgba(26,107,138,0.3); }
-.blue-theme input[type=range]::-webkit-slider-thumb { background: var(--blue); }
-.metrics-panel { padding: 24px 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.metric-card {
-  background: var(--surface); border-radius: 10px; padding: 16px;
-  border: 1px solid var(--border); border-left: 3px solid transparent;
+.control-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0; gap: 10px; }
+.control-label { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.6px; margin: 0; }
+.control-value { font-family: var(--mono); font-size: 13.5px; font-weight: 700; color: var(--green); background: var(--green-dim); padding: 3px 12px; border-radius: 100px; border: 1px solid rgba(26,107,138,0.18); min-width: 46px; text-align: center; }
+.blue-theme .control-value { color: var(--blue); background: rgba(45,126,181,0.10); border-color: rgba(45,126,181,0.20); }
+
+/* Slider track + benchmark stamp */
+.cg-slider { position: relative; padding-top: 42px; }
+.cg-flag {
+  position: absolute; top: 2px; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  font-family: var(--mono); font-size: 8.5px; font-weight: 700; letter-spacing: 0.7px; text-transform: uppercase;
+  color: var(--ink-mid); background: #fff;
+  border: 1px solid var(--border-md); border-radius: 7px;
+  padding: 4px 9px; box-shadow: 0 5px 14px rgba(15,23,42,0.12);
+  pointer-events: none; z-index: 8;
+  transition: left .4s var(--ease), color .25s, background .25s, border-color .25s;
 }
+.cg-flag-seal { color: var(--orange); font-size: 9px; line-height: 1; }
+.cg-flag-val { color: var(--green); background: var(--green-dim); padding: 1px 6px; border-radius: 4px; letter-spacing: 0.3px; }
+.blue-theme .cg-flag-val { color: var(--blue); background: rgba(45,126,181,0.10); }
+.cg-flag::after {
+  content: ''; position: absolute; top: 100%; left: 50%; width: 9px; height: 9px;
+  background: #fff; border-right: 1px solid var(--border-md); border-bottom: 1px solid var(--border-md);
+  transform: translate(-50%,-5px) rotate(45deg);
+}
+.cg-flag.on { color: var(--success); border-color: rgba(13,124,95,0.45); background: #ecfdf5; }
+.cg-flag.on .cg-flag-seal { color: var(--success); }
+.cg-flag.on .cg-flag-val { color: var(--success); background: rgba(13,124,95,0.12); }
+.cg-flag.on::after { background: #ecfdf5; border-color: rgba(13,124,95,0.45); }
+.cg-guide {
+  position: absolute; top: 28px; height: 13px; width: 2px; transform: translateX(-50%);
+  background: var(--border-md); border-radius: 2px; pointer-events: none; z-index: 4;
+  transition: left .4s var(--ease), background .25s;
+}
+.cg-guide.on { background: rgba(13,124,95,0.55); }
+
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; background: transparent; margin: 0; position: relative; z-index: 6; height: 20px; cursor: pointer; }
+input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: var(--off2); border-radius: 6px; border: 1px solid rgba(0,0,0,0.05); }
+input[type=range]::-moz-range-track { width: 100%; height: 6px; background: var(--off2); border-radius: 6px; border: 1px solid rgba(0,0,0,0.05); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; height: 18px; width: 18px; border-radius: 50%; background: #fff; border: 3px solid var(--green); margin-top: -7px; box-shadow: 0 2px 6px rgba(15,23,42,0.22); transition: transform .15s var(--ease), box-shadow .15s var(--ease); }
+input[type=range]::-moz-range-thumb { height: 16px; width: 16px; border-radius: 50%; background: #fff; border: 3px solid var(--green); box-shadow: 0 2px 6px rgba(15,23,42,0.22); }
+input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.12); }
+input[type=range]:active::-webkit-slider-thumb { box-shadow: 0 0 0 6px rgba(26,107,138,0.12), 0 2px 6px rgba(15,23,42,0.22); }
+.blue-theme input[type=range]::-webkit-slider-thumb { border-color: var(--blue); }
+.blue-theme input[type=range]::-moz-range-thumb { border-color: var(--blue); }
+.blue-theme input[type=range]:active::-webkit-slider-thumb { box-shadow: 0 0 0 6px rgba(45,126,181,0.12), 0 2px 6px rgba(15,23,42,0.22); }
+
+/* Metrics */
+.metrics-panel { padding: 22px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; background: var(--off); }
+.metric-card { background: var(--surface); border-radius: 11px; padding: 16px 16px 14px; border: 1px solid var(--border); border-top: 3px solid transparent; position: relative; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
 .metric-card.full-width { grid-column: span 2; }
-.m-title   { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-.m-value   { font-family: var(--mono); font-size: 32px; font-weight: 700; color: var(--ink); margin: 6px 0 2px; line-height: 1; }
-.m-subtext { font-size: 11px; color: #94a3b8; font-weight: 500; }
-.mc-green  { border-left-color: var(--green);  } .mc-green  .m-value { color: var(--green);  }
-.mc-orange { border-left-color: var(--orange); } .mc-orange .m-value { color: var(--orange); }
-.mc-red    { border-left-color: var(--red);    } .mc-red    .m-value { color: var(--red);    }
-.mc-blue   { border-left-color: var(--blue);   } .mc-blue   .m-value { color: var(--blue);   }
-.mc-slate  { border-left-color: var(--ink);    } .mc-slate  .m-value { color: var(--ink);    }
+.m-title   { font-family: var(--mono); font-size: 9.5px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.7px; }
+.m-value   { font-family: var(--mono); font-size: 30px; font-weight: 700; color: var(--ink); margin: 7px 0 3px; line-height: 1; letter-spacing: -0.5px; }
+.m-subtext { font-size: 10.5px; color: #94a3b8; font-weight: 500; line-height: 1.4; }
+.mc-green  { border-top-color: var(--green);  } .mc-green  .m-value { color: var(--green);  }
+.mc-orange { border-top-color: var(--orange); } .mc-orange .m-value { color: var(--orange); }
+.mc-red    { border-top-color: var(--red);    } .mc-red    .m-value { color: var(--red);    }
+.mc-blue   { border-top-color: var(--blue);   } .mc-blue   .m-value { color: var(--blue);   }
+.mc-slate  { border-top-color: var(--ink);    } .mc-slate  .m-value { color: var(--ink);    }
 .warning-box { grid-column: span 2; background: #fdfbf7; border: 1px solid #e8e0d4; border-left: 3px solid var(--orange); padding: 12px 16px; border-radius: 8px; font-size: 12px; color: #9a3412; font-weight: 600; display: none; }
 
 /* ── VS board ────────────────────────────────────────────────── */
@@ -1185,6 +1219,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
         <div class="toolkit-container">
             <div class="dashboard">
                 <div class="dash-header">
+                    <div class="dash-eyebrow">Interactive Calculator</div>
                     <h2>Recruitment Funnel Calculator</h2>
                     <p>Determine exact screening targets to survive field attrition.</p>
                 </div>
@@ -1192,52 +1227,73 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                     <div class="controls-panel">
                         <div class="control-group">
                             <div class="control-header"><p class="control-label">Target Active Field Staff</p><span class="control-value" id="val-target-staff">20</span></div>
-                            <div class="slider-wrapper"><input type="range" id="in-target-staff" min="5" max="100" step="1" value="20" oninput="calcFunnel()"></div>
+                            <div class="cg-slider" style="padding-top:8px;"><input type="range" id="in-target-staff" min="5" max="100" step="1" value="20" oninput="onTargetChange()"></div>
                         </div>
                         <div class="control-group">
-                            <div class="control-header"><p class="control-label">Expected Training Drop-Out <span class="benchmark-badge active" id="badge-train">★ Benchmark (25-30%)</span></p><span class="control-value" id="val-train-drop">25%</span></div>
-                            <div class="slider-wrapper" autocomplete="off"><div class="benchmark-marker" id="marker-train" style="left:50%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-train-drop" min="0" max="50" step="1" value="25" oninput="calcFunnel()"></div>
+                            <div class="control-header"><p class="control-label">Expected Training Drop-Out</p><span class="control-value" id="val-train-drop">10%</span></div>
+                            <div class="cg-slider">
+                                <div class="cg-flag" id="flag-train" style="left:20%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val" id="flagval-train">10%</span></div>
+                                <div class="cg-guide" id="guide-train" style="left:20%;"></div>
+                                <input type="range" id="in-train-drop" min="0" max="50" step="1" value="10" oninput="calcFunnel()">
+                            </div>
                         </div>
                         <div class="control-group" style="margin-bottom:0;">
-                            <div class="control-header"><p class="control-label">Expected Field Attrition <span class="benchmark-badge active" id="badge-field">★ Benchmark (7%)</span></p><span class="control-value" id="val-field-drop">7%</span></div>
-                            <div class="slider-wrapper"><div class="benchmark-marker" id="marker-field" style="left:14%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-field-drop" min="0" max="50" step="1" value="7" oninput="calcFunnel()"></div>
+                            <div class="control-header"><p class="control-label">Expected Field Attrition</p><span class="control-value" id="val-field-drop">7%</span></div>
+                            <div class="cg-slider">
+                                <div class="cg-flag" id="flag-field" style="left:14%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val">7%</span></div>
+                                <div class="cg-guide" id="guide-field" style="left:14%;"></div>
+                                <input type="range" id="in-field-drop" min="0" max="50" step="1" value="7" oninput="calcFunnel()">
+                            </div>
                         </div>
                     </div>
                     <div class="metrics-panel">
-                        <div class="metric-card full-width mc-slate"><span class="m-title">Total Candidates to Screen</span><div class="m-value" id="out-screen">75</div><span class="m-subtext">Assuming a standard 35-40% pass rate during interviews</span></div>
-                        <div class="metric-card mc-orange"><span class="m-title">Invite to Training</span><div class="m-value" id="out-train">30</div><span class="m-subtext">To absorb training drop-outs</span></div>
+                        <div class="metric-card full-width mc-slate"><span class="m-title">Total Candidates to Screen</span><div class="m-value" id="out-screen">63</div><span class="m-subtext">Assuming a standard 35-40% pass rate during interviews</span></div>
+                        <div class="metric-card mc-orange"><span class="m-title">Invite to Training</span><div class="m-value" id="out-train">25</div><span class="m-subtext">To absorb training drop-outs</span></div>
                         <div class="metric-card mc-green"><span class="m-title">Deploy to Field</span><div class="m-value" id="out-deploy">22</div><span class="m-subtext">To absorb early field attrition</span></div>
                     </div>
                 </div>
             </div>
             <div class="dashboard blue-theme">
                 <div class="dash-header blue-theme">
+                    <div class="dash-eyebrow">Interactive Calculator</div>
                     <h2>True Capacity Calculator</h2>
                     <p>Calculate realistic daily output per surveyor based on field friction.</p>
                 </div>
                 <div class="dash-body">
                     <div class="controls-panel">
                         <div class="control-group">
-                            <div class="control-header"><p class="control-label">Total Shift Duration <span class="benchmark-badge active" id="badge-shift">★ J-PAL Benchmark (10 hrs)</span></p><span class="control-value" id="val-shift">10 hrs</span></div>
-                            <div class="slider-wrapper"><div class="benchmark-marker" id="marker-shift" style="left:50%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-shift" min="6" max="14" step="0.5" value="10" oninput="calcCapacity()"></div>
+                            <div class="control-header"><p class="control-label">Total Shift Duration</p><span class="control-value" id="val-shift">10 hrs</span></div>
+                            <div class="cg-slider">
+                                <div class="cg-flag" id="flag-shift" style="left:50%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val">10 hrs</span></div>
+                                <div class="cg-guide" id="guide-shift" style="left:50%;"></div>
+                                <input type="range" id="in-shift" min="6" max="14" step="0.5" value="10" oninput="calcCapacity()">
+                            </div>
                         </div>
                         <div class="control-group">
-                            <div class="control-header"><p class="control-label">Total 2-Way Travel Time <span class="benchmark-badge active" id="badge-travel">★ J-PAL Benchmark</span></p><span class="control-value" id="val-travel">2 hrs (~50km one-way)</span></div>
-                            <div class="slider-wrapper"><div class="benchmark-marker" id="marker-travel" style="left:33.3%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-travel" min="0" max="6" step="0.5" value="2" oninput="calcCapacity()"></div>
+                            <div class="control-header"><p class="control-label">Total 2-Way Travel Time</p><span class="control-value" id="val-travel">2 hrs (~50km one-way)</span></div>
+                            <div class="cg-slider">
+                                <div class="cg-flag" id="flag-travel" style="left:33.3%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val">2 hrs</span></div>
+                                <div class="cg-guide" id="guide-travel" style="left:33.3%;"></div>
+                                <input type="range" id="in-travel" min="0" max="6" step="0.5" value="2" oninput="calcCapacity()">
+                            </div>
                         </div>
                         <div class="control-group">
-                            <div class="control-header"><p class="control-label">Lunch, Syncs &amp; Breaks <span class="benchmark-badge active" id="badge-breaks">★ J-PAL Benchmark</span></p><span class="control-value" id="val-breaks">45 mins</span></div>
-                            <div class="slider-wrapper"><div class="benchmark-marker" id="marker-breaks" style="left:25%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-breaks" min="0" max="3" step="0.25" value="0.75" oninput="calcCapacity()"></div>
+                            <div class="control-header"><p class="control-label">Lunch, Syncs &amp; Breaks</p><span class="control-value" id="val-breaks">45 mins</span></div>
+                            <div class="cg-slider">
+                                <div class="cg-flag" id="flag-breaks" style="left:25%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val">45 min</span></div>
+                                <div class="cg-guide" id="guide-breaks" style="left:25%;"></div>
+                                <input type="range" id="in-breaks" min="0" max="3" step="0.25" value="0.75" oninput="calcCapacity()">
+                            </div>
                         </div>
                         <div class="control-group" style="margin-bottom:0;">
                             <div class="control-header"><p class="control-label">Avg. Survey + Transit Time</p><span class="control-value" id="val-survey-time">60 mins</span></div>
-                            <div class="slider-wrapper"><input type="range" id="in-survey-time" min="15" max="120" step="5" value="60" oninput="calcCapacity()"></div>
+                            <div class="cg-slider" style="padding-top:8px;"><input type="range" id="in-survey-time" min="15" max="120" step="5" value="60" oninput="calcCapacity()"></div>
                         </div>
                     </div>
                     <div class="metrics-panel">
-                        <div class="metric-card mc-blue"><span class="m-title">Usable Field Time</span><div class="m-value" id="out-usable">6.25 <span style="font-size:16px;">hrs</span></div><span class="m-subtext">Actual time spent surveying</span></div>
-                        <div class="metric-card mc-green" id="card-capacity"><span class="m-title">Max Surveys / Day</span><div class="m-value" id="out-max">6</div><span class="m-subtext">Per surveyor</span></div>
-                        <div class="warning-box" id="time-warning" style="display: none;">⚠️ Warning: Travel and break times exceed total shift duration. Your surveyors have no time to collect data!</div>
+                        <div class="metric-card mc-blue"><span class="m-title">Usable Field Time</span><div class="m-value" id="out-usable">7.25 <span style="font-size:16px;">hrs</span></div><span class="m-subtext">Actual time spent surveying</span></div>
+                        <div class="metric-card mc-green" id="card-capacity"><span class="m-title">Max Surveys / Day</span><div class="m-value" id="out-max">7</div><span class="m-subtext">Per surveyor</span></div>
+                        <div class="warning-box" id="time-warning" style="display: none;">&#9888;&#65039; Warning: Travel and break times exceed total shift duration. Your surveyors have no time to collect data!</div>
                     </div>
                 </div>
             </div>
@@ -2636,6 +2692,27 @@ function simReset() {
 // Initialize simulation on load
 if (document.getElementById('sim-body')) renderSimStep();
 
+// ---- BENCHMARK HELPERS ----
+function placeFlag(flagId, guideId, pct, on) {
+    const f = document.getElementById(flagId);
+    const g = document.getElementById(guideId);
+    if (f) { f.style.left = pct + '%'; f.classList.toggle('on', !!on); }
+    if (g) { g.style.left = pct + '%'; g.classList.toggle('on', !!on); }
+}
+// J-PAL SA training drop-out benchmark — scales with the size of the team
+function trainBenchmark(target) {
+    if (target < 30)       return { text:'10%',    lo:10, hi:10, snap:10 };
+    else if (target <= 50) return { text:'10-15%', lo:10, hi:15, snap:12 };
+    else if (target <= 75) return { text:'15-20%', lo:15, hi:20, snap:17 };
+    else                   return { text:'20-25%', lo:20, hi:25, snap:22 };
+}
+// When the team-size target changes, snap the drop-out scroller onto the benchmark
+function onTargetChange() {
+    const target = parseInt(document.getElementById('in-target-staff').value);
+    document.getElementById('in-train-drop').value = trainBenchmark(target).snap;
+    calcFunnel();
+}
+
 // ---- RECRUITMENT FUNNEL CALCULATOR ----
 function calcFunnel() {
     const target    = parseInt(document.getElementById('in-target-staff').value);
@@ -2645,23 +2722,12 @@ function calcFunnel() {
     document.getElementById('val-train-drop').innerText   = trainDrop + '%';
     document.getElementById('val-field-drop').innerText   = fieldDrop + '%';
 
-    // Dynamic J-PAL training drop-out benchmark — scales with the size of the team
-    let bm;
-    if (target < 30)       bm = { text:'10%',    lo:10, hi:10,   mid:10   };
-    else if (target <= 50) bm = { text:'10-15%', lo:10, hi:15,   mid:12.5 };
-    else if (target <= 75) bm = { text:'15-20%', lo:15, hi:20,   mid:17.5 };
-    else                   bm = { text:'20-25%', lo:20, hi:25,   mid:22.5 };
-
-    // Move the benchmark arrow along the slider track (range 0-50 => percent = value * 2)
-    const markerTrain = document.getElementById('marker-train');
-    if (markerTrain) markerTrain.style.left = (bm.mid * 2) + '%';
-
-    const badgeTrain = document.getElementById('badge-train');
-    const inRange = trainDrop >= bm.lo && trainDrop <= bm.hi;
-    badgeTrain.classList.toggle('active', inRange);
-    badgeTrain.innerText = '\u2605 Benchmark (' + bm.text + ')';
-
-    document.getElementById('badge-field').classList.toggle('active', fieldDrop === 7);
+    // Training drop-out benchmark stamp (slider range 0-50 => percent = value * 2)
+    const bm = trainBenchmark(target);
+    document.getElementById('flagval-train').innerText = bm.text;
+    placeFlag('flag-train', 'guide-train', bm.snap * 2, trainDrop >= bm.lo && trainDrop <= bm.hi);
+    // Field attrition benchmark = 7% (static)
+    placeFlag('flag-field', 'guide-field', 7 * 2, fieldDrop === 7);
 
     let deploy = Math.ceil(target / (1 - (fieldDrop / 100)));
     let train  = Math.ceil(deploy / (1 - (trainDrop / 100)));
@@ -2682,19 +2748,11 @@ function calcCapacity() {
     document.getElementById('val-breaks').innerText      = Math.round(breaks*60) + ' mins';
     document.getElementById('val-survey-time').innerText = surveyMins + ' mins';
 
-    // J-PAL benchmarks — arrows positioned dynamically on each slider track
-    // shift slider 6-14 hrs, travel 0-6 hrs, breaks 0-3 hrs
+    // J-PAL SA benchmark stamps — positioned dynamically on each slider track
     const BM_SHIFT = 10, BM_TRAVEL = 2, BM_BREAKS = 0.75;
-    const mShift = document.getElementById('marker-shift');
-    const mTravel = document.getElementById('marker-travel');
-    const mBreaks = document.getElementById('marker-breaks');
-    if (mShift)  mShift.style.left  = ((BM_SHIFT  - 6) / (14 - 6) * 100) + '%';
-    if (mTravel) mTravel.style.left = ((BM_TRAVEL - 0) / (6  - 0) * 100) + '%';
-    if (mBreaks) mBreaks.style.left = ((BM_BREAKS - 0) / (3  - 0) * 100) + '%';
-
-    document.getElementById('badge-shift').classList.toggle('active',  shift  === BM_SHIFT);
-    document.getElementById('badge-travel').classList.toggle('active', travel === BM_TRAVEL);
-    document.getElementById('badge-breaks').classList.toggle('active', breaks === BM_BREAKS);
+    placeFlag('flag-shift',  'guide-shift',  (BM_SHIFT  - 6) / (14 - 6) * 100, shift  === BM_SHIFT);
+    placeFlag('flag-travel', 'guide-travel', (BM_TRAVEL - 0) / (6  - 0) * 100, travel === BM_TRAVEL);
+    placeFlag('flag-breaks', 'guide-breaks', (BM_BREAKS - 0) / (3  - 0) * 100, breaks === BM_BREAKS);
 
     const usable  = shift - travel - breaks;
     const warnBox = document.getElementById('time-warning');
@@ -2712,8 +2770,8 @@ function calcCapacity() {
     }
 }
 
-// Initialize calculators on load
-calcFunnel();
+// Initialize calculators on load (snap scrollers onto the benchmarks)
+onTargetChange();
 calcCapacity();
 
 </script>
