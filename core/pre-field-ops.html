@@ -712,72 +712,66 @@ input[type=range]::-webkit-slider-thumb { height: 20px; width: 20px; border-radi
   }
 
 
-/* ── Hero podcast card (right side of hero) ─────────────────── */
+/* ── Hero podcast card (right side of hero) — hub-aligned, compact ─ */
 .hero-podcast-side { flex: 0.85; }
 .podcast-card {
-  background: #1f2937;
-  border-radius: 16px; overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: 0 24px 48px rgba(0,0,0,0.14);
-  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  --pod-accent:#4a90c2;
+  --pod-glow:rgba(74,144,194,0.20);
+  background:#0f1726;
+  border-radius:16px; overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 24px 48px rgba(0,0,0,0.18);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
 }
-.podcast-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 32px 56px rgba(0,0,0,0.2);
-}
+.podcast-card:hover { transform:translateY(-4px); box-shadow:0 32px 56px rgba(0,0,0,0.24); }
 .podcast-top {
-  position: relative; height: 140px; overflow: hidden;
-  background: linear-gradient(135deg, #0a1826 0%, #141820 100%);
-  display: flex; align-items: center; justify-content: flex-start;
-  padding: 0 24px; gap: 18px;
+  position:relative; padding:20px 22px 15px;
+  background:linear-gradient(150deg,#0f172a 0%,#141c2b 100%);
+  overflow:hidden;
 }
 .podcast-top::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 80% at 80% 50%, rgba(26,107,138,0.18) 0%, transparent 70%);
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 75% 80% at 88% 28%, var(--pod-glow) 0%, transparent 70%);
+  pointer-events:none; transition:background .4s var(--ease);
 }
-.podcast-play {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: var(--green); border: 2px solid rgba(255,255,255,0.1);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: white; flex-shrink: 0;
-  position: relative; z-index: 1;
-  box-shadow: 0 0 0 8px rgba(26,107,138,0.15);
+.podcast-top::after {
+  content:''; position:absolute; inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:26px 26px; pointer-events:none;
 }
-.podcast-top-text { position: relative; z-index: 1; }
+.podcast-head { position:relative; z-index:1; display:flex; align-items:flex-start; gap:13px; }
+.podcast-mic {
+  width:40px; height:40px; border-radius:11px; flex-shrink:0;
+  background:linear-gradient(135deg, var(--pod-accent), rgba(255,255,255,0.04));
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; border:1px solid rgba(255,255,255,0.16);
+  box-shadow:0 0 0 6px var(--pod-glow); transition:all .4s var(--ease);
+}
+.podcast-mic svg { width:19px; height:19px; }
+.podcast-top-text { position:relative; z-index:1; min-width:0; }
 .podcast-tag {
-  font-family: var(--mono); font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1.8px; color: #93c5e4;
-  background: rgba(147,197,228,0.1); border: 1px solid rgba(147,197,228,0.2);
-  padding: 3px 10px; border-radius: 4px; display: inline-block; margin-bottom: 8px;
+  font-family:var(--mono); font-size:9.5px; font-weight:700;
+  text-transform:uppercase; letter-spacing:1.6px; color:var(--pod-accent);
+  display:inline-block; margin-bottom:7px; transition:color .4s var(--ease);
 }
-.podcast-title {
-  font-size: 18px; font-weight: 700; color: #e2e8f0;
-  letter-spacing: -0.4px; line-height: 1.25;
-}
-.podcast-desc {
-  font-size: 12px; color: #64748b; margin-top: 4px;
-}
-.podcast-player {
-  padding: 0;
-  background: #060910;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-.podcast-player iframe {
-  width: 100%; height: 80px; border: 0; display: block;
-}
-.podcast-footer {
-  padding: 14px 20px;
-  background: rgba(0,0,0,0.3);
-  display: flex; align-items: center; justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-.podcast-footer-label { font-size: 11.5px; color: #64748b; font-family: var(--mono); }
-.podcast-footer-badge {
-  font-size: 10px; font-weight: 700; color: #93c5e4;
-  background: rgba(147,197,228,0.1); padding: 3px 8px;
-  border-radius: 3px; font-family: var(--mono);
-  text-transform: uppercase; letter-spacing: 0.8px;
-}
+.podcast-title { font-size:16.5px; font-weight:800; color:#eef2f7; letter-spacing:-0.4px; line-height:1.22; }
+.podcast-desc { font-size:11.5px; color:#8595ab; margin-top:5px; line-height:1.5; }
+/* dancing bars — smaller version of the hub waveform */
+.pod-wave { position:relative; z-index:1; display:flex; align-items:flex-end; gap:2.5px; height:22px; margin-top:14px; }
+.pod-wave span { flex:1; background:var(--pod-accent); opacity:.55; border-radius:2px; height:30%; animation:podwave 1.2s ease-in-out infinite; transition:background .4s var(--ease); }
+@keyframes podwave { 0%,100%{height:16%} 50%{height:100%} }
+.pod-wave span:nth-child(4n+1){animation-delay:-.2s}
+.pod-wave span:nth-child(4n+2){animation-delay:-.5s}
+.pod-wave span:nth-child(4n+3){animation-delay:-.9s}
+.pod-wave span:nth-child(4n+4){animation-delay:-1.1s}
+.pod-wave span:nth-child(3n){animation-duration:1.6s}
+.pod-wave span:nth-child(5n){animation-duration:.9s}
+.pod-wave span:nth-child(7n){animation-duration:1.35s}
+.podcast-player { padding:0; background:#070b13; border-top:1px solid rgba(255,255,255,0.06); }
+.podcast-player iframe { width:100%; height:74px; border:0; display:block; }
+.podcast-footer { padding:11px 18px; background:rgba(0,0,0,0.28); display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.05); }
+.podcast-footer-label { font-size:10.5px; color:#64748b; font-family:var(--mono); }
+.podcast-footer-badge { font-size:9.5px; font-weight:700; color:var(--pod-accent); background:var(--pod-glow); padding:3px 9px; border-radius:100px; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.8px; transition:all .4s var(--ease); }
 @media (max-width: 780px) {
   .hero-inner { flex-direction: column; }
   .hero-podcast-side { width: 100%; }
@@ -1004,17 +998,24 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
             </div>
         </div>
                 <div class="hero-podcast-side">
-            <div class="podcast-card">
+            <div class="podcast-card" id="podcast-card">
                 <div class="podcast-top">
-                    <div class="podcast-play">▶</div>
-                    <div class="podcast-top-text">
-                        <div class="podcast-tag">Field Ops Podcast</div>
-                        <div class="podcast-title edit-text" id="podcast-title">Survey Logistics &amp; Budgeting</div>
-                        <div class="podcast-desc edit-text" id="podcast-desc">DA matrices, vendor contracts &amp; travel norms</div>
+                    <div class="podcast-head">
+                        <div class="podcast-mic">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                        </div>
+                        <div class="podcast-top-text">
+                            <div class="podcast-tag">Field Ops Podcast</div>
+                            <div class="podcast-title edit-text" id="podcast-title">Deep Dive: Pre-Field Planning</div>
+                            <div class="podcast-desc edit-text" id="podcast-desc">Survey planning, IRB timelines &amp; field realities</div>
+                        </div>
+                    </div>
+                    <div class="pod-wave">
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                     </div>
                 </div>
                 <div class="podcast-player">
-                    <iframe id="podcast-iframe" src="https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview" allow="autoplay"></iframe>
+                    <iframe id="podcast-iframe" src="https://drive.google.com/file/d/1fU9ksczsZriV9rhyiRRhD8YhD9_5Kkan/preview" allow="autoplay"></iframe>
                 </div>
                 <div class="podcast-footer">
                     <span class="podcast-footer-label edit-text">J-PAL SA Research Operations</span>
@@ -1217,16 +1218,16 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                 <div class="dash-body">
                     <div class="controls-panel">
                         <div class="control-group">
-                            <div class="control-header"><p class="control-label">Total Shift Duration <span class="benchmark-badge active" id="badge-shift">★ J-PAL Benchmark</span></p><span class="control-value" id="val-shift">9 hrs</span></div>
-                            <div class="slider-wrapper"><div class="benchmark-marker" style="left:37%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-shift" min="6" max="14" step="0.5" value="9" oninput="calcCapacity()"></div>
+                            <div class="control-header"><p class="control-label">Total Shift Duration <span class="benchmark-badge active" id="badge-shift">★ J-PAL Benchmark (10 hrs)</span></p><span class="control-value" id="val-shift">10 hrs</span></div>
+                            <div class="slider-wrapper"><div class="benchmark-marker" id="marker-shift" style="left:50%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-shift" min="6" max="14" step="0.5" value="10" oninput="calcCapacity()"></div>
                         </div>
                         <div class="control-group">
                             <div class="control-header"><p class="control-label">Total 2-Way Travel Time <span class="benchmark-badge active" id="badge-travel">★ J-PAL Benchmark</span></p><span class="control-value" id="val-travel">2 hrs (~50km one-way)</span></div>
-                            <div class="slider-wrapper"><div class="benchmark-marker" style="left:33%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-travel" min="0" max="6" step="0.5" value="2" oninput="calcCapacity()"></div>
+                            <div class="slider-wrapper"><div class="benchmark-marker" id="marker-travel" style="left:33.3%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-travel" min="0" max="6" step="0.5" value="2" oninput="calcCapacity()"></div>
                         </div>
                         <div class="control-group">
                             <div class="control-header"><p class="control-label">Lunch, Syncs &amp; Breaks <span class="benchmark-badge active" id="badge-breaks">★ J-PAL Benchmark</span></p><span class="control-value" id="val-breaks">45 mins</span></div>
-                            <div class="slider-wrapper"><div class="benchmark-marker" style="left:25%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-breaks" min="0" max="3" step="0.25" value="0.75" oninput="calcCapacity()"></div>
+                            <div class="slider-wrapper"><div class="benchmark-marker" id="marker-breaks" style="left:25%;"><svg viewBox="0 0 8 12"><path d="M4 12L0 6H3V0H5V6H8L4 12Z"></path></svg></div><input type="range" id="in-breaks" min="0" max="3" step="0.25" value="0.75" oninput="calcCapacity()"></div>
                         </div>
                         <div class="control-group" style="margin-bottom:0;">
                             <div class="control-header"><p class="control-label">Avg. Survey + Transit Time</p><span class="control-value" id="val-survey-time">60 mins</span></div>
@@ -1321,22 +1322,6 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
             <p style="font-size:14px;">Lock the instrument. Ensure strict version control. Test logical flows and skip patterns on the actual tablet models.</p>
             <h3 style="font-size:18px;">Phase 3: Survey Logistics</h3>
             <p style="font-size:14px;">Set up calls with the Survey Coordinator and Team Lead to map out the operational jigsaw puzzle before deployment.</p>
-        </div>
-        <div class="image-block tilt-right">
-            <div class="podcast-widget">
-                <div class="podcast-visual">
-                    <img src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Podcast Recording">
-                    <div class="podcast-play-btn">▶</div>
-                </div>
-                <div class="podcast-info">
-                    <span style="color:var(--heading-green);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;">Field Ops Podcast</span>
-                    <h3 style="color:white;margin-top:10px;margin-bottom:10px;font-size:24px;">Deep Dive: Survey Planning</h3>
-                    <p style="color:#94a3b8;font-size:14px;margin-bottom:0;">Listen how Research Operations Lead dissect IRB timelines, cluster setups, and translation failures.</p>
-                    <div class="gdrive-audio-container">
-                        <iframe src="https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview" allow="autoplay"></iframe>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -2367,30 +2352,31 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
 const TAB_CFG = {
     // Hero gradient colors per tab
     // Format: [from, mid, to] for linear-gradient(135deg, from, mid, to)
+    // pod.accent / pod.glow drive the podcast card colour so it matches each sub-page.
     'panel-home': {
         bg:'linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#2c5282 100%)',
         s: [['4','Sub-sections'],['12+','Field guides'],['5','Checklists']],
-        pod: { title:'Deep Dive: Pre-Field Planning', desc:'Survey planning, IRB timelines & field realities', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+        pod: { title:'Deep Dive: Pre-Field Planning', desc:'Survey planning, IRB timelines & field realities', src:'https://drive.google.com/file/d/1fU9ksczsZriV9rhyiRRhD8YhD9_5Kkan/preview', accent:'#4a90c2', glow:'rgba(74,144,194,0.20)' }
     },
     'panel-planning': {
         bg:'linear-gradient(135deg,#1c1917 0%,#44403c 50%,#78716c 100%)',
         s: [['3','Planning Calls'],['7','Workstreams'],['3','Deliverables']],
-        pod: { title:'Planning & Preparing for Survey Operations', desc:'3-call series, RACI matrices & decision simulation', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+        pod: { title:'Planning & Preparing for Survey Operations', desc:'3-call series, RACI matrices & decision simulation', src:'https://drive.google.com/file/d/1do65WqrLtxK57XzBtZiji0IQy46j0_kD/preview', accent:'#c2b29c', glow:'rgba(194,178,156,0.18)' }
     },
     'panel-ro': {
         bg:'linear-gradient(135deg,#0f172a 0%,#312e81 50%,#4338ca 100%)',
         s: [['4','RO Services'],['3','SLA tiers'],['1','Checklist']],
-        pod: { title:'Availing RO Support', desc:'Service intake, SLAs & raising support requests', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+        pod: { title:'Availing RO Support', desc:'Service intake, SLAs & raising support requests', src:'https://drive.google.com/file/d/171zIWEGgSMjnFAYMMJmxHeChaae8hWGX/preview', accent:'#8b93f8', glow:'rgba(139,147,248,0.20)' }
     },
     'panel-mapping': {
         bg:'linear-gradient(135deg,#0f172a 0%,#14532d 55%,#166534 100%)',
         s: [['2','Methods'],['4','Field guides'],['1','Checklist']],
-        pod: { title:'Mapping Households in the Field', desc:'GPS vs physical mapping, protocols & right-hand rule', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+        pod: { title:'Mapping Households in the Field', desc:'GPS vs physical mapping, protocols & right-hand rule', src:'https://drive.google.com/file/d/1uEIS0Fqr24h-3cdiTyp8YIu19gB9-Oxo/preview', accent:'#3fbf8f', glow:'rgba(63,191,143,0.18)' }
     },
     'panel-logistics': {
         bg:'linear-gradient(135deg,#0f172a 0%,#164e63 55%,#0e7490 100%)',
         s: [['3','Modules'],['6','Templates'],['1','Checklist']],
-        pod: { title:'Survey Logistics & Budgeting', desc:'DA matrices, vendor contracts & travel norms', src:'https://drive.google.com/file/d/1_ANWKyqG7_XYeIMpPAtZGMKYfMV_EsSx/preview' }
+        pod: { title:'Survey Logistics & Budgeting', desc:'DA matrices, vendor contracts & travel norms', src:'https://drive.google.com/file/d/1eaoawwJ_zpuojR4VUYefPbQqMyLW2XUi/preview', accent:'#28b6d6', glow:'rgba(40,182,214,0.18)' }
     }
 };
 
@@ -2417,6 +2403,12 @@ function updateHero(panelId) {
     if (titleEl)  titleEl.textContent  = cfg.pod.title;
     if (descEl)   descEl.textContent   = cfg.pod.desc;
     if (iframeEl) iframeEl.src         = cfg.pod.src;
+    // Recolour the podcast card to match the sub-page
+    var podCard = document.getElementById('podcast-card');
+    if (podCard && cfg.pod.accent) {
+        podCard.style.setProperty('--pod-accent', cfg.pod.accent);
+        podCard.style.setProperty('--pod-glow', cfg.pod.glow);
+    }
 }
 
 // ---- MAIN TAB SWITCHER ----
@@ -2652,13 +2644,25 @@ function calcFunnel() {
     document.getElementById('val-target-staff').innerText = target;
     document.getElementById('val-train-drop').innerText   = trainDrop + '%';
     document.getElementById('val-field-drop').innerText   = fieldDrop + '%';
-    let recommendedTrain = target < 30 ? 25 : target <= 50 ? 15 : 10;
-    let trainText = target < 30 ? '25-30%' : target <= 50 ? '15-20%' : '10-15%';
+
+    // Dynamic J-PAL training drop-out benchmark — scales with the size of the team
+    let bm;
+    if (target < 30)       bm = { text:'10%',    lo:10, hi:10,   mid:10   };
+    else if (target <= 50) bm = { text:'10-15%', lo:10, hi:15,   mid:12.5 };
+    else if (target <= 75) bm = { text:'15-20%', lo:15, hi:20,   mid:17.5 };
+    else                   bm = { text:'20-25%', lo:20, hi:25,   mid:22.5 };
+
+    // Move the benchmark arrow along the slider track (range 0-50 => percent = value * 2)
+    const markerTrain = document.getElementById('marker-train');
+    if (markerTrain) markerTrain.style.left = (bm.mid * 2) + '%';
+
     const badgeTrain = document.getElementById('badge-train');
-    let inRange = (target < 30 && trainDrop >= 25 && trainDrop <= 30) || (target >= 30 && target <= 50 && trainDrop >= 15 && trainDrop <= 20) || (target > 50 && trainDrop >= 10 && trainDrop <= 15);
+    const inRange = trainDrop >= bm.lo && trainDrop <= bm.hi;
     badgeTrain.classList.toggle('active', inRange);
-    badgeTrain.innerText = '★ Benchmark (' + trainText + ')';
+    badgeTrain.innerText = '\u2605 Benchmark (' + bm.text + ')';
+
     document.getElementById('badge-field').classList.toggle('active', fieldDrop === 7);
+
     let deploy = Math.ceil(target / (1 - (fieldDrop / 100)));
     let train  = Math.ceil(deploy / (1 - (trainDrop / 100)));
     let screen = Math.ceil(train * 2.5);
@@ -2677,9 +2681,21 @@ function calcCapacity() {
     document.getElementById('val-travel').innerText      = travel + ' hrs (~' + Math.round(travel*25) + 'km one-way)';
     document.getElementById('val-breaks').innerText      = Math.round(breaks*60) + ' mins';
     document.getElementById('val-survey-time').innerText = surveyMins + ' mins';
-    document.getElementById('badge-shift').classList.toggle('active', shift === 9);
-    document.getElementById('badge-travel').classList.toggle('active', travel === 2);
-    document.getElementById('badge-breaks').classList.toggle('active', breaks === 0.75);
+
+    // J-PAL benchmarks — arrows positioned dynamically on each slider track
+    // shift slider 6-14 hrs, travel 0-6 hrs, breaks 0-3 hrs
+    const BM_SHIFT = 10, BM_TRAVEL = 2, BM_BREAKS = 0.75;
+    const mShift = document.getElementById('marker-shift');
+    const mTravel = document.getElementById('marker-travel');
+    const mBreaks = document.getElementById('marker-breaks');
+    if (mShift)  mShift.style.left  = ((BM_SHIFT  - 6) / (14 - 6) * 100) + '%';
+    if (mTravel) mTravel.style.left = ((BM_TRAVEL - 0) / (6  - 0) * 100) + '%';
+    if (mBreaks) mBreaks.style.left = ((BM_BREAKS - 0) / (3  - 0) * 100) + '%';
+
+    document.getElementById('badge-shift').classList.toggle('active',  shift  === BM_SHIFT);
+    document.getElementById('badge-travel').classList.toggle('active', travel === BM_TRAVEL);
+    document.getElementById('badge-breaks').classList.toggle('active', breaks === BM_BREAKS);
+
     const usable  = shift - travel - breaks;
     const warnBox = document.getElementById('time-warning');
     const capCard = document.getElementById('card-capacity');
