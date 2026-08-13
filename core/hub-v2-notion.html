@@ -361,14 +361,14 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
 <div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode, click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
 <div id="kb-toolbar" style="display: none; position: fixed; bottom: 24px; right: 24px; background: rgb(20, 24, 32); padding: 12px 20px; border-radius: 40px; box-shadow: rgba(0, 0, 0, 0.4) 0px 16px 36px; gap: 12px; align-items: center; z-index: 999999; border: 1px solid rgba(255, 255, 255, 0.08);">
   <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
-  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#1a6b8a;">Copy HTML</button>
-  <button style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
+  <button onclick="window._kbCopy&&window._kbCopy()" style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:white;background:#1a6b8a;">Copy HTML</button>
+  <button onclick="window._kbExit&&window._kbExit()" style="border:none;padding:8px 16px;border-radius:24px;font-weight:700;font-size:12px;cursor:pointer;color:#ef4444;background:transparent;border:1px solid #ef4444;">Exit</button>
 </div>
 <div id="kb-bubble" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0.25);z-index:1000000;width:340px;border:1px solid rgba(0,0,0.11);">
   <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">URL</label>
   <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
-  <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#1a6b8a;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
-  <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0.11);border-radius:8px;background:#f7f6f3;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
+  <button onclick="window._kbApply&&window._kbApply()" style="width:100%;padding:10px;border:none;border-radius:8px;background:#1a6b8a;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
+  <button onclick="window._kbClose&&window._kbClose()" style="width:100%;padding:10px;border:1px solid rgba(0,0,0.11);border-radius:8px;background:#f7f6f3;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
 
 <!-- ═══ EDIT MODE UI ═══ -->
@@ -420,7 +420,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
         <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">Core sections</div></div>
         <div class="stat-item"><div class="stat-num">60+</div><div class="stat-label">Field guides</div></div>
         <div class="stat-item"><div class="stat-num">12+</div><div class="stat-label">Interactive tools</div></div>
-        <div class="stat-item"><div class="stat-num">v1.0</div><div class="stat-label">Apr 2025</div></div>
+        <div class="stat-item"><div class="stat-num">V1.0</div><div class="stat-label"></div></div>
       </div>
     </div>
   </div>
@@ -460,10 +460,10 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
         <h3>Planning &amp; Survey Design</h3>
         <p class="bc-desc">Architectural groundwork: Begins 12 to 16 weeks before deployment. Translate research methodology into field-ready systems.</p>
         <ul class="llist">
-          <li><a href="pre-field-ops.html#panel-planning" target="_self" onclick="event.stopPropagation()">Planning and Preparation (C1 Manual)</a></li>
-          <li><a href="pre-field-ops.html#panel-ro" target="_self" onclick="event.stopPropagation()">Availing RO Support &amp; SLAs</a></li>
+          <li><a href="pre-field-ops.html#panel-planning" target="_self" onclick="event.stopPropagation()">Planning and Preparation</a></li>
+          <li><a href="pre-field-ops.html#panel-ro" target="_self" onclick="event.stopPropagation()">Availing RO Support</a></li>
           <li><a href="pre-field-ops.html#panel-mapping" target="_self" onclick="event.stopPropagation()">Mapping Households via GPS</a></li>
-          <li><a href="pre-field-ops.html#panel-logistics" target="_self" onclick="event.stopPropagation()">Survey Logistics &amp; Budgeting</a></li>
+          <li><a href="pre-field-ops.html#panel-logistics" target="_self" onclick="event.stopPropagation()">Survey Logistics</a></li>
         </ul>
       </div>
 
@@ -473,11 +473,11 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
         <h3>Hiring, Piloting &amp; Launch</h3>
         <p class="bc-desc">Bridge design with reality through rigorous hiring, hardware piloting, and digital tracking infrastructure.</p>
         <ul class="llist">
-          <li><a href="field-readiness.html#panel-hiring" target="_blank" onclick="event.stopPropagation()">Hiring Field Staff &amp; Core Teams</a></li>
-          <li><a href="field-readiness.html#panel-pilot" target="_blank" onclick="event.stopPropagation()">Piloting and Pre-Launch</a></li>
-          <li><a href="field-readiness.html#panel-launch" target="_blank" onclick="event.stopPropagation()">Survey Launch &amp; Initial Days</a></li>
-          <li><a href="field-readiness.html#panel-maps" target="_blank" onclick="event.stopPropagation()">Google Maps Tracking</a></li>
-          <li><a href="field-readiness.html#panel-attend" target="_blank" onclick="event.stopPropagation()">Digital Attendance Tracking</a></li>
+          <li><a href="field-readiness.html#panel-hiring" target="_self" onclick="event.stopPropagation()">Hiring Field Staff &amp; Core Teams</a></li>
+          <li><a href="field-readiness.html#panel-pilot" target="_self" onclick="event.stopPropagation()">Piloting and Pre-Launch</a></li>
+          <li><a href="field-readiness.html#panel-launch" target="_self" onclick="event.stopPropagation()">Survey Launch &amp; Initial Days</a></li>
+          <li><a href="field-readiness.html#panel-maps" target="_self" onclick="event.stopPropagation()">Google Maps Tracking</a></li>
+          <li><a href="field-readiness.html#panel-attend" target="_self" onclick="event.stopPropagation()">Digital Attendance Tracking</a></li>
         </ul>
       </div>
 
@@ -487,13 +487,13 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
         <h3>Training &amp; Certification</h3>
         <p class="bc-desc">Cultivating capability through exhaustive manuals, mock-interview protocols, ethics sessions, and mandatory certification gates.</p>
         <ul class="llist">
-          <li><a href="training-academy.html#panel-pc" target="_blank" onclick="event.stopPropagation()">People and Culture Guidelines</a></li>
-          <li><a href="training-academy.html#panel-min" target="_blank" onclick="event.stopPropagation()">Training Minimum Must-Dos</a></li>
-          <li><a href="training-academy.html#panel-tm" target="_blank" onclick="event.stopPropagation()">The Master Training Manual</a></li>
-          <li><a href="training-academy.html#panel-min" target="_blank" onclick="event.stopPropagation()">Training Resources: Core Sessions</a></li>
-          <li><a href="training-academy.html#panel-min" target="_blank" onclick="event.stopPropagation()">Human Subjects Certification</a></li>
-          <li><a href="training-academy.html#panel-tm" target="_blank" onclick="event.stopPropagation()">Remote Training Manual</a></li>
-          <li><a href="training-academy.html#panel-tm" target="_blank" onclick="event.stopPropagation()">Tablet Management Checklist</a></li>
+          <li><a href="training-academy.html#panel-pc" target="_self" onclick="event.stopPropagation()">People and Culture Guidelines</a></li>
+          <li><a href="training-academy.html#panel-min" target="_self" onclick="event.stopPropagation()">Training Minimum Must-Dos</a></li>
+          <li><a href="training-academy.html#panel-tm" target="_self" onclick="event.stopPropagation()">The Master Training Manual</a></li>
+          <li><a href="training-academy.html#panel-min" target="_self" onclick="event.stopPropagation()">Training Resources: Core Sessions</a></li>
+          <li><a href="training-academy.html#panel-min" target="_self" onclick="event.stopPropagation()">Human Subjects Certification</a></li>
+          <li><a href="training-academy.html#panel-tm" target="_self" onclick="event.stopPropagation()">Remote Training Manual</a></li>
+          <li><a href="training-academy.html#panel-tm" target="_self" onclick="event.stopPropagation()">Tablet Management Checklist</a></li>
         </ul>
       </div>
 
@@ -532,11 +532,11 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
         <h3>RA/PA Field Operations Programme</h3>
         <p class="bc-desc">Five structured sessions: A standardized course content that is used for onboarding RAs and PAs on field operations and managing field team on ground, from roles to data quality, ethics, risk readiness, and project wrap-up. Each session includes scenario quizzes.</p>
         <ul class="llist">
-          <li><a href="onboarding-ra-pa.html#panel-s01" target="_blank" onclick="event.stopPropagation()">Session 1: Roles &amp; Organisation</a></li>
-          <li><a href="onboarding-ra-pa.html#panel-s02" target="_blank" onclick="event.stopPropagation()">Session 2: Pre-Field Planning</a></li>
-          <li><a href="onboarding-ra-pa.html#panel-s03" target="_blank" onclick="event.stopPropagation()">Session 3: Ethics &amp; Core Policies</a></li>
-          <li><a href="onboarding-ra-pa.html#panel-s04" target="_blank" onclick="event.stopPropagation()">Session 4: Survey Execution</a></li>
-          <li><a href="onboarding-ra-pa.html#panel-s05" target="_blank" onclick="event.stopPropagation()">Session 5: Risk Readiness</a></li>
+          <li><a href="onboarding-ra-pa.html#panel-s01" target="_self" onclick="event.stopPropagation()">Session 1: Roles &amp; Organisation</a></li>
+          <li><a href="onboarding-ra-pa.html#panel-s02" target="_self" onclick="event.stopPropagation()">Session 2: Pre-Field Planning</a></li>
+          <li><a href="onboarding-ra-pa.html#panel-s03" target="_self" onclick="event.stopPropagation()">Session 3: Ethics &amp; Core Policies</a></li>
+          <li><a href="onboarding-ra-pa.html#panel-s04" target="_self" onclick="event.stopPropagation()">Session 4: Survey Execution</a></li>
+          <li><a href="onboarding-ra-pa.html#panel-s05" target="_self" onclick="event.stopPropagation()">Session 5: Risk Readiness</a></li>
         </ul>
       </div>
 
@@ -721,20 +721,20 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
   <div class="updates-inner">
     <div class="updates-header">
       <div class="updates-label-group">
-        <span class="updates-label"><span class="live-dot"></span>Upcoming Field Events</span>
-        <span class="updates-window">Next 30 days</span>
+        <span class="updates-label"><span class="live-dot"></span>Upcoming Trainings</span>
+        <span class="updates-window">Coming fortnight</span>
       </div>
       <div class="updates-header-right">
-        <span class="updates-sync" id="sync-status">Configure SHEET_ID in script for live sync</span>
+        <span class="updates-sync" id="sync-status">Syncing…</span>
         <a id="sheet-edit-link" href="#" class="sheet-edit-btn" style="display:none;">Edit in Google Sheets</a>
       </div>
     </div>
     <div id="announcements-row" class="updates-row">
       <!-- Populated by JS from Google Sheets -->
-      <div class="updates-loading">Fetching upcoming events…</div>
+      <div class="updates-loading">Fetching upcoming trainings…</div>
     </div>
     <div class="updates-footer">
-      <span class="updates-footer-note">Showing events dated within the next 30 days from today.</span>
+      <span class="updates-footer-note">Live from the shared training schedule · showing trainings dated within the next 14 days.</span>
     </div>
   </div>
 </section>
@@ -771,35 +771,166 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
 
 <script>
 
-var SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
+/* ── Live training feed ──────────────────────────────────────────────
+   Reads the shared "Skills Lab · Session Tracker" Google Sheet and lists
+   upcoming sessions in the current fortnight.
+
+   This tracker is a formatted dashboard (title cards, week dividers, a
+   legend, etc.), NOT a plain table — so the parser locates real session
+   rows by pattern: column A holds a date like "Aug 12" AND the Session
+   column (C) is non-empty. Everything else (headers, dividers, pool,
+   legend, footer, the second proposed-sessions mini-table) is ignored.
+
+   Layout used (0-indexed columns):
+     0 Date ("Aug 12\nTue")   1 Time   2 Session   3 Cohort
+     4 Peer trainer   5 Focus checkpoints   6 Meeting   7 Status   8 Notes
+
+   The sheet must be shared "Anyone with the link — Viewer".
+──────────────────────────────────────────────────────────────────── */
+var SHEET_ID = '1oR5_Jlu8facHWYq0VAuG8gHMsS3rLw4DzVUhXyXGzUY';
+var SHEET_EDIT_URL = 'https://docs.google.com/spreadsheets/d/1oR5_Jlu8facHWYq0VAuG8gHMsS3rLw4DzVUhXyXGzUY/edit?usp=sharing';
+var FEED_DAYS   = 16;     // window from today; the tracker's fortnight spans ~16 days
+var SHOW_PAST_DAYS = 0;   // set >0 to also include sessions from the last N days
+var FEED_DEBUG  = true;   // show a diagnostic reason on screen if nothing renders
+
 (function(){
   var row = document.getElementById('announcements-row');
   var status = document.getElementById('sync-status');
-  if (!SHEET_ID || SHEET_ID === 'YOUR_GOOGLE_SHEET_ID_HERE') {
-    if (status) status.textContent = 'Configure SHEET_ID in script for live sync';
-    return;
+  var editLink = document.getElementById('sheet-edit-link');
+
+  if (editLink) { editLink.href = SHEET_EDIT_URL; editLink.style.display = 'inline-block'; }
+  if (status) status.textContent = 'Syncing…';
+
+  function note(msg){ if(status) status.textContent = msg; }
+  function empty(msg){ if(row) row.innerHTML = '<div class="updates-empty">'+msg+'</div>'; }
+  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // ── CSV parser: quoted fields, embedded commas AND newlines inside cells ──
+  function parseCSV(text){
+    var rows=[], cur='', inQ=false, rec=[];
+    text = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+    for(var i=0;i<text.length;i++){
+      var ch=text[i];
+      if(inQ){
+        if(ch==='"'){ if(text[i+1]==='"'){cur+='"';i++;} else inQ=false; }
+        else cur+=ch;
+      } else {
+        if(ch==='"') inQ=true;
+        else if(ch===',') { rec.push(cur); cur=''; }
+        else if(ch==='\n'){ rec.push(cur); rows.push(rec); rec=[]; cur=''; }
+        else cur+=ch;
+      }
+    }
+    if(cur.length||rec.length){ rec.push(cur); rows.push(rec); }
+    return rows;
   }
-  fetch('https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/export?format=csv&gid=0&t='+Date.now())
-    .then(function(r){return r.text();})
-    .then(function(csv){
-      var today=new Date();today.setHours(0,0,0,0);
-      var end=new Date(today);end.setDate(today.getDate()+30);
-      var lines=csv.trim().split('\n').slice(1);
-      var evts=[];
-      lines.forEach(function(line){
-        var c=line.split(',');if(!c[0]||!c[1])return;
-        var d=new Date(c[0].trim());if(isNaN(d))return;d.setHours(0,0,0,0);
-        if(d>=today&&d<=end)evts.push({d:d,t:(c[1]||'').trim(),desc:(c[2]||'').trim(),cat:(c[3]||'General').trim(),col:(c[4]||'').trim()});
+
+  var MON={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+  var YEAR_HINT = 2026;  // taken from the tracker; auto-updated below if found
+
+  // Parse a cell like "Aug 12\nTue" or "Aug 12" → Date (year from context)
+  function parseSessionDate(cell){
+    var m=(cell||'').replace(/\n/g,' ').match(/([A-Za-z]{3,})\s+(\d{1,2})/);
+    if(!m) return null;
+    var mo=MON[m[1].slice(0,3).toLowerCase()];
+    if(mo===undefined) return null;
+    var d=new Date(YEAR_HINT, mo, parseInt(m[2],10));
+    d.setHours(0,0,0,0);
+    return isNaN(d)?null:d;
+  }
+
+  // Colour by Status
+  function statusColour(s){
+    s=(s||'').toLowerCase();
+    if(s.indexOf('priority')>-1) return '#b91c1c';   // red — critical
+    if(s.indexOf('confirm')>-1)  return '#166534';   // green — locked
+    if(s.indexOf('draft')>-1)    return '#92702e';   // amber — tentative
+    return '#7c3aed';                                 // default purple
+  }
+
+  function render(csvText){
+    var rows = parseCSV(csvText);
+    if(!rows.length){ empty('The sheet came back empty.'); note('Synced · empty'); return; }
+
+    // Grab a 4-digit year anywhere in the sheet so the feed stays correct next year
+    var yr = csvText.match(/\b(20\d{2})\b/);
+    if(yr) YEAR_HINT = parseInt(yr[1],10);
+
+    var today=new Date(); today.setHours(0,0,0,0);
+    var start=new Date(today); start.setDate(today.getDate()-SHOW_PAST_DAYS);
+    var end=new Date(today);   end.setDate(today.getDate()+FEED_DAYS);
+
+    var evts=[], sessionRowsFound=0, windowFails=0;
+    rows.forEach(function(c){
+      var dateCell=(c[0]||'').trim();
+      var session =(c[2]||'').trim();
+      var d=parseSessionDate(dateCell);
+      if(!d || !session) return;          // not a real session row → skip
+      sessionRowsFound++;
+      if(d<start || d>end){ windowFails++; return; }
+      evts.push({
+        d:d,
+        title:session,
+        cohort:(c[3]||'').trim(),
+        trainer:(c[4]||'').replace(/\n/g,' ').replace(/\(peer trainer[^)]*\)/i,'').trim(),
+        time:(c[1]||'').trim(),
+        status:(c[7]||'').trim(),
+        notes:(c[8]||'').trim()
       });
-      evts.sort(function(a,b){return a.d-b.d;});
-      if(!evts.length&&row){row.innerHTML='<div class="updates-empty">No events in the next 30 days.</div>';return;}
-      var cats={'training':'#7c3aed','survey':'#1a6b8a','policy':'#1f2937','hiring':'#92702e','general':'#374151'};
-      if(row)row.innerHTML=evts.map(function(e){
-        var col=e.col||cats[e.cat.toLowerCase()]||'#1a6b8a';
-        return '<div class="update-pill"><div class="upd-date-block" style="background:'+col+'"><div class="upd-date-day">'+e.d.getDate()+'</div><div class="upd-date-mon">'+e.d.toLocaleString("en",{month:"short"}).toUpperCase()+'</div></div><div class="upd-content"><div class="upd-tag" style="color:'+col+'">'+e.cat+'</div><div class="upd-text">'+e.t+'</div>'+(e.desc?'<div class="upd-desc">'+e.desc+'</div>':'')+'</div></div>';
+    });
+    evts.sort(function(a,b){return a.d-b.d;});
+
+    if(evts.length){
+      row.innerHTML=evts.map(function(e){
+        var col=statusColour(e.status);
+        var meta=[];
+        if(e.time)    meta.push(esc(e.time));
+        if(e.trainer) meta.push(esc(e.trainer));
+        if(e.cohort)  meta.push('cohort '+esc(e.cohort));
+        var sub = meta.join(' · ');
+        var tag = e.status ? esc(e.status) : 'Session';
+        return '<div class="update-pill">'
+          +'<div class="upd-date-block" style="background:'+col+'"><div class="upd-date-day">'+e.d.getDate()+'</div><div class="upd-date-mon">'+e.d.toLocaleString("en",{month:"short"}).toUpperCase()+'</div></div>'
+          +'<div class="upd-content"><div class="upd-tag" style="color:'+col+'">'+tag+'</div>'
+          +'<div class="upd-text">'+esc(e.title)+'</div>'
+          +(sub?'<div class="upd-desc">'+sub+'</div>':'')
+          +'</div></div>';
       }).join('');
-      if(status)status.textContent='Synced just now';
-    }).catch(function(){});
+      note('Synced just now · '+evts.length+' session'+(evts.length>1?'s':'')+' this fortnight');
+      return;
+    }
+
+    // Nothing rendered → explain
+    note('Synced · no sessions in range');
+    if(FEED_DEBUG){
+      if(sessionRowsFound===0)
+        empty('Reached the sheet, but found no session rows. Check the tracker still has dates like “Aug 12” in the first column and a session name beside them.');
+      else
+        empty('Reached the sheet and found '+sessionRowsFound+' session'+(sessionRowsFound>1?'s':'')+', but none fall within the next '+FEED_DAYS+' days. (Today reads as '+today.toDateString()+'.)');
+    } else {
+      empty('No sessions scheduled in the coming fortnight.');
+    }
+  }
+
+  // ── Fetch: gviz CSV first (most tolerant), then plain export ──
+  var bust='&_='+Date.now();
+  var gviz ='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:csv'+bust;
+  var xport='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/export?format=csv'+bust;
+  function looksLikeLogin(t){ return /accounts\.google\.com|Sign in|Request access|Google Drive - Sign/i.test(t.slice(0,800)); }
+
+  function attempt(u, label, next){
+    fetch(u)
+      .then(function(r){ if(!r.ok) throw new Error(label+' http '+r.status); return r.text(); })
+      .then(function(t){ if(looksLikeLogin(t)) throw new Error(label+' → login/permission page'); render(t); })
+      .catch(function(err){
+        if(next){ next(); return; }
+        note('Could not read the sheet');
+        empty(FEED_DEBUG
+          ? 'Could not read the sheet — most likely it is not shared publicly. Open it → Share → General access → “Anyone with the link” → Viewer. (Details: '+esc(err&&err.message||'network error')+')'
+          : 'Training feed is temporarily unavailable.');
+      });
+  }
+  attempt(gviz, 'gviz', function(){ attempt(xport, 'export', null); });
 })();
 
 </script>
