@@ -2522,6 +2522,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
 
 
 
+
 <style id="kb-universal-overflow-net">
 /* ===== Universal mobile overflow net (<=768px) ===== */
 @media (max-width:768px){
@@ -2533,21 +2534,26 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
   pre,code{white-space:pre-wrap!important;word-break:break-word;overflow-x:auto;max-width:100%;}
   .tab-nav,.tab-nav-wrapper{max-width:100%!important;}
   .tab-nav{overflow-x:auto;}
-  /* Tables that FIT: top-align + wrap so short cells don't float to middle */
   table td, table th{vertical-align:top;}
-  /* Scroll wrapper for tables that genuinely overflow */
-  .kb-scroll-x{position:relative;display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px;}
+
+  /* A wide table: force a readable min-width on the TABLE itself (beats width:100%),
+     and let it scroll horizontally in whatever wrapper we give it. */
+  table.kb-wide{width:auto!important;}
+  table.kb-wide.kb-w1{min-width:560px!important;}
+  table.kb-wide.kb-w2{min-width:680px!important;}
+  table.kb-wide.kb-w3{min-width:820px!important;}
+
+  /* The scroll container we add (or an existing overflow-x:auto ancestor). */
+  .kb-scroll-x{position:relative;display:block;max-width:100%;overflow-x:auto!important;-webkit-overflow-scrolling:touch;}
   .kb-scroll-x > table{margin:0;}
-  /* keep a readable floor so wide tables don't collapse into a too-tall stack */
-  .kb-scroll-x > table{min-width:520px;}
-  .kb-scroll-x[data-cols="6"] > table,.kb-scroll-x[data-cols="7"] > table{min-width:640px;}
-  .kb-scroll-x[data-cols="8"] > table,.kb-scroll-x[data-cols="9"] > table,.kb-scroll-x[data-colsplus] > table{min-width:760px;}
-  /* subtle "scroll ->" hint */
-  .kb-scroll-hint{position:absolute;top:6px;right:6px;z-index:5;font-family:var(--mono,'DM Mono',monospace);font-size:10px;font-weight:700;letter-spacing:.5px;
-    color:#fff;background:rgba(20,24,32,.72);padding:3px 9px;border-radius:20px;pointer-events:none;
-    display:flex;align-items:center;gap:4px;transition:opacity .3s ease;white-space:nowrap;}
-  .kb-scroll-hint::after{content:'\2192';font-size:12px;}
-  .kb-scroll-x.kb-scrolled .kb-scroll-hint{opacity:0;}
+
+  /* subtle "scroll ->" hint pinned to the scrolling region */
+  .kb-hint{position:absolute;top:8px;right:8px;z-index:5;font-family:var(--mono,'DM Mono',monospace);
+    font-size:10px;font-weight:700;letter-spacing:.4px;color:#fff;background:rgba(20,24,32,.74);
+    padding:3px 9px 3px 10px;border-radius:20px;pointer-events:none;display:inline-flex;align-items:center;gap:4px;
+    transition:opacity .3s ease;white-space:nowrap;}
+  .kb-hint::after{content:'\2192';font-size:12px;line-height:1;}
+  .kb-hostscrolled .kb-hint{opacity:0;}
 }
 </style>
 </head>
@@ -5197,53 +5203,65 @@ if(_h1) _h1.addEventListener('dblclick',function(e){e.preventDefault();if(!isAdm
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 
+
 <script id="kb-overflow-wrap-js">
-/* Auto-wrap tables/blocks that truly overflow the viewport; add a subtle scroll hint. */
+/* Make wide tables readable-and-scrollable on phones.
+   - measure columns; tag table with a min-width tier (kb-wide + kb-w1/2/3)
+   - ensure it lives in a horizontal scroll host (reuse an existing overflow-x:auto
+     ancestor if present, else wrap once)
+   - add a subtle "scroll ->" hint that fades after first scroll
+   Runs on load, on resize, and after tab switches. Never touches desktop. */
 (function(){
+  function scrollableAncestor(el){
+    var n=el.parentElement, guard=0;
+    while(n && guard++<6){
+      var cs=getComputedStyle(n);
+      if((cs.overflowX==='auto'||cs.overflowX==='scroll')) return n;
+      if(n.classList && (n.classList.contains('main-content-area')||n.classList.contains('tab-panel'))) break;
+      n=n.parentElement;
+    }
+    return null;
+  }
+  function tier(cols){ if(cols>=8) return 'kb-w3'; if(cols>=6) return 'kb-w2'; return 'kb-w1'; }
+  function addHint(host){
+    if(!host || host.querySelector(':scope > .kb-hint')) return;
+    if(getComputedStyle(host).position==='static') host.style.position='relative';
+    var h=document.createElement('span'); h.className='kb-hint'; h.textContent='scroll';
+    host.appendChild(h);
+    host.addEventListener('scroll',function(){ if(host.scrollLeft>4) host.classList.add('kb-hostscrolled'); },{passive:true});
+  }
   function process(){
-    if(window.innerWidth>768){ return; }
+    if(window.innerWidth>768) return;
     var vw=document.documentElement.clientWidth;
-    var sel='table, pre, [class*="gantt"], [class*="matrix"], [class*="timeline"]';
-    var nodes=document.querySelectorAll(sel);
-    for(var i=0;i<nodes.length;i++){
-      var el=nodes[i];
-      if(el.closest('.left-nav')||el.closest('#mobile-topbar')) continue;
-      var already=el.closest('.kb-scroll-x');
-      var overflowing=(el.scrollWidth>vw+2)||(el.getBoundingClientRect().width>vw+2);
-      if(overflowing && !already){
-        var w=document.createElement('div');
-        w.className='kb-scroll-x';
-        // record column count for min-width tiering
-        var cols=0;
-        if(el.tagName==='TABLE'){
-          var r=el.querySelector('tr');
-          if(r) cols=r.querySelectorAll('td,th').length;
-        }
-        if(cols>=10) w.setAttribute('data-colsplus','1');
-        else if(cols>0) w.setAttribute('data-cols',String(cols));
-        el.parentNode.insertBefore(w,el);
-        w.appendChild(el);
-        // hint
-        var h=document.createElement('span');
-        h.className='kb-scroll-hint';h.textContent='scroll';
-        w.appendChild(h);
-        (function(wrap){
-          wrap.addEventListener('scroll',function(){ if(wrap.scrollLeft>4) wrap.classList.add('kb-scrolled'); },{passive:true});
-        })(w);
-      } else if(already && !overflowing){
-        // table now fits (e.g. rotated wider) — unwrap
-        var wrap=already, tbl=el;
-        if(wrap.classList.contains('kb-scroll-x') && wrap.parentNode){
-          wrap.parentNode.insertBefore(tbl,wrap);
-          wrap.parentNode.removeChild(wrap);
-        }
+    var tables=document.querySelectorAll('table');
+    for(var i=0;i<tables.length;i++){
+      var t=tables[i];
+      if(t.closest('.left-nav')||t.closest('#mobile-topbar')) continue;
+      // column count
+      var r=t.querySelector('tr'); var cols=r?r.querySelectorAll('td,th').length:0;
+      // does it overflow OR is it a many-col table that would collapse?
+      var overflowing=(t.scrollWidth>vw+2)||(t.getBoundingClientRect().width>vw+2)||cols>=5;
+      if(!overflowing){ 
+        // ensure we didn't previously widen it and now it fits
+        t.classList.remove('kb-wide','kb-w1','kb-w2','kb-w3');
+        continue;
+      }
+      // tag width tier on the table
+      t.classList.add('kb-wide'); t.classList.remove('kb-w1','kb-w2','kb-w3'); t.classList.add(tier(cols));
+      // find/ensure a scroll host
+      var host=scrollableAncestor(t);
+      if(host){ host.style.overflowX='auto'; host.style.webkitOverflowScrolling='touch'; addHint(host); }
+      else if(!t.closest('.kb-scroll-x')){
+        var w=document.createElement('div'); w.className='kb-scroll-x';
+        t.parentNode.insertBefore(w,t); w.appendChild(t); addHint(w);
+      } else {
+        addHint(t.closest('.kb-scroll-x'));
       }
     }
   }
   function run(){ try{ process(); }catch(e){} }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
-  else run();
-  var t; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(run,200);});
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
+  var tm; window.addEventListener('resize',function(){clearTimeout(tm);tm=setTimeout(run,180);});
   document.addEventListener('click',function(e){
     if(e.target&&e.target.closest&&e.target.closest('.tab-btn,[onclick*="switchTab"]')) setTimeout(run,80);
   },true);
