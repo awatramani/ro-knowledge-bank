@@ -2613,37 +2613,45 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
 
 
 
+
 <style id="kb-universal-overflow-net">
-/* ===== Universal mobile overflow net (<=768px) ===== */
+/* ===== Universal mobile net (<=768px): tables never squeeze, they soft-scroll ===== */
 @media (max-width:768px){
   html,body{max-width:100%!important;overflow-x:hidden!important;}
   .page-layout,.main-content-area,main,section,article,.tab-panel{max-width:100vw!important;overflow-x:hidden;}
   img,svg,video,canvas{max-width:100%!important;height:auto;}
   iframe{max-width:100%!important;}
-  p,li,td,th,span,a,h1,h2,h3,h4,h5,dd,dt,blockquote,figcaption{overflow-wrap:break-word;word-break:break-word;}
+  p,li,dd,dt,blockquote,figcaption,h1,h2,h3,h4,h5{overflow-wrap:break-word;word-break:break-word;}
   pre,code{white-space:pre-wrap!important;word-break:break-word;overflow-x:auto;max-width:100%;}
   .tab-nav,.tab-nav-wrapper{max-width:100%!important;}
   .tab-nav{overflow-x:auto;}
-  table td, table th{vertical-align:top;}
+  /* tables already inside a scrolling box: let OUR shell own the scroll, not the box */
+  .template-box,.raci-wrapper,.raci-table-wrapper,.fr-raci-wrapper,.gantt-wrapper{overflow-x:visible!important;padding-left:14px!important;padding-right:14px!important;}
 
-  /* A wide table: force a readable min-width on the TABLE itself (beats width:100%),
-     and let it scroll horizontally in whatever wrapper we give it. */
-  table.kb-wide{width:auto!important;}
-  table.kb-wide.kb-w1{min-width:560px!important;}
-  table.kb-wide.kb-w2{min-width:680px!important;}
-  table.kb-wide.kb-w3{min-width:820px!important;}
+  /* Every table keeps its natural size — do NOT let it shrink to fit and collapse. */
+  .kb-tw table{width:auto!important;min-width:100%;border-collapse:collapse;}
+  .kb-tw table td,.kb-tw table th{vertical-align:top;white-space:normal;}
 
-  /* The scroll container we add (or an existing overflow-x:auto ancestor). */
-  .kb-scroll-x{position:relative;display:block;max-width:100%;overflow-x:auto!important;-webkit-overflow-scrolling:touch;}
-  .kb-scroll-x > table{margin:0;}
+  /* Soft horizontal scroll host wrapped around each table. */
+  .kb-tw{position:relative;display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;border-radius:10px;}
+  .kb-tw::-webkit-scrollbar{height:6px;}
+  .kb-tw::-webkit-scrollbar-thumb{background:rgba(0,0,0,.18);border-radius:6px;}
 
-  /* subtle "scroll ->" hint pinned to the scrolling region */
-  .kb-hint{position:absolute;top:8px;right:8px;z-index:5;font-family:var(--mono,'DM Mono',monospace);
+  /* Faded right edge that signals "more to the right"; hides once scrolled to the end. */
+  .kb-tw-shell{position:relative;}
+  .kb-tw-shell::after{content:'';position:absolute;top:0;right:0;bottom:0;width:34px;pointer-events:none;
+    background:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,.92));
+    opacity:1;transition:opacity .25s ease;border-radius:0 10px 10px 0;}
+  .kb-tw-shell.kb-atend::after{opacity:0;}
+
+  /* Small "scroll ->" hint, top-right; fades after the first scroll. */
+  .kb-hint{position:absolute;top:8px;right:8px;z-index:6;font-family:var(--mono,'DM Mono',monospace);
     font-size:10px;font-weight:700;letter-spacing:.4px;color:#fff;background:rgba(20,24,32,.74);
     padding:3px 9px 3px 10px;border-radius:20px;pointer-events:none;display:inline-flex;align-items:center;gap:4px;
     transition:opacity .3s ease;white-space:nowrap;}
   .kb-hint::after{content:'\2192';font-size:12px;line-height:1;}
-  .kb-hostscrolled .kb-hint{opacity:0;}
+  .kb-tw-shell.kb-scrolled .kb-hint{opacity:0;}
 }
 </style>
 </head>
@@ -3906,66 +3914,56 @@ function toggleCheck(el){
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 
 
+
 <script id="kb-overflow-wrap-js">
-/* Make wide tables readable-and-scrollable on phones.
-   - measure columns; tag table with a min-width tier (kb-wide + kb-w1/2/3)
-   - ensure it lives in a horizontal scroll host (reuse an existing overflow-x:auto
-     ancestor if present, else wrap once)
-   - add a subtle "scroll ->" hint that fades after first scroll
-   Runs on load, on resize, and after tab switches. Never touches desktop. */
+/* Wrap EVERY content table in a soft horizontal-scroll shell so it never squeezes.
+   Adds a "scroll ->" hint and a faded right edge; both react to scroll position.
+   Mobile only; desktop untouched; idempotent. */
 (function(){
-  function scrollableAncestor(el){
-    var n=el.parentElement, guard=0;
-    while(n && guard++<6){
-      var cs=getComputedStyle(n);
-      if((cs.overflowX==='auto'||cs.overflowX==='scroll')) return n;
-      if(n.classList && (n.classList.contains('main-content-area')||n.classList.contains('tab-panel'))) break;
-      n=n.parentElement;
+  function wrap(t){
+    if(t.closest('.left-nav')||t.closest('#mobile-topbar')) return;
+    if(t.closest('.kb-tw')) return;                 // already wrapped
+    var shell=document.createElement('div'); shell.className='kb-tw-shell';
+    var scroller=document.createElement('div'); scroller.className='kb-tw';
+    t.parentNode.insertBefore(shell,t);
+    shell.appendChild(scroller); scroller.appendChild(t);
+    var hint=document.createElement('span'); hint.className='kb-hint'; hint.textContent='scroll';
+    shell.appendChild(hint);
+    function sync(){
+      var maxsl=scroller.scrollWidth-scroller.clientWidth;
+      if(maxsl<=2){ shell.classList.add('kb-atend','kb-scrolled'); }      // fits: no edge/hint
+      else { if(scroller.scrollLeft>4) shell.classList.add('kb-scrolled');
+             if(scroller.scrollLeft>=maxsl-2) shell.classList.add('kb-atend');
+             else shell.classList.remove('kb-atend'); }
     }
-    return null;
+    scroller.addEventListener('scroll',sync,{passive:true});
+    // initial state after layout settles
+    setTimeout(sync,60); setTimeout(sync,300);
+    shell._kbsync=sync;
   }
-  function tier(cols){ if(cols>=8) return 'kb-w3'; if(cols>=6) return 'kb-w2'; return 'kb-w1'; }
-  function addHint(host){
-    if(!host || host.querySelector(':scope > .kb-hint')) return;
-    if(getComputedStyle(host).position==='static') host.style.position='relative';
-    var h=document.createElement('span'); h.className='kb-hint'; h.textContent='scroll';
-    host.appendChild(h);
-    host.addEventListener('scroll',function(){ if(host.scrollLeft>4) host.classList.add('kb-hostscrolled'); },{passive:true});
-  }
-  function process(){
-    if(window.innerWidth>768) return;
-    var vw=document.documentElement.clientWidth;
-    var tables=document.querySelectorAll('table');
-    for(var i=0;i<tables.length;i++){
-      var t=tables[i];
-      if(t.closest('.left-nav')||t.closest('#mobile-topbar')) continue;
-      // column count
-      var r=t.querySelector('tr'); var cols=r?r.querySelectorAll('td,th').length:0;
-      // does it overflow OR is it a many-col table that would collapse?
-      var overflowing=(t.scrollWidth>vw+2)||(t.getBoundingClientRect().width>vw+2)||cols>=5;
-      if(!overflowing){ 
-        // ensure we didn't previously widen it and now it fits
-        t.classList.remove('kb-wide','kb-w1','kb-w2','kb-w3');
-        continue;
-      }
-      // tag width tier on the table
-      t.classList.add('kb-wide'); t.classList.remove('kb-w1','kb-w2','kb-w3'); t.classList.add(tier(cols));
-      // find/ensure a scroll host
-      var host=scrollableAncestor(t);
-      if(host){ host.style.overflowX='auto'; host.style.webkitOverflowScrolling='touch'; addHint(host); }
-      else if(!t.closest('.kb-scroll-x')){
-        var w=document.createElement('div'); w.className='kb-scroll-x';
-        t.parentNode.insertBefore(w,t); w.appendChild(t); addHint(w);
-      } else {
-        addHint(t.closest('.kb-scroll-x'));
-      }
+  function unwrapIfDesktop(){
+    // if resized to desktop, flatten shells back
+    var shells=document.querySelectorAll('.kb-tw-shell');
+    for(var i=0;i<shells.length;i++){
+      var sh=shells[i], sc=sh.querySelector('.kb-tw'), tb=sc&&sc.querySelector('table');
+      if(tb){ sh.parentNode.insertBefore(tb,sh); }
+      sh.parentNode.removeChild(sh);
     }
   }
-  function run(){ try{ process(); }catch(e){} }
+  function run(){
+    try{
+      if(window.innerWidth>768){ unwrapIfDesktop(); return; }
+      var tables=document.querySelectorAll('table');
+      for(var i=0;i<tables.length;i++) wrap(tables[i]);
+      // re-sync any existing shells (tab switches reveal content)
+      var shells=document.querySelectorAll('.kb-tw-shell');
+      for(var j=0;j<shells.length;j++) if(shells[j]._kbsync) shells[j]._kbsync();
+    }catch(e){}
+  }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
   var tm; window.addEventListener('resize',function(){clearTimeout(tm);tm=setTimeout(run,180);});
   document.addEventListener('click',function(e){
-    if(e.target&&e.target.closest&&e.target.closest('.tab-btn,[onclick*="switchTab"]')) setTimeout(run,80);
+    if(e.target&&e.target.closest&&e.target.closest('.tab-btn,[onclick*="switchTab"]')) setTimeout(run,90);
   },true);
 })();
 </script>
