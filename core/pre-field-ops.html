@@ -988,23 +988,33 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
 </style>
 
 
+
 <style id="kb-universal-overflow-net">
-/* ===== Universal mobile overflow net (<=768px) — added for phone layout ===== */
+/* ===== Universal mobile overflow net (<=768px) ===== */
 @media (max-width:768px){
   html,body{max-width:100%!important;overflow-x:hidden!important;}
   .page-layout,.main-content-area,main,section,article,.tab-panel{max-width:100vw!important;overflow-x:hidden;}
-  /* media never exceeds screen */
   img,svg,video,canvas{max-width:100%!important;height:auto;}
   iframe{max-width:100%!important;}
-  /* long words / links / code wrap instead of pushing width */
   p,li,td,th,span,a,h1,h2,h3,h4,h5,dd,dt,blockquote,figcaption{overflow-wrap:break-word;word-break:break-word;}
   pre,code{white-space:pre-wrap!important;word-break:break-word;overflow-x:auto;max-width:100%;}
-  /* any element we auto-wrapped for scrolling */
-  .kb-scroll-x{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  /* bare tables scroll inside themselves */
-  table{max-width:100%;}
   .tab-nav,.tab-nav-wrapper{max-width:100%!important;}
   .tab-nav{overflow-x:auto;}
+  /* Tables that FIT: top-align + wrap so short cells don't float to middle */
+  table td, table th{vertical-align:top;}
+  /* Scroll wrapper for tables that genuinely overflow */
+  .kb-scroll-x{position:relative;display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px;}
+  .kb-scroll-x > table{margin:0;}
+  /* keep a readable floor so wide tables don't collapse into a too-tall stack */
+  .kb-scroll-x > table{min-width:520px;}
+  .kb-scroll-x[data-cols="6"] > table,.kb-scroll-x[data-cols="7"] > table{min-width:640px;}
+  .kb-scroll-x[data-cols="8"] > table,.kb-scroll-x[data-cols="9"] > table,.kb-scroll-x[data-colsplus] > table{min-width:760px;}
+  /* subtle "scroll ->" hint */
+  .kb-scroll-hint{position:absolute;top:6px;right:6px;z-index:5;font-family:var(--mono,'DM Mono',monospace);font-size:10px;font-weight:700;letter-spacing:.5px;
+    color:#fff;background:rgba(20,24,32,.72);padding:3px 9px;border-radius:20px;pointer-events:none;
+    display:flex;align-items:center;gap:4px;transition:opacity .3s ease;white-space:nowrap;}
+  .kb-scroll-hint::after{content:'\2192';font-size:12px;}
+  .kb-scroll-x.kb-scrolled .kb-scroll-hint{opacity:0;}
 }
 </style>
 </head>
@@ -3040,35 +3050,56 @@ calcCapacity();
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
+
 <script id="kb-overflow-wrap-js">
-/* Wrap any element that is wider than the viewport in a horizontal-scroll container.
-   Runs only on narrow screens; leaves desktop untouched. Idempotent & safe. */
+/* Auto-wrap tables/blocks that truly overflow the viewport; add a subtle scroll hint. */
 (function(){
-  function wrapWide(){
-    if(window.innerWidth>768) return;
+  function process(){
+    if(window.innerWidth>768){ return; }
     var vw=document.documentElement.clientWidth;
-    // Candidates most likely to overflow: tables, wide grids, pre blocks
-    var sel='table, pre, .fr-inline-table, [class*="grid"], [class*="matrix"], [class*="timeline"], [class*="gantt"], [class*="raci"]';
+    var sel='table, pre, [class*="gantt"], [class*="matrix"], [class*="timeline"]';
     var nodes=document.querySelectorAll(sel);
     for(var i=0;i<nodes.length;i++){
       var el=nodes[i];
-      if(el.closest('.kb-scroll-x')) continue;               // already wrapped
       if(el.closest('.left-nav')||el.closest('#mobile-topbar')) continue;
-      // Only wrap if it actually overflows
-      if(el.scrollWidth>vw+2 || el.getBoundingClientRect().width>vw+2){
+      var already=el.closest('.kb-scroll-x');
+      var overflowing=(el.scrollWidth>vw+2)||(el.getBoundingClientRect().width>vw+2);
+      if(overflowing && !already){
         var w=document.createElement('div');
         w.className='kb-scroll-x';
+        // record column count for min-width tiering
+        var cols=0;
+        if(el.tagName==='TABLE'){
+          var r=el.querySelector('tr');
+          if(r) cols=r.querySelectorAll('td,th').length;
+        }
+        if(cols>=10) w.setAttribute('data-colsplus','1');
+        else if(cols>0) w.setAttribute('data-cols',String(cols));
         el.parentNode.insertBefore(w,el);
         w.appendChild(el);
+        // hint
+        var h=document.createElement('span');
+        h.className='kb-scroll-hint';h.textContent='scroll';
+        w.appendChild(h);
+        (function(wrap){
+          wrap.addEventListener('scroll',function(){ if(wrap.scrollLeft>4) wrap.classList.add('kb-scrolled'); },{passive:true});
+        })(w);
+      } else if(already && !overflowing){
+        // table now fits (e.g. rotated wider) — unwrap
+        var wrap=already, tbl=el;
+        if(wrap.classList.contains('kb-scroll-x') && wrap.parentNode){
+          wrap.parentNode.insertBefore(tbl,wrap);
+          wrap.parentNode.removeChild(wrap);
+        }
       }
     }
   }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wrapWide);
-  else wrapWide();
-  var t; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(wrapWide,200);});
-  // Re-run when a tab is switched (content becomes visible then)
+  function run(){ try{ process(); }catch(e){} }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
+  else run();
+  var t; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(run,200);});
   document.addEventListener('click',function(e){
-    if(e.target&&e.target.closest&&e.target.closest('.tab-btn,[onclick*="switchTab"]')) setTimeout(wrapWide,60);
+    if(e.target&&e.target.closest&&e.target.closest('.tab-btn,[onclick*="switchTab"]')) setTimeout(run,80);
   },true);
 })();
 </script>
