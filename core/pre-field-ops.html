@@ -671,57 +671,12 @@ input[type=range]:active::-webkit-slider-thumb { box-shadow: 0 0 0 6px rgba(26,1
   .bento-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) { .bento-grid { grid-template-columns: 1fr; }  }
-/* ── Mobile top bar + off-canvas drawer ── */
-#mobile-topbar{display:none;}
-#mobile-nav-backdrop{display:none;}
-
 @media (max-width: 768px) {
-  #mobile-topbar{
-    display:flex;align-items:center;gap:12px;
-    position:fixed;top:0;left:0;right:0;height:52px;z-index:9500;
-    background:#141820;border-bottom:1px solid rgba(255,255,255,.08);
-    padding:0 14px;box-shadow:0 2px 12px rgba(0,0,0,.25);
-  }
-  #mobile-nav-toggle{background:transparent;border:none;color:#e9eef5;cursor:pointer;padding:6px;display:flex;align-items:center;justify-content:center;border-radius:8px;}
-  #mobile-nav-toggle:active{background:rgba(255,255,255,.08);}
-  .mtb-brand{display:flex;align-items:center;gap:9px;min-width:0;}
-  .mtb-brand img{width:24px;height:auto;filter:brightness(0) invert(1);opacity:.92;flex-shrink:0;}
-  .mtb-brand span{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:13px;font-weight:800;color:#e9eef5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
-  .page-layout { flex-direction: column; padding-top: 52px; }
-
-  .left-nav{
-    position:fixed!important;top:0;left:0;bottom:0;
-    width:270px!important;min-width:270px!important;max-width:82vw!important;height:100vh!important;
-    flex-direction:column;border-right:1px solid rgba(255,255,255,.08);border-bottom:none;
-    transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);
-    z-index:9600;box-shadow:4px 0 30px rgba(0,0,0,.5);
-  }
-  body.nav-open .left-nav{transform:translateX(0);}
-  .left-nav-brand { height: 52px; min-height: 52px; }
-  .left-nav-items { max-height: none; flex:1; }
-
-  #mobile-nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9550;opacity:0;pointer-events:none;transition:opacity .28s ease;}
-  body.nav-open #mobile-nav-backdrop{display:block;opacity:1;pointer-events:auto;}
-
-  /* Sticky internal tab-nav must sit below the fixed top bar */
-  .tab-nav-wrapper{top:52px!important;}
-  /* Keep edit banner clear of the top bar */
-  #kb-banner,#edit-banner{top:52px!important;left:0;}
-
-  /* ── Horizontal-overflow safety net ──
-     Stop any single wide element from widening the whole page.
-     Wide tables/gantt keep their own inner scroll; the page itself
-     never scrolls sideways. */
-  html,body{max-width:100%;overflow-x:hidden;}
-  .main-content-area{max-width:100vw;overflow-x:hidden;}
-  .section-container,.pp-section-padding,.section-wrapper{max-width:100%;}
-  /* Never let media or embeds exceed the screen */
-  img,iframe,video,table{max-width:100%;}
-  /* Known wide blocks scroll inside themselves, not the page */
-  .gantt-wrapper,.raci-wrapper{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  /* Trim large fixed side padding so content isn't cramped/pushed */
-  .pp-section-padding{padding-left:18px;padding-right:18px;}
+  .page-layout { flex-direction: column; }
+  .left-nav { width: 100% !important; height: auto; min-height: 48px; position: relative; flex-direction: column; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .left-nav-brand { height: 48px; min-height: 48px; }
+  .left-nav-section { padding: 10px 18px 5px; }
+  .left-nav-items { max-height: 200px; }
 }
 
 /* ── Hub-identical hero ─────────────────────────────────────── */
@@ -974,7 +929,10 @@ body.edit-mode-active img:hover,body.edit-mode-active iframe:hover{outline:3px d
 body.edit-mode-active a:not(.left-nav-item):hover{outline:2px dashed #a78bfa!important;outline-offset:2px;cursor:pointer;}
 [contenteditable="true"]{outline:2px solid #2d7eb5!important;outline-offset:2px;border-radius:3px;background:rgba(45,126,181,0.04)!important;cursor:text!important;}
 
-/* (mobile sidebar handled by the off-canvas drawer rules above) */
+@media(max-width:768px){
+  .page-layout{flex-direction:column;}
+  .left-nav{width:100%!important;height:auto;min-height:48px;position:relative;flex-direction:column;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}
+}
 
 </style>
 
@@ -1001,27 +959,14 @@ aside.left-nav .left-nav-item.active{background:rgba(13,148,136,.18);color:#34e3
 aside.left-nav .left-nav-divider{height:1px;background:rgba(255,255,255,.06);margin:8px 14px;flex-shrink:0;}
 aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);padding:14px 18px;flex-shrink:0;font-size:9.5px;color:#3a4759;line-height:1.7;font-family:'DM Mono',ui-monospace,Menlo,monospace;}
 @media(max-width:768px){
- aside.left-nav{width:270px!important;min-width:270px!important;max-width:82vw!important;height:100vh!important;position:fixed!important;top:0!important;left:0;bottom:0;flex-direction:column;border-right:1px solid rgba(255,255,255,.08);border-bottom:none;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:9600;box-shadow:4px 0 30px rgba(0,0,0,.5);}
- body.nav-open aside.left-nav{transform:translateX(0);}
- aside.left-nav .left-nav-brand{height:52px;min-height:52px;}
- aside.left-nav .left-nav-items{max-height:none;flex:1;}
+ aside.left-nav{width:100%!important;min-width:0!important;max-width:none!important;height:auto!important;min-height:48px;position:relative!important;flex-direction:column;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}
+ aside.left-nav .left-nav-brand{height:48px;min-height:48px;}
+ aside.left-nav .left-nav-items{max-height:200px;}
 }
 </style>
 
 </head>
 <body class="">
-<!-- ═══ MOBILE TOP BAR (hidden on desktop) ═══ -->
-<div id="mobile-topbar">
-  <button id="mobile-nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="window._kbToggleNav&&window._kbToggleNav()">
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-  </button>
-  <div class="mtb-brand">
-    <img src="https://www.povertyactionlab.org/themes/custom/jpal/logo.svg" alt="J-PAL" onerror="this.style.display='none'">
-    <span>RO Knowledge Bank</span>
-  </div>
-</div>
-<div id="mobile-nav-backdrop" onclick="window._kbToggleNav&&window._kbToggleNav()"></div>
-
 <div id="kb-banner" style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 10000; background: rgb(30, 64, 175); color: white; text-align: center; padding: 7px; font-size: 12px; font-weight: 600; font-family: system-ui, sans-serif;">Edit Mode, click any text, link, image, or video to edit &nbsp;|&nbsp; Alt+Shift+E to exit</div>
 <div id="kb-toolbar" style="display: none; position: fixed; bottom: 24px; right: 24px; background: rgb(13, 17, 23); padding: 12px 20px; border-radius: 40px; box-shadow: rgba(0, 0, 0, 0.4) 0px 16px 36px; gap: 12px; align-items: center; z-index: 999999; border: 1px solid rgba(255, 255, 255, 0.08);">
   <span style="color:#94a3b8;font-size:12px;font-weight:600;">Edit Mode</span>
@@ -1030,7 +975,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
 </div>
 <div id="kb-bubble" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; z-index: 1000000; width: 340px; border: 1px solid rgba(0, 0, 0, 0.11);">
   <label id="kb-bubble-label" style="display:block;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e293b;">Image URL or Google Drive link</label>
-  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0.11);border-radius:8px;margin-bottom:10px;font-size:13px;">
+  <input type="text" id="kb-bubble-input" placeholder="https://..." style="width:100%;padding:10px 12px;border:1px solid rgba(0,0,0.11);border-radius:8px;margin-bottom:10px;font-size:13px;" autocomplete="off">
   <button style="width:100%;padding:10px;border:none;border-radius:8px;background:#1a6b8a;color:white;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:8px;">Apply</button>
   <button style="width:100%;padding:10px;border:1px solid rgba(0,0,0.11);border-radius:8px;background:#f7f6f3;color:#334155;font-weight:600;cursor:pointer;font-size:13px;">Cancel</button>
 </div>
@@ -1087,7 +1032,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
             </div>
         </div>
                 <div class="hero-podcast-side">
-            <div class="podcast-card" id="podcast-card">
+            <div class="podcast-card" id="podcast-card" style="--pod-accent: #28b6d6; --pod-glow: rgba(40,182,214,0.18);">
                 <div class="podcast-top">
                     <div class="podcast-head">
                         <div class="podcast-mic">
@@ -1095,8 +1040,8 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                         </div>
                         <div class="podcast-top-text">
                             <div class="podcast-tag">Field Ops Podcast</div>
-                            <div class="podcast-title edit-text" id="podcast-title">Deep Dive: Pre-Field Planning</div>
-                            <div class="podcast-desc edit-text" id="podcast-desc">Survey planning, IRB timelines &amp; field realities</div>
+                            <div class="podcast-title edit-text" id="podcast-title">Survey Logistics &amp; Budgeting</div>
+                            <div class="podcast-desc edit-text" id="podcast-desc">DA matrices, vendor contracts &amp; travel norms</div>
                         </div>
                     </div>
                     <div class="pod-wave">
@@ -1104,7 +1049,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                     </div>
                 </div>
                 <div class="podcast-player">
-                    <iframe id="podcast-iframe" src="https://drive.google.com/file/d/1fU9ksczsZriV9rhyiRRhD8YhD9_5Kkan/preview" allow="autoplay"></iframe>
+                    <iframe id="podcast-iframe" src="https://drive.google.com/file/d/1eaoawwJ_zpuojR4VUYefPbQqMyLW2XUi/preview" allow="autoplay"></iframe>
                 </div>
                 <div class="podcast-footer">
                     <span class="podcast-footer-label edit-text">J-PAL SA Research Operations</span>
@@ -1117,15 +1062,15 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
 
 <div class="tab-nav-wrapper">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn home-tab active" onclick="switchTab(event,'panel-home')" aria-selected="true">Pre-Field Ops</button>
+    <button class="tab-btn home-tab" onclick="switchTab(event,'panel-home')" aria-selected="false">Pre-Field Ops</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-planning')" aria-selected="false">Survey Planning</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-ro')" aria-selected="false">Availing RO Support</button>
     <button class="tab-btn" onclick="switchTab(event,'panel-mapping')" aria-selected="false">Mapping Households</button>
-    <button class="tab-btn" onclick="switchTab(event,'panel-logistics')" aria-selected="false">Survey Logistics</button>
+    <button class="tab-btn active" onclick="switchTab(event,'panel-logistics')" aria-selected="true">Survey Logistics</button>
   </nav>
 </div>
 
-<div id="panel-home" class="tab-panel active">
+<div id="panel-home" class="tab-panel">
 
 <div class="section-wrapper bg-white">
     <div class="section-container split-layout">
@@ -1139,7 +1084,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                 <p style="font-style:italic;margin-bottom:0;color:var(--brand-dark);font-weight:600;">"That is exactly the point. Planning is one of the most demanding phases, and often the most under-documented. Rigorous planning sessions with the team provides practical roadmap to help us translate the research design into a workable field plan. It anchors the key discussions we need to have, what must be prepared, who needs to be involved, what 'good planning' looks like, and what support systems we can rely on when the field throws surprises at us."</p>
             </div>
             <h3 style="font-size:18px;margin-top:40px;">The Core Philosophy</h3>
-            <p><strong>The Myth:</strong> "It's just a survey. We'll hire people, print forms, and go."</p>
+            <p><strong>The Myth:</strong> "It's just a short survey; the sample too is just 3000 households. We'll hire people within 2 days, conduct training for 1 day, get the tablets within a day, and good to go."</p>
             <p><strong>The Reality:</strong> Data collection may be seen as a logistics operation disguised as research. If you don't plan around people, process, payments and protocols, the science will fail. This section is your shield against chaos.</p>
         </div>
         <div class="image-block tilt-right">
@@ -1287,16 +1232,16 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                         <div class="control-group">
                             <div class="control-header"><p class="control-label">Expected Training Drop-Out</p><span class="control-value" id="val-train-drop">10%</span></div>
                             <div class="cg-slider">
-                                <div class="cg-flag" id="flag-train" style="left:20%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val" id="flagval-train">10%</span></div>
-                                <div class="cg-guide" id="guide-train" style="left:20%;"></div>
+                                <div class="cg-flag on" id="flag-train" style="left:20%;"><span class="cg-flag-seal">★</span>J-PAL SA Benchmark<span class="cg-flag-val" id="flagval-train">10%</span></div>
+                                <div class="cg-guide on" id="guide-train" style="left:20%;"></div>
                                 <input type="range" id="in-train-drop" min="0" max="50" step="1" value="10" oninput="calcFunnel()">
                             </div>
                         </div>
                         <div class="control-group" style="margin-bottom:0;">
                             <div class="control-header"><p class="control-label">Expected Field Attrition</p><span class="control-value" id="val-field-drop">7%</span></div>
                             <div class="cg-slider">
-                                <div class="cg-flag" id="flag-field" style="left:14%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val">7%</span></div>
-                                <div class="cg-guide" id="guide-field" style="left:14%;"></div>
+                                <div class="cg-flag on" id="flag-field" style="left:14%;"><span class="cg-flag-seal">★</span>J-PAL SA Benchmark<span class="cg-flag-val">7%</span></div>
+                                <div class="cg-guide on" id="guide-field" style="left:14%;"></div>
                                 <input type="range" id="in-field-drop" min="0" max="50" step="1" value="7" oninput="calcFunnel()">
                             </div>
                         </div>
@@ -1319,24 +1264,24 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                         <div class="control-group">
                             <div class="control-header"><p class="control-label">Total Shift Duration</p><span class="control-value" id="val-shift">10 hrs</span></div>
                             <div class="cg-slider">
-                                <div class="cg-flag" id="flag-shift" style="left:50%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val">10 hrs</span></div>
-                                <div class="cg-guide" id="guide-shift" style="left:50%;"></div>
+                                <div class="cg-flag on" id="flag-shift" style="left:50%;"><span class="cg-flag-seal">★</span>J-PAL SA Benchmark<span class="cg-flag-val">10 hrs</span></div>
+                                <div class="cg-guide on" id="guide-shift" style="left:50%;"></div>
                                 <input type="range" id="in-shift" min="6" max="14" step="0.5" value="10" oninput="calcCapacity()">
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="control-header"><p class="control-label">Total 2-Way Travel Time</p><span class="control-value" id="val-travel">2 hrs (~50km one-way)</span></div>
                             <div class="cg-slider">
-                                <div class="cg-flag" id="flag-travel" style="left:33.3%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val">2 hrs</span></div>
-                                <div class="cg-guide" id="guide-travel" style="left:33.3%;"></div>
+                                <div class="cg-flag on" id="flag-travel" style="left: 33.3333%;"><span class="cg-flag-seal">★</span>J-PAL SA Benchmark<span class="cg-flag-val">2 hrs</span></div>
+                                <div class="cg-guide on" id="guide-travel" style="left: 33.3333%;"></div>
                                 <input type="range" id="in-travel" min="0" max="6" step="0.5" value="2" oninput="calcCapacity()">
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="control-header"><p class="control-label">Lunch, Syncs &amp; Breaks</p><span class="control-value" id="val-breaks">45 mins</span></div>
                             <div class="cg-slider">
-                                <div class="cg-flag" id="flag-breaks" style="left:25%;"><span class="cg-flag-seal">&#9733;</span>J-PAL SA Benchmark<span class="cg-flag-val">45 min</span></div>
-                                <div class="cg-guide" id="guide-breaks" style="left:25%;"></div>
+                                <div class="cg-flag on" id="flag-breaks" style="left:25%;"><span class="cg-flag-seal">★</span>J-PAL SA Benchmark<span class="cg-flag-val">45 min</span></div>
+                                <div class="cg-guide on" id="guide-breaks" style="left:25%;"></div>
                                 <input type="range" id="in-breaks" min="0" max="3" step="0.25" value="0.75" oninput="calcCapacity()">
                             </div>
                         </div>
@@ -1348,7 +1293,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                     <div class="metrics-panel">
                         <div class="metric-card mc-blue"><span class="m-title">Usable Field Time</span><div class="m-value" id="out-usable">7.25 <span style="font-size:16px;">hrs</span></div><span class="m-subtext">Actual time spent surveying</span></div>
                         <div class="metric-card mc-green" id="card-capacity"><span class="m-title">Max Surveys / Day</span><div class="m-value" id="out-max">7</div><span class="m-subtext">Per surveyor</span></div>
-                        <div class="warning-box" id="time-warning" style="display: none;">&#9888;&#65039; Warning: Travel and break times exceed total shift duration. Your surveyors have no time to collect data!</div>
+                        <div class="warning-box" id="time-warning" style="display: none;">⚠️ Warning: Travel and break times exceed total shift duration. Your surveyors have no time to collect data!</div>
                     </div>
                 </div>
             </div>
@@ -1574,11 +1519,11 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                 <div><div class="p-name">Hansa Parmar</div><div class="p-role">Team Lead (Research Operations)</div></div>
             </div>
             <div class="person-chip">
-                <img src="https://drive.google.com/thumbnail?id=1hMDk2sWmjj8Qs-qQPhH7n0BgvxB373tO&amp;sz=w200" alt="RA" class="edit-img">
-                <div><div class="p-name">Research Associate</div><div class="p-role">Project Research Team</div></div>
+                <img src="https://www.povertyactionlab.org/sites/default/files/styles/hea/public/images/2024/07/Svankita%20Arora.jpg?itok=juIpCHNs" alt="RA" class="edit-img">
+                <div><div class="p-name">Senior Research Associate</div><div class="p-role">Project Research Team</div></div>
             </div>
             <div class="person-chip">
-                <img src="https://drive.google.com/thumbnail?id=1LgXE8bpm_YfPE90IT_lPX3o0m7Wf_9d_&amp;sz=w200" alt="SC" class="edit-img">
+                <img src="https://www.povertyactionlab.org/sites/default/files/styles/hea/public/images/2026/06/Sabahat-Ali-Khan-headshot.jpg?itok=UVD4XdFU" alt="SC" class="edit-img">
                 <div><div class="p-name">Survey Coordinator</div><div class="p-role">Research Operations&nbsp;</div></div>
             </div>
         </div>
@@ -1852,7 +1797,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
                 <div class="sim-progress-dot"></div>
             </div>
         </div>
-        <div class="sim-body" id="sim-body"><div class="sim-step active"><div class="sim-question">Your PI wants to launch the survey in 5 weeks. The instrument is 80% ready, IRB is not yet submitted, and no Survey Coordinator has been assigned. What do you recommend?</div><div class="sim-context">The typical planning runway requires 8 to 12 weeks minimum. Projects compressed below 6 weeks enter the danger zone.</div><div class="sim-options" id="sim-opts"><div class="sim-option" onclick="simSelect(0)" id="sim-opt-0"><h4>Push back with data</h4><p>Present the compressed timeline risks: 'Here is what we can deliver in 5 weeks, here is what we cannot, and here are the specific quality risks.'</p></div><div class="sim-option" onclick="simSelect(1)" id="sim-opt-1"><h4>Agree and rush</h4><p>Accept the timeline and try to compress all workstreams. The team will work harder to make it happen.</p></div></div><div class="sim-feedback" id="sim-fb"></div></div></div>
+        <div class="sim-body" id="sim-body"><div class="sim-step active"><div class="sim-question">Your PI wants to launch the survey in 5 weeks. The instrument is 80% ready, IRB is not yet submitted, and no Survey Coordinator has been assigned. What do you recommend?</div><div class="sim-context">The typical planning runway requires 8–12 weeks minimum. Projects compressed below 6 weeks enter the danger zone.</div><div class="sim-options" id="sim-opts"><div class="sim-option" onclick="simSelect(0)" id="sim-opt-0"><h4>Push back with data</h4><p>Present the compressed timeline risks: 'Here is what we can deliver in 5 weeks, here is what we cannot, and here are the specific quality risks.'</p></div><div class="sim-option" onclick="simSelect(1)" id="sim-opt-1"><h4>Agree and rush</h4><p>Accept the timeline and try to compress all workstreams. The team will work harder to make it happen.</p></div></div><div class="sim-feedback" id="sim-fb"></div></div></div>
         <div class="sim-footer">
             <button class="sim-btn sim-btn-secondary" id="sim-prev" onclick="simPrev()" style="visibility:hidden;">← Previous</button>
             <div class="sim-score" id="sim-score"></div>
@@ -1870,11 +1815,11 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
     </div>
     <div class="phase-container">
         <div class="phase-tabs">
-            <button class="phase-tab-btn active" onclick="switchPhase(event,'phase1')">Phase 1: Foundation (Wk 1 to 4)</button>
+            <button class="phase-tab-btn" onclick="switchPhase(event,'phase1')">Phase 1: Foundation (Wk 1 to 4)</button>
             <button class="phase-tab-btn" onclick="switchPhase(event,'phase2')">Phase 2: Assembly (Wk 5 to 8)</button>
-            <button class="phase-tab-btn" onclick="switchPhase(event,'phase3')">Phase 3: Launch Prep (Wk 9 to 12)</button>
+            <button class="phase-tab-btn active" onclick="switchPhase(event,'phase3')">Phase 3: Launch Prep (Wk 9 to 12)</button>
         </div>
-        <div id="phase1" class="phase-content active">
+        <div id="phase1" class="phase-content">
             <h3 style="color:var(--heading-green);">Phase 1: Foundation Setting (Weeks 1 to 4)</h3>
             <p>This is the most intellectually demanding phase. The RA finalises the survey instrument, coordinates with the data team in setting up SurveyCTO servers, including skip logic, validation constraints, calculated fields, and GPS capture. Bench testing begins by Week 3. The SC builds site information dossiers work sites. Permissions outreach efforts begin, starting in Week 1</p>
             <div class="info-card card-warn"><strong>The Late-Night PI Request</strong>Your PI emails late at night: 'We need to add a new module on Mental Health.' You were planning to be in the field in a week's time, the latest changes are critical and would definitely need IRB approval. You will have to put your field plans on hold, potentially retain a few senior field staff at extra cost and let go other staff. Rehiring the staff again once approval is received will take time and resources, as field staff will be skeptical to join the project next time due to uncertainty of employment.&nbsp;<div>While you will have to navigate these challenges and address them taking into account various factors. The version control tracker you put in place and maintain should capture all the details with respect to changes made to the instrument, the status and details around amendment approval secured, along with the field and financial implications. The information will help assess the reasons for increased per-survey cost at the end of the project.</div></div>
@@ -1887,7 +1832,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
             <div class="info-card card-warn"><strong>The Translation Dilemma</strong>"The translation vendor needs 5 more days. Your PA speaks the language fluently. Do you let the PA translate to save the deadline? No. Never use internal staff for primary translations, it compromises scientific integrity."</div>
             <p style="margin-top:16px;"><strong>Hard Gate:</strong> Team hired and training begun by mid-Phase 2.</p>
         </div>
-        <div id="phase3" class="phase-content">
+        <div id="phase3" class="phase-content active">
             <h3 style="color:var(--heading-green);">Phase 3: Launch Preparation (Weeks 9 to 12)</h3>
             <p>Execute field reconnaissance over 3 to 5 days to verify actual road conditions, transit times, and local accommodation costs. During this visit, physically verify 30 to 50 households to test sample viability and migration rates. Finalize all vendor contracts, written agreements covering daily rates, fuel, tolls, driver meals, and contingency terms.</p>
             <p>The 14-day intensive training begins. Tablet provisioning, field kits, consent forms, referral cards, ID cards, and authorization letters are printed and assembled. The logistics dry-run verifies every element under realistic conditions.</p>
@@ -2276,7 +2221,7 @@ aside.left-nav .left-nav-footer{border-top:1px solid rgba(255,255,255,.05);paddi
      PANEL 5: SURVEY LOGISTICS
      ===================================================== -->
 
-<div id="panel-logistics" class="tab-panel">
+<div id="panel-logistics" class="tab-panel active">
 
 <div class="panel-label-strip"><span>Pre-Field Ops › </span><strong>Survey Logistics</strong></div>
 
@@ -3014,24 +2959,11 @@ calcCapacity();
   window._kbClose = function() { hide('kb-bubble'); tgt = null; };
 })();
 
-/* ── Mobile nav drawer toggle ── */
-(function(){
-  function setOpen(open){
-    document.body.classList.toggle('nav-open', open);
-    var btn=document.getElementById('mobile-nav-toggle');
-    if(btn) btn.setAttribute('aria-expanded', open?'true':'false');
-  }
-  window._kbToggleNav=function(){ setOpen(!document.body.classList.contains('nav-open')); };
-  document.querySelectorAll('aside.left-nav .left-nav-item').forEach(function(a){
-    a.addEventListener('click', function(){ setOpen(false); });
-  });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') setOpen(false); });
-})();
-
 </script>
 
 
 </div><iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div>
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
 <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"></iframe>
